@@ -1,0 +1,7 @@
+SwitchBoundMaterialTest box2NoticesAfterBox1Edit=0
+SwitchBoundMaterialTest box2NoticesAfterBox2Edit=nonzero
+SkelAnimUpdateTest errorsAfterAnimationAdded=0
+SkelAnimUpdateTest errorsAfterAnimationRemoved=0
+SkinnedMeshInvalidationTest errors=0
+SkinnedMeshInvalidationTest prims: /= /Root= /Root/Skinning= /Root/Skinning/Box=mesh /Root/Skinning/Box/skinningPointsInputAggregatorComputation=extComputation /Root/Skinning/Box/skinningPointsComputation=extComputation /Root/Skeleton=mesh
+OK

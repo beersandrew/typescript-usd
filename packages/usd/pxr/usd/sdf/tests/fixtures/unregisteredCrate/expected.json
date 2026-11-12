@@ -1,0 +1,94 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/usd/sdf/tests/fixtures/unregisteredCrate/capture.py",
+  "upstream": [
+    "pxr/usd/sdf/textParserHelpers.cpp:209-292",
+    "pxr/usd/sdf/crateFile.cpp:1274-1288",
+    "pxr/usd/sdf/crateFile.cpp:1543",
+    "pxr/usd/sdf/crateData.cpp:830-850"
+  ],
+  "payload": {
+    "cases": [
+      {
+        "name": "string",
+        "text": "#usda 1.0\n( customThing = \"hello\" )\n\ndef \"P\" (\n    primThing = \"hello\"\n)\n{\n}\n",
+        "exported": "#usda 1.0\n(\n    customThing = \"hello\"\n)\n\ndef \"P\" (\n    primThing = \"hello\"\n)\n{\n}\n\n",
+        "reopenedFromUsdc": "#usda 1.0\n(\n    customThing = \"hello\"\n)\n\ndef \"P\" (\n    primThing = \"hello\"\n)\n{\n}\n\n"
+      },
+      {
+        "name": "bool",
+        "text": "#usda 1.0\n( customThing = true )\n\ndef \"P\" (\n    primThing = true\n)\n{\n}\n",
+        "exported": "#usda 1.0\n(\n    customThing = true\n)\n\ndef \"P\" (\n    primThing = true\n)\n{\n}\n\n",
+        "reopenedFromUsdc": "#usda 1.0\n(\n    customThing = true\n)\n\ndef \"P\" (\n    primThing = true\n)\n{\n}\n\n"
+      },
+      {
+        "name": "integer",
+        "text": "#usda 1.0\n( customThing = 123 )\n\ndef \"P\" (\n    primThing = 123\n)\n{\n}\n",
+        "exported": "#usda 1.0\n(\n    customThing = 123\n)\n\ndef \"P\" (\n    primThing = 123\n)\n{\n}\n\n",
+        "reopenedFromUsdc": "#usda 1.0\n(\n    customThing = 123\n)\n\ndef \"P\" (\n    primThing = 123\n)\n{\n}\n\n"
+      },
+      {
+        "name": "number",
+        "text": "#usda 1.0\n( customThing = 1.2500 )\n\ndef \"P\" (\n    primThing = 1.2500\n)\n{\n}\n",
+        "exported": "#usda 1.0\n(\n    customThing = 1.25\n)\n\ndef \"P\" (\n    primThing = 1.25\n)\n{\n}\n\n",
+        "reopenedFromUsdc": "#usda 1.0\n(\n    customThing = 1.25\n)\n\ndef \"P\" (\n    primThing = 1.25\n)\n{\n}\n\n"
+      },
+      {
+        "name": "asset",
+        "text": "#usda 1.0\n( customThing = @texture.png@ )\n\ndef \"P\" (\n    primThing = @texture.png@\n)\n{\n}\n",
+        "exported": "#usda 1.0\n(\n    customThing = @texture.png@\n)\n\ndef \"P\" (\n    primThing = @texture.png@\n)\n{\n}\n\n",
+        "reopenedFromUsdc": "#usda 1.0\n(\n    customThing = @texture.png@\n)\n\ndef \"P\" (\n    primThing = @texture.png@\n)\n{\n}\n\n"
+      },
+      {
+        "name": "array",
+        "text": "#usda 1.0\n( customThing = [1, 2, 3] )\n\ndef \"P\" (\n    primThing = [1, 2, 3]\n)\n{\n}\n",
+        "exported": "#usda 1.0\n(\n    customThing = [1, 2, 3]\n)\n\ndef \"P\" (\n    primThing = [1, 2, 3]\n)\n{\n}\n\n",
+        "reopenedFromUsdc": "#usda 1.0\n(\n    customThing = [1, 2, 3]\n)\n\ndef \"P\" (\n    primThing = [1, 2, 3]\n)\n{\n}\n\n"
+      },
+      {
+        "name": "string-array",
+        "text": "#usda 1.0\n( customThing = [\"a\", \"b\"] )\n\ndef \"P\" (\n    primThing = [\"a\", \"b\"]\n)\n{\n}\n",
+        "exported": "#usda 1.0\n(\n    customThing = [\"a\", \"b\"]\n)\n\ndef \"P\" (\n    primThing = [\"a\", \"b\"]\n)\n{\n}\n\n",
+        "reopenedFromUsdc": "#usda 1.0\n(\n    customThing = [\"a\", \"b\"]\n)\n\ndef \"P\" (\n    primThing = [\"a\", \"b\"]\n)\n{\n}\n\n"
+      },
+      {
+        "name": "list-edit",
+        "text": "#usda 1.0\n( prepend customThing = [1, 2] )\n\ndef \"P\" (\n    prepend primThing = [1, 2]\n)\n{\n}\n",
+        "exported": "#usda 1.0\n(\n    prepend customThing = [1, 2]\n)\n\ndef \"P\" (\n    prepend primThing = [1, 2]\n)\n{\n}\n\n",
+        "reopenedFromUsdc": "#usda 1.0\n(\n    prepend customThing = [1, 2]\n)\n\ndef \"P\" (\n    prepend primThing = [1, 2]\n)\n{\n}\n\n"
+      },
+      {
+        "name": "asset-array",
+        "text": "#usda 1.0\n( customThing = [@a.png@, @b.png@] )\n\ndef \"P\" (\n    primThing = [@a.png@, @b.png@]\n)\n{\n}\n",
+        "exported": "#usda 1.0\n(\n    customThing = [@a.png@, @b.png@]\n)\n\ndef \"P\" (\n    primThing = [@a.png@, @b.png@]\n)\n{\n}\n\n",
+        "reopenedFromUsdc": "#usda 1.0\n(\n    customThing = [@a.png@, @b.png@]\n)\n\ndef \"P\" (\n    primThing = [@a.png@, @b.png@]\n)\n{\n}\n\n"
+      },
+      {
+        "name": "tuple",
+        "text": "#usda 1.0\n( customThing = (1, 2, 3) )\n\ndef \"P\" (\n    primThing = (1, 2, 3)\n)\n{\n}\n",
+        "exported": "#usda 1.0\n(\n    customThing = (1, 2, 3)\n)\n\ndef \"P\" (\n    primThing = (1, 2, 3)\n)\n{\n}\n\n",
+        "reopenedFromUsdc": "#usda 1.0\n(\n    customThing = (1, 2, 3)\n)\n\ndef \"P\" (\n    primThing = (1, 2, 3)\n)\n{\n}\n\n"
+      },
+      {
+        "name": "none",
+        "text": "#usda 1.0\n( customThing = None )\n\ndef \"P\" (\n    primThing = None\n)\n{\n}\n",
+        "exported": "#usda 1.0\n(\n    customThing = None\n)\n\ndef \"P\" (\n    primThing = None\n)\n{\n}\n\n",
+        "reopenedFromUsdc": "#usda 1.0\n(\n    customThing = None\n)\n\ndef \"P\" (\n    primThing = None\n)\n{\n}\n\n"
+      },
+      {
+        "name": "dictionary",
+        "text": "#usda 1.0\n( customThing = { string label = \"hello\"\n int count = 3\n dictionary nested = { bool active = true } } )\n\ndef \"P\" (\n    primThing = { string label = \"hello\"\n int count = 3\n dictionary nested = { bool active = true } }\n)\n{\n}\n",
+        "exported": "#usda 1.0\n(\n    customThing = {\n        int count = 3\n        string label = \"hello\"\n        dictionary nested = {\n            bool active = 1\n        }\n    }\n)\n\ndef \"P\" (\n    primThing = {\n        int count = 3\n        string label = \"hello\"\n        dictionary nested = {\n            bool active = 1\n        }\n    }\n)\n{\n}\n\n",
+        "reopenedFromUsdc": "#usda 1.0\n(\n    customThing = {\n        int count = 3\n        string label = \"hello\"\n        dictionary nested = {\n            bool active = 1\n        }\n    }\n)\n\ndef \"P\" (\n    primThing = {\n        int count = 3\n        string label = \"hello\"\n        dictionary nested = {\n            bool active = 1\n        }\n    }\n)\n{\n}\n\n"
+      }
+    ],
+    "edited": {
+      "text": "#usda 1.0\n(\n    vendorLabel = \"keep me\"\n    vendorNumbers = [1, 2, 3]\n)\n\ndef \"P\"\n{\n    double edited = 1\n}\n",
+      "reopened": {
+        "usda": "#usda 1.0\n(\n    vendorLabel = \"keep me\"\n    vendorNumbers = [1, 2, 3]\n)\n\ndef \"P\"\n{\n    double edited = 2\n}\n\n",
+        "usdc": "#usda 1.0\n(\n    vendorLabel = \"keep me\"\n    vendorNumbers = [1, 2, 3]\n)\n\ndef \"P\"\n{\n    double edited = 2\n}\n\n"
+      }
+    }
+  }
+}

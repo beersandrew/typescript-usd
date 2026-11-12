@@ -1,0 +1,14 @@
+{
+  "layer": "root.usda",
+  "children": [
+    {
+      "layer": "weak.usda",
+      "children": [
+        {
+          "layer": "nested.usda",
+          "children": []
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,157 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/usdImaging/usdImagingGL/tests/fixtures/native/defaultDomeLight/capture.py",
+  "upstream": [
+    "pxr/usdImaging/usdviewq/stageView.py:1453-1483",
+    "pxr/imaging/hdx/taskControllerSceneIndex.cpp:729-738,2208-2314",
+    "pxr/imaging/hdx/package.cpp:157-169",
+    "pxr/imaging/hdSt/simpleLightingShader.cpp:269-299",
+    "pxr/usd/plugin/usdShaders/shaders/previewSurface.glslfx:460-470",
+    "pxr/imaging/hdSt/shaders/simpleLighting.glslfx:475-507"
+  ],
+  "payload": {
+    "rows": [
+      {
+        "zUp": false,
+        "cameraLight": false,
+        "path": "/_UsdImaging_Storm/lights/light_0",
+        "primType": "domeLight",
+        "intensity": 1,
+        "exposure": 0,
+        "color": [
+          1,
+          1,
+          1
+        ],
+        "resourceName": "StinsonBeach.hdr",
+        "worldToLight": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      {
+        "zUp": false,
+        "cameraLight": true,
+        "path": "/_UsdImaging_Storm/lights/light_1",
+        "primType": "domeLight",
+        "intensity": 1,
+        "exposure": 0,
+        "color": [
+          1,
+          1,
+          1
+        ],
+        "resourceName": "StinsonBeach.hdr",
+        "worldToLight": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      {
+        "zUp": true,
+        "cameraLight": false,
+        "path": "/_UsdImaging_Storm/lights/light_0",
+        "primType": "domeLight",
+        "intensity": 1,
+        "exposure": 0,
+        "color": [
+          1,
+          1,
+          1
+        ],
+        "resourceName": "StinsonBeach.hdr",
+        "worldToLight": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          2.220446049250313e-16,
+          -1,
+          0,
+          0,
+          1,
+          2.220446049250313e-16,
+          0,
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      {
+        "zUp": true,
+        "cameraLight": true,
+        "path": "/_UsdImaging_Storm/lights/light_1",
+        "primType": "domeLight",
+        "intensity": 1,
+        "exposure": 0,
+        "color": [
+          1,
+          1,
+          1
+        ],
+        "resourceName": "StinsonBeach.hdr",
+        "worldToLight": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          2.220446049250313e-16,
+          -1,
+          0,
+          0,
+          1,
+          2.220446049250313e-16,
+          0,
+          0,
+          0,
+          0,
+          1
+        ]
+      }
+    ],
+    "resource": {
+      "name": "StinsonBeach.hdr",
+      "bytes": 1463672,
+      "sha256": "4897697c757edc524dc9b7bcc692e8e05a7f02dbede3e30d2291dc0831dece17",
+      "width": 1024,
+      "height": 512
+    },
+    "defaults": {
+      "domeLightEnabled": false,
+      "cameraLightEnabled": true,
+      "sceneLightsEnabled": true
+    }
+  }
+}

@@ -1,0 +1,58 @@
+/Cam type=camera
+	[camera]
+		[backPlate]
+			[plateA]
+				[alphaImage]
+					SdfAssetPath @@ resolved=
+				[depthCameraSpaceOffset]
+					float 0
+				[depthImage]
+					SdfAssetPath @@ resolved=
+				[depthMinOffset]
+					float 0
+				[depthNormalizingFactor]
+					float 1
+				[image]
+					SdfAssetPath @plate.png@ resolved=
+				[lumaOffset]
+					GfVec3f (0, 0, 0)
+				[lumaPower]
+					GfVec3f (1, 1, 1)
+				[lumaSlope]
+					GfVec3f (0.5, 0.5, 0.5)
+				[plateVisibility]
+					TfToken solo
+				[rotateXYZTweak]
+					GfVec3f (0, 0, 0)
+				[scaleTweak]
+					GfVec2f (2, 3)
+				[translateTweak]
+					GfVec3f (0, 0, 0)
+			[plateB]
+				[alphaImage]
+					SdfAssetPath @@ resolved=
+				[depthCameraSpaceOffset]
+					float 0
+				[depthImage]
+					SdfAssetPath @@ resolved=
+				[depthMinOffset]
+					float 0.25
+				[depthNormalizingFactor]
+					float 1
+				[image]
+					SdfAssetPath @@ resolved=
+				[lumaOffset]
+					GfVec3f (0, 0, 0)
+				[lumaPower]
+					GfVec3f (1, 1, 1)
+				[lumaSlope]
+					GfVec3f (1, 1, 1)
+				[plateVisibility]
+					TfToken always
+				[rotateXYZTweak]
+					GfVec3f (0, 0, 0)
+				[scaleTweak]
+					GfVec2f (1, 1)
+				[translateTweak]
+					GfVec3f (0, 0, 0)
+OK

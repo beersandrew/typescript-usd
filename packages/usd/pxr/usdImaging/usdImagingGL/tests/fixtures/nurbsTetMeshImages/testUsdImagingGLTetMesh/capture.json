@@ -1,0 +1,30 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/usdImaging/usdImagingGL/tests/fixtures/nurbsTetMeshImages/capture.py",
+  "upstream": [
+    "pxr/usdImaging/usdImagingGL/CMakeLists.txt",
+    "pxr/usdImaging/usdImagingGL/testenv/testUsdImagingGLBasicDrawing.cpp"
+  ],
+  "payload": {
+    "test": "testUsdImagingGLTetMesh",
+    "cmake": "pxr/usdImaging/usdImagingGL/CMakeLists.txt:1119",
+    "command": "<install>/tests/testUsdImagingGLBasicDrawing -lighting -sceneLights -shading flat -offscreen -times 0 10 -stage tetMesh.usda -camera /Camera -write testUsdImagingGLTetMesh.png",
+    "cwd": "copy of <source>/pxr/usdImaging/usdImagingGL/testenv/testUsdImagingGLTetMesh",
+    "env": {
+      "TF_DEBUG": "HD_SAFE_MODE"
+    },
+    "expectedReturnCode": "0",
+    "returnCode": 0,
+    "images": [
+      {
+        "name": "testUsdImagingGLTetMesh_000.png",
+        "written": true
+      },
+      {
+        "name": "testUsdImagingGLTetMesh_010.png",
+        "written": true
+      }
+    ]
+  }
+}

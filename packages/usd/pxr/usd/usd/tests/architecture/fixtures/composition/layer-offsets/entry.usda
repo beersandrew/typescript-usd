@@ -1,0 +1,5 @@
+#usda 1.0
+(
+    subLayers = [@second.usda@ (offset = 10; scale = 0.5)]
+)
+def "Root" { int root.timeSamples = { -10: 100, 0: 200, 15: 300 } ; }

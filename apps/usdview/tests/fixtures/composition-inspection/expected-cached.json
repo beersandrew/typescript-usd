@@ -1,0 +1,220 @@
+{
+  "nativeVersion": [
+    0,
+    26,
+    11
+  ],
+  "source": "OpenUSD v26.11.1 usdviewq/appController.py:4427-4504; cached GetPrimIndex and nested layerTree",
+  "rows": {
+    "/World/Model": {
+      "arc": "root",
+      "path": "/World/Model",
+      "introductionPath": "/World/Model",
+      "canContribute": true,
+      "layerTree": {
+        "label": "root.usda",
+        "hasSpec": true,
+        "offset": 0.0,
+        "scale": 1.0,
+        "children": [
+          {
+            "label": "weak.usda",
+            "hasSpec": true,
+            "offset": 0.0,
+            "scale": 1.0,
+            "children": [
+              {
+                "label": "nested.usda",
+                "hasSpec": true,
+                "offset": 2.0,
+                "scale": 3.0,
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      "children": [
+        {
+          "arc": "reference",
+          "path": "/Asset",
+          "introductionPath": "/Asset",
+          "canContribute": true,
+          "layerTree": {
+            "label": "asset.usda",
+            "hasSpec": true,
+            "offset": 0.0,
+            "scale": 1.0,
+            "children": []
+          },
+          "children": [
+            {
+              "arc": "variant",
+              "path": "/Asset{look=blue}",
+              "introductionPath": "/Asset{look=blue}",
+              "canContribute": true,
+              "layerTree": {
+                "label": "asset.usda",
+                "hasSpec": true,
+                "offset": 0.0,
+                "scale": 1.0,
+                "children": []
+              },
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    "/World/Model/Shape": {
+      "arc": "root",
+      "path": "/World/Model/Shape",
+      "introductionPath": "/World/Model/Shape",
+      "canContribute": true,
+      "layerTree": {
+        "label": "root.usda",
+        "hasSpec": false,
+        "offset": 0.0,
+        "scale": 1.0,
+        "children": [
+          {
+            "label": "weak.usda",
+            "hasSpec": false,
+            "offset": 0.0,
+            "scale": 1.0,
+            "children": [
+              {
+                "label": "nested.usda",
+                "hasSpec": false,
+                "offset": 2.0,
+                "scale": 3.0,
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      "children": [
+        {
+          "arc": "reference",
+          "path": "/Asset/Shape",
+          "introductionPath": "/Asset",
+          "canContribute": true,
+          "layerTree": {
+            "label": "asset.usda",
+            "hasSpec": true,
+            "offset": 0.0,
+            "scale": 1.0,
+            "children": []
+          },
+          "children": []
+        }
+      ]
+    },
+    "/World/Instance": {
+      "arc": "root",
+      "path": "/World/Instance",
+      "introductionPath": "/World/Instance",
+      "canContribute": true,
+      "layerTree": {
+        "label": "root.usda",
+        "hasSpec": true,
+        "offset": 0.0,
+        "scale": 1.0,
+        "children": [
+          {
+            "label": "weak.usda",
+            "hasSpec": false,
+            "offset": 0.0,
+            "scale": 1.0,
+            "children": [
+              {
+                "label": "nested.usda",
+                "hasSpec": false,
+                "offset": 2.0,
+                "scale": 3.0,
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      "children": [
+        {
+          "arc": "reference",
+          "path": "/Asset",
+          "introductionPath": "/Asset",
+          "canContribute": true,
+          "layerTree": {
+            "label": "asset.usda",
+            "hasSpec": true,
+            "offset": 0.0,
+            "scale": 1.0,
+            "children": []
+          },
+          "children": [
+            {
+              "arc": "variant",
+              "path": "/Asset{look=red}",
+              "introductionPath": "/Asset{look=red}",
+              "canContribute": true,
+              "layerTree": {
+                "label": "asset.usda",
+                "hasSpec": true,
+                "offset": 0.0,
+                "scale": 1.0,
+                "children": []
+              },
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    "/World/Instance/Shape": {
+      "arc": "root",
+      "path": "/World/Instance/Shape",
+      "introductionPath": "/World/Instance/Shape",
+      "canContribute": false,
+      "layerTree": {
+        "label": "root.usda",
+        "hasSpec": false,
+        "offset": 0.0,
+        "scale": 1.0,
+        "children": [
+          {
+            "label": "weak.usda",
+            "hasSpec": false,
+            "offset": 0.0,
+            "scale": 1.0,
+            "children": [
+              {
+                "label": "nested.usda",
+                "hasSpec": false,
+                "offset": 2.0,
+                "scale": 3.0,
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      "children": [
+        {
+          "arc": "reference",
+          "path": "/Asset/Shape",
+          "introductionPath": "/Asset",
+          "canContribute": true,
+          "layerTree": {
+            "label": "asset.usda",
+            "hasSpec": true,
+            "offset": 0.0,
+            "scale": 1.0,
+            "children": []
+          },
+          "children": []
+        }
+      ]
+    }
+  }
+}

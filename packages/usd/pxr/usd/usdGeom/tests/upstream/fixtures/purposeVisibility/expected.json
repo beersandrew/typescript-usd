@@ -1,0 +1,440 @@
+{
+  "version": "26.11.1",
+  "upstream": [
+    "usdGeom/imageable.cpp:179-280",
+    "usdGeom/visibilityAPI.cpp:185-210",
+    "usdviewq/appController.py:3038-3047"
+  ],
+  "cases": [
+    {
+      "name": "default",
+      "source": "def Camera \"Camera\" {}",
+      "path": "/Camera",
+      "attributes": {
+        "default": "visibility",
+        "guide": null,
+        "proxy": null,
+        "render": null
+      },
+      "rows": [
+        {
+          "time": null,
+          "visibility": "inherited",
+          "effective": {
+            "default": "visible",
+            "guide": "invisible",
+            "proxy": "inherited",
+            "render": "inherited"
+          }
+        },
+        {
+          "time": 0,
+          "visibility": "inherited",
+          "effective": {
+            "default": "visible",
+            "guide": "invisible",
+            "proxy": "inherited",
+            "render": "inherited"
+          }
+        },
+        {
+          "time": 1,
+          "visibility": "inherited",
+          "effective": {
+            "default": "visible",
+            "guide": "invisible",
+            "proxy": "inherited",
+            "render": "inherited"
+          }
+        }
+      ]
+    },
+    {
+      "name": "applied",
+      "source": "def Camera \"Camera\" (prepend apiSchemas=[\"VisibilityAPI\"]) {}",
+      "path": "/Camera",
+      "attributes": {
+        "default": "visibility",
+        "guide": "guideVisibility",
+        "proxy": "proxyVisibility",
+        "render": "renderVisibility"
+      },
+      "rows": [
+        {
+          "time": null,
+          "visibility": "inherited",
+          "effective": {
+            "default": "visible",
+            "guide": "invisible",
+            "proxy": "inherited",
+            "render": "inherited"
+          }
+        },
+        {
+          "time": 0,
+          "visibility": "inherited",
+          "effective": {
+            "default": "visible",
+            "guide": "invisible",
+            "proxy": "inherited",
+            "render": "inherited"
+          }
+        },
+        {
+          "time": 1,
+          "visibility": "inherited",
+          "effective": {
+            "default": "visible",
+            "guide": "invisible",
+            "proxy": "inherited",
+            "render": "inherited"
+          }
+        }
+      ]
+    },
+    {
+      "name": "unappliedAuthored",
+      "source": "def Camera \"Camera\" {\n uniform token guideVisibility=\"visible\"\n}",
+      "path": "/Camera",
+      "attributes": {
+        "default": "visibility",
+        "guide": null,
+        "proxy": null,
+        "render": null
+      },
+      "rows": [
+        {
+          "time": null,
+          "visibility": "inherited",
+          "effective": {
+            "default": "visible",
+            "guide": "invisible",
+            "proxy": "inherited",
+            "render": "inherited"
+          }
+        },
+        {
+          "time": 0,
+          "visibility": "inherited",
+          "effective": {
+            "default": "visible",
+            "guide": "invisible",
+            "proxy": "inherited",
+            "render": "inherited"
+          }
+        },
+        {
+          "time": 1,
+          "visibility": "inherited",
+          "effective": {
+            "default": "visible",
+            "guide": "invisible",
+            "proxy": "inherited",
+            "render": "inherited"
+          }
+        }
+      ]
+    },
+    {
+      "name": "ancestor",
+      "source": "def Xform \"World\" (prepend apiSchemas=[\"VisibilityAPI\"]) {\n uniform token guideVisibility=\"visible\"\n def Camera \"Camera\" {}\n}",
+      "path": "/World/Camera",
+      "attributes": {
+        "default": "visibility",
+        "guide": null,
+        "proxy": null,
+        "render": null
+      },
+      "rows": [
+        {
+          "time": null,
+          "visibility": "inherited",
+          "effective": {
+            "default": "visible",
+            "guide": "visible",
+            "proxy": "inherited",
+            "render": "inherited"
+          }
+        },
+        {
+          "time": 0,
+          "visibility": "inherited",
+          "effective": {
+            "default": "visible",
+            "guide": "visible",
+            "proxy": "inherited",
+            "render": "inherited"
+          }
+        },
+        {
+          "time": 1,
+          "visibility": "inherited",
+          "effective": {
+            "default": "visible",
+            "guide": "visible",
+            "proxy": "inherited",
+            "render": "inherited"
+          }
+        }
+      ]
+    },
+    {
+      "name": "overrideInherited",
+      "source": "def Xform \"World\" (prepend apiSchemas=[\"VisibilityAPI\"]) {\n uniform token guideVisibility=\"invisible\"\n def Camera \"Camera\" (prepend apiSchemas=[\"VisibilityAPI\"]) {\n uniform token guideVisibility=\"inherited\"\n }\n}",
+      "path": "/World/Camera",
+      "attributes": {
+        "default": "visibility",
+        "guide": "guideVisibility",
+        "proxy": "proxyVisibility",
+        "render": "renderVisibility"
+      },
+      "rows": [
+        {
+          "time": null,
+          "visibility": "inherited",
+          "effective": {
+            "default": "visible",
+            "guide": "inherited",
+            "proxy": "inherited",
+            "render": "inherited"
+          }
+        },
+        {
+          "time": 0,
+          "visibility": "inherited",
+          "effective": {
+            "default": "visible",
+            "guide": "inherited",
+            "proxy": "inherited",
+            "render": "inherited"
+          }
+        },
+        {
+          "time": 1,
+          "visibility": "inherited",
+          "effective": {
+            "default": "visible",
+            "guide": "inherited",
+            "proxy": "inherited",
+            "render": "inherited"
+          }
+        }
+      ]
+    },
+    {
+      "name": "overallInvisible",
+      "source": "def Xform \"World\" {\n token visibility=\"invisible\"\n def Camera \"Camera\" (prepend apiSchemas=[\"VisibilityAPI\"]) {\n uniform token guideVisibility=\"visible\"\n }\n}",
+      "path": "/World/Camera",
+      "attributes": {
+        "default": "visibility",
+        "guide": "guideVisibility",
+        "proxy": "proxyVisibility",
+        "render": "renderVisibility"
+      },
+      "rows": [
+        {
+          "time": null,
+          "visibility": "invisible",
+          "effective": {
+            "default": "invisible",
+            "guide": "invisible",
+            "proxy": "invisible",
+            "render": "invisible"
+          }
+        },
+        {
+          "time": 0,
+          "visibility": "invisible",
+          "effective": {
+            "default": "invisible",
+            "guide": "invisible",
+            "proxy": "invisible",
+            "render": "invisible"
+          }
+        },
+        {
+          "time": 1,
+          "visibility": "invisible",
+          "effective": {
+            "default": "invisible",
+            "guide": "invisible",
+            "proxy": "invisible",
+            "render": "invisible"
+          }
+        }
+      ]
+    },
+    {
+      "name": "typelessAncestor",
+      "source": "def \"World\" {\n token visibility=\"invisible\"\n def Camera \"Camera\" (prepend apiSchemas=[\"VisibilityAPI\"]) {\n uniform token guideVisibility=\"visible\"\n }\n}",
+      "path": "/World/Camera",
+      "attributes": {
+        "default": "visibility",
+        "guide": "guideVisibility",
+        "proxy": "proxyVisibility",
+        "render": "renderVisibility"
+      },
+      "rows": [
+        {
+          "time": null,
+          "visibility": "inherited",
+          "effective": {
+            "default": "visible",
+            "guide": "visible",
+            "proxy": "inherited",
+            "render": "inherited"
+          }
+        },
+        {
+          "time": 0,
+          "visibility": "inherited",
+          "effective": {
+            "default": "visible",
+            "guide": "visible",
+            "proxy": "inherited",
+            "render": "inherited"
+          }
+        },
+        {
+          "time": 1,
+          "visibility": "inherited",
+          "effective": {
+            "default": "visible",
+            "guide": "visible",
+            "proxy": "inherited",
+            "render": "inherited"
+          }
+        }
+      ]
+    },
+    {
+      "name": "sampled",
+      "source": "def Camera \"Camera\" (prepend apiSchemas=[\"VisibilityAPI\"]) {\n uniform token guideVisibility.timeSamples={0:\"invisible\",1:\"visible\"}\n}",
+      "path": "/Camera",
+      "attributes": {
+        "default": "visibility",
+        "guide": "guideVisibility",
+        "proxy": "proxyVisibility",
+        "render": "renderVisibility"
+      },
+      "rows": [
+        {
+          "time": null,
+          "visibility": "inherited",
+          "effective": {
+            "default": "visible",
+            "guide": "invisible",
+            "proxy": "inherited",
+            "render": "inherited"
+          }
+        },
+        {
+          "time": 0,
+          "visibility": "inherited",
+          "effective": {
+            "default": "visible",
+            "guide": "invisible",
+            "proxy": "inherited",
+            "render": "inherited"
+          }
+        },
+        {
+          "time": 1,
+          "visibility": "inherited",
+          "effective": {
+            "default": "visible",
+            "guide": "visible",
+            "proxy": "inherited",
+            "render": "inherited"
+          }
+        }
+      ]
+    },
+    {
+      "name": "wrongGuideType",
+      "source": "def Camera \"Camera\" (prepend apiSchemas=[\"VisibilityAPI\"]) {\n string guideVisibility=\"visible\"\n}",
+      "path": "/Camera",
+      "attributes": {
+        "default": "visibility",
+        "guide": "guideVisibility",
+        "proxy": "proxyVisibility",
+        "render": "renderVisibility"
+      },
+      "rows": [
+        {
+          "time": null,
+          "visibility": "inherited",
+          "effective": {
+            "default": "visible",
+            "guide": "invisible",
+            "proxy": "inherited",
+            "render": "inherited"
+          }
+        },
+        {
+          "time": 0,
+          "visibility": "inherited",
+          "effective": {
+            "default": "visible",
+            "guide": "invisible",
+            "proxy": "inherited",
+            "render": "inherited"
+          }
+        },
+        {
+          "time": 1,
+          "visibility": "inherited",
+          "effective": {
+            "default": "visible",
+            "guide": "invisible",
+            "proxy": "inherited",
+            "render": "inherited"
+          }
+        }
+      ]
+    },
+    {
+      "name": "wrongOverallType",
+      "source": "def Xform \"World\" {\n string visibility=\"invisible\"\n def Camera \"Camera\" (prepend apiSchemas=[\"VisibilityAPI\"]) {\n uniform token guideVisibility=\"visible\"\n }\n}",
+      "path": "/World/Camera",
+      "attributes": {
+        "default": "visibility",
+        "guide": "guideVisibility",
+        "proxy": "proxyVisibility",
+        "render": "renderVisibility"
+      },
+      "rows": [
+        {
+          "time": null,
+          "visibility": "inherited",
+          "effective": {
+            "default": "visible",
+            "guide": "visible",
+            "proxy": "inherited",
+            "render": "inherited"
+          }
+        },
+        {
+          "time": 0,
+          "visibility": "inherited",
+          "effective": {
+            "default": "visible",
+            "guide": "visible",
+            "proxy": "inherited",
+            "render": "inherited"
+          }
+        },
+        {
+          "time": 1,
+          "visibility": "inherited",
+          "effective": {
+            "default": "visible",
+            "guide": "visible",
+            "proxy": "inherited",
+            "render": "inherited"
+          }
+        }
+      ]
+    }
+  ]
+}

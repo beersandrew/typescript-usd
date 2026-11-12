@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><title>WGSL check</title></head>
+<body><pre id="log">compiling…</pre>
+<script type="module">
+// Compiles every translated module with this browser's WebGPU
+// (createShaderModule + getCompilationInfo) and posts the messages to the
+// local sink started by run.mjs. Requests all adapter features and limits,
+// as HgiWebGPU does (packages/usd/docs/imaging-i1.md section 2.4).
+const log = document.getElementById('log')
+const { modules, pipelines } = await (await fetch('/__modules.json')).json()
+const adapter = await navigator.gpu.requestAdapter()
+const limits = {}
+for (const k in adapter.limits) if (typeof adapter.limits[k] === 'number') limits[k] = adapter.limits[k]
+const device = await adapter.requestDevice({ requiredFeatures: [...adapter.features], requiredLimits: limits })
+const results = []
+const t0 = performance.now()
+for (const m of modules) {
+  if (!m.translated) { results.push({ id: m.id, defineSet: m.defineSet, compiled: null }); continue }
+  device.pushErrorScope('validation')
+  const mod = device.createShaderModule({ code: m.wgsl, label: m.id })
+  const info = await mod.getCompilationInfo()
+  const scope = await device.popErrorScope()
+  const messages = info.messages.map(x => ({ type: x.type, text: x.message, line: x.lineNum, col: x.linePos }))
+  const errors = messages.filter(x => x.type === 'error')
+  results.push({ id: m.id, defineSet: m.defineSet, compiled: errors.length === 0 && !scope, messages, scopeError: scope ? scope.message : null })
+  if (results.length % 50 === 0) log.textContent = `${results.length}/${modules.length}`
+}
+// Pipelines: entry points, interstage interfaces and 'auto' bind group layouts.
+const byId = new Map(modules.map(m => [m.id, m]))
+const shader = id => device.createShaderModule({ code: byId.get(id).wgsl, label: id })
+const entry = { compute: 'computeEntryPoint', vertex: 'vertexEntryPoint', fragment: 'fragmentEntryPoint' }
+const pipelineResults = []
+for (const p of pipelines) {
+  try {
+    if (p.kind === 'compute') {
+      await device.createComputePipelineAsync({ layout: 'auto', compute: { module: shader(p.compute), entryPoint: entry.compute } })
+    } else {
+      const sizes = { float32x3: 12, sint32x4: 16, sint32x2: 8 }
+      await device.createRenderPipelineAsync({
+        layout: 'auto',
+        vertex: {
+          module: shader(p.vertex), entryPoint: entry.vertex,
+          buffers: (p.vertexBuffers ?? []).map(b => ({ arrayStride: sizes[b.format], attributes: [{ format: b.format, offset: 0, shaderLocation: b.location }] })),
+        },
+        ...(p.fragment ? { fragment: { module: shader(p.fragment), entryPoint: entry.fragment, targets: [{ format: p.colorFormat }] } } : {}),
+        depthStencil: { format: 'depth32float', depthWriteEnabled: true, depthCompare: 'less' },
+      })
+    }
+    pipelineResults.push({ name: p.name, error: null })
+  } catch (e) {
+    pipelineResults.push({ name: p.name, error: String(e.message ?? e) })
+  }
+}
+const summary = { pipelines: pipelineResults, userAgent: navigator.userAgent, features: [...adapter.features].sort(), ms: Math.round(performance.now() - t0), results }
+await fetch('/__result', { method: 'POST', body: JSON.stringify(summary) })
+log.textContent = `done: ${results.filter(r => r.compiled).length} compiled of ${results.length}`
+</script></body></html>

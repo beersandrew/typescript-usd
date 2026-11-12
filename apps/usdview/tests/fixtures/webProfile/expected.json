@@ -1,0 +1,188 @@
+{
+  "source": "OpenUSD-26.11.1 pxr/usd/usdProfiles/profileRegistry.cpp, claimsAPI.cpp",
+  "nativeVersion": [
+    0,
+    26,
+    11
+  ],
+  "registered": [
+    "typescriptUsdWebProfile",
+    "exampleReviewProfile"
+  ],
+  "capabilities": [
+    "typescript-usd",
+    "typescript-usd.imaging",
+    "typescript-usd.imaging.geom",
+    "typescript-usd.imaging.lux",
+    "typescript-usd.imaging.mtlx",
+    "typescript-usd.imaging.previewSurface",
+    "typescript-usd.imaging.skel",
+    "typescript-usd.web",
+    "usd",
+    "usd.core",
+    "usd.core.colorspace",
+    "usd.core.fileformat",
+    "usd.mtlx",
+    "usd.mtlx.fileformat",
+    "vnd.example.review"
+  ],
+  "profiles": [
+    "typescript-usd.web",
+    "vnd.example.review"
+  ],
+  "webCovers": {
+    "typescript-usd": "ValidPath",
+    "typescript-usd.imaging": "ValidPath",
+    "typescript-usd.imaging.geom": "ValidPath",
+    "typescript-usd.imaging.lux": "ValidPath",
+    "typescript-usd.imaging.mtlx": "ValidPath",
+    "typescript-usd.imaging.previewSurface": "ValidPath",
+    "typescript-usd.imaging.skel": "ValidPath",
+    "typescript-usd.web": "NoPath",
+    "usd": "ValidPath",
+    "usd.core": "ValidPath",
+    "usd.core.colorspace": "NoPath",
+    "usd.core.fileformat": "ValidPath",
+    "usd.mtlx": "ValidPath",
+    "usd.mtlx.fileformat": "ValidPath",
+    "vnd.example.review": "NoPath",
+    "vnd.example.hair": "NoPath"
+  },
+  "webRequires": [
+    [
+      "typescript-usd",
+      "ValidPath"
+    ],
+    [
+      "typescript-usd.imaging",
+      "ValidPath"
+    ],
+    [
+      "typescript-usd.imaging.geom",
+      "ValidPath"
+    ],
+    [
+      "typescript-usd.imaging.lux",
+      "ValidPath"
+    ],
+    [
+      "typescript-usd.imaging.mtlx",
+      "ValidPath"
+    ],
+    [
+      "typescript-usd.imaging.previewSurface",
+      "ValidPath"
+    ],
+    [
+      "typescript-usd.imaging.skel",
+      "ValidPath"
+    ],
+    [
+      "usd",
+      "ValidPath"
+    ],
+    [
+      "usd.core",
+      "ValidPath"
+    ],
+    [
+      "usd.core.fileformat",
+      "ValidPath"
+    ],
+    [
+      "usd.mtlx",
+      "ValidPath"
+    ],
+    [
+      "usd.mtlx.fileformat",
+      "ValidPath"
+    ]
+  ],
+  "reviewRequires": [
+    [
+      "usd",
+      "ValidPath"
+    ],
+    [
+      "usd.core",
+      "ValidPath"
+    ],
+    [
+      "usd.core.colorspace",
+      "ValidPath"
+    ]
+  ],
+  "claims": {
+    "/Asset": {
+      "usages": {
+        "typescript-usd.imaging.geom": "hard",
+        "usd.core": "hard",
+        "usd.core.colorspace": "soft",
+        "usd.mtlx.fileformat": "hard",
+        "vnd.example.hair": "enhancement"
+      },
+      "profiles": [
+        "typescript-usd.web",
+        "vnd.example.mobile_v1",
+        "vnd.example.review"
+      ],
+      "isCompatibleWithWeb": [
+        "NoPath",
+        [
+          [
+            "typescript-usd.imaging.geom",
+            "ValidPath"
+          ],
+          [
+            "usd.core",
+            "ValidPath"
+          ],
+          [
+            "usd.core.colorspace",
+            "NoPath"
+          ],
+          [
+            "usd.mtlx.fileformat",
+            "ValidPath"
+          ],
+          [
+            "vnd.example.hair",
+            "NoPath"
+          ]
+        ]
+      ]
+    },
+    "/Asset/Child": {
+      "usages": {
+        "usd.core.colorspace": "hard"
+      },
+      "profiles": [],
+      "isCompatibleWithWeb": [
+        "NoPath",
+        []
+      ]
+    },
+    "/Covered": {
+      "usages": {
+        "usd.core": "hard",
+        "usd.core.fileformat": "soft"
+      },
+      "profiles": [
+        "typescript-usd.web"
+      ],
+      "isCompatibleWithWeb": [
+        "ValidPath",
+        [
+          [
+            "usd.core",
+            "ValidPath"
+          ],
+          [
+            "usd.core.fileformat",
+            "ValidPath"
+          ]
+        ]
+      ]
+    }
+  }
+}

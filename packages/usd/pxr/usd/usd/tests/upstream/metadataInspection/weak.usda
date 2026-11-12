@@ -1,0 +1,5 @@
+#usda 1.0
+over "World" (
+    documentation = "Weak authored prim documentation"
+    customData = { string weak = "sublayer" }
+) {}

@@ -1,0 +1,174 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/usd/usd/tests/fixtures/clipsMultiNode/capture.py",
+  "upstream": [
+    "pxr/usd/usd/stage.cpp:7183-7209",
+    "pxr/usd/usd/stage.cpp:9420-9467",
+    "pxr/usd/usd/clip.cpp:606-609"
+  ],
+  "payload": {
+    "/Model/Inheriting.value": {
+      "default": null,
+      "values": [
+        [
+          0,
+          100.0
+        ],
+        [
+          5,
+          105.0
+        ],
+        [
+          10,
+          110.0
+        ]
+      ],
+      "timeSamples": [
+        0.0,
+        10.0
+      ],
+      "source": "Usd.ResolveInfoSourceValueClips",
+      "nodePath": "/Model/Class",
+      "mightBeTimeVarying": true
+    },
+    "/Model/Specializing.value": {
+      "default": null,
+      "values": [
+        [
+          0,
+          100.0
+        ],
+        [
+          5,
+          105.0
+        ],
+        [
+          10,
+          110.0
+        ]
+      ],
+      "timeSamples": [
+        0.0,
+        10.0
+      ],
+      "source": "Usd.ResolveInfoSourceValueClips",
+      "nodePath": "/Model/Class",
+      "mightBeTimeVarying": true
+    },
+    "/Model/Referencing.value": {
+      "default": null,
+      "values": [
+        [
+          0,
+          200.0
+        ],
+        [
+          5,
+          205.0
+        ],
+        [
+          10,
+          210.0
+        ]
+      ],
+      "timeSamples": [
+        0.0,
+        10.0
+      ],
+      "source": "Usd.ResolveInfoSourceValueClips",
+      "nodePath": "/Model/Src",
+      "mightBeTimeVarying": true
+    },
+    "/Model/Strong.value": {
+      "default": null,
+      "values": [
+        [
+          0,
+          300.0
+        ],
+        [
+          5,
+          305.0
+        ],
+        [
+          10,
+          310.0
+        ]
+      ],
+      "timeSamples": [
+        0.0,
+        10.0
+      ],
+      "source": "Usd.ResolveInfoSourceValueClips",
+      "nodePath": "/Model/Strong",
+      "mightBeTimeVarying": true
+    },
+    "/Model/External.value": {
+      "default": 3.0,
+      "values": [
+        [
+          0,
+          3.0
+        ],
+        [
+          5,
+          3.0
+        ],
+        [
+          10,
+          3.0
+        ]
+      ],
+      "timeSamples": [],
+      "source": "Usd.ResolveInfoSourceDefault",
+      "nodePath": "/Ext",
+      "mightBeTimeVarying": false
+    },
+    "/Model/Nested/Inner.value": {
+      "default": null,
+      "values": [
+        [
+          0,
+          100.0
+        ],
+        [
+          5,
+          105.0
+        ],
+        [
+          10,
+          110.0
+        ]
+      ],
+      "timeSamples": [
+        0.0,
+        10.0
+      ],
+      "source": "Usd.ResolveInfoSourceValueClips",
+      "nodePath": "/Model/Class",
+      "mightBeTimeVarying": true
+    },
+    "/Outside.value": {
+      "default": null,
+      "values": [
+        [
+          0,
+          null
+        ],
+        [
+          5,
+          null
+        ],
+        [
+          10,
+          null
+        ]
+      ],
+      "timeSamples": [],
+      "source": "Usd.ResolveInfoSourceNone",
+      "nodePath": null,
+      "mightBeTimeVarying": false
+    }
+  }
+}

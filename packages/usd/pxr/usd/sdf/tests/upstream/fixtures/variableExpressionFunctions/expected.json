@@ -1,0 +1,402 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/usd/sdf/tests/upstream/fixtures/variableExpressionFunctions/capture.py",
+  "upstream": [
+    "pxr/usd/sdf/testenv/testSdfVariableExpression.py"
+  ],
+  "payload": {
+    "cases": [
+      {
+        "expression": "`[]`",
+        "variables": {},
+        "valid": true,
+        "value": [],
+        "errors": [],
+        "usedVariables": []
+      },
+      {
+        "expression": "`[1, 2, 3]`",
+        "variables": {},
+        "valid": true,
+        "value": [
+          1,
+          2,
+          3
+        ],
+        "errors": [],
+        "usedVariables": []
+      },
+      {
+        "expression": "`[True, False]`",
+        "variables": {},
+        "valid": true,
+        "value": [
+          true,
+          false
+        ],
+        "errors": [],
+        "usedVariables": []
+      },
+      {
+        "expression": "`[\"${A}\", \"b\"]`",
+        "variables": {
+          "A": "a"
+        },
+        "valid": true,
+        "value": [
+          "a",
+          "b"
+        ],
+        "errors": [],
+        "usedVariables": [
+          "A"
+        ]
+      },
+      {
+        "expression": "`[None, 2, 3]`",
+        "variables": {},
+        "valid": true,
+        "value": null,
+        "errors": [
+          "Unexpected value of type None in list at element 0"
+        ],
+        "usedVariables": []
+      },
+      {
+        "expression": "`[1, \"foo\", False, ${L}]`",
+        "variables": {
+          "L": "`[]`"
+        },
+        "valid": true,
+        "value": null,
+        "errors": [
+          "Unexpected value of type string in list at element 1",
+          "Unexpected value of type bool in list at element 2",
+          "Unexpected value of type list in list at element 3"
+        ],
+        "usedVariables": [
+          "L"
+        ]
+      },
+      {
+        "expression": "`[[1, 2]]`",
+        "variables": {},
+        "valid": false
+      },
+      {
+        "expression": "`[1,]`",
+        "variables": {},
+        "valid": false
+      },
+      {
+        "expression": "`[foo]`",
+        "variables": {},
+        "valid": false
+      },
+      {
+        "expression": "`if(True, \"true\", \"false\")`",
+        "variables": {},
+        "valid": true,
+        "value": "true",
+        "errors": [],
+        "usedVariables": []
+      },
+      {
+        "expression": "`if(False, \"true\")`",
+        "variables": {},
+        "valid": true,
+        "value": null,
+        "errors": [],
+        "usedVariables": []
+      },
+      {
+        "expression": "`if(${B}, ${X}, ${Y})`",
+        "variables": {
+          "B": true,
+          "X": 1,
+          "Y": 0
+        },
+        "valid": true,
+        "value": 1,
+        "errors": [],
+        "usedVariables": [
+          "B",
+          "X",
+          "Y"
+        ]
+      },
+      {
+        "expression": "`if(${B}, ${X}, ${Y})`",
+        "variables": {
+          "B": false,
+          "X": 1,
+          "Y": 0
+        },
+        "valid": true,
+        "value": 0,
+        "errors": [],
+        "usedVariables": [
+          "B",
+          "X",
+          "Y"
+        ]
+      },
+      {
+        "expression": "`if(True, \"selected\", ${MISSING})`",
+        "variables": {},
+        "valid": true,
+        "value": "selected",
+        "errors": [],
+        "usedVariables": [
+          "MISSING"
+        ]
+      },
+      {
+        "expression": "`if(False, ${MISSING}, \"selected\")`",
+        "variables": {},
+        "valid": true,
+        "value": "selected",
+        "errors": [],
+        "usedVariables": [
+          "MISSING"
+        ]
+      },
+      {
+        "expression": "`if(True, ${MISSING}, \"other\")`",
+        "variables": {},
+        "valid": true,
+        "value": null,
+        "errors": [
+          "No value for variable 'MISSING'"
+        ],
+        "usedVariables": [
+          "MISSING"
+        ]
+      },
+      {
+        "expression": "`if(False, 1, \"foo\")`",
+        "variables": {},
+        "valid": true,
+        "value": null,
+        "errors": [
+          "if: if-value and else-value must evaluate to the same type or None."
+        ],
+        "usedVariables": []
+      },
+      {
+        "expression": "`if(False, None, 1)`",
+        "variables": {},
+        "valid": true,
+        "value": 1,
+        "errors": [],
+        "usedVariables": []
+      },
+      {
+        "expression": "`if(\"non_bool\", 1, 0)`",
+        "variables": {},
+        "valid": true,
+        "value": null,
+        "errors": [
+          "if: Condition must be a boolean value"
+        ],
+        "usedVariables": []
+      },
+      {
+        "expression": "`if(${B}, if(${X}, 1, 2), if(${Y}, 3, 4))`",
+        "variables": {
+          "B": true,
+          "X": false,
+          "Y": true
+        },
+        "valid": true,
+        "value": 2,
+        "errors": [],
+        "usedVariables": [
+          "B",
+          "X",
+          "Y"
+        ]
+      },
+      {
+        "expression": "`if(True, [1], [2])`",
+        "variables": {},
+        "valid": true,
+        "value": [
+          1
+        ],
+        "errors": [],
+        "usedVariables": []
+      },
+      {
+        "expression": "`if(True, [1], [\"x\"])`",
+        "variables": {},
+        "valid": true,
+        "value": null,
+        "errors": [
+          "if: if-value and else-value must evaluate to the same type or None."
+        ],
+        "usedVariables": []
+      },
+      {
+        "expression": "`if()`",
+        "variables": {},
+        "valid": false
+      },
+      {
+        "expression": "`if(True)`",
+        "variables": {},
+        "valid": false
+      },
+      {
+        "expression": "`if(True,1,2,3)`",
+        "variables": {},
+        "valid": false
+      },
+      {
+        "expression": "`contains([], 1)`",
+        "variables": {},
+        "valid": true,
+        "value": false,
+        "errors": [],
+        "usedVariables": []
+      },
+      {
+        "expression": "`contains([1, 2, 3], 1)`",
+        "variables": {},
+        "valid": true,
+        "value": true,
+        "errors": [],
+        "usedVariables": []
+      },
+      {
+        "expression": "`contains([1, 2, 3], 0)`",
+        "variables": {},
+        "valid": true,
+        "value": false,
+        "errors": [],
+        "usedVariables": []
+      },
+      {
+        "expression": "`contains([1, 2, 3], \"a\")`",
+        "variables": {},
+        "valid": true,
+        "value": null,
+        "errors": [
+          "contains: Invalid search value"
+        ],
+        "usedVariables": []
+      },
+      {
+        "expression": "`contains([1, 2, 3], None)`",
+        "variables": {},
+        "valid": true,
+        "value": null,
+        "errors": [
+          "contains: Invalid search value"
+        ],
+        "usedVariables": []
+      },
+      {
+        "expression": "`contains([True, False], 1)`",
+        "variables": {},
+        "valid": true,
+        "value": null,
+        "errors": [
+          "contains: Invalid search value"
+        ],
+        "usedVariables": []
+      },
+      {
+        "expression": "`contains(\"abc\", \"a\")`",
+        "variables": {},
+        "valid": true,
+        "value": true,
+        "errors": [],
+        "usedVariables": []
+      },
+      {
+        "expression": "`contains(\"abc\", \"z\")`",
+        "variables": {},
+        "valid": true,
+        "value": false,
+        "errors": [],
+        "usedVariables": []
+      },
+      {
+        "expression": "`contains(\"abc\", 1)`",
+        "variables": {},
+        "valid": true,
+        "value": null,
+        "errors": [
+          "contains: Invalid search value"
+        ],
+        "usedVariables": []
+      },
+      {
+        "expression": "`contains(None, 1)`",
+        "variables": {},
+        "valid": true,
+        "value": null,
+        "errors": [
+          "contains: Value to search must be a list or string"
+        ],
+        "usedVariables": []
+      },
+      {
+        "expression": "`contains(${A}, ${B})`",
+        "variables": {},
+        "valid": true,
+        "value": null,
+        "errors": [
+          "No value for variable 'A'",
+          "No value for variable 'B'"
+        ],
+        "usedVariables": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "expression": "`contains(\"abc\")`",
+        "variables": {},
+        "valid": false
+      },
+      {
+        "expression": "`if(contains([\"foo\", \"bar\"], ${VAR}), \"layer.usda\")`",
+        "variables": {
+          "VAR": "foo"
+        },
+        "valid": true,
+        "value": "layer.usda",
+        "errors": [],
+        "usedVariables": [
+          "VAR"
+        ]
+      },
+      {
+        "expression": "`if(contains([\"foo\", \"bar\"], ${VAR}), \"layer.usda\")`",
+        "variables": {
+          "VAR": "other"
+        },
+        "valid": true,
+        "value": null,
+        "errors": [],
+        "usedVariables": [
+          "VAR"
+        ]
+      },
+      {
+        "expression": "`[if(True, 1, 2), 3]`",
+        "variables": {},
+        "valid": true,
+        "value": [
+          1,
+          3
+        ],
+        "errors": [],
+        "usedVariables": []
+      }
+    ]
+  }
+}

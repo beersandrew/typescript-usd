@@ -1,0 +1,89 @@
+#usda 1.0
+
+def Xform "World" (
+    prepend apiSchemas = ["MaterialBindingAPI", "CollectionAPI:selected"]
+)
+{
+    rel collection:selected:includes = [
+        </World/A>,
+        </World/B>,
+    ]
+    rel material:binding = </Looks/Base> (
+        bindMaterialAs = "weakerThanDescendants"
+    )
+    rel material:binding:collection:full:selected = [
+        </World.collection:selected>,
+        </Looks/Collection>,
+    ] (
+        bindMaterialAs = "strongerThanDescendants"
+    )
+
+    def Mesh "A" (
+        prepend apiSchemas = ["MaterialBindingAPI"]
+    )
+    {
+        int[] faceVertexCounts = [4]
+        int[] faceVertexIndices = [0, 1, 2, 3]
+        rel material:binding:full = </Looks/Child> (
+            bindMaterialAs = "weakerThanDescendants"
+        )
+        point3f[] points = [(0, 0, 0), (1, 0, 0), (1, 1, 0), (0, 1, 0)]
+        uniform token subdivisionScheme = "none"
+    }
+
+    def Mesh "B"
+    {
+        int[] faceVertexCounts = [4]
+        int[] faceVertexIndices = [0, 1, 2, 3]
+        point3f[] points = [(0, 0, 0), (1, 0, 0), (1, 1, 0), (0, 1, 0)]
+        uniform token subdivisionScheme = "none"
+    }
+
+    def Mesh "C" (
+        prepend apiSchemas = ["MaterialBindingAPI"]
+    )
+    {
+        int[] faceVertexCounts = [4]
+        int[] faceVertexIndices = [0, 1, 2, 3]
+        rel material:binding = </Looks/Child>
+        point3f[] points = [(0, 0, 0), (1, 0, 0), (1, 1, 0), (0, 1, 0)]
+        uniform token subdivisionScheme = "none"
+    }
+}
+
+def "Looks"
+{
+    def Material "Base"
+    {
+        token outputs:surface.connect = </Looks/Base/Surface.outputs:surface>
+
+        def Shader "Surface"
+        {
+            uniform token info:id = "UsdPreviewSurface"
+            token outputs:surface
+        }
+    }
+
+    def Material "Collection"
+    {
+        token outputs:surface.connect = </Looks/Collection/Surface.outputs:surface>
+
+        def Shader "Surface"
+        {
+            uniform token info:id = "UsdPreviewSurface"
+            token outputs:surface
+        }
+    }
+
+    def Material "Child"
+    {
+        token outputs:surface.connect = </Looks/Child/Surface.outputs:surface>
+
+        def Shader "Surface"
+        {
+            uniform token info:id = "UsdPreviewSurface"
+            token outputs:surface
+        }
+    }
+}
+

@@ -1,0 +1,27 @@
+{
+ "release": "26.11.1",
+ "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+ "script": "pxr/usd/pcp/tests/upstream/fixtures/subLayersAndOffsetsMismatch/capture.py",
+ "upstream": [
+  "pxr/usd/pcp/testenv/testPcpSubLayersAndOffsetsMismatch.cpp",
+  "pxr/usd/pcp/errors.cpp:662-670",
+  "pxr/usd/pcp/layerStack.cpp:1727-1748"
+ ],
+ "payload": {
+  "sublayerPaths": 1,
+  "sublayerOffsets": 0,
+  "errors": [
+   {
+    "type": "InvalidSublayerAndOffsetCount",
+    "errorType": 31,
+    "message": "Layer @{layer}@ has 1 sublayers and 0 offsets, but these counts must be equal. Using an identity offset for all sublayers instead.",
+    "layerIsRoot": true,
+    "sublayerCount": 1,
+    "offsetCount": 0
+   }
+  ],
+  "layerCount": 2,
+  "layersAreRootThenSublayer": true,
+  "sublayerOffsetIsIdentity": true
+ }
+}

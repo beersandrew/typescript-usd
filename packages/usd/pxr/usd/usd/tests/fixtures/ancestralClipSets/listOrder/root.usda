@@ -1,0 +1,24 @@
+#usda 1.0
+def "Model" (
+  clips = {
+    dictionary hats_red = {
+double2[] active = [(1, 0)]
+asset[] assetPaths = [@./red.usda@]
+string primPath = "/Clip"
+}
+    dictionary hats_template = {
+string primPath = "/Clip"
+string templateAssetPath = "./t.###.usda"
+double templateStartTime = 1
+double templateEndTime = 13
+double templateStride = 12
+}
+  }
+  clipSets = ["hats_template", "hats_red"]
+) {
+def "Child" () {
+  def "Leaf" {
+    double value
+  }
+}
+}

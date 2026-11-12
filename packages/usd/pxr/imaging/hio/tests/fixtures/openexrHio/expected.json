@@ -1,0 +1,1012 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/imaging/hio/tests/fixtures/openexrHio/capture.py",
+  "upstream": [
+    "pxr/imaging/plugin/hioOpenEXR/OpenEXRImage.cpp",
+    "pxr/imaging/plugin/hioOpenEXR/OpenEXR/openexr-c.c"
+  ],
+  "payload": {
+    "oracle": "HioImage (hioOpenEXR) of OpenUSD 26.11.1; files written by OpenEXR 3.1 Imf",
+    "cases": [
+      {
+        "name": "none-half-rgb",
+        "extra": [
+          "flip",
+          "crop",
+          "resize"
+        ],
+        "mips": [
+          {
+            "mip": 0,
+            "open": true,
+            "width": 21,
+            "height": 37,
+            "format": 10,
+            "bytesPerPixel": 6,
+            "numMipLevels": 1,
+            "srgb": false,
+            "wrapU": 0,
+            "read": true,
+            "flip": true,
+            "crop": true,
+            "resize": true,
+            "diagnostics": []
+          },
+          {
+            "mip": 1,
+            "open": false,
+            "diagnostics": [
+              "warning: Image \"none-half-rgb.exr\" has only 1 mips, but 1 were requested"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "none-half-y",
+        "extra": [],
+        "mips": [
+          {
+            "mip": 0,
+            "open": true,
+            "width": 21,
+            "height": 37,
+            "format": 8,
+            "bytesPerPixel": 2,
+            "numMipLevels": 1,
+            "srgb": false,
+            "wrapU": 0,
+            "read": true,
+            "diagnostics": []
+          },
+          {
+            "mip": 1,
+            "open": false,
+            "diagnostics": [
+              "warning: Image \"none-half-y.exr\" has only 1 mips, but 1 were requested"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "none-float-rgba",
+        "extra": [
+          "resize"
+        ],
+        "mips": [
+          {
+            "mip": 0,
+            "open": true,
+            "width": 21,
+            "height": 37,
+            "format": 15,
+            "bytesPerPixel": 16,
+            "numMipLevels": 1,
+            "srgb": false,
+            "wrapU": 0,
+            "read": true,
+            "resize": true,
+            "diagnostics": []
+          },
+          {
+            "mip": 1,
+            "open": false,
+            "diagnostics": [
+              "warning: Image \"none-float-rgba.exr\" has only 1 mips, but 1 were requested"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "none-uint-rgb",
+        "extra": [],
+        "mips": [
+          {
+            "mip": 0,
+            "open": true,
+            "width": 21,
+            "height": 37,
+            "format": 34,
+            "bytesPerPixel": 12,
+            "numMipLevels": 1,
+            "srgb": false,
+            "wrapU": 0,
+            "read": false,
+            "diagnostics": [
+              "warning: EXR images can only be converted to half, float or uint: none-uint-rgb.exr"
+            ]
+          },
+          {
+            "mip": 1,
+            "open": false,
+            "diagnostics": [
+              "warning: Image \"none-uint-rgb.exr\" has only 1 mips, but 1 were requested"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "rle-half-rgba",
+        "extra": [],
+        "mips": [
+          {
+            "mip": 0,
+            "open": true,
+            "width": 21,
+            "height": 37,
+            "format": 11,
+            "bytesPerPixel": 8,
+            "numMipLevels": 1,
+            "srgb": false,
+            "wrapU": 0,
+            "read": true,
+            "diagnostics": []
+          },
+          {
+            "mip": 1,
+            "open": false,
+            "diagnostics": [
+              "warning: Image \"rle-half-rgba.exr\" has only 1 mips, but 1 were requested"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "rle-flat-rgb",
+        "extra": [],
+        "mips": [
+          {
+            "mip": 0,
+            "open": true,
+            "width": 21,
+            "height": 37,
+            "format": 10,
+            "bytesPerPixel": 6,
+            "numMipLevels": 1,
+            "srgb": false,
+            "wrapU": 0,
+            "read": true,
+            "diagnostics": []
+          },
+          {
+            "mip": 1,
+            "open": false,
+            "diagnostics": [
+              "warning: Image \"rle-flat-rgb.exr\" has only 1 mips, but 1 were requested"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "zips-half-rgba",
+        "extra": [],
+        "mips": [
+          {
+            "mip": 0,
+            "open": true,
+            "width": 21,
+            "height": 37,
+            "format": 11,
+            "bytesPerPixel": 8,
+            "numMipLevels": 1,
+            "srgb": false,
+            "wrapU": 0,
+            "read": true,
+            "diagnostics": []
+          },
+          {
+            "mip": 1,
+            "open": false,
+            "diagnostics": [
+              "warning: Image \"zips-half-rgba.exr\" has only 1 mips, but 1 were requested"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "zip-float-rgb",
+        "extra": [],
+        "mips": [
+          {
+            "mip": 0,
+            "open": true,
+            "width": 21,
+            "height": 37,
+            "format": 14,
+            "bytesPerPixel": 12,
+            "numMipLevels": 1,
+            "srgb": false,
+            "wrapU": 0,
+            "read": true,
+            "diagnostics": []
+          },
+          {
+            "mip": 1,
+            "open": false,
+            "diagnostics": [
+              "warning: Image \"zip-float-rgb.exr\" has only 1 mips, but 1 were requested"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "zip-half-decreasing",
+        "extra": [],
+        "mips": [
+          {
+            "mip": 0,
+            "open": true,
+            "width": 21,
+            "height": 37,
+            "format": 11,
+            "bytesPerPixel": 8,
+            "numMipLevels": 1,
+            "srgb": false,
+            "wrapU": 0,
+            "read": true,
+            "diagnostics": []
+          },
+          {
+            "mip": 1,
+            "open": false,
+            "diagnostics": [
+              "warning: Image \"zip-half-decreasing.exr\" has only 1 mips, but 1 were requested"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "piz-half-rgba",
+        "extra": [
+          "flip",
+          "crop",
+          "resize"
+        ],
+        "mips": [
+          {
+            "mip": 0,
+            "open": true,
+            "width": 64,
+            "height": 70,
+            "format": 11,
+            "bytesPerPixel": 8,
+            "numMipLevels": 1,
+            "srgb": false,
+            "wrapU": 0,
+            "read": true,
+            "flip": true,
+            "crop": true,
+            "resize": true,
+            "diagnostics": []
+          },
+          {
+            "mip": 1,
+            "open": false,
+            "diagnostics": [
+              "warning: Image \"piz-half-rgba.exr\" has only 1 mips, but 1 were requested"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "piz-float-rgb",
+        "extra": [],
+        "mips": [
+          {
+            "mip": 0,
+            "open": true,
+            "width": 21,
+            "height": 37,
+            "format": 14,
+            "bytesPerPixel": 12,
+            "numMipLevels": 1,
+            "srgb": false,
+            "wrapU": 0,
+            "read": true,
+            "diagnostics": []
+          },
+          {
+            "mip": 1,
+            "open": false,
+            "diagnostics": [
+              "warning: Image \"piz-float-rgb.exr\" has only 1 mips, but 1 were requested"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "piz-flat-rgb",
+        "extra": [],
+        "mips": [
+          {
+            "mip": 0,
+            "open": true,
+            "width": 64,
+            "height": 70,
+            "format": 10,
+            "bytesPerPixel": 6,
+            "numMipLevels": 1,
+            "srgb": false,
+            "wrapU": 0,
+            "read": true,
+            "diagnostics": []
+          },
+          {
+            "mip": 1,
+            "open": false,
+            "diagnostics": [
+              "warning: Image \"piz-flat-rgb.exr\" has only 1 mips, but 1 were requested"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "pxr24-float-rgb",
+        "extra": [],
+        "mips": [
+          {
+            "mip": 0,
+            "open": true,
+            "width": 21,
+            "height": 37,
+            "format": 14,
+            "bytesPerPixel": 12,
+            "numMipLevels": 1,
+            "srgb": false,
+            "wrapU": 0,
+            "read": true,
+            "diagnostics": []
+          },
+          {
+            "mip": 1,
+            "open": false,
+            "diagnostics": [
+              "warning: Image \"pxr24-float-rgb.exr\" has only 1 mips, but 1 were requested"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "pxr24-half-rgba",
+        "extra": [],
+        "mips": [
+          {
+            "mip": 0,
+            "open": true,
+            "width": 21,
+            "height": 37,
+            "format": 11,
+            "bytesPerPixel": 8,
+            "numMipLevels": 1,
+            "srgb": false,
+            "wrapU": 0,
+            "read": true,
+            "diagnostics": []
+          },
+          {
+            "mip": 1,
+            "open": false,
+            "diagnostics": [
+              "warning: Image \"pxr24-half-rgba.exr\" has only 1 mips, but 1 were requested"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "b44-half-rgba",
+        "extra": [],
+        "mips": [
+          {
+            "mip": 0,
+            "open": true,
+            "width": 21,
+            "height": 37,
+            "format": 11,
+            "bytesPerPixel": 8,
+            "numMipLevels": 1,
+            "srgb": false,
+            "wrapU": 0,
+            "read": true,
+            "diagnostics": []
+          },
+          {
+            "mip": 1,
+            "open": false,
+            "diagnostics": [
+              "warning: Image \"b44-half-rgba.exr\" has only 1 mips, but 1 were requested"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "b44-float-rgb",
+        "extra": [],
+        "mips": [
+          {
+            "mip": 0,
+            "open": true,
+            "width": 21,
+            "height": 37,
+            "format": 14,
+            "bytesPerPixel": 12,
+            "numMipLevels": 1,
+            "srgb": false,
+            "wrapU": 0,
+            "read": true,
+            "diagnostics": []
+          },
+          {
+            "mip": 1,
+            "open": false,
+            "diagnostics": [
+              "warning: Image \"b44-float-rgb.exr\" has only 1 mips, but 1 were requested"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "b44a-flat-rgba",
+        "extra": [],
+        "mips": [
+          {
+            "mip": 0,
+            "open": true,
+            "width": 21,
+            "height": 37,
+            "format": 11,
+            "bytesPerPixel": 8,
+            "numMipLevels": 1,
+            "srgb": false,
+            "wrapU": 0,
+            "read": true,
+            "diagnostics": []
+          },
+          {
+            "mip": 1,
+            "open": false,
+            "diagnostics": [
+              "warning: Image \"b44a-flat-rgba.exr\" has only 1 mips, but 1 were requested"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "dwaa-half-rgb",
+        "extra": [],
+        "mips": [
+          {
+            "mip": 0,
+            "open": true,
+            "width": 64,
+            "height": 70,
+            "format": 10,
+            "bytesPerPixel": 6,
+            "numMipLevels": 1,
+            "srgb": false,
+            "wrapU": 0,
+            "read": true,
+            "diagnostics": []
+          },
+          {
+            "mip": 1,
+            "open": false,
+            "diagnostics": [
+              "warning: Image \"dwaa-half-rgb.exr\" has only 1 mips, but 1 were requested"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "dwaa-half-rgba",
+        "extra": [],
+        "mips": [
+          {
+            "mip": 0,
+            "open": true,
+            "width": 40,
+            "height": 70,
+            "format": 11,
+            "bytesPerPixel": 8,
+            "numMipLevels": 1,
+            "srgb": false,
+            "wrapU": 0,
+            "read": true,
+            "diagnostics": []
+          },
+          {
+            "mip": 1,
+            "open": false,
+            "diagnostics": [
+              "warning: Image \"dwaa-half-rgba.exr\" has only 1 mips, but 1 were requested"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "dwaa-float-rgb",
+        "extra": [],
+        "mips": [
+          {
+            "mip": 0,
+            "open": true,
+            "width": 21,
+            "height": 37,
+            "format": 14,
+            "bytesPerPixel": 12,
+            "numMipLevels": 1,
+            "srgb": false,
+            "wrapU": 0,
+            "read": true,
+            "diagnostics": []
+          },
+          {
+            "mip": 1,
+            "open": false,
+            "diagnostics": [
+              "warning: Image \"dwaa-float-rgb.exr\" has only 1 mips, but 1 were requested"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "dwaa-half-y",
+        "extra": [],
+        "mips": [
+          {
+            "mip": 0,
+            "open": true,
+            "width": 64,
+            "height": 70,
+            "format": 8,
+            "bytesPerPixel": 2,
+            "numMipLevels": 1,
+            "srgb": false,
+            "wrapU": 0,
+            "read": true,
+            "diagnostics": []
+          },
+          {
+            "mip": 1,
+            "open": false,
+            "diagnostics": [
+              "warning: Image \"dwaa-half-y.exr\" has only 1 mips, but 1 were requested"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "dwab-half-rgba",
+        "extra": [],
+        "mips": [
+          {
+            "mip": 0,
+            "open": true,
+            "width": 40,
+            "height": 300,
+            "format": 11,
+            "bytesPerPixel": 8,
+            "numMipLevels": 1,
+            "srgb": false,
+            "wrapU": 0,
+            "read": true,
+            "diagnostics": []
+          },
+          {
+            "mip": 1,
+            "open": false,
+            "diagnostics": [
+              "warning: Image \"dwab-half-rgba.exr\" has only 1 mips, but 1 were requested"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "dwab-flat-rgb",
+        "extra": [],
+        "mips": [
+          {
+            "mip": 0,
+            "open": true,
+            "width": 21,
+            "height": 37,
+            "format": 10,
+            "bytesPerPixel": 6,
+            "numMipLevels": 1,
+            "srgb": false,
+            "wrapU": 0,
+            "read": true,
+            "diagnostics": []
+          },
+          {
+            "mip": 1,
+            "open": false,
+            "diagnostics": [
+              "warning: Image \"dwab-flat-rgb.exr\" has only 1 mips, but 1 were requested"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "layers-half",
+        "extra": [],
+        "mips": [
+          {
+            "mip": 0,
+            "open": true,
+            "width": 21,
+            "height": 37,
+            "format": 11,
+            "bytesPerPixel": 8,
+            "numMipLevels": 1,
+            "srgb": false,
+            "wrapU": 0,
+            "read": true,
+            "diagnostics": []
+          },
+          {
+            "mip": 1,
+            "open": false,
+            "diagnostics": [
+              "warning: Image \"layers-half.exr\" has only 1 mips, but 1 were requested"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "five-channels",
+        "extra": [],
+        "mips": [
+          {
+            "mip": 0,
+            "open": true,
+            "width": 21,
+            "height": 37,
+            "format": -1,
+            "bytesPerPixel": 5,
+            "numMipLevels": 1,
+            "srgb": false,
+            "wrapU": 0,
+            "read": false,
+            "diagnostics": [
+              "error: Unsupported HioFormat",
+              "error: Unsupported HioFormat",
+              "error: Unsupported format",
+              "error: Unsupported HioFormat",
+              "error: Unsupported HioFormat",
+              "error: Unsupported HioFormat",
+              "warning: EXR images can only be converted to half, float or uint: five-channels.exr"
+            ]
+          },
+          {
+            "mip": 1,
+            "open": false,
+            "diagnostics": [
+              "warning: Image \"five-channels.exr\" has only 1 mips, but 1 were requested"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "tiled-zip-rgba",
+        "extra": [],
+        "mips": [
+          {
+            "mip": 0,
+            "open": true,
+            "width": 21,
+            "height": 37,
+            "format": 11,
+            "bytesPerPixel": 8,
+            "numMipLevels": 1,
+            "srgb": false,
+            "wrapU": 0,
+            "read": true,
+            "diagnostics": []
+          },
+          {
+            "mip": 1,
+            "open": false,
+            "diagnostics": [
+              "warning: Image \"tiled-zip-rgba.exr\" has only 1 mips, but 1 were requested"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "tiled-random-piz",
+        "extra": [],
+        "mips": [
+          {
+            "mip": 0,
+            "open": true,
+            "width": 64,
+            "height": 70,
+            "format": 10,
+            "bytesPerPixel": 6,
+            "numMipLevels": 1,
+            "srgb": false,
+            "wrapU": 0,
+            "read": true,
+            "diagnostics": []
+          },
+          {
+            "mip": 1,
+            "open": false,
+            "diagnostics": [
+              "warning: Image \"tiled-random-piz.exr\" has only 1 mips, but 1 were requested"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "tiled-mip-down",
+        "extra": [
+          "flip"
+        ],
+        "mips": [
+          {
+            "mip": 0,
+            "open": true,
+            "width": 21,
+            "height": 37,
+            "format": 11,
+            "bytesPerPixel": 8,
+            "numMipLevels": 6,
+            "srgb": false,
+            "wrapU": 0,
+            "read": true,
+            "flip": true,
+            "diagnostics": []
+          },
+          {
+            "mip": 1,
+            "open": true,
+            "width": 10,
+            "height": 18,
+            "format": 11,
+            "bytesPerPixel": 8,
+            "numMipLevels": 6,
+            "srgb": false,
+            "wrapU": 0,
+            "read": true,
+            "diagnostics": []
+          },
+          {
+            "mip": 2,
+            "open": true,
+            "width": 5,
+            "height": 9,
+            "format": 11,
+            "bytesPerPixel": 8,
+            "numMipLevels": 6,
+            "srgb": false,
+            "wrapU": 0,
+            "read": true,
+            "diagnostics": []
+          },
+          {
+            "mip": 3,
+            "open": true,
+            "width": 2,
+            "height": 4,
+            "format": 11,
+            "bytesPerPixel": 8,
+            "numMipLevels": 6,
+            "srgb": false,
+            "wrapU": 0,
+            "read": true,
+            "diagnostics": []
+          },
+          {
+            "mip": 4,
+            "open": true,
+            "width": 1,
+            "height": 2,
+            "format": 11,
+            "bytesPerPixel": 8,
+            "numMipLevels": 6,
+            "srgb": false,
+            "wrapU": 0,
+            "read": true,
+            "diagnostics": []
+          },
+          {
+            "mip": 5,
+            "open": true,
+            "width": 0,
+            "height": 1,
+            "format": 11,
+            "bytesPerPixel": 8,
+            "numMipLevels": 6,
+            "srgb": false,
+            "wrapU": 0,
+            "read": false,
+            "diagnostics": [
+              "warning: All EXR dimensions must be greater than zero (0, 1 / 4): tiled-mip-down.exr"
+            ]
+          },
+          {
+            "mip": 6,
+            "open": false,
+            "diagnostics": [
+              "warning: Image \"tiled-mip-down.exr\" has only 6 mips, but 6 were requested"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "tiled-mip-float-none",
+        "extra": [],
+        "mips": [
+          {
+            "mip": 0,
+            "open": true,
+            "width": 32,
+            "height": 16,
+            "format": 14,
+            "bytesPerPixel": 12,
+            "numMipLevels": 6,
+            "srgb": false,
+            "wrapU": 0,
+            "read": true,
+            "diagnostics": []
+          },
+          {
+            "mip": 1,
+            "open": true,
+            "width": 16,
+            "height": 8,
+            "format": 14,
+            "bytesPerPixel": 12,
+            "numMipLevels": 6,
+            "srgb": false,
+            "wrapU": 0,
+            "read": true,
+            "diagnostics": []
+          },
+          {
+            "mip": 2,
+            "open": true,
+            "width": 8,
+            "height": 4,
+            "format": 14,
+            "bytesPerPixel": 12,
+            "numMipLevels": 6,
+            "srgb": false,
+            "wrapU": 0,
+            "read": true,
+            "diagnostics": []
+          },
+          {
+            "mip": 3,
+            "open": true,
+            "width": 4,
+            "height": 2,
+            "format": 14,
+            "bytesPerPixel": 12,
+            "numMipLevels": 6,
+            "srgb": false,
+            "wrapU": 0,
+            "read": true,
+            "diagnostics": []
+          },
+          {
+            "mip": 4,
+            "open": true,
+            "width": 2,
+            "height": 1,
+            "format": 14,
+            "bytesPerPixel": 12,
+            "numMipLevels": 6,
+            "srgb": false,
+            "wrapU": 0,
+            "read": true,
+            "diagnostics": []
+          },
+          {
+            "mip": 5,
+            "open": true,
+            "width": 1,
+            "height": 0,
+            "format": 14,
+            "bytesPerPixel": 12,
+            "numMipLevels": 6,
+            "srgb": false,
+            "wrapU": 0,
+            "read": false,
+            "diagnostics": [
+              "warning: All EXR dimensions must be greater than zero (1, 0 / 3): tiled-mip-float-none.exr"
+            ]
+          },
+          {
+            "mip": 6,
+            "open": false,
+            "diagnostics": [
+              "warning: Image \"tiled-mip-float-none.exr\" has only 6 mips, but 6 were requested"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "tiled-ripmap",
+        "extra": [],
+        "mips": [
+          {
+            "mip": 0,
+            "open": true,
+            "width": 16,
+            "height": 8,
+            "format": 10,
+            "bytesPerPixel": 6,
+            "numMipLevels": 1,
+            "srgb": false,
+            "wrapU": 0,
+            "read": true,
+            "diagnostics": []
+          },
+          {
+            "mip": 1,
+            "open": false,
+            "diagnostics": [
+              "warning: Image \"tiled-ripmap.exr\" has only 1 mips, but 1 were requested"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "multipart",
+        "extra": [],
+        "mips": [
+          {
+            "mip": 0,
+            "open": true,
+            "width": 21,
+            "height": 37,
+            "format": 11,
+            "bytesPerPixel": 8,
+            "numMipLevels": 1,
+            "srgb": false,
+            "wrapU": 0,
+            "read": true,
+            "diagnostics": []
+          },
+          {
+            "mip": 1,
+            "open": false,
+            "diagnostics": [
+              "warning: Image \"multipart.exr\" has only 1 mips, but 1 were requested"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "htj2k-patched",
+        "extra": [],
+        "mips": [
+          {
+            "mip": 0,
+            "open": true,
+            "width": 21,
+            "height": 37,
+            "format": 10,
+            "bytesPerPixel": 6,
+            "numMipLevels": 1,
+            "srgb": false,
+            "wrapU": 0,
+            "read": false,
+            "diagnostics": [
+              "warning: EXR could not read (htj2k-patched.exr) because Feature not yet implemented, please use C++ library"
+            ]
+          },
+          {
+            "mip": 1,
+            "open": false,
+            "diagnostics": [
+              "warning: Image \"htj2k-patched.exr\" has only 1 mips, but 1 were requested"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/usd/usd/tests/upstream/fixtures/compositionErrors/capture.py",
+  "upstream": [
+    "pxr/usd/usd/stage.h",
+    "pxr/usd/pcp/errors.h"
+  ],
+  "payload": {
+    "paths": [
+      "/MaterialX",
+      "/Geometry"
+    ],
+    "errors": [
+      {
+        "class": "ErrorInvalidAssetPath",
+        "message": "Could not open asset @<fixture>/brass.notusd@ for reference introduced by @<fixture>/root.usda@</MaterialX> -- Cannot determine file format for @<fixture>/brass.notusd:SDF_FORMAT_ARGS:target=usd@."
+      },
+      {
+        "class": "ErrorInvalidAssetPath",
+        "message": "Could not open asset @<fixture>/plastic.notusd@ for reference introduced by @<fixture>/root.usda@</MaterialX> -- Cannot determine file format for @<fixture>/plastic.notusd:SDF_FORMAT_ARGS:target=usd@."
+      },
+      {
+        "class": "ErrorInvalidSublayerPath",
+        "message": "Could not load sublayer @<fixture>/missing-sublayer.usda@ of layer @<fixture>/root.usda@; skipping."
+      }
+    ]
+  }
+}

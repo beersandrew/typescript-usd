@@ -1,0 +1,36 @@
+/Model type=
+/Model/Skel type=mesh
+/Model/Skel/Anim1 type=skelAnimation
+/Model/Arm type=mesh
+	primvars: accelerations normals points skel:geomBindTransform skel:jointIndices skel:jointWeights velocities
+	extComputationPrimvar points interpolation=vertex role=point sourceComputation=/Model/Arm/skinningPointsComputation sourceComputationOutputName=skinnedPoints valueType=15,1
+/Model/Arm/skinningPointsInputAggregatorComputation type=extComputation
+	inputValues: blendShapeOffsetRanges=VtArray<GfVec2i> blendShapeOffsets=VtArray<GfVec4f> geomBindXform=GfMatrix4f hasConstantInfluences=bool influences=VtArray<GfVec2f> numBlendShapeOffsetRanges=int numInfluencesPerComponent=int restPoints=VtArray<GfVec3f>
+	dispatchCount=NULL elementCount=NULL glslKernel=empty cpuCallback=null
+/Model/Arm/skinningPointsComputation type=extComputation
+	inputValues: blendShapeWeights=VtArray<float> primWorldToLocal=GfMatrix4d skelLocalToWorld=GfMatrix4d skinningXforms=VtArray<GfMatrix4f>
+	inputComputation blendShapeOffsetRanges sourceComputation=/Model/Arm/skinningPointsInputAggregatorComputation sourceComputationOutputName=blendShapeOffsetRanges
+	inputComputation blendShapeOffsets sourceComputation=/Model/Arm/skinningPointsInputAggregatorComputation sourceComputationOutputName=blendShapeOffsets
+	inputComputation geomBindXform sourceComputation=/Model/Arm/skinningPointsInputAggregatorComputation sourceComputationOutputName=geomBindXform
+	inputComputation hasConstantInfluences sourceComputation=/Model/Arm/skinningPointsInputAggregatorComputation sourceComputationOutputName=hasConstantInfluences
+	inputComputation influences sourceComputation=/Model/Arm/skinningPointsInputAggregatorComputation sourceComputationOutputName=influences
+	inputComputation numBlendShapeOffsetRanges sourceComputation=/Model/Arm/skinningPointsInputAggregatorComputation sourceComputationOutputName=numBlendShapeOffsetRanges
+	inputComputation numInfluencesPerComponent sourceComputation=/Model/Arm/skinningPointsInputAggregatorComputation sourceComputationOutputName=numInfluencesPerComponent
+	inputComputation restPoints sourceComputation=/Model/Arm/skinningPointsInputAggregatorComputation sourceComputationOutputName=restPoints
+	output skinnedPoints valueType=15,1
+	dispatchCount=12 elementCount=12 glslKernel=nonempty cpuCallback=set
+	computationError=false
+	computed skinnedPoints 12
+		0.5 -1.99997103 1.50004828
+		-0.5 -1.99997103 1.50004828
+		0.5 -1.99995196 2.50002909
+		-0.5 -1.99995196 2.50002909
+		-0.5 -0.5 0
+		0.5 -0.5 0
+		-0.5 0.5 0
+		0.5 0.5 0
+		-0.5 9.65595245e-06 2.49999046
+		0.5 9.65595245e-06 2.49999046
+		0.5 -9.65595245e-06 1.50000966
+		-0.5 -9.65595245e-06 1.50000966
+OK

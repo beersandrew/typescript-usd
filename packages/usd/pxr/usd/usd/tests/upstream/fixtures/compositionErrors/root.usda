@@ -1,0 +1,6 @@
+#usda 1.0
+(subLayers = [@./missing-sublayer.usda@])
+def Scope "MaterialX" (
+    references = [@./brass.notusd@</MaterialX>, @./plastic.notusd@</MaterialX>]
+) {}
+def Xform "Geometry" {}

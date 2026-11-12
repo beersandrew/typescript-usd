@@ -1,0 +1,164 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/base/gf/tests/upstream/genfix_size.py",
+  "upstream": [
+    "pxr/base/gf/testenv/testGfSize.py"
+  ],
+  "payload": {
+    "Size2": {
+      "dimension": 2,
+      "default": [
+        0,
+        0
+      ],
+      "fromVec": [
+        0,
+        0
+      ],
+      "fromComponents": [
+        3,
+        4
+      ],
+      "set": [
+        3,
+        4
+      ],
+      "set_eq_ctor": true,
+      "eq_same": true,
+      "neq_rev": true,
+      "add": [
+        4,
+        6
+      ],
+      "sub": [
+        2,
+        2
+      ],
+      "mul": [
+        3,
+        8
+      ],
+      "isub": [
+        0,
+        1
+      ],
+      "iadd": [
+        2,
+        3
+      ],
+      "imul_scalar": [
+        10,
+        20
+      ],
+      "idiv_scalar": [
+        3,
+        6
+      ],
+      "mul_scalar_right": [
+        10,
+        20
+      ],
+      "mul_scalar_left": [
+        10,
+        20
+      ],
+      "div_scalar": [
+        1,
+        2
+      ],
+      "repr": "Gf.Size2(1, 2)",
+      "repr_eval_eq": true,
+      "str": "( 1 2 )",
+      "neg_index_set_get": 3,
+      "contains_3": true,
+      "len": 2,
+      "contains_10": false,
+      "oob_raises": true
+    },
+    "Size3": {
+      "dimension": 3,
+      "default": [
+        0,
+        0,
+        0
+      ],
+      "fromVec": [
+        0,
+        0,
+        0
+      ],
+      "fromComponents": [
+        3,
+        4,
+        5
+      ],
+      "set": [
+        3,
+        4,
+        5
+      ],
+      "set_eq_ctor": true,
+      "eq_same": true,
+      "neq_rev": true,
+      "add": [
+        4,
+        6,
+        8
+      ],
+      "sub": [
+        2,
+        2,
+        2
+      ],
+      "mul": [
+        3,
+        8,
+        15
+      ],
+      "isub": [
+        0,
+        1,
+        2
+      ],
+      "iadd": [
+        2,
+        3,
+        4
+      ],
+      "imul_scalar": [
+        10,
+        20,
+        30
+      ],
+      "idiv_scalar": [
+        3,
+        6,
+        9
+      ],
+      "mul_scalar_right": [
+        10,
+        20,
+        30
+      ],
+      "mul_scalar_left": [
+        10,
+        20,
+        30
+      ],
+      "div_scalar": [
+        1,
+        2,
+        3
+      ],
+      "repr": "Gf.Size3(1, 2, 3)",
+      "repr_eval_eq": true,
+      "str": "( 1 2 3 )",
+      "neg_index_set_get": 3,
+      "contains_3": true,
+      "len": 3,
+      "contains_10": false,
+      "oob_raises": true
+    }
+  }
+}

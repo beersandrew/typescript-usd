@@ -1,0 +1,113 @@
+#usda 1.0
+(
+    doc = """USD-12324 regression scene (negative case).
+
+    Same shape as skelSibling.usda, except /World/A/Rig and /World/B/Rig
+    reference *different* rig prototypes (RigProto vs RigProto2, whose
+    skeletons differ).  The two Models bind to skeletons in structurally
+    distinct sibling native instances, so their translated skeleton paths
+    reroot to different prototype roots and the Models must NOT aggregate.
+
+    Expected native-instance instancers: 2 Models (kept apart) + 1 RigProto
+    + 1 RigProto2 = 4 total.
+    """
+    defaultPrim = "World"
+)
+
+def Xform "World"
+{
+    class Xform "ModelProto"
+    {
+        def Mesh "M" (
+            prepend apiSchemas = ["SkelBindingAPI"]
+        )
+        {
+            int[] faceVertexCounts = [4]
+            int[] faceVertexIndices = [0, 1, 2, 3]
+            point3f[] points = [(-1, -1, 0), (-1, 1, 0),
+                                (1, 1, 0), (1, -1, 0)]
+            int[] primvars:skel:jointIndices = [0, 0, 0, 0] (
+                interpolation = "vertex"
+                elementSize = 1
+            )
+            float[] primvars:skel:jointWeights = [1, 1, 1, 1] (
+                interpolation = "vertex"
+                elementSize = 1
+            )
+        }
+    }
+
+    class Xform "RigProto"
+    {
+        def Skeleton "Skel" (
+            prepend apiSchemas = ["SkelBindingAPI"]
+        )
+        {
+            uniform token[] joints = ["Root"]
+            uniform matrix4d[] bindTransforms = [
+                ((1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 0, 1))]
+            uniform matrix4d[] restTransforms = [
+                ((1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 0, 1))]
+        }
+    }
+
+    # Structurally distinct rig prototype (extra joint) so it aggregates
+    # to a different Hydra prototype than RigProto.
+    class Xform "RigProto2"
+    {
+        def Skeleton "Skel" (
+            prepend apiSchemas = ["SkelBindingAPI"]
+        )
+        {
+            uniform token[] joints = ["Root", "Root/Child"]
+            uniform matrix4d[] bindTransforms = [
+                ((1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 0, 1)),
+                ((1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 1, 1))]
+            uniform matrix4d[] restTransforms = [
+                ((1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 0, 1)),
+                ((1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 1, 1))]
+        }
+    }
+
+    def SkelRoot "A" (
+        prepend apiSchemas = ["SkelBindingAPI"]
+    )
+    {
+        rel skel:skeleton = </World/A/Rig/Skel>
+
+        def "Model" (
+            instanceable = true
+            prepend references = </World/ModelProto>
+        )
+        {
+        }
+
+        def "Rig" (
+            instanceable = true
+            prepend references = </World/RigProto>
+        )
+        {
+        }
+    }
+
+    def SkelRoot "B" (
+        prepend apiSchemas = ["SkelBindingAPI"]
+    )
+    {
+        rel skel:skeleton = </World/B/Rig/Skel>
+
+        def "Model" (
+            instanceable = true
+            prepend references = </World/ModelProto>
+        )
+        {
+        }
+
+        def "Rig" (
+            instanceable = true
+            prepend references = </World/RigProto2>
+        )
+        {
+        }
+    }
+}

@@ -1,0 +1,6 @@
+#usda 1.0
+def "Clip" {
+ def "Child" {
+  double value.timeSamples = {1:10,3:30}
+ }
+}

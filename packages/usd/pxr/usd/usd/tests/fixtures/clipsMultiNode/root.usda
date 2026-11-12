@@ -1,0 +1,70 @@
+#usda 1.0
+
+def "Model" (
+    clips = {
+        dictionary default = {
+            double2[] active = [(0, 0)]
+            asset[] assetPaths = [@./clip.usda@]
+            string primPath = "/Clip"
+            double2[] times = [(0, 0), (10, 10)]
+        }
+    }
+)
+{
+    class "Class"
+    {
+        double value
+    }
+
+    def "Src"
+    {
+    }
+
+    def "Inheriting" (
+        inherits = </Model/Class>
+    )
+    {
+        double value
+    }
+
+    def "Specializing" (
+        specializes = </Model/Class>
+    )
+    {
+    }
+
+    def "Referencing" (
+        references = </Model/Src>
+    )
+    {
+        double value
+    }
+
+    def "Strong" (
+        inherits = </Model/Class>
+    )
+    {
+    }
+
+    def "External" (
+        references = @./ext.usda@</Ext>
+    )
+    {
+    }
+
+    def "Nested"
+    {
+        def "Inner" (
+            inherits = </Model/Class>
+        )
+        {
+        }
+    }
+}
+
+def "Outside" (
+    inherits = </Model/Class>
+)
+{
+    double value
+}

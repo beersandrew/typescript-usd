@@ -1,0 +1,42 @@
+{
+  "nativeReference": "OpenUSD v26.11.1 usdviewq/appController.py:4284-4421; fixture expected.json",
+  "gaps": [
+    {
+      "api": "UsdInherits.getAllDirectInherits / native GetAllDirectInherits",
+      "repro": "Open root.usda and inspect /World. Native direct inherits are ['/Base']; published UsdInherits has edit methods only.",
+      "acceptance": "Port native direct-inherit enumeration including ancestral inherits and referenced classes with native fixtures, then expose the native inherits metadata row.",
+      "status": "Resolved for captured native acceptance",
+      "originalViewerHandling": "Display composed authored inheritPaths distinctly and explicitly disclose that direct-inherit enumeration is unavailable. Remaining gap.",
+      "viewerHandling": "Use corrected public APIs directly; historical workaround removed."
+    },
+    {
+      "api": "UsdVariantSets.getAllVariantSelections",
+      "repro": "Native /World has look=blue and orphan=unavailable, but library method enumerates defined sets only and omits orphan.",
+      "acceptance": "Return composed setless selections alongside defined selections using native GetAllVariantSelections semantics.",
+      "status": "Resolved for captured native acceptance",
+      "originalViewerHandling": "Read the public composed variantSelection metadata dictionary plus named set queries. Setless selection is shown as no defined set.",
+      "viewerHandling": "Use corrected public APIs directly; historical workaround removed."
+    },
+    {
+      "api": "UsdPrim.getAllMetadata / getAllAuthoredMetadata",
+      "repro": "Native /World metadata includes schema customData.userDocBrief; library omits it and includes structural child catalogs such as properties and variantSetChildren.",
+      "acceptance": "Use native metadata field filtering and complete schema fallback metadata, including inherited schema dictionary values.",
+      "status": "Resolved for captured native acceptance",
+      "originalViewerHandling": "Filter known structural child catalogs from presentation, retain actual composed customData, and disclose incomplete schema fallback data. No documentation text is fabricated. Remaining schema-data gap.",
+      "viewerHandling": "Use corrected public APIs directly; historical workaround removed."
+    },
+    {
+      "api": "Unauthored schema-property metadata and hasAuthoredMetadata",
+      "repro": "Native /World.size returns typeName=double and GetAllAuthoredMetadata keys custom/typeName/variability; published getAllMetadata returns empty typeName and hasAuthoredMetadata reports false for these intrinsic fields.",
+      "acceptance": "Match native builtin-property metadata and authored-field query semantics without confusing schema default metadata with composed attribute values.",
+      "status": "Resolved for captured native acceptance",
+      "originalViewerHandling": "Use public PrimDefinition property metadata to recover missing type/default values; use GetAllAuthoredMetadata dictionary plus authored query for field provenance. Exact fixture metadata now matches native.",
+      "viewerHandling": "Use corrected public APIs directly; historical workaround removed."
+    }
+  ],
+  "reportedAgainstLibraryRevision": "0bb8275ea0ebffcbc0011f02fc74551a7ac0fe9f",
+  "resolvedByLibraryRevision": "b2dd7b3f8530df472d8015fd2033705f3647ea05",
+  "resolution": "Public metadata/schema queries, direct inherits and all variant selections now match the recorded native cases; viewer metadata enumeration/schema fallback workarounds removed. Scope does not imply every-schema or clip metadata parity.",
+  "originalScope": "Consumer changes only; library defects recorded, not patched. Metadata provenance is field-level and dictionaries may combine authored and schema fallback entries. Native authored builtin defaults are preserved through GetMetadata(default); PrimDefinition supplies only absent schema values. The authored10/sampled20,30 fixture guards this distinction.",
+  "scope": "Resolved against pinned native26.11 fixture acceptance through dedicated library worktrees; viewer now queries public APIs directly. No complete every-schema or clip metadata claim."
+}

@@ -1,0 +1,5663 @@
+{
+ "native": "0.26.11",
+ "nativeSourceCommit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+ "upstream": [
+  "pxr/usdImaging/usdviewq/appController.py:676-681,1283,2596-2601,3547-3574,4866-5002",
+  "pxr/usdImaging/usdviewq/primViewItem.py:430-440",
+  "pxr/usdImaging/usdviewq/primContextMenuItems.py:19-436",
+  "pxr/usdImaging/usdviewq/common.py:596-669"
+ ],
+ "selections": [
+  "/",
+  "/World",
+  "/World/Group",
+  "/World/Group/Model",
+  "/World/Group/Model/Mesh",
+  "/World/Group/Model/Generic",
+  "/World/Group/Sibling",
+  "/World/Payload",
+  "/World/Inactive",
+  "/World/Other",
+  "/World/Cam",
+  "/World/Looks",
+  "/World/Looks/Mat",
+  "/RootMaterial"
+ ],
+ "initial": {
+  "composed": {
+   "/World": {
+    "active": true,
+    "loaded": true,
+    "visibility": "inherited"
+   },
+   "/World/Group": {
+    "active": true,
+    "loaded": true,
+    "visibility": "invisible"
+   },
+   "/World/Group/Model": {
+    "active": true,
+    "loaded": true,
+    "visibility": "invisible"
+   },
+   "/World/Group/Model/Mesh": {
+    "active": true,
+    "loaded": true,
+    "visibility": "invisible"
+   },
+   "/World/Group/Model/Generic": {
+    "active": true,
+    "loaded": true,
+    "visibility": "invisible"
+   },
+   "/World/Group/Sibling": {
+    "active": true,
+    "loaded": true,
+    "visibility": "invisible"
+   },
+   "/World/Group/Sibling/Box": {
+    "active": true,
+    "loaded": true,
+    "visibility": "invisible"
+   },
+   "/World/Payload": {
+    "active": true,
+    "loaded": true,
+    "visibility": "inherited"
+   },
+   "/World/Payload/Body": {
+    "active": true,
+    "loaded": true,
+    "visibility": "inherited"
+   },
+   "/World/Inactive": {
+    "active": false,
+    "loaded": false,
+    "visibility": "inherited"
+   },
+   "/World/Other": {
+    "active": true,
+    "loaded": true,
+    "visibility": "inherited"
+   },
+   "/World/Other/Ball": {
+    "active": true,
+    "loaded": true,
+    "visibility": "inherited"
+   },
+   "/World/Animated": {
+    "active": true,
+    "loaded": true,
+    "visibility": "inherited"
+   },
+   "/World/Cam": {
+    "active": true,
+    "loaded": true,
+    "visibility": "inherited"
+   },
+   "/World/Looks": {
+    "active": true,
+    "loaded": true,
+    "visibility": "inherited"
+   },
+   "/World/Looks/Mat": {
+    "active": true,
+    "loaded": true,
+    "visibility": null
+   },
+   "/World/Looks/Preview": {
+    "active": true,
+    "loaded": true,
+    "visibility": null
+   },
+   "/RootMaterial": {
+    "active": true,
+    "loaded": true,
+    "visibility": null
+   },
+   "/RootOver": {
+    "active": true,
+    "loaded": true,
+    "visibility": null
+   },
+   "/RootClass": {
+    "active": true,
+    "loaded": true,
+    "visibility": "inherited"
+   },
+   "/RootInactive": {
+    "active": false,
+    "loaded": false,
+    "visibility": "inherited"
+   }
+  },
+  "editMenu": {
+   "/": {
+    "actionLoad": true,
+    "actionUnload": true,
+    "actionActivate": false,
+    "actionDeactivate": true,
+    "actionMake_Visible": false,
+    "actionVis_Only": false,
+    "actionMake_Invisible": false,
+    "actionRemove_Session_Visibility": false
+   },
+   "/World": {
+    "actionLoad": true,
+    "actionUnload": true,
+    "actionActivate": false,
+    "actionDeactivate": true,
+    "actionMake_Visible": true,
+    "actionVis_Only": true,
+    "actionMake_Invisible": true,
+    "actionRemove_Session_Visibility": false
+   },
+   "/World/Group": {
+    "actionLoad": true,
+    "actionUnload": true,
+    "actionActivate": false,
+    "actionDeactivate": true,
+    "actionMake_Visible": true,
+    "actionVis_Only": true,
+    "actionMake_Invisible": true,
+    "actionRemove_Session_Visibility": false
+   },
+   "/World/Group/Model": {
+    "actionLoad": false,
+    "actionUnload": false,
+    "actionActivate": false,
+    "actionDeactivate": true,
+    "actionMake_Visible": true,
+    "actionVis_Only": true,
+    "actionMake_Invisible": true,
+    "actionRemove_Session_Visibility": false
+   },
+   "/World/Group/Model/Mesh": {
+    "actionLoad": false,
+    "actionUnload": false,
+    "actionActivate": false,
+    "actionDeactivate": true,
+    "actionMake_Visible": true,
+    "actionVis_Only": true,
+    "actionMake_Invisible": true,
+    "actionRemove_Session_Visibility": false
+   },
+   "/World/Group/Model/Generic": {
+    "actionLoad": false,
+    "actionUnload": false,
+    "actionActivate": false,
+    "actionDeactivate": true,
+    "actionMake_Visible": true,
+    "actionVis_Only": true,
+    "actionMake_Invisible": true,
+    "actionRemove_Session_Visibility": false
+   },
+   "/World/Group/Sibling": {
+    "actionLoad": false,
+    "actionUnload": false,
+    "actionActivate": false,
+    "actionDeactivate": true,
+    "actionMake_Visible": true,
+    "actionVis_Only": true,
+    "actionMake_Invisible": true,
+    "actionRemove_Session_Visibility": false
+   },
+   "/World/Payload": {
+    "actionLoad": true,
+    "actionUnload": true,
+    "actionActivate": false,
+    "actionDeactivate": true,
+    "actionMake_Visible": true,
+    "actionVis_Only": true,
+    "actionMake_Invisible": true,
+    "actionRemove_Session_Visibility": false
+   },
+   "/World/Inactive": {
+    "actionLoad": false,
+    "actionUnload": false,
+    "actionActivate": true,
+    "actionDeactivate": false,
+    "actionMake_Visible": true,
+    "actionVis_Only": true,
+    "actionMake_Invisible": true,
+    "actionRemove_Session_Visibility": false
+   },
+   "/World/Other": {
+    "actionLoad": false,
+    "actionUnload": false,
+    "actionActivate": false,
+    "actionDeactivate": true,
+    "actionMake_Visible": true,
+    "actionVis_Only": true,
+    "actionMake_Invisible": true,
+    "actionRemove_Session_Visibility": false
+   },
+   "/World/Cam": {
+    "actionLoad": false,
+    "actionUnload": false,
+    "actionActivate": false,
+    "actionDeactivate": true,
+    "actionMake_Visible": true,
+    "actionVis_Only": true,
+    "actionMake_Invisible": true,
+    "actionRemove_Session_Visibility": false
+   },
+   "/World/Looks": {
+    "actionLoad": false,
+    "actionUnload": false,
+    "actionActivate": false,
+    "actionDeactivate": true,
+    "actionMake_Visible": true,
+    "actionVis_Only": true,
+    "actionMake_Invisible": true,
+    "actionRemove_Session_Visibility": false
+   },
+   "/World/Looks/Mat": {
+    "actionLoad": false,
+    "actionUnload": false,
+    "actionActivate": false,
+    "actionDeactivate": true,
+    "actionMake_Visible": false,
+    "actionVis_Only": false,
+    "actionMake_Invisible": false,
+    "actionRemove_Session_Visibility": false
+   },
+   "/RootMaterial": {
+    "actionLoad": false,
+    "actionUnload": false,
+    "actionActivate": false,
+    "actionDeactivate": true,
+    "actionMake_Visible": false,
+    "actionVis_Only": false,
+    "actionMake_Invisible": false,
+    "actionRemove_Session_Visibility": false
+   }
+  },
+  "contextMenu": {
+   "/World": [
+    {
+     "text": "Jump to Enclosing Model",
+     "enabled": true
+    },
+    {
+     "text": "Select Bound Preview Material (None)",
+     "enabled": false
+    },
+    {
+     "text": "Select Bound Full Material (None)",
+     "enabled": false
+    },
+    "---",
+    {
+     "text": "Make Invisible",
+     "enabled": true
+    },
+    {
+     "text": "Vis Only",
+     "enabled": true
+    },
+    {
+     "text": "Remove Session Visibility",
+     "enabled": false
+    },
+    "---",
+    {
+     "text": "Unload",
+     "enabled": true
+    },
+    {
+     "text": "Deactivate",
+     "enabled": true
+    },
+    "---",
+    {
+     "text": "Copy Prim Path",
+     "enabled": true
+    },
+    {
+     "text": "Copy Enclosing Model  Path",
+     "enabled": false
+    },
+    "---",
+    {
+     "text": "usdview asset",
+     "enabled": false
+    },
+    {
+     "text": "Set As Active Camera",
+     "enabled": false
+    },
+    {
+     "text": "Set As Active Render Settings",
+     "enabled": false
+    },
+    {
+     "text": "Set As Active Render Pass Prim",
+     "enabled": false
+    }
+   ],
+   "/World/Group": [
+    {
+     "text": "Jump to Enclosing Model",
+     "enabled": true
+    },
+    {
+     "text": "Select Bound Preview Material (None)",
+     "enabled": false
+    },
+    {
+     "text": "Select Bound Full Material (None)",
+     "enabled": false
+    },
+    "---",
+    {
+     "text": "Make Visible",
+     "enabled": true
+    },
+    {
+     "text": "Vis Only",
+     "enabled": true
+    },
+    {
+     "text": "Remove Session Visibility",
+     "enabled": false
+    },
+    "---",
+    {
+     "text": "Unload",
+     "enabled": true
+    },
+    {
+     "text": "Deactivate",
+     "enabled": true
+    },
+    "---",
+    {
+     "text": "Copy Prim Path",
+     "enabled": true
+    },
+    {
+     "text": "Copy Enclosing Model (World) Path",
+     "enabled": true
+    },
+    "---",
+    {
+     "text": "usdview asset",
+     "enabled": false
+    },
+    {
+     "text": "Set As Active Camera",
+     "enabled": false
+    },
+    {
+     "text": "Set As Active Render Settings",
+     "enabled": false
+    },
+    {
+     "text": "Set As Active Render Pass Prim",
+     "enabled": false
+    }
+   ],
+   "/World/Group/Model": [
+    {
+     "text": "Jump to Enclosing Model",
+     "enabled": true
+    },
+    {
+     "text": "Select Bound Preview Material (None)",
+     "enabled": false
+    },
+    {
+     "text": "Select Bound Full Material (None)",
+     "enabled": false
+    },
+    "---",
+    {
+     "text": "Make Visible",
+     "enabled": true
+    },
+    {
+     "text": "Vis Only",
+     "enabled": true
+    },
+    {
+     "text": "Remove Session Visibility",
+     "enabled": false
+    },
+    "---",
+    {
+     "text": "Unload",
+     "enabled": false
+    },
+    {
+     "text": "Deactivate",
+     "enabled": true
+    },
+    "---",
+    {
+     "text": "Copy Prim Path",
+     "enabled": true
+    },
+    {
+     "text": "Copy Enclosing Model (Group) Path",
+     "enabled": true
+    },
+    "---",
+    {
+     "text": "usdview asset",
+     "enabled": false
+    },
+    {
+     "text": "Set As Active Camera",
+     "enabled": false
+    },
+    {
+     "text": "Set As Active Render Settings",
+     "enabled": false
+    },
+    {
+     "text": "Set As Active Render Pass Prim",
+     "enabled": false
+    }
+   ],
+   "/World/Group/Model/Mesh": [
+    {
+     "text": "Jump to Enclosing Model",
+     "enabled": true
+    },
+    {
+     "text": "Select Bound Preview Material (Preview)",
+     "enabled": true
+    },
+    {
+     "text": "Select Bound Full Material (Mat from generic binding)",
+     "enabled": true
+    },
+    "---",
+    {
+     "text": "Make Visible",
+     "enabled": true
+    },
+    {
+     "text": "Vis Only",
+     "enabled": true
+    },
+    {
+     "text": "Remove Session Visibility",
+     "enabled": false
+    },
+    "---",
+    {
+     "text": "Unload",
+     "enabled": false
+    },
+    {
+     "text": "Deactivate",
+     "enabled": true
+    },
+    "---",
+    {
+     "text": "Copy Prim Path",
+     "enabled": true
+    },
+    {
+     "text": "Copy Enclosing Model (Model) Path",
+     "enabled": true
+    },
+    "---",
+    {
+     "text": "usdview asset",
+     "enabled": false
+    },
+    {
+     "text": "Set As Active Camera",
+     "enabled": false
+    },
+    {
+     "text": "Set As Active Render Settings",
+     "enabled": false
+    },
+    {
+     "text": "Set As Active Render Pass Prim",
+     "enabled": false
+    }
+   ],
+   "/World/Group/Model/Generic": [
+    {
+     "text": "Jump to Enclosing Model",
+     "enabled": true
+    },
+    {
+     "text": "Select Bound Preview Material (Mat from generic binding)",
+     "enabled": true
+    },
+    {
+     "text": "Select Bound Full Material (Mat from generic binding)",
+     "enabled": true
+    },
+    "---",
+    {
+     "text": "Make Visible",
+     "enabled": true
+    },
+    {
+     "text": "Vis Only",
+     "enabled": true
+    },
+    {
+     "text": "Remove Session Visibility",
+     "enabled": false
+    },
+    "---",
+    {
+     "text": "Unload",
+     "enabled": false
+    },
+    {
+     "text": "Deactivate",
+     "enabled": true
+    },
+    "---",
+    {
+     "text": "Copy Prim Path",
+     "enabled": true
+    },
+    {
+     "text": "Copy Enclosing Model (Model) Path",
+     "enabled": true
+    },
+    "---",
+    {
+     "text": "usdview asset",
+     "enabled": false
+    },
+    {
+     "text": "Set As Active Camera",
+     "enabled": false
+    },
+    {
+     "text": "Set As Active Render Settings",
+     "enabled": false
+    },
+    {
+     "text": "Set As Active Render Pass Prim",
+     "enabled": false
+    }
+   ],
+   "/World/Group/Sibling": [
+    {
+     "text": "Jump to Enclosing Model",
+     "enabled": true
+    },
+    {
+     "text": "Select Bound Preview Material (None)",
+     "enabled": false
+    },
+    {
+     "text": "Select Bound Full Material (None)",
+     "enabled": false
+    },
+    "---",
+    {
+     "text": "Make Visible",
+     "enabled": true
+    },
+    {
+     "text": "Vis Only",
+     "enabled": true
+    },
+    {
+     "text": "Remove Session Visibility",
+     "enabled": false
+    },
+    "---",
+    {
+     "text": "Unload",
+     "enabled": false
+    },
+    {
+     "text": "Deactivate",
+     "enabled": true
+    },
+    "---",
+    {
+     "text": "Copy Prim Path",
+     "enabled": true
+    },
+    {
+     "text": "Copy Enclosing Model (Group) Path",
+     "enabled": true
+    },
+    "---",
+    {
+     "text": "usdview asset",
+     "enabled": false
+    },
+    {
+     "text": "Set As Active Camera",
+     "enabled": false
+    },
+    {
+     "text": "Set As Active Render Settings",
+     "enabled": false
+    },
+    {
+     "text": "Set As Active Render Pass Prim",
+     "enabled": false
+    }
+   ],
+   "/World/Payload": [
+    {
+     "text": "Jump to Enclosing Model",
+     "enabled": true
+    },
+    {
+     "text": "Select Bound Preview Material (None)",
+     "enabled": false
+    },
+    {
+     "text": "Select Bound Full Material (None)",
+     "enabled": false
+    },
+    "---",
+    {
+     "text": "Make Invisible",
+     "enabled": true
+    },
+    {
+     "text": "Vis Only",
+     "enabled": true
+    },
+    {
+     "text": "Remove Session Visibility",
+     "enabled": false
+    },
+    "---",
+    {
+     "text": "Unload",
+     "enabled": true
+    },
+    {
+     "text": "Deactivate",
+     "enabled": true
+    },
+    "---",
+    {
+     "text": "Copy Prim Path",
+     "enabled": true
+    },
+    {
+     "text": "Copy Enclosing Model (World) Path",
+     "enabled": true
+    },
+    "---",
+    {
+     "text": "usdview asset",
+     "enabled": false
+    },
+    {
+     "text": "Set As Active Camera",
+     "enabled": false
+    },
+    {
+     "text": "Set As Active Render Settings",
+     "enabled": false
+    },
+    {
+     "text": "Set As Active Render Pass Prim",
+     "enabled": false
+    }
+   ],
+   "/World/Inactive": [
+    {
+     "text": "Jump to Enclosing Model",
+     "enabled": true
+    },
+    {
+     "text": "Select Bound Preview Material (None)",
+     "enabled": false
+    },
+    {
+     "text": "Select Bound Full Material (None)",
+     "enabled": false
+    },
+    "---",
+    {
+     "text": "Make Invisible",
+     "enabled": true
+    },
+    {
+     "text": "Vis Only",
+     "enabled": true
+    },
+    {
+     "text": "Remove Session Visibility",
+     "enabled": false
+    },
+    "---",
+    {
+     "text": "Unload",
+     "enabled": false
+    },
+    {
+     "text": "Activate",
+     "enabled": true
+    },
+    "---",
+    {
+     "text": "Copy Prim Path",
+     "enabled": true
+    },
+    {
+     "text": "Copy Enclosing Model (World) Path",
+     "enabled": true
+    },
+    "---",
+    {
+     "text": "usdview asset",
+     "enabled": false
+    },
+    {
+     "text": "Set As Active Camera",
+     "enabled": false
+    },
+    {
+     "text": "Set As Active Render Settings",
+     "enabled": false
+    },
+    {
+     "text": "Set As Active Render Pass Prim",
+     "enabled": false
+    }
+   ],
+   "/World/Other": [
+    {
+     "text": "Jump to Enclosing Model",
+     "enabled": true
+    },
+    {
+     "text": "Select Bound Preview Material (None)",
+     "enabled": false
+    },
+    {
+     "text": "Select Bound Full Material (None)",
+     "enabled": false
+    },
+    "---",
+    {
+     "text": "Make Invisible",
+     "enabled": true
+    },
+    {
+     "text": "Vis Only",
+     "enabled": true
+    },
+    {
+     "text": "Remove Session Visibility",
+     "enabled": false
+    },
+    "---",
+    {
+     "text": "Unload",
+     "enabled": false
+    },
+    {
+     "text": "Deactivate",
+     "enabled": true
+    },
+    "---",
+    {
+     "text": "Copy Prim Path",
+     "enabled": true
+    },
+    {
+     "text": "Copy Enclosing Model (World) Path",
+     "enabled": true
+    },
+    "---",
+    {
+     "text": "usdview asset",
+     "enabled": false
+    },
+    {
+     "text": "Set As Active Camera",
+     "enabled": false
+    },
+    {
+     "text": "Set As Active Render Settings",
+     "enabled": false
+    },
+    {
+     "text": "Set As Active Render Pass Prim",
+     "enabled": false
+    }
+   ],
+   "/World/Cam": [
+    {
+     "text": "Jump to Enclosing Model",
+     "enabled": true
+    },
+    {
+     "text": "Select Bound Preview Material (None)",
+     "enabled": false
+    },
+    {
+     "text": "Select Bound Full Material (None)",
+     "enabled": false
+    },
+    "---",
+    {
+     "text": "Make Invisible",
+     "enabled": true
+    },
+    {
+     "text": "Vis Only",
+     "enabled": true
+    },
+    {
+     "text": "Remove Session Visibility",
+     "enabled": false
+    },
+    "---",
+    {
+     "text": "Unload",
+     "enabled": false
+    },
+    {
+     "text": "Deactivate",
+     "enabled": true
+    },
+    "---",
+    {
+     "text": "Copy Prim Path",
+     "enabled": true
+    },
+    {
+     "text": "Copy Enclosing Model (World) Path",
+     "enabled": true
+    },
+    "---",
+    {
+     "text": "usdview asset",
+     "enabled": false
+    },
+    {
+     "text": "Set As Active Camera",
+     "enabled": true
+    },
+    {
+     "text": "Set As Active Render Settings",
+     "enabled": false
+    },
+    {
+     "text": "Set As Active Render Pass Prim",
+     "enabled": false
+    }
+   ],
+   "/World/Looks": [
+    {
+     "text": "Jump to Enclosing Model",
+     "enabled": true
+    },
+    {
+     "text": "Select Bound Preview Material (None)",
+     "enabled": false
+    },
+    {
+     "text": "Select Bound Full Material (None)",
+     "enabled": false
+    },
+    "---",
+    {
+     "text": "Make Invisible",
+     "enabled": true
+    },
+    {
+     "text": "Vis Only",
+     "enabled": true
+    },
+    {
+     "text": "Remove Session Visibility",
+     "enabled": false
+    },
+    "---",
+    {
+     "text": "Unload",
+     "enabled": false
+    },
+    {
+     "text": "Deactivate",
+     "enabled": true
+    },
+    "---",
+    {
+     "text": "Copy Prim Path",
+     "enabled": true
+    },
+    {
+     "text": "Copy Enclosing Model (World) Path",
+     "enabled": true
+    },
+    "---",
+    {
+     "text": "usdview asset",
+     "enabled": false
+    },
+    {
+     "text": "Set As Active Camera",
+     "enabled": false
+    },
+    {
+     "text": "Set As Active Render Settings",
+     "enabled": false
+    },
+    {
+     "text": "Set As Active Render Pass Prim",
+     "enabled": false
+    }
+   ],
+   "/World/Looks/Mat": [
+    {
+     "text": "Jump to Enclosing Model",
+     "enabled": true
+    },
+    {
+     "text": "Select Bound Preview Material (None)",
+     "enabled": false
+    },
+    {
+     "text": "Select Bound Full Material (None)",
+     "enabled": false
+    },
+    "---",
+    {
+     "text": "Make Visible",
+     "enabled": false
+    },
+    {
+     "text": "Vis Only",
+     "enabled": false
+    },
+    {
+     "text": "Remove Session Visibility",
+     "enabled": false
+    },
+    "---",
+    {
+     "text": "Unload",
+     "enabled": false
+    },
+    {
+     "text": "Deactivate",
+     "enabled": true
+    },
+    "---",
+    {
+     "text": "Copy Prim Path",
+     "enabled": true
+    },
+    {
+     "text": "Copy Enclosing Model (World) Path",
+     "enabled": true
+    },
+    "---",
+    {
+     "text": "usdview asset",
+     "enabled": false
+    },
+    {
+     "text": "Set As Active Camera",
+     "enabled": false
+    },
+    {
+     "text": "Set As Active Render Settings",
+     "enabled": false
+    },
+    {
+     "text": "Set As Active Render Pass Prim",
+     "enabled": false
+    }
+   ],
+   "/RootMaterial": [
+    {
+     "text": "Jump to Enclosing Model",
+     "enabled": true
+    },
+    {
+     "text": "Select Bound Preview Material (None)",
+     "enabled": false
+    },
+    {
+     "text": "Select Bound Full Material (None)",
+     "enabled": false
+    },
+    "---",
+    {
+     "text": "Make Visible",
+     "enabled": false
+    },
+    {
+     "text": "Vis Only",
+     "enabled": false
+    },
+    {
+     "text": "Remove Session Visibility",
+     "enabled": false
+    },
+    "---",
+    {
+     "text": "Unload",
+     "enabled": false
+    },
+    {
+     "text": "Deactivate",
+     "enabled": true
+    },
+    "---",
+    {
+     "text": "Copy Prim Path",
+     "enabled": true
+    },
+    {
+     "text": "Copy Enclosing Model  Path",
+     "enabled": false
+    },
+    "---",
+    {
+     "text": "usdview asset",
+     "enabled": false
+    },
+    {
+     "text": "Set As Active Camera",
+     "enabled": false
+    },
+    {
+     "text": "Set As Active Render Settings",
+     "enabled": false
+    },
+    {
+     "text": "Set As Active Render Pass Prim",
+     "enabled": false
+    }
+   ]
+  }
+ },
+ "navigation": {
+  "/": {
+   "enclosingModel": [
+    "/"
+   ],
+   "boundPreviewMaterial": [],
+   "boundFullMaterial": []
+  },
+  "/World": {
+   "enclosingModel": [
+    "/World"
+   ],
+   "boundPreviewMaterial": [],
+   "boundFullMaterial": []
+  },
+  "/World/Group": {
+   "enclosingModel": [
+    "/World"
+   ],
+   "boundPreviewMaterial": [],
+   "boundFullMaterial": []
+  },
+  "/World/Group/Model": {
+   "enclosingModel": [
+    "/World/Group"
+   ],
+   "boundPreviewMaterial": [],
+   "boundFullMaterial": []
+  },
+  "/World/Group/Model/Mesh": {
+   "enclosingModel": [
+    "/World/Group/Model"
+   ],
+   "boundPreviewMaterial": [
+    "/World/Looks/Preview"
+   ],
+   "boundFullMaterial": [
+    "/World/Looks/Mat"
+   ]
+  },
+  "/World/Group/Model/Generic": {
+   "enclosingModel": [
+    "/World/Group/Model"
+   ],
+   "boundPreviewMaterial": [
+    "/World/Looks/Mat"
+   ],
+   "boundFullMaterial": [
+    "/World/Looks/Mat"
+   ]
+  },
+  "/World/Group/Sibling": {
+   "enclosingModel": [
+    "/World/Group"
+   ],
+   "boundPreviewMaterial": [],
+   "boundFullMaterial": []
+  },
+  "/World/Payload": {
+   "enclosingModel": [
+    "/World"
+   ],
+   "boundPreviewMaterial": [],
+   "boundFullMaterial": []
+  },
+  "/World/Inactive": {
+   "enclosingModel": [
+    "/World"
+   ],
+   "boundPreviewMaterial": [],
+   "boundFullMaterial": []
+  },
+  "/World/Other": {
+   "enclosingModel": [
+    "/World"
+   ],
+   "boundPreviewMaterial": [],
+   "boundFullMaterial": []
+  },
+  "/World/Cam": {
+   "enclosingModel": [
+    "/World"
+   ],
+   "boundPreviewMaterial": [],
+   "boundFullMaterial": []
+  },
+  "/World/Looks": {
+   "enclosingModel": [
+    "/World"
+   ],
+   "boundPreviewMaterial": [],
+   "boundFullMaterial": []
+  },
+  "/World/Looks/Mat": {
+   "enclosingModel": [
+    "/World"
+   ],
+   "boundPreviewMaterial": [],
+   "boundFullMaterial": []
+  },
+  "/RootMaterial": {
+   "enclosingModel": [
+    "/RootMaterial"
+   ],
+   "boundPreviewMaterial": [],
+   "boundFullMaterial": []
+  }
+ },
+ "scenarios": {
+  "makeVisible": {
+   "steps": [
+    {
+     "path": "/World/Group/Model/Mesh",
+     "method": "visSelectedPrims"
+    }
+   ],
+   "messages": [
+    "Made selected prims visible"
+   ],
+   "selectionAfter": [
+    "/World/Group/Model/Mesh"
+   ],
+   "session": [
+    {
+     "path": "/World",
+     "specifier": "SpecifierOver",
+     "active": null,
+     "attributes": {}
+    },
+    {
+     "path": "/World/Group",
+     "specifier": "SpecifierOver",
+     "active": null,
+     "attributes": {
+      "visibility": {
+       "typeName": "token",
+       "hasDefault": true,
+       "default": "inherited",
+       "timeSamples": 0
+      }
+     }
+    },
+    {
+     "path": "/World/Group/Sibling",
+     "specifier": "SpecifierOver",
+     "active": null,
+     "attributes": {
+      "visibility": {
+       "typeName": "token",
+       "hasDefault": true,
+       "default": "invisible",
+       "timeSamples": 0
+      }
+     }
+    },
+    {
+     "path": "/World/Group/Model",
+     "specifier": "SpecifierOver",
+     "active": null,
+     "attributes": {}
+    },
+    {
+     "path": "/World/Group/Model/Generic",
+     "specifier": "SpecifierOver",
+     "active": null,
+     "attributes": {
+      "visibility": {
+       "typeName": "token",
+       "hasDefault": true,
+       "default": "invisible",
+       "timeSamples": 0
+      }
+     }
+    }
+   ],
+   "composed": {
+    "/World": {
+     "active": true,
+     "loaded": true,
+     "visibility": "inherited"
+    },
+    "/World/Group": {
+     "active": true,
+     "loaded": true,
+     "visibility": "inherited"
+    },
+    "/World/Group/Model": {
+     "active": true,
+     "loaded": true,
+     "visibility": "inherited"
+    },
+    "/World/Group/Model/Mesh": {
+     "active": true,
+     "loaded": true,
+     "visibility": "inherited"
+    },
+    "/World/Group/Model/Generic": {
+     "active": true,
+     "loaded": true,
+     "visibility": "invisible"
+    },
+    "/World/Group/Sibling": {
+     "active": true,
+     "loaded": true,
+     "visibility": "invisible"
+    },
+    "/World/Group/Sibling/Box": {
+     "active": true,
+     "loaded": true,
+     "visibility": "invisible"
+    },
+    "/World/Payload": {
+     "active": true,
+     "loaded": true,
+     "visibility": "inherited"
+    },
+    "/World/Payload/Body": {
+     "active": true,
+     "loaded": true,
+     "visibility": "inherited"
+    },
+    "/World/Inactive": {
+     "active": false,
+     "loaded": false,
+     "visibility": "inherited"
+    },
+    "/World/Other": {
+     "active": true,
+     "loaded": true,
+     "visibility": "inherited"
+    },
+    "/World/Other/Ball": {
+     "active": true,
+     "loaded": true,
+     "visibility": "inherited"
+    },
+    "/World/Animated": {
+     "active": true,
+     "loaded": true,
+     "visibility": "inherited"
+    },
+    "/World/Cam": {
+     "active": true,
+     "loaded": true,
+     "visibility": "inherited"
+    },
+    "/World/Looks": {
+     "active": true,
+     "loaded": true,
+     "visibility": "inherited"
+    },
+    "/World/Looks/Mat": {
+     "active": true,
+     "loaded": true,
+     "visibility": null
+    },
+    "/World/Looks/Preview": {
+     "active": true,
+     "loaded": true,
+     "visibility": null
+    },
+    "/RootMaterial": {
+     "active": true,
+     "loaded": true,
+     "visibility": null
+    },
+    "/RootOver": {
+     "active": true,
+     "loaded": true,
+     "visibility": null
+    },
+    "/RootClass": {
+     "active": true,
+     "loaded": true,
+     "visibility": "inherited"
+    },
+    "/RootInactive": {
+     "active": false,
+     "loaded": false,
+     "visibility": "inherited"
+    }
+   },
+   "editMenuAfter": {
+    "/World/Group/Model/Mesh": {
+     "actionLoad": false,
+     "actionUnload": false,
+     "actionActivate": false,
+     "actionDeactivate": true,
+     "actionMake_Visible": true,
+     "actionVis_Only": true,
+     "actionMake_Invisible": true,
+     "actionRemove_Session_Visibility": false
+    },
+    "/World/Other": {
+     "actionLoad": false,
+     "actionUnload": false,
+     "actionActivate": false,
+     "actionDeactivate": true,
+     "actionMake_Visible": true,
+     "actionVis_Only": true,
+     "actionMake_Invisible": true,
+     "actionRemove_Session_Visibility": false
+    }
+   },
+   "contextMenuAfter": {
+    "/World/Group/Model/Mesh": [
+     {
+      "text": "Jump to Enclosing Model",
+      "enabled": true
+     },
+     {
+      "text": "Select Bound Preview Material (Preview)",
+      "enabled": true
+     },
+     {
+      "text": "Select Bound Full Material (Mat from generic binding)",
+      "enabled": true
+     },
+     "---",
+     {
+      "text": "Make Invisible",
+      "enabled": true
+     },
+     {
+      "text": "Vis Only",
+      "enabled": true
+     },
+     {
+      "text": "Remove Session Visibility",
+      "enabled": false
+     },
+     "---",
+     {
+      "text": "Unload",
+      "enabled": false
+     },
+     {
+      "text": "Deactivate",
+      "enabled": true
+     },
+     "---",
+     {
+      "text": "Copy Prim Path",
+      "enabled": true
+     },
+     {
+      "text": "Copy Enclosing Model (Model) Path",
+      "enabled": true
+     },
+     "---",
+     {
+      "text": "usdview asset",
+      "enabled": false
+     },
+     {
+      "text": "Set As Active Camera",
+      "enabled": false
+     },
+     {
+      "text": "Set As Active Render Settings",
+      "enabled": false
+     },
+     {
+      "text": "Set As Active Render Pass Prim",
+      "enabled": false
+     }
+    ],
+    "/World/Other": [
+     {
+      "text": "Jump to Enclosing Model",
+      "enabled": true
+     },
+     {
+      "text": "Select Bound Preview Material (None)",
+      "enabled": false
+     },
+     {
+      "text": "Select Bound Full Material (None)",
+      "enabled": false
+     },
+     "---",
+     {
+      "text": "Make Invisible",
+      "enabled": true
+     },
+     {
+      "text": "Vis Only",
+      "enabled": true
+     },
+     {
+      "text": "Remove Session Visibility",
+      "enabled": false
+     },
+     "---",
+     {
+      "text": "Unload",
+      "enabled": false
+     },
+     {
+      "text": "Deactivate",
+      "enabled": true
+     },
+     "---",
+     {
+      "text": "Copy Prim Path",
+      "enabled": true
+     },
+     {
+      "text": "Copy Enclosing Model (World) Path",
+      "enabled": true
+     },
+     "---",
+     {
+      "text": "usdview asset",
+      "enabled": false
+     },
+     {
+      "text": "Set As Active Camera",
+      "enabled": false
+     },
+     {
+      "text": "Set As Active Render Settings",
+      "enabled": false
+     },
+     {
+      "text": "Set As Active Render Pass Prim",
+      "enabled": false
+     }
+    ]
+   }
+  },
+  "makeInvisible": {
+   "steps": [
+    {
+     "path": "/World/Group/Model",
+     "method": "invisSelectedPrims"
+    }
+   ],
+   "messages": [
+    "Made selected prims invisible"
+   ],
+   "selectionAfter": [
+    "/World/Group/Model"
+   ],
+   "session": [
+    {
+     "path": "/World",
+     "specifier": "SpecifierOver",
+     "active": null,
+     "attributes": {}
+    },
+    {
+     "path": "/World/Group",
+     "specifier": "SpecifierOver",
+     "active": null,
+     "attributes": {}
+    },
+    {
+     "path": "/World/Group/Model",
+     "specifier": "SpecifierOver",
+     "active": null,
+     "attributes": {
+      "visibility": {
+       "typeName": "token",
+       "hasDefault": true,
+       "default": "invisible",
+       "timeSamples": 0
+      }
+     }
+    }
+   ],
+   "composed": {
+    "/World": {
+     "active": true,
+     "loaded": true,
+     "visibility": "inherited"
+    },
+    "/World/Group": {
+     "active": true,
+     "loaded": true,
+     "visibility": "invisible"
+    },
+    "/World/Group/Model": {
+     "active": true,
+     "loaded": true,
+     "visibility": "invisible"
+    },
+    "/World/Group/Model/Mesh": {
+     "active": true,
+     "loaded": true,
+     "visibility": "invisible"
+    },
+    "/World/Group/Model/Generic": {
+     "active": true,
+     "loaded": true,
+     "visibility": "invisible"
+    },
+    "/World/Group/Sibling": {
+     "active": true,
+     "loaded": true,
+     "visibility": "invisible"
+    },
+    "/World/Group/Sibling/Box": {
+     "active": true,
+     "loaded": true,
+     "visibility": "invisible"
+    },
+    "/World/Payload": {
+     "active": true,
+     "loaded": true,
+     "visibility": "inherited"
+    },
+    "/World/Payload/Body": {
+     "active": true,
+     "loaded": true,
+     "visibility": "inherited"
+    },
+    "/World/Inactive": {
+     "active": false,
+     "loaded": false,
+     "visibility": "inherited"
+    },
+    "/World/Other": {
+     "active": true,
+     "loaded": true,
+     "visibility": "inherited"
+    },
+    "/World/Other/Ball": {
+     "active": true,
+     "loaded": true,
+     "visibility": "inherited"
+    },
+    "/World/Animated": {
+     "active": true,
+     "loaded": true,
+     "visibility": "inherited"
+    },
+    "/World/Cam": {
+     "active": true,
+     "loaded": true,
+     "visibility": "inherited"
+    },
+    "/World/Looks": {
+     "active": true,
+     "loaded": true,
+     "visibility": "inherited"
+    },
+    "/World/Looks/Mat": {
+     "active": true,
+     "loaded": true,
+     "visibility": null
+    },
+    "/World/Looks/Preview": {
+     "active": true,
+     "loaded": true,
+     "visibility": null
+    },
+    "/RootMaterial": {
+     "active": true,
+     "loaded": true,
+     "visibility": null
+    },
+    "/RootOver": {
+     "active": true,
+     "loaded": true,
+     "visibility": null
+    },
+    "/RootClass": {
+     "active": true,
+     "loaded": true,
+     "visibility": "inherited"
+    },
+    "/RootInactive": {
+     "active": false,
+     "loaded": false,
+     "visibility": "inherited"
+    }
+   },
+   "editMenuAfter": {
+    "/World/Group/Model": {
+     "actionLoad": false,
+     "actionUnload": false,
+     "actionActivate": false,
+     "actionDeactivate": true,
+     "actionMake_Visible": true,
+     "actionVis_Only": true,
+     "actionMake_Invisible": true,
+     "actionRemove_Session_Visibility": true
+    },
+    "/World/Group/Model/Mesh": {
+     "actionLoad": false,
+     "actionUnload": false,
+     "actionActivate": false,
+     "actionDeactivate": true,
+     "actionMake_Visible": true,
+     "actionVis_Only": true,
+     "actionMake_Invisible": true,
+     "actionRemove_Session_Visibility": false
+    },
+    "/World/Other": {
+     "actionLoad": false,
+     "actionUnload": false,
+     "actionActivate": false,
+     "actionDeactivate": true,
+     "actionMake_Visible": true,
+     "actionVis_Only": true,
+     "actionMake_Invisible": true,
+     "actionRemove_Session_Visibility": false
+    }
+   },
+   "contextMenuAfter": {
+    "/World/Group/Model": [
+     {
+      "text": "Jump to Enclosing Model",
+      "enabled": true
+     },
+     {
+      "text": "Select Bound Preview Material (None)",
+      "enabled": false
+     },
+     {
+      "text": "Select Bound Full Material (None)",
+      "enabled": false
+     },
+     "---",
+     {
+      "text": "Make Visible",
+      "enabled": true
+     },
+     {
+      "text": "Vis Only",
+      "enabled": true
+     },
+     {
+      "text": "Remove Session Visibility",
+      "enabled": true
+     },
+     "---",
+     {
+      "text": "Unload",
+      "enabled": false
+     },
+     {
+      "text": "Deactivate",
+      "enabled": true
+     },
+     "---",
+     {
+      "text": "Copy Prim Path",
+      "enabled": true
+     },
+     {
+      "text": "Copy Enclosing Model (Group) Path",
+      "enabled": true
+     },
+     "---",
+     {
+      "text": "usdview asset",
+      "enabled": false
+     },
+     {
+      "text": "Set As Active Camera",
+      "enabled": false
+     },
+     {
+      "text": "Set As Active Render Settings",
+      "enabled": false
+     },
+     {
+      "text": "Set As Active Render Pass Prim",
+      "enabled": false
+     }
+    ],
+    "/World/Group/Model/Mesh": [
+     {
+      "text": "Jump to Enclosing Model",
+      "enabled": true
+     },
+     {
+      "text": "Select Bound Preview Material (Preview)",
+      "enabled": true
+     },
+     {
+      "text": "Select Bound Full Material (Mat from generic binding)",
+      "enabled": true
+     },
+     "---",
+     {
+      "text": "Make Visible",
+      "enabled": true
+     },
+     {
+      "text": "Vis Only",
+      "enabled": true
+     },
+     {
+      "text": "Remove Session Visibility",
+      "enabled": false
+     },
+     "---",
+     {
+      "text": "Unload",
+      "enabled": false
+     },
+     {
+      "text": "Deactivate",
+      "enabled": true
+     },
+     "---",
+     {
+      "text": "Copy Prim Path",
+      "enabled": true
+     },
+     {
+      "text": "Copy Enclosing Model (Model) Path",
+      "enabled": true
+     },
+     "---",
+     {
+      "text": "usdview asset",
+      "enabled": false
+     },
+     {
+      "text": "Set As Active Camera",
+      "enabled": false
+     },
+     {
+      "text": "Set As Active Render Settings",
+      "enabled": false
+     },
+     {
+      "text": "Set As Active Render Pass Prim",
+      "enabled": false
+     }
+    ],
+    "/World/Other": [
+     {
+      "text": "Jump to Enclosing Model",
+      "enabled": true
+     },
+     {
+      "text": "Select Bound Preview Material (None)",
+      "enabled": false
+     },
+     {
+      "text": "Select Bound Full Material (None)",
+      "enabled": false
+     },
+     "---",
+     {
+      "text": "Make Invisible",
+      "enabled": true
+     },
+     {
+      "text": "Vis Only",
+      "enabled": true
+     },
+     {
+      "text": "Remove Session Visibility",
+      "enabled": false
+     },
+     "---",
+     {
+      "text": "Unload",
+      "enabled": false
+     },
+     {
+      "text": "Deactivate",
+      "enabled": true
+     },
+     "---",
+     {
+      "text": "Copy Prim Path",
+      "enabled": true
+     },
+     {
+      "text": "Copy Enclosing Model (World) Path",
+      "enabled": true
+     },
+     "---",
+     {
+      "text": "usdview asset",
+      "enabled": false
+     },
+     {
+      "text": "Set As Active Camera",
+      "enabled": false
+     },
+     {
+      "text": "Set As Active Render Settings",
+      "enabled": false
+     },
+     {
+      "text": "Set As Active Render Pass Prim",
+      "enabled": false
+     }
+    ]
+   }
+  },
+  "visOnly": {
+   "steps": [
+    {
+     "path": "/World/Group/Model/Mesh",
+     "method": "visOnlySelectedPrims"
+    }
+   ],
+   "messages": [
+    "Made ONLY selected prims visible"
+   ],
+   "selectionAfter": [
+    "/World/Group/Model/Mesh"
+   ],
+   "session": [
+    {
+     "path": "/World",
+     "specifier": "SpecifierOver",
+     "active": null,
+     "attributes": {
+      "visibility": {
+       "typeName": "token",
+       "hasDefault": true,
+       "default": "inherited",
+       "timeSamples": 0
+      }
+     }
+    },
+    {
+     "path": "/World/Payload",
+     "specifier": "SpecifierOver",
+     "active": null,
+     "attributes": {
+      "visibility": {
+       "typeName": "token",
+       "hasDefault": true,
+       "default": "invisible",
+       "timeSamples": 0
+      }
+     }
+    },
+    {
+     "path": "/World/Inactive",
+     "specifier": "SpecifierOver",
+     "active": null,
+     "attributes": {
+      "visibility": {
+       "typeName": "token",
+       "hasDefault": true,
+       "default": "invisible",
+       "timeSamples": 0
+      }
+     }
+    },
+    {
+     "path": "/World/Other",
+     "specifier": "SpecifierOver",
+     "active": null,
+     "attributes": {
+      "visibility": {
+       "typeName": "token",
+       "hasDefault": true,
+       "default": "invisible",
+       "timeSamples": 0
+      }
+     }
+    },
+    {
+     "path": "/World/Animated",
+     "specifier": "SpecifierOver",
+     "active": null,
+     "attributes": {
+      "visibility": {
+       "typeName": "token",
+       "hasDefault": true,
+       "default": "invisible",
+       "timeSamples": 0
+      }
+     }
+    },
+    {
+     "path": "/World/Cam",
+     "specifier": "SpecifierOver",
+     "active": null,
+     "attributes": {
+      "visibility": {
+       "typeName": "token",
+       "hasDefault": true,
+       "default": "invisible",
+       "timeSamples": 0
+      }
+     }
+    },
+    {
+     "path": "/World/Looks",
+     "specifier": "SpecifierOver",
+     "active": null,
+     "attributes": {
+      "visibility": {
+       "typeName": "token",
+       "hasDefault": true,
+       "default": "invisible",
+       "timeSamples": 0
+      }
+     }
+    },
+    {
+     "path": "/World/Group",
+     "specifier": "SpecifierOver",
+     "active": null,
+     "attributes": {
+      "visibility": {
+       "typeName": "token",
+       "hasDefault": true,
+       "default": "inherited",
+       "timeSamples": 0
+      }
+     }
+    },
+    {
+     "path": "/World/Group/Sibling",
+     "specifier": "SpecifierOver",
+     "active": null,
+     "attributes": {
+      "visibility": {
+       "typeName": "token",
+       "hasDefault": true,
+       "default": "invisible",
+       "timeSamples": 0
+      }
+     }
+    },
+    {
+     "path": "/World/Group/Model",
+     "specifier": "SpecifierOver",
+     "active": null,
+     "attributes": {}
+    },
+    {
+     "path": "/World/Group/Model/Generic",
+     "specifier": "SpecifierOver",
+     "active": null,
+     "attributes": {
+      "visibility": {
+       "typeName": "token",
+       "hasDefault": true,
+       "default": "invisible",
+       "timeSamples": 0
+      }
+     }
+    },
+    {
+     "path": "/RootMaterial",
+     "specifier": "SpecifierOver",
+     "active": null,
+     "attributes": {
+      "visibility": {
+       "typeName": "token",
+       "hasDefault": true,
+       "default": "invisible",
+       "timeSamples": 0
+      }
+     }
+    }
+   ],
+   "composed": {
+    "/World": {
+     "active": true,
+     "loaded": true,
+     "visibility": "inherited"
+    },
+    "/World/Group": {
+     "active": true,
+     "loaded": true,
+     "visibility": "inherited"
+    },
+    "/World/Group/Model": {
+     "active": true,
+     "loaded": true,
+     "visibility": "inherited"
+    },
+    "/World/Group/Model/Mesh": {
+     "active": true,
+     "loaded": true,
+     "visibility": "inherited"
+    },
+    "/World/Group/Model/Generic": {
+     "active": true,
+     "loaded": true,
+     "visibility": "invisible"
+    },
+    "/World/Group/Sibling": {
+     "active": true,
+     "loaded": true,
+     "visibility": "invisible"
+    },
+    "/World/Group/Sibling/Box": {
+     "active": true,
+     "loaded": true,
+     "visibility": "invisible"
+    },
+    "/World/Payload": {
+     "active": true,
+     "loaded": true,
+     "visibility": "invisible"
+    },
+    "/World/Payload/Body": {
+     "active": true,
+     "loaded": true,
+     "visibility": "invisible"
+    },
+    "/World/Inactive": {
+     "active": false,
+     "loaded": false,
+     "visibility": "invisible"
+    },
+    "/World/Other": {
+     "active": true,
+     "loaded": true,
+     "visibility": "invisible"
+    },
+    "/World/Other/Ball": {
+     "active": true,
+     "loaded": true,
+     "visibility": "invisible"
+    },
+    "/World/Animated": {
+     "active": true,
+     "loaded": true,
+     "visibility": "invisible"
+    },
+    "/World/Cam": {
+     "active": true,
+     "loaded": true,
+     "visibility": "invisible"
+    },
+    "/World/Looks": {
+     "active": true,
+     "loaded": true,
+     "visibility": "invisible"
+    },
+    "/World/Looks/Mat": {
+     "active": true,
+     "loaded": true,
+     "visibility": null
+    },
+    "/World/Looks/Preview": {
+     "active": true,
+     "loaded": true,
+     "visibility": null
+    },
+    "/RootMaterial": {
+     "active": true,
+     "loaded": true,
+     "visibility": null
+    },
+    "/RootOver": {
+     "active": true,
+     "loaded": true,
+     "visibility": null
+    },
+    "/RootClass": {
+     "active": true,
+     "loaded": true,
+     "visibility": "inherited"
+    },
+    "/RootInactive": {
+     "active": false,
+     "loaded": false,
+     "visibility": "inherited"
+    }
+   },
+   "editMenuAfter": {
+    "/World/Group/Model/Mesh": {
+     "actionLoad": false,
+     "actionUnload": false,
+     "actionActivate": false,
+     "actionDeactivate": true,
+     "actionMake_Visible": true,
+     "actionVis_Only": true,
+     "actionMake_Invisible": true,
+     "actionRemove_Session_Visibility": false
+    },
+    "/World/Other": {
+     "actionLoad": false,
+     "actionUnload": false,
+     "actionActivate": false,
+     "actionDeactivate": true,
+     "actionMake_Visible": true,
+     "actionVis_Only": true,
+     "actionMake_Invisible": true,
+     "actionRemove_Session_Visibility": true
+    }
+   },
+   "contextMenuAfter": {
+    "/World/Group/Model/Mesh": [
+     {
+      "text": "Jump to Enclosing Model",
+      "enabled": true
+     },
+     {
+      "text": "Select Bound Preview Material (Preview)",
+      "enabled": true
+     },
+     {
+      "text": "Select Bound Full Material (Mat from generic binding)",
+      "enabled": true
+     },
+     "---",
+     {
+      "text": "Make Invisible",
+      "enabled": true
+     },
+     {
+      "text": "Vis Only",
+      "enabled": true
+     },
+     {
+      "text": "Remove Session Visibility",
+      "enabled": false
+     },
+     "---",
+     {
+      "text": "Unload",
+      "enabled": false
+     },
+     {
+      "text": "Deactivate",
+      "enabled": true
+     },
+     "---",
+     {
+      "text": "Copy Prim Path",
+      "enabled": true
+     },
+     {
+      "text": "Copy Enclosing Model (Model) Path",
+      "enabled": true
+     },
+     "---",
+     {
+      "text": "usdview asset",
+      "enabled": false
+     },
+     {
+      "text": "Set As Active Camera",
+      "enabled": false
+     },
+     {
+      "text": "Set As Active Render Settings",
+      "enabled": false
+     },
+     {
+      "text": "Set As Active Render Pass Prim",
+      "enabled": false
+     }
+    ],
+    "/World/Other": [
+     {
+      "text": "Jump to Enclosing Model",
+      "enabled": true
+     },
+     {
+      "text": "Select Bound Preview Material (None)",
+      "enabled": false
+     },
+     {
+      "text": "Select Bound Full Material (None)",
+      "enabled": false
+     },
+     "---",
+     {
+      "text": "Make Visible",
+      "enabled": true
+     },
+     {
+      "text": "Vis Only",
+      "enabled": true
+     },
+     {
+      "text": "Remove Session Visibility",
+      "enabled": true
+     },
+     "---",
+     {
+      "text": "Unload",
+      "enabled": false
+     },
+     {
+      "text": "Deactivate",
+      "enabled": true
+     },
+     "---",
+     {
+      "text": "Copy Prim Path",
+      "enabled": true
+     },
+     {
+      "text": "Copy Enclosing Model (World) Path",
+      "enabled": true
+     },
+     "---",
+     {
+      "text": "usdview asset",
+      "enabled": false
+     },
+     {
+      "text": "Set As Active Camera",
+      "enabled": false
+     },
+     {
+      "text": "Set As Active Render Settings",
+      "enabled": false
+     },
+     {
+      "text": "Set As Active Render Pass Prim",
+      "enabled": false
+     }
+    ]
+   }
+  },
+  "removeSessionVisibility": {
+   "steps": [
+    {
+     "path": "/World/Other",
+     "method": "invisSelectedPrims"
+    },
+    {
+     "path": "/World/Other",
+     "method": "removeVisSelectedPrims"
+    }
+   ],
+   "messages": [
+    "Made selected prims invisible",
+    "Removed selected prims' visibility opinions"
+   ],
+   "selectionAfter": [
+    "/World/Other"
+   ],
+   "session": [
+    {
+     "path": "/World",
+     "specifier": "SpecifierOver",
+     "active": null,
+     "attributes": {}
+    },
+    {
+     "path": "/World/Other",
+     "specifier": "SpecifierOver",
+     "active": null,
+     "attributes": {
+      "visibility": {
+       "typeName": "token",
+       "hasDefault": false,
+       "default": null,
+       "timeSamples": 0
+      }
+     }
+    }
+   ],
+   "composed": {
+    "/World": {
+     "active": true,
+     "loaded": true,
+     "visibility": "inherited"
+    },
+    "/World/Group": {
+     "active": true,
+     "loaded": true,
+     "visibility": "invisible"
+    },
+    "/World/Group/Model": {
+     "active": true,
+     "loaded": true,
+     "visibility": "invisible"
+    },
+    "/World/Group/Model/Mesh": {
+     "active": true,
+     "loaded": true,
+     "visibility": "invisible"
+    },
+    "/World/Group/Model/Generic": {
+     "active": true,
+     "loaded": true,
+     "visibility": "invisible"
+    },
+    "/World/Group/Sibling": {
+     "active": true,
+     "loaded": true,
+     "visibility": "invisible"
+    },
+    "/World/Group/Sibling/Box": {
+     "active": true,
+     "loaded": true,
+     "visibility": "invisible"
+    },
+    "/World/Payload": {
+     "active": true,
+     "loaded": true,
+     "visibility": "inherited"
+    },
+    "/World/Payload/Body": {
+     "active": true,
+     "loaded": true,
+     "visibility": "inherited"
+    },
+    "/World/Inactive": {
+     "active": false,
+     "loaded": false,
+     "visibility": "inherited"
+    },
+    "/World/Other": {
+     "active": true,
+     "loaded": true,
+     "visibility": "inherited"
+    },
+    "/World/Other/Ball": {
+     "active": true,
+     "loaded": true,
+     "visibility": "inherited"
+    },
+    "/World/Animated": {
+     "active": true,
+     "loaded": true,
+     "visibility": "inherited"
+    },
+    "/World/Cam": {
+     "active": true,
+     "loaded": true,
+     "visibility": "inherited"
+    },
+    "/World/Looks": {
+     "active": true,
+     "loaded": true,
+     "visibility": "inherited"
+    },
+    "/World/Looks/Mat": {
+     "active": true,
+     "loaded": true,
+     "visibility": null
+    },
+    "/World/Looks/Preview": {
+     "active": true,
+     "loaded": true,
+     "visibility": null
+    },
+    "/RootMaterial": {
+     "active": true,
+     "loaded": true,
+     "visibility": null
+    },
+    "/RootOver": {
+     "active": true,
+     "loaded": true,
+     "visibility": null
+    },
+    "/RootClass": {
+     "active": true,
+     "loaded": true,
+     "visibility": "inherited"
+    },
+    "/RootInactive": {
+     "active": false,
+     "loaded": false,
+     "visibility": "inherited"
+    }
+   },
+   "editMenuAfter": {
+    "/World/Group/Model/Mesh": {
+     "actionLoad": false,
+     "actionUnload": false,
+     "actionActivate": false,
+     "actionDeactivate": true,
+     "actionMake_Visible": true,
+     "actionVis_Only": true,
+     "actionMake_Invisible": true,
+     "actionRemove_Session_Visibility": false
+    },
+    "/World/Other": {
+     "actionLoad": false,
+     "actionUnload": false,
+     "actionActivate": false,
+     "actionDeactivate": true,
+     "actionMake_Visible": true,
+     "actionVis_Only": true,
+     "actionMake_Invisible": true,
+     "actionRemove_Session_Visibility": true
+    }
+   },
+   "contextMenuAfter": {
+    "/World/Group/Model/Mesh": [
+     {
+      "text": "Jump to Enclosing Model",
+      "enabled": true
+     },
+     {
+      "text": "Select Bound Preview Material (Preview)",
+      "enabled": true
+     },
+     {
+      "text": "Select Bound Full Material (Mat from generic binding)",
+      "enabled": true
+     },
+     "---",
+     {
+      "text": "Make Visible",
+      "enabled": true
+     },
+     {
+      "text": "Vis Only",
+      "enabled": true
+     },
+     {
+      "text": "Remove Session Visibility",
+      "enabled": false
+     },
+     "---",
+     {
+      "text": "Unload",
+      "enabled": false
+     },
+     {
+      "text": "Deactivate",
+      "enabled": true
+     },
+     "---",
+     {
+      "text": "Copy Prim Path",
+      "enabled": true
+     },
+     {
+      "text": "Copy Enclosing Model (Model) Path",
+      "enabled": true
+     },
+     "---",
+     {
+      "text": "usdview asset",
+      "enabled": false
+     },
+     {
+      "text": "Set As Active Camera",
+      "enabled": false
+     },
+     {
+      "text": "Set As Active Render Settings",
+      "enabled": false
+     },
+     {
+      "text": "Set As Active Render Pass Prim",
+      "enabled": false
+     }
+    ],
+    "/World/Other": [
+     {
+      "text": "Jump to Enclosing Model",
+      "enabled": true
+     },
+     {
+      "text": "Select Bound Preview Material (None)",
+      "enabled": false
+     },
+     {
+      "text": "Select Bound Full Material (None)",
+      "enabled": false
+     },
+     "---",
+     {
+      "text": "Make Invisible",
+      "enabled": true
+     },
+     {
+      "text": "Vis Only",
+      "enabled": true
+     },
+     {
+      "text": "Remove Session Visibility",
+      "enabled": true
+     },
+     "---",
+     {
+      "text": "Unload",
+      "enabled": false
+     },
+     {
+      "text": "Deactivate",
+      "enabled": true
+     },
+     "---",
+     {
+      "text": "Copy Prim Path",
+      "enabled": true
+     },
+     {
+      "text": "Copy Enclosing Model (World) Path",
+      "enabled": true
+     },
+     "---",
+     {
+      "text": "usdview asset",
+      "enabled": false
+     },
+     {
+      "text": "Set As Active Camera",
+      "enabled": false
+     },
+     {
+      "text": "Set As Active Render Settings",
+      "enabled": false
+     },
+     {
+      "text": "Set As Active Render Pass Prim",
+      "enabled": false
+     }
+    ]
+   }
+  },
+  "removeAfterMakeVisible": {
+   "steps": [
+    {
+     "path": "/World/Group/Model/Mesh",
+     "method": "visSelectedPrims"
+    },
+    {
+     "path": "/World/Group",
+     "method": "removeVisSelectedPrims"
+    }
+   ],
+   "messages": [
+    "Made selected prims visible",
+    "Removed selected prims' visibility opinions"
+   ],
+   "selectionAfter": [
+    "/World/Group"
+   ],
+   "session": [
+    {
+     "path": "/World",
+     "specifier": "SpecifierOver",
+     "active": null,
+     "attributes": {}
+    },
+    {
+     "path": "/World/Group",
+     "specifier": "SpecifierOver",
+     "active": null,
+     "attributes": {
+      "visibility": {
+       "typeName": "token",
+       "hasDefault": false,
+       "default": null,
+       "timeSamples": 0
+      }
+     }
+    },
+    {
+     "path": "/World/Group/Sibling",
+     "specifier": "SpecifierOver",
+     "active": null,
+     "attributes": {
+      "visibility": {
+       "typeName": "token",
+       "hasDefault": true,
+       "default": "invisible",
+       "timeSamples": 0
+      }
+     }
+    },
+    {
+     "path": "/World/Group/Model",
+     "specifier": "SpecifierOver",
+     "active": null,
+     "attributes": {}
+    },
+    {
+     "path": "/World/Group/Model/Generic",
+     "specifier": "SpecifierOver",
+     "active": null,
+     "attributes": {
+      "visibility": {
+       "typeName": "token",
+       "hasDefault": true,
+       "default": "invisible",
+       "timeSamples": 0
+      }
+     }
+    }
+   ],
+   "composed": {
+    "/World": {
+     "active": true,
+     "loaded": true,
+     "visibility": "inherited"
+    },
+    "/World/Group": {
+     "active": true,
+     "loaded": true,
+     "visibility": "invisible"
+    },
+    "/World/Group/Model": {
+     "active": true,
+     "loaded": true,
+     "visibility": "invisible"
+    },
+    "/World/Group/Model/Mesh": {
+     "active": true,
+     "loaded": true,
+     "visibility": "invisible"
+    },
+    "/World/Group/Model/Generic": {
+     "active": true,
+     "loaded": true,
+     "visibility": "invisible"
+    },
+    "/World/Group/Sibling": {
+     "active": true,
+     "loaded": true,
+     "visibility": "invisible"
+    },
+    "/World/Group/Sibling/Box": {
+     "active": true,
+     "loaded": true,
+     "visibility": "invisible"
+    },
+    "/World/Payload": {
+     "active": true,
+     "loaded": true,
+     "visibility": "inherited"
+    },
+    "/World/Payload/Body": {
+     "active": true,
+     "loaded": true,
+     "visibility": "inherited"
+    },
+    "/World/Inactive": {
+     "active": false,
+     "loaded": false,
+     "visibility": "inherited"
+    },
+    "/World/Other": {
+     "active": true,
+     "loaded": true,
+     "visibility": "inherited"
+    },
+    "/World/Other/Ball": {
+     "active": true,
+     "loaded": true,
+     "visibility": "inherited"
+    },
+    "/World/Animated": {
+     "active": true,
+     "loaded": true,
+     "visibility": "inherited"
+    },
+    "/World/Cam": {
+     "active": true,
+     "loaded": true,
+     "visibility": "inherited"
+    },
+    "/World/Looks": {
+     "active": true,
+     "loaded": true,
+     "visibility": "inherited"
+    },
+    "/World/Looks/Mat": {
+     "active": true,
+     "loaded": true,
+     "visibility": null
+    },
+    "/World/Looks/Preview": {
+     "active": true,
+     "loaded": true,
+     "visibility": null
+    },
+    "/RootMaterial": {
+     "active": true,
+     "loaded": true,
+     "visibility": null
+    },
+    "/RootOver": {
+     "active": true,
+     "loaded": true,
+     "visibility": null
+    },
+    "/RootClass": {
+     "active": true,
+     "loaded": true,
+     "visibility": "inherited"
+    },
+    "/RootInactive": {
+     "active": false,
+     "loaded": false,
+     "visibility": "inherited"
+    }
+   },
+   "editMenuAfter": {
+    "/World/Group": {
+     "actionLoad": true,
+     "actionUnload": true,
+     "actionActivate": false,
+     "actionDeactivate": true,
+     "actionMake_Visible": true,
+     "actionVis_Only": true,
+     "actionMake_Invisible": true,
+     "actionRemove_Session_Visibility": true
+    },
+    "/World/Group/Model/Mesh": {
+     "actionLoad": false,
+     "actionUnload": false,
+     "actionActivate": false,
+     "actionDeactivate": true,
+     "actionMake_Visible": true,
+     "actionVis_Only": true,
+     "actionMake_Invisible": true,
+     "actionRemove_Session_Visibility": false
+    },
+    "/World/Other": {
+     "actionLoad": false,
+     "actionUnload": false,
+     "actionActivate": false,
+     "actionDeactivate": true,
+     "actionMake_Visible": true,
+     "actionVis_Only": true,
+     "actionMake_Invisible": true,
+     "actionRemove_Session_Visibility": false
+    }
+   },
+   "contextMenuAfter": {
+    "/World/Group": [
+     {
+      "text": "Jump to Enclosing Model",
+      "enabled": true
+     },
+     {
+      "text": "Select Bound Preview Material (None)",
+      "enabled": false
+     },
+     {
+      "text": "Select Bound Full Material (None)",
+      "enabled": false
+     },
+     "---",
+     {
+      "text": "Make Visible",
+      "enabled": true
+     },
+     {
+      "text": "Vis Only",
+      "enabled": true
+     },
+     {
+      "text": "Remove Session Visibility",
+      "enabled": true
+     },
+     "---",
+     {
+      "text": "Unload",
+      "enabled": true
+     },
+     {
+      "text": "Deactivate",
+      "enabled": true
+     },
+     "---",
+     {
+      "text": "Copy Prim Path",
+      "enabled": true
+     },
+     {
+      "text": "Copy Enclosing Model (World) Path",
+      "enabled": true
+     },
+     "---",
+     {
+      "text": "usdview asset",
+      "enabled": false
+     },
+     {
+      "text": "Set As Active Camera",
+      "enabled": false
+     },
+     {
+      "text": "Set As Active Render Settings",
+      "enabled": false
+     },
+     {
+      "text": "Set As Active Render Pass Prim",
+      "enabled": false
+     }
+    ],
+    "/World/Group/Model/Mesh": [
+     {
+      "text": "Jump to Enclosing Model",
+      "enabled": true
+     },
+     {
+      "text": "Select Bound Preview Material (Preview)",
+      "enabled": true
+     },
+     {
+      "text": "Select Bound Full Material (Mat from generic binding)",
+      "enabled": true
+     },
+     "---",
+     {
+      "text": "Make Visible",
+      "enabled": true
+     },
+     {
+      "text": "Vis Only",
+      "enabled": true
+     },
+     {
+      "text": "Remove Session Visibility",
+      "enabled": false
+     },
+     "---",
+     {
+      "text": "Unload",
+      "enabled": false
+     },
+     {
+      "text": "Deactivate",
+      "enabled": true
+     },
+     "---",
+     {
+      "text": "Copy Prim Path",
+      "enabled": true
+     },
+     {
+      "text": "Copy Enclosing Model (Model) Path",
+      "enabled": true
+     },
+     "---",
+     {
+      "text": "usdview asset",
+      "enabled": false
+     },
+     {
+      "text": "Set As Active Camera",
+      "enabled": false
+     },
+     {
+      "text": "Set As Active Render Settings",
+      "enabled": false
+     },
+     {
+      "text": "Set As Active Render Pass Prim",
+      "enabled": false
+     }
+    ],
+    "/World/Other": [
+     {
+      "text": "Jump to Enclosing Model",
+      "enabled": true
+     },
+     {
+      "text": "Select Bound Preview Material (None)",
+      "enabled": false
+     },
+     {
+      "text": "Select Bound Full Material (None)",
+      "enabled": false
+     },
+     "---",
+     {
+      "text": "Make Invisible",
+      "enabled": true
+     },
+     {
+      "text": "Vis Only",
+      "enabled": true
+     },
+     {
+      "text": "Remove Session Visibility",
+      "enabled": false
+     },
+     "---",
+     {
+      "text": "Unload",
+      "enabled": false
+     },
+     {
+      "text": "Deactivate",
+      "enabled": true
+     },
+     "---",
+     {
+      "text": "Copy Prim Path",
+      "enabled": true
+     },
+     {
+      "text": "Copy Enclosing Model (World) Path",
+      "enabled": true
+     },
+     "---",
+     {
+      "text": "usdview asset",
+      "enabled": false
+     },
+     {
+      "text": "Set As Active Camera",
+      "enabled": false
+     },
+     {
+      "text": "Set As Active Render Settings",
+      "enabled": false
+     },
+     {
+      "text": "Set As Active Render Pass Prim",
+      "enabled": false
+     }
+    ]
+   }
+  },
+  "resetAllSessionVisibility": {
+   "steps": [
+    {
+     "path": "/World/Other",
+     "method": "invisSelectedPrims"
+    },
+    {
+     "path": "/World/Group/Model/Mesh",
+     "method": "visSelectedPrims"
+    },
+    {
+     "path": null,
+     "method": "resetSessionVisibility"
+    }
+   ],
+   "messages": [
+    "Made selected prims invisible",
+    "Made selected prims visible",
+    "Removed ALL session visibility opinions."
+   ],
+   "selectionAfter": [],
+   "session": [
+    {
+     "path": "/World",
+     "specifier": "SpecifierOver",
+     "active": null,
+     "attributes": {}
+    },
+    {
+     "path": "/World/Other",
+     "specifier": "SpecifierOver",
+     "active": null,
+     "attributes": {}
+    },
+    {
+     "path": "/World/Group",
+     "specifier": "SpecifierOver",
+     "active": null,
+     "attributes": {}
+    },
+    {
+     "path": "/World/Group/Sibling",
+     "specifier": "SpecifierOver",
+     "active": null,
+     "attributes": {}
+    },
+    {
+     "path": "/World/Group/Model",
+     "specifier": "SpecifierOver",
+     "active": null,
+     "attributes": {}
+    },
+    {
+     "path": "/World/Group/Model/Generic",
+     "specifier": "SpecifierOver",
+     "active": null,
+     "attributes": {}
+    }
+   ],
+   "composed": {
+    "/World": {
+     "active": true,
+     "loaded": true,
+     "visibility": "inherited"
+    },
+    "/World/Group": {
+     "active": true,
+     "loaded": true,
+     "visibility": "invisible"
+    },
+    "/World/Group/Model": {
+     "active": true,
+     "loaded": true,
+     "visibility": "invisible"
+    },
+    "/World/Group/Model/Mesh": {
+     "active": true,
+     "loaded": true,
+     "visibility": "invisible"
+    },
+    "/World/Group/Model/Generic": {
+     "active": true,
+     "loaded": true,
+     "visibility": "invisible"
+    },
+    "/World/Group/Sibling": {
+     "active": true,
+     "loaded": true,
+     "visibility": "invisible"
+    },
+    "/World/Group/Sibling/Box": {
+     "active": true,
+     "loaded": true,
+     "visibility": "invisible"
+    },
+    "/World/Payload": {
+     "active": true,
+     "loaded": true,
+     "visibility": "inherited"
+    },
+    "/World/Payload/Body": {
+     "active": true,
+     "loaded": true,
+     "visibility": "inherited"
+    },
+    "/World/Inactive": {
+     "active": false,
+     "loaded": false,
+     "visibility": "inherited"
+    },
+    "/World/Other": {
+     "active": true,
+     "loaded": true,
+     "visibility": "inherited"
+    },
+    "/World/Other/Ball": {
+     "active": true,
+     "loaded": true,
+     "visibility": "inherited"
+    },
+    "/World/Animated": {
+     "active": true,
+     "loaded": true,
+     "visibility": "inherited"
+    },
+    "/World/Cam": {
+     "active": true,
+     "loaded": true,
+     "visibility": "inherited"
+    },
+    "/World/Looks": {
+     "active": true,
+     "loaded": true,
+     "visibility": "inherited"
+    },
+    "/World/Looks/Mat": {
+     "active": true,
+     "loaded": true,
+     "visibility": null
+    },
+    "/World/Looks/Preview": {
+     "active": true,
+     "loaded": true,
+     "visibility": null
+    },
+    "/RootMaterial": {
+     "active": true,
+     "loaded": true,
+     "visibility": null
+    },
+    "/RootOver": {
+     "active": true,
+     "loaded": true,
+     "visibility": null
+    },
+    "/RootClass": {
+     "active": true,
+     "loaded": true,
+     "visibility": "inherited"
+    },
+    "/RootInactive": {
+     "active": false,
+     "loaded": false,
+     "visibility": "inherited"
+    }
+   },
+   "editMenuAfter": {
+    "/": {
+     "actionLoad": true,
+     "actionUnload": true,
+     "actionActivate": false,
+     "actionDeactivate": true,
+     "actionMake_Visible": false,
+     "actionVis_Only": false,
+     "actionMake_Invisible": false,
+     "actionRemove_Session_Visibility": false
+    },
+    "/World/Group/Model/Mesh": {
+     "actionLoad": false,
+     "actionUnload": false,
+     "actionActivate": false,
+     "actionDeactivate": true,
+     "actionMake_Visible": true,
+     "actionVis_Only": true,
+     "actionMake_Invisible": true,
+     "actionRemove_Session_Visibility": false
+    },
+    "/World/Other": {
+     "actionLoad": false,
+     "actionUnload": false,
+     "actionActivate": false,
+     "actionDeactivate": true,
+     "actionMake_Visible": true,
+     "actionVis_Only": true,
+     "actionMake_Invisible": true,
+     "actionRemove_Session_Visibility": false
+    }
+   },
+   "contextMenuAfter": {
+    "/World/Group/Model/Mesh": [
+     {
+      "text": "Jump to Enclosing Model",
+      "enabled": true
+     },
+     {
+      "text": "Select Bound Preview Material (Preview)",
+      "enabled": true
+     },
+     {
+      "text": "Select Bound Full Material (Mat from generic binding)",
+      "enabled": true
+     },
+     "---",
+     {
+      "text": "Make Visible",
+      "enabled": true
+     },
+     {
+      "text": "Vis Only",
+      "enabled": true
+     },
+     {
+      "text": "Remove Session Visibility",
+      "enabled": false
+     },
+     "---",
+     {
+      "text": "Unload",
+      "enabled": false
+     },
+     {
+      "text": "Deactivate",
+      "enabled": true
+     },
+     "---",
+     {
+      "text": "Copy Prim Path",
+      "enabled": true
+     },
+     {
+      "text": "Copy Enclosing Model (Model) Path",
+      "enabled": true
+     },
+     "---",
+     {
+      "text": "usdview asset",
+      "enabled": false
+     },
+     {
+      "text": "Set As Active Camera",
+      "enabled": false
+     },
+     {
+      "text": "Set As Active Render Settings",
+      "enabled": false
+     },
+     {
+      "text": "Set As Active Render Pass Prim",
+      "enabled": false
+     }
+    ],
+    "/World/Other": [
+     {
+      "text": "Jump to Enclosing Model",
+      "enabled": true
+     },
+     {
+      "text": "Select Bound Preview Material (None)",
+      "enabled": false
+     },
+     {
+      "text": "Select Bound Full Material (None)",
+      "enabled": false
+     },
+     "---",
+     {
+      "text": "Make Invisible",
+      "enabled": true
+     },
+     {
+      "text": "Vis Only",
+      "enabled": true
+     },
+     {
+      "text": "Remove Session Visibility",
+      "enabled": false
+     },
+     "---",
+     {
+      "text": "Unload",
+      "enabled": false
+     },
+     {
+      "text": "Deactivate",
+      "enabled": true
+     },
+     "---",
+     {
+      "text": "Copy Prim Path",
+      "enabled": true
+     },
+     {
+      "text": "Copy Enclosing Model (World) Path",
+      "enabled": true
+     },
+     "---",
+     {
+      "text": "usdview asset",
+      "enabled": false
+     },
+     {
+      "text": "Set As Active Camera",
+      "enabled": false
+     },
+     {
+      "text": "Set As Active Render Settings",
+      "enabled": false
+     },
+     {
+      "text": "Set As Active Render Pass Prim",
+      "enabled": false
+     }
+    ]
+   }
+  },
+  "deactivate": {
+   "steps": [
+    {
+     "path": "/World/Group/Model",
+     "method": "deactivateSelectedPrims"
+    }
+   ],
+   "messages": [
+    "Deactivated Model."
+   ],
+   "selectionAfter": [],
+   "session": [
+    {
+     "path": "/World",
+     "specifier": "SpecifierOver",
+     "active": null,
+     "attributes": {}
+    },
+    {
+     "path": "/World/Group",
+     "specifier": "SpecifierOver",
+     "active": null,
+     "attributes": {}
+    },
+    {
+     "path": "/World/Group/Model",
+     "specifier": "SpecifierOver",
+     "active": false,
+     "attributes": {}
+    }
+   ],
+   "composed": {
+    "/World": {
+     "active": true,
+     "loaded": true,
+     "visibility": "inherited"
+    },
+    "/World/Group": {
+     "active": true,
+     "loaded": true,
+     "visibility": "invisible"
+    },
+    "/World/Group/Model": {
+     "active": false,
+     "loaded": false,
+     "visibility": "invisible"
+    },
+    "/World/Group/Sibling": {
+     "active": true,
+     "loaded": true,
+     "visibility": "invisible"
+    },
+    "/World/Group/Sibling/Box": {
+     "active": true,
+     "loaded": true,
+     "visibility": "invisible"
+    },
+    "/World/Payload": {
+     "active": true,
+     "loaded": true,
+     "visibility": "inherited"
+    },
+    "/World/Payload/Body": {
+     "active": true,
+     "loaded": true,
+     "visibility": "inherited"
+    },
+    "/World/Inactive": {
+     "active": false,
+     "loaded": false,
+     "visibility": "inherited"
+    },
+    "/World/Other": {
+     "active": true,
+     "loaded": true,
+     "visibility": "inherited"
+    },
+    "/World/Other/Ball": {
+     "active": true,
+     "loaded": true,
+     "visibility": "inherited"
+    },
+    "/World/Animated": {
+     "active": true,
+     "loaded": true,
+     "visibility": "inherited"
+    },
+    "/World/Cam": {
+     "active": true,
+     "loaded": true,
+     "visibility": "inherited"
+    },
+    "/World/Looks": {
+     "active": true,
+     "loaded": true,
+     "visibility": "inherited"
+    },
+    "/World/Looks/Mat": {
+     "active": true,
+     "loaded": true,
+     "visibility": null
+    },
+    "/World/Looks/Preview": {
+     "active": true,
+     "loaded": true,
+     "visibility": null
+    },
+    "/RootMaterial": {
+     "active": true,
+     "loaded": true,
+     "visibility": null
+    },
+    "/RootOver": {
+     "active": true,
+     "loaded": true,
+     "visibility": null
+    },
+    "/RootClass": {
+     "active": true,
+     "loaded": true,
+     "visibility": "inherited"
+    },
+    "/RootInactive": {
+     "active": false,
+     "loaded": false,
+     "visibility": "inherited"
+    }
+   },
+   "editMenuAfter": {
+    "/World/Group/Model": {
+     "actionLoad": false,
+     "actionUnload": false,
+     "actionActivate": true,
+     "actionDeactivate": false,
+     "actionMake_Visible": true,
+     "actionVis_Only": true,
+     "actionMake_Invisible": true,
+     "actionRemove_Session_Visibility": false
+    },
+    "/World/Other": {
+     "actionLoad": false,
+     "actionUnload": false,
+     "actionActivate": false,
+     "actionDeactivate": true,
+     "actionMake_Visible": true,
+     "actionVis_Only": true,
+     "actionMake_Invisible": true,
+     "actionRemove_Session_Visibility": false
+    }
+   },
+   "contextMenuAfter": {
+    "/World/Group/Model": [
+     {
+      "text": "Jump to Enclosing Model",
+      "enabled": true
+     },
+     {
+      "text": "Select Bound Preview Material (None)",
+      "enabled": false
+     },
+     {
+      "text": "Select Bound Full Material (None)",
+      "enabled": false
+     },
+     "---",
+     {
+      "text": "Make Visible",
+      "enabled": true
+     },
+     {
+      "text": "Vis Only",
+      "enabled": true
+     },
+     {
+      "text": "Remove Session Visibility",
+      "enabled": false
+     },
+     "---",
+     {
+      "text": "Unload",
+      "enabled": false
+     },
+     {
+      "text": "Activate",
+      "enabled": true
+     },
+     "---",
+     {
+      "text": "Copy Prim Path",
+      "enabled": true
+     },
+     {
+      "text": "Copy Enclosing Model (Group) Path",
+      "enabled": true
+     },
+     "---",
+     {
+      "text": "usdview asset",
+      "enabled": false
+     },
+     {
+      "text": "Set As Active Camera",
+      "enabled": false
+     },
+     {
+      "text": "Set As Active Render Settings",
+      "enabled": false
+     },
+     {
+      "text": "Set As Active Render Pass Prim",
+      "enabled": false
+     }
+    ],
+    "/World/Other": [
+     {
+      "text": "Jump to Enclosing Model",
+      "enabled": true
+     },
+     {
+      "text": "Select Bound Preview Material (None)",
+      "enabled": false
+     },
+     {
+      "text": "Select Bound Full Material (None)",
+      "enabled": false
+     },
+     "---",
+     {
+      "text": "Make Invisible",
+      "enabled": true
+     },
+     {
+      "text": "Vis Only",
+      "enabled": true
+     },
+     {
+      "text": "Remove Session Visibility",
+      "enabled": false
+     },
+     "---",
+     {
+      "text": "Unload",
+      "enabled": false
+     },
+     {
+      "text": "Deactivate",
+      "enabled": true
+     },
+     "---",
+     {
+      "text": "Copy Prim Path",
+      "enabled": true
+     },
+     {
+      "text": "Copy Enclosing Model (World) Path",
+      "enabled": true
+     },
+     "---",
+     {
+      "text": "usdview asset",
+      "enabled": false
+     },
+     {
+      "text": "Set As Active Camera",
+      "enabled": false
+     },
+     {
+      "text": "Set As Active Render Settings",
+      "enabled": false
+     },
+     {
+      "text": "Set As Active Render Pass Prim",
+      "enabled": false
+     }
+    ]
+   }
+  },
+  "deactivateThenActivate": {
+   "steps": [
+    {
+     "path": "/World/Group/Model",
+     "method": "deactivateSelectedPrims"
+    },
+    {
+     "path": "/World/Group/Model",
+     "method": "activateSelectedPrims"
+    }
+   ],
+   "messages": [
+    "Deactivated Model.",
+    "Activated Model."
+   ],
+   "selectionAfter": [
+    "/World/Group/Model"
+   ],
+   "session": [
+    {
+     "path": "/World",
+     "specifier": "SpecifierOver",
+     "active": null,
+     "attributes": {}
+    },
+    {
+     "path": "/World/Group",
+     "specifier": "SpecifierOver",
+     "active": null,
+     "attributes": {}
+    },
+    {
+     "path": "/World/Group/Model",
+     "specifier": "SpecifierOver",
+     "active": true,
+     "attributes": {}
+    }
+   ],
+   "composed": {
+    "/World": {
+     "active": true,
+     "loaded": true,
+     "visibility": "inherited"
+    },
+    "/World/Group": {
+     "active": true,
+     "loaded": true,
+     "visibility": "invisible"
+    },
+    "/World/Group/Model": {
+     "active": true,
+     "loaded": true,
+     "visibility": "invisible"
+    },
+    "/World/Group/Model/Mesh": {
+     "active": true,
+     "loaded": true,
+     "visibility": "invisible"
+    },
+    "/World/Group/Model/Generic": {
+     "active": true,
+     "loaded": true,
+     "visibility": "invisible"
+    },
+    "/World/Group/Sibling": {
+     "active": true,
+     "loaded": true,
+     "visibility": "invisible"
+    },
+    "/World/Group/Sibling/Box": {
+     "active": true,
+     "loaded": true,
+     "visibility": "invisible"
+    },
+    "/World/Payload": {
+     "active": true,
+     "loaded": true,
+     "visibility": "inherited"
+    },
+    "/World/Payload/Body": {
+     "active": true,
+     "loaded": true,
+     "visibility": "inherited"
+    },
+    "/World/Inactive": {
+     "active": false,
+     "loaded": false,
+     "visibility": "inherited"
+    },
+    "/World/Other": {
+     "active": true,
+     "loaded": true,
+     "visibility": "inherited"
+    },
+    "/World/Other/Ball": {
+     "active": true,
+     "loaded": true,
+     "visibility": "inherited"
+    },
+    "/World/Animated": {
+     "active": true,
+     "loaded": true,
+     "visibility": "inherited"
+    },
+    "/World/Cam": {
+     "active": true,
+     "loaded": true,
+     "visibility": "inherited"
+    },
+    "/World/Looks": {
+     "active": true,
+     "loaded": true,
+     "visibility": "inherited"
+    },
+    "/World/Looks/Mat": {
+     "active": true,
+     "loaded": true,
+     "visibility": null
+    },
+    "/World/Looks/Preview": {
+     "active": true,
+     "loaded": true,
+     "visibility": null
+    },
+    "/RootMaterial": {
+     "active": true,
+     "loaded": true,
+     "visibility": null
+    },
+    "/RootOver": {
+     "active": true,
+     "loaded": true,
+     "visibility": null
+    },
+    "/RootClass": {
+     "active": true,
+     "loaded": true,
+     "visibility": "inherited"
+    },
+    "/RootInactive": {
+     "active": false,
+     "loaded": false,
+     "visibility": "inherited"
+    }
+   },
+   "editMenuAfter": {
+    "/World/Group/Model": {
+     "actionLoad": false,
+     "actionUnload": false,
+     "actionActivate": false,
+     "actionDeactivate": true,
+     "actionMake_Visible": true,
+     "actionVis_Only": true,
+     "actionMake_Invisible": true,
+     "actionRemove_Session_Visibility": false
+    },
+    "/World/Group/Model/Mesh": {
+     "actionLoad": false,
+     "actionUnload": false,
+     "actionActivate": false,
+     "actionDeactivate": true,
+     "actionMake_Visible": true,
+     "actionVis_Only": true,
+     "actionMake_Invisible": true,
+     "actionRemove_Session_Visibility": false
+    },
+    "/World/Other": {
+     "actionLoad": false,
+     "actionUnload": false,
+     "actionActivate": false,
+     "actionDeactivate": true,
+     "actionMake_Visible": true,
+     "actionVis_Only": true,
+     "actionMake_Invisible": true,
+     "actionRemove_Session_Visibility": false
+    }
+   },
+   "contextMenuAfter": {
+    "/World/Group/Model": [
+     {
+      "text": "Jump to Enclosing Model",
+      "enabled": true
+     },
+     {
+      "text": "Select Bound Preview Material (None)",
+      "enabled": false
+     },
+     {
+      "text": "Select Bound Full Material (None)",
+      "enabled": false
+     },
+     "---",
+     {
+      "text": "Make Visible",
+      "enabled": true
+     },
+     {
+      "text": "Vis Only",
+      "enabled": true
+     },
+     {
+      "text": "Remove Session Visibility",
+      "enabled": false
+     },
+     "---",
+     {
+      "text": "Unload",
+      "enabled": false
+     },
+     {
+      "text": "Deactivate",
+      "enabled": true
+     },
+     "---",
+     {
+      "text": "Copy Prim Path",
+      "enabled": true
+     },
+     {
+      "text": "Copy Enclosing Model (Group) Path",
+      "enabled": true
+     },
+     "---",
+     {
+      "text": "usdview asset",
+      "enabled": false
+     },
+     {
+      "text": "Set As Active Camera",
+      "enabled": false
+     },
+     {
+      "text": "Set As Active Render Settings",
+      "enabled": false
+     },
+     {
+      "text": "Set As Active Render Pass Prim",
+      "enabled": false
+     }
+    ],
+    "/World/Group/Model/Mesh": [
+     {
+      "text": "Jump to Enclosing Model",
+      "enabled": true
+     },
+     {
+      "text": "Select Bound Preview Material (Preview)",
+      "enabled": true
+     },
+     {
+      "text": "Select Bound Full Material (Mat from generic binding)",
+      "enabled": true
+     },
+     "---",
+     {
+      "text": "Make Visible",
+      "enabled": true
+     },
+     {
+      "text": "Vis Only",
+      "enabled": true
+     },
+     {
+      "text": "Remove Session Visibility",
+      "enabled": false
+     },
+     "---",
+     {
+      "text": "Unload",
+      "enabled": false
+     },
+     {
+      "text": "Deactivate",
+      "enabled": true
+     },
+     "---",
+     {
+      "text": "Copy Prim Path",
+      "enabled": true
+     },
+     {
+      "text": "Copy Enclosing Model (Model) Path",
+      "enabled": true
+     },
+     "---",
+     {
+      "text": "usdview asset",
+      "enabled": false
+     },
+     {
+      "text": "Set As Active Camera",
+      "enabled": false
+     },
+     {
+      "text": "Set As Active Render Settings",
+      "enabled": false
+     },
+     {
+      "text": "Set As Active Render Pass Prim",
+      "enabled": false
+     }
+    ],
+    "/World/Other": [
+     {
+      "text": "Jump to Enclosing Model",
+      "enabled": true
+     },
+     {
+      "text": "Select Bound Preview Material (None)",
+      "enabled": false
+     },
+     {
+      "text": "Select Bound Full Material (None)",
+      "enabled": false
+     },
+     "---",
+     {
+      "text": "Make Invisible",
+      "enabled": true
+     },
+     {
+      "text": "Vis Only",
+      "enabled": true
+     },
+     {
+      "text": "Remove Session Visibility",
+      "enabled": false
+     },
+     "---",
+     {
+      "text": "Unload",
+      "enabled": false
+     },
+     {
+      "text": "Deactivate",
+      "enabled": true
+     },
+     "---",
+     {
+      "text": "Copy Prim Path",
+      "enabled": true
+     },
+     {
+      "text": "Copy Enclosing Model (World) Path",
+      "enabled": true
+     },
+     "---",
+     {
+      "text": "usdview asset",
+      "enabled": false
+     },
+     {
+      "text": "Set As Active Camera",
+      "enabled": false
+     },
+     {
+      "text": "Set As Active Render Settings",
+      "enabled": false
+     },
+     {
+      "text": "Set As Active Render Pass Prim",
+      "enabled": false
+     }
+    ]
+   }
+  },
+  "activateAuthoredInactive": {
+   "steps": [
+    {
+     "path": "/World/Inactive",
+     "method": "activateSelectedPrims"
+    }
+   ],
+   "messages": [
+    "Activated Inactive."
+   ],
+   "selectionAfter": [
+    "/World/Inactive"
+   ],
+   "session": [
+    {
+     "path": "/World",
+     "specifier": "SpecifierOver",
+     "active": null,
+     "attributes": {}
+    },
+    {
+     "path": "/World/Inactive",
+     "specifier": "SpecifierOver",
+     "active": true,
+     "attributes": {}
+    }
+   ],
+   "composed": {
+    "/World": {
+     "active": true,
+     "loaded": true,
+     "visibility": "inherited"
+    },
+    "/World/Group": {
+     "active": true,
+     "loaded": true,
+     "visibility": "invisible"
+    },
+    "/World/Group/Model": {
+     "active": true,
+     "loaded": true,
+     "visibility": "invisible"
+    },
+    "/World/Group/Model/Mesh": {
+     "active": true,
+     "loaded": true,
+     "visibility": "invisible"
+    },
+    "/World/Group/Model/Generic": {
+     "active": true,
+     "loaded": true,
+     "visibility": "invisible"
+    },
+    "/World/Group/Sibling": {
+     "active": true,
+     "loaded": true,
+     "visibility": "invisible"
+    },
+    "/World/Group/Sibling/Box": {
+     "active": true,
+     "loaded": true,
+     "visibility": "invisible"
+    },
+    "/World/Payload": {
+     "active": true,
+     "loaded": true,
+     "visibility": "inherited"
+    },
+    "/World/Payload/Body": {
+     "active": true,
+     "loaded": true,
+     "visibility": "inherited"
+    },
+    "/World/Inactive": {
+     "active": true,
+     "loaded": true,
+     "visibility": "inherited"
+    },
+    "/World/Inactive/Child": {
+     "active": true,
+     "loaded": true,
+     "visibility": "inherited"
+    },
+    "/World/Other": {
+     "active": true,
+     "loaded": true,
+     "visibility": "inherited"
+    },
+    "/World/Other/Ball": {
+     "active": true,
+     "loaded": true,
+     "visibility": "inherited"
+    },
+    "/World/Animated": {
+     "active": true,
+     "loaded": true,
+     "visibility": "inherited"
+    },
+    "/World/Cam": {
+     "active": true,
+     "loaded": true,
+     "visibility": "inherited"
+    },
+    "/World/Looks": {
+     "active": true,
+     "loaded": true,
+     "visibility": "inherited"
+    },
+    "/World/Looks/Mat": {
+     "active": true,
+     "loaded": true,
+     "visibility": null
+    },
+    "/World/Looks/Preview": {
+     "active": true,
+     "loaded": true,
+     "visibility": null
+    },
+    "/RootMaterial": {
+     "active": true,
+     "loaded": true,
+     "visibility": null
+    },
+    "/RootOver": {
+     "active": true,
+     "loaded": true,
+     "visibility": null
+    },
+    "/RootClass": {
+     "active": true,
+     "loaded": true,
+     "visibility": "inherited"
+    },
+    "/RootInactive": {
+     "active": false,
+     "loaded": false,
+     "visibility": "inherited"
+    }
+   },
+   "editMenuAfter": {
+    "/World/Group/Model/Mesh": {
+     "actionLoad": false,
+     "actionUnload": false,
+     "actionActivate": false,
+     "actionDeactivate": true,
+     "actionMake_Visible": true,
+     "actionVis_Only": true,
+     "actionMake_Invisible": true,
+     "actionRemove_Session_Visibility": false
+    },
+    "/World/Inactive": {
+     "actionLoad": false,
+     "actionUnload": false,
+     "actionActivate": false,
+     "actionDeactivate": true,
+     "actionMake_Visible": true,
+     "actionVis_Only": true,
+     "actionMake_Invisible": true,
+     "actionRemove_Session_Visibility": false
+    },
+    "/World/Other": {
+     "actionLoad": false,
+     "actionUnload": false,
+     "actionActivate": false,
+     "actionDeactivate": true,
+     "actionMake_Visible": true,
+     "actionVis_Only": true,
+     "actionMake_Invisible": true,
+     "actionRemove_Session_Visibility": false
+    }
+   },
+   "contextMenuAfter": {
+    "/World/Group/Model/Mesh": [
+     {
+      "text": "Jump to Enclosing Model",
+      "enabled": true
+     },
+     {
+      "text": "Select Bound Preview Material (Preview)",
+      "enabled": true
+     },
+     {
+      "text": "Select Bound Full Material (Mat from generic binding)",
+      "enabled": true
+     },
+     "---",
+     {
+      "text": "Make Visible",
+      "enabled": true
+     },
+     {
+      "text": "Vis Only",
+      "enabled": true
+     },
+     {
+      "text": "Remove Session Visibility",
+      "enabled": false
+     },
+     "---",
+     {
+      "text": "Unload",
+      "enabled": false
+     },
+     {
+      "text": "Deactivate",
+      "enabled": true
+     },
+     "---",
+     {
+      "text": "Copy Prim Path",
+      "enabled": true
+     },
+     {
+      "text": "Copy Enclosing Model (Model) Path",
+      "enabled": true
+     },
+     "---",
+     {
+      "text": "usdview asset",
+      "enabled": false
+     },
+     {
+      "text": "Set As Active Camera",
+      "enabled": false
+     },
+     {
+      "text": "Set As Active Render Settings",
+      "enabled": false
+     },
+     {
+      "text": "Set As Active Render Pass Prim",
+      "enabled": false
+     }
+    ],
+    "/World/Inactive": [
+     {
+      "text": "Jump to Enclosing Model",
+      "enabled": true
+     },
+     {
+      "text": "Select Bound Preview Material (None)",
+      "enabled": false
+     },
+     {
+      "text": "Select Bound Full Material (None)",
+      "enabled": false
+     },
+     "---",
+     {
+      "text": "Make Invisible",
+      "enabled": true
+     },
+     {
+      "text": "Vis Only",
+      "enabled": true
+     },
+     {
+      "text": "Remove Session Visibility",
+      "enabled": false
+     },
+     "---",
+     {
+      "text": "Unload",
+      "enabled": false
+     },
+     {
+      "text": "Deactivate",
+      "enabled": true
+     },
+     "---",
+     {
+      "text": "Copy Prim Path",
+      "enabled": true
+     },
+     {
+      "text": "Copy Enclosing Model (World) Path",
+      "enabled": true
+     },
+     "---",
+     {
+      "text": "usdview asset",
+      "enabled": false
+     },
+     {
+      "text": "Set As Active Camera",
+      "enabled": false
+     },
+     {
+      "text": "Set As Active Render Settings",
+      "enabled": false
+     },
+     {
+      "text": "Set As Active Render Pass Prim",
+      "enabled": false
+     }
+    ],
+    "/World/Other": [
+     {
+      "text": "Jump to Enclosing Model",
+      "enabled": true
+     },
+     {
+      "text": "Select Bound Preview Material (None)",
+      "enabled": false
+     },
+     {
+      "text": "Select Bound Full Material (None)",
+      "enabled": false
+     },
+     "---",
+     {
+      "text": "Make Invisible",
+      "enabled": true
+     },
+     {
+      "text": "Vis Only",
+      "enabled": true
+     },
+     {
+      "text": "Remove Session Visibility",
+      "enabled": false
+     },
+     "---",
+     {
+      "text": "Unload",
+      "enabled": false
+     },
+     {
+      "text": "Deactivate",
+      "enabled": true
+     },
+     "---",
+     {
+      "text": "Copy Prim Path",
+      "enabled": true
+     },
+     {
+      "text": "Copy Enclosing Model (World) Path",
+      "enabled": true
+     },
+     "---",
+     {
+      "text": "usdview asset",
+      "enabled": false
+     },
+     {
+      "text": "Set As Active Camera",
+      "enabled": false
+     },
+     {
+      "text": "Set As Active Render Settings",
+      "enabled": false
+     },
+     {
+      "text": "Set As Active Render Pass Prim",
+      "enabled": false
+     }
+    ]
+   }
+  },
+  "unloadPayload": {
+   "steps": [
+    {
+     "path": "/World/Payload",
+     "method": "unloadSelectedPrims"
+    }
+   ],
+   "messages": [
+    "Unloaded ['Payload']."
+   ],
+   "selectionAfter": [
+    "/World/Payload"
+   ],
+   "session": [],
+   "composed": {
+    "/World": {
+     "active": true,
+     "loaded": true,
+     "visibility": "inherited"
+    },
+    "/World/Group": {
+     "active": true,
+     "loaded": true,
+     "visibility": "invisible"
+    },
+    "/World/Group/Model": {
+     "active": true,
+     "loaded": true,
+     "visibility": "invisible"
+    },
+    "/World/Group/Model/Mesh": {
+     "active": true,
+     "loaded": true,
+     "visibility": "invisible"
+    },
+    "/World/Group/Model/Generic": {
+     "active": true,
+     "loaded": true,
+     "visibility": "invisible"
+    },
+    "/World/Group/Sibling": {
+     "active": true,
+     "loaded": true,
+     "visibility": "invisible"
+    },
+    "/World/Group/Sibling/Box": {
+     "active": true,
+     "loaded": true,
+     "visibility": "invisible"
+    },
+    "/World/Payload": {
+     "active": true,
+     "loaded": false,
+     "visibility": "inherited"
+    },
+    "/World/Inactive": {
+     "active": false,
+     "loaded": false,
+     "visibility": "inherited"
+    },
+    "/World/Other": {
+     "active": true,
+     "loaded": true,
+     "visibility": "inherited"
+    },
+    "/World/Other/Ball": {
+     "active": true,
+     "loaded": true,
+     "visibility": "inherited"
+    },
+    "/World/Animated": {
+     "active": true,
+     "loaded": true,
+     "visibility": "inherited"
+    },
+    "/World/Cam": {
+     "active": true,
+     "loaded": true,
+     "visibility": "inherited"
+    },
+    "/World/Looks": {
+     "active": true,
+     "loaded": true,
+     "visibility": "inherited"
+    },
+    "/World/Looks/Mat": {
+     "active": true,
+     "loaded": true,
+     "visibility": null
+    },
+    "/World/Looks/Preview": {
+     "active": true,
+     "loaded": true,
+     "visibility": null
+    },
+    "/RootMaterial": {
+     "active": true,
+     "loaded": true,
+     "visibility": null
+    },
+    "/RootOver": {
+     "active": true,
+     "loaded": true,
+     "visibility": null
+    },
+    "/RootClass": {
+     "active": true,
+     "loaded": true,
+     "visibility": "inherited"
+    },
+    "/RootInactive": {
+     "active": false,
+     "loaded": false,
+     "visibility": "inherited"
+    }
+   },
+   "editMenuAfter": {
+    "/World/Group/Model/Mesh": {
+     "actionLoad": false,
+     "actionUnload": false,
+     "actionActivate": false,
+     "actionDeactivate": true,
+     "actionMake_Visible": true,
+     "actionVis_Only": true,
+     "actionMake_Invisible": true,
+     "actionRemove_Session_Visibility": false
+    },
+    "/World/Other": {
+     "actionLoad": false,
+     "actionUnload": false,
+     "actionActivate": false,
+     "actionDeactivate": true,
+     "actionMake_Visible": true,
+     "actionVis_Only": true,
+     "actionMake_Invisible": true,
+     "actionRemove_Session_Visibility": false
+    },
+    "/World/Payload": {
+     "actionLoad": true,
+     "actionUnload": true,
+     "actionActivate": false,
+     "actionDeactivate": true,
+     "actionMake_Visible": true,
+     "actionVis_Only": true,
+     "actionMake_Invisible": true,
+     "actionRemove_Session_Visibility": false
+    }
+   },
+   "contextMenuAfter": {
+    "/World/Group/Model/Mesh": [
+     {
+      "text": "Jump to Enclosing Model",
+      "enabled": true
+     },
+     {
+      "text": "Select Bound Preview Material (Preview)",
+      "enabled": true
+     },
+     {
+      "text": "Select Bound Full Material (Mat from generic binding)",
+      "enabled": true
+     },
+     "---",
+     {
+      "text": "Make Visible",
+      "enabled": true
+     },
+     {
+      "text": "Vis Only",
+      "enabled": true
+     },
+     {
+      "text": "Remove Session Visibility",
+      "enabled": false
+     },
+     "---",
+     {
+      "text": "Unload",
+      "enabled": false
+     },
+     {
+      "text": "Deactivate",
+      "enabled": true
+     },
+     "---",
+     {
+      "text": "Copy Prim Path",
+      "enabled": true
+     },
+     {
+      "text": "Copy Enclosing Model (Model) Path",
+      "enabled": true
+     },
+     "---",
+     {
+      "text": "usdview asset",
+      "enabled": false
+     },
+     {
+      "text": "Set As Active Camera",
+      "enabled": false
+     },
+     {
+      "text": "Set As Active Render Settings",
+      "enabled": false
+     },
+     {
+      "text": "Set As Active Render Pass Prim",
+      "enabled": false
+     }
+    ],
+    "/World/Other": [
+     {
+      "text": "Jump to Enclosing Model",
+      "enabled": true
+     },
+     {
+      "text": "Select Bound Preview Material (None)",
+      "enabled": false
+     },
+     {
+      "text": "Select Bound Full Material (None)",
+      "enabled": false
+     },
+     "---",
+     {
+      "text": "Make Invisible",
+      "enabled": true
+     },
+     {
+      "text": "Vis Only",
+      "enabled": true
+     },
+     {
+      "text": "Remove Session Visibility",
+      "enabled": false
+     },
+     "---",
+     {
+      "text": "Unload",
+      "enabled": false
+     },
+     {
+      "text": "Deactivate",
+      "enabled": true
+     },
+     "---",
+     {
+      "text": "Copy Prim Path",
+      "enabled": true
+     },
+     {
+      "text": "Copy Enclosing Model (World) Path",
+      "enabled": true
+     },
+     "---",
+     {
+      "text": "usdview asset",
+      "enabled": false
+     },
+     {
+      "text": "Set As Active Camera",
+      "enabled": false
+     },
+     {
+      "text": "Set As Active Render Settings",
+      "enabled": false
+     },
+     {
+      "text": "Set As Active Render Pass Prim",
+      "enabled": false
+     }
+    ],
+    "/World/Payload": [
+     {
+      "text": "Jump to Enclosing Model",
+      "enabled": true
+     },
+     {
+      "text": "Select Bound Preview Material (None)",
+      "enabled": false
+     },
+     {
+      "text": "Select Bound Full Material (None)",
+      "enabled": false
+     },
+     "---",
+     {
+      "text": "Make Invisible",
+      "enabled": true
+     },
+     {
+      "text": "Vis Only",
+      "enabled": true
+     },
+     {
+      "text": "Remove Session Visibility",
+      "enabled": false
+     },
+     "---",
+     {
+      "text": "Load",
+      "enabled": true
+     },
+     {
+      "text": "Deactivate",
+      "enabled": true
+     },
+     "---",
+     {
+      "text": "Copy Prim Path",
+      "enabled": true
+     },
+     {
+      "text": "Copy Enclosing Model (World) Path",
+      "enabled": true
+     },
+     "---",
+     {
+      "text": "usdview asset",
+      "enabled": false
+     },
+     {
+      "text": "Set As Active Camera",
+      "enabled": false
+     },
+     {
+      "text": "Set As Active Render Settings",
+      "enabled": false
+     },
+     {
+      "text": "Set As Active Render Pass Prim",
+      "enabled": false
+     }
+    ]
+   }
+  },
+  "unloadThenLoadPayload": {
+   "steps": [
+    {
+     "path": "/World/Payload",
+     "method": "unloadSelectedPrims"
+    },
+    {
+     "path": "/World/Payload",
+     "method": "loadSelectedPrims"
+    }
+   ],
+   "messages": [
+    "Unloaded ['Payload'].",
+    "Loaded ['Payload']."
+   ],
+   "selectionAfter": [
+    "/World/Payload"
+   ],
+   "session": [],
+   "composed": {
+    "/World": {
+     "active": true,
+     "loaded": true,
+     "visibility": "inherited"
+    },
+    "/World/Group": {
+     "active": true,
+     "loaded": true,
+     "visibility": "invisible"
+    },
+    "/World/Group/Model": {
+     "active": true,
+     "loaded": true,
+     "visibility": "invisible"
+    },
+    "/World/Group/Model/Mesh": {
+     "active": true,
+     "loaded": true,
+     "visibility": "invisible"
+    },
+    "/World/Group/Model/Generic": {
+     "active": true,
+     "loaded": true,
+     "visibility": "invisible"
+    },
+    "/World/Group/Sibling": {
+     "active": true,
+     "loaded": true,
+     "visibility": "invisible"
+    },
+    "/World/Group/Sibling/Box": {
+     "active": true,
+     "loaded": true,
+     "visibility": "invisible"
+    },
+    "/World/Payload": {
+     "active": true,
+     "loaded": true,
+     "visibility": "inherited"
+    },
+    "/World/Payload/Body": {
+     "active": true,
+     "loaded": true,
+     "visibility": "inherited"
+    },
+    "/World/Inactive": {
+     "active": false,
+     "loaded": false,
+     "visibility": "inherited"
+    },
+    "/World/Other": {
+     "active": true,
+     "loaded": true,
+     "visibility": "inherited"
+    },
+    "/World/Other/Ball": {
+     "active": true,
+     "loaded": true,
+     "visibility": "inherited"
+    },
+    "/World/Animated": {
+     "active": true,
+     "loaded": true,
+     "visibility": "inherited"
+    },
+    "/World/Cam": {
+     "active": true,
+     "loaded": true,
+     "visibility": "inherited"
+    },
+    "/World/Looks": {
+     "active": true,
+     "loaded": true,
+     "visibility": "inherited"
+    },
+    "/World/Looks/Mat": {
+     "active": true,
+     "loaded": true,
+     "visibility": null
+    },
+    "/World/Looks/Preview": {
+     "active": true,
+     "loaded": true,
+     "visibility": null
+    },
+    "/RootMaterial": {
+     "active": true,
+     "loaded": true,
+     "visibility": null
+    },
+    "/RootOver": {
+     "active": true,
+     "loaded": true,
+     "visibility": null
+    },
+    "/RootClass": {
+     "active": true,
+     "loaded": true,
+     "visibility": "inherited"
+    },
+    "/RootInactive": {
+     "active": false,
+     "loaded": false,
+     "visibility": "inherited"
+    }
+   },
+   "editMenuAfter": {
+    "/World/Group/Model/Mesh": {
+     "actionLoad": false,
+     "actionUnload": false,
+     "actionActivate": false,
+     "actionDeactivate": true,
+     "actionMake_Visible": true,
+     "actionVis_Only": true,
+     "actionMake_Invisible": true,
+     "actionRemove_Session_Visibility": false
+    },
+    "/World/Other": {
+     "actionLoad": false,
+     "actionUnload": false,
+     "actionActivate": false,
+     "actionDeactivate": true,
+     "actionMake_Visible": true,
+     "actionVis_Only": true,
+     "actionMake_Invisible": true,
+     "actionRemove_Session_Visibility": false
+    },
+    "/World/Payload": {
+     "actionLoad": true,
+     "actionUnload": true,
+     "actionActivate": false,
+     "actionDeactivate": true,
+     "actionMake_Visible": true,
+     "actionVis_Only": true,
+     "actionMake_Invisible": true,
+     "actionRemove_Session_Visibility": false
+    }
+   },
+   "contextMenuAfter": {
+    "/World/Group/Model/Mesh": [
+     {
+      "text": "Jump to Enclosing Model",
+      "enabled": true
+     },
+     {
+      "text": "Select Bound Preview Material (Preview)",
+      "enabled": true
+     },
+     {
+      "text": "Select Bound Full Material (Mat from generic binding)",
+      "enabled": true
+     },
+     "---",
+     {
+      "text": "Make Visible",
+      "enabled": true
+     },
+     {
+      "text": "Vis Only",
+      "enabled": true
+     },
+     {
+      "text": "Remove Session Visibility",
+      "enabled": false
+     },
+     "---",
+     {
+      "text": "Unload",
+      "enabled": false
+     },
+     {
+      "text": "Deactivate",
+      "enabled": true
+     },
+     "---",
+     {
+      "text": "Copy Prim Path",
+      "enabled": true
+     },
+     {
+      "text": "Copy Enclosing Model (Model) Path",
+      "enabled": true
+     },
+     "---",
+     {
+      "text": "usdview asset",
+      "enabled": false
+     },
+     {
+      "text": "Set As Active Camera",
+      "enabled": false
+     },
+     {
+      "text": "Set As Active Render Settings",
+      "enabled": false
+     },
+     {
+      "text": "Set As Active Render Pass Prim",
+      "enabled": false
+     }
+    ],
+    "/World/Other": [
+     {
+      "text": "Jump to Enclosing Model",
+      "enabled": true
+     },
+     {
+      "text": "Select Bound Preview Material (None)",
+      "enabled": false
+     },
+     {
+      "text": "Select Bound Full Material (None)",
+      "enabled": false
+     },
+     "---",
+     {
+      "text": "Make Invisible",
+      "enabled": true
+     },
+     {
+      "text": "Vis Only",
+      "enabled": true
+     },
+     {
+      "text": "Remove Session Visibility",
+      "enabled": false
+     },
+     "---",
+     {
+      "text": "Unload",
+      "enabled": false
+     },
+     {
+      "text": "Deactivate",
+      "enabled": true
+     },
+     "---",
+     {
+      "text": "Copy Prim Path",
+      "enabled": true
+     },
+     {
+      "text": "Copy Enclosing Model (World) Path",
+      "enabled": true
+     },
+     "---",
+     {
+      "text": "usdview asset",
+      "enabled": false
+     },
+     {
+      "text": "Set As Active Camera",
+      "enabled": false
+     },
+     {
+      "text": "Set As Active Render Settings",
+      "enabled": false
+     },
+     {
+      "text": "Set As Active Render Pass Prim",
+      "enabled": false
+     }
+    ],
+    "/World/Payload": [
+     {
+      "text": "Jump to Enclosing Model",
+      "enabled": true
+     },
+     {
+      "text": "Select Bound Preview Material (None)",
+      "enabled": false
+     },
+     {
+      "text": "Select Bound Full Material (None)",
+      "enabled": false
+     },
+     "---",
+     {
+      "text": "Make Invisible",
+      "enabled": true
+     },
+     {
+      "text": "Vis Only",
+      "enabled": true
+     },
+     {
+      "text": "Remove Session Visibility",
+      "enabled": false
+     },
+     "---",
+     {
+      "text": "Unload",
+      "enabled": true
+     },
+     {
+      "text": "Deactivate",
+      "enabled": true
+     },
+     "---",
+     {
+      "text": "Copy Prim Path",
+      "enabled": true
+     },
+     {
+      "text": "Copy Enclosing Model (World) Path",
+      "enabled": true
+     },
+     "---",
+     {
+      "text": "usdview asset",
+      "enabled": false
+     },
+     {
+      "text": "Set As Active Camera",
+      "enabled": false
+     },
+     {
+      "text": "Set As Active Render Settings",
+      "enabled": false
+     },
+     {
+      "text": "Set As Active Render Pass Prim",
+      "enabled": false
+     }
+    ]
+   }
+  },
+  "unloadGroup": {
+   "steps": [
+    {
+     "path": "/World",
+     "method": "unloadSelectedPrims"
+    }
+   ],
+   "messages": [
+    "Unloaded ['World']."
+   ],
+   "selectionAfter": [
+    "/World"
+   ],
+   "session": [],
+   "composed": {
+    "/World": {
+     "active": true,
+     "loaded": true,
+     "visibility": "inherited"
+    },
+    "/World/Group": {
+     "active": true,
+     "loaded": true,
+     "visibility": "invisible"
+    },
+    "/World/Group/Model": {
+     "active": true,
+     "loaded": true,
+     "visibility": "invisible"
+    },
+    "/World/Group/Model/Mesh": {
+     "active": true,
+     "loaded": true,
+     "visibility": "invisible"
+    },
+    "/World/Group/Model/Generic": {
+     "active": true,
+     "loaded": true,
+     "visibility": "invisible"
+    },
+    "/World/Group/Sibling": {
+     "active": true,
+     "loaded": true,
+     "visibility": "invisible"
+    },
+    "/World/Group/Sibling/Box": {
+     "active": true,
+     "loaded": true,
+     "visibility": "invisible"
+    },
+    "/World/Payload": {
+     "active": true,
+     "loaded": false,
+     "visibility": "inherited"
+    },
+    "/World/Inactive": {
+     "active": false,
+     "loaded": false,
+     "visibility": "inherited"
+    },
+    "/World/Other": {
+     "active": true,
+     "loaded": true,
+     "visibility": "inherited"
+    },
+    "/World/Other/Ball": {
+     "active": true,
+     "loaded": true,
+     "visibility": "inherited"
+    },
+    "/World/Animated": {
+     "active": true,
+     "loaded": true,
+     "visibility": "inherited"
+    },
+    "/World/Cam": {
+     "active": true,
+     "loaded": true,
+     "visibility": "inherited"
+    },
+    "/World/Looks": {
+     "active": true,
+     "loaded": true,
+     "visibility": "inherited"
+    },
+    "/World/Looks/Mat": {
+     "active": true,
+     "loaded": true,
+     "visibility": null
+    },
+    "/World/Looks/Preview": {
+     "active": true,
+     "loaded": true,
+     "visibility": null
+    },
+    "/RootMaterial": {
+     "active": true,
+     "loaded": true,
+     "visibility": null
+    },
+    "/RootOver": {
+     "active": true,
+     "loaded": true,
+     "visibility": null
+    },
+    "/RootClass": {
+     "active": true,
+     "loaded": true,
+     "visibility": "inherited"
+    },
+    "/RootInactive": {
+     "active": false,
+     "loaded": false,
+     "visibility": "inherited"
+    }
+   },
+   "editMenuAfter": {
+    "/World": {
+     "actionLoad": true,
+     "actionUnload": true,
+     "actionActivate": false,
+     "actionDeactivate": true,
+     "actionMake_Visible": true,
+     "actionVis_Only": true,
+     "actionMake_Invisible": true,
+     "actionRemove_Session_Visibility": false
+    },
+    "/World/Group/Model/Mesh": {
+     "actionLoad": false,
+     "actionUnload": false,
+     "actionActivate": false,
+     "actionDeactivate": true,
+     "actionMake_Visible": true,
+     "actionVis_Only": true,
+     "actionMake_Invisible": true,
+     "actionRemove_Session_Visibility": false
+    },
+    "/World/Other": {
+     "actionLoad": false,
+     "actionUnload": false,
+     "actionActivate": false,
+     "actionDeactivate": true,
+     "actionMake_Visible": true,
+     "actionVis_Only": true,
+     "actionMake_Invisible": true,
+     "actionRemove_Session_Visibility": false
+    }
+   },
+   "contextMenuAfter": {
+    "/World": [
+     {
+      "text": "Jump to Enclosing Model",
+      "enabled": true
+     },
+     {
+      "text": "Select Bound Preview Material (None)",
+      "enabled": false
+     },
+     {
+      "text": "Select Bound Full Material (None)",
+      "enabled": false
+     },
+     "---",
+     {
+      "text": "Make Invisible",
+      "enabled": true
+     },
+     {
+      "text": "Vis Only",
+      "enabled": true
+     },
+     {
+      "text": "Remove Session Visibility",
+      "enabled": false
+     },
+     "---",
+     {
+      "text": "Load",
+      "enabled": true
+     },
+     {
+      "text": "Deactivate",
+      "enabled": true
+     },
+     "---",
+     {
+      "text": "Copy Prim Path",
+      "enabled": true
+     },
+     {
+      "text": "Copy Enclosing Model  Path",
+      "enabled": false
+     },
+     "---",
+     {
+      "text": "usdview asset",
+      "enabled": false
+     },
+     {
+      "text": "Set As Active Camera",
+      "enabled": false
+     },
+     {
+      "text": "Set As Active Render Settings",
+      "enabled": false
+     },
+     {
+      "text": "Set As Active Render Pass Prim",
+      "enabled": false
+     }
+    ],
+    "/World/Group/Model/Mesh": [
+     {
+      "text": "Jump to Enclosing Model",
+      "enabled": true
+     },
+     {
+      "text": "Select Bound Preview Material (Preview)",
+      "enabled": true
+     },
+     {
+      "text": "Select Bound Full Material (Mat from generic binding)",
+      "enabled": true
+     },
+     "---",
+     {
+      "text": "Make Visible",
+      "enabled": true
+     },
+     {
+      "text": "Vis Only",
+      "enabled": true
+     },
+     {
+      "text": "Remove Session Visibility",
+      "enabled": false
+     },
+     "---",
+     {
+      "text": "Unload",
+      "enabled": false
+     },
+     {
+      "text": "Deactivate",
+      "enabled": true
+     },
+     "---",
+     {
+      "text": "Copy Prim Path",
+      "enabled": true
+     },
+     {
+      "text": "Copy Enclosing Model (Model) Path",
+      "enabled": true
+     },
+     "---",
+     {
+      "text": "usdview asset",
+      "enabled": false
+     },
+     {
+      "text": "Set As Active Camera",
+      "enabled": false
+     },
+     {
+      "text": "Set As Active Render Settings",
+      "enabled": false
+     },
+     {
+      "text": "Set As Active Render Pass Prim",
+      "enabled": false
+     }
+    ],
+    "/World/Other": [
+     {
+      "text": "Jump to Enclosing Model",
+      "enabled": true
+     },
+     {
+      "text": "Select Bound Preview Material (None)",
+      "enabled": false
+     },
+     {
+      "text": "Select Bound Full Material (None)",
+      "enabled": false
+     },
+     "---",
+     {
+      "text": "Make Invisible",
+      "enabled": true
+     },
+     {
+      "text": "Vis Only",
+      "enabled": true
+     },
+     {
+      "text": "Remove Session Visibility",
+      "enabled": false
+     },
+     "---",
+     {
+      "text": "Unload",
+      "enabled": false
+     },
+     {
+      "text": "Deactivate",
+      "enabled": true
+     },
+     "---",
+     {
+      "text": "Copy Prim Path",
+      "enabled": true
+     },
+     {
+      "text": "Copy Enclosing Model (World) Path",
+      "enabled": true
+     },
+     "---",
+     {
+      "text": "usdview asset",
+      "enabled": false
+     },
+     {
+      "text": "Set As Active Camera",
+      "enabled": false
+     },
+     {
+      "text": "Set As Active Render Settings",
+      "enabled": false
+     },
+     {
+      "text": "Set As Active Render Pass Prim",
+      "enabled": false
+     }
+    ]
+   }
+  },
+  "deactivatePseudoRoot": {
+   "steps": [
+    {
+     "path": "/",
+     "method": "deactivateSelectedPrims"
+    }
+   ],
+   "messages": [
+    "Deactivated ."
+   ],
+   "selectionAfter": [],
+   "session": [],
+   "composed": {
+    "/World": {
+     "active": true,
+     "loaded": true,
+     "visibility": "inherited"
+    },
+    "/World/Group": {
+     "active": true,
+     "loaded": true,
+     "visibility": "invisible"
+    },
+    "/World/Group/Model": {
+     "active": true,
+     "loaded": true,
+     "visibility": "invisible"
+    },
+    "/World/Group/Model/Mesh": {
+     "active": true,
+     "loaded": true,
+     "visibility": "invisible"
+    },
+    "/World/Group/Model/Generic": {
+     "active": true,
+     "loaded": true,
+     "visibility": "invisible"
+    },
+    "/World/Group/Sibling": {
+     "active": true,
+     "loaded": true,
+     "visibility": "invisible"
+    },
+    "/World/Group/Sibling/Box": {
+     "active": true,
+     "loaded": true,
+     "visibility": "invisible"
+    },
+    "/World/Payload": {
+     "active": true,
+     "loaded": true,
+     "visibility": "inherited"
+    },
+    "/World/Payload/Body": {
+     "active": true,
+     "loaded": true,
+     "visibility": "inherited"
+    },
+    "/World/Inactive": {
+     "active": false,
+     "loaded": false,
+     "visibility": "inherited"
+    },
+    "/World/Other": {
+     "active": true,
+     "loaded": true,
+     "visibility": "inherited"
+    },
+    "/World/Other/Ball": {
+     "active": true,
+     "loaded": true,
+     "visibility": "inherited"
+    },
+    "/World/Animated": {
+     "active": true,
+     "loaded": true,
+     "visibility": "inherited"
+    },
+    "/World/Cam": {
+     "active": true,
+     "loaded": true,
+     "visibility": "inherited"
+    },
+    "/World/Looks": {
+     "active": true,
+     "loaded": true,
+     "visibility": "inherited"
+    },
+    "/World/Looks/Mat": {
+     "active": true,
+     "loaded": true,
+     "visibility": null
+    },
+    "/World/Looks/Preview": {
+     "active": true,
+     "loaded": true,
+     "visibility": null
+    },
+    "/RootMaterial": {
+     "active": true,
+     "loaded": true,
+     "visibility": null
+    },
+    "/RootOver": {
+     "active": true,
+     "loaded": true,
+     "visibility": null
+    },
+    "/RootClass": {
+     "active": true,
+     "loaded": true,
+     "visibility": "inherited"
+    },
+    "/RootInactive": {
+     "active": false,
+     "loaded": false,
+     "visibility": "inherited"
+    }
+   },
+   "editMenuAfter": {
+    "/": {
+     "actionLoad": true,
+     "actionUnload": true,
+     "actionActivate": false,
+     "actionDeactivate": true,
+     "actionMake_Visible": false,
+     "actionVis_Only": false,
+     "actionMake_Invisible": false,
+     "actionRemove_Session_Visibility": false
+    },
+    "/World/Group/Model/Mesh": {
+     "actionLoad": false,
+     "actionUnload": false,
+     "actionActivate": false,
+     "actionDeactivate": true,
+     "actionMake_Visible": true,
+     "actionVis_Only": true,
+     "actionMake_Invisible": true,
+     "actionRemove_Session_Visibility": false
+    },
+    "/World/Other": {
+     "actionLoad": false,
+     "actionUnload": false,
+     "actionActivate": false,
+     "actionDeactivate": true,
+     "actionMake_Visible": true,
+     "actionVis_Only": true,
+     "actionMake_Invisible": true,
+     "actionRemove_Session_Visibility": false
+    }
+   },
+   "contextMenuAfter": {
+    "/World/Group/Model/Mesh": [
+     {
+      "text": "Jump to Enclosing Model",
+      "enabled": true
+     },
+     {
+      "text": "Select Bound Preview Material (Preview)",
+      "enabled": true
+     },
+     {
+      "text": "Select Bound Full Material (Mat from generic binding)",
+      "enabled": true
+     },
+     "---",
+     {
+      "text": "Make Visible",
+      "enabled": true
+     },
+     {
+      "text": "Vis Only",
+      "enabled": true
+     },
+     {
+      "text": "Remove Session Visibility",
+      "enabled": false
+     },
+     "---",
+     {
+      "text": "Unload",
+      "enabled": false
+     },
+     {
+      "text": "Deactivate",
+      "enabled": true
+     },
+     "---",
+     {
+      "text": "Copy Prim Path",
+      "enabled": true
+     },
+     {
+      "text": "Copy Enclosing Model (Model) Path",
+      "enabled": true
+     },
+     "---",
+     {
+      "text": "usdview asset",
+      "enabled": false
+     },
+     {
+      "text": "Set As Active Camera",
+      "enabled": false
+     },
+     {
+      "text": "Set As Active Render Settings",
+      "enabled": false
+     },
+     {
+      "text": "Set As Active Render Pass Prim",
+      "enabled": false
+     }
+    ],
+    "/World/Other": [
+     {
+      "text": "Jump to Enclosing Model",
+      "enabled": true
+     },
+     {
+      "text": "Select Bound Preview Material (None)",
+      "enabled": false
+     },
+     {
+      "text": "Select Bound Full Material (None)",
+      "enabled": false
+     },
+     "---",
+     {
+      "text": "Make Invisible",
+      "enabled": true
+     },
+     {
+      "text": "Vis Only",
+      "enabled": true
+     },
+     {
+      "text": "Remove Session Visibility",
+      "enabled": false
+     },
+     "---",
+     {
+      "text": "Unload",
+      "enabled": false
+     },
+     {
+      "text": "Deactivate",
+      "enabled": true
+     },
+     "---",
+     {
+      "text": "Copy Prim Path",
+      "enabled": true
+     },
+     {
+      "text": "Copy Enclosing Model (World) Path",
+      "enabled": true
+     },
+     "---",
+     {
+      "text": "usdview asset",
+      "enabled": false
+     },
+     {
+      "text": "Set As Active Camera",
+      "enabled": false
+     },
+     {
+      "text": "Set As Active Render Settings",
+      "enabled": false
+     },
+     {
+      "text": "Set As Active Render Pass Prim",
+      "enabled": false
+     }
+    ]
+   }
+  }
+ },
+ "interpolation": {
+  "menu": [
+   "Held",
+   "Linear"
+  ],
+  "default": "Linear",
+  "samples": {
+   "Held": {
+    "2.5": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "5": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   "Linear": {
+    "2.5": [
+     2.5,
+     0.0,
+     0.0
+    ],
+    "5": [
+     5.0,
+     0.0,
+     0.0
+    ]
+   }
+  },
+  "sessionAfter": {
+   "Held": [],
+   "Linear": []
+  }
+ }
+}

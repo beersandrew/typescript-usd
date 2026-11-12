@@ -1,0 +1,20 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "noEmit": false,
+    "rootDir": ".",
+    "outDir": "./dist",
+    "rewriteRelativeImportExtensions": true
+  },
+  "include": [
+    "pxr/**/src",
+    "pxr/index.ts",
+    "surface"
+  ],
+  "exclude": [
+    "pxr/**/tests",
+    "surface/tests",
+    "dist",
+    "node_modules"
+  ]
+}

@@ -1,0 +1,4 @@
+{
+  "extends": "./tsconfig.json",
+  "include": ["src/contracts.ts", "src/usd-viewer.ts", "src/viewer-styles.ts", "tests"]
+}

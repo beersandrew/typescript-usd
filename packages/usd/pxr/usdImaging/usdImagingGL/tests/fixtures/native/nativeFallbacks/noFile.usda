@@ -1,0 +1,74 @@
+#usda 1.0
+(upAxis = "Y")
+def Material "Diffuse" {
+ token outputs:surface.connect = </Diffuse/Surface.outputs:surface>
+ def Shader "Surface" {
+  uniform token info:id = "UsdPreviewSurface"
+  color3f inputs:diffuseColor = (0, 0, 0)
+  int inputs:useSpecularWorkflow = 1
+  color3f inputs:specularColor = (0, 0, 0)
+  color3f inputs:emissiveColor.connect = </Diffuse/Texture.outputs:rgb>
+  token outputs:surface
+ }
+ def Shader "Texture" {
+  uniform token info:id = "UsdUVTexture"
+  float2 inputs:st.connect = </Diffuse/Reader.outputs:result>
+  float3 outputs:rgb
+ }
+ def Shader "Reader" {
+  uniform token info:id = "UsdPrimvarReader_float2"
+  string inputs:varname = "st"
+  float2 outputs:result
+ }
+}
+def Material "Opacity" {
+ token outputs:surface.connect = </Opacity/Surface.outputs:surface>
+ def Shader "Surface" {
+  uniform token info:id = "UsdPreviewSurface"
+  color3f inputs:diffuseColor = (0, 0, 0)
+  int inputs:useSpecularWorkflow = 1
+  color3f inputs:specularColor = (0, 0, 0)
+  color3f inputs:emissiveColor.connect = </Opacity/Texture.outputs:rgb>
+  float inputs:opacity.connect = </Opacity/Texture.outputs:a>
+  token outputs:surface
+ }
+ def Shader "Texture" {
+  uniform token info:id = "UsdUVTexture"
+  float4 inputs:fallback = (0.1, 0.2, 0.3, 0.9)
+  float2 inputs:st.connect = </Opacity/Reader.outputs:result>
+  float3 outputs:rgb
+  float outputs:a
+ }
+ def Shader "Reader" {
+  uniform token info:id = "UsdPrimvarReader_float2"
+  string inputs:varname = "st"
+  float2 outputs:result
+ }
+}
+def Mesh "DiffuseQuad" (
+ prepend apiSchemas = ["MaterialBindingAPI"]
+) {
+ rel material:binding = </Diffuse>
+ point3f[] points = [(-1,-1,0),(0,-1,0),(0,1,0),(-1,1,0)]
+ int[] faceVertexCounts = [4]
+ int[] faceVertexIndices = [0,1,2,3]
+ token subdivisionScheme = "none"
+ float2[] primvars:st = [(0,0),(1,0),(1,1),(0,1)] (interpolation = "vertex")
+}
+def Mesh "OpacityQuad" (
+ prepend apiSchemas = ["MaterialBindingAPI"]
+) {
+ rel material:binding = </Opacity>
+ point3f[] points = [(0,-1,0),(1,-1,0),(1,1,0),(0,1,0)]
+ int[] faceVertexCounts = [4]
+ int[] faceVertexIndices = [0,1,2,3]
+ token subdivisionScheme = "none"
+ float2[] primvars:st = [(0,0),(1,0),(1,1),(0,1)] (interpolation = "vertex")
+}
+def Camera "Camera" {
+ float focalLength = 50
+ float horizontalAperture = 36
+ float verticalAperture = 24
+ double3 xformOp:translate = (0,0,6)
+ uniform token[] xformOpOrder = ["xformOp:translate"]
+}

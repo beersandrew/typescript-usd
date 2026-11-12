@@ -1,0 +1,43 @@
+// Portions ported from OpenUSD 26.11.1, including:
+//  pxr/usdImaging/usdviewq/appController.py
+// Copyright 2016 Pixar. Tomorrow Open Source Technology License 1.0.
+// Translated to TypeScript and modified. See LICENSE and NOTICE.
+
+/* Font faces must be registered outside shadow roots for Safari compatibility. */
+@font-face {
+  font-family: UsdviewRoboto;
+  src: url(./fonts/Roboto-Regular.ttf) format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: UsdviewMono;
+  src: url(./fonts/RobotoMono-Regular.ttf) format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+/* appController.py:309-315 loads upstream's actual faces. Synthesizing these
+   from Regular changes glyph widths and stroke weight at the same font size. */
+@font-face {
+  font-family: UsdviewRoboto;
+  src: url(./fonts/Roboto-Bold.ttf) format("truetype");
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+@font-face {
+  font-family: UsdviewRoboto;
+  src: url(./fonts/Roboto-Italic.ttf) format("truetype");
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: UsdviewRoboto;
+  src: url(./fonts/Roboto-LightItalic.ttf) format("truetype");
+  font-style: italic;
+  font-weight: 300;
+  font-display: swap;
+}

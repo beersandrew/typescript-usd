@@ -1,0 +1,253 @@
+{
+  "label": "step2-import-costs",
+  "commit": "bfcedd060ad7a9bb8431c06c1290c24b6cd64513",
+  "dirty": false,
+  "date": "2026-11-01T20:22:04.748Z",
+  "machine": {
+    "platform": "darwin 27.2.0",
+    "cpu": "Apple M4 Pro",
+    "cores": 12,
+    "memoryGB": 24
+  },
+  "node": "v24.7.0",
+  "loadAverage1m": {
+    "before": 19.3,
+    "after": 52.5
+  },
+  "note": "Recorded on a shared developer machine under other load; compare means alongside min, sd and rme, not single runs.",
+  "results": [
+    {
+      "group": "USDA import, small (200 meshes, 0.13 MB)",
+      "name": "parseUsda (text to parser scene)",
+      "meanMs": 4.913,
+      "minMs": 3.863,
+      "maxMs": 10.031,
+      "p99Ms": 10.031,
+      "sdMs": 1.962,
+      "rmePercent": 18.69,
+      "samples": 20,
+      "mbPerSecMean": 26.46
+    },
+    {
+      "group": "USDA import, small (200 meshes, 0.13 MB)",
+      "name": "Layer.createInMemory (parse and build layer)",
+      "meanMs": 16.352,
+      "minMs": 4.312,
+      "maxMs": 84.4,
+      "p99Ms": 84.4,
+      "sdMs": 22.374,
+      "rmePercent": 64.04,
+      "samples": 20,
+      "mbPerSecMean": 7.95
+    },
+    {
+      "group": "USDA import, small (200 meshes, 0.13 MB)",
+      "name": "Layer.importFromString into an anonymous layer",
+      "meanMs": 30.142,
+      "minMs": 7.82,
+      "maxMs": 308.188,
+      "p99Ms": 308.188,
+      "sdMs": 69.156,
+      "rmePercent": 107.38,
+      "samples": 20,
+      "mbPerSecMean": 4.31
+    },
+    {
+      "group": "USDA import, medium (2000 meshes, 1.33 MB)",
+      "name": "parseUsda (text to parser scene)",
+      "meanMs": 158.776,
+      "minMs": 43.421,
+      "maxMs": 408.443,
+      "p99Ms": 408.443,
+      "sdMs": 139.733,
+      "rmePercent": 62.95,
+      "samples": 10,
+      "mbPerSecMean": 8.38
+    },
+    {
+      "group": "USDA import, medium (2000 meshes, 1.33 MB)",
+      "name": "Layer.createInMemory (parse and build layer)",
+      "meanMs": 187.357,
+      "minMs": 58.072,
+      "maxMs": 459.998,
+      "p99Ms": 459.998,
+      "sdMs": 128.583,
+      "rmePercent": 49.09,
+      "samples": 10,
+      "mbPerSecMean": 7.1
+    },
+    {
+      "group": "USDA import, medium (2000 meshes, 1.33 MB)",
+      "name": "Layer.importFromString into an anonymous layer",
+      "meanMs": 359.41,
+      "minMs": 197.195,
+      "maxMs": 589.217,
+      "p99Ms": 589.217,
+      "sdMs": 118.488,
+      "rmePercent": 23.58,
+      "samples": 10,
+      "mbPerSecMean": 3.7
+    },
+    {
+      "group": "USDA import, large (20000 meshes, 13.31 MB)",
+      "name": "parseUsda (text to parser scene)",
+      "meanMs": 1268.909,
+      "minMs": 421.876,
+      "maxMs": 2220.637,
+      "p99Ms": 2220.637,
+      "sdMs": 772.158,
+      "rmePercent": 75.55,
+      "samples": 5,
+      "mbPerSecMean": 10.49
+    },
+    {
+      "group": "USDA import, large (20000 meshes, 13.31 MB)",
+      "name": "Layer.createInMemory (parse and build layer)",
+      "meanMs": 592.88,
+      "minMs": 545.475,
+      "maxMs": 628.477,
+      "p99Ms": 628.477,
+      "sdMs": 34.348,
+      "rmePercent": 7.19,
+      "samples": 5,
+      "mbPerSecMean": 22.45
+    },
+    {
+      "group": "USDA import, large (20000 meshes, 13.31 MB)",
+      "name": "Layer.importFromString into an anonymous layer",
+      "meanMs": 2166.644,
+      "minMs": 1183.475,
+      "maxMs": 3166.893,
+      "p99Ms": 3166.893,
+      "sdMs": 913.636,
+      "rmePercent": 52.35,
+      "samples": 5,
+      "mbPerSecMean": 6.14
+    },
+    {
+      "group": "USDA import, real asset (usdGeom generatedSchema.usda, 0.09 MB)",
+      "name": "parseUsda (text to parser scene)",
+      "meanMs": 4.597,
+      "minMs": 0.865,
+      "maxMs": 118.362,
+      "p99Ms": 65.169,
+      "sdMs": 13.663,
+      "rmePercent": 56.17,
+      "samples": 110,
+      "mbPerSecMean": 19.58
+    },
+    {
+      "group": "USDA import, real asset (usdGeom generatedSchema.usda, 0.09 MB)",
+      "name": "Layer.createInMemory (parse and build layer)",
+      "meanMs": 4.665,
+      "minMs": 1.024,
+      "maxMs": 49.383,
+      "p99Ms": 44.915,
+      "sdMs": 9.771,
+      "rmePercent": 39.77,
+      "samples": 109,
+      "mbPerSecMean": 19.29
+    },
+    {
+      "group": "USDC open (2000 meshes)",
+      "name": "Layer.fromBytes (0.29 MB)",
+      "meanMs": 31.559,
+      "minMs": 7.49,
+      "maxMs": 128.291,
+      "p99Ms": 128.291,
+      "sdMs": 33.865,
+      "rmePercent": 53.37,
+      "samples": 18,
+      "mbPerSecMean": 9.19
+    },
+    {
+      "group": "USDC open (2000 meshes)",
+      "name": "Layer.fromBytes and read every points default",
+      "meanMs": 30.456,
+      "minMs": 8.223,
+      "maxMs": 80.229,
+      "p99Ms": 80.229,
+      "sdMs": 19.211,
+      "rmePercent": 32.43,
+      "samples": 17
+    },
+    {
+      "group": "attribute value resolution through Usd (2000 meshes)",
+      "name": "Stage.open on a built layer",
+      "meanMs": 156.888,
+      "minMs": 11.845,
+      "maxMs": 474.989,
+      "p99Ms": 474.989,
+      "sdMs": 159.362,
+      "rmePercent": 72.66,
+      "samples": 10
+    },
+    {
+      "group": "attribute value resolution through Usd (2000 meshes)",
+      "name": "resolve 6000 attribute defaults",
+      "meanMs": 35.778,
+      "minMs": 12.287,
+      "maxMs": 94.053,
+      "p99Ms": 94.053,
+      "sdMs": 21.469,
+      "rmePercent": 34.64,
+      "samples": 14
+    },
+    {
+      "group": "time samples",
+      "name": "Layer.createInMemory, 200 attributes x 500 samples (0.96 MB)",
+      "meanMs": 134.056,
+      "minMs": 49.071,
+      "maxMs": 209.394,
+      "p99Ms": 209.394,
+      "sdMs": 60.524,
+      "rmePercent": 32.29,
+      "samples": 10,
+      "mbPerSecMean": 7.16
+    },
+    {
+      "group": "time samples",
+      "name": "author 10000 samples in increasing time order",
+      "meanMs": 15.521,
+      "minMs": 7.835,
+      "maxMs": 39.177,
+      "p99Ms": 39.177,
+      "sdMs": 11.12,
+      "rmePercent": 51.25,
+      "samples": 10
+    },
+    {
+      "group": "time samples",
+      "name": "author 10000 samples in shuffled time order",
+      "meanMs": 14.905,
+      "minMs": 10.201,
+      "maxMs": 23.663,
+      "p99Ms": 23.663,
+      "sdMs": 4.796,
+      "rmePercent": 23.02,
+      "samples": 10
+    },
+    {
+      "group": "time samples",
+      "name": "query and bracket 10000 times on a 10000-sample attribute",
+      "meanMs": 4.443,
+      "minMs": 3.287,
+      "maxMs": 38.781,
+      "p99Ms": 23.733,
+      "sdMs": 4.185,
+      "rmePercent": 17.33,
+      "samples": 116
+    },
+    {
+      "group": "time samples",
+      "name": "resolve 10000 interpolated times through Usd",
+      "meanMs": 232.608,
+      "minMs": 162.557,
+      "maxMs": 284.682,
+      "p99Ms": 284.682,
+      "sdMs": 42.081,
+      "rmePercent": 12.94,
+      "samples": 10
+    }
+  ]
+}

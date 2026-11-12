@@ -1,0 +1,204 @@
+{
+  "nativeSourceCommit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "nativeVersion": "26.11.1",
+  "method": "UsdImagingCreateSceneIndices(default settings), ApplyPendingUpdates + notice Flush after each usdview-equivalent session edit; no graphics pixel comparison",
+  "rows": [
+    {
+      "operation": "initial",
+      "stage": [
+        {
+          "path": "/World/Group",
+          "apiValid": false,
+          "computed": "bounds",
+          "applyAttrValid": false,
+          "applyValue": null,
+          "applied": []
+        },
+        {
+          "path": "/World/Group/Model",
+          "apiValid": false,
+          "computed": "bounds",
+          "applyAttrValid": false,
+          "applyValue": null,
+          "applied": []
+        }
+      ],
+      "prims": [
+        {
+          "path": "/World/Group/Model",
+          "type": "",
+          "extentMin": null,
+          "extentMax": null,
+          "points": null
+        },
+        {
+          "path": "/World/Group/Model/Geom",
+          "type": "cube",
+          "extentMin": null,
+          "extentMax": null,
+          "points": null
+        }
+      ]
+    },
+    {
+      "operation": "childCards",
+      "stage": [
+        {
+          "path": "/World/Group",
+          "apiValid": false,
+          "computed": "bounds",
+          "applyAttrValid": false,
+          "applyValue": null,
+          "applied": []
+        },
+        {
+          "path": "/World/Group/Model",
+          "apiValid": true,
+          "computed": "cards",
+          "applyAttrValid": true,
+          "applyValue": "0",
+          "applied": [
+            "GeomModelAPI"
+          ]
+        }
+      ],
+      "prims": [
+        {
+          "path": "/World/Group/Model",
+          "type": "",
+          "extentMin": null,
+          "extentMax": null,
+          "points": null
+        },
+        {
+          "path": "/World/Group/Model/cardsMesh",
+          "type": "mesh",
+          "extentMin": null,
+          "extentMax": null,
+          "points": "[(0, 0, 0), (0, 0, 0), (0, 0, 0), (0, 0, 0), (0, 0, 0), (0, 0, 0), (0, 0, 0), (0, 0, 0), (0, 0, 0), (0, 0, 0), (0, 0, 0), (0, 0, 0), (0, 0, 0), (0, 0, 0), (0, 0, 0), (0, 0, 0), (0, 0, 0), (0, 0, 0), (0, 0, 0), (0, 0, 0), (0, 0, 0), (0, 0, 0), (0, 0, 0), (0, 0, 0)]"
+        }
+      ]
+    },
+    {
+      "operation": "childClear",
+      "stage": [
+        {
+          "path": "/World/Group",
+          "apiValid": false,
+          "computed": "bounds",
+          "applyAttrValid": false,
+          "applyValue": null,
+          "applied": []
+        },
+        {
+          "path": "/World/Group/Model",
+          "apiValid": true,
+          "computed": "bounds",
+          "applyAttrValid": true,
+          "applyValue": "0",
+          "applied": [
+            "GeomModelAPI"
+          ]
+        }
+      ],
+      "prims": [
+        {
+          "path": "/World/Group/Model",
+          "type": "",
+          "extentMin": null,
+          "extentMax": null,
+          "points": null
+        },
+        {
+          "path": "/World/Group/Model/Geom",
+          "type": "cube",
+          "extentMin": null,
+          "extentMax": null,
+          "points": null
+        }
+      ]
+    },
+    {
+      "operation": "parentOrigin",
+      "stage": [
+        {
+          "path": "/World/Group",
+          "apiValid": true,
+          "computed": "origin",
+          "applyAttrValid": true,
+          "applyValue": "0",
+          "applied": [
+            "GeomModelAPI"
+          ]
+        },
+        {
+          "path": "/World/Group/Model",
+          "apiValid": true,
+          "computed": "origin",
+          "applyAttrValid": true,
+          "applyValue": "0",
+          "applied": [
+            "GeomModelAPI"
+          ]
+        }
+      ],
+      "prims": [
+        {
+          "path": "/World/Group/Model",
+          "type": "",
+          "extentMin": null,
+          "extentMax": null,
+          "points": null
+        },
+        {
+          "path": "/World/Group/Model/originCurves",
+          "type": "basisCurves",
+          "extentMin": null,
+          "extentMax": null,
+          "points": "[(0, 0, 0), (1, 0, 0), (0, 1, 0), (0, 0, 1)]"
+        }
+      ]
+    },
+    {
+      "operation": "parentClear",
+      "stage": [
+        {
+          "path": "/World/Group",
+          "apiValid": true,
+          "computed": "bounds",
+          "applyAttrValid": true,
+          "applyValue": "0",
+          "applied": [
+            "GeomModelAPI"
+          ]
+        },
+        {
+          "path": "/World/Group/Model",
+          "apiValid": true,
+          "computed": "bounds",
+          "applyAttrValid": true,
+          "applyValue": "0",
+          "applied": [
+            "GeomModelAPI"
+          ]
+        }
+      ],
+      "prims": [
+        {
+          "path": "/World/Group/Model",
+          "type": "",
+          "extentMin": null,
+          "extentMax": null,
+          "points": null
+        },
+        {
+          "path": "/World/Group/Model/boundsCurves",
+          "type": "basisCurves",
+          "extentMin": null,
+          "extentMax": null,
+          "points": "[(0, 0, 0), (0, 0, 0), (0, 0, 0), (0, 0, 0), (0, 0, 0), (0, 0, 0), (0, 0, 0), (0, 0, 0)]"
+        }
+      ]
+    }
+  ]
+}

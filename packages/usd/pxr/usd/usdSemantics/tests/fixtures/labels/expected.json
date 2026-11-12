@@ -1,0 +1,3281 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/usd/usdSemantics/tests/fixtures/labels/capture.py",
+  "upstream": [
+    "pxr/usd/usdSemantics/labelsAPI.cpp:267-305",
+    "pxr/usd/usdSemantics/labelsQuery.cpp:17-267",
+    "pxr/usd/usdSemantics/testenv/testUsdSemanticsLabelsAPI.py",
+    "pxr/usd/usdSemantics/testenv/testUsdSemanticsLabelsQuery.py"
+  ],
+  "payload": {
+    "authoring": [
+      {
+        "name": "absent",
+        "default": null,
+        "sparse": false,
+        "canApply": true,
+        "valid": true,
+        "type": "token[]",
+        "value": [],
+        "authored": false,
+        "spec": true,
+        "custom": false
+      },
+      {
+        "name": "empty",
+        "default": [],
+        "sparse": false,
+        "canApply": true,
+        "valid": true,
+        "type": "token[]",
+        "value": [],
+        "authored": true,
+        "spec": true,
+        "custom": false
+      },
+      {
+        "name": "sparseEmpty",
+        "default": [],
+        "sparse": true,
+        "canApply": true,
+        "valid": true,
+        "type": "token[]",
+        "value": [],
+        "authored": false,
+        "spec": false,
+        "custom": false
+      },
+      {
+        "name": "sparseAbsent",
+        "default": null,
+        "sparse": true,
+        "canApply": true,
+        "valid": true,
+        "type": "token[]",
+        "value": [],
+        "authored": false,
+        "spec": false,
+        "custom": false
+      },
+      {
+        "name": "values",
+        "default": [
+          "alpha",
+          "beta"
+        ],
+        "sparse": true,
+        "canApply": true,
+        "valid": true,
+        "type": "token[]",
+        "value": [
+          "alpha",
+          "beta"
+        ],
+        "authored": true,
+        "spec": true,
+        "custom": false
+      }
+    ],
+    "rows": [
+      {
+        "taxonomy": "style",
+        "time": "default",
+        "path": "/",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "style",
+        "time": "default",
+        "path": "/World",
+        "direct": [
+          "big",
+          "red",
+          "\ue000",
+          "\ud83d\ude00"
+        ],
+        "inherited": [
+          "big",
+          "red",
+          "\ue000",
+          "\ud83d\ude00"
+        ],
+        "hasDirect": true,
+        "hasInherited": true
+      },
+      {
+        "taxonomy": "style",
+        "time": "default",
+        "path": "/World/Group",
+        "direct": [],
+        "inherited": [
+          "big",
+          "red",
+          "\ue000",
+          "\ud83d\ude00"
+        ],
+        "hasDirect": false,
+        "hasInherited": true
+      },
+      {
+        "taxonomy": "style",
+        "time": "default",
+        "path": "/World/Group/Child",
+        "direct": [
+          "red",
+          "small"
+        ],
+        "inherited": [
+          "big",
+          "red",
+          "small",
+          "\ue000",
+          "\ud83d\ude00"
+        ],
+        "hasDirect": true,
+        "hasInherited": true
+      },
+      {
+        "taxonomy": "style",
+        "time": "default",
+        "path": "/World/Group/Empty",
+        "direct": [],
+        "inherited": [
+          "big",
+          "red",
+          "\ue000",
+          "\ud83d\ude00"
+        ],
+        "hasDirect": false,
+        "hasInherited": true
+      },
+      {
+        "taxonomy": "style",
+        "time": "default",
+        "path": "/World/Blocked",
+        "direct": [],
+        "inherited": [
+          "big",
+          "red",
+          "\ue000",
+          "\ud83d\ude00"
+        ],
+        "hasDirect": false,
+        "hasInherited": true
+      },
+      {
+        "taxonomy": "style",
+        "time": "default",
+        "path": "/Orphan",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "style",
+        "time": "default",
+        "path": "/NoLabels",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "style",
+        "time": "default",
+        "path": "/WrongType",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "style",
+        "time": "earliest",
+        "path": "/",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "style",
+        "time": "earliest",
+        "path": "/World",
+        "direct": [
+          "big",
+          "red",
+          "\ue000",
+          "\ud83d\ude00"
+        ],
+        "inherited": [
+          "big",
+          "red",
+          "\ue000",
+          "\ud83d\ude00"
+        ],
+        "hasDirect": true,
+        "hasInherited": true
+      },
+      {
+        "taxonomy": "style",
+        "time": "earliest",
+        "path": "/World/Group",
+        "direct": [],
+        "inherited": [
+          "big",
+          "red",
+          "\ue000",
+          "\ud83d\ude00"
+        ],
+        "hasDirect": false,
+        "hasInherited": true
+      },
+      {
+        "taxonomy": "style",
+        "time": "earliest",
+        "path": "/World/Group/Child",
+        "direct": [
+          "early"
+        ],
+        "inherited": [
+          "big",
+          "early",
+          "red",
+          "\ue000",
+          "\ud83d\ude00"
+        ],
+        "hasDirect": false,
+        "hasInherited": true
+      },
+      {
+        "taxonomy": "style",
+        "time": "earliest",
+        "path": "/World/Group/Empty",
+        "direct": [],
+        "inherited": [
+          "big",
+          "red",
+          "\ue000",
+          "\ud83d\ude00"
+        ],
+        "hasDirect": false,
+        "hasInherited": true
+      },
+      {
+        "taxonomy": "style",
+        "time": "earliest",
+        "path": "/World/Blocked",
+        "direct": [],
+        "inherited": [
+          "big",
+          "red",
+          "\ue000",
+          "\ud83d\ude00"
+        ],
+        "hasDirect": false,
+        "hasInherited": true
+      },
+      {
+        "taxonomy": "style",
+        "time": "earliest",
+        "path": "/Orphan",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "style",
+        "time": "earliest",
+        "path": "/NoLabels",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "style",
+        "time": "earliest",
+        "path": "/WrongType",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "style",
+        "time": "at2",
+        "path": "/",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "style",
+        "time": "at2",
+        "path": "/World",
+        "direct": [
+          "big",
+          "red",
+          "\ue000",
+          "\ud83d\ude00"
+        ],
+        "inherited": [
+          "big",
+          "red",
+          "\ue000",
+          "\ud83d\ude00"
+        ],
+        "hasDirect": true,
+        "hasInherited": true
+      },
+      {
+        "taxonomy": "style",
+        "time": "at2",
+        "path": "/World/Group",
+        "direct": [],
+        "inherited": [
+          "big",
+          "red",
+          "\ue000",
+          "\ud83d\ude00"
+        ],
+        "hasDirect": false,
+        "hasInherited": true
+      },
+      {
+        "taxonomy": "style",
+        "time": "at2",
+        "path": "/World/Group/Child",
+        "direct": [
+          "early"
+        ],
+        "inherited": [
+          "big",
+          "early",
+          "red",
+          "\ue000",
+          "\ud83d\ude00"
+        ],
+        "hasDirect": false,
+        "hasInherited": true
+      },
+      {
+        "taxonomy": "style",
+        "time": "at2",
+        "path": "/World/Group/Empty",
+        "direct": [],
+        "inherited": [
+          "big",
+          "red",
+          "\ue000",
+          "\ud83d\ude00"
+        ],
+        "hasDirect": false,
+        "hasInherited": true
+      },
+      {
+        "taxonomy": "style",
+        "time": "at2",
+        "path": "/World/Blocked",
+        "direct": [],
+        "inherited": [
+          "big",
+          "red",
+          "\ue000",
+          "\ud83d\ude00"
+        ],
+        "hasDirect": false,
+        "hasInherited": true
+      },
+      {
+        "taxonomy": "style",
+        "time": "at2",
+        "path": "/Orphan",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "style",
+        "time": "at2",
+        "path": "/NoLabels",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "style",
+        "time": "at2",
+        "path": "/WrongType",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "style",
+        "time": "closed",
+        "path": "/",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "style",
+        "time": "closed",
+        "path": "/World",
+        "direct": [
+          "big",
+          "red",
+          "\ue000",
+          "\ud83d\ude00"
+        ],
+        "inherited": [
+          "big",
+          "red",
+          "\ue000",
+          "\ud83d\ude00"
+        ],
+        "hasDirect": true,
+        "hasInherited": true
+      },
+      {
+        "taxonomy": "style",
+        "time": "closed",
+        "path": "/World/Group",
+        "direct": [],
+        "inherited": [
+          "big",
+          "red",
+          "\ue000",
+          "\ud83d\ude00"
+        ],
+        "hasDirect": false,
+        "hasInherited": true
+      },
+      {
+        "taxonomy": "style",
+        "time": "closed",
+        "path": "/World/Group/Child",
+        "direct": [
+          "early",
+          "late"
+        ],
+        "inherited": [
+          "big",
+          "early",
+          "late",
+          "red",
+          "\ue000",
+          "\ud83d\ude00"
+        ],
+        "hasDirect": false,
+        "hasInherited": true
+      },
+      {
+        "taxonomy": "style",
+        "time": "closed",
+        "path": "/World/Group/Empty",
+        "direct": [],
+        "inherited": [
+          "big",
+          "red",
+          "\ue000",
+          "\ud83d\ude00"
+        ],
+        "hasDirect": false,
+        "hasInherited": true
+      },
+      {
+        "taxonomy": "style",
+        "time": "closed",
+        "path": "/World/Blocked",
+        "direct": [],
+        "inherited": [
+          "big",
+          "red",
+          "\ue000",
+          "\ud83d\ude00"
+        ],
+        "hasDirect": false,
+        "hasInherited": true
+      },
+      {
+        "taxonomy": "style",
+        "time": "closed",
+        "path": "/Orphan",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "style",
+        "time": "closed",
+        "path": "/NoLabels",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "style",
+        "time": "closed",
+        "path": "/WrongType",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "style",
+        "time": "open",
+        "path": "/",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "style",
+        "time": "open",
+        "path": "/World",
+        "direct": [
+          "big",
+          "red",
+          "\ue000",
+          "\ud83d\ude00"
+        ],
+        "inherited": [
+          "big",
+          "red",
+          "\ue000",
+          "\ud83d\ude00"
+        ],
+        "hasDirect": true,
+        "hasInherited": true
+      },
+      {
+        "taxonomy": "style",
+        "time": "open",
+        "path": "/World/Group",
+        "direct": [],
+        "inherited": [
+          "big",
+          "red",
+          "\ue000",
+          "\ud83d\ude00"
+        ],
+        "hasDirect": false,
+        "hasInherited": true
+      },
+      {
+        "taxonomy": "style",
+        "time": "open",
+        "path": "/World/Group/Child",
+        "direct": [
+          "early"
+        ],
+        "inherited": [
+          "big",
+          "early",
+          "red",
+          "\ue000",
+          "\ud83d\ude00"
+        ],
+        "hasDirect": false,
+        "hasInherited": true
+      },
+      {
+        "taxonomy": "style",
+        "time": "open",
+        "path": "/World/Group/Empty",
+        "direct": [],
+        "inherited": [
+          "big",
+          "red",
+          "\ue000",
+          "\ud83d\ude00"
+        ],
+        "hasDirect": false,
+        "hasInherited": true
+      },
+      {
+        "taxonomy": "style",
+        "time": "open",
+        "path": "/World/Blocked",
+        "direct": [],
+        "inherited": [
+          "big",
+          "red",
+          "\ue000",
+          "\ud83d\ude00"
+        ],
+        "hasDirect": false,
+        "hasInherited": true
+      },
+      {
+        "taxonomy": "style",
+        "time": "open",
+        "path": "/Orphan",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "style",
+        "time": "open",
+        "path": "/NoLabels",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "style",
+        "time": "open",
+        "path": "/WrongType",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "style",
+        "time": "before",
+        "path": "/",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "style",
+        "time": "before",
+        "path": "/World",
+        "direct": [
+          "big",
+          "red",
+          "\ue000",
+          "\ud83d\ude00"
+        ],
+        "inherited": [
+          "big",
+          "red",
+          "\ue000",
+          "\ud83d\ude00"
+        ],
+        "hasDirect": true,
+        "hasInherited": true
+      },
+      {
+        "taxonomy": "style",
+        "time": "before",
+        "path": "/World/Group",
+        "direct": [],
+        "inherited": [
+          "big",
+          "red",
+          "\ue000",
+          "\ud83d\ude00"
+        ],
+        "hasDirect": false,
+        "hasInherited": true
+      },
+      {
+        "taxonomy": "style",
+        "time": "before",
+        "path": "/World/Group/Child",
+        "direct": [
+          "early"
+        ],
+        "inherited": [
+          "big",
+          "early",
+          "red",
+          "\ue000",
+          "\ud83d\ude00"
+        ],
+        "hasDirect": false,
+        "hasInherited": true
+      },
+      {
+        "taxonomy": "style",
+        "time": "before",
+        "path": "/World/Group/Empty",
+        "direct": [],
+        "inherited": [
+          "big",
+          "red",
+          "\ue000",
+          "\ud83d\ude00"
+        ],
+        "hasDirect": false,
+        "hasInherited": true
+      },
+      {
+        "taxonomy": "style",
+        "time": "before",
+        "path": "/World/Blocked",
+        "direct": [],
+        "inherited": [
+          "big",
+          "red",
+          "\ue000",
+          "\ud83d\ude00"
+        ],
+        "hasDirect": false,
+        "hasInherited": true
+      },
+      {
+        "taxonomy": "style",
+        "time": "before",
+        "path": "/Orphan",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "style",
+        "time": "before",
+        "path": "/NoLabels",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "style",
+        "time": "before",
+        "path": "/WrongType",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "style",
+        "time": "after",
+        "path": "/",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "style",
+        "time": "after",
+        "path": "/World",
+        "direct": [
+          "big",
+          "red",
+          "\ue000",
+          "\ud83d\ude00"
+        ],
+        "inherited": [
+          "big",
+          "red",
+          "\ue000",
+          "\ud83d\ude00"
+        ],
+        "hasDirect": true,
+        "hasInherited": true
+      },
+      {
+        "taxonomy": "style",
+        "time": "after",
+        "path": "/World/Group",
+        "direct": [],
+        "inherited": [
+          "big",
+          "red",
+          "\ue000",
+          "\ud83d\ude00"
+        ],
+        "hasDirect": false,
+        "hasInherited": true
+      },
+      {
+        "taxonomy": "style",
+        "time": "after",
+        "path": "/World/Group/Child",
+        "direct": [
+          "late"
+        ],
+        "inherited": [
+          "big",
+          "late",
+          "red",
+          "\ue000",
+          "\ud83d\ude00"
+        ],
+        "hasDirect": false,
+        "hasInherited": true
+      },
+      {
+        "taxonomy": "style",
+        "time": "after",
+        "path": "/World/Group/Empty",
+        "direct": [],
+        "inherited": [
+          "big",
+          "red",
+          "\ue000",
+          "\ud83d\ude00"
+        ],
+        "hasDirect": false,
+        "hasInherited": true
+      },
+      {
+        "taxonomy": "style",
+        "time": "after",
+        "path": "/World/Blocked",
+        "direct": [],
+        "inherited": [
+          "big",
+          "red",
+          "\ue000",
+          "\ud83d\ude00"
+        ],
+        "hasDirect": false,
+        "hasInherited": true
+      },
+      {
+        "taxonomy": "style",
+        "time": "after",
+        "path": "/Orphan",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "style",
+        "time": "after",
+        "path": "/NoLabels",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "style",
+        "time": "after",
+        "path": "/WrongType",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "style",
+        "time": "full",
+        "path": "/",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "style",
+        "time": "full",
+        "path": "/World",
+        "direct": [
+          "big",
+          "red",
+          "\ue000",
+          "\ud83d\ude00"
+        ],
+        "inherited": [
+          "big",
+          "red",
+          "\ue000",
+          "\ud83d\ude00"
+        ],
+        "hasDirect": true,
+        "hasInherited": true
+      },
+      {
+        "taxonomy": "style",
+        "time": "full",
+        "path": "/World/Group",
+        "direct": [],
+        "inherited": [
+          "big",
+          "red",
+          "\ue000",
+          "\ud83d\ude00"
+        ],
+        "hasDirect": false,
+        "hasInherited": true
+      },
+      {
+        "taxonomy": "style",
+        "time": "full",
+        "path": "/World/Group/Child",
+        "direct": [
+          "early",
+          "late"
+        ],
+        "inherited": [
+          "big",
+          "early",
+          "late",
+          "red",
+          "\ue000",
+          "\ud83d\ude00"
+        ],
+        "hasDirect": false,
+        "hasInherited": true
+      },
+      {
+        "taxonomy": "style",
+        "time": "full",
+        "path": "/World/Group/Empty",
+        "direct": [],
+        "inherited": [
+          "big",
+          "red",
+          "\ue000",
+          "\ud83d\ude00"
+        ],
+        "hasDirect": false,
+        "hasInherited": true
+      },
+      {
+        "taxonomy": "style",
+        "time": "full",
+        "path": "/World/Blocked",
+        "direct": [],
+        "inherited": [
+          "big",
+          "red",
+          "\ue000",
+          "\ud83d\ude00"
+        ],
+        "hasDirect": false,
+        "hasInherited": true
+      },
+      {
+        "taxonomy": "style",
+        "time": "full",
+        "path": "/Orphan",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "style",
+        "time": "full",
+        "path": "/NoLabels",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "style",
+        "time": "full",
+        "path": "/WrongType",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category",
+        "time": "default",
+        "path": "/",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category",
+        "time": "default",
+        "path": "/World",
+        "direct": [
+          "object"
+        ],
+        "inherited": [
+          "object"
+        ],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category",
+        "time": "default",
+        "path": "/World/Group",
+        "direct": [],
+        "inherited": [
+          "object"
+        ],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category",
+        "time": "default",
+        "path": "/World/Group/Child",
+        "direct": [
+          "chair"
+        ],
+        "inherited": [
+          "chair",
+          "object"
+        ],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category",
+        "time": "default",
+        "path": "/World/Group/Empty",
+        "direct": [],
+        "inherited": [
+          "object"
+        ],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category",
+        "time": "default",
+        "path": "/World/Blocked",
+        "direct": [],
+        "inherited": [
+          "object"
+        ],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category",
+        "time": "default",
+        "path": "/Orphan",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category",
+        "time": "default",
+        "path": "/NoLabels",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category",
+        "time": "default",
+        "path": "/WrongType",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category",
+        "time": "earliest",
+        "path": "/",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category",
+        "time": "earliest",
+        "path": "/World",
+        "direct": [
+          "object"
+        ],
+        "inherited": [
+          "object"
+        ],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category",
+        "time": "earliest",
+        "path": "/World/Group",
+        "direct": [],
+        "inherited": [
+          "object"
+        ],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category",
+        "time": "earliest",
+        "path": "/World/Group/Child",
+        "direct": [
+          "chair"
+        ],
+        "inherited": [
+          "chair",
+          "object"
+        ],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category",
+        "time": "earliest",
+        "path": "/World/Group/Empty",
+        "direct": [],
+        "inherited": [
+          "object"
+        ],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category",
+        "time": "earliest",
+        "path": "/World/Blocked",
+        "direct": [],
+        "inherited": [
+          "object"
+        ],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category",
+        "time": "earliest",
+        "path": "/Orphan",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category",
+        "time": "earliest",
+        "path": "/NoLabels",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category",
+        "time": "earliest",
+        "path": "/WrongType",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category",
+        "time": "at2",
+        "path": "/",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category",
+        "time": "at2",
+        "path": "/World",
+        "direct": [
+          "object"
+        ],
+        "inherited": [
+          "object"
+        ],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category",
+        "time": "at2",
+        "path": "/World/Group",
+        "direct": [],
+        "inherited": [
+          "object"
+        ],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category",
+        "time": "at2",
+        "path": "/World/Group/Child",
+        "direct": [
+          "chair"
+        ],
+        "inherited": [
+          "chair",
+          "object"
+        ],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category",
+        "time": "at2",
+        "path": "/World/Group/Empty",
+        "direct": [],
+        "inherited": [
+          "object"
+        ],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category",
+        "time": "at2",
+        "path": "/World/Blocked",
+        "direct": [],
+        "inherited": [
+          "object"
+        ],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category",
+        "time": "at2",
+        "path": "/Orphan",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category",
+        "time": "at2",
+        "path": "/NoLabels",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category",
+        "time": "at2",
+        "path": "/WrongType",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category",
+        "time": "closed",
+        "path": "/",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category",
+        "time": "closed",
+        "path": "/World",
+        "direct": [
+          "object"
+        ],
+        "inherited": [
+          "object"
+        ],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category",
+        "time": "closed",
+        "path": "/World/Group",
+        "direct": [],
+        "inherited": [
+          "object"
+        ],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category",
+        "time": "closed",
+        "path": "/World/Group/Child",
+        "direct": [
+          "chair"
+        ],
+        "inherited": [
+          "chair",
+          "object"
+        ],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category",
+        "time": "closed",
+        "path": "/World/Group/Empty",
+        "direct": [],
+        "inherited": [
+          "object"
+        ],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category",
+        "time": "closed",
+        "path": "/World/Blocked",
+        "direct": [],
+        "inherited": [
+          "object"
+        ],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category",
+        "time": "closed",
+        "path": "/Orphan",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category",
+        "time": "closed",
+        "path": "/NoLabels",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category",
+        "time": "closed",
+        "path": "/WrongType",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category",
+        "time": "open",
+        "path": "/",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category",
+        "time": "open",
+        "path": "/World",
+        "direct": [
+          "object"
+        ],
+        "inherited": [
+          "object"
+        ],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category",
+        "time": "open",
+        "path": "/World/Group",
+        "direct": [],
+        "inherited": [
+          "object"
+        ],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category",
+        "time": "open",
+        "path": "/World/Group/Child",
+        "direct": [
+          "chair"
+        ],
+        "inherited": [
+          "chair",
+          "object"
+        ],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category",
+        "time": "open",
+        "path": "/World/Group/Empty",
+        "direct": [],
+        "inherited": [
+          "object"
+        ],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category",
+        "time": "open",
+        "path": "/World/Blocked",
+        "direct": [],
+        "inherited": [
+          "object"
+        ],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category",
+        "time": "open",
+        "path": "/Orphan",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category",
+        "time": "open",
+        "path": "/NoLabels",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category",
+        "time": "open",
+        "path": "/WrongType",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category",
+        "time": "before",
+        "path": "/",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category",
+        "time": "before",
+        "path": "/World",
+        "direct": [
+          "object"
+        ],
+        "inherited": [
+          "object"
+        ],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category",
+        "time": "before",
+        "path": "/World/Group",
+        "direct": [],
+        "inherited": [
+          "object"
+        ],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category",
+        "time": "before",
+        "path": "/World/Group/Child",
+        "direct": [
+          "chair"
+        ],
+        "inherited": [
+          "chair",
+          "object"
+        ],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category",
+        "time": "before",
+        "path": "/World/Group/Empty",
+        "direct": [],
+        "inherited": [
+          "object"
+        ],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category",
+        "time": "before",
+        "path": "/World/Blocked",
+        "direct": [],
+        "inherited": [
+          "object"
+        ],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category",
+        "time": "before",
+        "path": "/Orphan",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category",
+        "time": "before",
+        "path": "/NoLabels",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category",
+        "time": "before",
+        "path": "/WrongType",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category",
+        "time": "after",
+        "path": "/",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category",
+        "time": "after",
+        "path": "/World",
+        "direct": [
+          "object"
+        ],
+        "inherited": [
+          "object"
+        ],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category",
+        "time": "after",
+        "path": "/World/Group",
+        "direct": [],
+        "inherited": [
+          "object"
+        ],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category",
+        "time": "after",
+        "path": "/World/Group/Child",
+        "direct": [
+          "chair"
+        ],
+        "inherited": [
+          "chair",
+          "object"
+        ],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category",
+        "time": "after",
+        "path": "/World/Group/Empty",
+        "direct": [],
+        "inherited": [
+          "object"
+        ],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category",
+        "time": "after",
+        "path": "/World/Blocked",
+        "direct": [],
+        "inherited": [
+          "object"
+        ],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category",
+        "time": "after",
+        "path": "/Orphan",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category",
+        "time": "after",
+        "path": "/NoLabels",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category",
+        "time": "after",
+        "path": "/WrongType",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category",
+        "time": "full",
+        "path": "/",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category",
+        "time": "full",
+        "path": "/World",
+        "direct": [
+          "object"
+        ],
+        "inherited": [
+          "object"
+        ],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category",
+        "time": "full",
+        "path": "/World/Group",
+        "direct": [],
+        "inherited": [
+          "object"
+        ],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category",
+        "time": "full",
+        "path": "/World/Group/Child",
+        "direct": [
+          "chair"
+        ],
+        "inherited": [
+          "chair",
+          "object"
+        ],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category",
+        "time": "full",
+        "path": "/World/Group/Empty",
+        "direct": [],
+        "inherited": [
+          "object"
+        ],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category",
+        "time": "full",
+        "path": "/World/Blocked",
+        "direct": [],
+        "inherited": [
+          "object"
+        ],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category",
+        "time": "full",
+        "path": "/Orphan",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category",
+        "time": "full",
+        "path": "/NoLabels",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category",
+        "time": "full",
+        "path": "/WrongType",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category:detail",
+        "time": "default",
+        "path": "/",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category:detail",
+        "time": "default",
+        "path": "/World",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category:detail",
+        "time": "default",
+        "path": "/World/Group",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category:detail",
+        "time": "default",
+        "path": "/World/Group/Child",
+        "direct": [
+          "nested"
+        ],
+        "inherited": [
+          "nested"
+        ],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category:detail",
+        "time": "default",
+        "path": "/World/Group/Empty",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category:detail",
+        "time": "default",
+        "path": "/World/Blocked",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category:detail",
+        "time": "default",
+        "path": "/Orphan",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category:detail",
+        "time": "default",
+        "path": "/NoLabels",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category:detail",
+        "time": "default",
+        "path": "/WrongType",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category:detail",
+        "time": "earliest",
+        "path": "/",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category:detail",
+        "time": "earliest",
+        "path": "/World",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category:detail",
+        "time": "earliest",
+        "path": "/World/Group",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category:detail",
+        "time": "earliest",
+        "path": "/World/Group/Child",
+        "direct": [
+          "nested"
+        ],
+        "inherited": [
+          "nested"
+        ],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category:detail",
+        "time": "earliest",
+        "path": "/World/Group/Empty",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category:detail",
+        "time": "earliest",
+        "path": "/World/Blocked",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category:detail",
+        "time": "earliest",
+        "path": "/Orphan",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category:detail",
+        "time": "earliest",
+        "path": "/NoLabels",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category:detail",
+        "time": "earliest",
+        "path": "/WrongType",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category:detail",
+        "time": "at2",
+        "path": "/",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category:detail",
+        "time": "at2",
+        "path": "/World",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category:detail",
+        "time": "at2",
+        "path": "/World/Group",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category:detail",
+        "time": "at2",
+        "path": "/World/Group/Child",
+        "direct": [
+          "nested"
+        ],
+        "inherited": [
+          "nested"
+        ],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category:detail",
+        "time": "at2",
+        "path": "/World/Group/Empty",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category:detail",
+        "time": "at2",
+        "path": "/World/Blocked",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category:detail",
+        "time": "at2",
+        "path": "/Orphan",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category:detail",
+        "time": "at2",
+        "path": "/NoLabels",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category:detail",
+        "time": "at2",
+        "path": "/WrongType",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category:detail",
+        "time": "closed",
+        "path": "/",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category:detail",
+        "time": "closed",
+        "path": "/World",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category:detail",
+        "time": "closed",
+        "path": "/World/Group",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category:detail",
+        "time": "closed",
+        "path": "/World/Group/Child",
+        "direct": [
+          "nested"
+        ],
+        "inherited": [
+          "nested"
+        ],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category:detail",
+        "time": "closed",
+        "path": "/World/Group/Empty",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category:detail",
+        "time": "closed",
+        "path": "/World/Blocked",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category:detail",
+        "time": "closed",
+        "path": "/Orphan",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category:detail",
+        "time": "closed",
+        "path": "/NoLabels",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category:detail",
+        "time": "closed",
+        "path": "/WrongType",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category:detail",
+        "time": "open",
+        "path": "/",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category:detail",
+        "time": "open",
+        "path": "/World",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category:detail",
+        "time": "open",
+        "path": "/World/Group",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category:detail",
+        "time": "open",
+        "path": "/World/Group/Child",
+        "direct": [
+          "nested"
+        ],
+        "inherited": [
+          "nested"
+        ],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category:detail",
+        "time": "open",
+        "path": "/World/Group/Empty",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category:detail",
+        "time": "open",
+        "path": "/World/Blocked",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category:detail",
+        "time": "open",
+        "path": "/Orphan",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category:detail",
+        "time": "open",
+        "path": "/NoLabels",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category:detail",
+        "time": "open",
+        "path": "/WrongType",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category:detail",
+        "time": "before",
+        "path": "/",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category:detail",
+        "time": "before",
+        "path": "/World",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category:detail",
+        "time": "before",
+        "path": "/World/Group",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category:detail",
+        "time": "before",
+        "path": "/World/Group/Child",
+        "direct": [
+          "nested"
+        ],
+        "inherited": [
+          "nested"
+        ],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category:detail",
+        "time": "before",
+        "path": "/World/Group/Empty",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category:detail",
+        "time": "before",
+        "path": "/World/Blocked",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category:detail",
+        "time": "before",
+        "path": "/Orphan",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category:detail",
+        "time": "before",
+        "path": "/NoLabels",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category:detail",
+        "time": "before",
+        "path": "/WrongType",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category:detail",
+        "time": "after",
+        "path": "/",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category:detail",
+        "time": "after",
+        "path": "/World",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category:detail",
+        "time": "after",
+        "path": "/World/Group",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category:detail",
+        "time": "after",
+        "path": "/World/Group/Child",
+        "direct": [
+          "nested"
+        ],
+        "inherited": [
+          "nested"
+        ],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category:detail",
+        "time": "after",
+        "path": "/World/Group/Empty",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category:detail",
+        "time": "after",
+        "path": "/World/Blocked",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category:detail",
+        "time": "after",
+        "path": "/Orphan",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category:detail",
+        "time": "after",
+        "path": "/NoLabels",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category:detail",
+        "time": "after",
+        "path": "/WrongType",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category:detail",
+        "time": "full",
+        "path": "/",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category:detail",
+        "time": "full",
+        "path": "/World",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category:detail",
+        "time": "full",
+        "path": "/World/Group",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category:detail",
+        "time": "full",
+        "path": "/World/Group/Child",
+        "direct": [
+          "nested"
+        ],
+        "inherited": [
+          "nested"
+        ],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category:detail",
+        "time": "full",
+        "path": "/World/Group/Empty",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category:detail",
+        "time": "full",
+        "path": "/World/Blocked",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category:detail",
+        "time": "full",
+        "path": "/Orphan",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category:detail",
+        "time": "full",
+        "path": "/NoLabels",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "category:detail",
+        "time": "full",
+        "path": "/WrongType",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "absent",
+        "time": "default",
+        "path": "/",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "absent",
+        "time": "default",
+        "path": "/World",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "absent",
+        "time": "default",
+        "path": "/World/Group",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "absent",
+        "time": "default",
+        "path": "/World/Group/Child",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "absent",
+        "time": "default",
+        "path": "/World/Group/Empty",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "absent",
+        "time": "default",
+        "path": "/World/Blocked",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "absent",
+        "time": "default",
+        "path": "/Orphan",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "absent",
+        "time": "default",
+        "path": "/NoLabels",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "absent",
+        "time": "default",
+        "path": "/WrongType",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "absent",
+        "time": "earliest",
+        "path": "/",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "absent",
+        "time": "earliest",
+        "path": "/World",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "absent",
+        "time": "earliest",
+        "path": "/World/Group",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "absent",
+        "time": "earliest",
+        "path": "/World/Group/Child",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "absent",
+        "time": "earliest",
+        "path": "/World/Group/Empty",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "absent",
+        "time": "earliest",
+        "path": "/World/Blocked",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "absent",
+        "time": "earliest",
+        "path": "/Orphan",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "absent",
+        "time": "earliest",
+        "path": "/NoLabels",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "absent",
+        "time": "earliest",
+        "path": "/WrongType",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "absent",
+        "time": "at2",
+        "path": "/",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "absent",
+        "time": "at2",
+        "path": "/World",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "absent",
+        "time": "at2",
+        "path": "/World/Group",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "absent",
+        "time": "at2",
+        "path": "/World/Group/Child",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "absent",
+        "time": "at2",
+        "path": "/World/Group/Empty",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "absent",
+        "time": "at2",
+        "path": "/World/Blocked",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "absent",
+        "time": "at2",
+        "path": "/Orphan",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "absent",
+        "time": "at2",
+        "path": "/NoLabels",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "absent",
+        "time": "at2",
+        "path": "/WrongType",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "absent",
+        "time": "closed",
+        "path": "/",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "absent",
+        "time": "closed",
+        "path": "/World",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "absent",
+        "time": "closed",
+        "path": "/World/Group",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "absent",
+        "time": "closed",
+        "path": "/World/Group/Child",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "absent",
+        "time": "closed",
+        "path": "/World/Group/Empty",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "absent",
+        "time": "closed",
+        "path": "/World/Blocked",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "absent",
+        "time": "closed",
+        "path": "/Orphan",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "absent",
+        "time": "closed",
+        "path": "/NoLabels",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "absent",
+        "time": "closed",
+        "path": "/WrongType",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "absent",
+        "time": "open",
+        "path": "/",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "absent",
+        "time": "open",
+        "path": "/World",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "absent",
+        "time": "open",
+        "path": "/World/Group",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "absent",
+        "time": "open",
+        "path": "/World/Group/Child",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "absent",
+        "time": "open",
+        "path": "/World/Group/Empty",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "absent",
+        "time": "open",
+        "path": "/World/Blocked",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "absent",
+        "time": "open",
+        "path": "/Orphan",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "absent",
+        "time": "open",
+        "path": "/NoLabels",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "absent",
+        "time": "open",
+        "path": "/WrongType",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "absent",
+        "time": "before",
+        "path": "/",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "absent",
+        "time": "before",
+        "path": "/World",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "absent",
+        "time": "before",
+        "path": "/World/Group",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "absent",
+        "time": "before",
+        "path": "/World/Group/Child",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "absent",
+        "time": "before",
+        "path": "/World/Group/Empty",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "absent",
+        "time": "before",
+        "path": "/World/Blocked",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "absent",
+        "time": "before",
+        "path": "/Orphan",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "absent",
+        "time": "before",
+        "path": "/NoLabels",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "absent",
+        "time": "before",
+        "path": "/WrongType",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "absent",
+        "time": "after",
+        "path": "/",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "absent",
+        "time": "after",
+        "path": "/World",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "absent",
+        "time": "after",
+        "path": "/World/Group",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "absent",
+        "time": "after",
+        "path": "/World/Group/Child",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "absent",
+        "time": "after",
+        "path": "/World/Group/Empty",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "absent",
+        "time": "after",
+        "path": "/World/Blocked",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "absent",
+        "time": "after",
+        "path": "/Orphan",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "absent",
+        "time": "after",
+        "path": "/NoLabels",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "absent",
+        "time": "after",
+        "path": "/WrongType",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "absent",
+        "time": "full",
+        "path": "/",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "absent",
+        "time": "full",
+        "path": "/World",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "absent",
+        "time": "full",
+        "path": "/World/Group",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "absent",
+        "time": "full",
+        "path": "/World/Group/Child",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "absent",
+        "time": "full",
+        "path": "/World/Group/Empty",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "absent",
+        "time": "full",
+        "path": "/World/Blocked",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "absent",
+        "time": "full",
+        "path": "/Orphan",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "absent",
+        "time": "full",
+        "path": "/NoLabels",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      },
+      {
+        "taxonomy": "absent",
+        "time": "full",
+        "path": "/WrongType",
+        "direct": [],
+        "inherited": [],
+        "hasDirect": false,
+        "hasInherited": false
+      }
+    ],
+    "schemas": [
+      {
+        "path": "/",
+        "applied": [],
+        "direct": [],
+        "inherited": [],
+        "hasAPI": false,
+        "valid": false
+      },
+      {
+        "path": "/World",
+        "applied": [
+          "SemanticsLabelsAPI:style",
+          "SemanticsLabelsAPI:category"
+        ],
+        "direct": [
+          "style",
+          "category"
+        ],
+        "inherited": [
+          "category",
+          "style"
+        ],
+        "hasAPI": true,
+        "valid": true
+      },
+      {
+        "path": "/World/Group",
+        "applied": [],
+        "direct": [],
+        "inherited": [
+          "category",
+          "style"
+        ],
+        "hasAPI": false,
+        "valid": false
+      },
+      {
+        "path": "/World/Group/Child",
+        "applied": [
+          "SemanticsLabelsAPI:style",
+          "SemanticsLabelsAPI:category",
+          "SemanticsLabelsAPI:category:detail"
+        ],
+        "direct": [
+          "style",
+          "category",
+          "category:detail"
+        ],
+        "inherited": [
+          "category",
+          "category:detail",
+          "style"
+        ],
+        "hasAPI": true,
+        "valid": true
+      },
+      {
+        "path": "/World/Group/Empty",
+        "applied": [
+          "SemanticsLabelsAPI:style"
+        ],
+        "direct": [
+          "style"
+        ],
+        "inherited": [
+          "category",
+          "style"
+        ],
+        "hasAPI": true,
+        "valid": true
+      },
+      {
+        "path": "/World/Blocked",
+        "applied": [
+          "SemanticsLabelsAPI:style"
+        ],
+        "direct": [
+          "style"
+        ],
+        "inherited": [
+          "category",
+          "style"
+        ],
+        "hasAPI": true,
+        "valid": true
+      },
+      {
+        "path": "/Orphan",
+        "applied": [],
+        "direct": [],
+        "inherited": [],
+        "hasAPI": false,
+        "valid": false
+      },
+      {
+        "path": "/NoLabels",
+        "applied": [],
+        "direct": [],
+        "inherited": [],
+        "hasAPI": false,
+        "valid": false
+      },
+      {
+        "path": "/WrongType",
+        "applied": [
+          "SemanticsLabelsAPI:style"
+        ],
+        "direct": [
+          "style"
+        ],
+        "inherited": [
+          "style"
+        ],
+        "hasAPI": true,
+        "valid": true
+      }
+    ],
+    "paths": [
+      {
+        "path": "/World.semantics:labels:style",
+        "valid": false
+      },
+      {
+        "path": "/World.semantics:labels:category:detail",
+        "valid": false
+      },
+      {
+        "path": "/World.style",
+        "valid": false
+      },
+      {
+        "path": "/World.semantics:labels",
+        "valid": false
+      },
+      {
+        "path": "/World.semantics:labels:labels",
+        "valid": false
+      },
+      {
+        "path": "/World.semantics:labels:__INSTANCE_NAME__",
+        "valid": false
+      },
+      {
+        "path": "/World",
+        "valid": false
+      }
+    ],
+    "cache": {
+      "before": [
+        "chair",
+        "object"
+      ],
+      "old": [
+        "chair",
+        "object"
+      ],
+      "fresh": [
+        "changed",
+        "object"
+      ]
+    },
+    "invalid": [
+      {
+        "taxonomy": "",
+        "emptyInterval": false,
+        "raised": true
+      },
+      {
+        "taxonomy": "style",
+        "emptyInterval": true,
+        "raised": true
+      }
+    ],
+    "attributeNames": [
+      "semantics:labels:__INSTANCE_NAME__"
+    ],
+    "instanceAttributeNames": [
+      "semantics:labels:style"
+    ],
+    "tokens": {
+      "semanticsLabels": "semantics:labels",
+      "template": "semantics:labels:__INSTANCE_NAME__",
+      "schema": "SemanticsLabelsAPI"
+    }
+  }
+}

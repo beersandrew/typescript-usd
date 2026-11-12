@@ -1,0 +1,9 @@
+#usda 1.0
+
+def "Clip"
+{
+    custom float clipped.timeSamples = {
+        1: 5,
+        3: 7,
+    }
+}

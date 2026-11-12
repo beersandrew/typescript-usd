@@ -1,0 +1,20 @@
+{
+    "Plugins": [
+        {
+            "Info": {
+                "Exec" : {
+                    "Schemas": {
+                        "TestExecConflictingPluginRegistrationSchema": {
+                        },
+                        "TestExecConflictingComputationalSchema": {
+                            "allowsPluginComputations": true
+                        }
+                    }
+                }
+            },
+            "LibraryPath": "TestExecConflictingPluginRegistration1.ts",
+            "Name": "TestExecConflictingPluginRegistration1",
+            "Type": "library"
+        }
+    ]
+}

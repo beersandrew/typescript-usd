@@ -1,0 +1,7 @@
+#usda 1.0
+
+def "prim" (
+    references = @sub.usda@</prim> (scale = -1)
+)
+{
+}

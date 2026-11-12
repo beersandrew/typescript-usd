@@ -1,0 +1,5 @@
+#usda 1.0
+(defaultPrim = "Reference")
+def Cube "Reference" {
+ double size = 2
+}

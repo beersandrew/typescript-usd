@@ -1,0 +1,42 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/usd/usd/tests/fixtures/unknownFileFormat/capture.py",
+  "upstream": [
+    "pxr/usd/sdf/layer.cpp",
+    "pxr/usd/sdf/fileFormatRegistry.cpp",
+    "pxr/usd/usd/stage.cpp",
+    "pxr/usd/usdMtlx/plugInfo.json"
+  ],
+  "payload": {
+    "findByExtension": false,
+    "layerFindOrOpen": {
+      "raised": true,
+      "errors": [
+        {
+          "commentary": "Cannot determine file format for @<path>@",
+          "codingError": true
+        }
+      ]
+    },
+    "stageOpen": {
+      "raised": true,
+      "errors": [
+        {
+          "commentary": "Cannot determine file format for @<path>@",
+          "codingError": true
+        },
+        {
+          "commentary": "Failed to open layer @<path>@",
+          "codingError": false
+        }
+      ]
+    },
+    "mtlxFormat": {
+      "formatId": "mtlx",
+      "declaredBy": [
+        "usdMtlx"
+      ]
+    }
+  }
+}

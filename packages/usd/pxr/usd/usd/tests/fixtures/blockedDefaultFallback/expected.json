@@ -1,0 +1,219 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/usd/usd/tests/fixtures/blockedDefaultFallback/capture.py",
+  "upstream": [
+    "pxr/usd/usd/stage.cpp:7261-7292",
+    "pxr/usd/usd/stage.cpp:8040-8059",
+    "pxr/usd/usd/stage.cpp:8951-8962",
+    "pxr/usd/usd/stage.cpp:9086-9091",
+    "pxr/usd/usd/stage.cpp:9168-9171",
+    "pxr/usd/usd/attributeQuery.cpp:132-160"
+  ],
+  "payload": {
+    "/BlockedDefault.radius": {
+      "get": {
+        "default": null,
+        "0": 1.0,
+        "1": 1.0,
+        "2": 1.0,
+        "pre1": 1.0
+      },
+      "queryGet": {
+        "default": 1.0,
+        "0": 1.0,
+        "1": 1.0,
+        "2": 1.0,
+        "pre1": 1.0
+      },
+      "source": {
+        "default": "Usd.ResolveInfoSourceFallback",
+        "0": "Usd.ResolveInfoSourceFallback",
+        "1": "Usd.ResolveInfoSourceFallback",
+        "2": "Usd.ResolveInfoSourceFallback",
+        "pre1": "Usd.ResolveInfoSourceFallback"
+      },
+      "valueIsBlocked": {
+        "default": true,
+        "0": true,
+        "1": true,
+        "2": true,
+        "pre1": true
+      },
+      "anyTimeSource": "Usd.ResolveInfoSourceFallback",
+      "anyTimeValueIsBlocked": true,
+      "hasValue": true,
+      "hasAuthoredValue": false
+    },
+    "/BlockedDefaultWithSamples.radius": {
+      "get": {
+        "default": null,
+        "0": 5.0,
+        "1": 5.0,
+        "2": 5.0,
+        "pre1": 5.0
+      },
+      "queryGet": {
+        "default": 1.0,
+        "0": 5.0,
+        "1": 5.0,
+        "2": 5.0,
+        "pre1": 5.0
+      },
+      "source": {
+        "default": "Usd.ResolveInfoSourceFallback",
+        "0": "Usd.ResolveInfoSourceTimeSamples",
+        "1": "Usd.ResolveInfoSourceTimeSamples",
+        "2": "Usd.ResolveInfoSourceTimeSamples",
+        "pre1": "Usd.ResolveInfoSourceTimeSamples"
+      },
+      "valueIsBlocked": {
+        "default": true,
+        "0": false,
+        "1": false,
+        "2": false,
+        "pre1": false
+      },
+      "anyTimeSource": "Usd.ResolveInfoSourceTimeSamples",
+      "anyTimeValueIsBlocked": false,
+      "hasValue": true,
+      "hasAuthoredValue": true
+    },
+    "/BlockedSample.radius": {
+      "get": {
+        "default": 1.0,
+        "0": null,
+        "1": null,
+        "2": null,
+        "pre1": null
+      },
+      "queryGet": {
+        "default": 1.0,
+        "0": null,
+        "1": null,
+        "2": null,
+        "pre1": null
+      },
+      "source": {
+        "default": "Usd.ResolveInfoSourceFallback",
+        "0": "Usd.ResolveInfoSourceTimeSamples",
+        "1": "Usd.ResolveInfoSourceTimeSamples",
+        "2": "Usd.ResolveInfoSourceTimeSamples",
+        "pre1": "Usd.ResolveInfoSourceTimeSamples"
+      },
+      "valueIsBlocked": {
+        "default": false,
+        "0": false,
+        "1": false,
+        "2": false,
+        "pre1": false
+      },
+      "anyTimeSource": "Usd.ResolveInfoSourceTimeSamples",
+      "anyTimeValueIsBlocked": false,
+      "hasValue": true,
+      "hasAuthoredValue": true
+    },
+    "/BlockedOverWeakSamples.radius": {
+      "get": {
+        "default": null,
+        "0": 1.0,
+        "1": 1.0,
+        "2": 1.0,
+        "pre1": 1.0
+      },
+      "queryGet": {
+        "default": 1.0,
+        "0": 1.0,
+        "1": 1.0,
+        "2": 1.0,
+        "pre1": 1.0
+      },
+      "source": {
+        "default": "Usd.ResolveInfoSourceFallback",
+        "0": "Usd.ResolveInfoSourceFallback",
+        "1": "Usd.ResolveInfoSourceFallback",
+        "2": "Usd.ResolveInfoSourceFallback",
+        "pre1": "Usd.ResolveInfoSourceFallback"
+      },
+      "valueIsBlocked": {
+        "default": true,
+        "0": true,
+        "1": true,
+        "2": true,
+        "pre1": true
+      },
+      "anyTimeSource": "Usd.ResolveInfoSourceFallback",
+      "anyTimeValueIsBlocked": true,
+      "hasValue": true,
+      "hasAuthoredValue": false
+    },
+    "/BlockedOverWeakDefault.radius": {
+      "get": {
+        "default": null,
+        "0": 1.0,
+        "1": 1.0,
+        "2": 1.0,
+        "pre1": 1.0
+      },
+      "queryGet": {
+        "default": 1.0,
+        "0": 1.0,
+        "1": 1.0,
+        "2": 1.0,
+        "pre1": 1.0
+      },
+      "source": {
+        "default": "Usd.ResolveInfoSourceFallback",
+        "0": "Usd.ResolveInfoSourceFallback",
+        "1": "Usd.ResolveInfoSourceFallback",
+        "2": "Usd.ResolveInfoSourceFallback",
+        "pre1": "Usd.ResolveInfoSourceFallback"
+      },
+      "valueIsBlocked": {
+        "default": true,
+        "0": true,
+        "1": true,
+        "2": true,
+        "pre1": true
+      },
+      "anyTimeSource": "Usd.ResolveInfoSourceFallback",
+      "anyTimeValueIsBlocked": true,
+      "hasValue": true,
+      "hasAuthoredValue": false
+    },
+    "/NoFallback.extra": {
+      "get": {
+        "default": null,
+        "0": null,
+        "1": null,
+        "2": null,
+        "pre1": null
+      },
+      "queryGet": {
+        "default": null,
+        "0": null,
+        "1": null,
+        "2": null,
+        "pre1": null
+      },
+      "source": {
+        "default": "Usd.ResolveInfoSourceNone",
+        "0": "Usd.ResolveInfoSourceNone",
+        "1": "Usd.ResolveInfoSourceNone",
+        "2": "Usd.ResolveInfoSourceNone",
+        "pre1": "Usd.ResolveInfoSourceNone"
+      },
+      "valueIsBlocked": {
+        "default": true,
+        "0": true,
+        "1": true,
+        "2": true,
+        "pre1": true
+      },
+      "anyTimeSource": "Usd.ResolveInfoSourceNone",
+      "anyTimeValueIsBlocked": true,
+      "hasValue": false,
+      "hasAuthoredValue": false
+    }
+  }
+}

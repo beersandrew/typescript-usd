@@ -1,0 +1,668 @@
+# UsdImagingStageSceneIndex
+/Looks/Base type=material
+	[material]
+/Looks/Preview type=material
+	[material]
+/Looks/Full type=material
+	[material]
+/Looks/Shiny type=material
+	[material]
+/Looks/ShinyFull type=material
+	[material]
+/Looks/Strong type=material
+	[material]
+/Looks/Local type=material
+	[material]
+/World type=
+	[usdMaterialBindings]
+		[]
+			[0]
+				[collectionMaterialBindings]
+					[0]
+						[bindingStrength]
+							TfToken weakerThanDescendants
+						[collectionName]
+							TfToken shiny
+						[collectionPrimPath]
+							SdfPath /World
+						[materialPath]
+							SdfPath /Looks/Shiny
+					[1]
+						[bindingStrength]
+							TfToken strongerThanDescendants
+						[collectionName]
+							TfToken strong
+						[collectionPrimPath]
+							SdfPath /World
+						[materialPath]
+							SdfPath /Looks/Strong
+				[directMaterialBinding]
+					[bindingStrength]
+						TfToken weakerThanDescendants
+					[materialPath]
+						SdfPath /Looks/Base
+		[full]
+			[0]
+				[collectionMaterialBindings]
+					[0]
+						[bindingStrength]
+							TfToken weakerThanDescendants
+						[collectionName]
+							TfToken shiny
+						[collectionPrimPath]
+							SdfPath /World
+						[materialPath]
+							SdfPath /Looks/ShinyFull
+		[preview]
+			[0]
+				[directMaterialBinding]
+					[bindingStrength]
+						TfToken weakerThanDescendants
+					[materialPath]
+						SdfPath /Looks/Preview
+/World/A type=mesh
+	[usdMaterialBindings]
+		[full]
+			[0]
+				[directMaterialBinding]
+					[bindingStrength]
+						TfToken weakerThanDescendants
+					[materialPath]
+						SdfPath /Looks/Full
+/World/B type=mesh
+	[usdMaterialBindings]
+		[]
+			[0]
+				[directMaterialBinding]
+					[bindingStrength]
+						TfToken weakerThanDescendants
+					[materialPath]
+						SdfPath /Looks/Local
+/World/C/Leaf type=mesh
+	[usdMaterialBindings]
+		[]
+			[0]
+				[directMaterialBinding]
+					[bindingStrength]
+						TfToken strongerThanDescendants
+					[materialPath]
+						SdfPath /Looks/Local
+/World/D type=mesh
+	[usdMaterialBindings]
+		[]
+			[0]
+				[directMaterialBinding]
+					[bindingStrength]
+						TfToken weakerThanDescendants
+					[materialPath]
+						SdfPath /Looks/Local
+/World/E type=
+	[usdMaterialBindings]
+		[preview]
+			[0]
+				[directMaterialBinding]
+					[bindingStrength]
+						TfToken strongerThanDescendants
+					[materialPath]
+						SdfPath /Looks/Strong
+/World/E/Child type=mesh
+	[usdMaterialBindings]
+		[preview]
+			[0]
+				[directMaterialBinding]
+					[bindingStrength]
+						TfToken weakerThanDescendants
+					[materialPath]
+						SdfPath /Looks/Local
+# HdFlatteningSceneIndex
+/World type=
+	[usdMaterialBindings]
+		[]
+			[0]
+				[collectionMaterialBindings]
+					[0]
+						[bindingStrength]
+							TfToken weakerThanDescendants
+						[collectionName]
+							TfToken shiny
+						[collectionPrimPath]
+							SdfPath /World
+						[materialPath]
+							SdfPath /Looks/Shiny
+					[1]
+						[bindingStrength]
+							TfToken strongerThanDescendants
+						[collectionName]
+							TfToken strong
+						[collectionPrimPath]
+							SdfPath /World
+						[materialPath]
+							SdfPath /Looks/Strong
+				[directMaterialBinding]
+					[bindingStrength]
+						TfToken weakerThanDescendants
+					[materialPath]
+						SdfPath /Looks/Base
+		[full]
+			[0]
+				[collectionMaterialBindings]
+					[0]
+						[bindingStrength]
+							TfToken weakerThanDescendants
+						[collectionName]
+							TfToken shiny
+						[collectionPrimPath]
+							SdfPath /World
+						[materialPath]
+							SdfPath /Looks/ShinyFull
+		[preview]
+			[0]
+				[directMaterialBinding]
+					[bindingStrength]
+						TfToken weakerThanDescendants
+					[materialPath]
+						SdfPath /Looks/Preview
+/World/A type=mesh
+	[usdMaterialBindings]
+		[]
+			[0]
+				[collectionMaterialBindings]
+					[0]
+						[bindingStrength]
+							TfToken weakerThanDescendants
+						[collectionName]
+							TfToken shiny
+						[collectionPrimPath]
+							SdfPath /World
+						[materialPath]
+							SdfPath /Looks/Shiny
+					[1]
+						[bindingStrength]
+							TfToken strongerThanDescendants
+						[collectionName]
+							TfToken strong
+						[collectionPrimPath]
+							SdfPath /World
+						[materialPath]
+							SdfPath /Looks/Strong
+				[directMaterialBinding]
+					[bindingStrength]
+						TfToken weakerThanDescendants
+					[materialPath]
+						SdfPath /Looks/Base
+		[full]
+			[0]
+				[collectionMaterialBindings]
+					[0]
+						[bindingStrength]
+							TfToken weakerThanDescendants
+						[collectionName]
+							TfToken shiny
+						[collectionPrimPath]
+							SdfPath /World
+						[materialPath]
+							SdfPath /Looks/ShinyFull
+			[1]
+				[directMaterialBinding]
+					[bindingStrength]
+						TfToken weakerThanDescendants
+					[materialPath]
+						SdfPath /Looks/Full
+		[preview]
+			[0]
+				[directMaterialBinding]
+					[bindingStrength]
+						TfToken weakerThanDescendants
+					[materialPath]
+						SdfPath /Looks/Preview
+/World/B type=mesh
+	[usdMaterialBindings]
+		[]
+			[0]
+				[collectionMaterialBindings]
+					[0]
+						[bindingStrength]
+							TfToken weakerThanDescendants
+						[collectionName]
+							TfToken shiny
+						[collectionPrimPath]
+							SdfPath /World
+						[materialPath]
+							SdfPath /Looks/Shiny
+					[1]
+						[bindingStrength]
+							TfToken strongerThanDescendants
+						[collectionName]
+							TfToken strong
+						[collectionPrimPath]
+							SdfPath /World
+						[materialPath]
+							SdfPath /Looks/Strong
+				[directMaterialBinding]
+					[bindingStrength]
+						TfToken weakerThanDescendants
+					[materialPath]
+						SdfPath /Looks/Base
+			[1]
+				[directMaterialBinding]
+					[bindingStrength]
+						TfToken weakerThanDescendants
+					[materialPath]
+						SdfPath /Looks/Local
+		[full]
+			[0]
+				[collectionMaterialBindings]
+					[0]
+						[bindingStrength]
+							TfToken weakerThanDescendants
+						[collectionName]
+							TfToken shiny
+						[collectionPrimPath]
+							SdfPath /World
+						[materialPath]
+							SdfPath /Looks/ShinyFull
+		[preview]
+			[0]
+				[directMaterialBinding]
+					[bindingStrength]
+						TfToken weakerThanDescendants
+					[materialPath]
+						SdfPath /Looks/Preview
+/World/C type=
+	[usdMaterialBindings]
+		[]
+			[0]
+				[collectionMaterialBindings]
+					[0]
+						[bindingStrength]
+							TfToken weakerThanDescendants
+						[collectionName]
+							TfToken shiny
+						[collectionPrimPath]
+							SdfPath /World
+						[materialPath]
+							SdfPath /Looks/Shiny
+					[1]
+						[bindingStrength]
+							TfToken strongerThanDescendants
+						[collectionName]
+							TfToken strong
+						[collectionPrimPath]
+							SdfPath /World
+						[materialPath]
+							SdfPath /Looks/Strong
+				[directMaterialBinding]
+					[bindingStrength]
+						TfToken weakerThanDescendants
+					[materialPath]
+						SdfPath /Looks/Base
+		[full]
+			[0]
+				[collectionMaterialBindings]
+					[0]
+						[bindingStrength]
+							TfToken weakerThanDescendants
+						[collectionName]
+							TfToken shiny
+						[collectionPrimPath]
+							SdfPath /World
+						[materialPath]
+							SdfPath /Looks/ShinyFull
+		[preview]
+			[0]
+				[directMaterialBinding]
+					[bindingStrength]
+						TfToken weakerThanDescendants
+					[materialPath]
+						SdfPath /Looks/Preview
+/World/C/Leaf type=mesh
+	[usdMaterialBindings]
+		[]
+			[0]
+				[collectionMaterialBindings]
+					[0]
+						[bindingStrength]
+							TfToken weakerThanDescendants
+						[collectionName]
+							TfToken shiny
+						[collectionPrimPath]
+							SdfPath /World
+						[materialPath]
+							SdfPath /Looks/Shiny
+					[1]
+						[bindingStrength]
+							TfToken strongerThanDescendants
+						[collectionName]
+							TfToken strong
+						[collectionPrimPath]
+							SdfPath /World
+						[materialPath]
+							SdfPath /Looks/Strong
+				[directMaterialBinding]
+					[bindingStrength]
+						TfToken weakerThanDescendants
+					[materialPath]
+						SdfPath /Looks/Base
+			[1]
+				[directMaterialBinding]
+					[bindingStrength]
+						TfToken strongerThanDescendants
+					[materialPath]
+						SdfPath /Looks/Local
+		[full]
+			[0]
+				[collectionMaterialBindings]
+					[0]
+						[bindingStrength]
+							TfToken weakerThanDescendants
+						[collectionName]
+							TfToken shiny
+						[collectionPrimPath]
+							SdfPath /World
+						[materialPath]
+							SdfPath /Looks/ShinyFull
+		[preview]
+			[0]
+				[directMaterialBinding]
+					[bindingStrength]
+						TfToken weakerThanDescendants
+					[materialPath]
+						SdfPath /Looks/Preview
+/World/C/Other type=mesh
+	[usdMaterialBindings]
+		[]
+			[0]
+				[collectionMaterialBindings]
+					[0]
+						[bindingStrength]
+							TfToken weakerThanDescendants
+						[collectionName]
+							TfToken shiny
+						[collectionPrimPath]
+							SdfPath /World
+						[materialPath]
+							SdfPath /Looks/Shiny
+					[1]
+						[bindingStrength]
+							TfToken strongerThanDescendants
+						[collectionName]
+							TfToken strong
+						[collectionPrimPath]
+							SdfPath /World
+						[materialPath]
+							SdfPath /Looks/Strong
+				[directMaterialBinding]
+					[bindingStrength]
+						TfToken weakerThanDescendants
+					[materialPath]
+						SdfPath /Looks/Base
+		[full]
+			[0]
+				[collectionMaterialBindings]
+					[0]
+						[bindingStrength]
+							TfToken weakerThanDescendants
+						[collectionName]
+							TfToken shiny
+						[collectionPrimPath]
+							SdfPath /World
+						[materialPath]
+							SdfPath /Looks/ShinyFull
+		[preview]
+			[0]
+				[directMaterialBinding]
+					[bindingStrength]
+						TfToken weakerThanDescendants
+					[materialPath]
+						SdfPath /Looks/Preview
+/World/D type=mesh
+	[usdMaterialBindings]
+		[]
+			[0]
+				[collectionMaterialBindings]
+					[0]
+						[bindingStrength]
+							TfToken weakerThanDescendants
+						[collectionName]
+							TfToken shiny
+						[collectionPrimPath]
+							SdfPath /World
+						[materialPath]
+							SdfPath /Looks/Shiny
+					[1]
+						[bindingStrength]
+							TfToken strongerThanDescendants
+						[collectionName]
+							TfToken strong
+						[collectionPrimPath]
+							SdfPath /World
+						[materialPath]
+							SdfPath /Looks/Strong
+				[directMaterialBinding]
+					[bindingStrength]
+						TfToken weakerThanDescendants
+					[materialPath]
+						SdfPath /Looks/Base
+			[1]
+				[directMaterialBinding]
+					[bindingStrength]
+						TfToken weakerThanDescendants
+					[materialPath]
+						SdfPath /Looks/Local
+		[full]
+			[0]
+				[collectionMaterialBindings]
+					[0]
+						[bindingStrength]
+							TfToken weakerThanDescendants
+						[collectionName]
+							TfToken shiny
+						[collectionPrimPath]
+							SdfPath /World
+						[materialPath]
+							SdfPath /Looks/ShinyFull
+		[preview]
+			[0]
+				[directMaterialBinding]
+					[bindingStrength]
+						TfToken weakerThanDescendants
+					[materialPath]
+						SdfPath /Looks/Preview
+/World/E type=
+	[usdMaterialBindings]
+		[]
+			[0]
+				[collectionMaterialBindings]
+					[0]
+						[bindingStrength]
+							TfToken weakerThanDescendants
+						[collectionName]
+							TfToken shiny
+						[collectionPrimPath]
+							SdfPath /World
+						[materialPath]
+							SdfPath /Looks/Shiny
+					[1]
+						[bindingStrength]
+							TfToken strongerThanDescendants
+						[collectionName]
+							TfToken strong
+						[collectionPrimPath]
+							SdfPath /World
+						[materialPath]
+							SdfPath /Looks/Strong
+				[directMaterialBinding]
+					[bindingStrength]
+						TfToken weakerThanDescendants
+					[materialPath]
+						SdfPath /Looks/Base
+		[full]
+			[0]
+				[collectionMaterialBindings]
+					[0]
+						[bindingStrength]
+							TfToken weakerThanDescendants
+						[collectionName]
+							TfToken shiny
+						[collectionPrimPath]
+							SdfPath /World
+						[materialPath]
+							SdfPath /Looks/ShinyFull
+		[preview]
+			[0]
+				[directMaterialBinding]
+					[bindingStrength]
+						TfToken weakerThanDescendants
+					[materialPath]
+						SdfPath /Looks/Preview
+			[1]
+				[directMaterialBinding]
+					[bindingStrength]
+						TfToken strongerThanDescendants
+					[materialPath]
+						SdfPath /Looks/Strong
+/World/E/Child type=mesh
+	[usdMaterialBindings]
+		[]
+			[0]
+				[collectionMaterialBindings]
+					[0]
+						[bindingStrength]
+							TfToken weakerThanDescendants
+						[collectionName]
+							TfToken shiny
+						[collectionPrimPath]
+							SdfPath /World
+						[materialPath]
+							SdfPath /Looks/Shiny
+					[1]
+						[bindingStrength]
+							TfToken strongerThanDescendants
+						[collectionName]
+							TfToken strong
+						[collectionPrimPath]
+							SdfPath /World
+						[materialPath]
+							SdfPath /Looks/Strong
+				[directMaterialBinding]
+					[bindingStrength]
+						TfToken weakerThanDescendants
+					[materialPath]
+						SdfPath /Looks/Base
+		[full]
+			[0]
+				[collectionMaterialBindings]
+					[0]
+						[bindingStrength]
+							TfToken weakerThanDescendants
+						[collectionName]
+							TfToken shiny
+						[collectionPrimPath]
+							SdfPath /World
+						[materialPath]
+							SdfPath /Looks/ShinyFull
+		[preview]
+			[0]
+				[directMaterialBinding]
+					[bindingStrength]
+						TfToken weakerThanDescendants
+					[materialPath]
+						SdfPath /Looks/Preview
+			[1]
+				[directMaterialBinding]
+					[bindingStrength]
+						TfToken strongerThanDescendants
+					[materialPath]
+						SdfPath /Looks/Strong
+			[2]
+				[directMaterialBinding]
+					[bindingStrength]
+						TfToken weakerThanDescendants
+					[materialPath]
+						SdfPath /Looks/Local
+# UsdImagingMaterialBindingsResolvingSceneIndex
+/World type=
+	[materialBindings]
+		[]
+			[path]
+				SdfPath /Looks/Base
+		[preview]
+			[path]
+				SdfPath /Looks/Preview
+/World/A type=mesh
+	[materialBindings]
+		[]
+			[path]
+				SdfPath /Looks/Base
+		[full]
+			[path]
+				SdfPath /Looks/Full
+		[preview]
+			[path]
+				SdfPath /Looks/Preview
+/World/B type=mesh
+	[materialBindings]
+		[]
+			[path]
+				SdfPath /Looks/Local
+		[full]
+			[path]
+				SdfPath /Looks/ShinyFull
+		[preview]
+			[path]
+				SdfPath /Looks/Preview
+/World/C type=
+	[materialBindings]
+		[]
+			[path]
+				SdfPath /Looks/Shiny
+		[full]
+			[path]
+				SdfPath /Looks/ShinyFull
+		[preview]
+			[path]
+				SdfPath /Looks/Preview
+/World/C/Leaf type=mesh
+	[materialBindings]
+		[]
+			[path]
+				SdfPath /Looks/Local
+		[preview]
+			[path]
+				SdfPath /Looks/Preview
+/World/C/Other type=mesh
+	[materialBindings]
+		[]
+			[path]
+				SdfPath /Looks/Shiny
+		[full]
+			[path]
+				SdfPath /Looks/ShinyFull
+		[preview]
+			[path]
+				SdfPath /Looks/Preview
+/World/D type=mesh
+	[materialBindings]
+		[]
+			[path]
+				SdfPath /Looks/Strong
+		[preview]
+			[path]
+				SdfPath /Looks/Preview
+/World/E type=
+	[materialBindings]
+		[]
+			[path]
+				SdfPath /Looks/Base
+		[preview]
+			[path]
+				SdfPath /Looks/Strong
+/World/E/Child type=mesh
+	[materialBindings]
+		[]
+			[path]
+				SdfPath /Looks/Base
+		[preview]
+			[path]
+				SdfPath /Looks/Strong
+OK

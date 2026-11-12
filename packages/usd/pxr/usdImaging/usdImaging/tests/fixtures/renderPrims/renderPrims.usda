@@ -1,0 +1,86 @@
+#usda 1.0
+(
+    defaultPrim = "World"
+)
+
+def Xform "World"
+{
+    def Camera "Cam"
+    {
+    }
+
+    def Camera "ProductCam"
+    {
+    }
+}
+
+def Scope "Render"
+{
+    def RenderSettings "Settings"
+    {
+        int2 resolution = (640, 480)
+        float pixelAspectRatio = 1.5
+        token aspectRatioConformPolicy = "cropAperture"
+        bool disableMotionBlur = 1
+        uniform token[] includedPurposes = ["default", "render"]
+        uniform token renderingColorSpace = "lin_rec709_scene"
+        rel camera = </World/Cam>
+        rel products = [</Render/ProductA>, </Render/ProductB>, </Render/Missing>]
+        int ri:hider:maxsamples = 64
+        float ri:hider:pixelVariance.timeSamples = {
+            0: 0.01,
+            10: 0.02,
+        }
+        string outputs:ri:displayFilters = "unused"
+        rel ri:integrator = </Render/Integrator>
+        rel ri:sampleFilters = []
+    }
+
+    def RenderProduct "ProductA"
+    {
+        token productName = "a.exr"
+        int2 resolution = (320, 240)
+        rel camera = </World/ProductCam>
+        rel orderedVars = [</Render/Vars/Color>, </Render/Vars/Depth>]
+        string driver:parameters:artist = "jdoe"
+    }
+
+    def RenderProduct "ProductB"
+    {
+        token productType = "deepRaster"
+        token productName = "b.exr"
+        rel orderedVars = </Render/Vars/Color>
+    }
+
+    def Scope "Vars"
+    {
+        def RenderVar "Color"
+        {
+            uniform token dataType = "color3f"
+            uniform string sourceName = "Ci"
+            string driver:parameters:aov:name = "rgb"
+        }
+
+        def RenderVar "Depth"
+        {
+            uniform token dataType = "float"
+            uniform string sourceName = "z"
+            uniform token sourceType = "lpe"
+        }
+    }
+
+    def Shader "Integrator"
+    {
+    }
+
+    def RenderPass "Pass"
+    {
+        uniform token passType = "prman"
+        rel renderSource = </Render/Settings>
+        uniform string fileName = "pass.exr"
+    }
+
+    def RenderPass "EmptyPass"
+    {
+    }
+}

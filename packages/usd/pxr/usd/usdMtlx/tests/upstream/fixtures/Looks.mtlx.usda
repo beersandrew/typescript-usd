@@ -1,0 +1,347 @@
+#usda 1.0
+
+def "MaterialX"
+{
+    def "Materials"
+    {
+        def Material "Mplastic" (
+            prepend apiSchemas = ["MaterialXConfigAPI"]
+            prepend variantSets = "vs_finish"
+        )
+        {
+            string config:mtlx:version = "1.39"
+            float inputs:base
+            color3f inputs:base_color = (0.8, 0.1, 0.1)
+            float inputs:coat
+            float inputs:coat_affect_color
+            float inputs:coat_affect_roughness
+            float inputs:coat_anisotropy
+            color3f inputs:coat_color
+            float inputs:coat_IOR
+            float3 inputs:coat_normal
+            float inputs:coat_rotation
+            float inputs:coat_roughness
+            float inputs:diffuse_roughness
+            float inputs:emission
+            color3f inputs:emission_color
+            float inputs:metalness
+            float3 inputs:normal
+            color3f inputs:opacity
+            float inputs:sheen
+            color3f inputs:sheen_color
+            float inputs:sheen_roughness
+            float inputs:specular
+            float inputs:specular_anisotropy
+            color3f inputs:specular_color
+            float inputs:specular_IOR
+            float inputs:specular_rotation
+            float inputs:specular_roughness
+            float inputs:subsurface
+            float inputs:subsurface_anisotropy
+            color3f inputs:subsurface_color
+            color3f inputs:subsurface_radius
+            float inputs:subsurface_scale
+            float3 inputs:tangent
+            float inputs:thin_film_IOR
+            float inputs:thin_film_thickness
+            bool inputs:thin_walled
+            float inputs:transmission
+            color3f inputs:transmission_color
+            float inputs:transmission_depth
+            float inputs:transmission_dispersion
+            float inputs:transmission_extra_roughness
+            color3f inputs:transmission_scatter
+            float inputs:transmission_scatter_anisotropy
+            token outputs:mtlx:surface.connect = </MaterialX/Materials/Mplastic/sr_plastic.outputs:surface>
+
+            def Shader "sr_plastic" (
+                prepend references = </MaterialX/Shaders/sr_plastic>
+            )
+            {
+                float inputs:base.connect = </MaterialX/Materials/Mplastic.inputs:base>
+                color3f inputs:base_color.connect = </MaterialX/Materials/Mplastic.inputs:base_color>
+                float inputs:coat.connect = </MaterialX/Materials/Mplastic.inputs:coat>
+                float inputs:coat_affect_color.connect = </MaterialX/Materials/Mplastic.inputs:coat_affect_color>
+                float inputs:coat_affect_roughness.connect = </MaterialX/Materials/Mplastic.inputs:coat_affect_roughness>
+                float inputs:coat_anisotropy.connect = </MaterialX/Materials/Mplastic.inputs:coat_anisotropy>
+                color3f inputs:coat_color.connect = </MaterialX/Materials/Mplastic.inputs:coat_color>
+                float inputs:coat_IOR.connect = </MaterialX/Materials/Mplastic.inputs:coat_IOR>
+                float3 inputs:coat_normal.connect = </MaterialX/Materials/Mplastic.inputs:coat_normal>
+                float inputs:coat_rotation.connect = </MaterialX/Materials/Mplastic.inputs:coat_rotation>
+                float inputs:coat_roughness.connect = </MaterialX/Materials/Mplastic.inputs:coat_roughness>
+                float inputs:diffuse_roughness.connect = </MaterialX/Materials/Mplastic.inputs:diffuse_roughness>
+                float inputs:emission.connect = </MaterialX/Materials/Mplastic.inputs:emission>
+                color3f inputs:emission_color.connect = </MaterialX/Materials/Mplastic.inputs:emission_color>
+                float inputs:metalness.connect = </MaterialX/Materials/Mplastic.inputs:metalness>
+                float3 inputs:normal.connect = </MaterialX/Materials/Mplastic.inputs:normal>
+                color3f inputs:opacity.connect = </MaterialX/Materials/Mplastic.inputs:opacity>
+                float inputs:sheen.connect = </MaterialX/Materials/Mplastic.inputs:sheen>
+                color3f inputs:sheen_color.connect = </MaterialX/Materials/Mplastic.inputs:sheen_color>
+                float inputs:sheen_roughness.connect = </MaterialX/Materials/Mplastic.inputs:sheen_roughness>
+                float inputs:specular.connect = </MaterialX/Materials/Mplastic.inputs:specular>
+                float inputs:specular_anisotropy.connect = </MaterialX/Materials/Mplastic.inputs:specular_anisotropy>
+                color3f inputs:specular_color.connect = </MaterialX/Materials/Mplastic.inputs:specular_color>
+                float inputs:specular_IOR.connect = </MaterialX/Materials/Mplastic.inputs:specular_IOR>
+                float inputs:specular_rotation.connect = </MaterialX/Materials/Mplastic.inputs:specular_rotation>
+                float inputs:specular_roughness.connect = </MaterialX/Materials/Mplastic.inputs:specular_roughness>
+                float inputs:subsurface.connect = </MaterialX/Materials/Mplastic.inputs:subsurface>
+                float inputs:subsurface_anisotropy.connect = </MaterialX/Materials/Mplastic.inputs:subsurface_anisotropy>
+                color3f inputs:subsurface_color.connect = </MaterialX/Materials/Mplastic.inputs:subsurface_color>
+                color3f inputs:subsurface_radius.connect = </MaterialX/Materials/Mplastic.inputs:subsurface_radius>
+                float inputs:subsurface_scale.connect = </MaterialX/Materials/Mplastic.inputs:subsurface_scale>
+                float3 inputs:tangent.connect = </MaterialX/Materials/Mplastic.inputs:tangent>
+                float inputs:thin_film_IOR.connect = </MaterialX/Materials/Mplastic.inputs:thin_film_IOR>
+                float inputs:thin_film_thickness.connect = </MaterialX/Materials/Mplastic.inputs:thin_film_thickness>
+                bool inputs:thin_walled.connect = </MaterialX/Materials/Mplastic.inputs:thin_walled>
+                float inputs:transmission.connect = </MaterialX/Materials/Mplastic.inputs:transmission>
+                color3f inputs:transmission_color.connect = </MaterialX/Materials/Mplastic.inputs:transmission_color>
+                float inputs:transmission_depth.connect = </MaterialX/Materials/Mplastic.inputs:transmission_depth>
+                float inputs:transmission_dispersion.connect = </MaterialX/Materials/Mplastic.inputs:transmission_dispersion>
+                float inputs:transmission_extra_roughness.connect = </MaterialX/Materials/Mplastic.inputs:transmission_extra_roughness>
+                color3f inputs:transmission_scatter.connect = </MaterialX/Materials/Mplastic.inputs:transmission_scatter>
+                float inputs:transmission_scatter_anisotropy.connect = </MaterialX/Materials/Mplastic.inputs:transmission_scatter_anisotropy>
+            }
+            variantSet "vs_finish" = {
+                "matte" {
+                    float inputs:specular_roughness = 0.6
+
+                }
+            }
+        }
+
+        def Material "Mmetal" (
+            prepend apiSchemas = ["MaterialXConfigAPI"]
+            prepend variantSets = "vs_finish"
+        )
+        {
+            string config:mtlx:version = "1.39"
+            float inputs:base
+            color3f inputs:base_color
+            float inputs:coat
+            float inputs:coat_affect_color
+            float inputs:coat_affect_roughness
+            float inputs:coat_anisotropy
+            color3f inputs:coat_color
+            float inputs:coat_IOR
+            float3 inputs:coat_normal
+            float inputs:coat_rotation
+            float inputs:coat_roughness
+            float inputs:diffuse_roughness
+            float inputs:emission
+            color3f inputs:emission_color
+            float inputs:metalness = 1
+            float3 inputs:normal
+            color3f inputs:opacity
+            float inputs:sheen
+            color3f inputs:sheen_color
+            float inputs:sheen_roughness
+            float inputs:specular
+            float inputs:specular_anisotropy
+            color3f inputs:specular_color
+            float inputs:specular_IOR
+            float inputs:specular_rotation
+            float inputs:specular_roughness
+            float inputs:subsurface
+            float inputs:subsurface_anisotropy
+            color3f inputs:subsurface_color
+            color3f inputs:subsurface_radius
+            float inputs:subsurface_scale
+            float3 inputs:tangent
+            float inputs:thin_film_IOR
+            float inputs:thin_film_thickness
+            bool inputs:thin_walled
+            float inputs:transmission
+            color3f inputs:transmission_color
+            float inputs:transmission_depth
+            float inputs:transmission_dispersion
+            float inputs:transmission_extra_roughness
+            color3f inputs:transmission_scatter
+            float inputs:transmission_scatter_anisotropy
+            token outputs:mtlx:surface.connect = </MaterialX/Materials/Mmetal/sr_metal.outputs:surface>
+
+            def Shader "sr_metal" (
+                prepend references = </MaterialX/Shaders/sr_metal>
+            )
+            {
+                float inputs:base.connect = </MaterialX/Materials/Mmetal.inputs:base>
+                color3f inputs:base_color.connect = </MaterialX/Materials/Mmetal.inputs:base_color>
+                float inputs:coat.connect = </MaterialX/Materials/Mmetal.inputs:coat>
+                float inputs:coat_affect_color.connect = </MaterialX/Materials/Mmetal.inputs:coat_affect_color>
+                float inputs:coat_affect_roughness.connect = </MaterialX/Materials/Mmetal.inputs:coat_affect_roughness>
+                float inputs:coat_anisotropy.connect = </MaterialX/Materials/Mmetal.inputs:coat_anisotropy>
+                color3f inputs:coat_color.connect = </MaterialX/Materials/Mmetal.inputs:coat_color>
+                float inputs:coat_IOR.connect = </MaterialX/Materials/Mmetal.inputs:coat_IOR>
+                float3 inputs:coat_normal.connect = </MaterialX/Materials/Mmetal.inputs:coat_normal>
+                float inputs:coat_rotation.connect = </MaterialX/Materials/Mmetal.inputs:coat_rotation>
+                float inputs:coat_roughness.connect = </MaterialX/Materials/Mmetal.inputs:coat_roughness>
+                float inputs:diffuse_roughness.connect = </MaterialX/Materials/Mmetal.inputs:diffuse_roughness>
+                float inputs:emission.connect = </MaterialX/Materials/Mmetal.inputs:emission>
+                color3f inputs:emission_color.connect = </MaterialX/Materials/Mmetal.inputs:emission_color>
+                float inputs:metalness.connect = </MaterialX/Materials/Mmetal.inputs:metalness>
+                float3 inputs:normal.connect = </MaterialX/Materials/Mmetal.inputs:normal>
+                color3f inputs:opacity.connect = </MaterialX/Materials/Mmetal.inputs:opacity>
+                float inputs:sheen.connect = </MaterialX/Materials/Mmetal.inputs:sheen>
+                color3f inputs:sheen_color.connect = </MaterialX/Materials/Mmetal.inputs:sheen_color>
+                float inputs:sheen_roughness.connect = </MaterialX/Materials/Mmetal.inputs:sheen_roughness>
+                float inputs:specular.connect = </MaterialX/Materials/Mmetal.inputs:specular>
+                float inputs:specular_anisotropy.connect = </MaterialX/Materials/Mmetal.inputs:specular_anisotropy>
+                color3f inputs:specular_color.connect = </MaterialX/Materials/Mmetal.inputs:specular_color>
+                float inputs:specular_IOR.connect = </MaterialX/Materials/Mmetal.inputs:specular_IOR>
+                float inputs:specular_rotation.connect = </MaterialX/Materials/Mmetal.inputs:specular_rotation>
+                float inputs:specular_roughness.connect = </MaterialX/Materials/Mmetal.inputs:specular_roughness>
+                float inputs:subsurface.connect = </MaterialX/Materials/Mmetal.inputs:subsurface>
+                float inputs:subsurface_anisotropy.connect = </MaterialX/Materials/Mmetal.inputs:subsurface_anisotropy>
+                color3f inputs:subsurface_color.connect = </MaterialX/Materials/Mmetal.inputs:subsurface_color>
+                color3f inputs:subsurface_radius.connect = </MaterialX/Materials/Mmetal.inputs:subsurface_radius>
+                float inputs:subsurface_scale.connect = </MaterialX/Materials/Mmetal.inputs:subsurface_scale>
+                float3 inputs:tangent.connect = </MaterialX/Materials/Mmetal.inputs:tangent>
+                float inputs:thin_film_IOR.connect = </MaterialX/Materials/Mmetal.inputs:thin_film_IOR>
+                float inputs:thin_film_thickness.connect = </MaterialX/Materials/Mmetal.inputs:thin_film_thickness>
+                bool inputs:thin_walled.connect = </MaterialX/Materials/Mmetal.inputs:thin_walled>
+                float inputs:transmission.connect = </MaterialX/Materials/Mmetal.inputs:transmission>
+                color3f inputs:transmission_color.connect = </MaterialX/Materials/Mmetal.inputs:transmission_color>
+                float inputs:transmission_depth.connect = </MaterialX/Materials/Mmetal.inputs:transmission_depth>
+                float inputs:transmission_dispersion.connect = </MaterialX/Materials/Mmetal.inputs:transmission_dispersion>
+                float inputs:transmission_extra_roughness.connect = </MaterialX/Materials/Mmetal.inputs:transmission_extra_roughness>
+                color3f inputs:transmission_scatter.connect = </MaterialX/Materials/Mmetal.inputs:transmission_scatter>
+                float inputs:transmission_scatter_anisotropy.connect = </MaterialX/Materials/Mmetal.inputs:transmission_scatter_anisotropy>
+            }
+            variantSet "vs_finish" = {
+                "gloss" {
+                    float inputs:specular_roughness = 0.05
+
+                }
+            }
+        }
+    }
+
+    def "Shaders"
+    {
+        def Shader "sr_plastic"
+        {
+            uniform token info:id = "ND_standard_surface_surfaceshader"
+            token outputs:surface
+        }
+
+        def Shader "sr_metal"
+        {
+            uniform token info:id = "ND_standard_surface_surfaceshader"
+            token outputs:surface
+        }
+    }
+
+    def "Collections" (
+        prepend apiSchemas = ["CollectionAPI:c_plastic", "CollectionAPI:c_metal", "CollectionAPI:c_combo", "CollectionAPI:geom_1"]
+    )
+    {
+        prepend rel collection:c_combo:includes = [
+            </MaterialX/Collections.collection:c_metal>,
+            </MaterialX/Collections/a/g6>,
+        ]
+        rel collection:c_metal:includes (
+            doc = "This is a collection"
+        )
+        prepend rel collection:c_metal:includes = [
+            </MaterialX/Collections/a/g3>,
+            </MaterialX/Collections/a/g4>,
+        ]
+        prepend rel collection:c_plastic:excludes = [
+            </MaterialX/Collections/a/g3>,
+            </MaterialX/Collections/a/g5>,
+        ]
+        prepend rel collection:c_plastic:includes = [
+            </MaterialX/Collections/a/g1>,
+            </MaterialX/Collections/a/g2>,
+            </MaterialX/Collections/a/g5>,
+        ]
+        prepend rel collection:geom_1:includes = </MaterialX/Collections/a/b/headlight>
+    }
+
+    def "Looks"
+    {
+        def "lookA" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            doc = "Look A"
+            prepend references = </MaterialX/Collections>
+        )
+        {
+            reorder properties = ["material:binding:collection:ma1", "material:binding:collection:ma2", "material:binding:collection:ma3"]
+            rel material:binding:collection:ma1 = [
+                </MaterialX/Looks/lookA.collection:c_plastic>,
+                </MaterialX/Looks/lookA/Materials/ma1>,
+            ]
+            rel material:binding:collection:ma2 = [
+                </MaterialX/Looks/lookA.collection:c_metal>,
+                </MaterialX/Looks/lookA/Materials/ma2>,
+            ]
+            rel material:binding:collection:ma3 = [
+                </MaterialX/Looks/lookA.collection:geom_1>,
+                </MaterialX/Looks/lookA/Materials/ma3>,
+            ]
+
+            def "Materials"
+            {
+                def "ma1" (
+                    prepend references = </MaterialX/Materials/Mplastic>
+                    variants = {
+                        string vs_finish = "matte"
+                    }
+                )
+                {
+                }
+
+                def "ma2" (
+                    prepend references = </MaterialX/Materials/Mmetal>
+                    variants = {
+                        string vs_finish = "gloss"
+                    }
+                )
+                {
+                }
+
+                def "ma3" (
+                    prepend references = </MaterialX/Materials/Mplastic>
+                )
+                {
+                }
+            }
+        }
+
+        def "lookB" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            doc = "Look B"
+            prepend references = </MaterialX/Collections>
+        )
+        {
+            rel material:binding = </MaterialX/Looks/lookB/Materials/ma4>
+
+            def "Materials"
+            {
+                def "ma4" (
+                    prepend references = </MaterialX/Materials/Mmetal>
+                )
+                {
+                }
+            }
+        }
+    }
+}
+
+def "ModelRoot" (
+    prepend variantSets = "LookVariant"
+)
+{
+    variantSet "LookVariant" = {
+        "lookA" (
+            prepend references = </MaterialX/Looks/lookA>
+        ) {
+
+        }
+        "lookB" (
+            prepend references = </MaterialX/Looks/lookB>
+        ) {
+
+        }
+    }
+}
+

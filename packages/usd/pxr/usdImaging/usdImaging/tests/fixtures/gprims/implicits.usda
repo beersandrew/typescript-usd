@@ -1,0 +1,62 @@
+#usda 1.0
+(
+    upAxis = "Z"
+)
+
+def Cube "Cube"
+{
+    double size = 3
+}
+
+def Cube "DefaultCube"
+{
+}
+
+def Sphere "Sphere"
+{
+    double radius = 1.5
+}
+
+def Cylinder "Cylinder"
+{
+    double height = 4
+    double radius = 0.25
+    uniform token axis = "X"
+}
+
+def Cylinder_1 "Cylinder_1"
+{
+    double height = 3
+    double radiusTop = 0.5
+    double radiusBottom = 2
+    uniform token axis = "Y"
+}
+
+def Cone "Cone"
+{
+    double height = 5
+    double radius = 2
+    uniform token axis = "Y"
+}
+
+def Capsule "Capsule"
+{
+    double height = 2.5
+    double radius = 0.75
+}
+
+def Capsule_1 "Capsule_1"
+{
+    double height = 1
+    double radiusTop = 0.25
+    double radiusBottom = 0.5
+    uniform token axis = "X"
+}
+
+def Plane "Plane"
+{
+    double width = 4
+    double length = 6
+    uniform token axis = "Y"
+    uniform bool doubleSided = 1
+}

@@ -1,0 +1,23 @@
+#usda 1.0
+(
+    defaultPrim = "Plane"
+    upAxis = "Y"
+)
+def Scope "MaterialX" (references = @material.mtlx@</MaterialX>) {}
+def Mesh "Plane" (
+    prepend apiSchemas = ["MaterialBindingAPI"]
+) {
+    uniform token subdivisionScheme = "none"
+    point3f[] points = [(-1,-1,0), (1,-1,0), (1,1,0), (-1,1,0)]
+    int[] faceVertexCounts = [4]
+    int[] faceVertexIndices = [0,1,2,3]
+    texCoord2f[] primvars:st = [(1.75,1.75), (-0.25,1.75), (-0.25,-0.25), (1.75,-0.25)] (
+        interpolation = "faceVarying"
+    )
+    int[] primvars:st:indices = [2,3,0,1]
+    texCoord2f[] primvars:detailUV = [(-0.75,1.5), (-0.75,-0.5), (1.25,-0.5), (1.25,1.5)] (
+        interpolation = "vertex"
+    )
+    int[] primvars:detailUV:indices = [2,3,0,1]
+    rel material:binding = </MaterialX/Materials/Surface>
+}

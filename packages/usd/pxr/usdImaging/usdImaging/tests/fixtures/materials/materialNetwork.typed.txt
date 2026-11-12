@@ -1,0 +1,617 @@
+# UsdImagingStageSceneIndex
+/Looks/Mat type=material
+	[material]
+		[]
+			[config]
+				[mode]
+					TfToken fast
+				[sampleCount]
+					int 4
+			[interface]
+				[parameterOrder]
+					VtArray<TfToken> []
+				[parameters]
+					[metal]
+						[displayGroup]
+							TfToken 
+						[displayName]
+							TfToken 
+						[mappings]
+							[0]
+								[inputName]
+									TfToken metallic
+								[nodePath]
+									TfToken Surface
+					[occ]
+						[displayGroup]
+							TfToken 
+						[displayName]
+							TfToken 
+						[mappings]
+							[0]
+								[inputName]
+									TfToken fallback
+								[nodePath]
+									TfToken NG/Inner
+					[stName]
+						[displayGroup]
+							TfToken 
+						[displayName]
+							TfToken 
+						[mappings]
+							[0]
+								[inputName]
+									TfToken varname
+								[nodePath]
+									TfToken Reader
+					[tint]
+						[displayGroup]
+							TfToken Look
+						[displayName]
+							TfToken Tint Color
+						[mappings]
+							[0]
+								[inputName]
+									TfToken diffuseColor
+								[nodePath]
+									TfToken GlslfxSurface
+			[nodes]
+				[NG/Inner]
+					[inputConnections]
+					[nodeIdentifier]
+						TfToken UsdPrimvarReader_float
+					[parameters]
+						[fallback]
+							[typeName]
+								TfToken float
+							[value]
+								float 0.5
+						[varname]
+							[typeName]
+								TfToken string
+							[value]
+								string occlusion
+				[Reader]
+					[inputConnections]
+					[nodeIdentifier]
+						TfToken UsdPrimvarReader_float2
+					[parameters]
+						[fallback]
+							[typeName]
+								TfToken float2
+							[value]
+								GfVec2f (0, 0)
+						[varname]
+							[typeName]
+								TfToken string
+							[value]
+								string st
+				[Surface]
+					[inputConnections]
+						[diffuseColor]
+							[0]
+								[upstreamNodeOutputName]
+									TfToken rgb
+								[upstreamNodePath]
+									TfToken Tex
+						[occlusion]
+							[0]
+								[upstreamNodeOutputName]
+									TfToken result
+								[upstreamNodePath]
+									TfToken NG/Inner
+					[nodeIdentifier]
+						TfToken UsdPreviewSurface
+					[parameters]
+						[emissiveColor]
+							[colorSpace]
+								TfToken 
+							[typeName]
+								TfToken color3f
+							[value]
+								GfVec3f (0.1, 0.2, 0.3)
+						[metallic]
+							[typeName]
+								TfToken float
+							[value]
+								float 0.125
+						[normal]
+							[typeName]
+								TfToken normal3f
+							[value]
+								GfVec3f (0, 0, 1)
+						[opacity]
+							[typeName]
+								TfToken float
+							[value]
+								float 0.9
+						[roughness]
+							[typeName]
+								TfToken float
+							[value]
+								float 0.4
+						[useSpecularWorkflow]
+							[typeName]
+								TfToken int
+							[value]
+								int 0
+				[Tex]
+					[inputConnections]
+						[st]
+							[0]
+								[upstreamNodeOutputName]
+									TfToken result
+								[upstreamNodePath]
+									TfToken Xform2d
+					[nodeIdentifier]
+						TfToken UsdUVTexture
+					[parameters]
+						[fallback]
+							[typeName]
+								TfToken float4
+							[value]
+								GfVec4f (0.5, 0.5, 0.5, 1)
+						[file]
+							[colorSpace]
+								TfToken sRGB
+							[typeName]
+								TfToken asset
+							[value]
+								SdfAssetPath @texture.png@ resolved=<fixture>/texture.png
+						[scale]
+							[typeName]
+								TfToken float4
+							[value]
+								GfVec4f (2, 2, 2, 1)
+						[wrapS]
+							[typeName]
+								TfToken token
+							[value]
+								TfToken repeat
+						[wrapT]
+							[typeName]
+								TfToken token
+							[value]
+								TfToken mirror
+				[Xform2d]
+					[inputConnections]
+						[in]
+							[0]
+								[upstreamNodeOutputName]
+									TfToken result
+								[upstreamNodePath]
+									TfToken Reader
+					[nodeIdentifier]
+						TfToken UsdTransform2d
+					[parameters]
+						[rotation]
+							[typeName]
+								TfToken float
+							[value]
+								float 45
+						[scale]
+							[typeName]
+								TfToken float2
+							[value]
+								GfVec2f (2, 3)
+						[translation]
+							[typeName]
+								TfToken float2
+							[value]
+								GfVec2f (0.5, 0.25)
+			[terminals]
+				[displacement]
+					[upstreamNodeOutputName]
+						TfToken displacement
+					[upstreamNodePath]
+						TfToken Surface
+				[surface]
+					[upstreamNodeOutputName]
+						TfToken surface
+					[upstreamNodePath]
+						TfToken Surface
+		[__all]
+			[config]
+				[mode]
+					TfToken fast
+				[sampleCount]
+					int 4
+			[interface]
+				[parameterOrder]
+					VtArray<TfToken> []
+				[parameters]
+					[metal]
+						[displayGroup]
+							TfToken 
+						[displayName]
+							TfToken 
+						[mappings]
+							[0]
+								[inputName]
+									TfToken metallic
+								[nodePath]
+									TfToken Surface
+					[occ]
+						[displayGroup]
+							TfToken 
+						[displayName]
+							TfToken 
+						[mappings]
+							[0]
+								[inputName]
+									TfToken fallback
+								[nodePath]
+									TfToken NG/Inner
+					[stName]
+						[displayGroup]
+							TfToken 
+						[displayName]
+							TfToken 
+						[mappings]
+							[0]
+								[inputName]
+									TfToken varname
+								[nodePath]
+									TfToken Reader
+					[tint]
+						[displayGroup]
+							TfToken Look
+						[displayName]
+							TfToken Tint Color
+						[mappings]
+							[0]
+								[inputName]
+									TfToken diffuseColor
+								[nodePath]
+									TfToken GlslfxSurface
+			[nodes]
+				[CodeDisp]
+					[inputConnections]
+					[nodeIdentifier]
+						TfToken 
+					[nodeTypeInfo]
+						[glslfx:sourceCode]
+							string -- glslfx version 0.1
+
+						[implementationSource]
+							TfToken sourceCode
+						[sdrMetadata]
+							VtDictionary {}
+					[parameters]
+						[amount]
+							[typeName]
+								TfToken float
+							[value]
+								float 0.25
+				[Disconnected]
+					[inputConnections]
+					[nodeIdentifier]
+						TfToken UsdPrimvarReader_float3
+					[parameters]
+						[varname]
+							[typeName]
+								TfToken string
+							[value]
+								string unused
+				[GlslfxSurface]
+					[inputConnections]
+					[nodeIdentifier]
+						TfToken 
+					[nodeTypeInfo]
+						[glslfx:sourceAsset]
+							SdfAssetPath @shader1.glslfx@ resolved=<fixture>/shader1.glslfx
+						[implementationSource]
+							TfToken sourceAsset
+						[sdrMetadata]
+							VtDictionary {'role': surface}
+					[parameters]
+						[diffuseColor]
+							[colorSpace]
+								TfToken 
+							[typeName]
+								TfToken color3f
+							[value]
+								GfVec3f (0.25, 0.5, 0.75)
+						[gain]
+							[typeName]
+								TfToken double
+							[value]
+								double 1.5
+				[NG/Inner]
+					[inputConnections]
+					[nodeIdentifier]
+						TfToken UsdPrimvarReader_float
+					[parameters]
+						[fallback]
+							[typeName]
+								TfToken float
+							[value]
+								float 0.5
+						[varname]
+							[typeName]
+								TfToken string
+							[value]
+								string occlusion
+				[Reader]
+					[inputConnections]
+					[nodeIdentifier]
+						TfToken UsdPrimvarReader_float2
+					[parameters]
+						[fallback]
+							[typeName]
+								TfToken float2
+							[value]
+								GfVec2f (0, 0)
+						[varname]
+							[typeName]
+								TfToken string
+							[value]
+								string st
+				[Surface]
+					[inputConnections]
+						[diffuseColor]
+							[0]
+								[upstreamNodeOutputName]
+									TfToken rgb
+								[upstreamNodePath]
+									TfToken Tex
+						[occlusion]
+							[0]
+								[upstreamNodeOutputName]
+									TfToken result
+								[upstreamNodePath]
+									TfToken NG/Inner
+					[nodeIdentifier]
+						TfToken UsdPreviewSurface
+					[parameters]
+						[emissiveColor]
+							[colorSpace]
+								TfToken 
+							[typeName]
+								TfToken color3f
+							[value]
+								GfVec3f (0.1, 0.2, 0.3)
+						[metallic]
+							[typeName]
+								TfToken float
+							[value]
+								float 0.125
+						[normal]
+							[typeName]
+								TfToken normal3f
+							[value]
+								GfVec3f (0, 0, 1)
+						[opacity]
+							[typeName]
+								TfToken float
+							[value]
+								float 0.9
+						[roughness]
+							[typeName]
+								TfToken float
+							[value]
+								float 0.4
+						[useSpecularWorkflow]
+							[typeName]
+								TfToken int
+							[value]
+								int 0
+				[Tex]
+					[inputConnections]
+						[st]
+							[0]
+								[upstreamNodeOutputName]
+									TfToken result
+								[upstreamNodePath]
+									TfToken Xform2d
+					[nodeIdentifier]
+						TfToken UsdUVTexture
+					[parameters]
+						[fallback]
+							[typeName]
+								TfToken float4
+							[value]
+								GfVec4f (0.5, 0.5, 0.5, 1)
+						[file]
+							[colorSpace]
+								TfToken sRGB
+							[typeName]
+								TfToken asset
+							[value]
+								SdfAssetPath @texture.png@ resolved=<fixture>/texture.png
+						[scale]
+							[typeName]
+								TfToken float4
+							[value]
+								GfVec4f (2, 2, 2, 1)
+						[wrapS]
+							[typeName]
+								TfToken token
+							[value]
+								TfToken repeat
+						[wrapT]
+							[typeName]
+								TfToken token
+							[value]
+								TfToken mirror
+				[Xform2d]
+					[inputConnections]
+						[in]
+							[0]
+								[upstreamNodeOutputName]
+									TfToken result
+								[upstreamNodePath]
+									TfToken Reader
+					[nodeIdentifier]
+						TfToken UsdTransform2d
+					[parameters]
+						[rotation]
+							[typeName]
+								TfToken float
+							[value]
+								float 45
+						[scale]
+							[typeName]
+								TfToken float2
+							[value]
+								GfVec2f (2, 3)
+						[translation]
+							[typeName]
+								TfToken float2
+							[value]
+								GfVec2f (0.5, 0.25)
+			[terminals]
+				[displacement]
+					[upstreamNodeOutputName]
+						TfToken displacement
+					[upstreamNodePath]
+						TfToken Surface
+				[glslfx:displacement]
+					[upstreamNodeOutputName]
+						TfToken displacement
+					[upstreamNodePath]
+						TfToken CodeDisp
+				[glslfx:surface]
+					[upstreamNodeOutputName]
+						TfToken surface
+					[upstreamNodePath]
+						TfToken GlslfxSurface
+				[surface]
+					[upstreamNodeOutputName]
+						TfToken surface
+					[upstreamNodePath]
+						TfToken Surface
+		[glslfx]
+			[config]
+				[mode]
+					TfToken fast
+				[sampleCount]
+					int 4
+			[interface]
+				[parameterOrder]
+					VtArray<TfToken> []
+				[parameters]
+					[metal]
+						[displayGroup]
+							TfToken 
+						[displayName]
+							TfToken 
+						[mappings]
+							[0]
+								[inputName]
+									TfToken metallic
+								[nodePath]
+									TfToken Surface
+					[occ]
+						[displayGroup]
+							TfToken 
+						[displayName]
+							TfToken 
+						[mappings]
+							[0]
+								[inputName]
+									TfToken fallback
+								[nodePath]
+									TfToken NG/Inner
+					[stName]
+						[displayGroup]
+							TfToken 
+						[displayName]
+							TfToken 
+						[mappings]
+							[0]
+								[inputName]
+									TfToken varname
+								[nodePath]
+									TfToken Reader
+					[tint]
+						[displayGroup]
+							TfToken Look
+						[displayName]
+							TfToken Tint Color
+						[mappings]
+							[0]
+								[inputName]
+									TfToken diffuseColor
+								[nodePath]
+									TfToken GlslfxSurface
+			[nodes]
+				[CodeDisp]
+					[inputConnections]
+					[nodeIdentifier]
+						TfToken 4274882517066374583
+					[nodeTypeInfo]
+						[glslfx:sourceCode]
+							string -- glslfx version 0.1
+
+						[implementationSource]
+							TfToken sourceCode
+						[sdrMetadata]
+							VtDictionary {}
+					[parameters]
+						[amount]
+							[typeName]
+								TfToken float
+							[value]
+								float 0.25
+				[GlslfxSurface]
+					[inputConnections]
+					[nodeIdentifier]
+						TfToken <assetHash><><glslfx>
+					[nodeTypeInfo]
+						[glslfx:sourceAsset]
+							SdfAssetPath @shader1.glslfx@ resolved=<fixture>/shader1.glslfx
+						[implementationSource]
+							TfToken sourceAsset
+						[sdrMetadata]
+							VtDictionary {'role': surface}
+					[parameters]
+						[diffuseColor]
+							[colorSpace]
+								TfToken 
+							[typeName]
+								TfToken color3f
+							[value]
+								GfVec3f (0.25, 0.5, 0.75)
+						[gain]
+							[typeName]
+								TfToken double
+							[value]
+								double 1.5
+			[terminals]
+				[displacement]
+					[upstreamNodeOutputName]
+						TfToken displacement
+					[upstreamNodePath]
+						TfToken CodeDisp
+				[surface]
+					[upstreamNodeOutputName]
+						TfToken surface
+					[upstreamNodePath]
+						TfToken GlslfxSurface
+/Geom/Mesh type=mesh
+	[usdMaterialBindings]
+		[]
+			[0]
+				[directMaterialBinding]
+					[bindingStrength]
+						TfToken weakerThanDescendants
+					[materialPath]
+						SdfPath /Looks/Mat
+# HdFlatteningSceneIndex
+/Geom/Mesh type=mesh
+	[usdMaterialBindings]
+		[]
+			[0]
+				[directMaterialBinding]
+					[bindingStrength]
+						TfToken weakerThanDescendants
+					[materialPath]
+						SdfPath /Looks/Mat
+# UsdImagingMaterialBindingsResolvingSceneIndex
+/Geom/Mesh type=mesh
+	[materialBindings]
+		[]
+			[path]
+				SdfPath /Looks/Mat
+OK

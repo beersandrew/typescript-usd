@@ -1,0 +1,280 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/imaging/hdMtlx/tests/upstream/fixtures/api/capture.py",
+  "upstream": [
+    "pxr/imaging/hdMtlx/hdMtlx.cpp",
+    "pxr/imaging/hd/materialNetwork2Interface.cpp"
+  ],
+  "payload": {
+    "convertToString": {
+      "bool_true": "true",
+      "bool_false": "false",
+      "int_0": "0",
+      "int_7": "7",
+      "int_neg": "-42",
+      "int_large": "123456789",
+      "float_quarter": "0.25",
+      "float_tenth": "0.1",
+      "float_third": "0.33333334",
+      "float_tiny": "1e-7",
+      "float_large": "1234567",
+      "float_2p24": "16777216",
+      "float_neg": "-2.5",
+      "float_one": "1",
+      "vec2f": "0.1, 1.23457e+06",
+      "vec3f": "0.2, 0.4, 0.6",
+      "vec3f_mixed": "0.333333, 1e-05, 100000",
+      "vec4f": "1, 0.5, 0.25, 1e+07",
+      "matrix3d": "1.5, 0.333333, 0,  0, 1, 0,  2e-05, 1.23457e+06, -1,  ",
+      "matrix4d_identity": "1, 0, 0, 0,  0, 1, 0, 0,  0, 0, 1, 0,  0, 0, 0, 1,  ",
+      "matrix4d": "1, 2, 3, 4,  0.1, 0.2, 0.3, 0.4,  0.333333, 1e-07, 1e+07, -0.5,  10, 20, 30, 1,  ",
+      "asset": "textures/wood.png",
+      "asset_resolved": "wood.png",
+      "string": "hello world",
+      "token": "srgb_texture",
+      "unsupported_double": "",
+      "unsupported_vec3d": "",
+      "empty": ""
+    },
+    "mxTerminalNameByType": {
+      "surfaceshader": "Surface",
+      "displacementshader": "Displacement",
+      "volumeshader": "Surface",
+      "": "Surface"
+    },
+    "mxTerminalNameByNode": {
+      "/M/Preview": "Surface",
+      "/M/Displace": "Displacement",
+      "/M/Unknown": "Surface",
+      "/M/Missing": "Surface"
+    },
+    "primvarReader": {
+      "ND_UsdPrimvarReader_vector2": {
+        "found": true,
+        "isPrimvarReader": true,
+        "primvarNameInputName": "varname",
+        "primvarDefaultInputName": "fallback"
+      },
+      "ND_UsdPrimvarReader_float": {
+        "found": true,
+        "isPrimvarReader": true,
+        "primvarNameInputName": "varname",
+        "primvarDefaultInputName": "fallback"
+      },
+      "ND_geompropvalue_vector2": {
+        "found": true,
+        "isPrimvarReader": false,
+        "primvarNameInputName": "geomprop",
+        "primvarDefaultInputName": "default"
+      },
+      "ND_image_color3": {
+        "found": true,
+        "isPrimvarReader": false,
+        "primvarNameInputName": "geomprop",
+        "primvarDefaultInputName": "default"
+      },
+      "ND_texcoord_vector2": {
+        "found": true,
+        "isPrimvarReader": false,
+        "primvarNameInputName": "geomprop",
+        "primvarDefaultInputName": "default"
+      },
+      "ND_UsdUVTexture": {
+        "found": true,
+        "isPrimvarReader": false,
+        "primvarNameInputName": "geomprop",
+        "primvarDefaultInputName": "default"
+      },
+      "null": {
+        "isPrimvarReader": false,
+        "primvarNameInputName": "geomprop",
+        "primvarDefaultInputName": "default"
+      }
+    },
+    "nodeDefName": {
+      "ND_normalmap": "ND_normalmap_float",
+      "ND_normalmap_float": "ND_normalmap_float",
+      "ND_image_color3": "ND_image_color3"
+    },
+    "nodeDef": {
+      "ND_normalmap": {
+        "name": "ND_normalmap_float",
+        "type": "vector3",
+        "node": "normalmap",
+        "inputs": [
+          [
+            "in",
+            "vector3"
+          ],
+          [
+            "scale",
+            "float"
+          ],
+          [
+            "normal",
+            "vector3"
+          ],
+          [
+            "tangent",
+            "vector3"
+          ],
+          [
+            "bitangent",
+            "vector3"
+          ]
+        ]
+      },
+      "ND_swizzle_color3_float": {
+        "name": "ND_swizzle_color3_float",
+        "type": "float",
+        "node": "swizzle",
+        "inputs": [
+          [
+            "in",
+            "color3"
+          ],
+          [
+            "channels",
+            "string"
+          ]
+        ]
+      },
+      "ND_swizzle_vector4_color3": {
+        "name": "ND_swizzle_vector4_color3",
+        "type": "color3",
+        "node": "swizzle",
+        "inputs": [
+          [
+            "in",
+            "vector4"
+          ],
+          [
+            "channels",
+            "string"
+          ]
+        ]
+      },
+      "ND_UsdPreviewSurface_surfaceshader": {
+        "name": "ND_UsdPreviewSurface_surfaceshader",
+        "type": "surfaceshader",
+        "node": "UsdPreviewSurface",
+        "inputs": [
+          [
+            "diffuseColor",
+            "color3"
+          ],
+          [
+            "emissiveColor",
+            "color3"
+          ],
+          [
+            "useSpecularWorkflow",
+            "integer"
+          ],
+          [
+            "specularColor",
+            "color3"
+          ],
+          [
+            "metallic",
+            "float"
+          ],
+          [
+            "roughness",
+            "float"
+          ],
+          [
+            "clearcoat",
+            "float"
+          ],
+          [
+            "clearcoatRoughness",
+            "float"
+          ],
+          [
+            "opacity",
+            "float"
+          ],
+          [
+            "opacityMode",
+            "integer"
+          ],
+          [
+            "opacityThreshold",
+            "float"
+          ],
+          [
+            "ior",
+            "float"
+          ],
+          [
+            "normal",
+            "vector3"
+          ],
+          [
+            "displacement",
+            "float"
+          ],
+          [
+            "occlusion",
+            "float"
+          ]
+        ]
+      },
+      "ND_not_a_nodedef": null
+    },
+    "previewSurface": {
+      "mxHdTextureMap": {
+        "Mat_Occ": [
+          "file"
+        ],
+        "Mat_Tex": [
+          "file"
+        ]
+      },
+      "hdTextureNodes": [
+        "/Mat/Occ",
+        "/Mat/Tex"
+      ],
+      "hdPrimvarNodes": [
+        "/Mat/Geom",
+        "/Mat/St",
+        "/Mat/Uv"
+      ]
+    },
+    "previewSurfaceSubset": {
+      "mxHdTextureMap": {
+        "Mat_Tex": [
+          "file"
+        ]
+      },
+      "hdTextureNodes": [
+        "/Mat/Tex"
+      ],
+      "hdPrimvarNodes": [
+        "/Mat/Geom",
+        "/Mat/St"
+      ]
+    },
+    "previewSurfaceFromHdNetwork": {
+      "mxHdTextureMap": {
+        "Mat_Occ": [
+          "file"
+        ],
+        "Mat_Tex": [
+          "file"
+        ]
+      },
+      "hdTextureNodes": [
+        "/Mat/Occ",
+        "/Mat/Tex"
+      ],
+      "hdPrimvarNodes": [
+        "/Mat/Geom",
+        "/Mat/St",
+        "/Mat/Uv"
+      ]
+    }
+  }
+}

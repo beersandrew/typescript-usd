@@ -1,0 +1,26 @@
+#usda 1.0
+# Locally authored integration scene referencing the local polygon cube (cube.usda).
+# Exercises composition, nested transforms, visibility and displayColor.
+(defaultPrim = "World"
+ upAxis = "Y")
+def Xform "World" {
+    def Mesh "Blue" (references = @./cube.usda@</mesh>) {
+        double3 xformOp:translate = (-2, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate"]
+        color3f[] primvars:displayColor = [(0.05, 0.3, 0.8)]
+    }
+    def Xform "Group" {
+        double3 xformOp:translate = (2, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate"]
+        def Mesh "Orange" (references = @./cube.usda@</mesh>) {
+            float3 xformOp:rotateXYZ = (0, 30, 0)
+            float3 xformOp:scale = (1, 2, 1)
+            uniform token[] xformOpOrder = ["xformOp:rotateXYZ", "xformOp:scale"]
+            color3f[] primvars:displayColor = [(0.9, 0.25, 0.05)]
+        }
+    }
+    def Xform "Hidden" {
+        token visibility = "invisible"
+        def Mesh "Cube" (references = @./cube.usda@</mesh>) {}
+    }
+}

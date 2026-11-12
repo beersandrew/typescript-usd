@@ -1,0 +1,38 @@
+#usda 1.0
+(upAxis = "Y"
+ metersPerUnit = 1)
+def Material "Material" {
+ token outputs:mtlx:surface.connect = </Material/Surface.outputs:out>
+ def Shader "Surface" {
+  uniform token info:id = "ND_open_pbr_surface_surfaceshader"
+  float inputs:specular_weight = 0
+  color3f inputs:base_color = (0.8,0.15,0.05)
+  float inputs:base_diffuse_roughness = 0
+  token outputs:out
+ }
+}
+def Mesh "Quad" (
+ prepend apiSchemas = ["MaterialBindingAPI"]
+) {
+ rel material:binding = </Material>
+ point3f[] points = [(-1,-1,0),(1,-1,0),(1,1,0),(-1,1,0)]
+ int[] faceVertexCounts = [4]
+ int[] faceVertexIndices = [0,1,2,3]
+ token subdivisionScheme = "none"
+ float3 primvars:custom_color = (0.8,0.15,0.05) (interpolation = "constant")
+}
+def Camera "Camera" {
+ float focalLength = 50
+ float horizontalAperture = 36
+ float verticalAperture = 24
+ double3 xformOp:translate = (0,0,6)
+ uniform token[] xformOpOrder = ["xformOp:translate"]
+}
+
+def Material "Unused" {
+ token outputs:mtlx:surface.connect = </Unused/Surface.outputs:out>
+ def Shader "Surface" {
+  uniform token info:id = "ND_open_pbr_surface_surfaceshader"
+  token outputs:out
+ }
+}

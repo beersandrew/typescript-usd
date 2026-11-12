@@ -1,0 +1,1369 @@
+{
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "payload": {
+    "byIdentifierWithPriority": {
+      "UsdPreviewSurface": "UsdPreviewSurface",
+      "UsdPrimvarReader_float": "UsdPrimvarReader_float",
+      "UsdPrimvarReader_float2": "UsdPrimvarReader_float2",
+      "UsdPrimvarReader_float3": "UsdPrimvarReader_float3",
+      "UsdPrimvarReader_float4": "UsdPrimvarReader_float4",
+      "UsdPrimvarReader_int": "UsdPrimvarReader_int",
+      "UsdPrimvarReader_normal": "UsdPrimvarReader_normal",
+      "UsdPrimvarReader_point": "UsdPrimvarReader_point",
+      "UsdPrimvarReader_string": "UsdPrimvarReader_string",
+      "UsdPrimvarReader_vector": "UsdPrimvarReader_vector",
+      "UsdTransform2d": "UsdTransform2d",
+      "UsdUVTexture": "UsdUVTexture"
+    },
+    "fromSourceCode": {
+      "surface": {
+        "node": {
+          "additionalPrimvarProperties": [],
+          "assetIdentifierInputNames": [],
+          "context": "glslfx",
+          "defaultInput": null,
+          "function": "",
+          "identifier": "15934928560776243234",
+          "implementationFile": "",
+          "inputNames": [],
+          "metadata": {
+            "context": "glslfx",
+            "domain": "rendering",
+            "sdrUsdEncodingVersion": "-1"
+          },
+          "name": "15934928560776243234",
+          "outputNames": [],
+          "primvars": [],
+          "properties": {},
+          "role": "15934928560776243234",
+          "sourceType": "glslfx"
+        },
+        "sourceCode": "-- glslfx version 0.1 \n-- configuration \n{\n\"techniques\": {\n    \"default\": {\n        \"surfaceShader\": {\n            \"source\": [ \"testHdStShaders.Surface\" ]\n        }\n    }\n}\n\n}\n-- glsl testHdStShaders.Surface \n\nvec4 surfaceShader(vec4 Peye, vec3 Neye, vec4 color, vec4 patchCoord) {\n    return vec4(FallbackLighting(Peye.xyz, Neye, vec3(1)), 1);\n}\n"
+      },
+      "surfaceFallback": {
+        "node": {
+          "additionalPrimvarProperties": [],
+          "assetIdentifierInputNames": [],
+          "context": "glslfx",
+          "defaultInput": null,
+          "function": "",
+          "identifier": "4430696866662809359",
+          "implementationFile": "",
+          "inputNames": [
+            "fallbackColor"
+          ],
+          "metadata": {
+            "context": "glslfx",
+            "domain": "rendering",
+            "sdrUsdEncodingVersion": "-1"
+          },
+          "name": "4430696866662809359",
+          "outputNames": [],
+          "primvars": [],
+          "properties": {
+            "fallbackColor": {
+              "arraySize": 0,
+              "default": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "isOutput": false,
+              "metadata": {},
+              "pythonType": "Gf.Vec3f",
+              "type": "color"
+            }
+          },
+          "role": "4430696866662809359",
+          "sourceType": "glslfx"
+        },
+        "sourceCode": "-- glslfx version 0.1 \n-- configuration \n{\n\"parameters\": {\n\"fallbackColor\": {\n\"default\": [0.0, 0.0, 0.0] \n}\n},\n\"techniques\": {\n    \"default\": {\n        \"surfaceShader\": {\n            \"source\": [ \"testHdStShaders.Surface\" ]\n        }\n    }\n}\n\n}\n-- glsl testHdStShaders.Surface \n\nvec4 surfaceShader(vec4 Peye, vec3 Neye, vec4 color, vec4 patchCoord) {\n    return vec4(FallbackLighting(Neye, abs(Peye.xyz), HdGet_fallbackColor()), 1);\n}\n"
+      },
+      "surfaceWithMetadata": {
+        "metadataArg": {
+          "primvars": "displayColor"
+        },
+        "node": {
+          "additionalPrimvarProperties": [],
+          "assetIdentifierInputNames": [],
+          "context": "glslfx",
+          "defaultInput": null,
+          "function": "",
+          "identifier": "3235660089176618871",
+          "implementationFile": "",
+          "inputNames": [],
+          "metadata": {
+            "context": "glslfx",
+            "domain": "rendering",
+            "primvars": "displayColor",
+            "sdrUsdEncodingVersion": "-1"
+          },
+          "name": "3235660089176618871",
+          "outputNames": [],
+          "primvars": [
+            "displayColor"
+          ],
+          "properties": {},
+          "role": "3235660089176618871",
+          "sourceType": "glslfx"
+        },
+        "sourceCode": "-- glslfx version 0.1 \n-- configuration \n{\n\"techniques\": {\n    \"default\": {\n        \"surfaceShader\": {\n            \"source\": [ \"testHdStShaders.Surface\" ]\n        }\n    }\n}\n\n}\n-- glsl testHdStShaders.Surface \n\nvec4 surfaceShader(vec4 Peye, vec3 Neye, vec4 color, vec4 patchCoord) {\n    return vec4(FallbackLighting(Peye.xyz, Neye, vec3(1)), 1);\n}\n"
+      },
+      "textures": {
+        "node": {
+          "additionalPrimvarProperties": [],
+          "assetIdentifierInputNames": [],
+          "context": "glslfx",
+          "defaultInput": null,
+          "function": "",
+          "identifier": "9929646664133676524",
+          "implementationFile": "",
+          "inputNames": [
+            "amount",
+            "count",
+            "flag",
+            "single",
+            "tint",
+            "uv",
+            "ptexColor"
+          ],
+          "metadata": {
+            "context": "glslfx",
+            "domain": "rendering",
+            "primvars": "st",
+            "sdrUsdEncodingVersion": "-1"
+          },
+          "name": "9929646664133676524",
+          "outputNames": [],
+          "primvars": [
+            "st"
+          ],
+          "properties": {
+            "amount": {
+              "arraySize": 0,
+              "default": 0.5,
+              "isOutput": false,
+              "metadata": {},
+              "pythonType": "builtins.float",
+              "type": "float"
+            },
+            "count": {
+              "arraySize": 0,
+              "default": 3,
+              "isOutput": false,
+              "metadata": {},
+              "pythonType": "builtins.int",
+              "type": "int"
+            },
+            "flag": {
+              "arraySize": 0,
+              "default": 1,
+              "isOutput": false,
+              "metadata": {},
+              "pythonType": "builtins.int",
+              "type": "int"
+            },
+            "ptexColor": {
+              "arraySize": 0,
+              "default": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "isOutput": false,
+              "metadata": {},
+              "pythonType": "Gf.Vec3f",
+              "type": "color"
+            },
+            "single": {
+              "arraySize": 0,
+              "default": 2.0,
+              "isOutput": false,
+              "metadata": {},
+              "pythonType": "builtins.float",
+              "type": "float"
+            },
+            "tint": {
+              "arraySize": 4,
+              "default": [
+                0.10000000149011612,
+                0.20000000298023224,
+                0.30000001192092896,
+                0.4000000059604645
+              ],
+              "isOutput": false,
+              "metadata": {},
+              "pythonType": "Gf.Vec4f",
+              "type": "float"
+            },
+            "uv": {
+              "arraySize": 2,
+              "default": [
+                0.25,
+                0.75
+              ],
+              "isOutput": false,
+              "metadata": {},
+              "pythonType": "Gf.Vec2f",
+              "type": "float"
+            }
+          },
+          "role": "9929646664133676524",
+          "sourceType": "glslfx"
+        },
+        "sourceCode": "-- glslfx version 0.1 \n-- configuration \n{\n\"textures\" : { \n    \"ptexColor\": { \n        \"description\": \"Color PTexture\" \n    } \n}, \n\"attributes\": {\n    \"st\": { \"type\": \"vec2\" }\n},\n\"parameters\": {\n    \"amount\": { \"default\": 0.5 },\n    \"count\": { \"default\": 3 },\n    \"flag\": { \"default\": true },\n    \"uv\": { \"default\": [0.25, 0.75] },\n    \"tint\": { \"default\": [0.1, 0.2, 0.3, 0.4] },\n    \"single\": { \"default\": [2.0] }\n},\n\"techniques\": {\n    \"default\": {\n        \"surfaceShader\": {\n            \"source\": [ \"testHdStPtex.Surface\" ]\n        }\n    }\n}\n\n}\n-- glsl testHdStPtex.Surface \n\nvec4 surfaceShader(vec4 Peye, vec3 Neye, vec4 color, vec4 patchCoord) {\n    color.rgb = HdGet_ptexColor().xyz;\n    return color;\n}\n"
+      }
+    },
+    "usdShaders": {
+      "UsdPreviewSurface": {
+        "additionalPrimvarProperties": [],
+        "assetIdentifierInputNames": [],
+        "context": "usda",
+        "defaultInput": null,
+        "function": "UsdPreviewSurface",
+        "identifier": "UsdPreviewSurface",
+        "implementationFile": "previewSurface.glslfx",
+        "inputNames": [
+          "clearcoat",
+          "clearcoatRoughness",
+          "diffuseColor",
+          "displacement",
+          "emissiveColor",
+          "ior",
+          "metallic",
+          "normal",
+          "occlusion",
+          "opacity",
+          "opacityMode",
+          "opacityThreshold",
+          "roughness",
+          "specularColor",
+          "useSpecularWorkflow"
+        ],
+        "metadata": {
+          "context": "usda",
+          "domain": "rendering",
+          "sdrUsdEncodingVersion": "-1"
+        },
+        "name": "UsdPreviewSurface",
+        "outputNames": [
+          "displacement",
+          "surface"
+        ],
+        "primvars": [],
+        "properties": {
+          "clearcoat": {
+            "arraySize": 0,
+            "default": 0.0,
+            "isOutput": false,
+            "metadata": {
+              "connectable": "1",
+              "sdrUsdDefinitionType": "float"
+            },
+            "type": "float",
+            "valueType": "float"
+          },
+          "clearcoatRoughness": {
+            "arraySize": 0,
+            "default": 0.009999999776482582,
+            "isOutput": false,
+            "metadata": {
+              "connectable": "1",
+              "sdrUsdDefinitionType": "float"
+            },
+            "type": "float",
+            "valueType": "float"
+          },
+          "diffuseColor": {
+            "arraySize": 0,
+            "default": [
+              0.18000000715255737,
+              0.18000000715255737,
+              0.18000000715255737
+            ],
+            "isOutput": false,
+            "metadata": {
+              "connectable": "1",
+              "sdrUsdDefinitionType": "color3f"
+            },
+            "type": "color",
+            "valueType": "GfVec3f"
+          },
+          "displacement": {
+            "arraySize": 0,
+            "default": 0.0,
+            "isOutput": false,
+            "metadata": {
+              "connectable": "1",
+              "sdrUsdDefinitionType": "float"
+            },
+            "type": "float",
+            "valueType": "float"
+          },
+          "emissiveColor": {
+            "arraySize": 0,
+            "default": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "isOutput": false,
+            "metadata": {
+              "connectable": "1",
+              "sdrUsdDefinitionType": "color3f"
+            },
+            "type": "color",
+            "valueType": "GfVec3f"
+          },
+          "ior": {
+            "arraySize": 0,
+            "default": 1.5,
+            "isOutput": false,
+            "metadata": {
+              "connectable": "1",
+              "sdrUsdDefinitionType": "float"
+            },
+            "type": "float",
+            "valueType": "float"
+          },
+          "metallic": {
+            "arraySize": 0,
+            "default": 0.0,
+            "isOutput": false,
+            "metadata": {
+              "connectable": "1",
+              "sdrUsdDefinitionType": "float"
+            },
+            "type": "float",
+            "valueType": "float"
+          },
+          "normal": {
+            "arraySize": 0,
+            "default": [
+              0.0,
+              0.0,
+              1.0
+            ],
+            "isOutput": false,
+            "metadata": {
+              "connectable": "1",
+              "sdrUsdDefinitionType": "normal3f"
+            },
+            "type": "normal",
+            "valueType": "GfVec3f"
+          },
+          "occlusion": {
+            "arraySize": 0,
+            "default": 1.0,
+            "isOutput": false,
+            "metadata": {
+              "connectable": "1",
+              "sdrUsdDefinitionType": "float"
+            },
+            "type": "float",
+            "valueType": "float"
+          },
+          "opacity": {
+            "arraySize": 0,
+            "default": 1.0,
+            "isOutput": false,
+            "metadata": {
+              "connectable": "1",
+              "sdrUsdDefinitionType": "float"
+            },
+            "type": "float",
+            "valueType": "float"
+          },
+          "opacityMode": {
+            "arraySize": 0,
+            "default": "transparent",
+            "isOutput": false,
+            "metadata": {
+              "connectable": "0",
+              "sdrUsdDefinitionType": "token"
+            },
+            "type": "string",
+            "valueType": "TfToken"
+          },
+          "opacityThreshold": {
+            "arraySize": 0,
+            "default": 0.0,
+            "isOutput": false,
+            "metadata": {
+              "connectable": "0",
+              "sdrUsdDefinitionType": "float"
+            },
+            "type": "float",
+            "valueType": "float"
+          },
+          "roughness": {
+            "arraySize": 0,
+            "default": 0.5,
+            "isOutput": false,
+            "metadata": {
+              "connectable": "1",
+              "sdrUsdDefinitionType": "float"
+            },
+            "type": "float",
+            "valueType": "float"
+          },
+          "specularColor": {
+            "arraySize": 0,
+            "default": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "isOutput": false,
+            "metadata": {
+              "connectable": "1",
+              "sdrUsdDefinitionType": "color3f"
+            },
+            "type": "color",
+            "valueType": "GfVec3f"
+          },
+          "surface": {
+            "arraySize": 0,
+            "default": null,
+            "isOutput": true,
+            "metadata": {
+              "renderType": "terminal surface",
+              "sdrUsdDefinitionType": "token"
+            },
+            "type": "terminal",
+            "valueType": null
+          },
+          "useSpecularWorkflow": {
+            "arraySize": 0,
+            "default": 0,
+            "isOutput": false,
+            "metadata": {
+              "connectable": "0",
+              "sdrUsdDefinitionType": "int"
+            },
+            "type": "int",
+            "valueType": "int"
+          }
+        },
+        "role": "UsdPreviewSurface",
+        "sourceType": "glslfx"
+      },
+      "UsdPrimvarReader_float": {
+        "additionalPrimvarProperties": [
+          "varname"
+        ],
+        "assetIdentifierInputNames": [],
+        "context": "usda",
+        "defaultInput": "fallback",
+        "function": "UsdPrimvarReader",
+        "identifier": "UsdPrimvarReader_float",
+        "implementationFile": "primvarReader.glslfx",
+        "inputNames": [
+          "fallback",
+          "varname"
+        ],
+        "metadata": {
+          "context": "usda",
+          "domain": "rendering",
+          "primvars": "$varname",
+          "role": "primvar",
+          "sdrUsdEncodingVersion": "-1"
+        },
+        "name": "UsdPrimvarReader_float",
+        "outputNames": [
+          "result"
+        ],
+        "primvars": [],
+        "properties": {
+          "fallback": {
+            "arraySize": 0,
+            "default": 0.0,
+            "isOutput": false,
+            "metadata": {
+              "__SDR__defaultinput": "1",
+              "connectable": "1",
+              "sdrUsdDefinitionType": "float"
+            },
+            "type": "float",
+            "valueType": "float"
+          },
+          "result": {
+            "arraySize": 0,
+            "default": null,
+            "isOutput": true,
+            "metadata": {
+              "sdrUsdDefinitionType": "float"
+            },
+            "type": "float",
+            "valueType": null
+          },
+          "varname": {
+            "arraySize": 0,
+            "default": "",
+            "isOutput": false,
+            "metadata": {
+              "connectable": "0",
+              "primvarProperty": "1",
+              "sdrUsdDefinitionType": "string"
+            },
+            "type": "string",
+            "valueType": "string"
+          }
+        },
+        "role": "primvar",
+        "sourceType": "glslfx"
+      },
+      "UsdPrimvarReader_float2": {
+        "additionalPrimvarProperties": [
+          "varname"
+        ],
+        "assetIdentifierInputNames": [],
+        "context": "usda",
+        "defaultInput": "fallback",
+        "function": "UsdPrimvarReader",
+        "identifier": "UsdPrimvarReader_float2",
+        "implementationFile": "primvarReader.glslfx",
+        "inputNames": [
+          "fallback",
+          "varname"
+        ],
+        "metadata": {
+          "context": "usda",
+          "domain": "rendering",
+          "primvars": "$varname",
+          "role": "primvar",
+          "sdrUsdEncodingVersion": "-1"
+        },
+        "name": "UsdPrimvarReader_float2",
+        "outputNames": [
+          "result"
+        ],
+        "primvars": [],
+        "properties": {
+          "fallback": {
+            "arraySize": 2,
+            "default": [
+              0.0,
+              0.0
+            ],
+            "isOutput": false,
+            "metadata": {
+              "__SDR__defaultinput": "1",
+              "connectable": "1",
+              "sdrUsdDefinitionType": "float2"
+            },
+            "type": "float",
+            "valueType": "GfVec2f"
+          },
+          "result": {
+            "arraySize": 2,
+            "default": null,
+            "isOutput": true,
+            "metadata": {
+              "sdrUsdDefinitionType": "float2"
+            },
+            "type": "float",
+            "valueType": null
+          },
+          "varname": {
+            "arraySize": 0,
+            "default": "",
+            "isOutput": false,
+            "metadata": {
+              "connectable": "0",
+              "primvarProperty": "1",
+              "sdrUsdDefinitionType": "string"
+            },
+            "type": "string",
+            "valueType": "string"
+          }
+        },
+        "role": "primvar",
+        "sourceType": "glslfx"
+      },
+      "UsdPrimvarReader_float3": {
+        "additionalPrimvarProperties": [
+          "varname"
+        ],
+        "assetIdentifierInputNames": [],
+        "context": "usda",
+        "defaultInput": "fallback",
+        "function": "UsdPrimvarReader",
+        "identifier": "UsdPrimvarReader_float3",
+        "implementationFile": "primvarReader.glslfx",
+        "inputNames": [
+          "fallback",
+          "varname"
+        ],
+        "metadata": {
+          "context": "usda",
+          "domain": "rendering",
+          "primvars": "$varname",
+          "role": "primvar",
+          "sdrUsdEncodingVersion": "-1"
+        },
+        "name": "UsdPrimvarReader_float3",
+        "outputNames": [
+          "result"
+        ],
+        "primvars": [],
+        "properties": {
+          "fallback": {
+            "arraySize": 3,
+            "default": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "isOutput": false,
+            "metadata": {
+              "__SDR__defaultinput": "1",
+              "connectable": "1",
+              "sdrUsdDefinitionType": "float3"
+            },
+            "type": "float",
+            "valueType": "GfVec3f"
+          },
+          "result": {
+            "arraySize": 3,
+            "default": null,
+            "isOutput": true,
+            "metadata": {
+              "sdrUsdDefinitionType": "float3"
+            },
+            "type": "float",
+            "valueType": null
+          },
+          "varname": {
+            "arraySize": 0,
+            "default": "",
+            "isOutput": false,
+            "metadata": {
+              "connectable": "0",
+              "primvarProperty": "1",
+              "sdrUsdDefinitionType": "string"
+            },
+            "type": "string",
+            "valueType": "string"
+          }
+        },
+        "role": "primvar",
+        "sourceType": "glslfx"
+      },
+      "UsdPrimvarReader_float4": {
+        "additionalPrimvarProperties": [
+          "varname"
+        ],
+        "assetIdentifierInputNames": [],
+        "context": "usda",
+        "defaultInput": "fallback",
+        "function": "UsdPrimvarReader",
+        "identifier": "UsdPrimvarReader_float4",
+        "implementationFile": "primvarReader.glslfx",
+        "inputNames": [
+          "fallback",
+          "varname"
+        ],
+        "metadata": {
+          "context": "usda",
+          "domain": "rendering",
+          "primvars": "$varname",
+          "role": "primvar",
+          "sdrUsdEncodingVersion": "-1"
+        },
+        "name": "UsdPrimvarReader_float4",
+        "outputNames": [
+          "result"
+        ],
+        "primvars": [],
+        "properties": {
+          "fallback": {
+            "arraySize": 4,
+            "default": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "isOutput": false,
+            "metadata": {
+              "__SDR__defaultinput": "1",
+              "connectable": "1",
+              "sdrUsdDefinitionType": "float4"
+            },
+            "type": "float",
+            "valueType": "GfVec4f"
+          },
+          "result": {
+            "arraySize": 4,
+            "default": null,
+            "isOutput": true,
+            "metadata": {
+              "sdrUsdDefinitionType": "float4"
+            },
+            "type": "float",
+            "valueType": null
+          },
+          "varname": {
+            "arraySize": 0,
+            "default": "",
+            "isOutput": false,
+            "metadata": {
+              "connectable": "0",
+              "primvarProperty": "1",
+              "sdrUsdDefinitionType": "string"
+            },
+            "type": "string",
+            "valueType": "string"
+          }
+        },
+        "role": "primvar",
+        "sourceType": "glslfx"
+      },
+      "UsdPrimvarReader_int": {
+        "additionalPrimvarProperties": [
+          "varname"
+        ],
+        "assetIdentifierInputNames": [],
+        "context": "usda",
+        "defaultInput": "fallback",
+        "function": "UsdPrimvarReader",
+        "identifier": "UsdPrimvarReader_int",
+        "implementationFile": "primvarReader.glslfx",
+        "inputNames": [
+          "fallback",
+          "varname"
+        ],
+        "metadata": {
+          "context": "usda",
+          "domain": "rendering",
+          "primvars": "$varname",
+          "role": "primvar",
+          "sdrUsdEncodingVersion": "-1"
+        },
+        "name": "UsdPrimvarReader_int",
+        "outputNames": [
+          "result"
+        ],
+        "primvars": [],
+        "properties": {
+          "fallback": {
+            "arraySize": 0,
+            "default": 0,
+            "isOutput": false,
+            "metadata": {
+              "__SDR__defaultinput": "1",
+              "connectable": "1",
+              "sdrUsdDefinitionType": "int"
+            },
+            "type": "int",
+            "valueType": "int"
+          },
+          "result": {
+            "arraySize": 0,
+            "default": null,
+            "isOutput": true,
+            "metadata": {
+              "sdrUsdDefinitionType": "int"
+            },
+            "type": "int",
+            "valueType": null
+          },
+          "varname": {
+            "arraySize": 0,
+            "default": "",
+            "isOutput": false,
+            "metadata": {
+              "connectable": "0",
+              "primvarProperty": "1",
+              "sdrUsdDefinitionType": "string"
+            },
+            "type": "string",
+            "valueType": "string"
+          }
+        },
+        "role": "primvar",
+        "sourceType": "glslfx"
+      },
+      "UsdPrimvarReader_normal": {
+        "additionalPrimvarProperties": [
+          "varname"
+        ],
+        "assetIdentifierInputNames": [],
+        "context": "usda",
+        "defaultInput": "fallback",
+        "function": "UsdPrimvarReader",
+        "identifier": "UsdPrimvarReader_normal",
+        "implementationFile": "primvarReader.glslfx",
+        "inputNames": [
+          "fallback",
+          "varname"
+        ],
+        "metadata": {
+          "context": "usda",
+          "domain": "rendering",
+          "primvars": "$varname",
+          "role": "primvar",
+          "sdrUsdEncodingVersion": "-1"
+        },
+        "name": "UsdPrimvarReader_normal",
+        "outputNames": [
+          "result"
+        ],
+        "primvars": [],
+        "properties": {
+          "fallback": {
+            "arraySize": 0,
+            "default": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "isOutput": false,
+            "metadata": {
+              "__SDR__defaultinput": "1",
+              "connectable": "1",
+              "sdrUsdDefinitionType": "normal3f"
+            },
+            "type": "normal",
+            "valueType": "GfVec3f"
+          },
+          "result": {
+            "arraySize": 0,
+            "default": null,
+            "isOutput": true,
+            "metadata": {
+              "sdrUsdDefinitionType": "normal3f"
+            },
+            "type": "normal",
+            "valueType": null
+          },
+          "varname": {
+            "arraySize": 0,
+            "default": "",
+            "isOutput": false,
+            "metadata": {
+              "connectable": "0",
+              "primvarProperty": "1",
+              "sdrUsdDefinitionType": "string"
+            },
+            "type": "string",
+            "valueType": "string"
+          }
+        },
+        "role": "primvar",
+        "sourceType": "glslfx"
+      },
+      "UsdPrimvarReader_point": {
+        "additionalPrimvarProperties": [
+          "varname"
+        ],
+        "assetIdentifierInputNames": [],
+        "context": "usda",
+        "defaultInput": "fallback",
+        "function": "UsdPrimvarReader",
+        "identifier": "UsdPrimvarReader_point",
+        "implementationFile": "primvarReader.glslfx",
+        "inputNames": [
+          "fallback",
+          "varname"
+        ],
+        "metadata": {
+          "context": "usda",
+          "domain": "rendering",
+          "primvars": "$varname",
+          "role": "primvar",
+          "sdrUsdEncodingVersion": "-1"
+        },
+        "name": "UsdPrimvarReader_point",
+        "outputNames": [
+          "result"
+        ],
+        "primvars": [],
+        "properties": {
+          "fallback": {
+            "arraySize": 0,
+            "default": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "isOutput": false,
+            "metadata": {
+              "__SDR__defaultinput": "1",
+              "connectable": "1",
+              "sdrUsdDefinitionType": "point3f"
+            },
+            "type": "point",
+            "valueType": "GfVec3f"
+          },
+          "result": {
+            "arraySize": 0,
+            "default": null,
+            "isOutput": true,
+            "metadata": {
+              "sdrUsdDefinitionType": "point3f"
+            },
+            "type": "point",
+            "valueType": null
+          },
+          "varname": {
+            "arraySize": 0,
+            "default": "",
+            "isOutput": false,
+            "metadata": {
+              "connectable": "0",
+              "primvarProperty": "1",
+              "sdrUsdDefinitionType": "string"
+            },
+            "type": "string",
+            "valueType": "string"
+          }
+        },
+        "role": "primvar",
+        "sourceType": "glslfx"
+      },
+      "UsdPrimvarReader_string": {
+        "additionalPrimvarProperties": [
+          "varname"
+        ],
+        "assetIdentifierInputNames": [],
+        "context": "usda",
+        "defaultInput": "fallback",
+        "function": "UsdPrimvarReader",
+        "identifier": "UsdPrimvarReader_string",
+        "implementationFile": "primvarReader.glslfx",
+        "inputNames": [
+          "fallback",
+          "varname"
+        ],
+        "metadata": {
+          "context": "usda",
+          "domain": "rendering",
+          "primvars": "$varname",
+          "role": "primvar",
+          "sdrUsdEncodingVersion": "-1"
+        },
+        "name": "UsdPrimvarReader_string",
+        "outputNames": [
+          "result"
+        ],
+        "primvars": [],
+        "properties": {
+          "fallback": {
+            "arraySize": 0,
+            "default": "",
+            "isOutput": false,
+            "metadata": {
+              "__SDR__defaultinput": "1",
+              "connectable": "1",
+              "sdrUsdDefinitionType": "string"
+            },
+            "type": "string",
+            "valueType": "string"
+          },
+          "result": {
+            "arraySize": 0,
+            "default": null,
+            "isOutput": true,
+            "metadata": {
+              "sdrUsdDefinitionType": "string"
+            },
+            "type": "string",
+            "valueType": null
+          },
+          "varname": {
+            "arraySize": 0,
+            "default": "",
+            "isOutput": false,
+            "metadata": {
+              "connectable": "0",
+              "primvarProperty": "1",
+              "sdrUsdDefinitionType": "string"
+            },
+            "type": "string",
+            "valueType": "string"
+          }
+        },
+        "role": "primvar",
+        "sourceType": "glslfx"
+      },
+      "UsdPrimvarReader_vector": {
+        "additionalPrimvarProperties": [
+          "varname"
+        ],
+        "assetIdentifierInputNames": [],
+        "context": "usda",
+        "defaultInput": "fallback",
+        "function": "UsdPrimvarReader",
+        "identifier": "UsdPrimvarReader_vector",
+        "implementationFile": "primvarReader.glslfx",
+        "inputNames": [
+          "fallback",
+          "varname"
+        ],
+        "metadata": {
+          "context": "usda",
+          "domain": "rendering",
+          "primvars": "$varname",
+          "role": "primvar",
+          "sdrUsdEncodingVersion": "-1"
+        },
+        "name": "UsdPrimvarReader_vector",
+        "outputNames": [
+          "result"
+        ],
+        "primvars": [],
+        "properties": {
+          "fallback": {
+            "arraySize": 0,
+            "default": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "isOutput": false,
+            "metadata": {
+              "__SDR__defaultinput": "1",
+              "connectable": "1",
+              "sdrUsdDefinitionType": "vector3f"
+            },
+            "type": "vector",
+            "valueType": "GfVec3f"
+          },
+          "result": {
+            "arraySize": 0,
+            "default": null,
+            "isOutput": true,
+            "metadata": {
+              "sdrUsdDefinitionType": "vector3f"
+            },
+            "type": "vector",
+            "valueType": null
+          },
+          "varname": {
+            "arraySize": 0,
+            "default": "",
+            "isOutput": false,
+            "metadata": {
+              "connectable": "0",
+              "primvarProperty": "1",
+              "sdrUsdDefinitionType": "string"
+            },
+            "type": "string",
+            "valueType": "string"
+          }
+        },
+        "role": "primvar",
+        "sourceType": "glslfx"
+      },
+      "UsdTransform2d": {
+        "additionalPrimvarProperties": [],
+        "assetIdentifierInputNames": [],
+        "context": "usda",
+        "defaultInput": null,
+        "function": "UsdTransform2d",
+        "identifier": "UsdTransform2d",
+        "implementationFile": "transform2d.glslfx",
+        "inputNames": [
+          "in",
+          "rotation",
+          "scale",
+          "translation"
+        ],
+        "metadata": {
+          "context": "usda",
+          "domain": "rendering",
+          "role": "math",
+          "sdrUsdEncodingVersion": "-1"
+        },
+        "name": "UsdTransform2d",
+        "outputNames": [
+          "result"
+        ],
+        "primvars": [],
+        "properties": {
+          "in": {
+            "arraySize": 2,
+            "default": [
+              0.0,
+              0.0
+            ],
+            "isOutput": false,
+            "metadata": {
+              "connectable": "1",
+              "sdrUsdDefinitionType": "float2"
+            },
+            "type": "float",
+            "valueType": "GfVec2f"
+          },
+          "result": {
+            "arraySize": 2,
+            "default": null,
+            "isOutput": true,
+            "metadata": {
+              "sdrUsdDefinitionType": "float2"
+            },
+            "type": "float",
+            "valueType": null
+          },
+          "rotation": {
+            "arraySize": 0,
+            "default": 0.0,
+            "isOutput": false,
+            "metadata": {
+              "connectable": "0",
+              "sdrUsdDefinitionType": "float"
+            },
+            "type": "float",
+            "valueType": "float"
+          },
+          "scale": {
+            "arraySize": 2,
+            "default": [
+              1.0,
+              1.0
+            ],
+            "isOutput": false,
+            "metadata": {
+              "connectable": "0",
+              "sdrUsdDefinitionType": "float2"
+            },
+            "type": "float",
+            "valueType": "GfVec2f"
+          },
+          "translation": {
+            "arraySize": 2,
+            "default": [
+              0.0,
+              0.0
+            ],
+            "isOutput": false,
+            "metadata": {
+              "connectable": "0",
+              "sdrUsdDefinitionType": "float2"
+            },
+            "type": "float",
+            "valueType": "GfVec2f"
+          }
+        },
+        "role": "math",
+        "sourceType": "glslfx"
+      },
+      "UsdUVTexture": {
+        "additionalPrimvarProperties": [],
+        "assetIdentifierInputNames": [
+          "file"
+        ],
+        "context": "usda",
+        "defaultInput": "fallback",
+        "function": "UsdUVTexture",
+        "identifier": "UsdUVTexture",
+        "implementationFile": "uvTexture.glslfx",
+        "inputNames": [
+          "bias",
+          "fallback",
+          "file",
+          "scale",
+          "sourceColorSpace",
+          "st",
+          "wrapS",
+          "wrapT"
+        ],
+        "metadata": {
+          "context": "usda",
+          "domain": "rendering",
+          "role": "texture",
+          "sdrUsdEncodingVersion": "-1"
+        },
+        "name": "UsdUVTexture",
+        "outputNames": [
+          "a",
+          "b",
+          "g",
+          "r",
+          "rgb"
+        ],
+        "primvars": [],
+        "properties": {
+          "a": {
+            "arraySize": 0,
+            "default": null,
+            "isOutput": true,
+            "metadata": {
+              "sdrUsdDefinitionType": "float",
+              "swizzle": "w"
+            },
+            "type": "float",
+            "valueType": null
+          },
+          "b": {
+            "arraySize": 0,
+            "default": null,
+            "isOutput": true,
+            "metadata": {
+              "sdrUsdDefinitionType": "float",
+              "swizzle": "z"
+            },
+            "type": "float",
+            "valueType": null
+          },
+          "bias": {
+            "arraySize": 4,
+            "default": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "isOutput": false,
+            "metadata": {
+              "connectable": "0",
+              "sdrUsdDefinitionType": "float4"
+            },
+            "type": "float",
+            "valueType": "GfVec4f"
+          },
+          "fallback": {
+            "arraySize": 4,
+            "default": [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            "isOutput": false,
+            "metadata": {
+              "__SDR__defaultinput": "1",
+              "connectable": "1",
+              "sdrUsdDefinitionType": "float4"
+            },
+            "type": "float",
+            "valueType": "GfVec4f"
+          },
+          "file": {
+            "arraySize": 0,
+            "default": "",
+            "isOutput": false,
+            "metadata": {
+              "__SDR__isAssetIdentifier": "1",
+              "connectable": "0",
+              "sdrUsdDefinitionType": "asset"
+            },
+            "type": "string",
+            "valueType": "SdfAssetPath"
+          },
+          "g": {
+            "arraySize": 0,
+            "default": null,
+            "isOutput": true,
+            "metadata": {
+              "sdrUsdDefinitionType": "float",
+              "swizzle": "y"
+            },
+            "type": "float",
+            "valueType": null
+          },
+          "r": {
+            "arraySize": 0,
+            "default": null,
+            "isOutput": true,
+            "metadata": {
+              "sdrUsdDefinitionType": "float",
+              "swizzle": "x"
+            },
+            "type": "float",
+            "valueType": null
+          },
+          "rgb": {
+            "arraySize": 3,
+            "default": null,
+            "isOutput": true,
+            "metadata": {
+              "sdrUsdDefinitionType": "float3",
+              "swizzle": "xyz"
+            },
+            "type": "float",
+            "valueType": null
+          },
+          "scale": {
+            "arraySize": 4,
+            "default": [
+              1.0,
+              1.0,
+              1.0,
+              1.0
+            ],
+            "isOutput": false,
+            "metadata": {
+              "connectable": "0",
+              "sdrUsdDefinitionType": "float4"
+            },
+            "type": "float",
+            "valueType": "GfVec4f"
+          },
+          "sourceColorSpace": {
+            "arraySize": 0,
+            "default": "auto",
+            "isOutput": false,
+            "metadata": {
+              "connectable": "0",
+              "sdrUsdDefinitionType": "token"
+            },
+            "type": "string",
+            "valueType": "TfToken"
+          },
+          "st": {
+            "arraySize": 2,
+            "default": [
+              0.0,
+              0.0
+            ],
+            "isOutput": false,
+            "metadata": {
+              "connectable": "1",
+              "sdrUsdDefinitionType": "float2"
+            },
+            "type": "float",
+            "valueType": "GfVec2f"
+          },
+          "wrapS": {
+            "arraySize": 0,
+            "default": "useMetadata",
+            "isOutput": false,
+            "metadata": {
+              "connectable": "0",
+              "sdrUsdDefinitionType": "token"
+            },
+            "type": "string",
+            "valueType": "TfToken"
+          },
+          "wrapT": {
+            "arraySize": 0,
+            "default": "useMetadata",
+            "isOutput": false,
+            "metadata": {
+              "connectable": "0",
+              "sdrUsdDefinitionType": "token"
+            },
+            "type": "string",
+            "valueType": "TfToken"
+          }
+        },
+        "role": "texture",
+        "sourceType": "glslfx"
+      }
+    }
+  },
+  "release": "26.11.1",
+  "script": "pxr/usd/plugin/usdShaders/tests/fixtures/sdrNodes/capture.py",
+  "upstream": [
+    "pxr/usd/plugin/usdShaders/discoveryPlugin.cpp",
+    "pxr/usd/plugin/usdShaders/shaders/shaderDefs.usda",
+    "pxr/usdImaging/plugin/sdrGlslfx/parserPlugin.cpp",
+    "pxr/usd/sdr/registry.cpp:596-655",
+    "pxr/usd/sdr/shaderNode.cpp:353-385",
+    "pxr/imaging/hdSt/testenv/testHdStShaders.cpp:79-111",
+    "pxr/imaging/hdSt/testenv/testHdStPtex.cpp:80-100"
+  ]
+}

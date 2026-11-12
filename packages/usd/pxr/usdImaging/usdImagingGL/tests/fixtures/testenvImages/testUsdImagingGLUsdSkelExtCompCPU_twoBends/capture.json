@@ -1,0 +1,27 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/usdImaging/usdImagingGL/tests/fixtures/testenvImages/capture.py",
+  "upstream": [
+    "pxr/usdImaging/usdImagingGL/CMakeLists.txt",
+    "pxr/usdImaging/usdImagingGL/testenv/testUsdImagingGLBasicDrawing.cpp"
+  ],
+  "payload": {
+    "test": "testUsdImagingGLUsdSkelExtCompCPU_twoBends",
+    "cmake": "pxr/usdImaging/usdImagingGL/CMakeLists.txt:3870",
+    "command": "<install>/tests/testUsdImagingGLBasicDrawing -offscreen -frameAll -lighting -camlight -shading wireOnSurface -stage twoBends.usda -write usdSkel_twoBends_extComp_CPU.png",
+    "cwd": "copy of <source>/pxr/usdImaging/usdImagingGL/testenv/testUsdImagingGLUsdSkel",
+    "env": {
+      "TF_DEBUG": "HD_SAFE_MODE",
+      "USDSKELIMAGING_FORCE_CPU_COMPUTE": "1"
+    },
+    "expectedReturnCode": "0",
+    "returnCode": 0,
+    "images": [
+      {
+        "name": "usdSkel_twoBends_extComp_CPU.png",
+        "written": true
+      }
+    ]
+  }
+}

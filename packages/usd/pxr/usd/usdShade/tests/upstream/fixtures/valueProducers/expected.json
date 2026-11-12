@@ -1,0 +1,70 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/usd/usdShade/tests/upstream/fixtures/valueProducers/capture.py",
+  "upstream": [
+    "pxr/usd/usdShade/utils.cpp"
+  ],
+  "payload": {
+    "cases": [
+      {
+        "name": "NoFallback",
+        "path": "/NoFallback/A.inputs:in",
+        "all": [],
+        "shaderOnly": []
+      },
+      {
+        "name": "WithFallback",
+        "path": "/WithFallback/A.inputs:in",
+        "all": [
+          "/WithFallback/A.inputs:in"
+        ],
+        "shaderOnly": []
+      },
+      {
+        "name": "interface",
+        "path": "/Graph/A.inputs:in",
+        "all": [
+          "/Graph.inputs:value"
+        ],
+        "shaderOnly": []
+      },
+      {
+        "name": "stopAtShaderOutput",
+        "path": "/Graph/A.inputs:terminal",
+        "all": [
+          "/Graph/B.outputs:out"
+        ],
+        "shaderOnly": [
+          "/Graph/B.outputs:out"
+        ]
+      },
+      {
+        "name": "deadInterfaceFallback",
+        "path": "/Graph/A.inputs:fallback",
+        "all": [
+          "/Graph/A.inputs:fallback"
+        ],
+        "shaderOnly": []
+      },
+      {
+        "name": "multipleOutputs",
+        "path": "/Graph/A.inputs:multi",
+        "all": [
+          "/Graph/B.outputs:out",
+          "/Graph/C.outputs:out"
+        ],
+        "shaderOnly": [
+          "/Graph/B.outputs:out",
+          "/Graph/C.outputs:out"
+        ]
+      },
+      {
+        "name": "cycle",
+        "path": "/Graph.inputs:cycleA",
+        "all": [],
+        "shaderOnly": []
+      }
+    ]
+  }
+}

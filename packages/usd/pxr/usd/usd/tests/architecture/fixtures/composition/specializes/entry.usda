@@ -1,0 +1,9 @@
+#usda 1.0
+(
+    defaultPrim = "Root"
+)
+def "Root" (references = @second.usda@) {
+    over "Container" {
+        over "Base" { string arc = "FromRoot" ; }
+    }
+}

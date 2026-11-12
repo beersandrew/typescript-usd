@@ -1,0 +1,170 @@
+{
+ "release": "26.11.1",
+ "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+ "script": "pxr/base/vt/tests/upstream/fixtures/hash/capture.py",
+ "upstream": [
+  "pxr/base/vt/value.cpp",
+  "pxr/base/vt/dictionary.h",
+  "pxr/base/vt/array.h"
+ ],
+ "payload": {
+  "cases": [
+   {
+    "label": "empty",
+    "code": "0000000000000000"
+   },
+   {
+    "label": "bool:true",
+    "code": "557c4a7fb979379e"
+   },
+   {
+    "label": "uchar:200",
+    "code": "68223172eb18579b"
+   },
+   {
+    "label": "int:42",
+    "code": "f26538e26ef819f5"
+   },
+   {
+    "label": "int:-7",
+    "code": "ad99f684edab7bac"
+   },
+   {
+    "label": "uint:4000000000",
+    "code": "0048f4a09c6fe4ff"
+   },
+   {
+    "label": "int64:-5",
+    "code": "57928b83609feae8"
+   },
+   {
+    "label": "uint64:9007199254740993",
+    "code": "557c4a7fb979d728"
+   },
+   {
+    "label": "half:1.5",
+    "code": "00961c0ad4ec7a6f"
+   },
+   {
+    "label": "float:1.23",
+    "code": "74d63d4dcd87e1ed"
+   },
+   {
+    "label": "double:1.5",
+    "code": "000000000000585d"
+   },
+   {
+    "label": "double:-0",
+    "code": "0000000000000000"
+   },
+   {
+    "label": "string:abc",
+    "code": "33c3d9416af1c3f0"
+   },
+   {
+    "label": "GfVec2i:1,-2",
+    "code": "bfd924cbb2ca9665"
+   },
+   {
+    "label": "GfVec3d:1,2,3",
+    "code": "aac02ce0fbae50a4"
+   },
+   {
+    "label": "GfVec3f:1,2,3",
+    "code": "6f3ebfe6c0d29f45"
+   },
+   {
+    "label": "GfVec3h:1,2,3",
+    "code": "8b6c2d5fd9abd6c5"
+   },
+   {
+    "label": "GfVec4i:1,2,3,4",
+    "code": "681351a8129a39a9"
+   },
+   {
+    "label": "GfMatrix2d:1,2,3,4",
+    "code": "fd9a87964f591608"
+   },
+   {
+    "label": "GfMatrix4d:identity",
+    "code": "231b292b0d557864"
+   },
+   {
+    "label": "GfQuatd:0.5,1,2,3",
+    "code": "8dadc27eff260ebb"
+   },
+   {
+    "label": "GfQuatf:0.5,1,2,3",
+    "code": "71c4189abccf18d9"
+   },
+   {
+    "label": "GfQuath:0.5,1,2,3",
+    "code": "7b671f5394b95bd6"
+   },
+   {
+    "label": "int[]:",
+    "code": "4d21fe9083be9c09"
+   },
+   {
+    "label": "int[]:1,2,3",
+    "code": "2030154a22b0c86e"
+   },
+   {
+    "label": "bool[]:1,0,1",
+    "code": "d230791d71f4abda"
+   },
+   {
+    "label": "uchar[]:1,2,3",
+    "code": "e280b2bb2bd8c0f6"
+   },
+   {
+    "label": "int64[]:-1,2",
+    "code": "7f5412797d5196f6"
+   },
+   {
+    "label": "float[]:1.5,-0",
+    "code": "fee96e8700f9901e"
+   },
+   {
+    "label": "double[]:1,2,3",
+    "code": "b33036dc61d6ec82"
+   },
+   {
+    "label": "half[]:1,2",
+    "code": "fe942c5628a34ee4"
+   },
+   {
+    "label": "string[]:a,bc",
+    "code": "a4b09513eb0767f0"
+   },
+   {
+    "label": "GfVec3f[]:1,2,3;4,5,6",
+    "code": "1f3d58458cc95975"
+   },
+   {
+    "label": "GfVec2i[]:1,2;3,4",
+    "code": "b926092be76e9cb7"
+   },
+   {
+    "label": "GfMatrix4d[]:identity",
+    "code": "7fdaf45529494a6f"
+   },
+   {
+    "label": "GfQuatf[]:0.5,1,2,3",
+    "code": "1ed172568f65d265"
+   },
+   {
+    "label": "dictionary:",
+    "code": "0000000000000000"
+   },
+   {
+    "label": "dictionary:b=int 2,a=string x",
+    "code": "8a809a9048b4537a"
+   },
+   {
+    "label": "VtValue(dictionary):b=int 2,a=string x",
+    "code": "82cf9223d3ab528a"
+   }
+  ]
+ }
+}

@@ -1,0 +1,60 @@
+#usda 1.0
+(
+    upAxis = "Y"
+)
+
+def Xform "World"
+{
+    def PointInstancer "PI"
+    {
+        int[] protoIndices = [0, 1, 0, 2, 2]
+        int64[] invisibleIds = [1]
+        point3f[] positions = [(0, 0, 0), (1, 0, 0), (2, 0, 0), (3, 0, 0), (4, 0, 0)]
+        quath[] orientations = [(1, 0, 0, 0), (1, 0, 0, 0), (1, 0, 0, 0), (1, 0, 0, 0), (1, 0, 0, 0)]
+        float3[] scales = [(1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1), (2, 2, 2)]
+        float[] primvars:foo = [1, 2, 3, 4, 5] (
+            interpolation = "vertex"
+        )
+        float primvars:bar = 7 (
+            interpolation = "constant"
+        )
+        rel prototypes = [</World/PI/Protos/A>, </World/PI/Protos/B>, </World/PI/Protos/C>]
+
+        def Scope "Protos"
+        {
+            def Cube "A"
+            {
+            }
+            def Sphere "B"
+            {
+            }
+            def Cone "C"
+            {
+            }
+        }
+    }
+
+    def PointInstancer "PIInactive" (
+        inactiveIds = [3, 4]
+    )
+    {
+        int[] protoIndices = [0, 1, 0, 2, 2]
+        int64[] ids = [0, 1, 2, 3, 4]
+        point3f[] positions = [(0, 0, 0), (1, 0, 0), (2, 0, 0), (3, 0, 0), (4, 0, 0)]
+        quatf[] orientationsf = [(1, 0, 0, 0), (1, 0, 0, 0), (1, 0, 0, 0), (1, 0, 0, 0), (1, 0, 0, 0)]
+        rel prototypes = [</World/PIInactive/Protos/A>, </World/PIInactive/Protos/B>, </World/PIInactive/Protos/C>]
+
+        def Scope "Protos"
+        {
+            def Cube "A"
+            {
+            }
+            def Sphere "B"
+            {
+            }
+            def Cone "C"
+            {
+            }
+        }
+    }
+}

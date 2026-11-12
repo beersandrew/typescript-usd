@@ -1,0 +1,5 @@
+#usda 1.0
+over "World" {
+    custom float weight = 99
+    custom float weight.timeSamples = { 0: 100, 2: 200 }
+}

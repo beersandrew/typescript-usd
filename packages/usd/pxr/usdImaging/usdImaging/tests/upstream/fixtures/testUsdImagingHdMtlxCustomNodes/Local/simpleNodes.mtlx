@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<materialx version="1.39">
+  <UsdPreviewSurface name="Surface" type="surfaceshader">
+    <input name="diffuseColor" type="color3" output="diffuseColor_out_color" nodegraph="NG_ImageNode" />
+    <input name="ior" type="float" value="0.9" />
+    <input name="roughness" type="float" value="0.25" />
+    <input name="specularColor" type="color3" value="0.9, 0.9, 0.9" />
+    <input name="useSpecularWorkflow" type="integer" value="0" />
+  </UsdPreviewSurface>
+  <surfacematerial name="TexturedMaterial" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="Surface" />
+  </surfacematerial>
+  <nodegraph name="NG_ImageNode">
+    <wrapImage name="NG_ImageNode_diffColor" type="color3" nodedef="ND_wrapImage">
+      <input name="file_input" type="filename" value="images/grid.png" />
+      <input name="tint" type="color3" value="0, 1, 0" />
+    </wrapImage>
+    <output name="diffuseColor_out_color" type="color3" nodename="NG_ImageNode_diffColor" />
+  </nodegraph>
+</materialx>

@@ -1,0 +1,291 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/usd/usd/tests/fixtures/duration/capture.py",
+  "upstream": [
+    "pxr/usd/usd/stage.cpp:667-708",
+    "pxr/usd/usd/interpolation.h:40-61",
+    "pxr/base/ts/splineData.h:711-744"
+  ],
+  "payload": {
+    "local": {
+      "typed": {
+        "relative": true,
+        "sample": true,
+        "curve": true
+      },
+      "defaults": {
+        "relative": 2.0,
+        "relativeArray": [
+          2.0,
+          4.0
+        ]
+      },
+      "samples": {
+        "sample": [
+          [
+            1,
+            2.0
+          ],
+          [
+            2,
+            4.0
+          ],
+          [
+            3,
+            6.0
+          ]
+        ],
+        "arraySample": [
+          [
+            1,
+            [
+              2.0,
+              4.0
+            ]
+          ],
+          [
+            2,
+            [
+              4.0,
+              6.0
+            ]
+          ],
+          [
+            3,
+            [
+              6.0,
+              8.0
+            ]
+          ]
+        ],
+        "curve": [
+          [
+            1,
+            2.0
+          ],
+          [
+            2,
+            4.043032913518007
+          ],
+          [
+            3,
+            null
+          ]
+        ]
+      },
+      "customData": {
+        "array": [
+          2.0,
+          4.0
+        ],
+        "nested": {
+          "relative": 5.0
+        },
+        "relative": 2.0
+      },
+      "spline": {
+        "type": "duration",
+        "timeValued": true,
+        "knots": [
+          {
+            "time": 1.0,
+            "value": 2.0,
+            "preValue": 2.0,
+            "preWidth": 0.0,
+            "postWidth": 0.5,
+            "preSlope": 0.0,
+            "postSlope": 2.0
+          },
+          {
+            "time": 3.0,
+            "value": 6.0,
+            "preValue": 6.0,
+            "preWidth": 0.25,
+            "postWidth": 0.0,
+            "preSlope": 1.5,
+            "postSlope": 0.0
+          }
+        ],
+        "pre": {
+          "mode": "Ts.ExtrapSloped",
+          "slope": 0.75
+        },
+        "post": {
+          "mode": "Ts.ExtrapLoopRepeat",
+          "boundary": 7.0
+        }
+      },
+      "held": {
+        "sample": 2.0,
+        "arraySample": [
+          2.0,
+          4.0
+        ]
+      }
+    },
+    "composed": {
+      "typed": {
+        "relative": true,
+        "sample": true,
+        "curve": true
+      },
+      "defaults": {
+        "relative": 6.0,
+        "relativeArray": [
+          6.0,
+          12.0
+        ]
+      },
+      "samples": {
+        "sample": [
+          [
+            103,
+            6.0
+          ],
+          [
+            106,
+            12.0
+          ],
+          [
+            109,
+            18.0
+          ]
+        ],
+        "arraySample": [
+          [
+            103,
+            [
+              6.0,
+              12.0
+            ]
+          ],
+          [
+            106,
+            [
+              12.0,
+              18.0
+            ]
+          ],
+          [
+            109,
+            [
+              18.0,
+              24.0
+            ]
+          ]
+        ],
+        "curve": [
+          [
+            103,
+            6.0
+          ],
+          [
+            106,
+            12.12909874055402
+          ],
+          [
+            109,
+            null
+          ]
+        ]
+      },
+      "customData": {
+        "array": [
+          6.0,
+          12.0
+        ],
+        "nested": {
+          "relative": 15.0
+        },
+        "relative": 6.0
+      },
+      "spline": {
+        "type": "duration",
+        "timeValued": true,
+        "knots": [
+          {
+            "time": 103.0,
+            "value": 6.0,
+            "preValue": 6.0,
+            "preWidth": 0.0,
+            "postWidth": 1.5,
+            "preSlope": 0.0,
+            "postSlope": 2.0
+          },
+          {
+            "time": 109.0,
+            "value": 18.0,
+            "preValue": 18.0,
+            "preWidth": 0.75,
+            "postWidth": 0.0,
+            "preSlope": 1.5,
+            "postSlope": 0.0
+          }
+        ],
+        "pre": {
+          "mode": "Ts.ExtrapSloped",
+          "slope": 0.75
+        },
+        "post": {
+          "mode": "Ts.ExtrapLoopRepeat",
+          "boundary": 121.0
+        }
+      },
+      "held": {
+        "sample": 6.0,
+        "arraySample": [
+          6.0,
+          12.0
+        ]
+      }
+    },
+    "identity": {
+      "copyEqual": true,
+      "binaryEqual": true
+    },
+    "authoring": {
+      "localDefault": 4.0,
+      "localArray": [
+        4.0,
+        8.0
+      ],
+      "localSample": 6.0,
+      "localCustomData": {
+        "relative": 4.0
+      },
+      "localSpline": {
+        "type": "duration",
+        "timeValued": true,
+        "knots": [
+          {
+            "time": 1.0,
+            "value": 2.0,
+            "preValue": 2.0,
+            "preWidth": 0.0,
+            "postWidth": 0.5,
+            "preSlope": 0.0,
+            "postSlope": 2.0
+          },
+          {
+            "time": 3.0,
+            "value": 6.0,
+            "preValue": 6.0,
+            "preWidth": 0.25,
+            "postWidth": 0.0,
+            "preSlope": 1.5,
+            "postSlope": 0.0
+          }
+        ],
+        "pre": {
+          "mode": "Ts.ExtrapSloped",
+          "slope": 0.75
+        },
+        "post": {
+          "mode": "Ts.ExtrapLoopRepeat",
+          "boundary": 7.0
+        }
+      }
+    }
+  }
+}

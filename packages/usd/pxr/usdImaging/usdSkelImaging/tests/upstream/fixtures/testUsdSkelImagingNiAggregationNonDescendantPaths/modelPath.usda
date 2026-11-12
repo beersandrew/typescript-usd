@@ -1,0 +1,64 @@
+#usda 1.0
+(
+    doc = """USD-12324 regression scene (model:modelPath relocation).
+
+    /World/A and /World/B are two placements of the SAME asset: they carry
+    identical assetInfo and each holds an identical native instance of
+    GeoProto (/World/A/Geo, /World/B/Geo).
+
+    UsdImagingModelSchema's model:modelPath equals the model root's own
+    path and is inherited down namespace, so /World/A/Geo inherits
+    model:modelPath = /World/A and /World/B/Geo inherits /World/B.  These
+    ancestor paths are NOT native instances, so the binding-hash path
+    translator deliberately leaves them unchanged.  Historically that made
+    the two Geos hash differently and stay unaggregated.
+
+    The fix relocates model:modelPath to a primvars:model:modelPath
+    per-instance primvar so it no longer contributes to the binding hash.
+    With identical assetInfo otherwise, the two Geos now aggregate.
+
+    Expected native-instance instancers: 1 for GeoProto.
+    """
+    defaultPrim = "World"
+)
+
+def Xform "World"
+{
+    class Xform "GeoProto"
+    {
+        def Cube "C"
+        {
+            double size = 1
+        }
+    }
+
+    def Xform "A" (
+        assetInfo = {
+            asset identifier = @model.usd@
+            string name = "Model"
+        }
+    )
+    {
+        def "Geo" (
+            instanceable = true
+            prepend references = </World/GeoProto>
+        )
+        {
+        }
+    }
+
+    def Xform "B" (
+        assetInfo = {
+            asset identifier = @model.usd@
+            string name = "Model"
+        }
+    )
+    {
+        def "Geo" (
+            instanceable = true
+            prepend references = </World/GeoProto>
+        )
+        {
+        }
+    }
+}

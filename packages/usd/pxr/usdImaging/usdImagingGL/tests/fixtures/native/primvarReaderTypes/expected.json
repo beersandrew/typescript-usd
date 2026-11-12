@@ -1,0 +1,49 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/usdImaging/usdImagingGL/tests/fixtures/native/primvarReaderTypes/capture.py",
+  "upstream": [
+    "pxr/imaging/hdMtlx/hdMtlx.cpp:892-901"
+  ],
+  "payload": {
+    "assetRevision": "091bb5c6f8eb665ad4cf9d6c10025cecc07eda88",
+    "asset": "intent-vfx/scenes/teapotScene.usd",
+    "sha256": "0672298ee3a4e3440397b5f3d4da6e9edea66185e22cb30bf8f129de77311045",
+    "surface": {
+      "path": "/Scene/ring001/instancer_teapot001/Prototypes/teapot/mtl/default_material/default_shader_mtlx",
+      "id": "ND_standard_surface_surfaceshader",
+      "baseColorType": "color3f",
+      "connection": "/Scene/ring001/instancer_teapot001/Prototypes/teapot/mtl/default_material/generic_primvar_reader_custom_color.outputs:out"
+    },
+    "reader": {
+      "path": "/Scene/ring001/instancer_teapot001/Prototypes/teapot/mtl/default_material/generic_primvar_reader_custom_color",
+      "id": "ND_UsdPrimvarReader_vector3",
+      "fallbackType": "color3f",
+      "outputType": "color3f",
+      "varname": "custom_color",
+      "nodeDefUri": "<dependencies>/libraries/bxdf/usd_preview_surface.mtlx"
+    },
+    "variants": {
+      "invalid": {
+        "valid": false,
+        "validation": "Node interface error: Input 'base_color' doesn't match declaration: <standard_surface name=\"Surface\" type=\"surfaceshader\">\nNode interface error: Input 'fallback' doesn't match declaration: <UsdPrimvarReader name=\"Material_Reader\" type=\"vector3\" nodedef=\"ND_UsdPrimvarReader_vector3\">\n"
+      },
+      "edge-mismatch": {
+        "valid": false,
+        "validation": "Node interface error: Input 'base_color' doesn't match declaration: <standard_surface name=\"Surface\" type=\"surfaceshader\">\n"
+      },
+      "converted": {
+        "valid": true,
+        "validation": ""
+      },
+      "direct-geomprop": {
+        "valid": true,
+        "validation": ""
+      },
+      "constant": {
+        "valid": true,
+        "validation": ""
+      }
+    }
+  }
+}

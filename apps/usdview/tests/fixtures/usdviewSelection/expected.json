@@ -1,0 +1,879 @@
+{
+  "nativeVersion": [
+    0,
+    26,
+    11
+  ],
+  "sourceCommit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "sequences": [
+    [
+      {
+        "action": "initial",
+        "state": {
+          "paths": [
+            "/"
+          ],
+          "focus": "/",
+          "lcd": [
+            "/"
+          ],
+          "instances": {
+            "/": -1
+          }
+        }
+      },
+      {
+        "action": "add",
+        "path": "/World/A",
+        "index": -1,
+        "state": {
+          "paths": [
+            "/",
+            "/World/A"
+          ],
+          "focus": "/",
+          "lcd": [
+            "/World/A"
+          ],
+          "instances": {
+            "/": -1,
+            "/World/A": -1
+          }
+        }
+      },
+      {
+        "action": "add",
+        "path": "/World/B",
+        "index": -1,
+        "state": {
+          "paths": [
+            "/",
+            "/World/A",
+            "/World/B"
+          ],
+          "focus": "/",
+          "lcd": [
+            "/World/A",
+            "/World/B"
+          ],
+          "instances": {
+            "/": -1,
+            "/World/A": -1,
+            "/World/B": -1
+          }
+        }
+      },
+      {
+        "action": "remove",
+        "path": "/",
+        "index": -1,
+        "state": {
+          "paths": [
+            "/World/A",
+            "/World/B"
+          ],
+          "focus": "/World/A",
+          "lcd": [
+            "/World/A",
+            "/World/B"
+          ],
+          "instances": {
+            "/World/A": -1,
+            "/World/B": -1
+          }
+        }
+      },
+      {
+        "action": "add",
+        "path": "/World/A",
+        "index": -1,
+        "state": {
+          "paths": [
+            "/World/A",
+            "/World/B"
+          ],
+          "focus": "/World/A",
+          "lcd": [
+            "/World/A",
+            "/World/B"
+          ],
+          "instances": {
+            "/World/A": -1,
+            "/World/B": -1
+          }
+        }
+      },
+      {
+        "action": "toggle",
+        "path": "/World/A",
+        "index": -1,
+        "state": {
+          "paths": [
+            "/World/B"
+          ],
+          "focus": "/World/B",
+          "lcd": [
+            "/World/B"
+          ],
+          "instances": {
+            "/World/B": -1
+          }
+        }
+      },
+      {
+        "action": "toggle",
+        "path": "/World/B",
+        "index": -1,
+        "state": {
+          "paths": [
+            "/"
+          ],
+          "focus": "/",
+          "lcd": [
+            "/"
+          ],
+          "instances": {
+            "/": -1
+          }
+        }
+      }
+    ],
+    [
+      {
+        "action": "initial",
+        "state": {
+          "paths": [
+            "/"
+          ],
+          "focus": "/",
+          "lcd": [
+            "/"
+          ],
+          "instances": {
+            "/": -1
+          }
+        }
+      },
+      {
+        "action": "set",
+        "path": "/World/A",
+        "index": -1,
+        "state": {
+          "paths": [
+            "/World/A"
+          ],
+          "focus": "/World/A",
+          "lcd": [
+            "/World/A"
+          ],
+          "instances": {
+            "/World/A": -1
+          }
+        }
+      },
+      {
+        "action": "add",
+        "path": "/World",
+        "index": -1,
+        "state": {
+          "paths": [
+            "/World/A",
+            "/World"
+          ],
+          "focus": "/World/A",
+          "lcd": [
+            "/World"
+          ],
+          "instances": {
+            "/World/A": -1,
+            "/World": -1
+          }
+        }
+      },
+      {
+        "action": "add",
+        "path": "/World/B",
+        "index": -1,
+        "state": {
+          "paths": [
+            "/World/A",
+            "/World",
+            "/World/B"
+          ],
+          "focus": "/World/A",
+          "lcd": [
+            "/World"
+          ],
+          "instances": {
+            "/World/A": -1,
+            "/World": -1,
+            "/World/B": -1
+          }
+        }
+      },
+      {
+        "action": "remove",
+        "path": "/World/A",
+        "index": -1,
+        "state": {
+          "paths": [
+            "/World",
+            "/World/B"
+          ],
+          "focus": "/World",
+          "lcd": [
+            "/World"
+          ],
+          "instances": {
+            "/World": -1,
+            "/World/B": -1
+          }
+        }
+      },
+      {
+        "action": "clear",
+        "path": "/",
+        "index": -1,
+        "state": {
+          "paths": [
+            "/"
+          ],
+          "focus": "/",
+          "lcd": [
+            "/"
+          ],
+          "instances": {
+            "/": -1
+          }
+        }
+      }
+    ],
+    [
+      {
+        "action": "initial",
+        "state": {
+          "paths": [
+            "/"
+          ],
+          "focus": "/",
+          "lcd": [
+            "/"
+          ],
+          "instances": {
+            "/": -1
+          }
+        }
+      },
+      {
+        "action": "set",
+        "path": "/World/PI",
+        "index": -1,
+        "state": {
+          "paths": [
+            "/World/PI"
+          ],
+          "focus": "/World/PI",
+          "lcd": [
+            "/World/PI"
+          ],
+          "instances": {
+            "/World/PI": -1
+          }
+        }
+      },
+      {
+        "action": "add",
+        "path": "/World/PI",
+        "index": 0,
+        "state": {
+          "paths": [
+            "/World/PI"
+          ],
+          "focus": "/World/PI",
+          "lcd": [
+            "/World/PI"
+          ],
+          "instances": {
+            "/World/PI": [
+              0
+            ]
+          }
+        }
+      },
+      {
+        "action": "add",
+        "path": "/World/PI",
+        "index": 1,
+        "state": {
+          "paths": [
+            "/World/PI"
+          ],
+          "focus": "/World/PI",
+          "lcd": [
+            "/World/PI"
+          ],
+          "instances": {
+            "/World/PI": [
+              0,
+              1
+            ]
+          }
+        }
+      },
+      {
+        "action": "toggle",
+        "path": "/World/PI",
+        "index": 0,
+        "state": {
+          "paths": [
+            "/World/PI"
+          ],
+          "focus": "/World/PI",
+          "lcd": [
+            "/World/PI"
+          ],
+          "instances": {
+            "/World/PI": [
+              1
+            ]
+          }
+        }
+      },
+      {
+        "action": "toggle",
+        "path": "/World/PI",
+        "index": -1,
+        "state": {
+          "paths": [
+            "/World/PI"
+          ],
+          "focus": "/World/PI",
+          "lcd": [
+            "/World/PI"
+          ],
+          "instances": {
+            "/World/PI": -1
+          }
+        }
+      },
+      {
+        "action": "remove",
+        "path": "/World/PI",
+        "index": 1,
+        "state": {
+          "paths": [
+            "/"
+          ],
+          "focus": "/",
+          "lcd": [
+            "/"
+          ],
+          "instances": {
+            "/": -1
+          }
+        }
+      },
+      {
+        "action": "toggle",
+        "path": "/World/PI",
+        "index": 1,
+        "state": {
+          "paths": [
+            "/",
+            "/World/PI"
+          ],
+          "focus": "/",
+          "lcd": [
+            "/World/PI"
+          ],
+          "instances": {
+            "/": -1,
+            "/World/PI": [
+              1
+            ]
+          }
+        }
+      },
+      {
+        "action": "toggle",
+        "path": "/World/PI",
+        "index": 1,
+        "state": {
+          "paths": [
+            "/"
+          ],
+          "focus": "/",
+          "lcd": [
+            "/"
+          ],
+          "instances": {
+            "/": -1
+          }
+        }
+      }
+    ]
+  ],
+  "gestures": [
+    {
+      "path": "/World/A",
+      "modifier": "none",
+      "state": {
+        "paths": [
+          "/World/A"
+        ],
+        "focus": "/World/A",
+        "lcd": [
+          "/World/A"
+        ],
+        "instances": {
+          "/World/A": -1
+        }
+      }
+    },
+    {
+      "path": "/World/C",
+      "modifier": "shift",
+      "state": {
+        "paths": [
+          "/World/A",
+          "/World/B",
+          "/World/C"
+        ],
+        "focus": "/World/A",
+        "lcd": [
+          "/World/A",
+          "/World/B",
+          "/World/C"
+        ],
+        "instances": {
+          "/World/A": -1,
+          "/World/B": -1,
+          "/World/C": -1
+        }
+      }
+    },
+    {
+      "path": "/World/B",
+      "modifier": "ctrl",
+      "state": {
+        "paths": [
+          "/World/A",
+          "/World/C"
+        ],
+        "focus": "/World/A",
+        "lcd": [
+          "/World/A",
+          "/World/C"
+        ],
+        "instances": {
+          "/World/A": -1,
+          "/World/C": -1
+        }
+      }
+    },
+    {
+      "path": "/World/B",
+      "modifier": "ctrl",
+      "state": {
+        "paths": [
+          "/World/A",
+          "/World/C",
+          "/World/B"
+        ],
+        "focus": "/World/A",
+        "lcd": [
+          "/World/A",
+          "/World/B",
+          "/World/C"
+        ],
+        "instances": {
+          "/World/A": -1,
+          "/World/C": -1,
+          "/World/B": -1
+        }
+      }
+    }
+  ],
+  "keys": [
+    {
+      "key": "ArrowDown",
+      "modifier": "none",
+      "current": "/World/B",
+      "state": {
+        "paths": [
+          "/World/B"
+        ],
+        "focus": "/World/B",
+        "lcd": [
+          "/World/B"
+        ],
+        "instances": {
+          "/World/B": -1
+        }
+      }
+    },
+    {
+      "key": "ArrowDown",
+      "modifier": "shift",
+      "current": "/World/C",
+      "state": {
+        "paths": [
+          "/World/B",
+          "/World/C"
+        ],
+        "focus": "/World/B",
+        "lcd": [
+          "/World/B",
+          "/World/C"
+        ],
+        "instances": {
+          "/World/B": -1,
+          "/World/C": -1
+        }
+      }
+    },
+    {
+      "key": "ArrowUp",
+      "modifier": "ctrl",
+      "current": "/World/B",
+      "state": {
+        "paths": [
+          "/World/B",
+          "/World/C"
+        ],
+        "focus": "/World/B",
+        "lcd": [
+          "/World/B",
+          "/World/C"
+        ],
+        "instances": {
+          "/World/B": -1,
+          "/World/C": -1
+        }
+      }
+    }
+  ],
+  "picks": [
+    {
+      "mode": "Select Prims",
+      "path": "/World/Model/Geom",
+      "index": -1,
+      "top": "/World/Model/Geom",
+      "topIndex": -1,
+      "state": {
+        "paths": [
+          "/World/Model/Geom"
+        ],
+        "focus": "/World/Model/Geom",
+        "lcd": [
+          "/World/Model/Geom"
+        ],
+        "instances": {
+          "/World/Model/Geom": -1
+        }
+      }
+    },
+    {
+      "mode": "Select Prims",
+      "path": "/World/Native/Geom",
+      "index": -1,
+      "top": "/World/Native/Geom",
+      "topIndex": -1,
+      "state": {
+        "paths": [
+          "/World/Native"
+        ],
+        "focus": "/World/Native",
+        "lcd": [
+          "/World/Native"
+        ],
+        "instances": {
+          "/World/Native": -1
+        }
+      }
+    },
+    {
+      "mode": "Select Prims",
+      "path": "/World/PI/Prototype/Geom",
+      "index": 1,
+      "top": "/World/PI",
+      "topIndex": 1,
+      "state": {
+        "paths": [
+          "/World/PI"
+        ],
+        "focus": "/World/PI",
+        "lcd": [
+          "/World/PI"
+        ],
+        "instances": {
+          "/World/PI": -1
+        }
+      }
+    },
+    {
+      "mode": "Select Models",
+      "path": "/World/Model/Geom",
+      "index": -1,
+      "top": "/World/Model/Geom",
+      "topIndex": -1,
+      "state": {
+        "paths": [
+          "/World/Model"
+        ],
+        "focus": "/World/Model",
+        "lcd": [
+          "/World/Model"
+        ],
+        "instances": {
+          "/World/Model": -1
+        }
+      }
+    },
+    {
+      "mode": "Select Models",
+      "path": "/World/Native/Geom",
+      "index": -1,
+      "top": "/World/Native/Geom",
+      "topIndex": -1,
+      "state": {
+        "paths": [
+          "/World"
+        ],
+        "focus": "/World",
+        "lcd": [
+          "/World"
+        ],
+        "instances": {
+          "/World": -1
+        }
+      }
+    },
+    {
+      "mode": "Select Models",
+      "path": "/World/PI/Prototype/Geom",
+      "index": 1,
+      "top": "/World/PI",
+      "topIndex": 1,
+      "state": {
+        "paths": [
+          "/World"
+        ],
+        "focus": "/World",
+        "lcd": [
+          "/World"
+        ],
+        "instances": {
+          "/World": -1
+        }
+      }
+    },
+    {
+      "mode": "Select Instances",
+      "path": "/World/Model/Geom",
+      "index": -1,
+      "top": "/World/Model/Geom",
+      "topIndex": -1,
+      "state": {
+        "paths": [
+          "/World/Model/Geom"
+        ],
+        "focus": "/World/Model/Geom",
+        "lcd": [
+          "/World/Model/Geom"
+        ],
+        "instances": {
+          "/World/Model/Geom": -1
+        }
+      }
+    },
+    {
+      "mode": "Select Instances",
+      "path": "/World/Native/Geom",
+      "index": -1,
+      "top": "/World/Native/Geom",
+      "topIndex": -1,
+      "state": {
+        "paths": [
+          "/World/Native"
+        ],
+        "focus": "/World/Native",
+        "lcd": [
+          "/World/Native"
+        ],
+        "instances": {
+          "/World/Native": -1
+        }
+      }
+    },
+    {
+      "mode": "Select Instances",
+      "path": "/World/PI/Prototype/Geom",
+      "index": 1,
+      "top": "/World/PI",
+      "topIndex": 1,
+      "state": {
+        "paths": [
+          "/World/PI"
+        ],
+        "focus": "/World/PI",
+        "lcd": [
+          "/World/PI"
+        ],
+        "instances": {
+          "/World/PI": [
+            1
+          ]
+        }
+      }
+    },
+    {
+      "mode": "Select Prototypes",
+      "path": "/World/Model/Geom",
+      "index": -1,
+      "top": "/World/Model/Geom",
+      "topIndex": -1,
+      "state": {
+        "paths": [
+          "/World/Model/Geom"
+        ],
+        "focus": "/World/Model/Geom",
+        "lcd": [
+          "/World/Model/Geom"
+        ],
+        "instances": {
+          "/World/Model/Geom": -1
+        }
+      }
+    },
+    {
+      "mode": "Select Prototypes",
+      "path": "/World/Native/Geom",
+      "index": -1,
+      "top": "/World/Native/Geom",
+      "topIndex": -1,
+      "state": {
+        "paths": [
+          "/World/Native/Geom"
+        ],
+        "focus": "/World/Native/Geom",
+        "lcd": [
+          "/World/Native/Geom"
+        ],
+        "instances": {
+          "/World/Native/Geom": -1
+        }
+      }
+    },
+    {
+      "mode": "Select Prototypes",
+      "path": "/World/PI/Prototype/Geom",
+      "index": 1,
+      "top": "/World/PI",
+      "topIndex": 1,
+      "state": {
+        "paths": [
+          "/World/PI/Prototype/Geom"
+        ],
+        "focus": "/World/PI/Prototype/Geom",
+        "lcd": [
+          "/World/PI/Prototype/Geom"
+        ],
+        "instances": {
+          "/World/PI/Prototype/Geom": [
+            1
+          ]
+        }
+      }
+    }
+  ],
+  "bounds": [
+    {
+      "paths": [
+        "/World/A",
+        "/World/B"
+      ],
+      "range": [
+        [
+          -1.0,
+          -1.0,
+          -1.0
+        ],
+        [
+          4.0,
+          1.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "paths": [
+        "/World",
+        "/World/A"
+      ],
+      "range": [
+        [
+          -1.0,
+          -1.0,
+          -1.0
+        ],
+        [
+          11.0,
+          1.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "paths": [
+        "/World/PI"
+      ],
+      "range": [
+        [
+          -1.0,
+          -1.0,
+          -1.0
+        ],
+        [
+          11.0,
+          1.0,
+          1.0
+        ]
+      ]
+    }
+  ],
+  "edits": [
+    {
+      "method": "invisSelectedPrims",
+      "visibility": {
+        "/World/A": "invisible",
+        "/World/B": "invisible",
+        "/World/C": "inherited"
+      }
+    },
+    {
+      "method": "visSelectedPrims",
+      "visibility": {
+        "/World/A": "inherited",
+        "/World/B": "inherited",
+        "/World/C": "inherited"
+      }
+    },
+    {
+      "method": "visOnlySelectedPrims",
+      "visibility": {
+        "/World/A": "inherited",
+        "/World/B": "inherited",
+        "/World/C": "invisible"
+      }
+    },
+    {
+      "method": "removeVisSelectedPrims",
+      "visibility": {
+        "/World/A": "inherited",
+        "/World/B": "inherited",
+        "/World/C": "invisible"
+      }
+    }
+  ]
+}

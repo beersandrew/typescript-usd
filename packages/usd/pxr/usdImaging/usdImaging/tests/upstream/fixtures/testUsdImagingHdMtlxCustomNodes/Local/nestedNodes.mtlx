@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<materialx version="1.39">
+  <standard_surface name="Surface" type="surfaceshader">
+    <input name="base_color" type="color3" output="base_color_base_color" nodegraph="NodeGraphs" />
+    <input name="metalness" type="float" output="metalness_metalness" nodegraph="NodeGraphs" />
+    <input name="specular_roughness" type="float" output="specular_roughness_specular_roughness" nodegraph="NodeGraphs" />
+  </standard_surface>
+  <surfacematerial name="TestMaterial" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="Surface" />
+  </surfacematerial>
+  <nodegraph name="NodeGraphs">
+    <customMultiOutput name="NodeGraphs_shaderProperties" type="multioutput" nodedef="ND_CustomMultiOutput">
+      <input name="_File" type="filename" value="images/testSquare.png" />
+      <input name="_Radius" type="float" value="0.15" />
+      <input name="_RadiusOffset" type="vector2" value="0.75, 0.75" />
+    </customMultiOutput>
+    <output name="base_color_base_color" type="color3" output="base_color" nodename="NodeGraphs_shaderProperties" />
+    <output name="metalness_metalness" type="float" output="metalness" nodename="NodeGraphs_shaderProperties" />
+    <output name="specular_roughness_specular_roughness" type="float" output="specular_roughness" nodename="NodeGraphs_shaderProperties" />
+  </nodegraph>
+</materialx>

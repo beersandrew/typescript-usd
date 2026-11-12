@@ -1,0 +1,107 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/usdImaging/usdImagingGL/tests/fixtures/native/wireRaster/capture.py",
+  "upstream": [
+    "pxr/usdImaging/usdviewq/stageView.py:585-597",
+    "pxr/usdImaging/usdviewq/stageView.py:1146-1193",
+    "pxr/usdImaging/usdviewq/stageView.py:1388-1525",
+    "pxr/usdImaging/usdviewq/common.py:136-154",
+    "pxr/usdImaging/usdviewq/viewSettingsDataModel.py:24-40",
+    "pxr/usdImaging/usdImagingGL/engine.cpp:2589-2690",
+    "pxr/imaging/hd/renderIndex.cpp:1008-1074",
+    "pxr/imaging/hdSt/meshShaderKey.cpp",
+    "pxr/imaging/hgiMetal/graphicsCmds.mm:404-421",
+    "pxr/imaging/hgiMetal/graphicsPipeline.mm:165-175",
+    "pxr/imaging/hgiMetal/hgi.h:131-136",
+    "pxr/imaging/hdSt/shaders/meshWire.glslfx",
+    "pxr/imaging/hdSt/shaders/terminals.glslfx:57-126",
+    "pxr/imaging/hdx/shaders/selection.glslfx:441-474"
+  ],
+  "payload": {
+    "defaultSamplePositions": [
+      [
+        0.375,
+        0.125
+      ],
+      [
+        0.875,
+        0.375
+      ],
+      [
+        0.125,
+        0.625
+      ],
+      [
+        0.625,
+        0.875
+      ]
+    ],
+    "cases": [
+      {
+        "negativeViewport": true,
+        "presentationYFlip": true,
+        "samples": 4,
+        "linearCorner3x3": [
+          0.0707397461,
+          0.0535583496,
+          0.0191802979,
+          0.0191802979,
+          0.00200080872,
+          0.0535583496,
+          0.0535583496,
+          0.0535583496,
+          0.0707397461
+        ]
+      },
+      {
+        "negativeViewport": false,
+        "presentationYFlip": false,
+        "samples": 4,
+        "linearCorner3x3": [
+          0.0707397461,
+          0.0535583496,
+          0.0191802979,
+          0.0191802979,
+          0.0191802979,
+          0.0363769531,
+          0.0535583496,
+          0.0535583496,
+          0.0707397461
+        ]
+      },
+      {
+        "negativeViewport": true,
+        "presentationYFlip": true,
+        "samples": 1,
+        "linearCorner3x3": [
+          0.0707397461,
+          0.0707397461,
+          0.00200080872,
+          0.00200080872,
+          0.00200080872,
+          0.0707397461,
+          0.0707397461,
+          0.0707397461,
+          0.0707397461
+        ]
+      },
+      {
+        "negativeViewport": false,
+        "presentationYFlip": false,
+        "samples": 1,
+        "linearCorner3x3": [
+          0.0707397461,
+          0.0707397461,
+          0.00200080872,
+          0.00200080872,
+          0.00200080872,
+          0.0707397461,
+          0.0707397461,
+          0.0707397461,
+          0.0707397461
+        ]
+      }
+    ]
+  }
+}

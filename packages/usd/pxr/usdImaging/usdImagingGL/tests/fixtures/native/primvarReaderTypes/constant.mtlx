@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<materialx version="1.39">
+  <standard_surface name="Surface" type="surfaceshader">
+    <input name="base" type="float" value="1" />
+    <input name="base_color" type="color3" value="0.18, 0.4, 0.8" />
+  </standard_surface>
+  <surfacematerial name="Material" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="Surface" />
+  </surfacematerial>
+</materialx>

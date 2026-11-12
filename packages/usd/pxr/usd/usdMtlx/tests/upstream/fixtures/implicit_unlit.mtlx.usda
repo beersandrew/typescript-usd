@@ -1,0 +1,57 @@
+#usda 1.0
+
+def "MaterialX"
+{
+    def "Materials"
+    {
+        def Material "material" (
+            prepend apiSchemas = ["MaterialXConfigAPI"]
+        )
+        {
+            string config:mtlx:version = "1.39"
+            float inputs:emission
+            color3f inputs:emission_color
+            float inputs:opacity
+            float inputs:transmission
+            color3f inputs:transmission_color
+            token outputs:mtlx:surface.connect = </MaterialX/Materials/material/unlit.outputs:surface>
+
+            def Shader "unlit" (
+                prepend references = </MaterialX/Shaders/unlit>
+            )
+            {
+                float inputs:emission.connect = </MaterialX/Materials/material.inputs:emission>
+                color3f inputs:emission_color.connect = </MaterialX/Materials/material/NodeGraphs/color.outputs:out>
+                float inputs:opacity.connect = </MaterialX/Materials/material.inputs:opacity>
+                float inputs:transmission.connect = </MaterialX/Materials/material.inputs:transmission>
+                color3f inputs:transmission_color.connect = </MaterialX/Materials/material.inputs:transmission_color>
+            }
+
+            def "NodeGraphs" (
+                prepend references = </MaterialX/NodeGraphs>
+            )
+            {
+            }
+        }
+    }
+
+    def "Shaders"
+    {
+        def Shader "unlit"
+        {
+            uniform token info:id = "ND_surface_unlit"
+            token outputs:surface
+        }
+    }
+
+    def NodeGraph "NodeGraphs"
+    {
+        def Shader "color"
+        {
+            uniform token info:id = "ND_constant_color3"
+            color3f inputs:value = (0.2, 0.4, 0.8)
+            color3f outputs:out
+        }
+    }
+}
+

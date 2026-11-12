@@ -1,0 +1,29 @@
+{
+  "nativeVersion": [
+    0,
+    26,
+    8
+  ],
+  "sources": {
+    "root.usda": {
+      "prims": [
+        "/World",
+        "/World/Cube"
+      ],
+      "size": 2.0
+    },
+    "scene.usdz": {
+      "prims": [
+        "/World",
+        "/World/Cube"
+      ],
+      "size": 2.0
+    },
+    "scene.usdz[textures/checker.png]": {
+      "sha256": "de2cdfcea3718f87bb8e908c8ef3595468ecc9a3ca7ecea3a556f742dadc8be4"
+    },
+    "scene.usdz[nested.usdz[geometry.usda]]": {
+      "sha256": "c4cb01ebc6be1aa842076590fda6b11b1b348d994a0ec4b4e444d448d61318a6"
+    }
+  }
+}

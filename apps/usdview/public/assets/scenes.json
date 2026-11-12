@@ -1,0 +1,125 @@
+[
+  {
+    "id": "wireframe-torus",
+    "label": "Viewer \u00b7 Wireframe torus",
+    "url": "./assets/torus.usda",
+    "origin": "Local fixture (the default scene)",
+    "features": [
+      "linear BasisCurves",
+      "displayColor",
+      "xformOp"
+    ],
+    "expectedSupport": "render"
+  },
+  {
+    "id": "polygon-cube",
+    "label": "Viewer \u00b7 Polygon cube",
+    "url": "./assets/cube.usda",
+    "origin": "Local fixture",
+    "features": [
+      "polygon topology"
+    ],
+    "expectedSupport": "render"
+  },
+  {
+    "id": "composed-cubes",
+    "label": "Viewer \u00b7 Transforms, colors, visibility",
+    "url": "./assets/composed_cubes.usda",
+    "origin": "Local composition of the local polygon cube",
+    "features": [
+      "references",
+      "multiple meshes",
+      "nested transforms",
+      "displayColor",
+      "inherited visibility"
+    ],
+    "expectedSupport": "render"
+  },
+  {
+    "id": "preview-surface",
+    "label": "Preview Surface \u00b7 Texture and inherited binding",
+    "url": "./assets/previewSurface/root.usda",
+    "origin": "Local native-validated integration fixture",
+    "features": [
+      "Preview Surface",
+      "nested layer texture resolution",
+      "UV texture",
+      "inherited material binding"
+    ],
+    "expectedSupport": "render: bounded Preview Surface subset"
+  },
+  {
+    "id": "materialx-multi-uv",
+    "label": "MaterialX \u00b7 Independent samplers and UV sets",
+    "url": "./assets/materialx/multiUv/stage.usda",
+    "origin": "Local native-validated library integration fixture",
+    "features": [
+      "two indexed UV sets",
+      "independent samplers"
+    ],
+    "expectedSupport": "render; native image comparison separate"
+  },
+  {
+    "id": "camera-controls",
+    "label": "Viewer \u00b7 Authored and free cameras",
+    "url": "./assets/cameraControls/scene.usda",
+    "origin": "Local native-validated camera fixture",
+    "features": [
+      "perspective camera",
+      "orthographic camera",
+      "transformed camera",
+      "aperture offsets"
+    ],
+    "expectedSupport": "camera controls acceptance"
+  },
+  {
+    "id": "display-controls",
+    "label": "Viewer \u00b7 Lights and subdivision complexity",
+    "url": "./assets/displayControls/scene.usda",
+    "origin": "Local native-validated display fixture",
+    "features": [
+      "scene lights",
+      "subdivision complexity"
+    ],
+    "expectedSupport": "display controls acceptance"
+  },
+  {
+    "id": "inspection-controls",
+    "label": "Viewer \u00b7 Composition and metadata inspection",
+    "url": "./assets/inspectionControls/root.usda",
+    "origin": "Local native-validated composition fixture",
+    "features": [
+      "metadata",
+      "sublayers",
+      "references",
+      "relationship and connection targets"
+    ],
+    "expectedSupport": "read-only inspection acceptance"
+  },
+  {
+    "id": "time-review",
+    "label": "Viewer \u00b7 Animation and camera sampling",
+    "url": "./assets/timeReview/scene.usda",
+    "origin": "Local native26.08-validated review fixture",
+    "features": [
+      "playback",
+      "animated transforms",
+      "animated camera",
+      "sampled bounds"
+    ],
+    "expectedSupport": "sampled frame review acceptance"
+  },
+  {
+    "id": "openusd-vdb-volume",
+    "label": "OpenUSD \u00b7 VDB volume, fallback volume shader",
+    "url": "./assets/volumes/vdbVolume.usda",
+    "origin": "Unchanged OpenUSD v26.11.1 testUsdImagingGLVdbVolume scene and grids under a local root layer that deactivates its glslfx background",
+    "features": [
+      "Volume",
+      "OpenVDBAsset fields",
+      "time-sampled filePath",
+      "DistantLight"
+    ],
+    "expectedSupport": "render frames 2-3 with Storm's fallback volume shader; frame 1's density grid is empty, as in OpenUSD"
+  }
+]

@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<materialx version="1.39" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <standard_surface name="Surface" type="surfaceshader">
+    <input name="base_color" type="color3" output="base_color_out" nodegraph="Mat2" />
+  </standard_surface>
+  <surfacematerial name="Mat" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="Surface" />
+  </surfacematerial>
+  <nodegraph name="Mat2">
+    <hdmtlx_test_tint name="Mat_Tint" type="color3" nodedef="ND_hdmtlx_test_tint_color3">
+      <input name="amount" type="float" value="0.25" />
+    </hdmtlx_test_tint>
+    <output name="base_color_out" type="color3" nodename="Mat_Tint" />
+  </nodegraph>
+</materialx>

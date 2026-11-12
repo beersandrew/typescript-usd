@@ -1,0 +1,26 @@
+#usda 1.0
+# Self-authored model hierarchy for native draw-mode inspection/editing.
+def Xform "World" (kind = "assembly") {
+ def Xform "Group" (kind = "assembly") {
+  uniform token model:drawMode = "bounds"
+  def Xform "Model" (kind = "component") {
+   def Cube "Geom" {
+    double size = 2
+   }
+  }
+  def Xform "ExplicitInherited" (kind = "component") {
+   uniform token model:drawMode = "inherited"
+  }
+  def Xform "ExplicitDefault" (kind = "component") {
+   uniform token model:drawMode = "default"
+  }
+  def Xform "Inactive" (
+   kind = "component"
+   active = false
+  ) {}
+ }
+ def Xform "Plain" {
+  uniform token model:drawMode = "cards"
+ }
+ def Xform "NoOpinion" (kind = "component") {}
+}

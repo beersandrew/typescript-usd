@@ -1,0 +1,304 @@
+{
+  "nativeVersion": "26.11.1",
+  "nativeCommit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "upstream": [
+    "pxr/usdImaging/usdviewq/__init__.py:339-347",
+    "pxr/usdImaging/usdviewq/appController.py:1333-1404,3032-3081",
+    "pxr/usdImaging/usdviewq/stageView.py:1019-1026,1047-1055"
+  ],
+  "primaryCameraName": "main_cam",
+  "cameras": [
+    {
+      "name": "none",
+      "source": "def Camera \"other\" {}",
+      "selected": null,
+      "cameras": [
+        "/other"
+      ],
+      "eye": null
+    },
+    {
+      "name": "named",
+      "source": "def Xform \"World\" {\n def Camera \"other\" {}\n def Camera \"main_cam\" {}\n}",
+      "selected": "/World/main_cam",
+      "cameras": [
+        "/World/other",
+        "/World/main_cam"
+      ],
+      "eye": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "name": "translated",
+      "source": "def Xform \"World\" {\n double3 xformOp:translate=(1,2,3)\n uniform token[] xformOpOrder=[\"xformOp:translate\"]\n def Camera \"main_cam\" {\n double3 xformOp:translate=(3,4,5)\n uniform token[] xformOpOrder=[\"xformOp:translate\"]\n }\n}",
+      "selected": "/World/main_cam",
+      "cameras": [
+        "/World/main_cam"
+      ],
+      "eye": [
+        4.0,
+        6.0,
+        8.0
+      ]
+    },
+    {
+      "name": "twoNamed",
+      "source": "def Xform \"B\" {\n def Camera \"main_cam\" {}\n}\ndef Xform \"A\" {\n def Camera \"main_cam\" {}\n}",
+      "selected": "/B/main_cam",
+      "cameras": [
+        "/B/main_cam",
+        "/A/main_cam"
+      ],
+      "eye": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "name": "inactive",
+      "source": "def Camera \"main_cam\" (active=false) {}\ndef Camera \"other\" {}",
+      "selected": null,
+      "cameras": [
+        "/other"
+      ],
+      "eye": null
+    },
+    {
+      "name": "abstract",
+      "source": "class Camera \"main_cam\" {}\ndef Camera \"other\" {}",
+      "selected": null,
+      "cameras": [
+        "/other"
+      ],
+      "eye": null
+    },
+    {
+      "name": "over",
+      "source": "over Camera \"main_cam\" {}\ndef Camera \"other\" {}",
+      "selected": null,
+      "cameras": [
+        "/other"
+      ],
+      "eye": null
+    },
+    {
+      "name": "suffix",
+      "source": "def Camera \"main_cam_extra\" {}",
+      "selected": null,
+      "cameras": [
+        "/main_cam_extra"
+      ],
+      "eye": null
+    }
+  ],
+  "times": [
+    {
+      "name": "normal",
+      "sourceMetadata": "startTimeCode=2;endTimeCode=10",
+      "current": 2.0,
+      "stageStart": 2.0,
+      "stageEnd": 10.0,
+      "hasTimeSamples": true,
+      "rangeStart": 2.0,
+      "rangeEnd": 10.0,
+      "warning": ""
+    },
+    {
+      "name": "reversed",
+      "sourceMetadata": "startTimeCode=100;endTimeCode=0",
+      "current": 0.0,
+      "stageStart": 100.0,
+      "stageEnd": 0.0,
+      "hasTimeSamples": false,
+      "rangeStart": 0,
+      "rangeEnd": 0,
+      "warning": "Warning: Invalid frame range (100.0, 0.0)"
+    },
+    {
+      "name": "onlyStart",
+      "sourceMetadata": "startTimeCode=5",
+      "current": 0.0,
+      "stageStart": 5.0,
+      "stageEnd": 0.0,
+      "hasTimeSamples": false,
+      "rangeStart": 0,
+      "rangeEnd": 0,
+      "warning": ""
+    },
+    {
+      "name": "onlyEnd",
+      "sourceMetadata": "endTimeCode=7",
+      "current": 0.0,
+      "stageStart": 0.0,
+      "stageEnd": 7.0,
+      "hasTimeSamples": false,
+      "rangeStart": 0,
+      "rangeEnd": 0,
+      "warning": ""
+    },
+    {
+      "name": "none",
+      "sourceMetadata": "",
+      "current": 0.0,
+      "stageStart": 0.0,
+      "stageEnd": 0.0,
+      "hasTimeSamples": false,
+      "rangeStart": 0,
+      "rangeEnd": 0,
+      "warning": ""
+    },
+    {
+      "name": "single",
+      "sourceMetadata": "startTimeCode=4;endTimeCode=4",
+      "current": 4.0,
+      "stageStart": 4.0,
+      "stageEnd": 4.0,
+      "hasTimeSamples": true,
+      "rangeStart": 4.0,
+      "rangeEnd": 4.0,
+      "warning": ""
+    }
+  ],
+  "invalidRates": [
+    {
+      "timeCodesPerSecond": 0.0,
+      "framesPerSecond": 30.0,
+      "sourceMetadata": "startTimeCode=1;endTimeCode=3;timeCodesPerSecond=0;framesPerSecond=30"
+    },
+    {
+      "timeCodesPerSecond": -1.0,
+      "framesPerSecond": 30.0,
+      "sourceMetadata": "startTimeCode=1;endTimeCode=3;timeCodesPerSecond=-1;framesPerSecond=30"
+    }
+  ],
+  "frames": [
+    {
+      "name": "empty",
+      "min": [
+        1,
+        1,
+        1
+      ],
+      "max": [
+        -1,
+        -1,
+        -1
+      ],
+      "center": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "dist": 22.80511605432573,
+      "selectedMin": [
+        -10.0,
+        -10.0,
+        -10.0
+      ],
+      "selectedMax": [
+        10.0,
+        10.0,
+        10.0
+      ]
+    },
+    {
+      "name": "zero",
+      "min": [
+        0,
+        0,
+        0
+      ],
+      "max": [
+        0,
+        0,
+        0
+      ],
+      "center": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "dist": 100,
+      "selectedMin": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "selectedMax": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "name": "valid",
+      "min": [
+        -1,
+        -2,
+        -3
+      ],
+      "max": [
+        4,
+        5,
+        6
+      ],
+      "center": [
+        1.5,
+        1.5,
+        1.5
+      ],
+      "dist": 10.262302224446579,
+      "selectedMin": [
+        -1.0,
+        -2.0,
+        -3.0
+      ],
+      "selectedMax": [
+        4.0,
+        5.0,
+        6.0
+      ]
+    }
+  ],
+  "replacement": {
+    "before": {
+      "name": "valid",
+      "min": [
+        -1,
+        -2,
+        -3
+      ],
+      "max": [
+        4,
+        5,
+        6
+      ],
+      "center": [
+        1.5,
+        1.5,
+        1.5
+      ],
+      "dist": 10.262302224446579,
+      "selectedMin": [
+        -1.0,
+        -2.0,
+        -3.0
+      ],
+      "selectedMax": [
+        4.0,
+        5.0,
+        6.0
+      ]
+    },
+    "center": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "dist": 100
+  }
+}

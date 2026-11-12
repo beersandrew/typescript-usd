@@ -1,0 +1,20 @@
+#usda 1.0
+(
+    subLayers = [@colors.usda@]
+)
+def Xform "World" (
+    variants = { string shape = "cube" }
+    prepend variantSets = "shape"
+) {
+    variantSet "shape" = {
+        "cube" {
+            def Cube "Shape" {}
+        }
+        "sphere" {
+            def Sphere "Shape" {}
+        }
+    }
+    def Cube "Sibling" {}
+    def Xform "Payload" (prepend payload = @payload.usda@</Asset>) {}
+}
+def Cube "Other" {}

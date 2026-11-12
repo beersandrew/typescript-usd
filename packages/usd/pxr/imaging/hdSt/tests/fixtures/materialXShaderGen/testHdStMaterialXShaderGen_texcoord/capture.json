@@ -1,0 +1,18 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/imaging/hdSt/tests/fixtures/materialXShaderGen/capture.py",
+  "upstream": [
+    "pxr/imaging/hdSt/CMakeLists.txt",
+    "pxr/imaging/hdSt/testenv/testHdStMaterialXShaderGen.cpp"
+  ],
+  "payload": {
+    "test": "testHdStMaterialXShaderGen_texcoord",
+    "cmake": "pxr/imaging/hdSt/CMakeLists.txt:2813",
+    "command": "<install>/tests/testHdStMaterialXShaderGen --filename texcoord.mtlx --primvarMap st:vector2",
+    "cwd": "copy of <source>/pxr/imaging/hdSt/testenv/testHdStMaterialXShaderGen",
+    "expectedReturnCode": "0",
+    "returnCode": 0,
+    "stdout": "shadergen_texcoord.out"
+  }
+}

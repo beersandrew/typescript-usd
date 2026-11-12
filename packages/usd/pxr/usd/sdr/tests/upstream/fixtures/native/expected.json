@@ -1,0 +1,347 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/usd/sdr/tests/upstream/fixtures/native/capture.py",
+  "upstream": [
+    "pxr/usd/sdr/declare.cpp:59-110",
+    "pxr/usd/sdr/shaderNode.cpp:65-84",
+    "pxr/usd/sdr/registry.cpp:472-506"
+  ],
+  "payload": {
+    "versions": [
+      {
+        "args": [],
+        "major": 0,
+        "minor": 0,
+        "valid": false,
+        "string": "<invalid version>",
+        "suffix": "",
+        "defaultSuffix": ""
+      },
+      {
+        "args": [
+          1
+        ],
+        "major": 1,
+        "minor": 0,
+        "valid": true,
+        "string": "1",
+        "suffix": "_1",
+        "defaultSuffix": ""
+      },
+      {
+        "args": [
+          1,
+          1
+        ],
+        "major": 1,
+        "minor": 1,
+        "valid": true,
+        "string": "1.1",
+        "suffix": "_1.1",
+        "defaultSuffix": ""
+      },
+      {
+        "args": [
+          2,
+          0
+        ],
+        "major": 2,
+        "minor": 0,
+        "valid": true,
+        "string": "2",
+        "suffix": "_2",
+        "defaultSuffix": ""
+      },
+      {
+        "args": [
+          "0.1"
+        ],
+        "major": 0,
+        "minor": 1,
+        "valid": true,
+        "string": "0.1",
+        "suffix": "_0.1",
+        "defaultSuffix": ""
+      },
+      {
+        "args": [
+          "12.34"
+        ],
+        "major": 12,
+        "minor": 34,
+        "valid": true,
+        "string": "12.34",
+        "suffix": "_12.34",
+        "defaultSuffix": ""
+      }
+    ],
+    "node": {
+      "identifier": "UsdPreviewSurface",
+      "name": "UsdPreviewSurface",
+      "function": "UsdPreviewSurface",
+      "context": "usda",
+      "sourceType": "glslfx",
+      "definitionURI": "<install>/plugin/usd/usdShaders/resources/shaders/shaderDefs.usda",
+      "implementationURI": "<install>/plugin/usd/usdShaders/resources/shaders/previewSurface.glslfx",
+      "valid": true,
+      "metadata": {
+        "sdrUsdEncodingVersion": "-1",
+        "domain": "rendering",
+        "context": "usda"
+      },
+      "inputs": [
+        "clearcoat",
+        "clearcoatRoughness",
+        "diffuseColor",
+        "displacement",
+        "emissiveColor",
+        "ior",
+        "metallic",
+        "normal",
+        "occlusion",
+        "opacity",
+        "opacityMode",
+        "opacityThreshold",
+        "roughness",
+        "specularColor",
+        "useSpecularWorkflow"
+      ],
+      "outputs": [
+        "displacement",
+        "surface"
+      ],
+      "properties": [
+        {
+          "name": "clearcoat",
+          "type": "float",
+          "default": 0.0,
+          "output": false,
+          "size": 0,
+          "metadata": {
+            "sdrUsdDefinitionType": "float",
+            "connectable": "1"
+          }
+        },
+        {
+          "name": "clearcoatRoughness",
+          "type": "float",
+          "default": 0.009999999776482582,
+          "output": false,
+          "size": 0,
+          "metadata": {
+            "sdrUsdDefinitionType": "float",
+            "connectable": "1"
+          }
+        },
+        {
+          "name": "diffuseColor",
+          "type": "color",
+          "default": [
+            0.18000000715255737,
+            0.18000000715255737,
+            0.18000000715255737
+          ],
+          "output": false,
+          "size": 0,
+          "metadata": {
+            "sdrUsdDefinitionType": "color3f",
+            "connectable": "1"
+          }
+        },
+        {
+          "name": "displacement",
+          "type": "float",
+          "default": 0.0,
+          "output": false,
+          "size": 0,
+          "metadata": {
+            "sdrUsdDefinitionType": "float",
+            "connectable": "1"
+          }
+        },
+        {
+          "name": "emissiveColor",
+          "type": "color",
+          "default": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "output": false,
+          "size": 0,
+          "metadata": {
+            "sdrUsdDefinitionType": "color3f",
+            "connectable": "1"
+          }
+        },
+        {
+          "name": "ior",
+          "type": "float",
+          "default": 1.5,
+          "output": false,
+          "size": 0,
+          "metadata": {
+            "sdrUsdDefinitionType": "float",
+            "connectable": "1"
+          }
+        },
+        {
+          "name": "metallic",
+          "type": "float",
+          "default": 0.0,
+          "output": false,
+          "size": 0,
+          "metadata": {
+            "sdrUsdDefinitionType": "float",
+            "connectable": "1"
+          }
+        },
+        {
+          "name": "normal",
+          "type": "normal",
+          "default": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "output": false,
+          "size": 0,
+          "metadata": {
+            "sdrUsdDefinitionType": "normal3f",
+            "connectable": "1"
+          }
+        },
+        {
+          "name": "occlusion",
+          "type": "float",
+          "default": 1.0,
+          "output": false,
+          "size": 0,
+          "metadata": {
+            "sdrUsdDefinitionType": "float",
+            "connectable": "1"
+          }
+        },
+        {
+          "name": "opacity",
+          "type": "float",
+          "default": 1.0,
+          "output": false,
+          "size": 0,
+          "metadata": {
+            "sdrUsdDefinitionType": "float",
+            "connectable": "1"
+          }
+        },
+        {
+          "name": "opacityMode",
+          "type": "string",
+          "default": "transparent",
+          "output": false,
+          "size": 0,
+          "metadata": {
+            "sdrUsdDefinitionType": "token",
+            "connectable": "0"
+          }
+        },
+        {
+          "name": "opacityThreshold",
+          "type": "float",
+          "default": 0.0,
+          "output": false,
+          "size": 0,
+          "metadata": {
+            "sdrUsdDefinitionType": "float",
+            "connectable": "0"
+          }
+        },
+        {
+          "name": "roughness",
+          "type": "float",
+          "default": 0.5,
+          "output": false,
+          "size": 0,
+          "metadata": {
+            "sdrUsdDefinitionType": "float",
+            "connectable": "1"
+          }
+        },
+        {
+          "name": "specularColor",
+          "type": "color",
+          "default": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "output": false,
+          "size": 0,
+          "metadata": {
+            "sdrUsdDefinitionType": "color3f",
+            "connectable": "1"
+          }
+        },
+        {
+          "name": "useSpecularWorkflow",
+          "type": "int",
+          "default": 0,
+          "output": false,
+          "size": 0,
+          "metadata": {
+            "sdrUsdDefinitionType": "int",
+            "connectable": "0"
+          }
+        },
+        {
+          "name": "displacement",
+          "type": "terminal",
+          "default": null,
+          "output": true,
+          "size": 0,
+          "metadata": {
+            "sdrUsdDefinitionType": "token",
+            "renderType": "terminal displacement"
+          }
+        },
+        {
+          "name": "surface",
+          "type": "terminal",
+          "default": null,
+          "output": true,
+          "size": 0,
+          "metadata": {
+            "sdrUsdDefinitionType": "token",
+            "renderType": "terminal surface"
+          }
+        }
+      ]
+    },
+    "selections": [
+      {
+        "priority": [],
+        "result": "UsdPreviewSurface"
+      },
+      {
+        "priority": [
+          "missing"
+        ],
+        "result": null
+      },
+      {
+        "priority": [
+          "missing",
+          "glslfx"
+        ],
+        "result": "UsdPreviewSurface"
+      },
+      {
+        "priority": [
+          "glslfx",
+          "missing"
+        ],
+        "result": "UsdPreviewSurface"
+      }
+    ]
+  }
+}

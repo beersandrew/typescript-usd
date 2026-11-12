@@ -1,0 +1,18 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/imaging/hdSt/tests/fixtures/materialXShaderGen/capture.py",
+  "upstream": [
+    "pxr/imaging/hdSt/CMakeLists.txt",
+    "pxr/imaging/hdSt/testenv/testHdStMaterialXShaderGen.cpp"
+  ],
+  "payload": {
+    "test": "testHdStMaterialXShaderGen_UsdPSglass",
+    "cmake": "pxr/imaging/hdSt/CMakeLists.txt:2799",
+    "command": "<install>/tests/testHdStMaterialXShaderGen --filename usd_preview_surface_glass.mtlx",
+    "cwd": "copy of <source>/pxr/imaging/hdSt/testenv/testHdStMaterialXShaderGen",
+    "expectedReturnCode": "0",
+    "returnCode": 0,
+    "stdout": "shadergen_UsdPSglass.out"
+  }
+}

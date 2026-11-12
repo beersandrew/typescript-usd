@@ -1,0 +1,14 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/imaging/hdsi/tests/upstream/fixtures/displayStyle/capture.py",
+  "upstream": [
+    "pxr/imaging/hdsi/legacyDisplayStyleOverrideSceneIndex.cpp"
+  ],
+  "payload": {
+    "unset": -1,
+    "fallback": 2,
+    "authoredWins": 0,
+    "cleared": -1
+  }
+}

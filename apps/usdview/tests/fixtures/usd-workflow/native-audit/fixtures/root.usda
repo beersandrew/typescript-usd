@@ -1,0 +1,31 @@
+#usda 1.0
+(
+ defaultPrim = "World"
+ startTimeCode = 0
+ endTimeCode = 24
+ framesPerSecond = 24
+ timeCodesPerSecond = 24
+ metersPerUnit = 0.01
+ upAxis = "Y"
+ subLayers = [@weak.usda@]
+ customLayerData = { string audit = "native-save-reference" }
+)
+def Xform "World" {
+ def Cube "Shape" (
+  prepend variantSets = "shape"
+  variants = { string shape = "small" }
+ ) {
+  asset user:source = @textures/checker.png@
+  double size.timeSamples = { 0: 1, 24: 2 }
+  variantSet "shape" = {
+   "small" {
+    color3f[] primvars:displayColor = [(1,0,0)]
+   }
+   "large" {
+    color3f[] primvars:displayColor = [(0,0,1)]
+   }
+  }
+ }
+ def "Referenced" (prepend references = @reference.usda@</Reference>) {}
+ def "Loaded" (prepend payload = @payload.usda@</Payload>) {}
+}

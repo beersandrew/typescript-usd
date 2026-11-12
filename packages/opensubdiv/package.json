@@ -1,0 +1,47 @@
+{
+  "name": "@opensubdiv/core",
+  "version": "0.1.0",
+  "private": true,
+  "license": "SEE LICENSE IN LICENSE",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./sdc": "./src/sdc/index.ts",
+    "./vtr": "./src/vtr/index.ts",
+    "./far": "./src/far/index.ts",
+    "./osd": "./src/osd/index.ts"
+  },
+  "publishConfig": {
+    "exports": {
+      ".": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "./sdc": {
+        "types": "./dist/sdc/index.d.ts",
+        "default": "./dist/sdc/index.js"
+      },
+      "./vtr": {
+        "types": "./dist/vtr/index.d.ts",
+        "default": "./dist/vtr/index.js"
+      },
+      "./far": {
+        "types": "./dist/far/index.d.ts",
+        "default": "./dist/far/index.js"
+      },
+      "./osd": {
+        "types": "./dist/osd/index.d.ts",
+        "default": "./dist/osd/index.js"
+      }
+    }
+  },
+  "scripts": {
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "build": "tsc -p tsconfig.build.json"
+  },
+  "devDependencies": {
+    "typescript": "^5.8.0",
+    "vitest": "^3.0.0"
+  }
+}

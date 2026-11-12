@@ -1,0 +1,24 @@
+# A test-only profile a scene may claim: it requires color space support,
+# which typescript-usd.web does not claim.
+{
+    "Plugins": [
+        {
+            "Info": {
+                "Profiles": {
+                    "Capabilities": {
+                        "vnd.example.review": {
+                            "predecessors": ["usd.core", "usd.core.colorspace"],
+                            "name": "Example review profile",
+                            "docstring": "Test profile requiring color space support.",
+                            "isProfile": true
+                        }
+                    }
+                }
+            },
+            "Name": "exampleReviewProfile",
+            "Type": "resource",
+            "Root": ".",
+            "ResourcePath": "."
+        }
+    ]
+}

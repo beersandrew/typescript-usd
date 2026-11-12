@@ -1,0 +1,596 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/imaging/hdSt/tests/fixtures/curvesCodegen/capture.py",
+  "upstream": [
+    "pxr/imaging/hdSt/testenv/testHdStCurveDrawing.cpp",
+    "pxr/imaging/hdSt/glslProgram.cpp:149-170",
+    "pxr/imaging/hdSt/CMakeLists.txt"
+  ],
+  "payload": {
+    "lv0": [
+      {
+        "stage": "COMPUTE_SHADER",
+        "sha256": "21c7170a5f5dd7b7bbed56d409e90491e4322d6930d62ac4d75c9788f8a14678",
+        "bytes": 18225
+      },
+      {
+        "stage": "COMPUTE_SHADER",
+        "sha256": "2a9b23f85cf64b965ac4eb720f8a89d46d6b459e878e27e700e4d8f1abc2d64e",
+        "bytes": 18557
+      },
+      {
+        "stage": "COMPUTE_SHADER",
+        "sha256": "33d5ec7f4e9652b515e1815dcfb0ff99f56c5af14d8580c6cea78c179a5373b4",
+        "bytes": 18250
+      },
+      {
+        "stage": "COMPUTE_SHADER",
+        "sha256": "45dc2c36bb9c12007277070a206deaec44c53ed614d321dcf8930d1233ed9480",
+        "bytes": 18225
+      },
+      {
+        "stage": "COMPUTE_SHADER",
+        "sha256": "537eaea22e458b2067ecebb3874aa8db431deffe0c4b6214dcc54b3289451b85",
+        "bytes": 18582
+      },
+      {
+        "stage": "COMPUTE_SHADER",
+        "sha256": "57a5a5131097bb62348cf4e2f7874c9bfe607ce6e619ac7385382bf28b6532f6",
+        "bytes": 18250
+      },
+      {
+        "stage": "COMPUTE_SHADER",
+        "sha256": "5a6075f80da0aa2ba66ccdf900ed1c77360edd7166ca5705ce7195d745687ed4",
+        "bytes": 18250
+      },
+      {
+        "stage": "COMPUTE_SHADER",
+        "sha256": "60bb173fc301b11d2f193880448c55021121bd1cccb0a5fa59c6bc6a511b1bc9",
+        "bytes": 18250
+      },
+      {
+        "stage": "COMPUTE_SHADER",
+        "sha256": "7f599215061c821129c8fd452dc907bccf4473d2811301a8cb2a6f1f27623752",
+        "bytes": 18225
+      },
+      {
+        "stage": "COMPUTE_SHADER",
+        "sha256": "d006a6f21dc62cd3e75326fb451fc697b64605d229ea5f7487df4a211e95c35e",
+        "bytes": 18250
+      },
+      {
+        "stage": "COMPUTE_SHADER",
+        "sha256": "dbe14239fa5ff8dcfb0451d325e8ff2746c19c0e5e776dbf2f6848fa3d559a3c",
+        "bytes": 18582
+      },
+      {
+        "stage": "FRAGMENT_SHADER",
+        "sha256": "24392a5015de63091c88a920f4895901ecfe30cce29112e5aceff214fe9b6248",
+        "bytes": 29584
+      },
+      {
+        "stage": "FRAGMENT_SHADER",
+        "sha256": "3e779953a61c32103942cf2bf7f07e20ee8a39025e1d8605e1f8fbfa51e599b6",
+        "bytes": 29839
+      },
+      {
+        "stage": "FRAGMENT_SHADER",
+        "sha256": "48cc2d4aa461ccdae9680aca2ee9b3eb0ae5c9109f94cc52d05ac3abfec09183",
+        "bytes": 29793
+      },
+      {
+        "stage": "FRAGMENT_SHADER",
+        "sha256": "4bc1005649a8bd86006e01f9b9e4216398b18b6301487981bbbeee66c3305a76",
+        "bytes": 29878
+      },
+      {
+        "stage": "FRAGMENT_SHADER",
+        "sha256": "839a3703859e79b30feca303601caf2a7bec35be07a76585fa5f838250e35816",
+        "bytes": 29506
+      },
+      {
+        "stage": "FRAGMENT_SHADER",
+        "sha256": "baf5c7622e80afbfb0534eecacbff9ad575d491d6f4b6e70ec89f68b9ee73d08",
+        "bytes": 29918
+      },
+      {
+        "stage": "FRAGMENT_SHADER",
+        "sha256": "c7df4d32256bf5c733fb46f76a1a9986992a8bebeefaabbff9498fb0e9ea4444",
+        "bytes": 29839
+      },
+      {
+        "stage": "FRAGMENT_SHADER",
+        "sha256": "d9ba3eb3659ba24afd61dc37023ca99f2ebb8d32902e6f60ed25dab751a1068b",
+        "bytes": 29871
+      },
+      {
+        "stage": "FRAGMENT_SHADER",
+        "sha256": "ea1ed78ab6127dc9fb329751a9fa2f44f6d6c90e4d66543ebe2e436a04386c86",
+        "bytes": 29792
+      },
+      {
+        "stage": "FRAGMENT_SHADER",
+        "sha256": "eb75a04871dc5467eda910cbce4af73718dc344908e575532e19cfd508db0dde",
+        "bytes": 29505
+      },
+      {
+        "stage": "FRAGMENT_SHADER",
+        "sha256": "f3ca3f1a919fd806ef5ccba007a7a1e3278c5367194c66c242e032b6daaf88bf",
+        "bytes": 29552
+      },
+      {
+        "stage": "VERTEX_SHADER",
+        "sha256": "36957deac581e07c87b4b3cad70742f7b4c0bb2c2b905845a6f678077afafb1c",
+        "bytes": 38867
+      },
+      {
+        "stage": "VERTEX_SHADER",
+        "sha256": "3d305acb21f49fd9640499827a27674df9255ca72239df39a7163576e9400e08",
+        "bytes": 38492
+      },
+      {
+        "stage": "VERTEX_SHADER",
+        "sha256": "5a35baedce1eff48fcc65c71bb93ef7e1b27c541afdd4d80323f7ee621e15a3d",
+        "bytes": 38527
+      },
+      {
+        "stage": "VERTEX_SHADER",
+        "sha256": "5dfd9fa66583a4ab6602b788ab9999074b76e4618e9c6ae9d1501f6160c0cd66",
+        "bytes": 38467
+      },
+      {
+        "stage": "VERTEX_SHADER",
+        "sha256": "81d00c5720bcc7c01d6a5890dc6194d815f7134af7bc5bb2bbf69060b57e1697",
+        "bytes": 38783
+      },
+      {
+        "stage": "VERTEX_SHADER",
+        "sha256": "9e8d6b63adc2dd051eaf07339f3781bc496ca1a97a20aca5914cb9646338116b",
+        "bytes": 38808
+      },
+      {
+        "stage": "VERTEX_SHADER",
+        "sha256": "b46b11fee92f6218cf1fdec88c5abae85be8d157fc1607162bfc29f3cf8f3ac8",
+        "bytes": 38468
+      },
+      {
+        "stage": "VERTEX_SHADER",
+        "sha256": "c7a048a89e96aea837cd232701622558b03c96cd99c811517a3708d5f26613a6",
+        "bytes": 38442
+      },
+      {
+        "stage": "VERTEX_SHADER",
+        "sha256": "dd578181fd6754fedffcb217108f237883bb7f1780c78a20acbf7a4dd0c9f21e",
+        "bytes": 38551
+      },
+      {
+        "stage": "VERTEX_SHADER",
+        "sha256": "e08c687b393d9b2770817312593cfa9778105910d1079a062b540d40aba899ff",
+        "bytes": 38152
+      },
+      {
+        "stage": "VERTEX_SHADER",
+        "sha256": "e7b6a77f200677227d83b89d79fa82e67d98ae26bbc58e148476a8b4a8346145",
+        "bytes": 38195
+      }
+    ],
+    "lv1": [
+      {
+        "stage": "COMPUTE_SHADER",
+        "sha256": "14fc48873077cea5f2a911c8424f0e98718812fc33dbaf7231da8af866c53169",
+        "bytes": 18225
+      },
+      {
+        "stage": "COMPUTE_SHADER",
+        "sha256": "2093ea40f5956047a9cd989990d3e47dbe712753e41dd20d6f5936c37f76cddb",
+        "bytes": 18225
+      },
+      {
+        "stage": "COMPUTE_SHADER",
+        "sha256": "3ba6b206facc0074f41813a2aa559894d788fa37484f444c16ccc43f676de69c",
+        "bytes": 18250
+      },
+      {
+        "stage": "COMPUTE_SHADER",
+        "sha256": "4f60afe4f177ec9b125cbf126a16fd184ea3bc7769055c0462e5d658eeeaa4f0",
+        "bytes": 18250
+      },
+      {
+        "stage": "COMPUTE_SHADER",
+        "sha256": "b308eec475477f66f7ce082794c9d3dc732fdfb31566170db59391af28810d81",
+        "bytes": 18582
+      },
+      {
+        "stage": "COMPUTE_SHADER",
+        "sha256": "c0cd5dc37702a7b053c47d4020a8f863e6f3eb440a5781fa4bc026a3f16e1637",
+        "bytes": 18250
+      },
+      {
+        "stage": "COMPUTE_SHADER",
+        "sha256": "c225c58dd7a3d99f492a46c8187584b059709a1bfea2076937a65e95bb474855",
+        "bytes": 18250
+      },
+      {
+        "stage": "COMPUTE_SHADER",
+        "sha256": "cc72635985bd7a468459d2c745941887b314c470b8ba6da9ccc91db8177567b5",
+        "bytes": 18582
+      },
+      {
+        "stage": "COMPUTE_SHADER",
+        "sha256": "eed16264adc087aa26737e0c7c5a469e266c6a9977953186017e7664dd7674ec",
+        "bytes": 18225
+      },
+      {
+        "stage": "COMPUTE_SHADER",
+        "sha256": "f46cbd9e7fabc257bb943ffae7de89f449e9e6706da98d30baa93cf463eaabce",
+        "bytes": 18557
+      },
+      {
+        "stage": "COMPUTE_SHADER",
+        "sha256": "f960fb44621b4c01f9aee3bdc953f13895b8fe565d906a16cb2328525fc15c9a",
+        "bytes": 18250
+      },
+      {
+        "stage": "FRAGMENT_SHADER",
+        "sha256": "0127c4a61ab388a36fa873a5ec558168281dcdd12253ec5a0268eafde4653c0f",
+        "bytes": 30848
+      },
+      {
+        "stage": "FRAGMENT_SHADER",
+        "sha256": "0f3c44e584a507513cbf3e9267afc5a5cf5230d33bb3e4b099cb063fcc023b68",
+        "bytes": 30634
+      },
+      {
+        "stage": "FRAGMENT_SHADER",
+        "sha256": "0f3c44e584a507513cbf3e9267afc5a5cf5230d33bb3e4b099cb063fcc023b68",
+        "bytes": 30634
+      },
+      {
+        "stage": "FRAGMENT_SHADER",
+        "sha256": "0f3c44e584a507513cbf3e9267afc5a5cf5230d33bb3e4b099cb063fcc023b68",
+        "bytes": 30634
+      },
+      {
+        "stage": "FRAGMENT_SHADER",
+        "sha256": "1ff10df23ddd13aa50fc74c79c5fb0f2f5b8a7370888171abcc6c6f8102618e5",
+        "bytes": 30723
+      },
+      {
+        "stage": "FRAGMENT_SHADER",
+        "sha256": "1ff10df23ddd13aa50fc74c79c5fb0f2f5b8a7370888171abcc6c6f8102618e5",
+        "bytes": 30723
+      },
+      {
+        "stage": "FRAGMENT_SHADER",
+        "sha256": "1ff10df23ddd13aa50fc74c79c5fb0f2f5b8a7370888171abcc6c6f8102618e5",
+        "bytes": 30723
+      },
+      {
+        "stage": "FRAGMENT_SHADER",
+        "sha256": "1ff10df23ddd13aa50fc74c79c5fb0f2f5b8a7370888171abcc6c6f8102618e5",
+        "bytes": 30723
+      },
+      {
+        "stage": "FRAGMENT_SHADER",
+        "sha256": "6bee0511fca69e6bafd27a45798cc1d048a280734cca3b27be5a418da3320bfc",
+        "bytes": 30722
+      },
+      {
+        "stage": "FRAGMENT_SHADER",
+        "sha256": "84db7084f221b9cef87ec8a1432730b7eb736f0642d5019bc9f5f73be53108a4",
+        "bytes": 30769
+      },
+      {
+        "stage": "FRAGMENT_SHADER",
+        "sha256": "9ec2209688da96831f4106cafcdec3b8ab0f96d52b7898faf1c8cca9c9f9545b",
+        "bytes": 30723
+      },
+      {
+        "stage": "FRAGMENT_SHADER",
+        "sha256": "9f58ddf5deb9b4cd7692e29e7acf2ad7de3fdce99f64485810c7f0eb4103a836",
+        "bytes": 30680
+      },
+      {
+        "stage": "FRAGMENT_SHADER",
+        "sha256": "af560580d00a10f1d400e9ddf92128cbf3e7f32b870904eb1a32070f6915930c",
+        "bytes": 30633
+      },
+      {
+        "stage": "FRAGMENT_SHADER",
+        "sha256": "b70d757c9277a3260c5a381f276b18234bc64acb042f52cf3bcac4f0d3baec8a",
+        "bytes": 30801
+      },
+      {
+        "stage": "FRAGMENT_SHADER",
+        "sha256": "b70d757c9277a3260c5a381f276b18234bc64acb042f52cf3bcac4f0d3baec8a",
+        "bytes": 30801
+      },
+      {
+        "stage": "FRAGMENT_SHADER",
+        "sha256": "b70d757c9277a3260c5a381f276b18234bc64acb042f52cf3bcac4f0d3baec8a",
+        "bytes": 30801
+      },
+      {
+        "stage": "FRAGMENT_SHADER",
+        "sha256": "ce404522bc98fe4ddf0bef44a6e86048e2cb5613cd62902c96a488e7398ab357",
+        "bytes": 30769
+      },
+      {
+        "stage": "FRAGMENT_SHADER",
+        "sha256": "e3c03a126eabc70e665e8a28c594effcf39bd8f55a50b50a3dfaa3d588a4dee1",
+        "bytes": 30633
+      },
+      {
+        "stage": "FRAGMENT_SHADER",
+        "sha256": "e4303b76da3cdbc5e65e0169550a031afdac4c8bc3bb4dd81e73f231c0ed871d",
+        "bytes": 30712
+      },
+      {
+        "stage": "FRAGMENT_SHADER",
+        "sha256": "e4303b76da3cdbc5e65e0169550a031afdac4c8bc3bb4dd81e73f231c0ed871d",
+        "bytes": 30712
+      },
+      {
+        "stage": "FRAGMENT_SHADER",
+        "sha256": "e4303b76da3cdbc5e65e0169550a031afdac4c8bc3bb4dd81e73f231c0ed871d",
+        "bytes": 30712
+      },
+      {
+        "stage": "FRAGMENT_SHADER",
+        "sha256": "f15928703d81fc7ed1af164b077d4f040fe2ce50be699d3e021916ec308b44ff",
+        "bytes": 30808
+      },
+      {
+        "stage": "FRAGMENT_SHADER",
+        "sha256": "f15928703d81fc7ed1af164b077d4f040fe2ce50be699d3e021916ec308b44ff",
+        "bytes": 30808
+      },
+      {
+        "stage": "FRAGMENT_SHADER",
+        "sha256": "f6b72a158520dcd9086e74b21076d3dda82c4bf3395bec71f560e9fccef685e9",
+        "bytes": 30722
+      },
+      {
+        "stage": "POST_TESS_CONTROL_SHADER",
+        "sha256": "071c79c0765037cee6ff26a01a88534ab9b22f8052c1913c51645f5c0995521d",
+        "bytes": 32307
+      },
+      {
+        "stage": "POST_TESS_CONTROL_SHADER",
+        "sha256": "08cbea7537fe514f465de6ab0e90b3ed4b8840056689bbbca198ba05ff772907",
+        "bytes": 31675
+      },
+      {
+        "stage": "POST_TESS_CONTROL_SHADER",
+        "sha256": "21c230cd002c3b1a23feeb3ca7b24db23d92717355c40247eebf2ef2b22a5663",
+        "bytes": 32141
+      },
+      {
+        "stage": "POST_TESS_CONTROL_SHADER",
+        "sha256": "76d9875ef517343b5c791dba0bd9d6b7bc9f75af0fdc94fbca402ba9299f544e",
+        "bytes": 31686
+      },
+      {
+        "stage": "POST_TESS_CONTROL_SHADER",
+        "sha256": "aab202f089d26b57d0a7180a8613e59b4227d3cac57b893c35fe1fe9e326f619",
+        "bytes": 31908
+      },
+      {
+        "stage": "POST_TESS_CONTROL_SHADER",
+        "sha256": "b98682e34188142cb22e834b36ae123564e93473a69e979d6e49a559d9832d96",
+        "bytes": 32036
+      },
+      {
+        "stage": "POST_TESS_CONTROL_SHADER",
+        "sha256": "b98682e34188142cb22e834b36ae123564e93473a69e979d6e49a559d9832d96",
+        "bytes": 32036
+      },
+      {
+        "stage": "POST_TESS_CONTROL_SHADER",
+        "sha256": "b98682e34188142cb22e834b36ae123564e93473a69e979d6e49a559d9832d96",
+        "bytes": 32036
+      },
+      {
+        "stage": "POST_TESS_CONTROL_SHADER",
+        "sha256": "cd909f6cd5b190faf29b7d257174d859d039fd7acf2f3ae5e712c921136871e6",
+        "bytes": 32219
+      },
+      {
+        "stage": "POST_TESS_CONTROL_SHADER",
+        "sha256": "cd909f6cd5b190faf29b7d257174d859d039fd7acf2f3ae5e712c921136871e6",
+        "bytes": 32219
+      },
+      {
+        "stage": "POST_TESS_CONTROL_SHADER",
+        "sha256": "cd909f6cd5b190faf29b7d257174d859d039fd7acf2f3ae5e712c921136871e6",
+        "bytes": 32219
+      },
+      {
+        "stage": "POST_TESS_CONTROL_SHADER",
+        "sha256": "d4ae2cb3136d2987eff3bc792f37af2025832decbaa811c93ece309d71021965",
+        "bytes": 31947
+      },
+      {
+        "stage": "POST_TESS_CONTROL_SHADER",
+        "sha256": "dca83b42d922fb9ab7a7aa73f6422c7c0a76665f2623ce46957f78abb429dc93",
+        "bytes": 32269
+      },
+      {
+        "stage": "POST_TESS_CONTROL_SHADER",
+        "sha256": "dca83b42d922fb9ab7a7aa73f6422c7c0a76665f2623ce46957f78abb429dc93",
+        "bytes": 32269
+      },
+      {
+        "stage": "POST_TESS_CONTROL_SHADER",
+        "sha256": "dca83b42d922fb9ab7a7aa73f6422c7c0a76665f2623ce46957f78abb429dc93",
+        "bytes": 32269
+      },
+      {
+        "stage": "POST_TESS_CONTROL_SHADER",
+        "sha256": "dca83b42d922fb9ab7a7aa73f6422c7c0a76665f2623ce46957f78abb429dc93",
+        "bytes": 32269
+      },
+      {
+        "stage": "POST_TESS_CONTROL_SHADER",
+        "sha256": "e37b67659e2cda2464c7867c881c29d1663b9f4c4da14bbf9d8d628a7ebd142d",
+        "bytes": 32180
+      },
+      {
+        "stage": "POST_TESS_CONTROL_SHADER",
+        "sha256": "f935d4bd2a985e009fdfd8c20f248e14b94539851b586ec2c17391d35915fbe1",
+        "bytes": 31325
+      },
+      {
+        "stage": "POST_TESS_CONTROL_SHADER",
+        "sha256": "fa5b850f40dbe807327902eb82ab0f2b80c0d1414afc3bfd58d0b7458e7485d5",
+        "bytes": 31986
+      },
+      {
+        "stage": "POST_TESS_CONTROL_SHADER",
+        "sha256": "fa5b850f40dbe807327902eb82ab0f2b80c0d1414afc3bfd58d0b7458e7485d5",
+        "bytes": 31986
+      },
+      {
+        "stage": "POST_TESS_CONTROL_SHADER",
+        "sha256": "fa5b850f40dbe807327902eb82ab0f2b80c0d1414afc3bfd58d0b7458e7485d5",
+        "bytes": 31986
+      },
+      {
+        "stage": "POST_TESS_CONTROL_SHADER",
+        "sha256": "fd79f7edc273fc0d64775f28356b7ec5a8d9c59a09f1969b944eb75201d4bf20",
+        "bytes": 32218
+      },
+      {
+        "stage": "POST_TESS_CONTROL_SHADER",
+        "sha256": "fd79f7edc273fc0d64775f28356b7ec5a8d9c59a09f1969b944eb75201d4bf20",
+        "bytes": 32218
+      },
+      {
+        "stage": "POST_TESS_CONTROL_SHADER",
+        "sha256": "fd891fd55884fae7bc3724e6bce978b1528c364f3365711d2c94ff2c8530afca",
+        "bytes": 31558
+      },
+      {
+        "stage": "POST_TESS_VERTEX_SHADER",
+        "sha256": "15bd54f2ceee114b0d8fdc7f3340d46f8ddd4954069c82c10236edda8b6dcdcf",
+        "bytes": 40323
+      },
+      {
+        "stage": "POST_TESS_VERTEX_SHADER",
+        "sha256": "1b04066d89b2f59ac7a8cf63dc9cd3b5df0fa0bfe0f296f2060b5dc4ae321d3c",
+        "bytes": 37914
+      },
+      {
+        "stage": "POST_TESS_VERTEX_SHADER",
+        "sha256": "1e722566755e3dc268babb9eb1201e5a13291e29975d77545ddb692a63aa270e",
+        "bytes": 38188
+      },
+      {
+        "stage": "POST_TESS_VERTEX_SHADER",
+        "sha256": "1e901a3f2e29009ca82be4c9ad6ab0a0be37520f23f93ac7ab6708defc4747d8",
+        "bytes": 37022
+      },
+      {
+        "stage": "POST_TESS_VERTEX_SHADER",
+        "sha256": "232a984f328ae22570a64449ae660de35121e9861ad22b900cb78b64b60a20e2",
+        "bytes": 37721
+      },
+      {
+        "stage": "POST_TESS_VERTEX_SHADER",
+        "sha256": "31ae4efea13beac3601c01793e02dd292fae67e60690b2c6a7c81b5434907643",
+        "bytes": 37703
+      },
+      {
+        "stage": "POST_TESS_VERTEX_SHADER",
+        "sha256": "355e7c026390ca8a4e56c0ca4d1c2401eb0ca44e45f05ebe1721aeb59d14f8e7",
+        "bytes": 39940
+      },
+      {
+        "stage": "POST_TESS_VERTEX_SHADER",
+        "sha256": "489b266fca46f5249a10506b89e81020fd246973c197b17f27d7ecfb27a21341",
+        "bytes": 38261
+      },
+      {
+        "stage": "POST_TESS_VERTEX_SHADER",
+        "sha256": "5199a715ebd988e89071f6ad6f42d602b8ae89dbe54778a890359604a54f3dcf",
+        "bytes": 36894
+      },
+      {
+        "stage": "POST_TESS_VERTEX_SHADER",
+        "sha256": "64329ab28dda5359732dc13d37389afef397f218cc2cc83b06ba3f27b64c4161",
+        "bytes": 37878
+      },
+      {
+        "stage": "POST_TESS_VERTEX_SHADER",
+        "sha256": "65f23573a5fe11bd11e7815c2a61bc2bdcdaa2ffe6a8efbaa68b28976dedb280",
+        "bytes": 37784
+      },
+      {
+        "stage": "POST_TESS_VERTEX_SHADER",
+        "sha256": "6a8b0576a3efd0f997ecc322ff1bc8622694f7bf83b4e416b8b412edd486d428",
+        "bytes": 37899
+      },
+      {
+        "stage": "POST_TESS_VERTEX_SHADER",
+        "sha256": "7292abe67cbec6017376f21588a9402e7afb640584c1272b53781dc71c4c2a88",
+        "bytes": 36729
+      },
+      {
+        "stage": "POST_TESS_VERTEX_SHADER",
+        "sha256": "7649be3f5d4eff083bc2b55ed552ebdf6c985e091d5318ee188332b85ceb9bce",
+        "bytes": 37805
+      },
+      {
+        "stage": "POST_TESS_VERTEX_SHADER",
+        "sha256": "7b1e5d475aeb7d98c6fe94becbb35cb5c81329e8b9b45e87ddf99926a571056c",
+        "bytes": 38167
+      },
+      {
+        "stage": "POST_TESS_VERTEX_SHADER",
+        "sha256": "7ea9d1d8b69d34af6e707aeb8d868bcd25dd0b195ca61fa08300e31f4732519f",
+        "bytes": 37797
+      },
+      {
+        "stage": "POST_TESS_VERTEX_SHADER",
+        "sha256": "81702759c2bcf5ba21dd41f73c925771261a6fdbef9048914089e14da83a53a5",
+        "bytes": 40417
+      },
+      {
+        "stage": "POST_TESS_VERTEX_SHADER",
+        "sha256": "8c9dc9a6ac9b9ed7f83f1e05ff4271e74abefe8abcdba955ed2b8ca9a3881305",
+        "bytes": 38249
+      },
+      {
+        "stage": "POST_TESS_VERTEX_SHADER",
+        "sha256": "9133f05aa7b157c39b519506d00a85faf2182349a66e7c58e9ded6912be4277a",
+        "bytes": 36800
+      },
+      {
+        "stage": "POST_TESS_VERTEX_SHADER",
+        "sha256": "b037bfd10dff952fa34bc1fe5842bdd2534abc4423a1751937f4ee4d0fe49c56",
+        "bytes": 37820
+      },
+      {
+        "stage": "POST_TESS_VERTEX_SHADER",
+        "sha256": "c87a8ba056727638f293eec1ef4ba608b8bb4775347ab2541bd2af3b6575c801",
+        "bytes": 39877
+      },
+      {
+        "stage": "POST_TESS_VERTEX_SHADER",
+        "sha256": "cf760f31948e20023dcef5e412b416e31a4143c2720ae013d1e77f6c4d5fc6bf",
+        "bytes": 38164
+      },
+      {
+        "stage": "POST_TESS_VERTEX_SHADER",
+        "sha256": "d90ac723ae584562bc7f285542ca396c8877b77aedba095c3a59786c58955935",
+        "bytes": 40034
+      },
+      {
+        "stage": "POST_TESS_VERTEX_SHADER",
+        "sha256": "dbfc3afac8b8d58f74c33475b756f9948836e6c287719417fd3ebfae0fb98b28",
+        "bytes": 38282
+      }
+    ]
+  }
+}

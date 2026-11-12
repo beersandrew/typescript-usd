@@ -1,0 +1,722 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/usdImaging/usdImagingGL/tests/fixtures/native/defaultDomeLight/capture.py",
+  "upstream": [
+    "pxr/usdImaging/usdviewq/stageView.py:1453-1483",
+    "pxr/imaging/hdx/taskControllerSceneIndex.cpp:729-738,2208-2314",
+    "pxr/imaging/hdx/package.cpp:157-169",
+    "pxr/imaging/hdSt/simpleLightingShader.cpp:269-299",
+    "pxr/usd/plugin/usdShaders/shaders/previewSurface.glslfx:460-470",
+    "pxr/imaging/hdSt/shaders/simpleLighting.glslfx:475-507"
+  ],
+  "payload": {
+    "method": "Actual native UsdImagingGLEngine.SetLightingState Glf built-in dome;256px Storm colorAOV RGBA readback, not usdview UI input automation",
+    "cases": [
+      {
+        "name": "defaultY",
+        "zUp": false,
+        "cameraLightEnabled": false,
+        "authoredDome": null,
+        "fallback": false,
+        "samples": [
+          {
+            "x": 16,
+            "y": 128,
+            "rgba": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "x": 96,
+            "y": 128,
+            "rgba": [
+              119,
+              124,
+              132,
+              255
+            ]
+          },
+          {
+            "x": 128,
+            "y": 128,
+            "rgba": [
+              120,
+              124,
+              132,
+              255
+            ]
+          },
+          {
+            "x": 160,
+            "y": 128,
+            "rgba": [
+              120,
+              124,
+              132,
+              255
+            ]
+          },
+          {
+            "x": 240,
+            "y": 128,
+            "rgba": [
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        ],
+        "nativeExecution": {
+          "method": "actual UsdImagingGLEngine.SetLightingState built-in Glf dome",
+          "hgi": "Metal",
+          "zUp": false,
+          "cameraLightEnabled": false,
+          "builtinLights": [
+            {
+              "transform": [
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1
+              ],
+              "hasDomeOffset": false
+            }
+          ]
+        }
+      },
+      {
+        "name": "defaultZ",
+        "zUp": true,
+        "cameraLightEnabled": false,
+        "authoredDome": null,
+        "fallback": false,
+        "samples": [
+          {
+            "x": 16,
+            "y": 128,
+            "rgba": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "x": 96,
+            "y": 128,
+            "rgba": [
+              133,
+              138,
+              148,
+              255
+            ]
+          },
+          {
+            "x": 128,
+            "y": 128,
+            "rgba": [
+              134,
+              139,
+              149,
+              255
+            ]
+          },
+          {
+            "x": 160,
+            "y": 128,
+            "rgba": [
+              135,
+              140,
+              150,
+              255
+            ]
+          },
+          {
+            "x": 240,
+            "y": 128,
+            "rgba": [
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        ],
+        "nativeExecution": {
+          "method": "actual UsdImagingGLEngine.SetLightingState built-in Glf dome",
+          "hgi": "Metal",
+          "zUp": true,
+          "cameraLightEnabled": false,
+          "builtinLights": [
+            {
+              "transform": [
+                1,
+                0,
+                0,
+                0,
+                0,
+                2.220446049250313e-16,
+                1,
+                0,
+                0,
+                -1,
+                2.220446049250313e-16,
+                0,
+                0,
+                0,
+                0,
+                1
+              ],
+              "hasDomeOffset": false
+            }
+          ]
+        }
+      },
+      {
+        "name": "cameraAndDome",
+        "zUp": false,
+        "cameraLightEnabled": true,
+        "authoredDome": null,
+        "fallback": false,
+        "samples": [
+          {
+            "x": 16,
+            "y": 128,
+            "rgba": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "x": 96,
+            "y": 128,
+            "rgba": [
+              230,
+              232,
+              236,
+              255
+            ]
+          },
+          {
+            "x": 128,
+            "y": 128,
+            "rgba": [
+              235,
+              237,
+              240,
+              255
+            ]
+          },
+          {
+            "x": 160,
+            "y": 128,
+            "rgba": [
+              230,
+              232,
+              236,
+              255
+            ]
+          },
+          {
+            "x": 240,
+            "y": 128,
+            "rgba": [
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        ],
+        "nativeExecution": {
+          "method": "actual UsdImagingGLEngine.SetLightingState built-in Glf dome",
+          "hgi": "Metal",
+          "zUp": false,
+          "cameraLightEnabled": true,
+          "builtinLights": [
+            {
+              "transform": [
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1
+              ],
+              "hasDomeOffset": false
+            }
+          ]
+        }
+      },
+      {
+        "name": "authoredBefore",
+        "zUp": false,
+        "cameraLightEnabled": false,
+        "authoredDome": "SceneDome",
+        "fallback": false,
+        "samples": [
+          {
+            "x": 16,
+            "y": 128,
+            "rgba": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "x": 96,
+            "y": 128,
+            "rgba": [
+              119,
+              124,
+              132,
+              255
+            ]
+          },
+          {
+            "x": 128,
+            "y": 128,
+            "rgba": [
+              120,
+              124,
+              132,
+              255
+            ]
+          },
+          {
+            "x": 160,
+            "y": 128,
+            "rgba": [
+              120,
+              124,
+              132,
+              255
+            ]
+          },
+          {
+            "x": 240,
+            "y": 128,
+            "rgba": [
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        ],
+        "nativeExecution": {
+          "method": "actual UsdImagingGLEngine.SetLightingState built-in Glf dome",
+          "hgi": "Metal",
+          "zUp": false,
+          "cameraLightEnabled": false,
+          "builtinLights": [
+            {
+              "transform": [
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1
+              ],
+              "hasDomeOffset": false
+            }
+          ]
+        }
+      },
+      {
+        "name": "authoredAfter",
+        "zUp": false,
+        "cameraLightEnabled": false,
+        "authoredDome": "zDome",
+        "fallback": false,
+        "samples": [
+          {
+            "x": 16,
+            "y": 128,
+            "rgba": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "x": 96,
+            "y": 128,
+            "rgba": [
+              37,
+              56,
+              74,
+              255
+            ]
+          },
+          {
+            "x": 128,
+            "y": 128,
+            "rgba": [
+              37,
+              57,
+              74,
+              255
+            ]
+          },
+          {
+            "x": 160,
+            "y": 128,
+            "rgba": [
+              37,
+              57,
+              74,
+              255
+            ]
+          },
+          {
+            "x": 240,
+            "y": 128,
+            "rgba": [
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        ],
+        "nativeExecution": {
+          "method": "actual UsdImagingGLEngine.SetLightingState built-in Glf dome",
+          "hgi": "Metal",
+          "zUp": false,
+          "cameraLightEnabled": false,
+          "builtinLights": [
+            {
+              "transform": [
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1
+              ],
+              "hasDomeOffset": false
+            }
+          ]
+        }
+      },
+      {
+        "name": "fallbackBoth",
+        "zUp": false,
+        "cameraLightEnabled": false,
+        "authoredDome": "SceneDome",
+        "fallback": true,
+        "samples": [
+          {
+            "x": 16,
+            "y": 128,
+            "rgba": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "x": 96,
+            "y": 128,
+            "rgba": [
+              146,
+              154,
+              166,
+              255
+            ]
+          },
+          {
+            "x": 128,
+            "y": 128,
+            "rgba": [
+              146,
+              154,
+              166,
+              255
+            ]
+          },
+          {
+            "x": 160,
+            "y": 128,
+            "rgba": [
+              146,
+              154,
+              166,
+              255
+            ]
+          },
+          {
+            "x": 240,
+            "y": 128,
+            "rgba": [
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        ],
+        "nativeExecution": {
+          "method": "actual UsdImagingGLEngine.SetLightingState built-in Glf dome",
+          "hgi": "Metal",
+          "zUp": false,
+          "cameraLightEnabled": false,
+          "builtinLights": [
+            {
+              "transform": [
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1
+              ],
+              "hasDomeOffset": false
+            }
+          ]
+        }
+      },
+      {
+        "name": "zeroColorAfter",
+        "zUp": false,
+        "cameraLightEnabled": false,
+        "authoredDome": "zDome",
+        "fallback": false,
+        "samples": [
+          {
+            "x": 16,
+            "y": 128,
+            "rgba": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "x": 96,
+            "y": 128,
+            "rgba": [
+              0,
+              0,
+              0,
+              255
+            ]
+          },
+          {
+            "x": 128,
+            "y": 128,
+            "rgba": [
+              0,
+              0,
+              0,
+              255
+            ]
+          },
+          {
+            "x": 160,
+            "y": 128,
+            "rgba": [
+              0,
+              0,
+              0,
+              255
+            ]
+          },
+          {
+            "x": 240,
+            "y": 128,
+            "rgba": [
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        ],
+        "nativeExecution": {
+          "method": "actual UsdImagingGLEngine.SetLightingState built-in Glf dome",
+          "hgi": "Metal",
+          "zUp": false,
+          "cameraLightEnabled": false,
+          "builtinLights": [
+            {
+              "transform": [
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1
+              ],
+              "hasDomeOffset": false
+            }
+          ]
+        }
+      },
+      {
+        "name": "zeroIntensityAfter",
+        "zUp": false,
+        "cameraLightEnabled": false,
+        "authoredDome": "zDome",
+        "fallback": false,
+        "samples": [
+          {
+            "x": 16,
+            "y": 128,
+            "rgba": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "x": 96,
+            "y": 128,
+            "rgba": [
+              119,
+              124,
+              132,
+              255
+            ]
+          },
+          {
+            "x": 128,
+            "y": 128,
+            "rgba": [
+              120,
+              124,
+              132,
+              255
+            ]
+          },
+          {
+            "x": 160,
+            "y": 128,
+            "rgba": [
+              120,
+              124,
+              132,
+              255
+            ]
+          },
+          {
+            "x": 240,
+            "y": 128,
+            "rgba": [
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        ],
+        "nativeExecution": {
+          "method": "actual UsdImagingGLEngine.SetLightingState built-in Glf dome",
+          "hgi": "Metal",
+          "zUp": false,
+          "cameraLightEnabled": false,
+          "builtinLights": [
+            {
+              "transform": [
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1
+              ],
+              "hasDomeOffset": false
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

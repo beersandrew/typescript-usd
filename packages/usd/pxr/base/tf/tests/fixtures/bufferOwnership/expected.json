@@ -1,0 +1,14 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/base/tf/tests/fixtures/bufferOwnership/capture.py",
+  "upstream": [
+    "pxr/base/tf/atomicOfstreamWrapper.h:93",
+    "pxr/base/tf/safeOutputFile.h"
+  ],
+  "payload": {
+    "atomic": "hello",
+    "update": "hello",
+    "replace": "hello"
+  }
+}

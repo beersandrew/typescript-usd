@@ -1,0 +1,165 @@
+{
+ "comment": "Performance guard baseline (score.mjs; packages/usd/docs/imaging-i2.md section 1.3): the hand-written renderer hdStWgsl at its last commit, timed by that commit's asset-acceptance harness in Safari. Medians over runs. Machine-specific: compare only with runs on the same machine. Written by perf-baseline.mjs.",
+ "renderer": "hdStWgsl",
+ "commit": "15513a14",
+ "recorded": "2026-11-06T06:14:29.609Z",
+ "runs": 3,
+ "machine": {
+  "cpu": "Apple M4 Pro",
+  "cores": 12,
+  "loadAverage1m": {
+   "runStart": 26.4,
+   "runEnd": 8.5
+  }
+ },
+ "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/27.2 Safari/605.1.15",
+ "assets": {
+  "alpha_blend_mode": {
+   "runs": 3,
+   "settledMs": 1729,
+   "lastFrameCpuMs": 2,
+   "playbackP95Ms": null,
+   "playbackSpreadMs": null
+  },
+  "animated_cube": {
+   "runs": 3,
+   "settledMs": 1528,
+   "lastFrameCpuMs": 1,
+   "playbackP95Ms": null,
+   "playbackSpreadMs": null
+  },
+  "bike": {
+   "runs": 3,
+   "settledMs": 2233,
+   "lastFrameCpuMs": 3,
+   "playbackP95Ms": null,
+   "playbackSpreadMs": null
+  },
+  "brainstem": {
+   "runs": 3,
+   "settledMs": 1658,
+   "lastFrameCpuMs": 2,
+   "playbackP95Ms": 18,
+   "playbackSpreadMs": 7
+  },
+  "chess": {
+   "runs": 3,
+   "settledMs": 3333,
+   "lastFrameCpuMs": 1,
+   "playbackP95Ms": null,
+   "playbackSpreadMs": null
+  },
+  "damaged_helmet": {
+   "runs": 3,
+   "settledMs": 1716,
+   "lastFrameCpuMs": 1,
+   "playbackP95Ms": null,
+   "playbackSpreadMs": null
+  },
+  "elephant": {
+   "runs": 3,
+   "settledMs": 1553,
+   "lastFrameCpuMs": 1,
+   "playbackP95Ms": null,
+   "playbackSpreadMs": null
+  },
+  "mcusd": {
+   "runs": 3,
+   "settledMs": 1773,
+   "lastFrameCpuMs": 1,
+   "playbackP95Ms": null,
+   "playbackSpreadMs": null
+  },
+  "mtlx_basic": {
+   "runs": 3,
+   "settledMs": 1497,
+   "lastFrameCpuMs": 1,
+   "playbackP95Ms": null,
+   "playbackSpreadMs": null
+  },
+  "ni_cubes": {
+   "runs": 3,
+   "settledMs": 1514,
+   "lastFrameCpuMs": 1,
+   "playbackP95Ms": null,
+   "playbackSpreadMs": null
+  },
+  "normals_bias_scale": {
+   "runs": 3,
+   "settledMs": 1513,
+   "lastFrameCpuMs": 0,
+   "playbackP95Ms": null,
+   "playbackSpreadMs": null
+  },
+  "normals_types": {
+   "runs": 3,
+   "settledMs": 1498,
+   "lastFrameCpuMs": 1,
+   "playbackP95Ms": null,
+   "playbackSpreadMs": null
+  },
+  "pi_basic": {
+   "runs": 3,
+   "settledMs": 1495,
+   "lastFrameCpuMs": 1,
+   "playbackP95Ms": null,
+   "playbackSpreadMs": null
+  },
+  "points": {
+   "runs": 3,
+   "settledMs": 1507,
+   "lastFrameCpuMs": 1,
+   "playbackP95Ms": null,
+   "playbackSpreadMs": null
+  },
+  "roughness": {
+   "runs": 3,
+   "settledMs": 1541,
+   "lastFrameCpuMs": 1,
+   "playbackP95Ms": null,
+   "playbackSpreadMs": null
+  },
+  "shaderball": {
+   "runs": 3,
+   "settledMs": 3928,
+   "lastFrameCpuMs": 1,
+   "playbackP95Ms": null,
+   "playbackSpreadMs": null
+  },
+  "skel_arm": {
+   "runs": 3,
+   "settledMs": 1494,
+   "lastFrameCpuMs": 0,
+   "playbackP95Ms": null,
+   "playbackSpreadMs": null
+  },
+  "subdiv_catmull_clark": {
+   "runs": 3,
+   "settledMs": 1496,
+   "lastFrameCpuMs": 1,
+   "playbackP95Ms": null,
+   "playbackSpreadMs": null
+  },
+  "teapot": {
+   "runs": 3,
+   "settledMs": 1584,
+   "lastFrameCpuMs": 1,
+   "playbackP95Ms": null,
+   "playbackSpreadMs": null
+  },
+  "texture_transform": {
+   "runs": 3,
+   "settledMs": 1542,
+   "lastFrameCpuMs": 1,
+   "playbackP95Ms": null,
+   "playbackSpreadMs": null
+  },
+  "vehicle": {
+   "runs": 3,
+   "settledMs": 1555,
+   "lastFrameCpuMs": 1,
+   "playbackP95Ms": null,
+   "playbackSpreadMs": null
+  }
+ }
+}

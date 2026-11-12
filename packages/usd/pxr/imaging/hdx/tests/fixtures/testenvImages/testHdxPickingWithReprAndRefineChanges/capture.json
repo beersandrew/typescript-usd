@@ -1,0 +1,45 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/imaging/hdx/tests/fixtures/testenvImages/capture.py",
+  "upstream": [
+    "pxr/imaging/hdx/CMakeLists.txt"
+  ],
+  "payload": {
+    "test": "testHdxPickingWithReprAndRefineChanges",
+    "cmake": "pxr/imaging/hdx/CMakeLists.txt:331",
+    "command": "<install>/tests/testHdxPickingWithReprAndRefineChanges --offscreen",
+    "cwd": "copy of <source>/pxr/imaging/hdx/testenv/testHdxPickingWithReprAndRefineChanges",
+    "env": {
+      "TF_DEBUG": "HD_SAFE_MODE"
+    },
+    "expectedReturnCode": "0",
+    "returnCode": 0,
+    "images": [
+      {
+        "name": "color1_unselected.png",
+        "written": true
+      },
+      {
+        "name": "color2_refine_wont_change_cube1.png",
+        "written": true
+      },
+      {
+        "name": "color3_repr_change_cube2.png",
+        "written": true
+      },
+      {
+        "name": "color4_repr_and_refine_change_cube1.png",
+        "written": true
+      },
+      {
+        "name": "color5_refine_change_cube2.png",
+        "written": true
+      },
+      {
+        "name": "color6_unselected.png",
+        "written": true
+      }
+    ]
+  }
+}

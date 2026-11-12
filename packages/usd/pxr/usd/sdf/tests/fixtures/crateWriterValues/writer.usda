@@ -1,0 +1,7 @@
+#usda 1.0
+
+def "P"
+{
+    string s = "\x80\xff"
+    custom double u = 1 (displayUnit = mm)
+}

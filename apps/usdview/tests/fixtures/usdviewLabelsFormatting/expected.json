@@ -1,0 +1,166 @@
+{
+  "nativeVersion": [
+    0,
+    26,
+    11
+  ],
+  "upstream": [
+    "usdviewq/rootDataModel.py:258-267",
+    "usdviewq/common.py:289-317",
+    "usdviewq/scalarTypes.py:110"
+  ],
+  "cases": [
+    {
+      "entries": [],
+      "short": "{}",
+      "text": "{}"
+    },
+    {
+      "entries": [
+        [
+          "category",
+          [
+            "chair",
+            "seat"
+          ]
+        ]
+      ],
+      "short": "{'category': ['chair', 'seat']}",
+      "text": "{'category': ['chair', 'seat']}"
+    },
+    {
+      "entries": [
+        [
+          "category",
+          [
+            "kid's chair",
+            "a \"quoted\" label",
+            "both ' and \""
+          ]
+        ]
+      ],
+      "short": "{'category': [\"kid's chair\", 'a \"quoted\" label', 'both \\' and \"']}",
+      "text": "{'category': [\"kid's chair\", 'a \"quoted\" label', 'both \\' and \"']}"
+    },
+    {
+      "entries": [
+        [
+          "category",
+          [
+            "café",
+            "😀",
+            "日本語"
+          ]
+        ]
+      ],
+      "short": "{'category': ['café', '😀', '日本語']}",
+      "text": "{'category': ['café', '😀', '日本語']}"
+    },
+    {
+      "entries": [
+        [
+          "category",
+          [
+            "line\nbreak",
+            "a\tb"
+          ]
+        ]
+      ],
+      "short": "{'category': ['line\\nbreak', 'a\\tb']}",
+      "text": "{'category': ['line\\nbreak', 'a\\tb']}"
+    },
+    {
+      "entries": [
+        [
+          "category",
+          [
+            "label-0",
+            "label-1",
+            "label-2",
+            "label-3",
+            "label-4",
+            "label-5",
+            "label-6",
+            "label-7",
+            "label-8",
+            "label-9",
+            "label-10",
+            "label-11",
+            "label-12",
+            "label-13",
+            "label-14"
+          ]
+        ]
+      ],
+      "short": "{'category': ['label-0', 'label-1', 'label-2', 'label-3', 'label-4', 'label-5', 'label-6', 'label-7', 'label-8', 'label-9', 'label-10', 'label-11', 'label-12', 'label-13', 'label-14']}",
+      "text": "{'category': ['label-0',\n              'label-1',\n              'label-2',\n              'label-3',\n              'label-4',\n              'label-5',\n              'label-6',\n              'label-7',\n              'label-8',\n              'label-9',\n              'label-10',\n              'label-11',\n              'label-12',\n              'label-13',\n              'label-14']}"
+    },
+    {
+      "entries": [
+        [
+          "a",
+          [
+            "first"
+          ]
+        ],
+        [
+          "category",
+          [
+            "one",
+            "two"
+          ]
+        ],
+        [
+          "z",
+          [
+            "last"
+          ]
+        ]
+      ],
+      "short": "{'a': ['first'], 'category': ['one', 'two'], 'z': ['last']}",
+      "text": "{'a': ['first'], 'category': ['one', 'two'], 'z': ['last']}"
+    },
+    {
+      "entries": [
+        [
+          "taxonomy-with-a-long-name",
+          [
+            "label-with-a-very-long-name-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+          ]
+        ]
+      ],
+      "short": "{'taxonomy-with-a-long-name': ['label-with-a-very-long-name-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx']}",
+      "text": "{'taxonomy-with-a-long-name': ['label-with-a-very-long-name-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx']}"
+    },
+    {
+      "entries": [
+        [
+          "category",
+          [
+            "a long semantic label with several words a long semantic label with several words a long semantic label with several words a long semantic label with several words "
+          ]
+        ]
+      ],
+      "short": "{'category': ['a long semantic label with several words a long semantic label with several words a long semantic label with several words a long semantic label with several words ']}",
+      "text": "{'category': ['a long semantic label with several words a long semantic label '\n              'with several words a long semantic label with several words a '\n              'long semantic label with several words ']}"
+    },
+    {
+      "entries": [
+        [
+          "a",
+          [
+            "some words some words some words some words some words some words some words some words "
+          ]
+        ],
+        [
+          "z",
+          [
+            "last"
+          ]
+        ]
+      ],
+      "short": "{'a': ['some words some words some words some words some words some words some words some words '], 'z': ['last']}",
+      "text": "{'a': ['some words some words some words some words some words some words some '\n       'words some words '],\n 'z': ['last']}"
+    }
+  ]
+}

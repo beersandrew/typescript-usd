@@ -1,0 +1,21 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/usd/usd/tests/upstream/fixtures/primDescription/capture.py",
+  "upstream": [
+    "pxr/usd/usd/testenv/testUsdPrims.py:1147-1191",
+    "pxr/usd/usd/primData.cpp:219-268",
+    "pxr/usd/usd/stage.cpp:10323-10334"
+  ],
+  "payload": {
+    "descriptions": {
+      "basic": "'Scope' prim </Ref> on stage with rootLayer @anon:0:.usda@, sessionLayer @anon:1:-session.usda@",
+      "basicChild": "'Scope' prim </Ref/Child> on stage with rootLayer @anon:0:.usda@, sessionLayer @anon:1:-session.usda@",
+      "instance": "'Scope' instance prim </Instance> with prototype </__Prototype_1> on stage with rootLayer @anon:0:.usda@, sessionLayer @anon:1:-session.usda@",
+      "instanceProxyChild": "'Scope' instance proxy prim </Instance/Child> with prototype </__Prototype_1/Child> using prim index </Instance/Child> on stage with rootLayer @anon:0:.usda@, sessionLayer @anon:1:-session.usda@",
+      "prototype": "prim in prototype </__Prototype_1> using prim index </Instance> on stage with rootLayer @anon:0:.usda@, sessionLayer @anon:1:-session.usda@",
+      "prototypeChild": "'Scope' prim in prototype </__Prototype_1/Child> using prim index </Instance/Child> on stage with rootLayer @anon:0:.usda@, sessionLayer @anon:1:-session.usda@"
+    },
+    "prototypePath": "/__Prototype_1"
+  }
+}

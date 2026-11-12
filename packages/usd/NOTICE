@@ -1,0 +1,411 @@
+typescript-usd
+Copyright (c) 2026 Andy Beers
+
+typescript-usd is a TypeScript implementation of OpenUSD, licensed under the
+Tomorrow Open Source Technology License 1.0 — the same license as OpenUSD
+itself (see LICENSE).
+
+This project is an independent port. It is not affiliated with, endorsed
+by, or sponsored by Pixar Animation Studios or the Alliance for OpenUSD.
+The `pxr/**` layout and the module names
+mirror the upstream OpenUSD source tree this project ports; they imply no
+affiliation, and no trademark rights are claimed or granted (see LICENSE,
+Section 6).
+
+Each ported source file starts with a header naming the upstream files it
+ports, their copyright holders and their licence. This file lists every
+upstream project whose code or data ships in this repository, its packages
+and the built viewer, and reproduces the notices their licences require.
+
+========================================================================
+1. OpenUSD
+========================================================================
+
+OpenUSD 26.11.1 — https://github.com/PixarAnimationStudios/OpenUSD
+Copyright 2016 Pixar (and the other holders named in each upstream file).
+Licensed under the Tomorrow Open Source Technology License 1.0 (LICENSE).
+
+Covers: packages/usd (the ported libraries; the generated schema modules
+and plugin resources; the glslfx shaders and pxr/imaging/hdx/textures
+copied verbatim), apps/usdview (the port of usdview, its icons) and the
+viewer's OpenUSD sample volumes (apps/usdview/public/assets/volumes).
+
+OpenUSD's NOTICE.txt:
+
+    Universal Scene Description
+    Copyright 2016 Pixar
+    All rights reserved.
+
+    This product includes software developed at:
+    Pixar (http://www.pixar.com/).
+
+Upstream test files: the files listed in UPSTREAM-TESTENV-FILES.txt (about
+2,000 files under the libraries' tests/ directories) are verbatim copies of
+OpenUSD 26.11.1 testenv files, Copyright Pixar, licensed under the Tomorrow
+Open Source Technology License 1.0. Other test fixtures are captured from a
+native OpenUSD 26.11.1 build or authored here.
+
+========================================================================
+2. Third-party code that OpenUSD embeds, ported here
+========================================================================
+
+These are the copies OpenUSD 26.11.1 carries in its own tree; the ports
+keep their licences.
+
+LZ4 (pxr/base/tf/pxrLZ4) — packages/usd/pxr/base/tf/src/pxrLZ4/lz4.ts
+
+    Copyright (C) 2011-present, Yann Collet.
+
+    BSD 2-Clause License (http://www.opensource.org/licenses/bsd-license.php)
+
+    Redistribution and use in source and binary forms, with or without
+    modification, are permitted provided that the following conditions are
+    met:
+
+        * Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+        * Redistributions in binary form must reproduce the above
+    copyright notice, this list of conditions and the following disclaimer
+    in the documentation and/or other materials provided with the
+    distribution.
+
+    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+    "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+    LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+    A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+    OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+    SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+    LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+    DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+    THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+    (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+    OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+stb_image and stb_image_resize2 (pxr/imaging/hio/stb) —
+packages/usd/pxr/imaging/hio/src/stbImage*.ts, hdrImage.ts. stb is
+available under the MIT License or as public domain; this port uses the MIT
+License:
+
+    Copyright (c) 2017 Sean Barrett
+    Permission is hereby granted, free of charge, to any person obtaining a copy of
+    this software and associated documentation files (the "Software"), to deal in
+    the Software without restriction, including without limitation the rights to
+    use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
+    of the Software, and to permit persons to whom the Software is furnished to do
+    so, subject to the following conditions:
+    The above copyright notice and this permission notice shall be included in all
+    copies or substantial portions of the Software.
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+    SOFTWARE.
+
+OpenEXRCore 3.2 (pxr/imaging/plugin/hioOpenEXR/OpenEXR/OpenEXRCore) —
+packages/usd/pxr/imaging/hio/src/openexrCore*.ts. BSD 3-Clause License;
+the DWA files are Copyright (c) DreamWorks Animation LLC and Contributors
+of the OpenEXR Project:
+
+    Copyright (c) Contributors to the OpenEXR Project. All rights reserved.
+
+    Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+
+    1. Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+
+    2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+
+    3. Neither the name of the copyright holder nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+
+    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+libdeflate (pxr/imaging/plugin/hioOpenEXR/OpenEXR/deflate) — the deflate
+bounds and zlib framing in packages/usd/pxr/imaging/hio/src/openexrCore*.ts:
+
+    Copyright 2016 Eric Biggers
+
+    Permission is hereby granted, free of charge, to any person
+    obtaining a copy of this software and associated documentation files
+    (the "Software"), to deal in the Software without restriction,
+    including without limitation the rights to use, copy, modify, merge,
+    publish, distribute, sublicense, and/or sell copies of the Software,
+    and to permit persons to whom the Software is furnished to do so,
+    subject to the following conditions:
+
+    The above copyright notice and this permission notice shall be
+    included in all copies or substantial portions of the Software.
+
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+    EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+    MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+    NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS
+    BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN
+    ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+    CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+    SOFTWARE.
+
+IlmBase half (pxr/base/gf/ilmbase_half.{h,cpp}) —
+packages/usd/pxr/base/gf/src/half.ts:
+
+    Copyright (c) 2002, Industrial Light & Magic, a division of Lucas
+    Digital Ltd. LLC
+
+    All rights reserved.
+
+    Redistribution and use in source and binary forms, with or without
+    modification, are permitted provided that the following conditions are
+    met:
+    *       Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+    *       Redistributions in binary form must reproduce the above
+    copyright notice, this list of conditions and the following disclaimer
+    in the documentation and/or other materials provided with the
+    distribution.
+    *       Neither the name of Industrial Light & Magic nor the names of
+    its contributors may be used to endorse or promote products derived
+    from this software without specific prior written permission.
+
+    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+    "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+    LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+    A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+    OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+    SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+    LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+    DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+    THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+    (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+    OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+RapidJSON (pxr/base/js/rapidjson) — the parse error messages of
+packages/usd/pxr/imaging/hio/src/dictionary.ts:
+
+    Copyright (C) 2015 THL A29 Limited, a Tencent company, and Milo Yip.
+    Licensed under the MIT License:
+
+    Permission is hereby granted, free of charge, to any person obtaining a copy of
+    this software and associated documentation files (the "Software"), to deal in
+    the Software without restriction, including without limitation the rights to
+    use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
+    of the Software, and to permit persons to whom the Software is furnished to do
+    so, subject to the following conditions:
+    The above copyright notice and this permission notice shall be included in all
+    copies or substantial portions of the Software.
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+    SOFTWARE.
+
+SpookyHash V2 (in pxr/base/arch/hash.cpp) — packages/usd/pxr/base/arch/src/
+hash.ts. By Bob Jenkins, public domain.
+
+========================================================================
+3. Direct3D 11 reference tessellator
+========================================================================
+
+packages/usd/pxr/imaging/hgiWebGPU/src/tessellator.ts and tessellatorWGSL.ts
+are ported from Microsoft's reference implementation (tessellator.cpp,
+tessellator.hpp in https://github.com/microsoft/DirectX-Specs,
+d3d/archive/images/d3d11, commit 98063a7152bba494ee01f9da4f9186d49b2a4f19):
+
+    The MIT License (MIT)
+    Copyright (c) Microsoft Corporation
+
+    Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+    The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+========================================================================
+4. OpenSubdiv (packages/opensubdiv)
+========================================================================
+
+A partial TypeScript port of OpenSubdiv, included only to support OpenUSD's
+use of it (packages/opensubdiv/README.md) —
+https://github.com/PixarAnimationStudios/OpenSubdiv
+Copyright 2013 Pixar, and the other holders named in each upstream file
+(among them DreamWorks Animation LLC).
+
+The port of OpenSubdiv 3.7.0 (Sdc, Vtr and the Far refiner) is licensed under
+the Tomorrow Open Source Technology License 1.0 (packages/opensubdiv/LICENSE).
+The Far stencil and patch tables, the Osd GLSL patch shader source and its
+embedded shader files, the bilinear scheme, the test utilities ported from
+OpenSubdiv's regression suite and the regression shapes in its tests are from
+OpenSubdiv 3.6.1 (the version OpenUSD 26.11.1 builds against), licensed under
+OpenSubdiv 3.6.1's Modified Apache 2.0 License
+(packages/opensubdiv/LICENSE-OpenSubdiv-3.6.1.txt). Each file's header says
+which applies. TypeScript port: Copyright (c) 2026 Andy Beers.
+OpenSubdiv's NOTICE.txt:
+
+    OpenSubdiv
+    Copyright 2013 Pixar
+    All rights reserved.
+
+    This product includes software developed at:
+        Pixar (http://www.pixar.com/).
+        Dreamworks Animation (http://www.dreamworksanimation.com/)
+        Autodesk, Inc. (http://www.autodesk.com/).
+        Google, Inc. (http://www.google.com/).
+        DigitalFish (http://digitalfish.com/).
+
+========================================================================
+5. MaterialX (packages/materialx)
+========================================================================
+
+A partial TypeScript port of MaterialX 1.39.5 (MaterialXCore, MaterialXFormat,
+MaterialXGenShader, MaterialXGenHw, MaterialXGenGlsl and two MaterialXRender
+files), included only to support OpenUSD's use of it
+(packages/materialx/README.md), and the MaterialX 1.39.5 data libraries (.mtlx
+and GLSL sources, packages/materialx/libraries; flattened in
+packages/usd/pxr/usd/usdMtlx/src/generated/browserStdlibXml.ts) —
+https://github.com/AcademySoftwareFoundation/MaterialX
+Copyright Contributors to the MaterialX Project.
+Licensed under the Apache License, Version 2.0 (packages/materialx/LICENSE).
+TypeScript port: Copyright (c) 2026 Andy Beers.
+
+The data libraries' GLSL noise and colour functions
+(libraries/stdlib/genglsl/lib/mx_noise.glsl, mx_hsv.glsl) are derived from
+Open Shading Language, as MaterialX's THIRD-PARTY.md records; the files keep
+the original notice, Copyright (c) 2009-2010 Sony Pictures Imageworks Inc.,
+et al. (BSD 3-Clause License). Open Shading Language's licence:
+
+    Copyright (c) 2009-present Contributors to the Open Shading Language project.
+    All Rights Reserved.
+
+    Redistribution and use in source and binary forms, with or without
+    modification, are permitted provided that the following conditions are met:
+
+    1. Redistributions of source code must retain the above copyright notice, this
+       list of conditions and the following disclaimer.
+
+    2. Redistributions in binary form must reproduce the above copyright notice,
+       this list of conditions and the following disclaimer in the documentation
+       and/or other materials provided with the distribution.
+
+    3. Neither the name of the copyright holder nor the names of its
+       contributors may be used to endorse or promote products derived from
+       this software without specific prior written permission.
+
+    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+    AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+    IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+    DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+    FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+    DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+    SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+    CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+    OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+    OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+packages/materialx/format/src/xml.ts reimplements behaviour of PugiXML, which
+MaterialX embeds in MaterialXFormat (MIT License):
+
+    Copyright (c) 2006-2018 Arseny Kapoulkine
+
+    Permission is hereby granted, free of charge, to any person
+    obtaining a copy of this software and associated documentation
+    files (the "Software"), to deal in the Software without
+    restriction, including without limitation the rights to use,
+    copy, modify, merge, publish, distribute, sublicense, and/or sell
+    copies of the Software, and to permit persons to whom the
+    Software is furnished to do so, subject to the following
+    conditions:
+
+    The above copyright notice and this permission notice shall be
+    included in all copies or substantial portions of the Software.
+
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+    EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+    OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+    NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+    HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+    WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+    FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+    OTHER DEALINGS IN THE SOFTWARE.
+
+========================================================================
+6. OpenVDB (packages/openvdb)
+========================================================================
+
+A partial TypeScript port of OpenVDB 13.0.1 and NanoVDB 32.9.1, included only
+to support OpenUSD's use of it (packages/openvdb/README.md) —
+https://github.com/AcademySoftwareFoundation/openvdb
+Copyright Contributors to the OpenVDB Project.
+Licensed under the Apache License, Version 2.0 (packages/openvdb/LICENSE).
+TypeScript port: Copyright (c) 2026 Andy Beers.
+
+The dense copy and resampling additions are ported from OpenVDB 10.1.0,
+Copyright Contributors to the OpenVDB Project, which is licensed under the
+Mozilla Public License 2.0 (packages/openvdb/LICENSE-OpenVDB-10.1.0.txt). The
+nine files that contain that code are licensed under the MPL 2.0 as whole
+files, and say so in their headers: under packages/openvdb/openvdb/src/,
+math/Mat4.ts, tools/Dense.ts, tools/GridTransformer.ts,
+tools/Interpolation.ts, tree/ValueAccessor.ts, Grid.ts, math/Maps.ts,
+math/Transform.ts and tree/Tree.ts. Their source form is the file itself.
+The rest of packages/openvdb is licensed under the Apache License 2.0.
+
+packages/openvdb/openvdb/src/math/Half.ts follows OpenVDB's math/Half.h,
+Imath's half: Copyright Contributors to the OpenEXR Project, BSD 3-Clause
+License (the OpenEXR licence text is in section 2).
+
+packages/openvdb/openvdb/src/io/Blosc.ts decodes the Blosc 1.x chunk format
+after c-blosc 1.21, with an LZ4 block decoder (LZ4: Copyright (C)
+2011-present, Yann Collet, BSD 2-Clause License; the licence text is in
+section 2). c-blosc's licence:
+
+    Copyright (C) 2009-2018 Francesc Alted <francesc@blosc.org>
+    Copyright (C) 2019-present Blosc Development team <blosc@blosc.org>
+
+    Redistribution and use in source and binary forms, with or without modification,
+    are permitted provided that the following conditions are met:
+
+     * Redistributions of source code must retain the above copyright notice, this
+       list of conditions and the following disclaimer.
+
+     * Redistributions in binary form must reproduce the above copyright notice,
+       this list of conditions and the following disclaimer in the documentation
+       and/or other materials provided with the distribution.
+
+     * Neither the name Francesc Alted nor the names of its contributors may be used
+       to endorse or promote products derived from this software without specific
+       prior written permission.
+
+    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+    ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+    WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+    DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR
+    ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+    (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+    LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON
+    ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+    (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+    SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+The OpenVDB test volumes smoke_000002.vdb and densityAndHeat.vdb
+(packages/openvdb/openvdb/tests/fixtures/gridTransformer) are copies of
+OpenUSD 26.11.1 testenv files (section 1).
+
+========================================================================
+7. Fonts (apps/usdview/src/fonts)
+========================================================================
+
+Roboto (Regular, Bold, Italic, Light Italic) — Copyright 2011 Google Inc.
+Roboto Mono (Regular) — Copyright 2015 The Roboto Mono Project Authors.
+Copied unchanged from OpenUSD 26.11.1 pxr/usdImaging/usdviewq/fonts.
+Licensed under the Apache License, Version 2.0
+(apps/usdview/src/fonts/LICENSE.txt, RobotoMono-LICENSE.txt). Roboto and
+Roboto Mono are trademarks of Google.
+
+========================================================================
+8. Viewer sample scenes (apps/usdview/public/assets)
+========================================================================
+
+Authored for this project or copied from OpenUSD 26.11.1, all under the
+Tomorrow Open Source Technology License 1.0; each file's origin is in
+apps/usdview/public/assets/provenance.json. No other third-party scene
+assets are included.

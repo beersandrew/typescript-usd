@@ -1,0 +1,8 @@
+#usda 1.2
+
+over "foo"
+{
+    asset[] a = edit [
+        append @x.usda@
+    ]
+}

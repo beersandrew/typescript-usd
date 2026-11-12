@@ -1,0 +1,55 @@
+#usda 1.0
+
+def Material "Mat"
+{
+    token outputs:empty:surface
+    token outputs:glslfx:surface.connect = </Mat/Glsl.outputs:surface>
+    token outputs:mtlx:displacement.connect = </Mat/Mtlx.outputs:displacement>
+    token outputs:mtlx:surface.connect = </Mat/Mtlx.outputs:surface>
+    token outputs:surface.connect = </Mat/Universal.outputs:surface>
+
+    def Shader "Universal"
+    {
+        uniform token info:id = "test"
+        token outputs:surface
+    }
+
+    def Shader "Mtlx"
+    {
+        uniform token info:id = "test"
+        token outputs:displacement
+        token outputs:surface
+    }
+
+    def Shader "Glsl"
+    {
+        uniform token info:id = "test"
+        token outputs:surface
+    }
+}
+
+def "Loose"
+{
+    def Shader "A"
+    {
+        float inputs:in.connect = </Loose/B.outputs:out>
+    }
+
+    def Shader "B"
+    {
+        float outputs:out
+    }
+}
+
+def Shader "UniversalAsset"
+{
+    uniform token info:implementationSource = "sourceAsset"
+    uniform asset info:sourceAsset = @shader.glslfx@
+}
+
+def Shader "UniversalCode"
+{
+    uniform token info:implementationSource = "sourceCode"
+    uniform string info:sourceCode = "shader source"
+}
+

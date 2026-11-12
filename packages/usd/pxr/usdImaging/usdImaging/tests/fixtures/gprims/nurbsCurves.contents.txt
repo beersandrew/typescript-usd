@@ -1,0 +1,800 @@
+</> type = 
+	[__usdUpAxis]
+		[upAxis]
+			Z
+	[sceneGlobals]
+		[endTimeCode]
+			200
+		[startTimeCode]
+			0
+		[timeCodesPerSecond]
+			24
+	[system]
+		[assetResolution]
+			[resolverContext]
+				<'ArResolverContext' @ XXXXXXXXXXXXXXXX>
+</world> type = 
+	[__usdPrimInfo]
+		[isLoaded]
+			1
+		[specifier]
+			def
+		[typeName]
+			Xform
+	[primOrigin]
+		[scenePath]
+			HdPrimOriginSchema::OriginPath(/world)
+</world/ChangingTopology> type = 
+	[__usdPrimInfo]
+		[isLoaded]
+			1
+		[specifier]
+			def
+		[typeName]
+			
+	[primOrigin]
+		[scenePath]
+			HdPrimOriginSchema::OriginPath(/world/ChangingTopology)
+</world/ChangingTopology/nurbs_curve1> type = nurbsCurves
+	[__usdPrimInfo]
+		[isLoaded]
+			1
+		[specifier]
+			def
+		[typeName]
+			NurbsCurves
+	[extent]
+		[max]
+			(4.5, 1, 2)
+		[min]
+			(-0.5, 0, 0)
+	[geomXformVectors]
+		[pivot]
+			(0, 0, 0)
+		[rotation]
+			(0, 0, 0)
+		[rotationOrder]
+			RotationOrderXYZ
+		[scale]
+			(1, 1, 1)
+		[translation]
+			(0, 0, 0)
+	[nurbsCurves]
+		[curveVertexCounts]
+			[4]
+		[knots]
+			[]
+		[order]
+			[2]
+		[ranges]
+			[]
+	[primOrigin]
+		[scenePath]
+			HdPrimOriginSchema::OriginPath(/world/ChangingTopology/nurbs_curve1)
+	[primvars]
+		[displayColor]
+			[interpolation]
+				constant
+			[primvarValue]
+				[(0, 0, 1)]
+			[role]
+				color
+		[points]
+			[interpolation]
+				vertex
+			[primvarValue]
+				[(0, 0, 0), (1, 1, 1), (2, 1, 1), (3, 0, 0)]
+			[role]
+				point
+		[widths]
+			[interpolation]
+				vertex
+			[primvarValue]
+				[0.1]
+			[role]
+				
+	[xform]
+		[matrix]
+			( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 0, 1) )
+		[resetXformStack]
+			0
+</world/ChangingTopology/nurbs_curve2> type = nurbsCurves
+	[__usdPrimInfo]
+		[isLoaded]
+			1
+		[specifier]
+			def
+		[typeName]
+			NurbsCurves
+	[extent]
+		[max]
+			(4.5, 1, 2)
+		[min]
+			(-0.5, 0, 0)
+	[geomXformVectors]
+		[pivot]
+			(0, 0, 0)
+		[rotation]
+			(0, 0, 0)
+		[rotationOrder]
+			RotationOrderXYZ
+		[scale]
+			(1, 1, 1)
+		[translation]
+			(5, 0, 0)
+	[nurbsCurves]
+		[curveVertexCounts]
+			[4]
+		[knots]
+			[]
+		[order]
+			[2]
+		[ranges]
+			[]
+	[primOrigin]
+		[scenePath]
+			HdPrimOriginSchema::OriginPath(/world/ChangingTopology/nurbs_curve2)
+	[primvars]
+		[displayColor]
+			[interpolation]
+				constant
+			[primvarValue]
+				[(0, 0, 1)]
+			[role]
+				color
+		[points]
+			[interpolation]
+				vertex
+			[primvarValue]
+				[(0, 0, 0), (1, 1, 1), (2, 1, 1), (3, 0, 0)]
+			[role]
+				point
+		[widths]
+			[interpolation]
+				vertex
+			[primvarValue]
+				[0.1]
+			[role]
+				
+	[xform]
+		[matrix]
+			( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (5, 0, 0, 1) )
+		[resetXformStack]
+			0
+</world/ChangingTopology/nurbs_curve3> type = nurbsCurves
+	[__usdPrimInfo]
+		[isLoaded]
+			1
+		[specifier]
+			def
+		[typeName]
+			NurbsCurves
+	[extent]
+		[max]
+			(4.5, 1, 2)
+		[min]
+			(-0.5, 0, 0)
+	[geomXformVectors]
+		[pivot]
+			(0, 0, 0)
+		[rotation]
+			(0, 0, 0)
+		[rotationOrder]
+			RotationOrderXYZ
+		[scale]
+			(1, 1, 1)
+		[translation]
+			(15, 0, 0)
+	[nurbsCurves]
+		[curveVertexCounts]
+			[7]
+		[knots]
+			[]
+		[order]
+			[2]
+		[ranges]
+			[]
+	[primOrigin]
+		[scenePath]
+			HdPrimOriginSchema::OriginPath(/world/ChangingTopology/nurbs_curve3)
+	[primvars]
+		[displayColor]
+			[interpolation]
+				constant
+			[primvarValue]
+				[(0, 0, 1)]
+			[role]
+				color
+		[points]
+			[interpolation]
+				vertex
+			[primvarValue]
+				[(0, 0, 0), (1, 1, 1), (2, 1, 1), (3, 0, 0), (3, 0, 0), (3, 0, 0), (3, 0, 0)]
+			[role]
+				point
+		[widths]
+			[interpolation]
+				vertex
+			[primvarValue]
+				[0.1]
+			[role]
+				
+	[xform]
+		[matrix]
+			( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (15, 0, 0, 1) )
+		[resetXformStack]
+			0
+</world/ChangingTopology/nurbs_curve4> type = nurbsCurves
+	[__usdPrimInfo]
+		[isLoaded]
+			1
+		[specifier]
+			def
+		[typeName]
+			NurbsCurves
+	[extent]
+		[max]
+			(4.5, 1, 2)
+		[min]
+			(-0.5, 0, 0)
+	[geomXformVectors]
+		[pivot]
+			(0, 0, 0)
+		[rotation]
+			(0, 0, 0)
+		[rotationOrder]
+			RotationOrderXYZ
+		[scale]
+			(1, 1, 1)
+		[translation]
+			(20, 0, 0)
+	[nurbsCurves]
+		[curveVertexCounts]
+			[7]
+		[knots]
+			[]
+		[order]
+			[2]
+		[ranges]
+			[]
+	[primOrigin]
+		[scenePath]
+			HdPrimOriginSchema::OriginPath(/world/ChangingTopology/nurbs_curve4)
+	[primvars]
+		[displayColor]
+			[interpolation]
+				constant
+			[primvarValue]
+				[(0, 0, 1)]
+			[role]
+				color
+		[points]
+			[interpolation]
+				vertex
+			[primvarValue]
+				[(0, 0, 0), (1, 1, 1), (2, 1, 1), (3, 0, 0), (3, 0, 0), (3, 0, 0), (3, 0, 0)]
+			[role]
+				point
+		[widths]
+			[interpolation]
+				vertex
+			[primvarValue]
+				[0.1]
+			[role]
+				
+	[xform]
+		[matrix]
+			( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (20, 0, 0, 1) )
+		[resetXformStack]
+			0
+</world/DifferentOrders> type = 
+	[__usdPrimInfo]
+		[isLoaded]
+			1
+		[specifier]
+			def
+		[typeName]
+			
+	[primOrigin]
+		[scenePath]
+			HdPrimOriginSchema::OriginPath(/world/DifferentOrders)
+</world/DifferentOrders/nurbs_order1> type = nurbsCurves
+	[__usdPrimInfo]
+		[isLoaded]
+			1
+		[specifier]
+			def
+		[typeName]
+			NurbsCurves
+	[extent]
+		[max]
+			(4.5, 1, 2)
+		[min]
+			(-0.5, 0, 0)
+	[geomXformVectors]
+		[pivot]
+			(0, 0, 0)
+		[rotation]
+			(0, 0, 0)
+		[rotationOrder]
+			RotationOrderXYZ
+		[scale]
+			(1, 1, 1)
+		[translation]
+			(0, 0, 3)
+	[nurbsCurves]
+		[curveVertexCounts]
+			[4]
+		[knots]
+			[]
+		[order]
+			[1]
+		[ranges]
+			[]
+	[primOrigin]
+		[scenePath]
+			HdPrimOriginSchema::OriginPath(/world/DifferentOrders/nurbs_order1)
+	[primvars]
+		[displayColor]
+			[interpolation]
+				constant
+			[primvarValue]
+				[(1, 0, 0)]
+			[role]
+				color
+		[points]
+			[interpolation]
+				vertex
+			[primvarValue]
+				[(0, 0, 0), (1, 1, 1), (2, 1, 1), (3, 0, 0)]
+			[role]
+				point
+		[widths]
+			[interpolation]
+				vertex
+			[primvarValue]
+				[0.25]
+			[role]
+				
+	[xform]
+		[matrix]
+			( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 3, 1) )
+		[resetXformStack]
+			0
+</world/DifferentOrders/nurbs_order2> type = nurbsCurves
+	[__usdPrimInfo]
+		[isLoaded]
+			1
+		[specifier]
+			def
+		[typeName]
+			NurbsCurves
+	[extent]
+		[max]
+			(4.5, 1, 2)
+		[min]
+			(-0.5, 0, 0)
+	[geomXformVectors]
+		[pivot]
+			(0, 0, 0)
+		[rotation]
+			(0, 0, 0)
+		[rotationOrder]
+			RotationOrderXYZ
+		[scale]
+			(1, 1, 1)
+		[translation]
+			(5, 0, 3)
+	[nurbsCurves]
+		[curveVertexCounts]
+			[4]
+		[knots]
+			[]
+		[order]
+			[2]
+		[ranges]
+			[]
+	[primOrigin]
+		[scenePath]
+			HdPrimOriginSchema::OriginPath(/world/DifferentOrders/nurbs_order2)
+	[primvars]
+		[displayColor]
+			[interpolation]
+				constant
+			[primvarValue]
+				[(1, 0, 0)]
+			[role]
+				color
+		[points]
+			[interpolation]
+				vertex
+			[primvarValue]
+				[(0, 0, 0), (1, 1, 1), (2, 1, 1), (3, 0, 0)]
+			[role]
+				point
+		[widths]
+			[interpolation]
+				vertex
+			[primvarValue]
+				[0.25]
+			[role]
+				
+	[xform]
+		[matrix]
+			( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (5, 0, 3, 1) )
+		[resetXformStack]
+			0
+</world/DifferentOrders/nurbs_order3> type = nurbsCurves
+	[__usdPrimInfo]
+		[isLoaded]
+			1
+		[specifier]
+			def
+		[typeName]
+			NurbsCurves
+	[extent]
+		[max]
+			(4.5, 1, 2)
+		[min]
+			(-0.5, 0, 0)
+	[geomXformVectors]
+		[pivot]
+			(0, 0, 0)
+		[rotation]
+			(0, 0, 0)
+		[rotationOrder]
+			RotationOrderXYZ
+		[scale]
+			(1, 1, 1)
+		[translation]
+			(10, 0, 3)
+	[nurbsCurves]
+		[curveVertexCounts]
+			[4]
+		[knots]
+			[]
+		[order]
+			[3]
+		[ranges]
+			[]
+	[primOrigin]
+		[scenePath]
+			HdPrimOriginSchema::OriginPath(/world/DifferentOrders/nurbs_order3)
+	[primvars]
+		[displayColor]
+			[interpolation]
+				constant
+			[primvarValue]
+				[(1, 0, 0)]
+			[role]
+				color
+		[points]
+			[interpolation]
+				vertex
+			[primvarValue]
+				[(0, 0, 0), (1, 1, 1), (2, 1, 1), (3, 0, 0)]
+			[role]
+				point
+		[widths]
+			[interpolation]
+				vertex
+			[primvarValue]
+				[0.25]
+			[role]
+				
+	[xform]
+		[matrix]
+			( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (10, 0, 3, 1) )
+		[resetXformStack]
+			0
+</world/DifferentOrders/nurbs_order4> type = nurbsCurves
+	[__usdPrimInfo]
+		[isLoaded]
+			1
+		[specifier]
+			def
+		[typeName]
+			NurbsCurves
+	[extent]
+		[max]
+			(4.5, 1, 2)
+		[min]
+			(-0.5, 0, 0)
+	[geomXformVectors]
+		[pivot]
+			(0, 0, 0)
+		[rotation]
+			(0, 0, 0)
+		[rotationOrder]
+			RotationOrderXYZ
+		[scale]
+			(1, 1, 1)
+		[translation]
+			(15, 0, 3)
+	[nurbsCurves]
+		[curveVertexCounts]
+			[4]
+		[knots]
+			[]
+		[order]
+			[4]
+		[ranges]
+			[]
+	[primOrigin]
+		[scenePath]
+			HdPrimOriginSchema::OriginPath(/world/DifferentOrders/nurbs_order4)
+	[primvars]
+		[displayColor]
+			[interpolation]
+				constant
+			[primvarValue]
+				[(1, 0, 0)]
+			[role]
+				color
+		[points]
+			[interpolation]
+				vertex
+			[primvarValue]
+				[(0, 0, 0), (1, 1, 1), (2, 1, 1), (3, 0, 0)]
+			[role]
+				point
+		[widths]
+			[interpolation]
+				vertex
+			[primvarValue]
+				[0.25]
+			[role]
+				
+	[xform]
+		[matrix]
+			( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (15, 0, 3, 1) )
+		[resetXformStack]
+			0
+</world/DifferentOrders/nurbs_order5_fail> type = nurbsCurves
+	[__usdPrimInfo]
+		[isLoaded]
+			1
+		[specifier]
+			def
+		[typeName]
+			NurbsCurves
+	[extent]
+		[max]
+			(4.5, 1, 2)
+		[min]
+			(-0.5, 0, 0)
+	[geomXformVectors]
+		[pivot]
+			(0, 0, 0)
+		[rotation]
+			(0, 0, 0)
+		[rotationOrder]
+			RotationOrderXYZ
+		[scale]
+			(1, 1, 1)
+		[translation]
+			(20, 0, 3)
+	[nurbsCurves]
+		[curveVertexCounts]
+			[4]
+		[knots]
+			[]
+		[order]
+			[5]
+		[ranges]
+			[]
+	[primOrigin]
+		[scenePath]
+			HdPrimOriginSchema::OriginPath(/world/DifferentOrders/nurbs_order5_fail)
+	[primvars]
+		[displayColor]
+			[interpolation]
+				constant
+			[primvarValue]
+				[(1, 0, 0)]
+			[role]
+				color
+		[points]
+			[interpolation]
+				vertex
+			[primvarValue]
+				[(0, 0, 0), (1, 1, 1), (2, 1, 1), (3, 0, 0)]
+			[role]
+				point
+		[widths]
+			[interpolation]
+				vertex
+			[primvarValue]
+				[0.25]
+			[role]
+				
+	[xform]
+		[matrix]
+			( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (20, 0, 3, 1) )
+		[resetXformStack]
+			0
+</world/VaryingProperties> type = 
+	[__usdPrimInfo]
+		[isLoaded]
+			1
+		[specifier]
+			def
+		[typeName]
+			
+	[primOrigin]
+		[scenePath]
+			HdPrimOriginSchema::OriginPath(/world/VaryingProperties)
+</world/VaryingProperties/multi1> type = nurbsCurves
+	[__usdPrimInfo]
+		[isLoaded]
+			1
+		[specifier]
+			def
+		[typeName]
+			NurbsCurves
+	[geomXformVectors]
+		[pivot]
+			(0, 0, 0)
+		[rotation]
+			(0, 0, 0)
+		[rotationOrder]
+			RotationOrderXYZ
+		[scale]
+			(1, 1, 1)
+		[translation]
+			(5, 0, 6)
+	[nurbsCurves]
+		[curveVertexCounts]
+			[6]
+		[knots]
+			[]
+		[order]
+			[2, 2, 2]
+		[ranges]
+			[]
+	[primOrigin]
+		[scenePath]
+			HdPrimOriginSchema::OriginPath(/world/VaryingProperties/multi1)
+	[primvars]
+		[displayColor]
+			[interpolation]
+				constant
+			[primvarValue]
+				[(0, 1, 0)]
+			[role]
+				color
+		[points]
+			[interpolation]
+				vertex
+			[primvarValue]
+				[(0, 0, 0), (1, 1, 1), (2, 0.5, 0.5), (3, 0.5, 0.5), (4, 1, 1), (5, 0, 0)]
+			[role]
+				point
+		[widths]
+			[interpolation]
+				vertex
+			[primvarValue]
+				[0.25]
+			[role]
+				
+	[xform]
+		[matrix]
+			( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (5, 0, 6, 1) )
+		[resetXformStack]
+			0
+</world/VaryingProperties/multi2> type = nurbsCurves
+	[__usdPrimInfo]
+		[isLoaded]
+			1
+		[specifier]
+			def
+		[typeName]
+			NurbsCurves
+	[geomXformVectors]
+		[pivot]
+			(0, 0, 0)
+		[rotation]
+			(0, 0, 0)
+		[rotationOrder]
+			RotationOrderXYZ
+		[scale]
+			(1, 1, 1)
+		[translation]
+			(15, 0, 6)
+	[nurbsCurves]
+		[curveVertexCounts]
+			[12]
+		[knots]
+			[]
+		[order]
+			[4, 4, 4]
+		[ranges]
+			[]
+	[primOrigin]
+		[scenePath]
+			HdPrimOriginSchema::OriginPath(/world/VaryingProperties/multi2)
+	[primvars]
+		[displayColor]
+			[interpolation]
+				constant
+			[primvarValue]
+				[(0, 1, 0)]
+			[role]
+				color
+		[points]
+			[interpolation]
+				vertex
+			[primvarValue]
+				[(0, 0, 0), (0.5, 1, 0), (1, 1, 1), (1.5, 0, 1), (2, 0, 0), (2.5, 1, 0), (3, 1, 1), (3.5, 0, 1), (4, 0, 0), (4.5, 1, 0), (5, 1, 1), (5.5, 0, 1)]
+			[role]
+				point
+		[widths]
+			[interpolation]
+				vertex
+			[primvarValue]
+				[0.25]
+			[role]
+				
+	[xform]
+		[matrix]
+			( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (15, 0, 6, 1) )
+		[resetXformStack]
+			0
+</world/VaryingProperties/order> type = nurbsCurves
+	[__usdPrimInfo]
+		[isLoaded]
+			1
+		[specifier]
+			def
+		[typeName]
+			NurbsCurves
+	[geomXformVectors]
+		[pivot]
+			(0, 0, 0)
+		[rotation]
+			(0, 0, 0)
+		[rotationOrder]
+			RotationOrderXYZ
+		[scale]
+			(1, 1, 1)
+		[translation]
+			(0, 0, 6)
+	[nurbsCurves]
+		[curveVertexCounts]
+			[4]
+		[knots]
+			[]
+		[order]
+			[1]
+		[ranges]
+			[]
+	[primOrigin]
+		[scenePath]
+			HdPrimOriginSchema::OriginPath(/world/VaryingProperties/order)
+	[primvars]
+		[displayColor]
+			[interpolation]
+				constant
+			[primvarValue]
+				[(0, 1, 0)]
+			[role]
+				color
+		[points]
+			[interpolation]
+				vertex
+			[primvarValue]
+				[(0, 0, 0), (1, 1, 1), (2, 1, 1), (3, 0, 0)]
+			[role]
+				point
+		[widths]
+			[interpolation]
+				vertex
+			[primvarValue]
+				[0.25]
+			[role]
+				
+	[xform]
+		[matrix]
+			( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 6, 1) )
+		[resetXformStack]
+			0

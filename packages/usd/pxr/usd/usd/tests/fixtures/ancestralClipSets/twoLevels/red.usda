@@ -1,0 +1,8 @@
+#usda 1.0
+over "Clip" {
+over "Child" {
+over "Leaf" {
+double value.timeSamples = { 1: 100.01, 7: 100.07, 13: 100.13 }
+}
+}
+}

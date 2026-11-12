@@ -1,0 +1,62 @@
+#usda 1.0
+
+def Xform "World" (
+    kind = "assembly"
+)
+{
+    def Cube "A"
+    {
+        double3 xformOp:translate = (0, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate"]
+    }
+
+    def Cube "B"
+    {
+        double3 xformOp:translate = (3, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate"]
+    }
+
+    def Cube "C"
+    {
+        double3 xformOp:translate = (6, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate"]
+    }
+
+    def Xform "Model" (
+        kind = "component"
+    )
+    {
+        def Cube "Geom"
+        {
+        }
+    }
+
+    def Xform "Native" (
+        instanceable = true
+        prepend references = </Source>
+    )
+    {
+    }
+
+    def PointInstancer "PI"
+    {
+        point3f[] positions = [(0, 0, 0), (10, 0, 0)]
+        int[] protoIndices = [0, 0]
+        rel prototypes = </World/PI/Prototype>
+
+        def Xform "Prototype"
+        {
+            def Cube "Geom"
+            {
+            }
+        }
+    }
+}
+
+def Xform "Source"
+{
+    def Cube "Geom"
+    {
+    }
+}
+

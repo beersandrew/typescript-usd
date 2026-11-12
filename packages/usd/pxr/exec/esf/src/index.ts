@@ -1,0 +1,12 @@
+// typescript-usd/esf — pxr/exec/esf (OpenUSD 26.11.1).
+export * from './attribute.ts'
+export * from './attributeQuery.ts'
+export * from './editReason.ts'
+export * from './fixedSizePolymorphicHolder.ts'
+export * from './journal.ts'
+export * from './object.ts'
+export * from './prim.ts'
+export * from './property.ts'
+export * from './relationship.ts'
+export * from './schemaConfigKey.ts'
+export * from './stage.ts'

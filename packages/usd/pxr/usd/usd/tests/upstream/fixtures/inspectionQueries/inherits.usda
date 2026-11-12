@@ -1,0 +1,45 @@
+#usda 1.0
+def "Parent" (
+    inherits = </PI>
+    references = @inherit-reference.usda@</PR>
+    specializes = </PS>
+) {
+    def "Child" (
+        inherits = </CI>
+        references = @inherit-reference.usda@</CR>
+    ) {}
+}
+
+# Inherited by /Parent
+over "PI" (
+    prepend references = @inherit-reference.usda@</PIR>
+    prepend specializes = </PIS>
+) {}
+
+# Target of specializes in PI which is inherited by /Parent
+over "PIS" (
+    prepend inherits = </PISI>
+) {}
+
+# Target of inherits in PIS
+over "PISI" {}
+
+# Target of specializes in /Parent
+over "PS" (
+    prepend inherits = </PSI>
+) {}
+
+# Target of inherits in PS which is specialized by /Parent
+over "PSI" {}
+
+# Inherited by /Parent/Child
+over "CI" {}
+
+# Specs for implied inherit targets introduced in by references
+# to the refLayer.
+over "PRCI" {}
+over "PRSI" {}
+over "CRI" {}
+over "PIRI" {
+    over "Child" {}
+}

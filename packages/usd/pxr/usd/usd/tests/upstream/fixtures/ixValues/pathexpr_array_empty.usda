@@ -1,0 +1,7 @@
+#usda 1.0
+
+def "V"
+{
+    pathExpression e = ""
+    pathExpression[] pe = ["/A", "", "child"]
+}

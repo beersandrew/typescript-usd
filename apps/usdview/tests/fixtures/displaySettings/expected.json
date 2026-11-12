@@ -1,0 +1,99 @@
+{
+  "nativeVersion": "(0, 26, 8)",
+  "backgrounds": {
+    "Black": [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "Grey (Dark)": [
+      0.07074,
+      0.07074,
+      0.07074,
+      1.0
+    ],
+    "Grey (Light)": [
+      0.45626,
+      0.45626,
+      0.45626,
+      1.0
+    ],
+    "White": [
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ]
+  },
+  "complexities": {
+    "low": {
+      "label": "Low",
+      "value": 1.0
+    },
+    "medium": {
+      "label": "Medium",
+      "value": 1.1
+    },
+    "high": {
+      "label": "High",
+      "value": 1.2
+    },
+    "veryhigh": {
+      "label": "Very High",
+      "value": 1.3
+    }
+  },
+  "fixture": {
+    "subdivisionScheme": "catmullClark",
+    "points": [
+      [
+        -1.0,
+        -1.0,
+        -1.0
+      ],
+      [
+        1.0,
+        -1.0,
+        -1.0
+      ],
+      [
+        1.0,
+        1.0,
+        -1.0
+      ],
+      [
+        -1.0,
+        1.0,
+        -1.0
+      ],
+      [
+        -1.0,
+        -1.0,
+        1.0
+      ],
+      [
+        1.0,
+        -1.0,
+        1.0
+      ],
+      [
+        1.0,
+        1.0,
+        1.0
+      ],
+      [
+        -1.0,
+        1.0,
+        1.0
+      ]
+    ],
+    "lightIntensity": 3.0,
+    "lightColor": [
+      1.0,
+      0.05000000074505806,
+      0.019999999552965164
+    ]
+  },
+  "showBBoxPlayback": false
+}

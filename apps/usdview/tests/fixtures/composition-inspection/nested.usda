@@ -1,0 +1,6 @@
+#usda 1.0
+over "World" {
+ over "Model" {
+ custom int count = 3
+ }
+}

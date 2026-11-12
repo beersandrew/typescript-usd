@@ -1,0 +1,18 @@
+#usda 1.2
+
+def "Bottom"
+{
+    double[] attr.timeSamples = {
+        0: [0, 1, 2],
+        2: [0, 1, 4],
+    }
+}
+
+def "Top" (
+    references = </Bottom>
+)
+{
+    double[] attr = edit [
+        write 9 to [1]
+    ]
+}

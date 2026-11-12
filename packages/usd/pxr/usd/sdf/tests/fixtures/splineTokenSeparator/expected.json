@@ -1,0 +1,750 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/usd/sdf/tests/fixtures/splineTokenSeparator/capture.py",
+  "upstream": [
+    "pxr/usd/sdf/textFileFormatParser.h:69,239-246,793-838,925-938"
+  ],
+  "payload": {
+    "cases": [
+      {
+        "name": "pre-space",
+        "text": "#usda 1.0\ndef \"P\" {\n    double a.spline = { 1: 5; pre (6.4, 6.4), 2: 7; post held, }\n}\n",
+        "accepted": true,
+        "spline": {
+          "preMode": 1,
+          "postMode": 1,
+          "preSlope": 0.0,
+          "postSlope": 0.0,
+          "preBoundary": null,
+          "postBoundary": null,
+          "knots": [
+            {
+              "time": 1.0,
+              "value": 5.0,
+              "preTanWidth": 6.4,
+              "preTanSlope": 6.4,
+              "postTanWidth": 0.0,
+              "postTanSlope": 0.0,
+              "nextInterp": 1
+            },
+            {
+              "time": 2.0,
+              "value": 7.0,
+              "preTanWidth": 0.0,
+              "preTanSlope": 0.0,
+              "postTanWidth": 0.0,
+              "postTanSlope": 0.0,
+              "nextInterp": 1
+            }
+          ]
+        }
+      },
+      {
+        "name": "pre-tab",
+        "text": "#usda 1.0\ndef \"P\" {\n    double a.spline = { 1: 5; pre\t(6.4, 6.4), 2: 7; post held, }\n}\n",
+        "accepted": true,
+        "spline": {
+          "preMode": 1,
+          "postMode": 1,
+          "preSlope": 0.0,
+          "postSlope": 0.0,
+          "preBoundary": null,
+          "postBoundary": null,
+          "knots": [
+            {
+              "time": 1.0,
+              "value": 5.0,
+              "preTanWidth": 6.4,
+              "preTanSlope": 6.4,
+              "postTanWidth": 0.0,
+              "postTanSlope": 0.0,
+              "nextInterp": 1
+            },
+            {
+              "time": 2.0,
+              "value": 7.0,
+              "preTanWidth": 0.0,
+              "preTanSlope": 0.0,
+              "postTanWidth": 0.0,
+              "postTanSlope": 0.0,
+              "nextInterp": 1
+            }
+          ]
+        }
+      },
+      {
+        "name": "pre-two-spaces",
+        "text": "#usda 1.0\ndef \"P\" {\n    double a.spline = { 1: 5; pre  (6.4, 6.4), 2: 7; post held, }\n}\n",
+        "accepted": true,
+        "spline": {
+          "preMode": 1,
+          "postMode": 1,
+          "preSlope": 0.0,
+          "postSlope": 0.0,
+          "preBoundary": null,
+          "postBoundary": null,
+          "knots": [
+            {
+              "time": 1.0,
+              "value": 5.0,
+              "preTanWidth": 6.4,
+              "preTanSlope": 6.4,
+              "postTanWidth": 0.0,
+              "postTanSlope": 0.0,
+              "nextInterp": 1
+            },
+            {
+              "time": 2.0,
+              "value": 7.0,
+              "preTanWidth": 0.0,
+              "preTanSlope": 0.0,
+              "postTanWidth": 0.0,
+              "postTanSlope": 0.0,
+              "nextInterp": 1
+            }
+          ]
+        }
+      },
+      {
+        "name": "pre-adjacent",
+        "text": "#usda 1.0\ndef \"P\" {\n    double a.spline = { 1: 5; pre(6.4, 6.4), 2: 7; post held, }\n}\n",
+        "accepted": false
+      },
+      {
+        "name": "pre-slope-adjacent",
+        "text": "#usda 1.0\ndef \"P\" {\n    double a.spline = { 1: 5; pre(6.4), 2: 7; post held, }\n}\n",
+        "accepted": false
+      },
+      {
+        "name": "pre-space-comment",
+        "text": "#usda 1.0\ndef \"P\" {\n    double a.spline = { 1: 5; pre /*c*/(6.4, 6.4), 2: 7; post held, }\n}\n",
+        "accepted": true,
+        "spline": {
+          "preMode": 1,
+          "postMode": 1,
+          "preSlope": 0.0,
+          "postSlope": 0.0,
+          "preBoundary": null,
+          "postBoundary": null,
+          "knots": [
+            {
+              "time": 1.0,
+              "value": 5.0,
+              "preTanWidth": 6.4,
+              "preTanSlope": 6.4,
+              "postTanWidth": 0.0,
+              "postTanSlope": 0.0,
+              "nextInterp": 1
+            },
+            {
+              "time": 2.0,
+              "value": 7.0,
+              "preTanWidth": 0.0,
+              "preTanSlope": 0.0,
+              "postTanWidth": 0.0,
+              "postTanSlope": 0.0,
+              "nextInterp": 1
+            }
+          ]
+        }
+      },
+      {
+        "name": "pre-comment-space",
+        "text": "#usda 1.0\ndef \"P\" {\n    double a.spline = { 1: 5; pre/*c*/ (6.4, 6.4), 2: 7; post held, }\n}\n",
+        "accepted": true,
+        "spline": {
+          "preMode": 1,
+          "postMode": 1,
+          "preSlope": 0.0,
+          "postSlope": 0.0,
+          "preBoundary": null,
+          "postBoundary": null,
+          "knots": [
+            {
+              "time": 1.0,
+              "value": 5.0,
+              "preTanWidth": 6.4,
+              "preTanSlope": 6.4,
+              "postTanWidth": 0.0,
+              "postTanSlope": 0.0,
+              "nextInterp": 1
+            },
+            {
+              "time": 2.0,
+              "value": 7.0,
+              "preTanWidth": 0.0,
+              "preTanSlope": 0.0,
+              "postTanWidth": 0.0,
+              "postTanSlope": 0.0,
+              "nextInterp": 1
+            }
+          ]
+        }
+      },
+      {
+        "name": "pre-comment-adjacent",
+        "text": "#usda 1.0\ndef \"P\" {\n    double a.spline = { 1: 5; pre/*c*/(6.4, 6.4), 2: 7; post held, }\n}\n",
+        "accepted": false
+      },
+      {
+        "name": "pre-two-comments-space",
+        "text": "#usda 1.0\ndef \"P\" {\n    double a.spline = { 1: 5; pre/*a*//*b*/ (6.4, 6.4), 2: 7; post held, }\n}\n",
+        "accepted": true,
+        "spline": {
+          "preMode": 1,
+          "postMode": 1,
+          "preSlope": 0.0,
+          "postSlope": 0.0,
+          "preBoundary": null,
+          "postBoundary": null,
+          "knots": [
+            {
+              "time": 1.0,
+              "value": 5.0,
+              "preTanWidth": 6.4,
+              "preTanSlope": 6.4,
+              "postTanWidth": 0.0,
+              "postTanSlope": 0.0,
+              "nextInterp": 1
+            },
+            {
+              "time": 2.0,
+              "value": 7.0,
+              "preTanWidth": 0.0,
+              "preTanSlope": 0.0,
+              "postTanWidth": 0.0,
+              "postTanSlope": 0.0,
+              "nextInterp": 1
+            }
+          ]
+        }
+      },
+      {
+        "name": "pre-newline",
+        "text": "#usda 1.0\ndef \"P\" {\n    double a.spline = { 1: 5; pre\n(6.4, 6.4), 2: 7; post held, }\n}\n",
+        "accepted": false
+      },
+      {
+        "name": "post-space",
+        "text": "#usda 1.0\ndef \"P\" {\n    double a.spline = { 1: 5; post curve (1, 2), 2: 7; post held, }\n}\n",
+        "accepted": true,
+        "spline": {
+          "preMode": 1,
+          "postMode": 1,
+          "preSlope": 0.0,
+          "postSlope": 0.0,
+          "preBoundary": null,
+          "postBoundary": null,
+          "knots": [
+            {
+              "time": 1.0,
+              "value": 5.0,
+              "preTanWidth": 0.0,
+              "preTanSlope": 0.0,
+              "postTanWidth": 1.0,
+              "postTanSlope": 2.0,
+              "nextInterp": 3
+            },
+            {
+              "time": 2.0,
+              "value": 7.0,
+              "preTanWidth": 0.0,
+              "preTanSlope": 0.0,
+              "postTanWidth": 0.0,
+              "postTanSlope": 0.0,
+              "nextInterp": 1
+            }
+          ]
+        }
+      },
+      {
+        "name": "post-adjacent-tangent",
+        "text": "#usda 1.0\ndef \"P\" {\n    double a.spline = { 1: 5; post curve(1, 2), 2: 7; post held, }\n}\n",
+        "accepted": false
+      },
+      {
+        "name": "post-comment-tangent",
+        "text": "#usda 1.0\ndef \"P\" {\n    double a.spline = { 1: 5; post curve/*c*/(1, 2), 2: 7; post held, }\n}\n",
+        "accepted": true,
+        "spline": {
+          "preMode": 1,
+          "postMode": 1,
+          "preSlope": 0.0,
+          "postSlope": 0.0,
+          "preBoundary": null,
+          "postBoundary": null,
+          "knots": [
+            {
+              "time": 1.0,
+              "value": 5.0,
+              "preTanWidth": 0.0,
+              "preTanSlope": 0.0,
+              "postTanWidth": 1.0,
+              "postTanSlope": 2.0,
+              "nextInterp": 3
+            },
+            {
+              "time": 2.0,
+              "value": 7.0,
+              "preTanWidth": 0.0,
+              "preTanSlope": 0.0,
+              "postTanWidth": 0.0,
+              "postTanSlope": 0.0,
+              "nextInterp": 1
+            }
+          ]
+        }
+      },
+      {
+        "name": "post-space-comment-tangent",
+        "text": "#usda 1.0\ndef \"P\" {\n    double a.spline = { 1: 5; post curve /*c*/(1, 2), 2: 7; post held, }\n}\n",
+        "accepted": true,
+        "spline": {
+          "preMode": 1,
+          "postMode": 1,
+          "preSlope": 0.0,
+          "postSlope": 0.0,
+          "preBoundary": null,
+          "postBoundary": null,
+          "knots": [
+            {
+              "time": 1.0,
+              "value": 5.0,
+              "preTanWidth": 0.0,
+              "preTanSlope": 0.0,
+              "postTanWidth": 1.0,
+              "postTanSlope": 2.0,
+              "nextInterp": 3
+            },
+            {
+              "time": 2.0,
+              "value": 7.0,
+              "preTanWidth": 0.0,
+              "preTanSlope": 0.0,
+              "postTanWidth": 0.0,
+              "postTanSlope": 0.0,
+              "nextInterp": 1
+            }
+          ]
+        }
+      },
+      {
+        "name": "post-held",
+        "text": "#usda 1.0\ndef \"P\" {\n    double a.spline = { 1: 5; post held, 2: 7; post held, }\n}\n",
+        "accepted": true,
+        "spline": {
+          "preMode": 1,
+          "postMode": 1,
+          "preSlope": 0.0,
+          "postSlope": 0.0,
+          "preBoundary": null,
+          "postBoundary": null,
+          "knots": [
+            {
+              "time": 1.0,
+              "value": 5.0,
+              "preTanWidth": 0.0,
+              "preTanSlope": 0.0,
+              "postTanWidth": 0.0,
+              "postTanSlope": 0.0,
+              "nextInterp": 1
+            },
+            {
+              "time": 2.0,
+              "value": 7.0,
+              "preTanWidth": 0.0,
+              "preTanSlope": 0.0,
+              "postTanWidth": 0.0,
+              "postTanSlope": 0.0,
+              "nextInterp": 1
+            }
+          ]
+        }
+      },
+      {
+        "name": "post-tab-linear",
+        "text": "#usda 1.0\ndef \"P\" {\n    double a.spline = { 1: 5; post\tlinear, 2: 7; post held, }\n}\n",
+        "accepted": true,
+        "spline": {
+          "preMode": 1,
+          "postMode": 1,
+          "preSlope": 0.0,
+          "postSlope": 0.0,
+          "preBoundary": null,
+          "postBoundary": null,
+          "knots": [
+            {
+              "time": 1.0,
+              "value": 5.0,
+              "preTanWidth": 0.0,
+              "preTanSlope": 0.0,
+              "postTanWidth": 0.0,
+              "postTanSlope": 0.0,
+              "nextInterp": 2
+            },
+            {
+              "time": 2.0,
+              "value": 7.0,
+              "preTanWidth": 0.0,
+              "preTanSlope": 0.0,
+              "postTanWidth": 0.0,
+              "postTanSlope": 0.0,
+              "nextInterp": 1
+            }
+          ]
+        }
+      },
+      {
+        "name": "post-comment-adjacent",
+        "text": "#usda 1.0\ndef \"P\" {\n    double a.spline = { 1: 5; post/*c*/held, 2: 7; post held, }\n}\n",
+        "accepted": false
+      },
+      {
+        "name": "post-comment-space",
+        "text": "#usda 1.0\ndef \"P\" {\n    double a.spline = { 1: 5; post/*c*/ held, 2: 7; post held, }\n}\n",
+        "accepted": true,
+        "spline": {
+          "preMode": 1,
+          "postMode": 1,
+          "preSlope": 0.0,
+          "postSlope": 0.0,
+          "preBoundary": null,
+          "postBoundary": null,
+          "knots": [
+            {
+              "time": 1.0,
+              "value": 5.0,
+              "preTanWidth": 0.0,
+              "preTanSlope": 0.0,
+              "postTanWidth": 0.0,
+              "postTanSlope": 0.0,
+              "nextInterp": 1
+            },
+            {
+              "time": 2.0,
+              "value": 7.0,
+              "preTanWidth": 0.0,
+              "preTanSlope": 0.0,
+              "postTanWidth": 0.0,
+              "postTanSlope": 0.0,
+              "nextInterp": 1
+            }
+          ]
+        }
+      },
+      {
+        "name": "post-space-comment",
+        "text": "#usda 1.0\ndef \"P\" {\n    double a.spline = { 1: 5; post /*c*/held, 2: 7; post held, }\n}\n",
+        "accepted": true,
+        "spline": {
+          "preMode": 1,
+          "postMode": 1,
+          "preSlope": 0.0,
+          "postSlope": 0.0,
+          "preBoundary": null,
+          "postBoundary": null,
+          "knots": [
+            {
+              "time": 1.0,
+              "value": 5.0,
+              "preTanWidth": 0.0,
+              "preTanSlope": 0.0,
+              "postTanWidth": 0.0,
+              "postTanSlope": 0.0,
+              "nextInterp": 1
+            },
+            {
+              "time": 2.0,
+              "value": 7.0,
+              "preTanWidth": 0.0,
+              "preTanSlope": 0.0,
+              "postTanWidth": 0.0,
+              "postTanSlope": 0.0,
+              "nextInterp": 1
+            }
+          ]
+        }
+      },
+      {
+        "name": "post-paren-adjacent",
+        "text": "#usda 1.0\ndef \"P\" {\n    double a.spline = { 1: 5; post(1, 2), 2: 7; post held, }\n}\n",
+        "accepted": false
+      },
+      {
+        "name": "post-pre-adjacent",
+        "text": "#usda 1.0\ndef \"P\" {\n    double a.spline = { 1: 5; pre (1, 2); post curve(1, 2), 2: 7; post held, }\n}\n",
+        "accepted": false
+      },
+      {
+        "name": "loop-space",
+        "text": "#usda 1.0\ndef \"P\" {\n    double a.spline = { pre: loop repeat, 1: 5; post linear, 2: 7; post held, }\n}\n",
+        "accepted": true,
+        "spline": {
+          "preMode": 4,
+          "postMode": 1,
+          "preSlope": 0.0,
+          "postSlope": 0.0,
+          "preBoundary": null,
+          "postBoundary": null,
+          "knots": [
+            {
+              "time": 1.0,
+              "value": 5.0,
+              "preTanWidth": 0.0,
+              "preTanSlope": 0.0,
+              "postTanWidth": 0.0,
+              "postTanSlope": 0.0,
+              "nextInterp": 2
+            },
+            {
+              "time": 2.0,
+              "value": 7.0,
+              "preTanWidth": 0.0,
+              "preTanSlope": 0.0,
+              "postTanWidth": 0.0,
+              "postTanSlope": 0.0,
+              "nextInterp": 1
+            }
+          ]
+        }
+      },
+      {
+        "name": "loop-comment-adjacent",
+        "text": "#usda 1.0\ndef \"P\" {\n    double a.spline = { pre: loop/*c*/repeat, 1: 5; post linear, 2: 7; post held, }\n}\n",
+        "accepted": false
+      },
+      {
+        "name": "loop-comment-space",
+        "text": "#usda 1.0\ndef \"P\" {\n    double a.spline = { post: loop/*c*/ reset, 1: 5; post linear, 2: 7; post held, }\n}\n",
+        "accepted": true,
+        "spline": {
+          "preMode": 1,
+          "postMode": 5,
+          "preSlope": 0.0,
+          "postSlope": 0.0,
+          "preBoundary": null,
+          "postBoundary": null,
+          "knots": [
+            {
+              "time": 1.0,
+              "value": 5.0,
+              "preTanWidth": 0.0,
+              "preTanSlope": 0.0,
+              "postTanWidth": 0.0,
+              "postTanSlope": 0.0,
+              "nextInterp": 2
+            },
+            {
+              "time": 2.0,
+              "value": 7.0,
+              "preTanWidth": 0.0,
+              "preTanSlope": 0.0,
+              "postTanWidth": 0.0,
+              "postTanSlope": 0.0,
+              "nextInterp": 1
+            }
+          ]
+        }
+      },
+      {
+        "name": "loop-space-comment",
+        "text": "#usda 1.0\ndef \"P\" {\n    double a.spline = { post: loop /*c*/oscillate, 1: 5; post linear, 2: 7; post held, }\n}\n",
+        "accepted": true,
+        "spline": {
+          "preMode": 1,
+          "postMode": 6,
+          "preSlope": 0.0,
+          "postSlope": 0.0,
+          "preBoundary": null,
+          "postBoundary": null,
+          "knots": [
+            {
+              "time": 1.0,
+              "value": 5.0,
+              "preTanWidth": 0.0,
+              "preTanSlope": 0.0,
+              "postTanWidth": 0.0,
+              "postTanSlope": 0.0,
+              "nextInterp": 2
+            },
+            {
+              "time": 2.0,
+              "value": 7.0,
+              "preTanWidth": 0.0,
+              "preTanSlope": 0.0,
+              "postTanWidth": 0.0,
+              "postTanSlope": 0.0,
+              "nextInterp": 1
+            }
+          ]
+        }
+      },
+      {
+        "name": "loop-boundary-adjacent",
+        "text": "#usda 1.0\ndef \"P\" {\n    double a.spline = { post: loop repeat(3), 1: 5; post linear, 2: 7; post held, }\n}\n",
+        "accepted": true,
+        "spline": {
+          "preMode": 1,
+          "postMode": 4,
+          "preSlope": 0.0,
+          "postSlope": 0.0,
+          "preBoundary": null,
+          "postBoundary": 3.0,
+          "knots": [
+            {
+              "time": 1.0,
+              "value": 5.0,
+              "preTanWidth": 0.0,
+              "preTanSlope": 0.0,
+              "postTanWidth": 0.0,
+              "postTanSlope": 0.0,
+              "nextInterp": 2
+            },
+            {
+              "time": 2.0,
+              "value": 7.0,
+              "preTanWidth": 0.0,
+              "preTanSlope": 0.0,
+              "postTanWidth": 0.0,
+              "postTanSlope": 0.0,
+              "nextInterp": 1
+            }
+          ]
+        }
+      },
+      {
+        "name": "extrap-colon-adjacent",
+        "text": "#usda 1.0\ndef \"P\" {\n    double a.spline = { pre:held, 1: 5; post linear, 2: 7; post held, }\n}\n",
+        "accepted": true,
+        "spline": {
+          "preMode": 1,
+          "postMode": 1,
+          "preSlope": 0.0,
+          "postSlope": 0.0,
+          "preBoundary": null,
+          "postBoundary": null,
+          "knots": [
+            {
+              "time": 1.0,
+              "value": 5.0,
+              "preTanWidth": 0.0,
+              "preTanSlope": 0.0,
+              "postTanWidth": 0.0,
+              "postTanSlope": 0.0,
+              "nextInterp": 2
+            },
+            {
+              "time": 2.0,
+              "value": 7.0,
+              "preTanWidth": 0.0,
+              "preTanSlope": 0.0,
+              "postTanWidth": 0.0,
+              "postTanSlope": 0.0,
+              "nextInterp": 1
+            }
+          ]
+        }
+      },
+      {
+        "name": "extrap-colon-comment",
+        "text": "#usda 1.0\ndef \"P\" {\n    double a.spline = { pre/*c*/:/*c*/linear, 1: 5; post linear, 2: 7; post held, }\n}\n",
+        "accepted": true,
+        "spline": {
+          "preMode": 2,
+          "postMode": 1,
+          "preSlope": 0.0,
+          "postSlope": 0.0,
+          "preBoundary": null,
+          "postBoundary": null,
+          "knots": [
+            {
+              "time": 1.0,
+              "value": 5.0,
+              "preTanWidth": 0.0,
+              "preTanSlope": 0.0,
+              "postTanWidth": 0.0,
+              "postTanSlope": 0.0,
+              "nextInterp": 2
+            },
+            {
+              "time": 2.0,
+              "value": 7.0,
+              "preTanWidth": 0.0,
+              "preTanSlope": 0.0,
+              "postTanWidth": 0.0,
+              "postTanSlope": 0.0,
+              "nextInterp": 1
+            }
+          ]
+        }
+      },
+      {
+        "name": "sloped-adjacent",
+        "text": "#usda 1.0\ndef \"P\" {\n    double a.spline = { post: sloped(1.5), 1: 5; post linear, 2: 7; post held, }\n}\n",
+        "accepted": true,
+        "spline": {
+          "preMode": 1,
+          "postMode": 3,
+          "preSlope": 0.0,
+          "postSlope": 1.5,
+          "preBoundary": null,
+          "postBoundary": null,
+          "knots": [
+            {
+              "time": 1.0,
+              "value": 5.0,
+              "preTanWidth": 0.0,
+              "preTanSlope": 0.0,
+              "postTanWidth": 0.0,
+              "postTanSlope": 0.0,
+              "nextInterp": 2
+            },
+            {
+              "time": 2.0,
+              "value": 7.0,
+              "preTanWidth": 0.0,
+              "preTanSlope": 0.0,
+              "postTanWidth": 0.0,
+              "postTanSlope": 0.0,
+              "nextInterp": 1
+            }
+          ]
+        }
+      },
+      {
+        "name": "sloped-comment",
+        "text": "#usda 1.0\ndef \"P\" {\n    double a.spline = { post: sloped/*c*/(1.5), 1: 5; post linear, 2: 7; post held, }\n}\n",
+        "accepted": true,
+        "spline": {
+          "preMode": 1,
+          "postMode": 3,
+          "preSlope": 0.0,
+          "postSlope": 1.5,
+          "preBoundary": null,
+          "postBoundary": null,
+          "knots": [
+            {
+              "time": 1.0,
+              "value": 5.0,
+              "preTanWidth": 0.0,
+              "preTanSlope": 0.0,
+              "postTanWidth": 0.0,
+              "postTanSlope": 0.0,
+              "nextInterp": 2
+            },
+            {
+              "time": 2.0,
+              "value": 7.0,
+              "preTanWidth": 0.0,
+              "preTanSlope": 0.0,
+              "postTanWidth": 0.0,
+              "postTanSlope": 0.0,
+              "nextInterp": 1
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,4 @@
+#usda 1.0
+def "Clip" {
+  double value.timeSamples = { 1: 11, 9: 19 }
+}

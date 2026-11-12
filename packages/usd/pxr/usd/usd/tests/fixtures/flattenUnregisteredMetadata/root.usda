@@ -1,0 +1,17 @@
+#usda 1.0
+(
+    customThing = 0.1
+    otherThing = foo
+    prepend listy = [1, 2]
+    defaultPrim = "A"
+)
+
+def "A" (
+    primThing = 3
+    kind = "component"
+)
+{
+    double x = 1 (
+        attrThing = "a"
+    )
+}

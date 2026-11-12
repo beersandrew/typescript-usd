@@ -1,0 +1,529 @@
+{
+ "release": "26.11.1",
+ "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+ "script": "pxr/usd/sdf/tests/upstream/fixtures/pathExpressionBrackets/capture.py",
+ "upstream": [
+  "pxr/usd/sdf/pathPatternParser.h:43-52",
+  "pxr/usd/sdf/pathPatternParser.h:125-139",
+  "pxr/usd/sdf/globPattern.cpp:230-271",
+  "pxr/usd/sdf/globPattern.cpp:615-640",
+  "pxr/usd/sdf/testenv/testSdfPathExpression.cpp:230-255",
+  "pxr/usd/sdf/testenv/testSdfPathExpression.cpp:1116"
+ ],
+ "payload": {
+  "paths": [
+   "/World",
+   "/Warld",
+   "/Wxrld",
+   "/a",
+   "/b",
+   "/c",
+   "/d",
+   "/abc",
+   "/cab",
+   "/aXYZ",
+   "/bFoo",
+   "/dFoo",
+   "/foo",
+   "/Foo",
+   "/ax",
+   "/xx",
+   "/World/x",
+   "/World/apple.points",
+   "/World/apple.qux",
+   "/World/bob.points"
+  ],
+  "results": {
+   "/[abc]": {
+    "text": "/[abc]",
+    "matches": [
+     "Fv",
+     "Fv",
+     "Fv",
+     "Tv",
+     "Tv",
+     "Tv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fc",
+     "Fc",
+     "Fc"
+    ]
+   },
+   "/[abc]*": {
+    "text": "/[abc]*",
+    "matches": [
+     "Fv",
+     "Fv",
+     "Fv",
+     "Tv",
+     "Tv",
+     "Tv",
+     "Fv",
+     "Tv",
+     "Tv",
+     "Tv",
+     "Tv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Tv",
+     "Fv",
+     "Fv",
+     "Fc",
+     "Fc",
+     "Fc"
+    ]
+   },
+   "/[a-z]*": {
+    "text": "/[a-z]*",
+    "matches": [
+     "Fv",
+     "Fv",
+     "Fv",
+     "Tv",
+     "Tv",
+     "Tv",
+     "Tv",
+     "Tv",
+     "Tv",
+     "Tv",
+     "Tv",
+     "Tv",
+     "Tv",
+     "Fv",
+     "Tv",
+     "Tv",
+     "Fv",
+     "Fc",
+     "Fc",
+     "Fc"
+    ]
+   },
+   "/W[ao]rld": {
+    "text": "/W[ao]rld",
+    "matches": [
+     "Tv",
+     "Tv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fc",
+     "Fc",
+     "Fc"
+    ]
+   },
+   "/W[!a]rld": {
+    "text": "/W[!a]rld",
+    "matches": [
+     "Tv",
+     "Fv",
+     "Tv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fc",
+     "Fc",
+     "Fc"
+    ]
+   },
+   "/W[a-p]rld": {
+    "text": "/W[a-p]rld",
+    "matches": [
+     "Tv",
+     "Tv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fc",
+     "Fc",
+     "Fc"
+    ]
+   },
+   "/[ab]*": {
+    "text": "/[ab]*",
+    "matches": [
+     "Fv",
+     "Fv",
+     "Fv",
+     "Tv",
+     "Tv",
+     "Fv",
+     "Fv",
+     "Tv",
+     "Fv",
+     "Tv",
+     "Tv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Tv",
+     "Fv",
+     "Fv",
+     "Fc",
+     "Fc",
+     "Fc"
+    ]
+   },
+   "/[!a-z]*": {
+    "text": "/[!a-z]*",
+    "matches": [
+     "Tv",
+     "Tv",
+     "Tv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Tv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fc",
+     "Fc",
+     "Fc"
+    ]
+   },
+   "/[A-Z]*//": {
+    "text": "/[A-Z]*//",
+    "matches": [
+     "Tc",
+     "Tc",
+     "Tc",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Tc",
+     "Fv",
+     "Fv",
+     "Tc",
+     "Tc",
+     "Tc",
+     "Tc"
+    ]
+   },
+   "/W[o-o]rld - /World": {
+    "text": "/W[o-o]rld - /World",
+    "matches": [
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fc",
+     "Fc",
+     "Fc"
+    ]
+   },
+   "/W[o-o]rld + /Foo": {
+    "text": "/W[o-o]rld + /Foo",
+    "matches": [
+     "Tv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Tv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fc",
+     "Fc",
+     "Fc"
+    ]
+   },
+   "/[a-]x": {
+    "text": "/[a-]x",
+    "matches": [
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Tv",
+     "Fv",
+     "Fv",
+     "Fc",
+     "Fc",
+     "Fc"
+    ]
+   },
+   "/[-a]x": {
+    "text": "/[-a]x",
+    "matches": [
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Tv",
+     "Fv",
+     "Fv",
+     "Fc",
+     "Fc",
+     "Fc"
+    ]
+   },
+   "/[*?]x": {
+    "text": "/[*?]x",
+    "matches": [
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fc",
+     "Fc",
+     "Fc"
+    ]
+   },
+   "/World/[ab]*.[pq]*": {
+    "text": "/World/[ab]*.[pq]*",
+    "matches": [
+     "Fv",
+     "Fc",
+     "Fc",
+     "Fc",
+     "Fc",
+     "Fc",
+     "Fc",
+     "Fc",
+     "Fc",
+     "Fc",
+     "Fc",
+     "Fc",
+     "Fc",
+     "Fc",
+     "Fc",
+     "Fc",
+     "Fv",
+     "Tv",
+     "Tv",
+     "Tv"
+    ]
+   },
+   "/W[ao]rld{capital}": {
+    "text": "/W[ao]rld{capital}",
+    "matches": [
+     "Tv",
+     "Tv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fc",
+     "Fc",
+     "Fc"
+    ]
+   },
+   "/W[a-z-]rld": {
+    "text": "/W[a-z-]rld",
+    "matches": [
+     "Tv",
+     "Tv",
+     "Tv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fv",
+     "Fc",
+     "Fc",
+     "Fc"
+    ]
+   },
+   "/[!!]*": {
+    "text": "/[!!]*",
+    "matches": [
+     "Tv",
+     "Tv",
+     "Tv",
+     "Tv",
+     "Tv",
+     "Tv",
+     "Tv",
+     "Tv",
+     "Tv",
+     "Tv",
+     "Tv",
+     "Tv",
+     "Tv",
+     "Tv",
+     "Tv",
+     "Tv",
+     "Fv",
+     "Fc",
+     "Fc",
+     "Fc"
+    ]
+   },
+   "/[abc": {
+    "errors": [
+     "Ill-formed path expression </[abc> at character 6: expected ']' to close bracket class"
+    ]
+   },
+   "/W[^a]rld": {
+    "errors": [
+     "Ill-formed path expression </W[^a]rld> at character 4 ('^'): "
+    ]
+   },
+   "/W[]]x": {
+    "errors": [
+     "Ill-formed path expression </W[]]x> at character 4 (']'): "
+    ]
+   },
+   "/W[a.b]rld": {
+    "errors": [
+     "Ill-formed path expression </W[a.b]rld> at character 5 ('.'): expected ']' to close bracket class"
+    ]
+   },
+   "/W[a:b]rld": {
+    "errors": [
+     "Ill-formed path expression </W[a:b]rld> at character 5 (':'): expected ']' to close bracket class"
+    ]
+   },
+   "/W[ ]x": {
+    "errors": [
+     "Ill-formed path expression </W[ ]x> at character 4 (' '): "
+    ]
+   },
+   "/W[]x": {
+    "errors": [
+     "Ill-formed path expression </W[]x> at character 4 (']'): "
+    ]
+   },
+   "/W[a-p]rld - /[x": {
+    "errors": [
+     "Ill-formed path expression </W[a-p]rld - /[x> at character 17: expected ']' to close bracket class"
+    ]
+   }
+  }
+ }
+}

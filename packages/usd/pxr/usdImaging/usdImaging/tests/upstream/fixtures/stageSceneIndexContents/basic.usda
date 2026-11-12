@@ -1,0 +1,133 @@
+#usda 1.0
+(
+    upAxis = "Z"
+)
+
+def Scope "Materials"
+{
+    def Material "MyMaterial"
+    {
+        uniform token outputs:surface.connect = </Materials/MyMaterial/MySurface.outputs:surface>
+
+        def Shader "MySurface"
+        {
+            uniform asset info:glslfx:sourceAsset = @shader1.glslfx@
+            uniform token info:implementationSource = "sourceAsset"
+            # Declare diffuse color parameter with fallback default value
+            uniform float4 inputs:diffuseColor = (1, 0, 0, 1)
+            append uniform float4 inputs:diffuseColor.connect = </Materials/MyMaterial/MyTexture.outputs:color>
+            token outputs:surface
+        }
+
+        # UV Texture
+        def Shader "MyTexture"
+        {
+            uniform token info:id = "HwUvTexture_1"
+            uniform asset inputs:file = @texture1.jpg@
+            append uniform float2 inputs:uv.connect = </Materials/MyMaterial/MyPrimvar.outputs:result>
+            float4 outputs:color
+        }
+
+        # UV Primvar
+        def Shader "MyPrimvar"
+        {
+            uniform token info:id = "HwPrimvar_1"
+            uniform token inputs:varname = "map1_uv"
+            float2 outputs:result
+        }
+
+        # Node not connected to terminal
+        def Shader "DisconnectedNode"
+        {
+            uniform token info:id = "AbsFloat_1"
+            float inputs:input = 1.2
+        }
+    }
+}
+
+def Xform "Geom"
+{
+    def Mesh "Subdiv" (
+        prepend apiSchemas = ["MaterialBindingAPI", "CoordSysAPI:worldSpace", "CoordSysAPI:modelSpace"]
+    )
+    {
+        rel coordSys:worldSpace:binding = </CoordSys/worldSpace>
+        rel coordSys:modelSpace:binding = </CoordSys/modelSpace>
+        float3[] extent = [(-2, -2, -2), (2, 2, 2)]
+        int[] faceVertexCounts = [4]
+        int[] faceVertexIndices = [0, 1, 3, 2]
+        rel material:binding:preview = </Materials/MyMaterial>
+        point3f[] points = [(-2, -2, -2), (2, -2, -2), (-2, -2, 2), (2, -2, 2)]
+        color3f[] primvars:displayColor = [(0.1, 0.5, 0.8)]
+        float2[] primvars:map1_uv = [(0, 1), (0.4, 1), (0, 0), (0.4, 0)] (
+            interpolation = "vertex"
+        )
+    }
+
+    def Xform "XformWithPivot"
+    {
+        float3 xformOp:translate:pivot = (123, 456, 789)
+        uniform token[] xformOpOrder = ["xformOp:translate:pivot", "!invert!xformOp:translate:pivot"]
+    }
+}
+
+def Xform "CoordSys"
+{
+    def Xform "worldSpace"
+    {
+        double3 xformOp:translate = (4, 5, 6)
+        uniform token[] xformOpOrder = ["xformOp:translate"]
+    }
+
+    def Xform "modelSpace"
+    {
+    }
+}
+
+#
+# Exercise UsdHydraPrimAPI's hydra:expandInstances.
+#
+def Xform "NestedNativeInstances"
+{
+    class Xform "_class_Sphere" (
+        instanceable = True
+    ) {
+        def Sphere "Geom"
+        {
+        }
+    }
+
+    class Xform "_class_InstancedSpheres" (
+        instanceable = True
+    ) {
+        def "SphereInstance_1" (
+            inherits = </NestedNativeInstances/_class_Sphere>
+        ) {
+            float3 xformOp:scale = (0.5, 0.5, 0.5)
+            double3 xformOp:translate = (-0.1, -0.1, 0)
+            token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+        }
+        def "SphereInstance_2" (
+            inherits = </NestedNativeInstances/_class_Sphere>
+        ) {
+            float3 xformOp:scale = (0.5, 0.5, 0.5)
+            double3 xformOp:translate = (0.1, -0.1, 0)
+            token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+        }
+    }
+
+    def "NestedSpheres" (
+        inherits = </NestedNativeInstances/_class_InstancedSpheres>
+    ) {
+        double3 xformOp:translate = (0, 0, 0)
+        token[] xformOpOrder = ["xformOp:translate"]
+    }
+    def "NestedSpheres_Expanded" (
+        inherits = </NestedNativeInstances/_class_InstancedSpheres>
+    ) {
+        double3 xformOp:translate = (0, 1, 0)
+        token[] xformOpOrder = ["xformOp:translate"]
+        # This one is fully expanded at the root
+        bool hydra:expandInstances = 1
+    }
+}

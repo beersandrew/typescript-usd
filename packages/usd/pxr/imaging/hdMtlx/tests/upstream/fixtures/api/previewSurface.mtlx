@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<materialx version="1.39">
+  <UsdPreviewSurface name="Surface" type="surfaceshader">
+    <input name="clearcoat" type="float" output="clearcoat_out" nodegraph="Mat2" />
+    <input name="diffuseColor" type="color3" output="diffuseColor_rgb" nodegraph="Mat2" />
+    <input name="occlusion" type="float" output="occlusion_out" nodegraph="Mat2" />
+    <input name="opacity" type="float" output="opacity_a" nodegraph="Mat2" />
+    <input name="emissiveColor" type="color3" value="0.1, 0.2, 0.3" />
+    <input name="roughness" type="float" value="0.4" />
+    <input name="useSpecularWorkflow" type="integer" value="1" />
+  </UsdPreviewSurface>
+  <surfacematerial name="Mat" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="Surface" />
+  </surfacematerial>
+  <nodegraph name="Mat2">
+    <geompropvalue name="Mat_Geom" type="float" nodedef="ND_geompropvalue_float">
+      <input name="geomprop" type="string" value="coat" />
+    </geompropvalue>
+    <output name="clearcoat_out" type="float" nodename="Mat_Geom" />
+    <UsdUVTexture name="Mat_Tex" type="multioutput" nodedef="ND_UsdUVTexture">
+      <input name="file" type="filename" value="wood.png" colorspace="srgb_texture" />
+      <input name="scale" type="color4" value="1, 0.5, 0.25, 1" />
+      <input name="wrapS" type="string" value="repeat" />
+      <input name="st" type="vector2" nodename="Mat_St" />
+    </UsdUVTexture>
+    <UsdPrimvarReader name="Mat_St" type="vector2" nodedef="ND_UsdPrimvarReader_vector2">
+      <input name="fallback" type="vector2" value="0.5, 0.25" />
+      <input name="varname" type="string" value="st" />
+    </UsdPrimvarReader>
+    <output name="diffuseColor_rgb" type="color3" output="rgb" nodename="Mat_Tex" />
+    <image name="Mat_Occ" type="float" nodedef="ND_image_float">
+      <input name="file" type="filename" value="occ.png" />
+      <input name="texcoord" type="vector2" nodename="Mat_Uv" />
+    </image>
+    <texcoord name="Mat_Uv" type="vector2" nodedef="ND_texcoord_vector2" />
+    <output name="occlusion_out" type="float" nodename="Mat_Occ" />
+    <output name="opacity_a" type="float" output="a" nodename="Mat_Tex" />
+  </nodegraph>
+</materialx>

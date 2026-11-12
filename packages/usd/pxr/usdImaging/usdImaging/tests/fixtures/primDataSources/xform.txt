@@ -1,0 +1,259 @@
+</> type = 
+	[__usdUpAxis]
+		[upAxis]
+			Y
+	[sceneGlobals]
+		[endTimeCode]
+			2
+		[startTimeCode]
+			1
+		[timeCodesPerSecond]
+			24
+	[system]
+		[assetResolution]
+			[resolverContext]
+				<'ArResolverContext' @ XXXXXXXXXXXXXXXX>
+</Animated> type = 
+	[__usdPrimInfo]
+		[isLoaded]
+			1
+		[specifier]
+			def
+		[typeName]
+			Xform
+	[geomXformVectors]
+		[pivot]
+			(0, 0, 0)
+		[rotation]
+			(0, 0, 0)
+		[rotationOrder]
+			RotationOrderXYZ
+		[scale]
+			(1, 1, 1)
+		[translation]
+			(0, 0, 0)
+	[primOrigin]
+		[scenePath]
+			HdPrimOriginSchema::OriginPath(/Animated)
+	[xform]
+		[matrix]
+			( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 0, 1) )
+		[resetXformStack]
+			0
+</CommonOps> type = 
+	[__usdPrimInfo]
+		[isLoaded]
+			1
+		[specifier]
+			def
+		[typeName]
+			Xform
+	[geomXformVectors]
+		[pivot]
+			(0.5, 0, -0.5)
+		[rotation]
+			(10, 20, 30)
+		[rotationOrder]
+			RotationOrderXYZ
+		[scale]
+			(2, 3, 4)
+		[translation]
+			(1, 2, 3)
+	[primOrigin]
+		[scenePath]
+			HdPrimOriginSchema::OriginPath(/CommonOps)
+	[xform]
+		[matrix]
+			( (1.6275953626987476, 0.9396926207859083, -0.6840402866513375, 0), (-1.3229088315896471, 2.6476923577781566, 0.48952773349960443, 0), (1.51408922547917, 0.07211324494518911, 3.7016663135932935, 0), (1.4432469313902112, 1.5662103120796405, 4.692853300122316, 1) )
+		[resetXformStack]
+			0
+</EmptyOrder> type = 
+	[__usdPrimInfo]
+		[isLoaded]
+			1
+		[specifier]
+			def
+		[typeName]
+			Xform
+	[geomXformVectors]
+		[pivot]
+			(0, 0, 0)
+		[rotation]
+			(0, 0, 0)
+		[rotationOrder]
+			RotationOrderXYZ
+		[scale]
+			(1, 1, 1)
+		[translation]
+			(0, 0, 0)
+	[primOrigin]
+		[scenePath]
+			HdPrimOriginSchema::OriginPath(/EmptyOrder)
+</Matrix> type = 
+	[__usdPrimInfo]
+		[isLoaded]
+			1
+		[specifier]
+			def
+		[typeName]
+			Xform
+	[geomXformVectors]
+		[pivot]
+			(0, 0, 0)
+		[rotation]
+			(90, -0, 0)
+		[rotationOrder]
+			RotationOrderXYZ
+		[scale]
+			(1, 1, 1)
+		[translation]
+			(7, 8, 9)
+	[primOrigin]
+		[scenePath]
+			HdPrimOriginSchema::OriginPath(/Matrix)
+	[xform]
+		[matrix]
+			( (1, 0, 0, 0), (0, 0, 1, 0), (0, -1, 0, 0), (7, 8, 9, 1) )
+		[resetXformStack]
+			0
+</NoOps> type = 
+	[__usdPrimInfo]
+		[isLoaded]
+			1
+		[specifier]
+			def
+		[typeName]
+			Xform
+	[primOrigin]
+		[scenePath]
+			HdPrimOriginSchema::OriginPath(/NoOps)
+</NonConforming> type = 
+	[__usdPrimInfo]
+		[isLoaded]
+			1
+		[specifier]
+			def
+		[typeName]
+			Xform
+	[geomXformVectors]
+		[pivot]
+			(0, 0, 0)
+		[rotation]
+			(0, -0, 90)
+		[rotationOrder]
+			RotationOrderXYZ
+		[scale]
+			(1, 1, 1)
+		[translation]
+			(-1, 4.440892098500626e-16, 0)
+	[primOrigin]
+		[scenePath]
+			HdPrimOriginSchema::OriginPath(/NonConforming)
+	[xform]
+		[matrix]
+			( (2.220446049250313e-16, 1, 0, 0), (-1, 2.220446049250313e-16, 0, 0), (0, 0, 1, 0), (-1, 4.440892098500626e-16, 0, 1) )
+		[resetXformStack]
+			0
+</Orient> type = 
+	[__usdPrimInfo]
+		[isLoaded]
+			1
+		[specifier]
+			def
+		[typeName]
+			Xform
+	[geomXformVectors]
+		[pivot]
+			(0, 0, 0)
+		[rotation]
+			(0, 90, -0)
+		[rotationOrder]
+			RotationOrderXYZ
+		[scale]
+			(1, 1, 1)
+		[translation]
+			(0, 0, 0)
+	[primOrigin]
+		[scenePath]
+			HdPrimOriginSchema::OriginPath(/Orient)
+	[xform]
+		[matrix]
+			( (-3.422854177870249e-8, 0, -0.9999999999999993, 0), (0, 1, 0, 0), (0.9999999999999993, 0, -3.422854177870249e-8, 0), (0, 0, 0, 1) )
+		[resetXformStack]
+			0
+</Reset> type = 
+	[__usdPrimInfo]
+		[isLoaded]
+			1
+		[specifier]
+			def
+		[typeName]
+			Xform
+	[geomXformVectors]
+		[pivot]
+			(0, 0, 0)
+		[rotation]
+			(0, 0, 0)
+		[rotationOrder]
+			RotationOrderXYZ
+		[scale]
+			(1, 1, 1)
+		[translation]
+			(4, 5, 6)
+	[primOrigin]
+		[scenePath]
+			HdPrimOriginSchema::OriginPath(/Reset)
+	[xform]
+		[matrix]
+			( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (4, 5, 6, 1) )
+		[resetXformStack]
+			1
+</Reset/Child> type = 
+	[__usdPrimInfo]
+		[isLoaded]
+			1
+		[specifier]
+			def
+		[typeName]
+			Xform
+	[geomXformVectors]
+		[pivot]
+			(0, 0, 0)
+		[rotation]
+			(-0, 45, -0)
+		[rotationOrder]
+			RotationOrderXYZ
+		[scale]
+			(1, 1, 1)
+		[translation]
+			(0, 0, 0)
+	[primOrigin]
+		[scenePath]
+			HdPrimOriginSchema::OriginPath(/Reset/Child)
+	[xform]
+		[matrix]
+			( (0.7071067811865475, 0, -0.7071067811865476, 0), (0, 1, 0, 0), (0.7071067811865476, 0, 0.7071067811865475, 0), (0, 0, 0, 1) )
+		[resetXformStack]
+			0
+</Scope> type = 
+	[__usdPrimInfo]
+		[isLoaded]
+			1
+		[specifier]
+			def
+		[typeName]
+			Scope
+	[primOrigin]
+		[scenePath]
+			HdPrimOriginSchema::OriginPath(/Scope)
+</Typeless> type = 
+	[__usdPrimInfo]
+		[isLoaded]
+			1
+		[specifier]
+			def
+		[typeName]
+			
+	[primOrigin]
+		[scenePath]
+			HdPrimOriginSchema::OriginPath(/Typeless)

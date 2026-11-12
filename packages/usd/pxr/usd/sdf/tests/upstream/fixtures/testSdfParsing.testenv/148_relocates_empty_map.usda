@@ -1,0 +1,10 @@
+#usda 1.0
+(
+    framesPerSecond = 24
+    framePrecision = 3
+    relocates = {
+        # This page intentionally left blank
+    }
+)
+
+# Note: This is testing parsing syntax only, not allowable semantics.

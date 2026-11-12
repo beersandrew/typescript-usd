@@ -1,0 +1,32 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/usdImaging/usdImagingGL/tests/fixtures/testenvImages/capture.py",
+  "upstream": [
+    "pxr/usdImaging/usdImagingGL/CMakeLists.txt",
+    "pxr/usdImaging/usdImagingGL/testenv/testUsdImagingGLBasicDrawing.cpp"
+  ],
+  "payload": {
+    "test": "testUsdImagingGLBasicLighting_refined",
+    "cmake": "pxr/usdImaging/usdImagingGL/CMakeLists.txt:323",
+    "command": "<install>/tests/testUsdImagingGLBasicDrawing -offscreen -complexity 1.1 -lighting -stage basicDrawing.usda -write testUsdImagingGLBasicLighting_refined.png",
+    "cwd": "copy of <source>/pxr/usdImaging/usdImagingGL/testenv/testUsdImagingGLBasicLighting",
+    "env": {
+      "TF_DEBUG": "HD_SAFE_MODE"
+    },
+    "expectedReturnCode": "0",
+    "returnCode": 0,
+    "images": [
+      {
+        "name": "testUsdImagingGLBasicLighting_refined.png",
+        "written": true
+      }
+    ],
+    "addedEnv": {
+      "HDST_ENABLE_RESOURCE_INSTANCING": {
+        "value": "0",
+        "reason": "refined prims sharing an index range race on the reference build with resource instancing on; the image changes between runs"
+      }
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/usdImaging/usdImaging/tests/upstream/fixtures/testUsdImagingHdMtlx/capture.py",
+  "upstream": [
+    "pxr/usdImaging/usdImaging/testenv/testUsdImagingHdMtlx.cpp",
+    "pxr/imaging/hdMtlx/hdMtlx.cpp"
+  ],
+  "payload": {
+    "withMtlxVersion": {
+      "command": "${CMAKE_INSTALL_PREFIX}/tests/testUsdImagingHdMtlx --filename withMtlxVersion.usda",
+      "returnCode": 0,
+      "stdout": "OK\n"
+    },
+    "withoutMtlxVersion": {
+      "command": "${CMAKE_INSTALL_PREFIX}/tests/testUsdImagingHdMtlx --filename withoutMtlxVersion.usda",
+      "returnCode": 0,
+      "stdout": "OK\n"
+    },
+    "atan2Node": {
+      "command": "${CMAKE_INSTALL_PREFIX}/tests/testUsdImagingHdMtlx --filename atan2Node.usda",
+      "returnCode": 0,
+      "stdout": "OK\n"
+    },
+    "switchNode": {
+      "command": "${CMAKE_INSTALL_PREFIX}/tests/testUsdImagingHdMtlx --filename switchNode.usda",
+      "returnCode": 0,
+      "stdout": "OK\n"
+    },
+    "swizzleNode": {
+      "command": "${CMAKE_INSTALL_PREFIX}/tests/testUsdImagingHdMtlx --filename swizzleNode.usda",
+      "returnCode": 0,
+      "stdout": "OK\n"
+    }
+  }
+}

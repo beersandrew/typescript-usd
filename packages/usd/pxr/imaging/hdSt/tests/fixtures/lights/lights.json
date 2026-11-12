@@ -1,0 +1,490 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/imaging/hdSt/tests/fixtures/lights/capture.py",
+  "upstream": [
+    "pxr/imaging/hdSt/light.cpp"
+  ],
+  "payload": {
+    "/lights/distant": {
+      "ambient": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "diffuse": [
+        0.0676260367,
+        0.0608634315,
+        0.0473382249,
+        1
+      ],
+      "specular": [
+        0.0676260367,
+        0.0608634315,
+        0.0473382249,
+        1
+      ],
+      "position": [
+        0.5,
+        0.29619813,
+        0.813797653,
+        0
+      ],
+      "spotDirection": [
+        0,
+        0,
+        -1
+      ],
+      "spotCutoff": 180,
+      "spotFalloff": 0,
+      "attenuation": [
+        0,
+        0,
+        0
+      ],
+      "hasIntensity": true,
+      "hasShadow": false,
+      "isDomeLight": false,
+      "domeLightTextureFile": "",
+      "transform": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    "/lights/sphere": {
+      "ambient": [
+        1.67560971,
+        0.241348162,
+        0,
+        0.25
+      ],
+      "diffuse": [
+        6.70243883,
+        0.965392649,
+        0,
+        1
+      ],
+      "specular": [
+        6.70243883,
+        0.965392649,
+        0,
+        1
+      ],
+      "position": [
+        -2,
+        2,
+        2,
+        1
+      ],
+      "spotDirection": [
+        0,
+        0,
+        -1
+      ],
+      "spotCutoff": 180,
+      "spotFalloff": 0,
+      "attenuation": [
+        0,
+        0,
+        1
+      ],
+      "hasIntensity": true,
+      "hasShadow": true,
+      "isDomeLight": false,
+      "domeLightTextureFile": "",
+      "transform": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    "/lights/rect": {
+      "ambient": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "diffuse": [
+        4.5215106,
+        4.96944475,
+        6.71162987,
+        1
+      ],
+      "specular": [
+        2.2607553,
+        2.48472238,
+        3.35581493,
+        0.5
+      ],
+      "position": [
+        1,
+        3,
+        -1,
+        1
+      ],
+      "spotDirection": [
+        0,
+        0.707106769,
+        -0.707106769
+      ],
+      "spotCutoff": 35,
+      "spotFalloff": 0,
+      "attenuation": [
+        0,
+        0,
+        1
+      ],
+      "hasIntensity": true,
+      "hasShadow": false,
+      "isDomeLight": false,
+      "domeLightTextureFile": "",
+      "transform": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    "/lights/disk": {
+      "ambient": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "diffuse": [
+        0.400000006,
+        2,
+        0.400000006,
+        1
+      ],
+      "specular": [
+        0.400000006,
+        2,
+        0.400000006,
+        1
+      ],
+      "position": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "spotDirection": [
+        0,
+        0,
+        -1
+      ],
+      "spotCutoff": 90,
+      "spotFalloff": 3,
+      "attenuation": [
+        0,
+        0,
+        1
+      ],
+      "hasIntensity": true,
+      "hasShadow": false,
+      "isDomeLight": false,
+      "domeLightTextureFile": "",
+      "transform": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    "/lights/cylinder": {
+      "ambient": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "diffuse": [
+        6.02098656,
+        2.11229777,
+        0.687353373,
+        1
+      ],
+      "specular": [
+        6.02098656,
+        2.11229777,
+        0.687353373,
+        1
+      ],
+      "position": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "spotDirection": [
+        0,
+        0,
+        -1
+      ],
+      "spotCutoff": 180,
+      "spotFalloff": 0,
+      "attenuation": [
+        0,
+        0,
+        1
+      ],
+      "hasIntensity": true,
+      "hasShadow": false,
+      "isDomeLight": false,
+      "domeLightTextureFile": "",
+      "transform": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    "/lights/hidden": {
+      "ambient": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "diffuse": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "specular": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "position": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "spotDirection": [
+        0,
+        0,
+        -1
+      ],
+      "spotCutoff": 180,
+      "spotFalloff": 0,
+      "attenuation": [
+        1,
+        0,
+        0
+      ],
+      "hasIntensity": false,
+      "hasShadow": false,
+      "isDomeLight": false,
+      "domeLightTextureFile": "",
+      "transform": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    "/lights/dome": {
+      "ambient": [
+        0.200000003,
+        0.200000003,
+        0.200000003,
+        1
+      ],
+      "diffuse": [
+        0.428114533,
+        0.428114533,
+        0.475682825,
+        0.5
+      ],
+      "specular": [
+        0.856229067,
+        0.856229067,
+        0.95136565,
+        1
+      ],
+      "position": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "spotDirection": [
+        0,
+        0,
+        -1
+      ],
+      "spotCutoff": 180,
+      "spotFalloff": 0,
+      "attenuation": [
+        0,
+        0,
+        0
+      ],
+      "hasIntensity": true,
+      "hasShadow": false,
+      "isDomeLight": true,
+      "domeLightTextureFile": "sky.hdr",
+      "transform": [
+        2.22044605e-16,
+        1,
+        0,
+        0,
+        -1,
+        2.22044605e-16,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        1
+      ]
+    },
+    "/lights/simple": {
+      "ambient": [
+        0.200000003,
+        0.200000003,
+        0.200000003,
+        1
+      ],
+      "diffuse": [
+        0.942477822,
+        0.785398185,
+        0.628318548,
+        1
+      ],
+      "specular": [
+        0.628318548,
+        0.628318548,
+        0.628318548,
+        1
+      ],
+      "position": [
+        3,
+        2,
+        3,
+        1
+      ],
+      "spotDirection": [
+        0,
+        0,
+        -1
+      ],
+      "spotCutoff": 180,
+      "spotFalloff": 0,
+      "attenuation": [
+        1,
+        0,
+        0
+      ],
+      "hasIntensity": true,
+      "hasShadow": false,
+      "isDomeLight": false,
+      "domeLightTextureFile": "",
+      "transform": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1
+      ]
+    }
+  }
+}

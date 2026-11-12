@@ -1,0 +1,334 @@
+# UsdImagingStageSceneIndex
+/Render/Settings type=renderSettings
+	[__usdRenderSettings]
+		[aspectRatioConformPolicy]
+			TfToken cropAperture
+		[camera]
+			SdfPath /World/Cam
+		[dataWindowNDC]
+			GfVec4f (0, 0, 1, 1)
+		[disableDepthOfField]
+			bool 0
+		[disableMotionBlur]
+			bool 1
+		[includedPurposes]
+			VtArray<TfToken> [default, render]
+		[instantaneousShutter]
+			bool 0
+		[materialBindingPurposes]
+			VtArray<TfToken> [full, ]
+		[namespacedSettings]
+			[outputs:ri:displayFilters]
+				string unused
+			[ri:hider:maxsamples]
+				int 64
+			[ri:hider:pixelVariance]
+				float 0.01
+			[ri:integrator]
+				SdfPathVector [/Render/Integrator]
+			[ri:sampleFilters]
+				SdfPathVector []
+		[pixelAspectRatio]
+			float 1.5
+		[products]
+			VtArray<SdfPath> [/Render/ProductA, /Render/ProductB, /Render/Missing]
+		[renderingColorSpace]
+			TfToken lin_rec709_scene
+		[resolution]
+			GfVec2i (640, 480)
+/Render/ProductA type=renderProduct
+	[__usdRenderProduct]
+		[camera]
+			SdfPath /World/ProductCam
+		[namespacedSettings]
+			[driver:parameters:artist]
+				string jdoe
+		[orderedVars]
+			VtArray<SdfPath> [/Render/Vars/Color, /Render/Vars/Depth]
+		[productName]
+			TfToken a.exr
+		[productType]
+			TfToken raster
+		[resolution]
+			GfVec2i (320, 240)
+/Render/ProductB type=renderProduct
+	[__usdRenderProduct]
+		[namespacedSettings]
+		[orderedVars]
+			VtArray<SdfPath> [/Render/Vars/Color]
+		[productName]
+			TfToken b.exr
+		[productType]
+			TfToken deepRaster
+/Render/Vars/Color type=renderVar
+	[__usdRenderVar]
+		[dataType]
+			TfToken color3f
+		[namespacedSettings]
+			[driver:parameters:aov:name]
+				string rgb
+		[sourceName]
+			string Ci
+		[sourceType]
+			TfToken raw
+/Render/Vars/Depth type=renderVar
+	[__usdRenderVar]
+		[dataType]
+			TfToken float
+		[namespacedSettings]
+		[sourceName]
+			string z
+		[sourceType]
+			TfToken lpe
+/Render/Pass type=renderPass
+	[renderPass]
+		[passType]
+			TfToken prman
+		[renderSource]
+			SdfPath /Render/Settings
+/Render/EmptyPass type=renderPass
+	[renderPass]
+# UsdImagingRenderSettingsFlatteningSceneIndex
+/Render/Settings type=renderSettings
+	[renderSettings]
+		[camera]
+			SdfPath /World/Cam
+		[disableDepthOfField]
+			bool 0
+		[disableMotionBlur]
+			bool 1
+		[includedPurposes]
+			VtArray<TfToken> [default, render]
+		[materialBindingPurposes]
+			VtArray<TfToken> [full, ]
+		[namespacedSettings]
+			[outputs:ri:displayFilters]
+				string unused
+			[ri:hider:maxsamples]
+				int 64
+			[ri:hider:pixelVariance]
+				float 0.01
+			[ri:integrator]
+				SdfPathVector [/Render/Integrator]
+			[ri:sampleFilters]
+				SdfPathVector []
+		[renderProducts]
+			[0]
+				[aspectRatioConformPolicy]
+					TfToken cropAperture
+				[cameraPrim]
+					SdfPath /World/ProductCam
+				[dataWindowNDC]
+					GfVec4f (0, 0, 1, 1)
+				[disableDepthOfField]
+					bool 0
+				[disableMotionBlur]
+					bool 1
+				[name]
+					TfToken a.exr
+				[namespacedSettings]
+					[driver:parameters:artist]
+						string jdoe
+				[path]
+					SdfPath /Render/ProductA
+				[pixelAspectRatio]
+					float 1.5
+				[renderVars]
+					[0]
+						[dataType]
+							TfToken color3f
+						[namespacedSettings]
+							[driver:parameters:aov:name]
+								string rgb
+						[path]
+							SdfPath /Render/Vars/Color
+						[sourceName]
+							TfToken Ci
+						[sourceType]
+							TfToken raw
+					[1]
+						[dataType]
+							TfToken float
+						[namespacedSettings]
+						[path]
+							SdfPath /Render/Vars/Depth
+						[sourceName]
+							TfToken z
+						[sourceType]
+							TfToken lpe
+				[resolution]
+					GfVec2i (320, 240)
+				[type]
+					TfToken raster
+			[1]
+				[aspectRatioConformPolicy]
+					TfToken cropAperture
+				[cameraPrim]
+					SdfPath /World/Cam
+				[dataWindowNDC]
+					GfVec4f (0, 0, 1, 1)
+				[disableDepthOfField]
+					bool 0
+				[disableMotionBlur]
+					bool 1
+				[name]
+					TfToken b.exr
+				[namespacedSettings]
+				[path]
+					SdfPath /Render/ProductB
+				[pixelAspectRatio]
+					float 1.5
+				[renderVars]
+					[0]
+						[dataType]
+							TfToken color3f
+						[namespacedSettings]
+							[driver:parameters:aov:name]
+								string rgb
+						[path]
+							SdfPath /Render/Vars/Color
+						[sourceName]
+							TfToken Ci
+						[sourceType]
+							TfToken raw
+				[resolution]
+					GfVec2i (640, 480)
+				[type]
+					TfToken deepRaster
+		[renderingColorSpace]
+			TfToken lin_rec709_scene
+	[__dependencies]
+		[__dependencies_depOn_usdRenderSettings_products]
+			[affectedDataSourceLocator]
+				HdDataSourceLocator __dependencies
+			[dependedOnDataSourceLocator]
+				HdDataSourceLocator __usdRenderSettings/products
+			[dependedOnPrimPath]
+				SdfPath /Render/Settings
+		[renderSettings_camera_depOn_usdRenderSettings_camera]
+			[affectedDataSourceLocator]
+				HdDataSourceLocator renderSettings/camera
+			[dependedOnDataSourceLocator]
+				HdDataSourceLocator __usdRenderSettings/camera
+			[dependedOnPrimPath]
+				SdfPath /Render/Settings
+		[renderSettings_depOn_product_0]
+			[affectedDataSourceLocator]
+				HdDataSourceLocator renderSettings/renderProducts
+			[dependedOnDataSourceLocator]
+				HdDataSourceLocator __usdRenderProduct
+			[dependedOnPrimPath]
+				SdfPath /Render/ProductA
+		[renderSettings_depOn_product_1]
+			[affectedDataSourceLocator]
+				HdDataSourceLocator renderSettings/renderProducts
+			[dependedOnDataSourceLocator]
+				HdDataSourceLocator __usdRenderProduct
+			[dependedOnPrimPath]
+				SdfPath /Render/ProductB
+		[renderSettings_depOn_var_0]
+			[affectedDataSourceLocator]
+				HdDataSourceLocator renderSettings/renderProducts
+			[dependedOnDataSourceLocator]
+				HdDataSourceLocator __usdRenderVar
+			[dependedOnPrimPath]
+				SdfPath /Render/Vars/Color
+		[renderSettings_depOn_var_1]
+			[affectedDataSourceLocator]
+				HdDataSourceLocator renderSettings/renderProducts
+			[dependedOnDataSourceLocator]
+				HdDataSourceLocator __usdRenderVar
+			[dependedOnPrimPath]
+				SdfPath /Render/Vars/Depth
+		[renderSettings_disableDepthOfField_depOn_usdRenderSettings_disableDepthOfField]
+			[affectedDataSourceLocator]
+				HdDataSourceLocator renderSettings/disableDepthOfField
+			[dependedOnDataSourceLocator]
+				HdDataSourceLocator __usdRenderSettings/disableDepthOfField
+			[dependedOnPrimPath]
+				SdfPath /Render/Settings
+		[renderSettings_disableMotionBlur_depOn_usdRenderSettings_disableMotionBlur]
+			[affectedDataSourceLocator]
+				HdDataSourceLocator renderSettings/disableMotionBlur
+			[dependedOnDataSourceLocator]
+				HdDataSourceLocator __usdRenderSettings/disableMotionBlur
+			[dependedOnPrimPath]
+				SdfPath /Render/Settings
+		[renderSettings_includedPurposes_depOn_usdRenderSettings_includedPurposes]
+			[affectedDataSourceLocator]
+				HdDataSourceLocator renderSettings/includedPurposes
+			[dependedOnDataSourceLocator]
+				HdDataSourceLocator __usdRenderSettings/includedPurposes
+			[dependedOnPrimPath]
+				SdfPath /Render/Settings
+		[renderSettings_materialBindingPurposes_depOn_usdRenderSettings_materialBindingPurposes]
+			[affectedDataSourceLocator]
+				HdDataSourceLocator renderSettings/materialBindingPurposes
+			[dependedOnDataSourceLocator]
+				HdDataSourceLocator __usdRenderSettings/materialBindingPurposes
+			[dependedOnPrimPath]
+				SdfPath /Render/Settings
+		[renderSettings_namespacedSettings_depOn_usdRenderSettings_namespacedSettings]
+			[affectedDataSourceLocator]
+				HdDataSourceLocator renderSettings/namespacedSettings
+			[dependedOnDataSourceLocator]
+				HdDataSourceLocator __usdRenderSettings/namespacedSettings
+			[dependedOnPrimPath]
+				SdfPath /Render/Settings
+		[renderSettings_renderProducts_depOn_usdRenderSettings_aspectRatioConformPolicy]
+			[affectedDataSourceLocator]
+				HdDataSourceLocator renderSettings/renderProducts
+			[dependedOnDataSourceLocator]
+				HdDataSourceLocator __usdRenderSettings/aspectRatioConformPolicy
+			[dependedOnPrimPath]
+				SdfPath /Render/Settings
+		[renderSettings_renderProducts_depOn_usdRenderSettings_camera]
+			[affectedDataSourceLocator]
+				HdDataSourceLocator renderSettings/renderProducts
+			[dependedOnDataSourceLocator]
+				HdDataSourceLocator __usdRenderSettings/camera
+			[dependedOnPrimPath]
+				SdfPath /Render/Settings
+		[renderSettings_renderProducts_depOn_usdRenderSettings_dataWindowNDC]
+			[affectedDataSourceLocator]
+				HdDataSourceLocator renderSettings/renderProducts
+			[dependedOnDataSourceLocator]
+				HdDataSourceLocator __usdRenderSettings/dataWindowNDC
+			[dependedOnPrimPath]
+				SdfPath /Render/Settings
+		[renderSettings_renderProducts_depOn_usdRenderSettings_disableDepthOfField]
+			[affectedDataSourceLocator]
+				HdDataSourceLocator renderSettings/renderProducts
+			[dependedOnDataSourceLocator]
+				HdDataSourceLocator __usdRenderSettings/disableDepthOfField
+			[dependedOnPrimPath]
+				SdfPath /Render/Settings
+		[renderSettings_renderProducts_depOn_usdRenderSettings_disableMotionBlur]
+			[affectedDataSourceLocator]
+				HdDataSourceLocator renderSettings/renderProducts
+			[dependedOnDataSourceLocator]
+				HdDataSourceLocator __usdRenderSettings/disableMotionBlur
+			[dependedOnPrimPath]
+				SdfPath /Render/Settings
+		[renderSettings_renderProducts_depOn_usdRenderSettings_pixelAspectRatio]
+			[affectedDataSourceLocator]
+				HdDataSourceLocator renderSettings/renderProducts
+			[dependedOnDataSourceLocator]
+				HdDataSourceLocator __usdRenderSettings/pixelAspectRatio
+			[dependedOnPrimPath]
+				SdfPath /Render/Settings
+		[renderSettings_renderProducts_depOn_usdRenderSettings_resolution]
+			[affectedDataSourceLocator]
+				HdDataSourceLocator renderSettings/renderProducts
+			[dependedOnDataSourceLocator]
+				HdDataSourceLocator __usdRenderSettings/resolution
+			[dependedOnPrimPath]
+				SdfPath /Render/Settings
+		[renderSettings_renderingColorSpace_depOn_usdRenderSettings_renderingColorSpace]
+			[affectedDataSourceLocator]
+				HdDataSourceLocator renderSettings/renderingColorSpace
+			[dependedOnDataSourceLocator]
+				HdDataSourceLocator __usdRenderSettings/renderingColorSpace
+			[dependedOnPrimPath]
+				SdfPath /Render/Settings
+OK

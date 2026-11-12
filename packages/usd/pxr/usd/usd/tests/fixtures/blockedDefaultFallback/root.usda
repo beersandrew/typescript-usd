@@ -1,0 +1,39 @@
+#usda 1.0
+(
+    subLayers = [@./weak.usda@]
+)
+
+def Sphere "BlockedDefault"
+{
+    double radius = None
+}
+
+def Sphere "BlockedDefaultWithSamples"
+{
+    double radius = None
+    double radius.timeSamples = {
+        1: 5,
+    }
+}
+
+def Sphere "BlockedSample"
+{
+    double radius.timeSamples = {
+        1: None,
+    }
+}
+
+def Sphere "BlockedOverWeakSamples"
+{
+    double radius = None
+}
+
+def Sphere "BlockedOverWeakDefault"
+{
+    double radius = None
+}
+
+def Sphere "NoFallback"
+{
+    custom double extra = None
+}

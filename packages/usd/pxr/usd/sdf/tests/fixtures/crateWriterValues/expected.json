@@ -1,0 +1,33 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/usd/sdf/tests/fixtures/crateWriterValues/capture.py",
+  "upstream": [
+    "pxr/usd/sdf/crateFile.cpp:4303-4307",
+    "pxr/usd/sdf/crateFile.cpp:4361-4368",
+    "pxr/usd/sdf/schema.cpp:768-769",
+    "pxr/usd/sdf/fileIO_Common.cpp:1090-1104"
+  ],
+  "payload": {
+    "stringsReopened": "#usda 1.0\n(\n    customLayerData = {\n        string raw = \"\\x80\\xff\"\n    }\n)\n\ndef \"P\"\n{\n    string s = \"\\x80\\xff\"\n    string t = \"a\\xc3b\"\n    string[] u = [\"\\xff\", \"\u20ac\"]\n}\n\n",
+    "exportErrors": [
+      {
+        "commentary": "Attempted to pack unsupported type 'TfEnum' (SdfLengthUnit::SdfLengthUnitMillimeter)",
+        "code": "TF_DIAGNOSTIC_CODING_ERROR_TYPE"
+      }
+    ],
+    "reopenedFields": [
+      "custom",
+      "default",
+      "displayUnit",
+      "typeName",
+      "variability"
+    ],
+    "displayUnitReadErrors": [
+      {
+        "commentary": "Attempted to unpack unsupported type enum value 0",
+        "code": "TF_DIAGNOSTIC_CODING_ERROR_TYPE"
+      }
+    ]
+  }
+}

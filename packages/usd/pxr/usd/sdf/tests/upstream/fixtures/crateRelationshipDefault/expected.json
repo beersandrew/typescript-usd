@@ -1,0 +1,53 @@
+{
+ "release": "26.11.1",
+ "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+ "script": "pxr/usd/sdf/tests/upstream/fixtures/crateRelationshipDefault/capture.py",
+ "upstream": [
+  "pxr/usd/sdf/crateFile.cpp:4285-4307",
+  "pxr/usd/sdf/crateFile.cpp:4360-4368",
+  "pxr/usd/sdf/testenv/testSdfParsing.testenv/127_varyingRelationship.usda"
+ ],
+ "payload": {
+  "cases": {
+   "plain": {
+    "text": "#usda 1.0\ndef \"Sphere\"\n{\n    rel constraintTarget.default = </Pivot>\n}\n",
+    "relationship": "/Sphere.constraintTarget",
+    "exportErrors": [
+     "Attempted to pack unsupported type 'SdfPath' (/Pivot)"
+    ],
+    "infoKeys": [
+     "custom",
+     "default",
+     "variability"
+    ],
+    "getDefaultErrors": [
+     "Attempted to unpack unsupported type enum value 0"
+    ],
+    "readBackExportErrors": [
+     "Attempted to unpack unsupported type enum value 0"
+    ],
+    "readBackUsda": "#usda 1.0\n\ndef \"Sphere\"\n{\n    rel constraintTarget\n}\n\n"
+   },
+   "127_varyingRelationship": {
+    "text": "#usda 1.0\n(\n    framesPerSecond = 24\n    framePrecision = 3\n)\n\ndef GprimSphere \"Sphere\"\n{\n    delete varying rel constraintTarget = </Pivot3>\n    append varying rel constraintTarget = [\n        </Pivot3>,\n        </Pivot2>,\n    ]\n    reorder varying rel constraintTarget = [\n        </Pivot2>,\n        </Pivot>,\n    ]\n    varying rel constraintTarget.default = </Pivot>    \n}\n\n",
+    "relationship": "/Sphere.constraintTarget",
+    "exportErrors": [
+     "Attempted to pack unsupported type 'SdfPath' (/Pivot)"
+    ],
+    "infoKeys": [
+     "custom",
+     "default",
+     "targetPaths",
+     "variability"
+    ],
+    "getDefaultErrors": [
+     "Attempted to unpack unsupported type enum value 0"
+    ],
+    "readBackExportErrors": [
+     "Attempted to unpack unsupported type enum value 0"
+    ],
+    "readBackUsda": "#usda 1.0\n(\n    framePrecision = 3\n    framesPerSecond = 24\n)\n\ndef GprimSphere \"Sphere\"\n{\n    delete varying rel constraintTarget = </Pivot3>\n    append varying rel constraintTarget = [\n        </Pivot3>,\n        </Pivot2>,\n    ]\n    reorder varying rel constraintTarget = [\n        </Pivot2>,\n        </Pivot>,\n    ]\n}\n\n"
+   }
+  }
+ }
+}

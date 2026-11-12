@@ -1,0 +1,33 @@
+#usda 1.0
+
+def "A" (
+    instanceable = true
+    references = @./prop.usda@
+    clips = {
+        dictionary default = {
+            double2[] active = [(0, 0)]
+            asset[] assetPaths = [@./clip_inst.usda@]
+            string primPath = "/Inst"
+            double2[] times = [(0, 0), (10, 10)]
+        }
+    }
+)
+{
+    double own
+}
+
+def "B" (
+    instanceable = false
+    references = @./prop.usda@
+    clips = {
+        dictionary default = {
+            double2[] active = [(0, 0)]
+            asset[] assetPaths = [@./clip_inst.usda@]
+            string primPath = "/Inst"
+            double2[] times = [(0, 0), (10, 10)]
+        }
+    }
+)
+{
+    double own
+}

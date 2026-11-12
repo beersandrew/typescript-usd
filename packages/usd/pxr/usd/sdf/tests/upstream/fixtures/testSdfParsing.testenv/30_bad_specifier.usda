@@ -1,0 +1,5 @@
+#usda 1.0
+
+foobar Camera "overview_cam" {
+    rel foo (access=public);
+}

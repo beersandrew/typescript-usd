@@ -1,0 +1,85 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/usdImaging/usdImagingGL/tests/fixtures/native/cameraLight/capture.py",
+  "upstream": [
+    "pxr/usdImaging/usdviewq/stageView.py:1453-1483",
+    "pxr/imaging/glf/simpleLight.cpp"
+  ],
+  "payload": {
+    "rows": [
+      {
+        "eye": [
+          1,
+          2,
+          3
+        ],
+        "position": [
+          1.0,
+          2.0,
+          3.0,
+          1.0
+        ],
+        "ambient": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "diffuse": [
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "specular": [
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "attenuation": [
+          1.0,
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "eye": [
+          4,
+          -2,
+          1
+        ],
+        "position": [
+          4.0,
+          -2.0,
+          1.0,
+          1.0
+        ],
+        "ambient": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "diffuse": [
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "specular": [
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "attenuation": [
+          1.0,
+          0.0,
+          0.0
+        ]
+      }
+    ]
+  }
+}

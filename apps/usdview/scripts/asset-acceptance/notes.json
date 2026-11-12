@@ -1,0 +1,114 @@
+{
+ "comment": "Reviewer notes read by report.mjs: a rough gap class per asset from the baseline run of Nov 4, 2026 (typescript-usd main renderer, Safari, 512 px) against OpenUSD 26.11.1 usdrecord. Classes: match, geometry, material/shading, texture sampling, lighting, colour space, unsupported feature, crash. These are readings of the images and diagnostics, not computed results; re-check them when the numbers move.",
+ "harness": [
+  "Camera-light ambient: usdrecord's camera light has ambient 0.01 (frameRecorder.cpp:442); usdview's has none (stageView.py:1459-1465). The viewer follows usdview; the harness captures each asset twice, with usdview's lighting (browser.png, compared with usdview.png) and with the lighting state usdrecord's frame recorder hands the engine (runtime.setLightingSource('frameRecorder'), src/frame-recorder-lighting.ts; browser-usdrecord.png, compared with native.png and scored). Nov 6, 2026: subdiv_catmull_clark and the fallback-material corpus scenes then match usdrecord (0 px); the old --material-ambient 0.4 experiment is superseded.",
+  "Alpha: usdrecord clears to (0,0,0,0); the viewer canvas is opaque black. RGB is compared; native alpha is only a coverage mask.",
+  "Camera light, MSAA 4x (HDX_MSAA_SAMPLE_COUNT default and the viewer's sampleCount), sRGB output, purposes, time and complexity are matched by setting; GPU frustum culling is left at each renderer's default (it should not change pixels).",
+  "The scene is framed from bounds of default+proxy purposes at the start time; assets whose bounds include an environment (StandardShaderBall) are seen from outside it, so their shading is not exercised.",
+  "Timings are not like for like: native is usdrecord wall time (python start, open, render, write); browser open is runtime.open() with payloads loaded, settled is until two identical captures.",
+  "Nondeterminism seen once: in one of five browser runs McUsd rendered with darker textures (19.7% instead of 10.05%); four repeats reproduced 10.05%. Re-run before trusting a single change on McUsd.",
+  "Safari must stay visible: when its window was hidden/occluded, a harness iframe stalled for over 20 minutes (timers throttled) and the run had to be resumed for the last two assets."
+ ],
+ "assets": {
+  "vehicle": {
+   "class": "match",
+   "summary": "Within 2/255 everywhere (max 1)."
+  },
+  "shaderball": {
+   "class": "match (not exercised)",
+   "summary": "Matches, but the framing shows the outside of the environment box, not the MaterialX shader ball; native posts one hdSt warning (missing mtlximage2 texture)."
+  },
+  "brainstem": {
+   "class": "match (edge pixels)",
+   "summary": "A handful of silhouette pixels differ (max 11); PSNR 63 dB."
+  },
+  "subdiv_catmull_clark": {
+   "class": "match (with usdrecord lighting)",
+   "summary": "Differed from usdrecord only by the camera-light ambient; with usdrecord's lighting state (browser-usdrecord.png) 0 px differ (Nov 6, 2026)."
+  },
+  "normals_types": {
+   "class": "geometry (invalid primvars)",
+   "summary": "With usdrecord's lighting (Nov 6, 2026) the camera-light-ambient difference is gone; 365 px remain on meshes whose points or normals count does not match the topology, which the viewer rejects ('Invalid Hydra prim ... Vertex primvar ... has N elements') and native draws."
+  },
+  "teapot": {
+   "class": "material/shading",
+   "summary": "Specular highlight on UsdPreviewSurface is larger/brighter than native (max 73)."
+  },
+  "bike": {
+   "class": "material/shading",
+   "summary": "Metallic rims and brake discs differ (specular response); native also reports 7 invalid-primvar warnings (too many vertex primvar elements) the viewer does not post."
+  },
+  "elephant": {
+   "class": "texture sampling",
+   "summary": "Fine texture detail differs at grazing angles (mip/anisotropic filtering)."
+  },
+  "animated_cube": {
+   "class": "texture sampling",
+   "summary": "Same colour on average; the viewer's texture is blurrier at grazing angles (native looks anisotropically filtered)."
+  },
+  "mcusd": {
+   "class": "texture sampling",
+   "summary": "Native renders the pixel-art textures crisp; the viewer filters them smoothly (sampler filter/mip differences)."
+  },
+  "damaged_helmet": {
+   "class": "material/shading",
+   "summary": "Viewer is brighter overall (mean RGB +4) on metallic/rough PBR surfaces; emissive matches."
+  },
+  "texture_transform": {
+   "class": "material/shading",
+   "summary": "Lower row of panels is lit differently (backside/normal or specular); the UsdTransform2d results themselves agree."
+  },
+  "mtlx_basic": {
+   "class": "match",
+   "summary": "Matches usdrecord (0 significant px, 3 runs, Nov 5 2026) since Storm meshes the implicit sphere through HdsiImplicitSurfaceSceneIndex, as native does."
+  },
+  "alpha_blend_mode": {
+   "class": "material/shading (opacity)",
+   "summary": "The 'Opaque' label's checkmark texture renders black in the viewer instead of green over white; translucent panels differ slightly."
+  },
+  "chess": {
+   "class": "material/shading",
+   "summary": "Pawn heads (glossy dark spheres in native) render flat black in the viewer; board and other pieces close."
+  },
+  "roughness": {
+   "class": "material/shading",
+   "summary": "Roughness ramp rows are lit very differently (native shows bright grazing specular on the lower rows and a backdrop the viewer leaves dark; coverage differs by 12k pixels)."
+  },
+  "normals_bias_scale": {
+   "class": "material/shading",
+   "summary": "Normal-map bias/scale cards close; small differences on the edges of bumped regions."
+  },
+  "curves": {
+   "class": "unsupported feature (curves)",
+   "summary": "Features-group baseline (Nov 5, 2026, 3 runs): the viewer fails to open the scene (\"/World/BSplineOpen: widths vertex cardinality does not match topology\"); native draws linear and cubic curves."
+  },
+  "points": {
+   "class": "geometry (points)",
+   "summary": "Features-group baseline: points render; 626 px differ (0.24%), on point edges and sizes."
+  },
+  "pi_basic": {
+   "class": "unsupported feature (curves in an instanced scene)",
+   "summary": "Features-group baseline: the instanced shapes agree within 2/255; the differing pixels are the scene's axis curves, which the viewer does not draw."
+  },
+  "ni_cubes": {
+   "class": "lighting (camera-light ambient)",
+   "summary": "Features-group baseline: all eight native instances are drawn; the unlit sides of the cubes differ, as for the other fallback-material assets."
+  },
+  "skel_arm": {
+   "class": "unsupported feature (skinning at frame 7)",
+   "summary": "Features-group baseline: native draws the arm bent at frame 7; the viewer draws it in its rest pose (88,668 px, 33.8%)."
+  },
+  "subdiv_refined": {
+   "class": "unsupported feature (refine level 3)",
+   "summary": "Features-group baseline: the viewer fails (\"unsupported refinement level 3; supported levels are 0, 1, 2\"). The upstream test uses complexity 1.4 (level 4); the harness's closest setting is veryhigh (1.3, level 3)."
+  },
+  "volumes": {
+   "class": "unsupported feature (glslfx volume and translucent shaders)",
+   "summary": "Features-group baseline: the viewer refuses the scene (\"TranslucentTagMat: unsupported surface shader (missing info:id)\"), so no volume is drawn."
+  },
+  "vdb_volume": {
+   "class": "unsupported feature (glslfx shaders)",
+   "summary": "Features-group baseline: the viewer refuses the scene (\"CheckerboardMaterial: unsupported surface shader (missing info:id)\") before the OpenVDB fields are read."
+  }
+ }
+}

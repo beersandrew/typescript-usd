@@ -1,0 +1,9 @@
+#usda 1.0
+(
+    timeCodesPerSecond = 24
+    owner = "artist"
+    subLayers = [@shared.usda@ (offset = -2; scale = 1)]
+)
+over "World" {
+ custom int right = 2
+}

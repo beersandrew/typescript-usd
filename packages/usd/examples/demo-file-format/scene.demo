@@ -1,0 +1,4 @@
+# Three prims for the demo plugin.
+Xform /World
+Sphere /World/ball radius=2 color=1,0.5,0
+Cube /World/box size=1 color=0.2,0.4,1

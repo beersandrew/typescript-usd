@@ -1,0 +1,47 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/imaging/hd/tests/upstream/fixtures/collectionMatchConstancy/capture.py",
+  "upstream": [
+    "pxr/imaging/hd/collectionExpressionEvaluator.cpp",
+    "pxr/usd/sdf/pathExpressionEval.cpp:217-232"
+  ],
+  "payload": {
+    "//{hdType:bar}": {
+      "MatchAll": [
+        "/a/foobar/bar"
+      ],
+      "ShallowestMatches": [
+        "/a/foobar/bar"
+      ],
+      "ShallowestMatchesAndAllDescendants": [
+        "/a/foobar/bar",
+        "/a/foobar/bar/child"
+      ]
+    },
+    "//{hdType:bar}//": {
+      "MatchAll": [
+        "/a/foobar/bar",
+        "/a/foobar/bar/child"
+      ],
+      "ShallowestMatches": [
+        "/a/foobar/bar"
+      ],
+      "ShallowestMatchesAndAllDescendants": [
+        "/a/foobar/bar",
+        "/a/foobar/bar/child"
+      ]
+    },
+    "/a//{hdType:baz}": {
+      "MatchAll": [
+        "/a/Foo/Bar"
+      ],
+      "ShallowestMatches": [
+        "/a/Foo/Bar"
+      ],
+      "ShallowestMatchesAndAllDescendants": [
+        "/a/Foo/Bar"
+      ]
+    }
+  }
+}

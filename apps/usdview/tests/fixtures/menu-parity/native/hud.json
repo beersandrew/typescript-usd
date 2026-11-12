@@ -1,0 +1,48 @@
+[
+  {
+    "path": "/",
+    "values": {
+      "Prims": 6,
+      "Xform": 1,
+      "Mesh": 1,
+      "BasisCurves": 1,
+      "Scope": 2,
+      "Material": 1,
+      "CVs": 2,
+      "Verts": 3,
+      "Faces": 1
+    }
+  },
+  {
+    "path": "/Model",
+    "values": {
+      "Prims": 4,
+      "Xform": 1,
+      "Mesh": 1,
+      "BasisCurves": 1,
+      "Typeless": 1,
+      "CVs": 2,
+      "Verts": 3,
+      "Faces": 1
+    }
+  },
+  {
+    "path": "/Model/Triangle",
+    "values": {
+      "Prims": 1,
+      "Mesh": 1,
+      "CVs": 0,
+      "Verts": 3,
+      "Faces": 1
+    }
+  },
+  {
+    "path": "/ClassMesh",
+    "values": {
+      "Prims": 0,
+      "CVs": 0,
+      "Verts": 3,
+      "Faces": 1
+    }
+  }
+]

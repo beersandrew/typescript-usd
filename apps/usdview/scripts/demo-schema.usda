@@ -1,0 +1,40 @@
+#usda 1.0
+# Provenance: authored by the repository owner (Andy Beers) for the DemoAnnotationAPI
+# schema-plugin demo; no third-party
+# content; licensed with this repository (apps/usdview/LICENSE). Input to
+# scripts/generate-demo-schema.mjs, which copies it to public/plugins/demo-schema/.
+(
+    """The schema-plugin demo schema: one single-apply API schema,
+    DemoAnnotationAPI, that pins a text note and a color to any prim.
+    Generated with usdGenSchema (typescript-usd's port or upstream's)."""
+    subLayers = [
+        @usd/schema.usda@
+    ]
+)
+
+over "GLOBAL" (
+    customData = {
+        string libraryName = "demoSchema"
+        string libraryPath = "demoSchema"
+        string libraryPrefix = "Demo"
+    }
+) {
+}
+
+class "DemoAnnotationAPI" (
+    inherits = </APISchemaBase>
+    doc = """An annotation on a prim: a short text note and the color to
+    draw it with. Apply it to any prim to annotate it."""
+    customData = {
+        string className = "AnnotationAPI"
+        token apiSchemaType = "singleApply"
+    }
+)
+{
+    string annotation:text = "" (
+        doc = """The annotation's text."""
+    )
+    color3f annotation:color = (1, 0.8, 0) (
+        doc = """The color to draw the annotation with (linear RGB)."""
+    )
+}

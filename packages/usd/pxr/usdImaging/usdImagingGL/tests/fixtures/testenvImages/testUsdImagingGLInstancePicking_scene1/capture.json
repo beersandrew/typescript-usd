@@ -1,0 +1,26 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/usdImaging/usdImagingGL/tests/fixtures/testenvImages/capture.py",
+  "upstream": [
+    "pxr/usdImaging/usdImagingGL/CMakeLists.txt",
+    "pxr/usdImaging/usdImagingGL/testenv/testUsdImagingGLBasicDrawing.cpp"
+  ],
+  "payload": {
+    "test": "testUsdImagingGLInstancePicking_scene1",
+    "cmake": "pxr/usdImaging/usdImagingGL/CMakeLists.txt:1527",
+    "command": "<install>/tests/testUsdImagingGLInstancePicking -offscreen -camera /main_cam -pickCamera /pick_cam -skipTestPlugins -stage scene1.usda -write testUsdImagingGLInstancePicking_scene1.png",
+    "cwd": "copy of <source>/pxr/usdImaging/usdImagingGL/testenv/testUsdImagingGLInstancePicking",
+    "env": {
+      "TF_DEBUG": "HD_SAFE_MODE"
+    },
+    "expectedReturnCode": null,
+    "returnCode": 0,
+    "images": [
+      {
+        "name": "testUsdImagingGLInstancePicking_scene1_000.png",
+        "written": true
+      }
+    ]
+  }
+}

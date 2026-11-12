@@ -1,0 +1,1617 @@
+/Dome type=domeLight
+	[light]
+		[filters]
+			SdfPathVector [/Filter]
+		[isLight]
+			bool 1
+		[materialSyncMode]
+			TfToken noMaterialResponse
+		[portals]
+			SdfPathVector [/Portal]
+	[light] params
+		angle = NULL
+		color = GfVec3f (1, 1, 1)
+		colorTemperature = float 6500
+		diffuse = float 1
+		domeOffset = NULL
+		enableColorTemperature = bool 0
+		exposure = float 0
+		height = NULL
+		intensity = float 0.5
+		length = NULL
+		normalize = bool 0
+		radius = NULL
+		specular = float 1
+		texture:file = SdfAssetPath @dome.hdr@ resolved=
+		texture:format = TfToken latlong
+		width = NULL
+		shaping:focus = NULL
+		shaping:focusTint = NULL
+		shaping:cone:angle = NULL
+		shaping:cone:softness = NULL
+		shaping:ies:file = NULL
+		shaping:ies:angleScale = NULL
+		shaping:ies:normalize = NULL
+		shadow:enable = NULL
+		shadow:color = NULL
+		shadow:distance = NULL
+		shadow:falloff = NULL
+		shadow:falloffGamma = NULL
+		filters = SdfPathVector [/Filter]
+		isLight = bool 1
+		materialSyncMode = TfToken noMaterialResponse
+		portals = SdfPathVector [/Portal]
+		treatAsPoint = NULL
+		inputs:density = NULL
+		noSuchParam = NULL
+	[material]
+		[]
+			[interface]
+				[parameterOrder]
+					VtArray<TfToken> []
+				[parameters]
+					[intensity]
+						[displayGroup]
+							TfToken Basic
+						[displayName]
+							TfToken Intensity
+						[mappings]
+					[texture:file]
+						[displayGroup]
+							TfToken Basic
+						[displayName]
+							TfToken Color Map
+						[mappings]
+					[texture:format]
+						[displayGroup]
+							TfToken Basic
+						[displayName]
+							TfToken Color Map Format
+						[mappings]
+			[nodes]
+				[/Dome]
+					[inputConnections]
+					[nodeIdentifier]
+						TfToken DomeLight
+					[parameters]
+						[intensity]
+							[typeName]
+								TfToken float
+							[value]
+								float 0.5
+						[texture:file]
+							[colorSpace]
+								TfToken 
+							[typeName]
+								TfToken asset
+							[value]
+								SdfAssetPath @dome.hdr@ resolved=
+						[texture:format]
+							[typeName]
+								TfToken token
+							[value]
+								TfToken latlong
+					[renderContextNodeIdentifiers]
+			[terminals]
+				[light]
+					[upstreamNodeOutputName]
+						TfToken light
+					[upstreamNodePath]
+						TfToken /Dome
+		[__all]
+			[interface]
+				[parameterOrder]
+					VtArray<TfToken> []
+				[parameters]
+					[intensity]
+						[displayGroup]
+							TfToken Basic
+						[displayName]
+							TfToken Intensity
+						[mappings]
+					[texture:file]
+						[displayGroup]
+							TfToken Basic
+						[displayName]
+							TfToken Color Map
+						[mappings]
+					[texture:format]
+						[displayGroup]
+							TfToken Basic
+						[displayName]
+							TfToken Color Map Format
+						[mappings]
+			[nodes]
+				[/Dome]
+					[inputConnections]
+					[nodeIdentifier]
+						TfToken DomeLight
+					[parameters]
+						[intensity]
+							[typeName]
+								TfToken float
+							[value]
+								float 0.5
+						[texture:file]
+							[colorSpace]
+								TfToken 
+							[typeName]
+								TfToken asset
+							[value]
+								SdfAssetPath @dome.hdr@ resolved=
+						[texture:format]
+							[typeName]
+								TfToken token
+							[value]
+								TfToken latlong
+					[renderContextNodeIdentifiers]
+			[terminals]
+				[light]
+					[upstreamNodeOutputName]
+						TfToken light
+					[upstreamNodePath]
+						TfToken /Dome
+/Dome1 type=domeLight
+	[light]
+		[domeOffset]
+			GfMatrix4d ( (1, 0, 0, 0), (0, 2.220446049250313e-16, 1, 0), (0, -1, 2.220446049250313e-16, 0), (0, 0, 0, 1) )
+		[filters]
+			SdfPathVector []
+		[isLight]
+			bool 1
+		[materialSyncMode]
+			TfToken noMaterialResponse
+		[portals]
+			SdfPathVector []
+	[light] params
+		angle = NULL
+		color = GfVec3f (1, 0.5, 0.25)
+		colorTemperature = float 6500
+		diffuse = float 1
+		domeOffset = GfMatrix4d ( (1, 0, 0, 0), (0, 2.220446049250313e-16, 1, 0), (0, -1, 2.220446049250313e-16, 0), (0, 0, 0, 1) )
+		enableColorTemperature = bool 0
+		exposure = float 0
+		height = NULL
+		intensity = float 1
+		length = NULL
+		normalize = bool 0
+		radius = NULL
+		specular = float 1
+		texture:file = SdfAssetPath @@ resolved=
+		texture:format = TfToken automatic
+		width = NULL
+		shaping:focus = NULL
+		shaping:focusTint = NULL
+		shaping:cone:angle = NULL
+		shaping:cone:softness = NULL
+		shaping:ies:file = NULL
+		shaping:ies:angleScale = NULL
+		shaping:ies:normalize = NULL
+		shadow:enable = NULL
+		shadow:color = NULL
+		shadow:distance = NULL
+		shadow:falloff = NULL
+		shadow:falloffGamma = NULL
+		filters = SdfPathVector []
+		isLight = bool 1
+		materialSyncMode = TfToken noMaterialResponse
+		portals = SdfPathVector []
+		treatAsPoint = NULL
+		inputs:density = NULL
+		noSuchParam = NULL
+	[material]
+		[]
+			[interface]
+				[parameterOrder]
+					VtArray<TfToken> []
+				[parameters]
+					[color]
+						[displayGroup]
+							TfToken Basic
+						[displayName]
+							TfToken Color
+						[mappings]
+			[nodes]
+				[/Dome1]
+					[inputConnections]
+					[nodeIdentifier]
+						TfToken DomeLight
+					[parameters]
+						[color]
+							[colorSpace]
+								TfToken 
+							[typeName]
+								TfToken color3f
+							[value]
+								GfVec3f (1, 0.5, 0.25)
+					[renderContextNodeIdentifiers]
+			[terminals]
+				[light]
+					[upstreamNodeOutputName]
+						TfToken light
+					[upstreamNodePath]
+						TfToken /Dome1
+		[__all]
+			[interface]
+				[parameterOrder]
+					VtArray<TfToken> []
+				[parameters]
+					[color]
+						[displayGroup]
+							TfToken Basic
+						[displayName]
+							TfToken Color
+						[mappings]
+			[nodes]
+				[/Dome1]
+					[inputConnections]
+					[nodeIdentifier]
+						TfToken DomeLight
+					[parameters]
+						[color]
+							[colorSpace]
+								TfToken 
+							[typeName]
+								TfToken color3f
+							[value]
+								GfVec3f (1, 0.5, 0.25)
+					[renderContextNodeIdentifiers]
+			[terminals]
+				[light]
+					[upstreamNodeOutputName]
+						TfToken light
+					[upstreamNodePath]
+						TfToken /Dome1
+/Dome1Z type=domeLight
+	[light]
+		[domeOffset]
+			GfMatrix4d ( (1, 0, 0, 0), (0, 2.220446049250313e-16, 1, 0), (0, -1, 2.220446049250313e-16, 0), (0, 0, 0, 1) )
+		[filters]
+			SdfPathVector []
+		[isLight]
+			bool 1
+		[materialSyncMode]
+			TfToken noMaterialResponse
+		[portals]
+			SdfPathVector []
+	[light] params
+		angle = NULL
+		color = GfVec3f (1, 1, 1)
+		colorTemperature = float 6500
+		diffuse = float 1
+		domeOffset = GfMatrix4d ( (1, 0, 0, 0), (0, 2.220446049250313e-16, 1, 0), (0, -1, 2.220446049250313e-16, 0), (0, 0, 0, 1) )
+		enableColorTemperature = bool 0
+		exposure = float 0
+		height = NULL
+		intensity = float 1
+		length = NULL
+		normalize = bool 0
+		radius = NULL
+		specular = float 1
+		texture:file = SdfAssetPath @@ resolved=
+		texture:format = TfToken automatic
+		width = NULL
+		shaping:focus = NULL
+		shaping:focusTint = NULL
+		shaping:cone:angle = NULL
+		shaping:cone:softness = NULL
+		shaping:ies:file = NULL
+		shaping:ies:angleScale = NULL
+		shaping:ies:normalize = NULL
+		shadow:enable = NULL
+		shadow:color = NULL
+		shadow:distance = NULL
+		shadow:falloff = NULL
+		shadow:falloffGamma = NULL
+		filters = SdfPathVector []
+		isLight = bool 1
+		materialSyncMode = TfToken noMaterialResponse
+		portals = SdfPathVector []
+		treatAsPoint = NULL
+		inputs:density = NULL
+		noSuchParam = NULL
+	[material]
+		[]
+			[interface]
+				[parameterOrder]
+					VtArray<TfToken> []
+				[parameters]
+			[nodes]
+				[/Dome1Z]
+					[inputConnections]
+					[nodeIdentifier]
+						TfToken DomeLight
+					[parameters]
+					[renderContextNodeIdentifiers]
+			[terminals]
+				[light]
+					[upstreamNodeOutputName]
+						TfToken light
+					[upstreamNodePath]
+						TfToken /Dome1Z
+		[__all]
+			[interface]
+				[parameterOrder]
+					VtArray<TfToken> []
+				[parameters]
+			[nodes]
+				[/Dome1Z]
+					[inputConnections]
+					[nodeIdentifier]
+						TfToken DomeLight
+					[parameters]
+					[renderContextNodeIdentifiers]
+			[terminals]
+				[light]
+					[upstreamNodeOutputName]
+						TfToken light
+					[upstreamNodePath]
+						TfToken /Dome1Z
+/Portal type=light
+	[light]
+		[filters]
+			SdfPathVector []
+		[isLight]
+			bool 1
+		[materialSyncMode]
+			TfToken noMaterialResponse
+	[light] params
+		angle = NULL
+		color = GfVec3f (1, 1, 1)
+		colorTemperature = float 6500
+		diffuse = float 1
+		domeOffset = NULL
+		enableColorTemperature = bool 0
+		exposure = float 0
+		height = float 1
+		intensity = float 1
+		length = NULL
+		normalize = bool 0
+		radius = NULL
+		specular = float 1
+		texture:file = NULL
+		texture:format = NULL
+		width = float 1
+		shaping:focus = NULL
+		shaping:focusTint = NULL
+		shaping:cone:angle = NULL
+		shaping:cone:softness = NULL
+		shaping:ies:file = NULL
+		shaping:ies:angleScale = NULL
+		shaping:ies:normalize = NULL
+		shadow:enable = NULL
+		shadow:color = NULL
+		shadow:distance = NULL
+		shadow:falloff = NULL
+		shadow:falloffGamma = NULL
+		filters = SdfPathVector []
+		isLight = bool 1
+		materialSyncMode = TfToken noMaterialResponse
+		portals = NULL
+		treatAsPoint = NULL
+		inputs:density = NULL
+		noSuchParam = NULL
+	[material]
+		[]
+			[interface]
+				[parameterOrder]
+					VtArray<TfToken> []
+				[parameters]
+			[nodes]
+				[/Portal]
+					[inputConnections]
+					[nodeIdentifier]
+						TfToken PortalLight
+					[parameters]
+					[renderContextNodeIdentifiers]
+			[terminals]
+				[light]
+					[upstreamNodeOutputName]
+						TfToken light
+					[upstreamNodePath]
+						TfToken /Portal
+		[__all]
+			[interface]
+				[parameterOrder]
+					VtArray<TfToken> []
+				[parameters]
+			[nodes]
+				[/Portal]
+					[inputConnections]
+					[nodeIdentifier]
+						TfToken PortalLight
+					[parameters]
+					[renderContextNodeIdentifiers]
+			[terminals]
+				[light]
+					[upstreamNodeOutputName]
+						TfToken light
+					[upstreamNodePath]
+						TfToken /Portal
+/Rect type=rectLight
+	[light]
+		[filters]
+			SdfPathVector []
+		[isLight]
+			bool 1
+		[materialSyncMode]
+			TfToken noMaterialResponse
+	[light] params
+		angle = NULL
+		color = GfVec3f (1, 1, 1)
+		colorTemperature = float 6500
+		diffuse = float 1
+		domeOffset = NULL
+		enableColorTemperature = bool 0
+		exposure = float 1
+		height = float 3
+		intensity = float 10
+		length = NULL
+		normalize = bool 1
+		radius = NULL
+		specular = float 1
+		texture:file = SdfAssetPath @@ resolved=
+		texture:format = NULL
+		width = float 2
+		shaping:focus = NULL
+		shaping:focusTint = NULL
+		shaping:cone:angle = NULL
+		shaping:cone:softness = NULL
+		shaping:ies:file = NULL
+		shaping:ies:angleScale = NULL
+		shaping:ies:normalize = NULL
+		shadow:enable = NULL
+		shadow:color = NULL
+		shadow:distance = NULL
+		shadow:falloff = NULL
+		shadow:falloffGamma = NULL
+		filters = SdfPathVector []
+		isLight = bool 1
+		materialSyncMode = TfToken noMaterialResponse
+		portals = NULL
+		treatAsPoint = NULL
+		inputs:density = NULL
+		noSuchParam = NULL
+	[material]
+		[]
+			[interface]
+				[parameterOrder]
+					VtArray<TfToken> []
+				[parameters]
+					[exposure]
+						[displayGroup]
+							TfToken Basic
+						[displayName]
+							TfToken Exposure
+						[mappings]
+					[height]
+						[displayGroup]
+							TfToken Geometry
+						[displayName]
+							TfToken Height
+						[mappings]
+					[intensity]
+						[displayGroup]
+							TfToken Basic
+						[displayName]
+							TfToken Intensity
+						[mappings]
+					[normalize]
+						[displayGroup]
+							TfToken Advanced
+						[displayName]
+							TfToken Normalize Power
+						[mappings]
+					[width]
+						[displayGroup]
+							TfToken Geometry
+						[displayName]
+							TfToken Width
+						[mappings]
+			[nodes]
+				[/Rect]
+					[inputConnections]
+					[nodeIdentifier]
+						TfToken RectLight
+					[parameters]
+						[exposure]
+							[typeName]
+								TfToken float
+							[value]
+								float 1
+						[height]
+							[typeName]
+								TfToken float
+							[value]
+								float 3
+						[intensity]
+							[typeName]
+								TfToken float
+							[value]
+								float 10
+						[normalize]
+							[typeName]
+								TfToken bool
+							[value]
+								bool 1
+						[width]
+							[typeName]
+								TfToken float
+							[value]
+								float 2
+					[renderContextNodeIdentifiers]
+			[terminals]
+				[light]
+					[upstreamNodeOutputName]
+						TfToken light
+					[upstreamNodePath]
+						TfToken /Rect
+		[__all]
+			[interface]
+				[parameterOrder]
+					VtArray<TfToken> []
+				[parameters]
+					[exposure]
+						[displayGroup]
+							TfToken Basic
+						[displayName]
+							TfToken Exposure
+						[mappings]
+					[height]
+						[displayGroup]
+							TfToken Geometry
+						[displayName]
+							TfToken Height
+						[mappings]
+					[intensity]
+						[displayGroup]
+							TfToken Basic
+						[displayName]
+							TfToken Intensity
+						[mappings]
+					[normalize]
+						[displayGroup]
+							TfToken Advanced
+						[displayName]
+							TfToken Normalize Power
+						[mappings]
+					[width]
+						[displayGroup]
+							TfToken Geometry
+						[displayName]
+							TfToken Width
+						[mappings]
+			[nodes]
+				[/Rect]
+					[inputConnections]
+					[nodeIdentifier]
+						TfToken RectLight
+					[parameters]
+						[exposure]
+							[typeName]
+								TfToken float
+							[value]
+								float 1
+						[height]
+							[typeName]
+								TfToken float
+							[value]
+								float 3
+						[intensity]
+							[typeName]
+								TfToken float
+							[value]
+								float 10
+						[normalize]
+							[typeName]
+								TfToken bool
+							[value]
+								bool 1
+						[width]
+							[typeName]
+								TfToken float
+							[value]
+								float 2
+					[renderContextNodeIdentifiers]
+			[terminals]
+				[light]
+					[upstreamNodeOutputName]
+						TfToken light
+					[upstreamNodePath]
+						TfToken /Rect
+/Sphere type=sphereLight
+	[light]
+		[filters]
+			SdfPathVector []
+		[isLight]
+			bool 1
+		[materialSyncMode]
+			TfToken noMaterialResponse
+	[light] params
+		angle = NULL
+		color = GfVec3f (1, 1, 1)
+		colorTemperature = float 3000
+		diffuse = float 1
+		domeOffset = NULL
+		enableColorTemperature = bool 1
+		exposure = float 0
+		height = NULL
+		intensity = float 1
+		length = NULL
+		normalize = bool 0
+		radius = float 0.25
+		specular = float 1
+		texture:file = NULL
+		texture:format = NULL
+		width = NULL
+		shaping:focus = float 0
+		shaping:focusTint = GfVec3f (0, 0, 0)
+		shaping:cone:angle = float 45
+		shaping:cone:softness = float 0.1
+		shaping:ies:file = SdfAssetPath @@ resolved=
+		shaping:ies:angleScale = float 0
+		shaping:ies:normalize = bool 0
+		shadow:enable = bool 0
+		shadow:color = GfVec3f (0, 0, 0)
+		shadow:distance = float -1
+		shadow:falloff = float -1
+		shadow:falloffGamma = float 1
+		filters = SdfPathVector []
+		isLight = bool 1
+		materialSyncMode = TfToken noMaterialResponse
+		portals = NULL
+		treatAsPoint = bool 1
+		inputs:density = NULL
+		noSuchParam = NULL
+	[material]
+		[]
+			[interface]
+				[parameterOrder]
+					VtArray<TfToken> []
+				[parameters]
+					[colorTemperature]
+						[displayGroup]
+							TfToken Basic
+						[displayName]
+							TfToken Color Temperature
+						[mappings]
+					[enableColorTemperature]
+						[displayGroup]
+							TfToken Basic
+						[displayName]
+							TfToken Enable Color Temperature
+						[mappings]
+					[radius]
+						[displayGroup]
+							TfToken Geometry
+						[displayName]
+							TfToken Radius
+						[mappings]
+					[shadow:enable]
+						[displayGroup]
+							TfToken Shadows
+						[displayName]
+							TfToken Enable Shadows
+						[mappings]
+					[shaping:cone:angle]
+						[displayGroup]
+							TfToken Shaping
+						[displayName]
+							TfToken Cone Angle
+						[mappings]
+					[shaping:cone:softness]
+						[displayGroup]
+							TfToken Shaping
+						[displayName]
+							TfToken Cone Softness
+						[mappings]
+			[nodes]
+				[/Sphere]
+					[inputConnections]
+					[nodeIdentifier]
+						TfToken SphereLight
+					[parameters]
+						[colorTemperature]
+							[typeName]
+								TfToken float
+							[value]
+								float 3000
+						[enableColorTemperature]
+							[typeName]
+								TfToken bool
+							[value]
+								bool 1
+						[radius]
+							[typeName]
+								TfToken float
+							[value]
+								float 0.25
+						[shadow:enable]
+							[typeName]
+								TfToken bool
+							[value]
+								bool 0
+						[shaping:cone:angle]
+							[typeName]
+								TfToken float
+							[value]
+								float 45
+						[shaping:cone:softness]
+							[typeName]
+								TfToken float
+							[value]
+								float 0.1
+					[renderContextNodeIdentifiers]
+			[terminals]
+				[light]
+					[upstreamNodeOutputName]
+						TfToken light
+					[upstreamNodePath]
+						TfToken /Sphere
+		[__all]
+			[interface]
+				[parameterOrder]
+					VtArray<TfToken> []
+				[parameters]
+					[colorTemperature]
+						[displayGroup]
+							TfToken Basic
+						[displayName]
+							TfToken Color Temperature
+						[mappings]
+					[enableColorTemperature]
+						[displayGroup]
+							TfToken Basic
+						[displayName]
+							TfToken Enable Color Temperature
+						[mappings]
+					[radius]
+						[displayGroup]
+							TfToken Geometry
+						[displayName]
+							TfToken Radius
+						[mappings]
+					[shadow:enable]
+						[displayGroup]
+							TfToken Shadows
+						[displayName]
+							TfToken Enable Shadows
+						[mappings]
+					[shaping:cone:angle]
+						[displayGroup]
+							TfToken Shaping
+						[displayName]
+							TfToken Cone Angle
+						[mappings]
+					[shaping:cone:softness]
+						[displayGroup]
+							TfToken Shaping
+						[displayName]
+							TfToken Cone Softness
+						[mappings]
+			[nodes]
+				[/Sphere]
+					[inputConnections]
+					[nodeIdentifier]
+						TfToken SphereLight
+					[parameters]
+						[colorTemperature]
+							[typeName]
+								TfToken float
+							[value]
+								float 3000
+						[enableColorTemperature]
+							[typeName]
+								TfToken bool
+							[value]
+								bool 1
+						[radius]
+							[typeName]
+								TfToken float
+							[value]
+								float 0.25
+						[shadow:enable]
+							[typeName]
+								TfToken bool
+							[value]
+								bool 0
+						[shaping:cone:angle]
+							[typeName]
+								TfToken float
+							[value]
+								float 45
+						[shaping:cone:softness]
+							[typeName]
+								TfToken float
+							[value]
+								float 0.1
+					[renderContextNodeIdentifiers]
+			[terminals]
+				[light]
+					[upstreamNodeOutputName]
+						TfToken light
+					[upstreamNodePath]
+						TfToken /Sphere
+/Distant type=distantLight
+	[light]
+		[filters]
+			SdfPathVector []
+		[isLight]
+			bool 1
+		[materialSyncMode]
+			TfToken noMaterialResponse
+	[light] params
+		angle = float 1
+		color = GfVec3f (1, 1, 1)
+		colorTemperature = float 6500
+		diffuse = float 1
+		domeOffset = NULL
+		enableColorTemperature = bool 0
+		exposure = float 0
+		height = NULL
+		intensity = float 3
+		length = NULL
+		normalize = bool 0
+		radius = NULL
+		specular = float 1
+		texture:file = NULL
+		texture:format = NULL
+		width = NULL
+		shaping:focus = NULL
+		shaping:focusTint = NULL
+		shaping:cone:angle = NULL
+		shaping:cone:softness = NULL
+		shaping:ies:file = NULL
+		shaping:ies:angleScale = NULL
+		shaping:ies:normalize = NULL
+		shadow:enable = NULL
+		shadow:color = NULL
+		shadow:distance = NULL
+		shadow:falloff = NULL
+		shadow:falloffGamma = NULL
+		filters = SdfPathVector []
+		isLight = bool 1
+		materialSyncMode = TfToken noMaterialResponse
+		portals = NULL
+		treatAsPoint = NULL
+		inputs:density = NULL
+		noSuchParam = NULL
+	[material]
+		[]
+			[interface]
+				[parameterOrder]
+					VtArray<TfToken> []
+				[parameters]
+					[angle]
+						[displayGroup]
+							TfToken Basic
+						[displayName]
+							TfToken Angle Extent
+						[mappings]
+					[intensity]
+						[displayGroup]
+							TfToken Basic
+						[displayName]
+							TfToken Intensity
+						[mappings]
+			[nodes]
+				[/Distant]
+					[inputConnections]
+					[nodeIdentifier]
+						TfToken DistantLight
+					[parameters]
+						[angle]
+							[typeName]
+								TfToken float
+							[value]
+								float 1
+						[intensity]
+							[typeName]
+								TfToken float
+							[value]
+								float 3
+					[renderContextNodeIdentifiers]
+			[terminals]
+				[light]
+					[upstreamNodeOutputName]
+						TfToken light
+					[upstreamNodePath]
+						TfToken /Distant
+		[__all]
+			[interface]
+				[parameterOrder]
+					VtArray<TfToken> []
+				[parameters]
+					[angle]
+						[displayGroup]
+							TfToken Basic
+						[displayName]
+							TfToken Angle Extent
+						[mappings]
+					[intensity]
+						[displayGroup]
+							TfToken Basic
+						[displayName]
+							TfToken Intensity
+						[mappings]
+			[nodes]
+				[/Distant]
+					[inputConnections]
+					[nodeIdentifier]
+						TfToken DistantLight
+					[parameters]
+						[angle]
+							[typeName]
+								TfToken float
+							[value]
+								float 1
+						[intensity]
+							[typeName]
+								TfToken float
+							[value]
+								float 3
+					[renderContextNodeIdentifiers]
+			[terminals]
+				[light]
+					[upstreamNodeOutputName]
+						TfToken light
+					[upstreamNodePath]
+						TfToken /Distant
+/Disk type=diskLight
+	[light]
+		[filters]
+			SdfPathVector []
+		[isLight]
+			bool 1
+		[materialSyncMode]
+			TfToken noMaterialResponse
+	[light] params
+		angle = NULL
+		color = GfVec3f (1, 1, 1)
+		colorTemperature = float 6500
+		diffuse = float 1
+		domeOffset = NULL
+		enableColorTemperature = bool 0
+		exposure = float 0
+		height = NULL
+		intensity = float 1
+		length = NULL
+		normalize = bool 0
+		radius = float 2
+		specular = float 1
+		texture:file = NULL
+		texture:format = NULL
+		width = NULL
+		shaping:focus = NULL
+		shaping:focusTint = NULL
+		shaping:cone:angle = NULL
+		shaping:cone:softness = NULL
+		shaping:ies:file = NULL
+		shaping:ies:angleScale = NULL
+		shaping:ies:normalize = NULL
+		shadow:enable = NULL
+		shadow:color = NULL
+		shadow:distance = NULL
+		shadow:falloff = NULL
+		shadow:falloffGamma = NULL
+		filters = SdfPathVector []
+		isLight = bool 1
+		materialSyncMode = TfToken noMaterialResponse
+		portals = NULL
+		treatAsPoint = NULL
+		inputs:density = NULL
+		noSuchParam = NULL
+	[material]
+		[]
+			[interface]
+				[parameterOrder]
+					VtArray<TfToken> []
+				[parameters]
+					[radius]
+						[displayGroup]
+							TfToken Geometry
+						[displayName]
+							TfToken Radius
+						[mappings]
+			[nodes]
+				[/Disk]
+					[inputConnections]
+					[nodeIdentifier]
+						TfToken DiskLight
+					[parameters]
+						[radius]
+							[typeName]
+								TfToken float
+							[value]
+								float 2
+					[renderContextNodeIdentifiers]
+			[terminals]
+				[light]
+					[upstreamNodeOutputName]
+						TfToken light
+					[upstreamNodePath]
+						TfToken /Disk
+		[__all]
+			[interface]
+				[parameterOrder]
+					VtArray<TfToken> []
+				[parameters]
+					[radius]
+						[displayGroup]
+							TfToken Geometry
+						[displayName]
+							TfToken Radius
+						[mappings]
+			[nodes]
+				[/Disk]
+					[inputConnections]
+					[nodeIdentifier]
+						TfToken DiskLight
+					[parameters]
+						[radius]
+							[typeName]
+								TfToken float
+							[value]
+								float 2
+					[renderContextNodeIdentifiers]
+			[terminals]
+				[light]
+					[upstreamNodeOutputName]
+						TfToken light
+					[upstreamNodePath]
+						TfToken /Disk
+/Cylinder type=cylinderLight
+	[light]
+		[filters]
+			SdfPathVector []
+		[isLight]
+			bool 1
+		[materialSyncMode]
+			TfToken noMaterialResponse
+	[light] params
+		angle = NULL
+		color = GfVec3f (1, 1, 1)
+		colorTemperature = float 6500
+		diffuse = float 0.5
+		domeOffset = NULL
+		enableColorTemperature = bool 0
+		exposure = float 0
+		height = NULL
+		intensity = float 1
+		length = float 4
+		normalize = bool 0
+		radius = float 0.5
+		specular = float 0.25
+		texture:file = NULL
+		texture:format = NULL
+		width = NULL
+		shaping:focus = NULL
+		shaping:focusTint = NULL
+		shaping:cone:angle = NULL
+		shaping:cone:softness = NULL
+		shaping:ies:file = NULL
+		shaping:ies:angleScale = NULL
+		shaping:ies:normalize = NULL
+		shadow:enable = NULL
+		shadow:color = NULL
+		shadow:distance = NULL
+		shadow:falloff = NULL
+		shadow:falloffGamma = NULL
+		filters = SdfPathVector []
+		isLight = bool 1
+		materialSyncMode = TfToken noMaterialResponse
+		portals = NULL
+		treatAsPoint = NULL
+		inputs:density = NULL
+		noSuchParam = NULL
+	[material]
+		[]
+			[interface]
+				[parameterOrder]
+					VtArray<TfToken> []
+				[parameters]
+					[diffuse]
+						[displayGroup]
+							TfToken Refine
+						[displayName]
+							TfToken Diffuse Multiplier
+						[mappings]
+					[length]
+						[displayGroup]
+							TfToken Geometry
+						[displayName]
+							TfToken Length
+						[mappings]
+					[radius]
+						[displayGroup]
+							TfToken Geometry
+						[displayName]
+							TfToken Radius
+						[mappings]
+					[specular]
+						[displayGroup]
+							TfToken Refine
+						[displayName]
+							TfToken Specular Multiplier
+						[mappings]
+			[nodes]
+				[/Cylinder]
+					[inputConnections]
+					[nodeIdentifier]
+						TfToken CylinderLight
+					[parameters]
+						[diffuse]
+							[typeName]
+								TfToken float
+							[value]
+								float 0.5
+						[length]
+							[typeName]
+								TfToken float
+							[value]
+								float 4
+						[radius]
+							[typeName]
+								TfToken float
+							[value]
+								float 0.5
+						[specular]
+							[typeName]
+								TfToken float
+							[value]
+								float 0.25
+					[renderContextNodeIdentifiers]
+			[terminals]
+				[light]
+					[upstreamNodeOutputName]
+						TfToken light
+					[upstreamNodePath]
+						TfToken /Cylinder
+		[__all]
+			[interface]
+				[parameterOrder]
+					VtArray<TfToken> []
+				[parameters]
+					[diffuse]
+						[displayGroup]
+							TfToken Refine
+						[displayName]
+							TfToken Diffuse Multiplier
+						[mappings]
+					[length]
+						[displayGroup]
+							TfToken Geometry
+						[displayName]
+							TfToken Length
+						[mappings]
+					[radius]
+						[displayGroup]
+							TfToken Geometry
+						[displayName]
+							TfToken Radius
+						[mappings]
+					[specular]
+						[displayGroup]
+							TfToken Refine
+						[displayName]
+							TfToken Specular Multiplier
+						[mappings]
+			[nodes]
+				[/Cylinder]
+					[inputConnections]
+					[nodeIdentifier]
+						TfToken CylinderLight
+					[parameters]
+						[diffuse]
+							[typeName]
+								TfToken float
+							[value]
+								float 0.5
+						[length]
+							[typeName]
+								TfToken float
+							[value]
+								float 4
+						[radius]
+							[typeName]
+								TfToken float
+							[value]
+								float 0.5
+						[specular]
+							[typeName]
+								TfToken float
+							[value]
+								float 0.25
+					[renderContextNodeIdentifiers]
+			[terminals]
+				[light]
+					[upstreamNodeOutputName]
+						TfToken light
+					[upstreamNodePath]
+						TfToken /Cylinder
+/Filter type=lightFilter
+	[material]
+		[]
+			[interface]
+				[parameterOrder]
+					VtArray<TfToken> []
+				[parameters]
+					[density]
+						[displayGroup]
+							TfToken 
+						[displayName]
+							TfToken 
+						[mappings]
+			[nodes]
+				[/Filter]
+					[inputConnections]
+					[nodeIdentifier]
+						TfToken 
+					[parameters]
+						[density]
+							[typeName]
+								TfToken float
+							[value]
+								float 0.5
+					[renderContextNodeIdentifiers]
+			[terminals]
+				[lightFilter]
+					[upstreamNodeOutputName]
+						TfToken lightFilter
+					[upstreamNodePath]
+						TfToken /Filter
+		[__all]
+			[interface]
+				[parameterOrder]
+					VtArray<TfToken> []
+				[parameters]
+					[density]
+						[displayGroup]
+							TfToken 
+						[displayName]
+							TfToken 
+						[mappings]
+			[nodes]
+				[/Filter]
+					[inputConnections]
+					[nodeIdentifier]
+						TfToken 
+					[parameters]
+						[density]
+							[typeName]
+								TfToken float
+							[value]
+								float 0.5
+					[renderContextNodeIdentifiers]
+			[terminals]
+				[lightFilter]
+					[upstreamNodeOutputName]
+						TfToken lightFilter
+					[upstreamNodePath]
+						TfToken /Filter
+/PluginFilter type=lightFilter
+	[material]
+		[]
+			[interface]
+				[parameterOrder]
+					VtArray<TfToken> []
+				[parameters]
+			[nodes]
+				[/PluginFilter]
+					[inputConnections]
+					[nodeIdentifier]
+						TfToken 
+					[parameters]
+					[renderContextNodeIdentifiers]
+			[terminals]
+				[lightFilter]
+					[upstreamNodeOutputName]
+						TfToken lightFilter
+					[upstreamNodePath]
+						TfToken /PluginFilter
+		[__all]
+			[interface]
+				[parameterOrder]
+					VtArray<TfToken> []
+				[parameters]
+			[nodes]
+				[/PluginFilter]
+					[inputConnections]
+					[nodeIdentifier]
+						TfToken 
+					[parameters]
+					[renderContextNodeIdentifiers]
+			[terminals]
+				[lightFilter]
+					[upstreamNodeOutputName]
+						TfToken lightFilter
+					[upstreamNodePath]
+						TfToken /PluginFilter
+/Plugin type=pluginLight
+	[light]
+		[filters]
+			SdfPathVector []
+		[isLight]
+			bool 1
+		[materialSyncMode]
+			TfToken noMaterialResponse
+	[light] params
+		angle = NULL
+		color = GfVec3f (1, 1, 1)
+		colorTemperature = float 6500
+		diffuse = float 1
+		domeOffset = NULL
+		enableColorTemperature = bool 0
+		exposure = float 0
+		height = NULL
+		intensity = float 1
+		length = NULL
+		normalize = bool 0
+		radius = NULL
+		specular = float 1
+		texture:file = NULL
+		texture:format = NULL
+		width = NULL
+		shaping:focus = NULL
+		shaping:focusTint = NULL
+		shaping:cone:angle = NULL
+		shaping:cone:softness = NULL
+		shaping:ies:file = NULL
+		shaping:ies:angleScale = NULL
+		shaping:ies:normalize = NULL
+		shadow:enable = NULL
+		shadow:color = NULL
+		shadow:distance = NULL
+		shadow:falloff = NULL
+		shadow:falloffGamma = NULL
+		filters = SdfPathVector []
+		isLight = bool 1
+		materialSyncMode = TfToken noMaterialResponse
+		portals = NULL
+		treatAsPoint = NULL
+		inputs:density = NULL
+		noSuchParam = NULL
+	[material]
+		[]
+			[interface]
+				[parameterOrder]
+					VtArray<TfToken> []
+				[parameters]
+			[nodes]
+				[/Plugin]
+					[inputConnections]
+					[nodeIdentifier]
+						TfToken 
+					[parameters]
+					[renderContextNodeIdentifiers]
+			[terminals]
+				[light]
+					[upstreamNodeOutputName]
+						TfToken light
+					[upstreamNodePath]
+						TfToken /Plugin
+		[__all]
+			[interface]
+				[parameterOrder]
+					VtArray<TfToken> []
+				[parameters]
+			[nodes]
+				[/Plugin]
+					[inputConnections]
+					[nodeIdentifier]
+						TfToken 
+					[parameters]
+					[renderContextNodeIdentifiers]
+			[terminals]
+				[light]
+					[upstreamNodeOutputName]
+						TfToken light
+					[upstreamNodePath]
+						TfToken /Plugin
+/MeshLight type=mesh
+	[light]
+		[filters]
+			SdfPathVector []
+		[isLight]
+			bool 1
+		[materialSyncMode]
+			TfToken materialGlowTintsLight
+	[light] params
+		angle = NULL
+		color = GfVec3f (1, 1, 1)
+		colorTemperature = float 6500
+		diffuse = float 1
+		domeOffset = NULL
+		enableColorTemperature = bool 0
+		exposure = float 0
+		height = NULL
+		intensity = float 2
+		length = NULL
+		normalize = bool 0
+		radius = NULL
+		specular = float 1
+		texture:file = NULL
+		texture:format = NULL
+		width = NULL
+		shaping:focus = NULL
+		shaping:focusTint = NULL
+		shaping:cone:angle = NULL
+		shaping:cone:softness = NULL
+		shaping:ies:file = NULL
+		shaping:ies:angleScale = NULL
+		shaping:ies:normalize = NULL
+		shadow:enable = NULL
+		shadow:color = NULL
+		shadow:distance = NULL
+		shadow:falloff = NULL
+		shadow:falloffGamma = NULL
+		filters = SdfPathVector []
+		isLight = bool 1
+		materialSyncMode = TfToken materialGlowTintsLight
+		portals = NULL
+		treatAsPoint = NULL
+		inputs:density = NULL
+		noSuchParam = NULL
+	[material]
+		[]
+			[interface]
+				[parameterOrder]
+					VtArray<TfToken> []
+				[parameters]
+					[intensity]
+						[displayGroup]
+							TfToken Basic
+						[displayName]
+							TfToken Intensity
+						[mappings]
+			[nodes]
+				[/MeshLight]
+					[inputConnections]
+					[nodeIdentifier]
+						TfToken MeshLight
+					[parameters]
+						[intensity]
+							[typeName]
+								TfToken float
+							[value]
+								float 2
+					[renderContextNodeIdentifiers]
+			[terminals]
+				[light]
+					[upstreamNodeOutputName]
+						TfToken light
+					[upstreamNodePath]
+						TfToken /MeshLight
+		[__all]
+			[interface]
+				[parameterOrder]
+					VtArray<TfToken> []
+				[parameters]
+					[intensity]
+						[displayGroup]
+							TfToken Basic
+						[displayName]
+							TfToken Intensity
+						[mappings]
+			[nodes]
+				[/MeshLight]
+					[inputConnections]
+					[nodeIdentifier]
+						TfToken MeshLight
+					[parameters]
+						[intensity]
+							[typeName]
+								TfToken float
+							[value]
+								float 2
+					[renderContextNodeIdentifiers]
+			[terminals]
+				[light]
+					[upstreamNodeOutputName]
+						TfToken light
+					[upstreamNodePath]
+						TfToken /MeshLight
+/SphereWithLightAPI type=sphere
+	[light]
+		[filters]
+			SdfPathVector []
+		[isLight]
+			bool 1
+		[materialSyncMode]
+			TfToken noMaterialResponse
+	[light] params
+		angle = NULL
+		color = GfVec3f (1, 1, 1)
+		colorTemperature = float 6500
+		diffuse = float 1
+		domeOffset = NULL
+		enableColorTemperature = bool 0
+		exposure = float 0
+		height = NULL
+		intensity = float 7
+		length = NULL
+		normalize = bool 0
+		radius = NULL
+		specular = float 1
+		texture:file = NULL
+		texture:format = NULL
+		width = NULL
+		shaping:focus = NULL
+		shaping:focusTint = NULL
+		shaping:cone:angle = NULL
+		shaping:cone:softness = NULL
+		shaping:ies:file = NULL
+		shaping:ies:angleScale = NULL
+		shaping:ies:normalize = NULL
+		shadow:enable = NULL
+		shadow:color = NULL
+		shadow:distance = NULL
+		shadow:falloff = NULL
+		shadow:falloffGamma = NULL
+		filters = SdfPathVector []
+		isLight = bool 1
+		materialSyncMode = TfToken noMaterialResponse
+		portals = NULL
+		treatAsPoint = NULL
+		inputs:density = NULL
+		noSuchParam = NULL
+	[material]
+		[]
+			[interface]
+				[parameterOrder]
+					VtArray<TfToken> []
+				[parameters]
+					[intensity]
+						[displayGroup]
+							TfToken Basic
+						[displayName]
+							TfToken Intensity
+						[mappings]
+			[nodes]
+				[/SphereWithLightAPI]
+					[inputConnections]
+					[nodeIdentifier]
+						TfToken 
+					[parameters]
+						[intensity]
+							[typeName]
+								TfToken float
+							[value]
+								float 7
+					[renderContextNodeIdentifiers]
+			[terminals]
+				[light]
+					[upstreamNodeOutputName]
+						TfToken light
+					[upstreamNodePath]
+						TfToken /SphereWithLightAPI
+		[__all]
+			[interface]
+				[parameterOrder]
+					VtArray<TfToken> []
+				[parameters]
+					[intensity]
+						[displayGroup]
+							TfToken Basic
+						[displayName]
+							TfToken Intensity
+						[mappings]
+			[nodes]
+				[/SphereWithLightAPI]
+					[inputConnections]
+					[nodeIdentifier]
+						TfToken 
+					[parameters]
+						[intensity]
+							[typeName]
+								TfToken float
+							[value]
+								float 7
+					[renderContextNodeIdentifiers]
+			[terminals]
+				[light]
+					[upstreamNodeOutputName]
+						TfToken light
+					[upstreamNodePath]
+						TfToken /SphereWithLightAPI
+OK

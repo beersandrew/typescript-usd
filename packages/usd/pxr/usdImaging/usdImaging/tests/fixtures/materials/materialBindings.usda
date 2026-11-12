@@ -1,0 +1,118 @@
+#usda 1.0
+
+# Direct and collection material bindings with purposes and binding
+# strengths, for the UsdImagingMaterialBindingAPIAdapter and
+# UsdImagingMaterialBindingsResolvingSceneIndex captures.
+def Scope "Looks"
+{
+    def Material "Base"
+    {
+    }
+
+    def Material "Preview"
+    {
+    }
+
+    def Material "Full"
+    {
+    }
+
+    def Material "Shiny"
+    {
+    }
+
+    def Material "ShinyFull"
+    {
+    }
+
+    def Material "Strong"
+    {
+    }
+
+    def Material "Local"
+    {
+    }
+}
+
+def Xform "World" (
+    prepend apiSchemas = ["MaterialBindingAPI", "CollectionAPI:shiny", "CollectionAPI:strong"]
+)
+{
+    rel material:binding = </Looks/Base>
+    rel material:binding:preview = </Looks/Preview>
+    rel material:binding:collection:shiny = [
+        </World.collection:shiny>,
+        </Looks/Shiny>,
+    ]
+    rel material:binding:collection:full:shinyFull = [
+        </World.collection:shiny>,
+        </Looks/ShinyFull>,
+    ]
+    rel material:binding:collection:strong = [
+        </World.collection:strong>,
+        </Looks/Strong>,
+    ] (
+        bindMaterialAs = "strongerThanDescendants"
+    )
+
+    uniform token collection:shiny:expansionRule = "expandPrims"
+    rel collection:shiny:includes = [</World/B>, </World/C>]
+    rel collection:shiny:excludes = </World/C/Leaf>
+
+    uniform token collection:strong:expansionRule = "expandPrims"
+    rel collection:strong:includes = </World/D>
+
+    def Mesh "A" (
+        prepend apiSchemas = ["MaterialBindingAPI"]
+    )
+    {
+        rel material:binding:full = </Looks/Full>
+    }
+
+    def Mesh "B" (
+        prepend apiSchemas = ["MaterialBindingAPI"]
+    )
+    {
+        rel material:binding = </Looks/Local>
+    }
+
+    def Xform "C"
+    {
+        def Mesh "Leaf" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Looks/Local> (
+                bindMaterialAs = "strongerThanDescendants"
+            )
+        }
+
+        def Mesh "Other"
+        {
+        }
+    }
+
+    def Mesh "D" (
+        prepend apiSchemas = ["MaterialBindingAPI"]
+    )
+    {
+        rel material:binding = </Looks/Local>
+    }
+
+    def Xform "E" (
+        prepend apiSchemas = ["MaterialBindingAPI"]
+    )
+    {
+        rel material:binding:preview = </Looks/Strong> (
+            bindMaterialAs = "strongerThanDescendants"
+        )
+
+        def Mesh "Child" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding:preview = </Looks/Local>
+            rel material:binding:custom = </Looks/Full>
+        }
+    }
+}

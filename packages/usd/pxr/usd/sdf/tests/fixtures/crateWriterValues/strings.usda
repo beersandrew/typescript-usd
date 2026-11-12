@@ -1,0 +1,13 @@
+#usda 1.0
+(
+    customLayerData = {
+        string raw = "\x80\xff"
+    }
+)
+
+def "P"
+{
+    string s = "\x80\xff"
+    string t = "a\xc3b"
+    string[] u = ["\xff", "\xe2\x82\xac"]
+}

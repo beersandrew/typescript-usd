@@ -1,0 +1,85 @@
+#usda 1.0
+(
+    startTimeCode = 0
+    endTimeCode = 20
+)
+
+def Xform "OneClipOneSample" (
+    clips = {
+        dictionary default = {
+            asset[] assetPaths = [@./clipOne.usda@]
+            string primPath = "/Model"
+            double2[] active = [(0, 0)]
+        }
+    }
+)
+{
+    double3 xformOp:translate
+    uniform token[] xformOpOrder = ["xformOp:translate"]
+}
+
+def Xform "OneClipOneSampleTimes" (
+    clips = {
+        dictionary default = {
+            asset[] assetPaths = [@./clipOne.usda@]
+            string primPath = "/Model"
+            double2[] active = [(0, 0)]
+            double2[] times = [(0, 0), (20, 20)]
+        }
+    }
+)
+{
+    double3 xformOp:translate
+    uniform token[] xformOpOrder = ["xformOp:translate"]
+}
+
+def Xform "OneClipTwoSamples" (
+    clips = {
+        dictionary default = {
+            asset[] assetPaths = [@./clipTwo.usda@]
+            string primPath = "/Model"
+            double2[] active = [(0, 0)]
+        }
+    }
+)
+{
+    double3 xformOp:translate
+    uniform token[] xformOpOrder = ["xformOp:translate"]
+}
+
+def Xform "TwoClips" (
+    clips = {
+        dictionary default = {
+            asset[] assetPaths = [@./clipOne.usda@, @./clipOne.usda@]
+            string primPath = "/Model"
+            double2[] active = [(0, 0), (10, 1)]
+        }
+    }
+)
+{
+    double3 xformOp:translate
+    uniform token[] xformOpOrder = ["xformOp:translate"]
+}
+
+def Xform "Sampled"
+{
+    double3 xformOp:translate.timeSamples = {
+        0: (0, 0, 0),
+        10: (1, 0, 0),
+    }
+    uniform token[] xformOpOrder = ["xformOp:translate"]
+}
+
+def Xform "OneSample"
+{
+    double3 xformOp:translate.timeSamples = {
+        0: (5, 0, 0),
+    }
+    uniform token[] xformOpOrder = ["xformOp:translate"]
+}
+
+def Xform "Static"
+{
+    double3 xformOp:translate = (1, 1, 1)
+    uniform token[] xformOpOrder = ["xformOp:translate"]
+}

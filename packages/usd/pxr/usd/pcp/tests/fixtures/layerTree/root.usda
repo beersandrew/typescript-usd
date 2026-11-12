@@ -1,0 +1,7 @@
+#usda 1.0
+(
+    timeCodesPerSecond = 24
+    hasOwnedSubLayers = true
+    subLayers = [@left.usda@ (offset = 10; scale = 2), @right.usda@ (offset = 20; scale = 1)]
+)
+def Xform "World" {}

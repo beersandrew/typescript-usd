@@ -1,0 +1,13 @@
+#usda 1.0
+
+def "A" (
+    payload = @./p.usda@</X>
+)
+{
+}
+
+def "B" (
+    prepend payload = @./p.usda@</X>
+)
+{
+}

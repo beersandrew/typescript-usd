@@ -1,0 +1,31 @@
+#usda 1.0
+
+def Xform "CoordSysTarget"
+{
+    double3 xformOp:translate = (1, 0, 0)
+    uniform token[] xformOpOrder = ["xformOp:translate"]
+}
+
+def Xform "Bound" (
+    prepend apiSchemas = ["CoordSysAPI:foo", "CoordSysAPI:bar", "CoordSysAPI:unbound"]
+)
+{
+    rel coordSys:foo:binding = </CoordSysTarget>
+    rel coordSys:bar:binding = </Bound/Local>
+
+    def Xform "Local"
+    {
+    }
+}
+
+def Scope "Collections" (
+    prepend apiSchemas = ["CollectionAPI:rules", "CollectionAPI:expr", "CollectionAPI:explicit"]
+)
+{
+    uniform token collection:rules:expansionRule = "expandPrims"
+    rel collection:rules:includes = [</Bound>, </CoordSysTarget>]
+    rel collection:rules:excludes = </Bound/Local>
+    uniform pathExpression collection:expr:membershipExpression = "/Bound// - /Bound/Local"
+    uniform token collection:explicit:expansionRule = "explicitOnly"
+    rel collection:explicit:includes = </Bound.coordSys:foo:binding>
+}

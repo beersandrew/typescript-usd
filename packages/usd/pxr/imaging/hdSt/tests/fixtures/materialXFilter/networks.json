@@ -1,0 +1,345 @@
+{
+  "comment": "Input networks for capture.cpp and materialXFilter.test.ts (both read this file). Each case is applied in order on one HdStResourceRegistry per 'registry' kind, so later cases see the MaterialX shaders earlier ones cached. Values: [type, value] with type float|int|bool|string|token|asset|float2|float3|float4.",
+  "cases": [
+    {
+      "name": "ssTextured",
+      "registry": "gl",
+      "materialPath": "/Mat",
+      "terminal": "/Mat/Surface",
+      "terminals": {
+        "surface": "/Mat/Surface"
+      },
+      "nodes": {
+        "/Mat/Surface": {
+          "type": "ND_standard_surface_surfaceshader",
+          "parameters": {
+            "base": ["float", 0.9],
+            "metalness": ["float", 0.25]
+          },
+          "connections": {
+            "base_color": [["/Mat/Image", "out"]]
+          }
+        },
+        "/Mat/Image": {
+          "type": "ND_image_color3",
+          "parameters": {
+            "file": ["asset", "texture.png"],
+            "uaddressmode": ["string", "clamp"],
+            "filtertype": ["string", "closest"]
+          },
+          "connections": {
+            "texcoord": [["/Mat/UV", "out"]]
+          }
+        },
+        "/Mat/UV": {
+          "type": "ND_texcoord_vector2",
+          "parameters": {
+            "index": ["int", 0]
+          }
+        }
+      }
+    },
+    {
+      "name": "ssTexturedRenamed",
+      "registry": "gl",
+      "materialPath": "/Other",
+      "terminal": "/Other/Shader",
+      "terminals": {
+        "surface": "/Other/Shader"
+      },
+      "nodes": {
+        "/Other/Shader": {
+          "type": "ND_standard_surface_surfaceshader",
+          "parameters": {
+            "base": ["float", 0.5],
+            "metalness": ["float", 0.75]
+          },
+          "connections": {
+            "base_color": [["/Other/Tex", "out"]]
+          }
+        },
+        "/Other/Tex": {
+          "type": "ND_image_color3",
+          "parameters": {
+            "file": ["asset", "other.png"],
+            "vaddressmode": ["string", "mirror"]
+          },
+          "connections": {
+            "texcoord": [["/Other/Coords", "out"]]
+          }
+        },
+        "/Other/Coords": {
+          "type": "ND_texcoord_vector2",
+          "parameters": {
+            "index": ["int", 0]
+          }
+        }
+      }
+    },
+    {
+      "name": "ssTexturedSrgb",
+      "registry": "gl",
+      "materialPath": "/Mat",
+      "terminal": "/Mat/Surface",
+      "terminals": {
+        "surface": "/Mat/Surface"
+      },
+      "nodes": {
+        "/Mat/Surface": {
+          "type": "ND_standard_surface_surfaceshader",
+          "parameters": {
+            "base": ["float", 0.9]
+          },
+          "connections": {
+            "base_color": [["/Mat/Image", "out"]]
+          }
+        },
+        "/Mat/Image": {
+          "type": "ND_image_color3",
+          "parameters": {
+            "file": ["asset", "texture.png"],
+            "colorSpace:file": ["token", "srgb_texture"]
+          },
+          "connections": {
+            "texcoord": [["/Mat/UV", "out"]]
+          }
+        },
+        "/Mat/UV": {
+          "type": "ND_texcoord_vector2",
+          "parameters": {
+            "index": ["int", 0]
+          }
+        }
+      }
+    },
+    {
+      "name": "usdPsTexturedGlassStringVarname",
+      "registry": "gl",
+      "materialPath": "/Glass",
+      "terminal": "/Glass/Preview",
+      "terminals": {
+        "surface": "/Glass/Preview"
+      },
+      "nodes": {
+        "/Glass/Preview": {
+          "type": "ND_UsdPreviewSurface_surfaceshader",
+          "parameters": {
+            "opacity": ["float", 0.5],
+            "roughness": ["float", 0.3]
+          },
+          "connections": {
+            "diffuseColor": [["/Glass/Tex", "rgb"]]
+          }
+        },
+        "/Glass/Tex": {
+          "type": "ND_UsdUVTexture_23",
+          "parameters": {
+            "file": ["asset", "texture.png"],
+            "wrapS": ["string", "repeat"],
+            "wrapT": ["string", "clamp"]
+          },
+          "connections": {
+            "st": [["/Glass/Reader", "out"]]
+          }
+        },
+        "/Glass/Reader": {
+          "type": "ND_UsdPrimvarReader_vector2",
+          "parameters": {
+            "varname": ["string", "st"]
+          }
+        }
+      }
+    },
+    {
+      "name": "usdPsTexturedGlass",
+      "registry": "gl",
+      "materialPath": "/Glass2",
+      "terminal": "/Glass2/Preview",
+      "terminals": {
+        "surface": "/Glass2/Preview"
+      },
+      "nodes": {
+        "/Glass2/Preview": {
+          "type": "ND_UsdPreviewSurface_surfaceshader",
+          "parameters": {
+            "opacity": ["float", 0.5],
+            "roughness": ["float", 0.3]
+          },
+          "connections": {
+            "diffuseColor": [["/Glass2/Tex", "rgb"]]
+          }
+        },
+        "/Glass2/Tex": {
+          "type": "ND_UsdUVTexture_23",
+          "parameters": {
+            "file": ["asset", "texture.png"],
+            "wrapS": ["string", "repeat"],
+            "wrapT": ["string", "clamp"]
+          }
+        }
+      }
+    },
+    {
+      "name": "usdPsMasked",
+      "registry": "gl",
+      "materialPath": "/Masked",
+      "terminal": "/Masked/Preview",
+      "terminals": {
+        "surface": "/Masked/Preview"
+      },
+      "nodes": {
+        "/Masked/Preview": {
+          "type": "ND_UsdPreviewSurface_surfaceshader",
+          "parameters": {
+            "opacityThreshold": ["float", 0.5],
+            "diffuseColor": [
+              "float3",
+              [0.1, 0.2, 0.3]
+            ]
+          }
+        }
+      }
+    },
+    {
+      "name": "openPbrPrimvar",
+      "registry": "gl",
+      "materialPath": "/Pbr",
+      "terminal": "/Pbr/Surface",
+      "terminals": {
+        "surface": "/Pbr/Surface"
+      },
+      "nodes": {
+        "/Pbr/Surface": {
+          "type": "ND_open_pbr_surface_surfaceshader",
+          "parameters": {
+            "geometry_opacity": ["float", 0.5],
+            "base_weight": ["float", 0.7]
+          },
+          "connections": {
+            "base_color": [["/Pbr/Color", "out"]]
+          }
+        },
+        "/Pbr/Color": {
+          "type": "ND_geompropvalue_color3",
+          "parameters": {
+            "geomprop": ["string", "displayColor"],
+            "default": [
+              "float3",
+              [0.25, 0.5, 0.75]
+            ]
+          }
+        }
+      }
+    },
+    {
+      "name": "gltfBlend",
+      "registry": "gl",
+      "materialPath": "/Gltf",
+      "terminal": "/Gltf/Surface",
+      "terminals": {
+        "surface": "/Gltf/Surface"
+      },
+      "nodes": {
+        "/Gltf/Surface": {
+          "type": "ND_gltf_pbr_surfaceshader",
+          "parameters": {
+            "alpha_mode": ["int", 2],
+            "alpha": ["float", 0.5],
+            "roughness": ["float", 0.4]
+          }
+        }
+      }
+    },
+    {
+      "name": "surfaceOpacity",
+      "registry": "gl",
+      "materialPath": "/Surf",
+      "terminal": "/Surf/Surface",
+      "terminals": {
+        "surface": "/Surf/Surface"
+      },
+      "nodes": {
+        "/Surf/Surface": {
+          "type": "ND_surface",
+          "parameters": {
+            "opacity": ["float", 0.5]
+          },
+          "connections": {
+            "bsdf": [["/Surf/Diffuse", "out"]]
+          }
+        },
+        "/Surf/Diffuse": {
+          "type": "ND_oren_nayar_diffuse_bsdf",
+          "parameters": {
+            "color": [
+              "float3",
+              [0.8, 0.4, 0.2]
+            ],
+            "roughness": ["float", 0.1]
+          }
+        }
+      }
+    },
+    {
+      "name": "configTag",
+      "registry": "gl",
+      "materialPath": "/Tagged",
+      "terminal": "/Tagged/Surface",
+      "terminals": {
+        "surface": "/Tagged/Surface"
+      },
+      "config": {
+        "mtlx:materialTag": ["string", "additive"]
+      },
+      "nodes": {
+        "/Tagged/Surface": {
+          "type": "ND_standard_surface_surfaceshader",
+          "parameters": {
+            "base_color": [
+              "float3",
+              [0.2, 0.4, 0.6]
+            ]
+          }
+        }
+      }
+    },
+    {
+      "name": "ssTexturedBindless",
+      "registry": "glBindless",
+      "materialPath": "/Mat",
+      "terminal": "/Mat/Surface",
+      "terminals": {
+        "surface": "/Mat/Surface"
+      },
+      "nodes": {
+        "/Mat/Surface": {
+          "type": "ND_standard_surface_surfaceshader",
+          "parameters": {
+            "base": ["float", 0.9],
+            "metalness": ["float", 0.25]
+          },
+          "connections": {
+            "base_color": [["/Mat/Image", "out"]]
+          }
+        },
+        "/Mat/Image": {
+          "type": "ND_image_color3",
+          "parameters": {
+            "file": ["asset", "texture.png"],
+            "uaddressmode": ["string", "clamp"],
+            "filtertype": ["string", "closest"]
+          },
+          "connections": {
+            "texcoord": [["/Mat/UV", "out"]]
+          }
+        },
+        "/Mat/UV": {
+          "type": "ND_texcoord_vector2",
+          "parameters": {
+            "index": ["int", 0]
+          }
+        }
+      }
+    }
+  ]
+}

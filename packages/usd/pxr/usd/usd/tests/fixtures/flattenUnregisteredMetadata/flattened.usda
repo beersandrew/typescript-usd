@@ -1,0 +1,12 @@
+#usda 1.0
+(
+    defaultPrim = "A"
+)
+
+def "A" (
+    kind = "component"
+)
+{
+    double x = 1
+}
+

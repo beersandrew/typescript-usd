@@ -1,0 +1,2 @@
+invalid
+Node interface error: Input 'base_color' doesn't match declaration: <standard_surface name="Surface" type="surfaceshader">

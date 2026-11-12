@@ -1,0 +1,19 @@
+{
+  "openusdVersion": [
+    0,
+    26,
+    8
+  ],
+  "boundMaterial": "/Material",
+  "surface": "/Material/Preview",
+  "roughness": 0.25,
+  "roughnessAt2": 0.75,
+  "emissiveColor": [
+    0.20000000298023224,
+    0.4000000059604645,
+    0.6000000238418579
+  ],
+  "diffuseSource": "/Material/Texture.outputs:rgb",
+  "textureResolvedSuffix": "nested/texture.png",
+  "uvSource": "/Material/UV.outputs:result"
+}

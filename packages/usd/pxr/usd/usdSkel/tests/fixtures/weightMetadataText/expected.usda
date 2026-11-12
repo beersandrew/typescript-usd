@@ -1,0 +1,15 @@
+#usda 1.0
+
+def "Shape"
+{
+    uniform point3f[] inbetweens:a = [(1, 2, 3)] (
+        weight = -0.499
+    )
+    uniform point3f[] inbetweens:b = [(1, 2, 3)] (
+        weight = 0.016601562
+    )
+    uniform point3f[] inbetweens:c = [(1, 2, 3)] (
+        weight = 30000000000
+    )
+}
+

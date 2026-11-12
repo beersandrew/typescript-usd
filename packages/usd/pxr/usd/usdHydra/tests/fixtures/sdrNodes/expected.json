@@ -1,0 +1,360 @@
+{
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "payload": {
+    "identifiers": [
+      "HwFieldReader_1",
+      "HwFieldReader_float",
+      "HwFieldReader_float2",
+      "HwFieldReader_float3",
+      "HwPrimvar_1",
+      "HwPtexTexture_1",
+      "HwUvTexture_1"
+    ],
+    "nodes": {
+      "HwFieldReader_1": {
+        "function": "HwFieldReader",
+        "identifier": "HwFieldReader_1",
+        "implementationFile": "empty.glslfx",
+        "inputNames": [
+          "fieldname"
+        ],
+        "name": "HwFieldReader",
+        "outputNames": [],
+        "properties": {
+          "fieldname": {
+            "arraySize": 0,
+            "default": "",
+            "isOutput": false,
+            "type": "string"
+          }
+        },
+        "role": "field",
+        "sourceType": "glslfx"
+      },
+      "HwFieldReader_float": {
+        "function": "HwFieldReader",
+        "identifier": "HwFieldReader_float",
+        "implementationFile": "empty.glslfx",
+        "inputNames": [
+          "fallback",
+          "fieldname"
+        ],
+        "name": "HwFieldReader_float",
+        "outputNames": [
+          "result"
+        ],
+        "properties": {
+          "fallback": {
+            "arraySize": 0,
+            "default": 0.0,
+            "isOutput": false,
+            "type": "float"
+          },
+          "fieldname": {
+            "arraySize": 0,
+            "default": "",
+            "isOutput": false,
+            "type": "string"
+          },
+          "result": {
+            "arraySize": 0,
+            "default": null,
+            "isOutput": true,
+            "type": "float"
+          }
+        },
+        "role": "field",
+        "sourceType": "glslfx"
+      },
+      "HwFieldReader_float2": {
+        "function": "HwFieldReader",
+        "identifier": "HwFieldReader_float2",
+        "implementationFile": "empty.glslfx",
+        "inputNames": [
+          "fallback",
+          "fieldname"
+        ],
+        "name": "HwFieldReader_float2",
+        "outputNames": [
+          "result"
+        ],
+        "properties": {
+          "fallback": {
+            "arraySize": 2,
+            "default": [
+              0.0,
+              0.0
+            ],
+            "isOutput": false,
+            "type": "float"
+          },
+          "fieldname": {
+            "arraySize": 0,
+            "default": "",
+            "isOutput": false,
+            "type": "string"
+          },
+          "result": {
+            "arraySize": 2,
+            "default": null,
+            "isOutput": true,
+            "type": "float"
+          }
+        },
+        "role": "field",
+        "sourceType": "glslfx"
+      },
+      "HwFieldReader_float3": {
+        "function": "HwFieldReader",
+        "identifier": "HwFieldReader_float3",
+        "implementationFile": "empty.glslfx",
+        "inputNames": [
+          "fallback",
+          "fieldname"
+        ],
+        "name": "HwFieldReader_float3",
+        "outputNames": [
+          "result"
+        ],
+        "properties": {
+          "fallback": {
+            "arraySize": 3,
+            "default": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "isOutput": false,
+            "type": "float"
+          },
+          "fieldname": {
+            "arraySize": 0,
+            "default": "",
+            "isOutput": false,
+            "type": "string"
+          },
+          "result": {
+            "arraySize": 3,
+            "default": null,
+            "isOutput": true,
+            "type": "float"
+          }
+        },
+        "role": "field",
+        "sourceType": "glslfx"
+      },
+      "HwPrimvar_1": {
+        "function": "HwPrimvar",
+        "identifier": "HwPrimvar_1",
+        "implementationFile": "empty.glslfx",
+        "inputNames": [
+          "varname"
+        ],
+        "name": "HwPrimvar",
+        "outputNames": [],
+        "properties": {
+          "varname": {
+            "arraySize": 0,
+            "default": "",
+            "isOutput": false,
+            "type": "string"
+          }
+        },
+        "role": "primvar",
+        "sourceType": "glslfx"
+      },
+      "HwPtexTexture_1": {
+        "function": "HwPtexTexture",
+        "identifier": "HwPtexTexture_1",
+        "implementationFile": "empty.glslfx",
+        "inputNames": [
+          "faceIndex",
+          "faceIndexPrimvar",
+          "faceOffset",
+          "faceOffsetPrimvar",
+          "file",
+          "frame",
+          "textureMemory"
+        ],
+        "name": "HwPtexTexture",
+        "outputNames": [
+          "a",
+          "b",
+          "g",
+          "r",
+          "rgb",
+          "rgba"
+        ],
+        "properties": {
+          "a": {
+            "arraySize": 0,
+            "default": null,
+            "isOutput": true,
+            "type": "float"
+          },
+          "b": {
+            "arraySize": 0,
+            "default": null,
+            "isOutput": true,
+            "type": "float"
+          },
+          "faceIndex": {
+            "arraySize": 0,
+            "default": null,
+            "isOutput": false,
+            "type": "int"
+          },
+          "faceIndexPrimvar": {
+            "arraySize": 0,
+            "default": "ptexFaceIndex",
+            "isOutput": false,
+            "type": "string"
+          },
+          "faceOffset": {
+            "arraySize": 0,
+            "default": null,
+            "isOutput": false,
+            "type": "int"
+          },
+          "faceOffsetPrimvar": {
+            "arraySize": 0,
+            "default": "ptexFaceOffset",
+            "isOutput": false,
+            "type": "string"
+          },
+          "file": {
+            "arraySize": 0,
+            "default": "",
+            "isOutput": false,
+            "type": "string"
+          },
+          "frame": {
+            "arraySize": 0,
+            "default": null,
+            "isOutput": false,
+            "type": "float"
+          },
+          "g": {
+            "arraySize": 0,
+            "default": null,
+            "isOutput": true,
+            "type": "float"
+          },
+          "r": {
+            "arraySize": 0,
+            "default": null,
+            "isOutput": true,
+            "type": "float"
+          },
+          "rgb": {
+            "arraySize": 3,
+            "default": null,
+            "isOutput": true,
+            "type": "float"
+          },
+          "rgba": {
+            "arraySize": 4,
+            "default": null,
+            "isOutput": true,
+            "type": "float"
+          },
+          "textureMemory": {
+            "arraySize": 0,
+            "default": null,
+            "isOutput": false,
+            "type": "float"
+          }
+        },
+        "role": "texture",
+        "sourceType": "glslfx"
+      },
+      "HwUvTexture_1": {
+        "function": "HwUvTexture",
+        "identifier": "HwUvTexture_1",
+        "implementationFile": "empty.glslfx",
+        "inputNames": [
+          "fallback",
+          "file",
+          "frame",
+          "magFilter",
+          "minFilter",
+          "textureMemory",
+          "uv",
+          "wrapS",
+          "wrapT"
+        ],
+        "name": "HwUvTexture",
+        "outputNames": [],
+        "properties": {
+          "fallback": {
+            "arraySize": 4,
+            "default": [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            "isOutput": false,
+            "type": "float"
+          },
+          "file": {
+            "arraySize": 0,
+            "default": "",
+            "isOutput": false,
+            "type": "string"
+          },
+          "frame": {
+            "arraySize": 0,
+            "default": null,
+            "isOutput": false,
+            "type": "float"
+          },
+          "magFilter": {
+            "arraySize": 0,
+            "default": null,
+            "isOutput": false,
+            "type": "string"
+          },
+          "minFilter": {
+            "arraySize": 0,
+            "default": null,
+            "isOutput": false,
+            "type": "string"
+          },
+          "textureMemory": {
+            "arraySize": 0,
+            "default": null,
+            "isOutput": false,
+            "type": "float"
+          },
+          "uv": {
+            "arraySize": 2,
+            "default": null,
+            "isOutput": false,
+            "type": "float"
+          },
+          "wrapS": {
+            "arraySize": 0,
+            "default": null,
+            "isOutput": false,
+            "type": "string"
+          },
+          "wrapT": {
+            "arraySize": 0,
+            "default": null,
+            "isOutput": false,
+            "type": "string"
+          }
+        },
+        "role": "texture",
+        "sourceType": "glslfx"
+      }
+    }
+  },
+  "release": "26.11.1",
+  "script": "pxr/usd/usdHydra/tests/fixtures/sdrNodes/capture.py",
+  "upstream": [
+    "pxr/usd/usdHydra/discoveryPlugin.cpp",
+    "pxr/usd/usdHydra/shaders/shaderDefs.usda"
+  ]
+}

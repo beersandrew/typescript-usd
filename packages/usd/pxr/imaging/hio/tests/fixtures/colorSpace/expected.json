@@ -1,0 +1,61 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/imaging/hio/tests/fixtures/colorSpace/capture.py",
+  "upstream": [
+    "pxr/imaging/hio/stbImage.cpp:303-331"
+  ],
+  "payload": {
+    "cases": [
+      {
+        "file": "gray.png",
+        "auto": false,
+        "channels": 1,
+        "sRGB": true,
+        "raw": false
+      },
+      {
+        "file": "gray-alpha.png",
+        "auto": false,
+        "channels": 2,
+        "sRGB": true,
+        "raw": false
+      },
+      {
+        "file": "rgb.png",
+        "auto": true,
+        "channels": 3,
+        "sRGB": true,
+        "raw": false
+      },
+      {
+        "file": "rgba.png",
+        "auto": true,
+        "channels": 4,
+        "sRGB": true,
+        "raw": false
+      },
+      {
+        "file": "gray-srgb.png",
+        "auto": true,
+        "channels": 1,
+        "sRGB": true,
+        "raw": false
+      },
+      {
+        "file": "rgb-linear.png",
+        "auto": false,
+        "channels": 3,
+        "sRGB": true,
+        "raw": false
+      },
+      {
+        "file": "rgb-srgb.png",
+        "auto": true,
+        "channels": 3,
+        "sRGB": true,
+        "raw": false
+      }
+    ]
+  }
+}

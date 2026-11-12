@@ -1,0 +1,507 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/imaging/hdsi/tests/upstream/fixtures/stormSceneIndices/capture.py",
+  "upstream": [
+    "pxr/imaging/hdsi/materialBindingResolvingSceneIndex.cpp",
+    "pxr/imaging/hdsi/nodeIdentifierResolvingSceneIndex.cpp",
+    "pxr/imaging/hdsi/materialPrimvarTransferSceneIndex.cpp",
+    "pxr/imaging/hdsi/unboundMaterialPruningSceneIndex.cpp",
+    "pxr/imaging/hdSt/materialBindingResolvingSceneIndexPlugin.cpp",
+    "pxr/imaging/hdSt/nodeIdentifierResolvingSceneIndexPlugin.cpp",
+    "pxr/imaging/hdSt/materialPrimvarTransferSceneIndexPlugin.cpp",
+    "pxr/imaging/hdSt/unboundMaterialPruningSceneIndexPlugin.cpp"
+  ],
+  "payload": {
+    "materialBindingResolving": {
+      "/AllOnly": {
+        "dataSource": {
+          "materialBindings": {
+            "": {
+              "path": "/Mats/All"
+            }
+          }
+        },
+        "hasDataSource": true,
+        "names": [
+          "materialBindings"
+        ],
+        "primType": "mesh"
+      },
+      "/FullOnly": {
+        "dataSource": {
+          "materialBindings": {}
+        },
+        "hasDataSource": true,
+        "names": [
+          "materialBindings"
+        ],
+        "primType": "mesh"
+      },
+      "/Missing": {
+        "dataSource": null,
+        "hasDataSource": false,
+        "names": [],
+        "primType": ""
+      },
+      "/NoBindings": {
+        "dataSource": {
+          "other": "value"
+        },
+        "hasDataSource": true,
+        "names": [
+          "other"
+        ],
+        "primType": "mesh"
+      },
+      "/PreviewAndAll": {
+        "dataSource": {
+          "materialBindings": {
+            "": {
+              "path": "/Mats/Preview"
+            }
+          }
+        },
+        "hasDataSource": true,
+        "names": [
+          "materialBindings"
+        ],
+        "primType": "mesh"
+      },
+      "children": [
+        "/NoBindings",
+        "/FullOnly",
+        "/AllOnly",
+        "/PreviewAndAll"
+      ]
+    },
+    "materialPrimvarTransfer": {
+      "/Geo": {
+        "dataSource": {
+          "__dependencies": {
+            "materialPrimvarTransfer_materialBindingsToDependency": {
+              "affectedDataSourceLocator": "__dependencies/materialPrimvarTransfer_materialPrimvarsToPrimvars",
+              "dependedOnDataSourceLocator": "materialBindings"
+            },
+            "materialPrimvarTransfer_materialBindingsToPrimvars": {
+              "affectedDataSourceLocator": "primvars",
+              "dependedOnDataSourceLocator": "materialBindings"
+            },
+            "materialPrimvarTransfer_materialPrimvarsToPrimvars": {
+              "affectedDataSourceLocator": "primvars",
+              "dependedOnDataSourceLocator": "primvars",
+              "dependedOnPrimPath": "/Mat"
+            }
+          },
+          "materialBindings": {
+            "": {
+              "path": "/Mat"
+            }
+          },
+          "primvars": {
+            "displayColor": {
+              "interpolation": "constant",
+              "primvarValue": "geoColor"
+            },
+            "geoOnly": {
+              "interpolation": "constant",
+              "primvarValue": "geoOnlyValue"
+            },
+            "matOnly": {
+              "interpolation": "constant",
+              "primvarValue": "matOnlyValue"
+            }
+          }
+        },
+        "hasDataSource": true,
+        "names": [
+          "__dependencies",
+          "materialBindings",
+          "primvars"
+        ],
+        "primType": "mesh"
+      },
+      "/GeoEmptyBinding": {
+        "dataSource": {
+          "__dependencies": {
+            "materialPrimvarTransfer_materialBindingsToDependency": {
+              "affectedDataSourceLocator": "__dependencies/materialPrimvarTransfer_materialPrimvarsToPrimvars",
+              "dependedOnDataSourceLocator": "materialBindings"
+            },
+            "materialPrimvarTransfer_materialBindingsToPrimvars": {
+              "affectedDataSourceLocator": "primvars",
+              "dependedOnDataSourceLocator": "materialBindings"
+            }
+          },
+          "materialBindings": {
+            "full": {
+              "path": "/Mat"
+            }
+          }
+        },
+        "hasDataSource": true,
+        "names": [
+          "__dependencies",
+          "materialBindings"
+        ],
+        "primType": "mesh"
+      },
+      "/GeoNoPrimvars": {
+        "dataSource": {
+          "__dependencies": {
+            "materialPrimvarTransfer_materialBindingsToDependency": {
+              "affectedDataSourceLocator": "__dependencies/materialPrimvarTransfer_materialPrimvarsToPrimvars",
+              "dependedOnDataSourceLocator": "materialBindings"
+            },
+            "materialPrimvarTransfer_materialBindingsToPrimvars": {
+              "affectedDataSourceLocator": "primvars",
+              "dependedOnDataSourceLocator": "materialBindings"
+            },
+            "materialPrimvarTransfer_materialPrimvarsToPrimvars": {
+              "affectedDataSourceLocator": "primvars",
+              "dependedOnDataSourceLocator": "primvars",
+              "dependedOnPrimPath": "/Mat"
+            }
+          },
+          "materialBindings": {
+            "": {
+              "path": "/Mat"
+            }
+          },
+          "primvars": {
+            "displayColor": {
+              "interpolation": "constant",
+              "primvarValue": "matColor"
+            },
+            "matOnly": {
+              "interpolation": "constant",
+              "primvarValue": "matOnlyValue"
+            }
+          }
+        },
+        "hasDataSource": true,
+        "names": [
+          "__dependencies",
+          "materialBindings",
+          "primvars"
+        ],
+        "primType": "mesh"
+      },
+      "/GeoUnbound": {
+        "dataSource": {
+          "primvars": {
+            "displayColor": {
+              "interpolation": "constant",
+              "primvarValue": "geoColor"
+            }
+          }
+        },
+        "hasDataSource": true,
+        "names": [
+          "primvars"
+        ],
+        "primType": "mesh"
+      },
+      "/Mat": {
+        "dataSource": {
+          "primvars": {
+            "displayColor": {
+              "interpolation": "constant",
+              "primvarValue": "matColor"
+            },
+            "matOnly": {
+              "interpolation": "constant",
+              "primvarValue": "matOnlyValue"
+            }
+          }
+        },
+        "hasDataSource": true,
+        "names": [
+          "primvars"
+        ],
+        "primType": "material"
+      }
+    },
+    "nodeIdentifierResolving": {
+      "/Mat": {
+        "dataSource": {
+          "material": {
+            "": {
+              "nodes": {
+                "AlreadyIdentified": {
+                  "nodeIdentifier": "UsdPreviewSurface",
+                  "nodeTypeInfo": {
+                    "glslfx:sourceCode": "-- glslfx version 0.1\n\n-- configuration\n{\n    \"parameters\": {\n        \"roughness\": {\n            \"default\": 0.5\n        }\n    },\n    \"techniques\": {\n        \"default\": {\n            \"surfaceShader\": {\n                \"source\": [ \"Test.Surface\" ]\n            }\n        }\n    }\n}\n\n-- glsl Test.Surface\n\nvec4 surfaceShader(vec4 Peye, vec3 Neye, vec4 color, vec4 patchCoord)\n{\n    return color;\n}\n",
+                    "implementationSource": "sourceCode"
+                  }
+                },
+                "EmptySourceCode": {
+                  "nodeTypeInfo": {
+                    "implementationSource": "sourceCode"
+                  }
+                },
+                "FromSourceCode": {
+                  "nodeIdentifier": "1366520669050879217",
+                  "nodeTypeInfo": {
+                    "glslfx:sourceCode": "-- glslfx version 0.1\n\n-- configuration\n{\n    \"parameters\": {\n        \"roughness\": {\n            \"default\": 0.5\n        }\n    },\n    \"techniques\": {\n        \"default\": {\n            \"surfaceShader\": {\n                \"source\": [ \"Test.Surface\" ]\n            }\n        }\n    }\n}\n\n-- glsl Test.Surface\n\nvec4 surfaceShader(vec4 Peye, vec3 Neye, vec4 color, vec4 patchCoord)\n{\n    return color;\n}\n",
+                    "implementationSource": "sourceCode",
+                    "sdrMetadata": "<VtDictionary>"
+                  }
+                },
+                "NoTypeInfo": {},
+                "OtherSourceType": {
+                  "nodeTypeInfo": {
+                    "implementationSource": "sourceCode",
+                    "osl:sourceCode": "-- glslfx version 0.1\n\n-- configuration\n{\n    \"parameters\": {\n        \"roughness\": {\n            \"default\": 0.5\n        }\n    },\n    \"techniques\": {\n        \"default\": {\n            \"surfaceShader\": {\n                \"source\": [ \"Test.Surface\" ]\n            }\n        }\n    }\n}\n\n-- glsl Test.Surface\n\nvec4 surfaceShader(vec4 Peye, vec3 Neye, vec4 color, vec4 patchCoord)\n{\n    return color;\n}\n"
+                  }
+                }
+              },
+              "terminals": {
+                "surface": {
+                  "upstreamNodeOutputName": "surface",
+                  "upstreamNodePath": "FromSourceCode"
+                }
+              }
+            }
+          }
+        },
+        "hasDataSource": true,
+        "names": [
+          "material"
+        ],
+        "primType": "material"
+      },
+      "/NotAMaterial": {
+        "dataSource": {
+          "material": {
+            "": {
+              "nodes": {
+                "AlreadyIdentified": {
+                  "nodeIdentifier": "UsdPreviewSurface",
+                  "nodeTypeInfo": {
+                    "glslfx:sourceCode": "-- glslfx version 0.1\n\n-- configuration\n{\n    \"parameters\": {\n        \"roughness\": {\n            \"default\": 0.5\n        }\n    },\n    \"techniques\": {\n        \"default\": {\n            \"surfaceShader\": {\n                \"source\": [ \"Test.Surface\" ]\n            }\n        }\n    }\n}\n\n-- glsl Test.Surface\n\nvec4 surfaceShader(vec4 Peye, vec3 Neye, vec4 color, vec4 patchCoord)\n{\n    return color;\n}\n",
+                    "implementationSource": "sourceCode"
+                  }
+                },
+                "EmptySourceCode": {
+                  "nodeTypeInfo": {
+                    "implementationSource": "sourceCode"
+                  }
+                },
+                "FromSourceCode": {
+                  "nodeTypeInfo": {
+                    "glslfx:sourceCode": "-- glslfx version 0.1\n\n-- configuration\n{\n    \"parameters\": {\n        \"roughness\": {\n            \"default\": 0.5\n        }\n    },\n    \"techniques\": {\n        \"default\": {\n            \"surfaceShader\": {\n                \"source\": [ \"Test.Surface\" ]\n            }\n        }\n    }\n}\n\n-- glsl Test.Surface\n\nvec4 surfaceShader(vec4 Peye, vec3 Neye, vec4 color, vec4 patchCoord)\n{\n    return color;\n}\n",
+                    "implementationSource": "sourceCode",
+                    "sdrMetadata": "<VtDictionary>"
+                  }
+                },
+                "NoTypeInfo": {},
+                "OtherSourceType": {
+                  "nodeTypeInfo": {
+                    "implementationSource": "sourceCode",
+                    "osl:sourceCode": "-- glslfx version 0.1\n\n-- configuration\n{\n    \"parameters\": {\n        \"roughness\": {\n            \"default\": 0.5\n        }\n    },\n    \"techniques\": {\n        \"default\": {\n            \"surfaceShader\": {\n                \"source\": [ \"Test.Surface\" ]\n            }\n        }\n    }\n}\n\n-- glsl Test.Surface\n\nvec4 surfaceShader(vec4 Peye, vec3 Neye, vec4 color, vec4 patchCoord)\n{\n    return color;\n}\n"
+                  }
+                }
+              },
+              "terminals": {
+                "surface": {
+                  "upstreamNodeOutputName": "surface",
+                  "upstreamNodePath": "FromSourceCode"
+                }
+              }
+            }
+          }
+        },
+        "hasDataSource": true,
+        "names": [
+          "material"
+        ],
+        "primType": "mesh"
+      },
+      "displayName": "HdSiNodeIdentifierResolvingSceneIndex (glslfx)"
+    },
+    "stormPluginIds": [
+      "HdSt_BackPlateSceneIndexPlugin",
+      "HdSt_ImplicitSurfaceSceneIndexPlugin",
+      "HdSt_MaterialBindingResolvingSceneIndexPlugin",
+      "HdSt_NodeIdentifierResolvingSceneIndexPlugin",
+      "HdSt_NurbsApproximatingSceneIndexPlugin",
+      "HdSt_TetMeshConversionSceneIndexPlugin",
+      "HdSt_VelocityMotionResolvingSceneIndexPlugin",
+      "HdSt_MaterialPrimvarTransferSceneIndexPlugin",
+      "HdSt_RenderPassVisibilitySceneIndexPlugin",
+      "HdSt_DependencySceneIndexPlugin",
+      "HdSt_UnboundMaterialPruningSceneIndexPlugin",
+      "HdSt_DependencyForwardingSceneIndexPlugin"
+    ],
+    "unboundMaterialPruning": {
+      "afterAdds": {
+        "/Mats/C": [
+          "material",
+          true
+        ],
+        "/Mats/D": [
+          "",
+          false
+        ],
+        "/Mats/E": [
+          "material",
+          true
+        ],
+        "/World/Geo2": [
+          "mesh",
+          true
+        ],
+        "/World/Geo3": [
+          "mesh",
+          true
+        ]
+      },
+      "afterDirty": {
+        "/Mats/D": [
+          "material",
+          true
+        ],
+        "/World/Geo2": [
+          "mesh",
+          true
+        ]
+      },
+      "afterReAdd": {
+        "/Mats/A": [
+          "",
+          false
+        ]
+      },
+      "initial": {
+        "/Mats/A": [
+          "material",
+          true
+        ],
+        "/Mats/B": [
+          "material",
+          true
+        ],
+        "/Mats/C": [
+          "",
+          false
+        ],
+        "/Mats/D": [
+          "",
+          false
+        ],
+        "/Mats/Full": [
+          "",
+          false
+        ],
+        "/Mats/Xform": [
+          "",
+          false
+        ],
+        "/World": [
+          "",
+          true
+        ],
+        "/World/Geo": [
+          "mesh",
+          true
+        ],
+        "/World/Geo2": [
+          "",
+          false
+        ],
+        "/World/GeoFull": [
+          "mesh",
+          true
+        ]
+      },
+      "notices": [
+        {
+          "added": [
+            [
+              "/World/Geo2",
+              "mesh"
+            ],
+            [
+              "/Mats/C",
+              "material"
+            ],
+            [
+              "/Mats/C",
+              "material"
+            ]
+          ]
+        },
+        {
+          "added": [
+            [
+              "/Mats/D",
+              ""
+            ]
+          ]
+        },
+        {
+          "added": [
+            [
+              "/Mats/E",
+              "material"
+            ],
+            [
+              "/World/Geo3",
+              "mesh"
+            ]
+          ]
+        },
+        {
+          "added": [
+            [
+              "/World/Geo2",
+              "mesh"
+            ],
+            [
+              "/Mats/D",
+              "material"
+            ],
+            [
+              "/Mats/D",
+              "material"
+            ]
+          ]
+        },
+        {
+          "dirtied": [
+            [
+              "/World/Geo2",
+              [
+                "materialBindings"
+              ]
+            ]
+          ]
+        },
+        {
+          "dirtied": [
+            [
+              "/World/Geo",
+              [
+                "primvars"
+              ]
+            ]
+          ]
+        },
+        {
+          "removed": [
+            "/Mats/A"
+          ]
+        },
+        {
+          "added": [
+            [
+              "/Mats/A",
+              ""
+            ]
+          ]
+        }
+      ]
+    }
+  }
+}

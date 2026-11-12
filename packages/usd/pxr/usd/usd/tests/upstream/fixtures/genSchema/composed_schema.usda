@@ -1,0 +1,28 @@
+#usda 1.0
+(
+    subLayers = [
+        @composed_base.usda@
+    ]
+)
+
+over "GLOBAL" (
+    customData = {
+        string libraryName = "phase11Schema"
+        string libraryPath = "pxr/usd/phase11Schema"
+    }
+)
+{
+}
+
+class "LayeredAPI" (
+    inherits = </APISchemaBase>
+    customData = {
+        token apiSchemaType = "singleApply"
+        string className = "Layered"
+        dictionary extraPlugInfo = {
+            string strongKey = "strong"
+        }
+    }
+)
+{
+}

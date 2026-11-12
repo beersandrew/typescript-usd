@@ -1,0 +1,558 @@
+### mtlxFiles/colorNodeMaterial.mtlx
+#usda 1.0
+
+def "MaterialX"
+{
+    def "NodeGraphs"
+    {
+        def NodeGraph "TestNamespace__ND_myColor"
+        {
+            color3f outputs:out.connect = </MaterialX/NodeGraphs/TestNamespace__ND_myColor/add1.outputs:out>
+
+            def Shader "redClorVal"
+            {
+                uniform token info:id = "ND_constant_color3"
+                color3f inputs:value = (1, 0, 0)
+                color3f outputs:out
+            }
+
+            def Shader "blueColorVal"
+            {
+                uniform token info:id = "ND_constant_color3"
+                color3f inputs:value = (0, 0, 1)
+                color3f outputs:out
+            }
+
+            def Shader "multi1"
+            {
+                uniform token info:id = "ND_multiply_color3FA"
+                color3f inputs:in1.connect = </MaterialX/NodeGraphs/TestNamespace__ND_myColor/redClorVal.outputs:out>
+                float inputs:in2 = 0.5
+                color3f outputs:out
+            }
+
+            def Shader "add1"
+            {
+                uniform token info:id = "ND_add_color3"
+                color3f inputs:in1.connect = </MaterialX/NodeGraphs/TestNamespace__ND_myColor/multi1.outputs:out>
+                color3f inputs:in2.connect = </MaterialX/NodeGraphs/TestNamespace__ND_myColor/blueColorVal.outputs:out>
+                color3f outputs:out
+            }
+        }
+
+        def NodeGraph "wrapper_nodegraph"
+        {
+            color3f outputs:diffuse_output.connect = </MaterialX/NodeGraphs/wrapper_nodegraph/add.outputs:out>
+
+            def Shader "myColor"
+            {
+                uniform token info:id = "TestNamespace:ND_myColor"
+                color3f outputs:out
+            }
+
+            def Shader "green"
+            {
+                uniform token info:id = "ND_constant_color3"
+                color3f inputs:value = (0, 1, 0)
+                color3f outputs:out
+            }
+
+            def Shader "multi"
+            {
+                uniform token info:id = "ND_multiply_color3FA"
+                color3f inputs:in1.connect = </MaterialX/NodeGraphs/wrapper_nodegraph/myColor.outputs:out>
+                float inputs:in2 = 0.75
+                color3f outputs:out
+            }
+
+            def Shader "add"
+            {
+                uniform token info:id = "ND_add_color3"
+                color3f inputs:in1.connect = </MaterialX/NodeGraphs/wrapper_nodegraph/multi.outputs:out>
+                color3f inputs:in2.connect = </MaterialX/NodeGraphs/wrapper_nodegraph/green.outputs:out>
+                color3f outputs:out
+            }
+        }
+    }
+
+    def "Materials"
+    {
+        def Material "surface_material_node" (
+            prepend apiSchemas = ["MaterialXConfigAPI"]
+        )
+        {
+            string config:mtlx:version = "1.39"
+            float inputs:clearcoat
+            float inputs:clearcoatRoughness
+            color3f inputs:diffuseColor
+            float inputs:displacement
+            color3f inputs:emissiveColor
+            float inputs:ior = 0.9
+            float inputs:metallic
+            float3 inputs:normal
+            float inputs:occlusion
+            float inputs:opacity
+            int inputs:opacityMode
+            float inputs:opacityThreshold
+            float inputs:roughness = 0.25
+            color3f inputs:specularColor = (0.9, 0.9, 0.9)
+            int inputs:useSpecularWorkflow = 0
+            token outputs:mtlx:surface.connect = </MaterialX/Materials/surface_material_node/surface_shader_node.outputs:surface>
+
+            def Shader "surface_shader_node" (
+                prepend references = </MaterialX/Shaders/surface_shader_node>
+            )
+            {
+                float inputs:clearcoat.connect = </MaterialX/Materials/surface_material_node.inputs:clearcoat>
+                float inputs:clearcoatRoughness.connect = </MaterialX/Materials/surface_material_node.inputs:clearcoatRoughness>
+                color3f inputs:diffuseColor.connect = </MaterialX/Materials/surface_material_node/wrapper_nodegraph.outputs:diffuse_output>
+                float inputs:displacement.connect = </MaterialX/Materials/surface_material_node.inputs:displacement>
+                color3f inputs:emissiveColor.connect = </MaterialX/Materials/surface_material_node.inputs:emissiveColor>
+                float inputs:ior.connect = </MaterialX/Materials/surface_material_node.inputs:ior>
+                float inputs:metallic.connect = </MaterialX/Materials/surface_material_node.inputs:metallic>
+                float3 inputs:normal.connect = </MaterialX/Materials/surface_material_node.inputs:normal>
+                float inputs:occlusion.connect = </MaterialX/Materials/surface_material_node.inputs:occlusion>
+                float inputs:opacity.connect = </MaterialX/Materials/surface_material_node.inputs:opacity>
+                int inputs:opacityMode.connect = </MaterialX/Materials/surface_material_node.inputs:opacityMode>
+                float inputs:opacityThreshold.connect = </MaterialX/Materials/surface_material_node.inputs:opacityThreshold>
+                float inputs:roughness.connect = </MaterialX/Materials/surface_material_node.inputs:roughness>
+                color3f inputs:specularColor.connect = </MaterialX/Materials/surface_material_node.inputs:specularColor>
+                int inputs:useSpecularWorkflow.connect = </MaterialX/Materials/surface_material_node.inputs:useSpecularWorkflow>
+            }
+
+            def "wrapper_nodegraph" (
+                prepend references = </MaterialX/NodeGraphs/wrapper_nodegraph>
+            )
+            {
+            }
+        }
+    }
+
+    def "Shaders"
+    {
+        def Shader "surface_shader_node"
+        {
+            uniform token info:id = "ND_UsdPreviewSurface_surfaceshader"
+            token outputs:surface
+        }
+    }
+}
+
+### mtlxFiles/nestedNodeMaterials.mtlx
+#usda 1.0
+(
+    customLayerData = {
+        string colorSpace = "lin_rec709"
+    }
+)
+
+def "MaterialX"
+{
+    def "Materials"
+    {
+        def Material "VisTexcoords" (
+            prepend apiSchemas = ["MaterialXConfigAPI"]
+        )
+        {
+            string config:mtlx:version = "1.39"
+            float inputs:clearcoat
+            float inputs:clearcoatRoughness
+            color3f inputs:diffuseColor
+            float inputs:displacement
+            color3f inputs:emissiveColor
+            float inputs:ior
+            float inputs:metallic
+            float3 inputs:normal
+            float inputs:occlusion
+            float inputs:opacity
+            int inputs:opacityMode
+            float inputs:opacityThreshold
+            float inputs:roughness
+            color3f inputs:specularColor
+            int inputs:useSpecularWorkflow
+            token outputs:mtlx:surface.connect = </MaterialX/Materials/VisTexcoords/PS_material.outputs:surface>
+
+            def Shader "PS_material" (
+                prepend references = </MaterialX/Shaders/PS_material>
+            )
+            {
+                float inputs:clearcoat.connect = </MaterialX/Materials/VisTexcoords.inputs:clearcoat>
+                float inputs:clearcoatRoughness.connect = </MaterialX/Materials/VisTexcoords.inputs:clearcoatRoughness>
+                color3f inputs:diffuseColor.connect = </MaterialX/Materials/VisTexcoords/NG_simple.outputs:out_color>
+                float inputs:displacement.connect = </MaterialX/Materials/VisTexcoords.inputs:displacement>
+                color3f inputs:emissiveColor.connect = </MaterialX/Materials/VisTexcoords.inputs:emissiveColor>
+                float inputs:ior.connect = </MaterialX/Materials/VisTexcoords.inputs:ior>
+                float inputs:metallic.connect = </MaterialX/Materials/VisTexcoords.inputs:metallic>
+                float3 inputs:normal.connect = </MaterialX/Materials/VisTexcoords.inputs:normal>
+                float inputs:occlusion.connect = </MaterialX/Materials/VisTexcoords.inputs:occlusion>
+                float inputs:opacity.connect = </MaterialX/Materials/VisTexcoords.inputs:opacity>
+                int inputs:opacityMode.connect = </MaterialX/Materials/VisTexcoords.inputs:opacityMode>
+                float inputs:opacityThreshold.connect = </MaterialX/Materials/VisTexcoords.inputs:opacityThreshold>
+                float inputs:roughness.connect = </MaterialX/Materials/VisTexcoords.inputs:roughness>
+                color3f inputs:specularColor.connect = </MaterialX/Materials/VisTexcoords.inputs:specularColor>
+                int inputs:useSpecularWorkflow.connect = </MaterialX/Materials/VisTexcoords.inputs:useSpecularWorkflow>
+            }
+
+            def "NG_simple" (
+                prepend references = </MaterialX/NodeGraphs/NG_simple>
+            )
+            {
+            }
+        }
+
+        def Material "TestMaterial" (
+            prepend apiSchemas = ["MaterialXConfigAPI"]
+        )
+        {
+            string config:mtlx:version = "1.39"
+            float inputs:base
+            color3f inputs:base_color
+            float inputs:coat
+            float inputs:coat_affect_color
+            float inputs:coat_affect_roughness
+            float inputs:coat_anisotropy
+            color3f inputs:coat_color
+            float inputs:coat_IOR
+            float3 inputs:coat_normal
+            float inputs:coat_rotation
+            float inputs:coat_roughness
+            float inputs:diffuse_roughness
+            float inputs:emission
+            color3f inputs:emission_color
+            float inputs:metalness
+            float3 inputs:normal
+            color3f inputs:opacity
+            float inputs:sheen
+            color3f inputs:sheen_color
+            float inputs:sheen_roughness
+            float inputs:specular
+            float inputs:specular_anisotropy
+            color3f inputs:specular_color
+            float inputs:specular_IOR
+            float inputs:specular_rotation
+            float inputs:specular_roughness
+            float inputs:subsurface
+            float inputs:subsurface_anisotropy
+            color3f inputs:subsurface_color
+            color3f inputs:subsurface_radius
+            float inputs:subsurface_scale
+            float3 inputs:tangent
+            float inputs:thin_film_IOR
+            float inputs:thin_film_thickness
+            bool inputs:thin_walled
+            float inputs:transmission
+            color3f inputs:transmission_color
+            float inputs:transmission_depth
+            float inputs:transmission_dispersion
+            float inputs:transmission_extra_roughness
+            color3f inputs:transmission_scatter
+            float inputs:transmission_scatter_anisotropy
+            token outputs:mtlx:surface.connect = </MaterialX/Materials/TestMaterial/StdSurface.outputs:surface>
+
+            def Shader "StdSurface" (
+                prepend references = </MaterialX/Shaders/StdSurface>
+            )
+            {
+                float inputs:base.connect = </MaterialX/Materials/TestMaterial.inputs:base>
+                color3f inputs:base_color.connect = </MaterialX/Materials/TestMaterial/NodeGraphs/shaderProperties.outputs:base_color>
+                float inputs:coat.connect = </MaterialX/Materials/TestMaterial.inputs:coat>
+                float inputs:coat_affect_color.connect = </MaterialX/Materials/TestMaterial.inputs:coat_affect_color>
+                float inputs:coat_affect_roughness.connect = </MaterialX/Materials/TestMaterial.inputs:coat_affect_roughness>
+                float inputs:coat_anisotropy.connect = </MaterialX/Materials/TestMaterial.inputs:coat_anisotropy>
+                color3f inputs:coat_color.connect = </MaterialX/Materials/TestMaterial.inputs:coat_color>
+                float inputs:coat_IOR.connect = </MaterialX/Materials/TestMaterial.inputs:coat_IOR>
+                float3 inputs:coat_normal.connect = </MaterialX/Materials/TestMaterial.inputs:coat_normal>
+                float inputs:coat_rotation.connect = </MaterialX/Materials/TestMaterial.inputs:coat_rotation>
+                float inputs:coat_roughness.connect = </MaterialX/Materials/TestMaterial.inputs:coat_roughness>
+                float inputs:diffuse_roughness.connect = </MaterialX/Materials/TestMaterial.inputs:diffuse_roughness>
+                float inputs:emission.connect = </MaterialX/Materials/TestMaterial.inputs:emission>
+                color3f inputs:emission_color.connect = </MaterialX/Materials/TestMaterial.inputs:emission_color>
+                float inputs:metalness.connect = </MaterialX/Materials/TestMaterial/NodeGraphs/shaderProperties.outputs:metalness>
+                float3 inputs:normal.connect = </MaterialX/Materials/TestMaterial.inputs:normal>
+                color3f inputs:opacity.connect = </MaterialX/Materials/TestMaterial.inputs:opacity>
+                float inputs:sheen.connect = </MaterialX/Materials/TestMaterial.inputs:sheen>
+                color3f inputs:sheen_color.connect = </MaterialX/Materials/TestMaterial.inputs:sheen_color>
+                float inputs:sheen_roughness.connect = </MaterialX/Materials/TestMaterial.inputs:sheen_roughness>
+                float inputs:specular.connect = </MaterialX/Materials/TestMaterial.inputs:specular>
+                float inputs:specular_anisotropy.connect = </MaterialX/Materials/TestMaterial.inputs:specular_anisotropy>
+                color3f inputs:specular_color.connect = </MaterialX/Materials/TestMaterial.inputs:specular_color>
+                float inputs:specular_IOR.connect = </MaterialX/Materials/TestMaterial.inputs:specular_IOR>
+                float inputs:specular_rotation.connect = </MaterialX/Materials/TestMaterial.inputs:specular_rotation>
+                float inputs:specular_roughness.connect = </MaterialX/Materials/TestMaterial/NodeGraphs/shaderProperties.outputs:specular_roughness>
+                float inputs:subsurface.connect = </MaterialX/Materials/TestMaterial.inputs:subsurface>
+                float inputs:subsurface_anisotropy.connect = </MaterialX/Materials/TestMaterial.inputs:subsurface_anisotropy>
+                color3f inputs:subsurface_color.connect = </MaterialX/Materials/TestMaterial.inputs:subsurface_color>
+                color3f inputs:subsurface_radius.connect = </MaterialX/Materials/TestMaterial.inputs:subsurface_radius>
+                float inputs:subsurface_scale.connect = </MaterialX/Materials/TestMaterial.inputs:subsurface_scale>
+                float3 inputs:tangent.connect = </MaterialX/Materials/TestMaterial.inputs:tangent>
+                float inputs:thin_film_IOR.connect = </MaterialX/Materials/TestMaterial.inputs:thin_film_IOR>
+                float inputs:thin_film_thickness.connect = </MaterialX/Materials/TestMaterial.inputs:thin_film_thickness>
+                bool inputs:thin_walled.connect = </MaterialX/Materials/TestMaterial.inputs:thin_walled>
+                float inputs:transmission.connect = </MaterialX/Materials/TestMaterial.inputs:transmission>
+                color3f inputs:transmission_color.connect = </MaterialX/Materials/TestMaterial.inputs:transmission_color>
+                float inputs:transmission_depth.connect = </MaterialX/Materials/TestMaterial.inputs:transmission_depth>
+                float inputs:transmission_dispersion.connect = </MaterialX/Materials/TestMaterial.inputs:transmission_dispersion>
+                float inputs:transmission_extra_roughness.connect = </MaterialX/Materials/TestMaterial.inputs:transmission_extra_roughness>
+                color3f inputs:transmission_scatter.connect = </MaterialX/Materials/TestMaterial.inputs:transmission_scatter>
+                float inputs:transmission_scatter_anisotropy.connect = </MaterialX/Materials/TestMaterial.inputs:transmission_scatter_anisotropy>
+            }
+
+            def "NodeGraphs" (
+                prepend references = </MaterialX/NodeGraphs>
+            )
+            {
+            }
+        }
+    }
+
+    def "Shaders"
+    {
+        def Shader "PS_material"
+        {
+            uniform token info:id = "ND_UsdPreviewSurface_surfaceshader"
+            token outputs:surface
+        }
+
+        def Shader "StdSurface"
+        {
+            uniform token info:id = "ND_standard_surface_surfaceshader"
+            token outputs:surface
+        }
+    }
+
+    def NodeGraph "NodeGraphs"
+    {
+        def NodeGraph "NG_simple"
+        {
+            color3f outputs:out_color.connect = </MaterialX/NodeGraphs/NG_simple/texcoords.outputs:out>
+
+            def Shader "texcoords"
+            {
+                uniform token info:id = "ND_vis_texcoords"
+                color3f inputs:blueColor = (0, 0, 1)
+                color3f outputs:out
+            }
+        }
+
+        def Shader "shaderProperties"
+        {
+            uniform token info:id = "ND_CustomMultiOutput"
+            asset inputs:_File = @images/testSquare.png@
+            float inputs:_Radius = 0.15
+            float2 inputs:_RadiusOffset = (0.75, 0.75)
+            color3f outputs:base_color
+            float outputs:metalness
+            float outputs:specular_roughness
+        }
+    }
+}
+
+### mtlxFiles/surfaceShaderNodeMaterials.mtlx
+#usda 1.0
+
+def "MaterialX"
+{
+    def "Materials"
+    {
+        def Material "TexcoordMaterial" (
+            prepend apiSchemas = ["MaterialXConfigAPI"]
+        )
+        {
+            string config:mtlx:version = "1.39"
+            float2 inputs:_scale = (6, 6)
+            token outputs:mtlx:surface.connect = </MaterialX/Materials/TexcoordMaterial/texcoordSurface.outputs:surface>
+
+            def Shader "texcoordSurface" (
+                prepend references = </MaterialX/Shaders/texcoordSurface>
+            )
+            {
+                float2 inputs:_scale.connect = </MaterialX/Materials/TexcoordMaterial.inputs:_scale>
+            }
+        }
+
+        def Material "TexturedMaterial" (
+            prepend apiSchemas = ["MaterialXConfigAPI"]
+        )
+        {
+            string config:mtlx:version = "1.39"
+            asset inputs:_color_file = @images/brass_color.jpg@
+            asset inputs:roughness_file = @images/brass_roughness.jpg@
+            token outputs:mtlx:surface.connect = </MaterialX/Materials/TexturedMaterial/texturedSurface.outputs:surface>
+
+            def Shader "texturedSurface" (
+                prepend references = </MaterialX/Shaders/texturedSurface>
+            )
+            {
+                asset inputs:_color_file.connect = </MaterialX/Materials/TexturedMaterial.inputs:_color_file>
+                asset inputs:roughness_file.connect = </MaterialX/Materials/TexturedMaterial.inputs:roughness_file>
+            }
+        }
+    }
+
+    def "Shaders"
+    {
+        def Shader "texcoordSurface"
+        {
+            uniform token info:id = "ND_checker_surface"
+            token outputs:surface
+        }
+
+        def Shader "texturedSurface"
+        {
+            uniform token info:id = "ND_ssMultiImage"
+            token outputs:surface
+        }
+    }
+}
+
+### mtlxFiles/texcoordNodeMaterials.mtlx
+#usda 1.0
+
+def "MaterialX"
+{
+    def "Materials"
+    {
+        def Material "TexcoordMaterial" (
+            prepend apiSchemas = ["MaterialXConfigAPI"]
+        )
+        {
+            string config:mtlx:version = "1.39"
+            float inputs:clearcoat
+            float inputs:clearcoatRoughness
+            color3f inputs:diffuseColor
+            float inputs:displacement
+            color3f inputs:emissiveColor
+            float inputs:ior = 0.9
+            float inputs:metallic
+            float3 inputs:normal
+            float inputs:occlusion
+            float inputs:opacity
+            int inputs:opacityMode
+            float inputs:opacityThreshold
+            float inputs:roughness = 0.25
+            color3f inputs:specularColor = (0.9, 0.9, 0.9)
+            int inputs:useSpecularWorkflow = 0
+            token outputs:mtlx:surface.connect = </MaterialX/Materials/TexcoordMaterial/texcoordSurface.outputs:surface>
+
+            def Shader "texcoordSurface" (
+                prepend references = </MaterialX/Shaders/texcoordSurface>
+            )
+            {
+                float inputs:clearcoat.connect = </MaterialX/Materials/TexcoordMaterial.inputs:clearcoat>
+                float inputs:clearcoatRoughness.connect = </MaterialX/Materials/TexcoordMaterial.inputs:clearcoatRoughness>
+                color3f inputs:diffuseColor.connect = </MaterialX/Materials/TexcoordMaterial/test_nodegraph.outputs:diffuse_output>
+                float inputs:displacement.connect = </MaterialX/Materials/TexcoordMaterial.inputs:displacement>
+                color3f inputs:emissiveColor.connect = </MaterialX/Materials/TexcoordMaterial.inputs:emissiveColor>
+                float inputs:ior.connect = </MaterialX/Materials/TexcoordMaterial.inputs:ior>
+                float inputs:metallic.connect = </MaterialX/Materials/TexcoordMaterial.inputs:metallic>
+                float3 inputs:normal.connect = </MaterialX/Materials/TexcoordMaterial.inputs:normal>
+                float inputs:occlusion.connect = </MaterialX/Materials/TexcoordMaterial.inputs:occlusion>
+                float inputs:opacity.connect = </MaterialX/Materials/TexcoordMaterial.inputs:opacity>
+                int inputs:opacityMode.connect = </MaterialX/Materials/TexcoordMaterial.inputs:opacityMode>
+                float inputs:opacityThreshold.connect = </MaterialX/Materials/TexcoordMaterial.inputs:opacityThreshold>
+                float inputs:roughness.connect = </MaterialX/Materials/TexcoordMaterial.inputs:roughness>
+                color3f inputs:specularColor.connect = </MaterialX/Materials/TexcoordMaterial.inputs:specularColor>
+                int inputs:useSpecularWorkflow.connect = </MaterialX/Materials/TexcoordMaterial.inputs:useSpecularWorkflow>
+            }
+
+            def "test_nodegraph" (
+                prepend references = </MaterialX/NodeGraphs/test_nodegraph>
+            )
+            {
+            }
+        }
+
+        def Material "TexturedMaterial" (
+            prepend apiSchemas = ["MaterialXConfigAPI"]
+        )
+        {
+            string config:mtlx:version = "1.39"
+            float inputs:clearcoat
+            float inputs:clearcoatRoughness
+            color3f inputs:diffuseColor
+            float inputs:displacement
+            color3f inputs:emissiveColor
+            float inputs:ior = 0.9
+            float inputs:metallic
+            float3 inputs:normal
+            float inputs:occlusion
+            float inputs:opacity
+            int inputs:opacityMode
+            float inputs:opacityThreshold
+            float inputs:roughness = 0.25
+            color3f inputs:specularColor = (0.9, 0.9, 0.9)
+            int inputs:useSpecularWorkflow = 0
+            token outputs:mtlx:surface.connect = </MaterialX/Materials/TexturedMaterial/texturedSurface.outputs:surface>
+
+            def Shader "texturedSurface" (
+                prepend references = </MaterialX/Shaders/texturedSurface>
+            )
+            {
+                float inputs:clearcoat.connect = </MaterialX/Materials/TexturedMaterial.inputs:clearcoat>
+                float inputs:clearcoatRoughness.connect = </MaterialX/Materials/TexturedMaterial.inputs:clearcoatRoughness>
+                color3f inputs:diffuseColor.connect = </MaterialX/Materials/TexturedMaterial/test_image_nodegraph.outputs:diffuse_output>
+                float inputs:displacement.connect = </MaterialX/Materials/TexturedMaterial.inputs:displacement>
+                color3f inputs:emissiveColor.connect = </MaterialX/Materials/TexturedMaterial.inputs:emissiveColor>
+                float inputs:ior.connect = </MaterialX/Materials/TexturedMaterial.inputs:ior>
+                float inputs:metallic.connect = </MaterialX/Materials/TexturedMaterial.inputs:metallic>
+                float3 inputs:normal.connect = </MaterialX/Materials/TexturedMaterial.inputs:normal>
+                float inputs:occlusion.connect = </MaterialX/Materials/TexturedMaterial.inputs:occlusion>
+                float inputs:opacity.connect = </MaterialX/Materials/TexturedMaterial.inputs:opacity>
+                int inputs:opacityMode.connect = </MaterialX/Materials/TexturedMaterial.inputs:opacityMode>
+                float inputs:opacityThreshold.connect = </MaterialX/Materials/TexturedMaterial.inputs:opacityThreshold>
+                float inputs:roughness.connect = </MaterialX/Materials/TexturedMaterial.inputs:roughness>
+                color3f inputs:specularColor.connect = </MaterialX/Materials/TexturedMaterial.inputs:specularColor>
+                int inputs:useSpecularWorkflow.connect = </MaterialX/Materials/TexturedMaterial.inputs:useSpecularWorkflow>
+            }
+
+            def "test_image_nodegraph" (
+                prepend references = </MaterialX/NodeGraphs/test_image_nodegraph>
+            )
+            {
+            }
+        }
+    }
+
+    def "Shaders"
+    {
+        def Shader "texcoordSurface"
+        {
+            uniform token info:id = "ND_UsdPreviewSurface_surfaceshader"
+            token outputs:surface
+        }
+
+        def Shader "texturedSurface"
+        {
+            uniform token info:id = "ND_UsdPreviewSurface_surfaceshader"
+            token outputs:surface
+        }
+    }
+
+    def "NodeGraphs"
+    {
+        def NodeGraph "test_nodegraph"
+        {
+            color3f outputs:diffuse_output.connect = </MaterialX/NodeGraphs/test_nodegraph/myChecker.outputs:out>
+
+            def Shader "myChecker"
+            {
+                uniform token info:id = "ND_checker_float"
+                float2 inputs:scale = (24, 12)
+                color3f outputs:out
+            }
+        }
+
+        def NodeGraph "test_image_nodegraph"
+        {
+            color3f outputs:diffuse_output.connect = </MaterialX/NodeGraphs/test_image_nodegraph/diffColor.outputs:out_color>
+
+            def Shader "diffColor"
+            {
+                uniform token info:id = "custom_image_nodedef"
+                asset inputs:file_input = @images/grid.png@
+                color3f outputs:out_color
+            }
+        }
+    }
+}
+

@@ -1,0 +1,40 @@
+{
+  "comment": "Browser asset-acceptance manifest (see run.mjs). Paths start with a root name; each root resolves from the environment variable of the same name or the default here, relative to this file (the defaults are checkouts beside the repository). Nothing is downloaded; every asset is a local copy.",
+  "roots": {"ASWF": "../../../../../aswf-assets-091bb5c", "OPENUSD": "../../../../../OpenUSD-26.11.1", "FIXTURES": "fixtures"},
+  "groups": [
+    {"id": "aswf", "label": "ASWF full assets", "assets": [
+      {"id": "bike", "label": "CarbonFrameBike", "path": "ASWF/full_assets/CarbonFrameBike/CarbonFrameBike.usdz"},
+      {"id": "vehicle", "label": "Vehicle (USD_Mini_Car_Kit vehicleVariants, default variant)", "path": "ASWF/full_assets/Vehicles/USD_Mini_Car_Kit/assets/vehicles/vehicleVariants.usda"},
+      {"id": "elephant", "label": "ElephantWithMonochord", "path": "ASWF/full_assets/ElephantWithMonochord/SoC-ElephantWithMonochord.usdc"},
+      {"id": "teapot", "label": "Teapot", "path": "ASWF/full_assets/Teapot/Teapot.usd"},
+      {"id": "chess", "label": "OpenChessSet", "path": "ASWF/full_assets/OpenChessSet/chess_set.usda"},
+      {"id": "mcusd", "label": "McUsd", "path": "ASWF/full_assets/McUsd/McUsd.usda"},
+      {"id": "shaderball", "label": "StandardShaderBall (MaterialX)", "path": "ASWF/full_assets/StandardShaderBall/standard_shader_ball_scene.usda"}
+    ]},
+    {"id": "aswf_test", "label": "ASWF test assets", "assets": [
+      {"id": "brainstem", "label": "BrainStem (UsdSkel)", "path": "ASWF/test_assets/USDZ/BrainStem/BrainStem.usdz", "guard": {"playback": true}},
+      {"id": "animated_cube", "label": "AnimatedCube", "path": "ASWF/test_assets/USDZ/AnimatedCube/AnimatedCube.usdz"},
+      {"id": "damaged_helmet", "label": "DamagedHelmet", "path": "ASWF/test_assets/USDZ/DamagedHelmet/DamagedHelmet.usdz"},
+      {"id": "alpha_blend_mode", "label": "AlphaBlendModeTest", "path": "ASWF/test_assets/AlphaBlendModeTest/AlphaBlendModeTest.usd"},
+      {"id": "texture_transform", "label": "TextureTransformTest", "path": "ASWF/test_assets/TextureTransformTest/TextureTransformTest.usd"},
+      {"id": "normals_bias_scale", "label": "NormalsTextureBiasAndScale", "path": "ASWF/test_assets/NormalsTextureBiasAndScale/NormalsTextureBiasAndScale.usda"},
+      {"id": "roughness", "label": "RoughnessTest", "path": "ASWF/test_assets/RoughnessTest/RoughnessTest.usdz"},
+      {"id": "mtlx_basic", "label": "MaterialXTest basic", "path": "ASWF/test_assets/MaterialXTest/basic.usda"},
+      {"id": "subdiv_catmull_clark", "label": "schemaTests subdiv_catmullClark", "path": "ASWF/test_assets/schemaTests/usdGeom/meshes/subdiv_catmullClark/subdiv_catmullClark.usda"},
+      {"id": "normals_types", "label": "schemaTests normalsTypes", "path": "ASWF/test_assets/schemaTests/usdGeom/meshes/normals_types/normalsTypes.usda"}
+    ]},
+    {"id": "features", "label": "Features group: OpenUSD 26.11.1 usdImagingGL testenv scenes, used unchanged (Pixar, TOST 1.0 license, https://openusd.org/license; packages/usd/docs/imaging-i2.md section 1.4). Each is subLayered under prepare.py's /AcceptanceCam; upstreamTest names the registered test that renders the scene (registered: its CMakeLists.txt line). subdiv_refined uses complexity veryhigh (1.3, refine level 3): the viewer and usdrecord --complexity offer no 1.4, which the upstream test uses. skel_arm records frame 7, one of the upstream test's -times.", "assets": [
+      {"id": "curves", "label": "testUsdImagingGLCurves basicCurves (linear and cubic curves)", "path": "OPENUSD/pxr/usdImaging/usdImagingGL/testenv/testUsdImagingGLCurves/basicCurves.usda", "upstreamTest": "testUsdImagingGLCurves", "registered": "pxr/usdImaging/usdImagingGL/CMakeLists.txt:334"},
+      {"id": "curves_complexity_round_trip", "label": "testUsdImagingGLCurves basicCurves drawn at complexity low, then high (refined cubic curves), then captured back at low: the Display > Complexity round trip, compared with the reference build's low render", "path": "OPENUSD/pxr/usdImaging/usdImagingGL/testenv/testUsdImagingGLCurves/basicCurves.usda", "complexityRoundTrip": "high", "upstreamTest": "testUsdImagingGLCurves", "registered": "pxr/usdImaging/usdImagingGL/CMakeLists.txt:334"},
+      {"id": "points", "label": "testUsdImagingGLPoints points (points with widths)", "path": "OPENUSD/pxr/usdImaging/usdImagingGL/testenv/testUsdImagingGLPoints/points.usda", "upstreamTest": "testUsdImagingGLPoints", "registered": "pxr/usdImaging/usdImagingGL/CMakeLists.txt:411"},
+      {"id": "pi_basic", "label": "testUsdImagingGLPointInstancer pi_basic (point instancer)", "path": "OPENUSD/pxr/usdImaging/usdImagingGL/testenv/testUsdImagingGLPointInstancer/pi_basic.usda", "upstreamTest": "testUsdImagingGLPointInstancer_pi_basic", "registered": "pxr/usdImaging/usdImagingGL/CMakeLists.txt:1680"},
+      {"id": "ni_cubes", "label": "testUsdImagingGLInstancing instancedCubes (native instancing)", "path": "OPENUSD/pxr/usdImaging/usdImagingGL/testenv/testUsdImagingGLInstancing/instancedCubes.usda", "upstreamTest": "testUsdImagingGLInstancing_instancedCubes", "registered": "pxr/usdImaging/usdImagingGL/CMakeLists.txt:1288"},
+      {"id": "skel_arm", "label": "testUsdImagingGLUsdSkel arm (skinning), frame 7", "path": "OPENUSD/pxr/usdImaging/usdImagingGL/testenv/testUsdImagingGLUsdSkel/arm.usda", "time": 7, "upstreamTest": "testUsdImagingGLUsdSkelExtCompCPU_arm / _GPU_arm", "registered": "pxr/usdImaging/usdImagingGL/CMakeLists.txt:3856 (CPU), :3896 (GPU)"},
+      {"id": "subdiv_refined", "label": "testUsdImagingGLBasicDrawing subdivTags at complexity veryhigh (OpenSubdiv refinement)", "path": "OPENUSD/pxr/usdImaging/usdImagingGL/testenv/testUsdImagingGLBasicDrawing/subdivTags.usda", "complexity": "veryhigh", "upstreamTest": "testUsdImagingGLBasicDrawing_subdivTagsRefined", "registered": "pxr/usdImaging/usdImagingGL/CMakeLists.txt:258"},
+      {"id": "volumes", "label": "testUsdImagingGLSimpleVolumes simpleVolumes (procedural volume fields)", "path": "OPENUSD/pxr/usdImaging/usdImagingGL/testenv/testUsdImagingGLSimpleVolumes/simpleVolumes.usda", "upstreamTest": "testUsdImagingGLSimpleVolumes", "registered": "pxr/usdImaging/usdImagingGL/CMakeLists.txt:3984"},
+      {"id": "dome_light", "label": "Dome light fixture (fixtures/domeLight: mesh spheres under testUsdImagingGLDomeLight's testImage.png; the dome light computations on the GPU, compared with the reference build's render)", "path": "FIXTURES/domeLight/domeLightBalls.usda"},
+      {"id": "translucent_overlay", "label": "Translucent overlay fixture (fixtures/translucentOverlay: UsdPreviewSurface opacity 0.35 spheres, OIT, with the viewer's world axes on and hidden in an opaque cube; the overlays must not drop Storm's OIT resolve, compared with the reference build's render)", "path": "FIXTURES/translucentOverlay/translucentOverlay.usda", "viewerAxes": true},
+      {"id": "vdb_volume", "label": "testUsdImagingGLVdbVolume vdbVolume (OpenVDB fields)", "path": "OPENUSD/pxr/usdImaging/usdImagingGL/testenv/testUsdImagingGLVdbVolume/vdbVolume.usda", "upstreamTest": "testUsdImagingGLVdbVolume", "registered": "pxr/usdImaging/usdImagingGL/CMakeLists.txt:5893"}
+    ]}
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/imaging/hdSt/tests/fixtures/testenvImages/capture.py",
+  "upstream": [
+    "pxr/imaging/hdSt/CMakeLists.txt",
+    "pxr/imaging/hdSt/testenv/testHdStBasicDrawing.cpp",
+    "pxr/imaging/hdSt/testenv/testHdStDisplayStyle.cpp",
+    "pxr/imaging/hdSt/testenv/testHdStCurveDrawing.cpp",
+    "pxr/imaging/hdSt/testenv/testHdStCurvePrimvarInterpolation.cpp",
+    "pxr/imaging/hdSt/testenv/testHdStInstancing.cpp",
+    "pxr/imaging/hdSt/testenv/testHdStSubdivision.cpp",
+    "pxr/imaging/hdSt/testenv/testHdStInitRepr.cpp",
+    "pxr/imaging/hdSt/testenv/testHdStTransition.cpp"
+  ],
+  "payload": {
+    "test": "testHdStCurvePrimvarInterpolation_lv1_refined",
+    "cmake": "pxr/imaging/hdSt/CMakeLists.txt:2388",
+    "command": "<install>/tests/testHdStCurvePrimvarInterpolation --offscreen --repr refined --refineLevel 1 --write testHdStCurvePrimvarInterpolation_lv1_refined.png",
+    "cwd": "copy of <source>/pxr/imaging/hdSt/testenv/testHdStCurvePrimvarInterpolation",
+    "env": {
+      "TF_DEBUG": "HD_DISABLE_MULTITHREADED_RPRIM_SYNC HD_SAFE_MODE"
+    },
+    "expectedReturnCode": "0",
+    "returnCode": 0,
+    "images": [
+      {
+        "name": "testHdStCurvePrimvarInterpolation_lv1_refined.png",
+        "written": true
+      }
+    ],
+    "addedEnv": {
+      "HDST_ENABLE_RESOURCE_INSTANCING": {
+        "value": "0",
+        "reason": "curves sharing an index range race on their Metal tessellation factors with resource instancing on; the images change between runs of the reference build"
+      }
+    }
+  }
+}

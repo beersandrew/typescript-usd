@@ -1,0 +1,670 @@
+{
+ "fontSizeSetting": 10,
+ "logicalDpiY": 72.0,
+ "devicePixelRatio": 2.0,
+ "hud": {
+  "family": "Roboto Mono",
+  "pointSize": 9.0,
+  "pixelSize": 9
+ },
+ "widgets": [
+  {
+   "cls": "QWidget",
+   "name": "centralwidget",
+   "family": "Roboto",
+   "pointSize": 10.0,
+   "pixelSize": 10
+  },
+  {
+   "cls": "QLineEdit",
+   "name": "currentPathWidget",
+   "family": "Roboto",
+   "pointSize": 10.0,
+   "pixelSize": 10
+  },
+  {
+   "cls": "QSplitter",
+   "name": "topBottomSplitter",
+   "family": "Roboto",
+   "pointSize": 10.0,
+   "pixelSize": 10
+  },
+  {
+   "cls": "QSplitter",
+   "name": "attribBrowserInspectorSplitter",
+   "family": "Roboto",
+   "pointSize": 10.0,
+   "pixelSize": 10
+  },
+  {
+   "cls": "QFrame",
+   "name": "propertyInspectorFrame",
+   "family": "Roboto",
+   "pointSize": 10.0,
+   "pixelSize": 10
+  },
+  {
+   "cls": "QFrame",
+   "name": "propertyInspectorContainer",
+   "family": "Roboto",
+   "pointSize": 10.0,
+   "pixelSize": 10
+  },
+  {
+   "cls": "QTabWidget",
+   "name": "propertyInspector",
+   "family": "Roboto",
+   "pointSize": 10.0,
+   "pixelSize": 10
+  },
+  {
+   "cls": "QStackedWidget",
+   "name": "qt_tabwidget_stackedwidget",
+   "family": "Roboto",
+   "pointSize": 10.0,
+   "pixelSize": 10
+  },
+  {
+   "cls": "QWidget",
+   "name": "value",
+   "family": "Roboto",
+   "pointSize": 10.0,
+   "pixelSize": 10
+  },
+  {
+   "cls": "AttributeValueEditor",
+   "name": "attributeValueEditor",
+   "family": "Roboto",
+   "pointSize": 10.0,
+   "pixelSize": 10
+  },
+  {
+   "cls": "QStackedWidget",
+   "name": "stackedWidget",
+   "family": "Roboto",
+   "pointSize": 10.0,
+   "pixelSize": 10
+  },
+  {
+   "cls": "QTextBrowser",
+   "name": "valueViewer",
+   "family": "Roboto",
+   "pointSize": 10.0,
+   "pixelSize": 10
+  },
+  {
+   "cls": "QWidget",
+   "name": "qt_scrollarea_viewport",
+   "family": "Roboto",
+   "pointSize": 10.0,
+   "pixelSize": 10
+  },
+  {
+   "cls": "QTabBar",
+   "name": "qt_tabwidget_tabbar",
+   "family": "Roboto",
+   "pointSize": 10.0,
+   "pixelSize": 10
+  },
+  {
+   "cls": "QFrame",
+   "name": "attributeBrowserFrame",
+   "family": "Roboto",
+   "pointSize": 10.0,
+   "pixelSize": 10
+  },
+  {
+   "cls": "QTreeWidget",
+   "name": "propertyView",
+   "family": "Roboto",
+   "pointSize": 10.0,
+   "pixelSize": 10
+  },
+  {
+   "cls": "QHeaderView",
+   "name": "",
+   "family": "Roboto",
+   "pointSize": 10.0,
+   "pixelSize": 10
+  },
+  {
+   "cls": "QWidget",
+   "name": "qt_scrollarea_hcontainer",
+   "family": "Roboto",
+   "pointSize": 10.0,
+   "pixelSize": 10
+  },
+  {
+   "cls": "QScrollBar",
+   "name": "",
+   "family": "Roboto",
+   "pointSize": 10.0,
+   "pixelSize": 10
+  },
+  {
+   "cls": "PropertyLegend",
+   "name": "propertyLegendContainer",
+   "family": "Roboto",
+   "pointSize": 10.0,
+   "pixelSize": 10
+  },
+  {
+   "cls": "QGraphicsView",
+   "name": "propertyLegendColorNoValue",
+   "family": "Roboto",
+   "pointSize": 10.0,
+   "pixelSize": 10
+  },
+  {
+   "cls": "QWidget",
+   "name": "",
+   "family": "Roboto",
+   "pointSize": 10.0,
+   "pixelSize": 10
+  },
+  {
+   "cls": "QWidget",
+   "name": "qt_scrollarea_vcontainer",
+   "family": "Roboto",
+   "pointSize": 10.0,
+   "pixelSize": 10
+  },
+  {
+   "cls": "QLabel",
+   "name": "propertyLegendLabelNoValue",
+   "family": "Roboto",
+   "pointSize": 10.0,
+   "pixelSize": 10
+  },
+  {
+   "cls": "QGraphicsView",
+   "name": "propertyLegendColorDefault",
+   "family": "Roboto",
+   "pointSize": 10.0,
+   "pixelSize": 10
+  },
+  {
+   "cls": "QLabel",
+   "name": "propertyLegendLabelDefault",
+   "family": "Roboto",
+   "pointSize": 10.0,
+   "pixelSize": 10
+  },
+  {
+   "cls": "QGraphicsView",
+   "name": "propertyLegendColorTimeSample",
+   "family": "Roboto",
+   "pointSize": 10.0,
+   "pixelSize": 10
+  },
+  {
+   "cls": "QLabel",
+   "name": "propertyLegendLabelTimeSample",
+   "family": "Roboto",
+   "pointSize": 10.0,
+   "pixelSize": 10
+  },
+  {
+   "cls": "QGraphicsView",
+   "name": "propertyLegendColorFallback",
+   "family": "Roboto",
+   "pointSize": 10.0,
+   "pixelSize": 10
+  },
+  {
+   "cls": "QLabel",
+   "name": "propertyLegendLabelFallback",
+   "family": "Roboto",
+   "pointSize": 10.0,
+   "pixelSize": 10
+  },
+  {
+   "cls": "QGraphicsView",
+   "name": "propertyLegendColorCustom",
+   "family": "Roboto",
+   "pointSize": 10.0,
+   "pixelSize": 10
+  },
+  {
+   "cls": "QLabel",
+   "name": "propertyLegendLabelCustom",
+   "family": "Roboto",
+   "pointSize": 10.0,
+   "pixelSize": 10
+  },
+  {
+   "cls": "QGraphicsView",
+   "name": "propertyLegendColorValueClips",
+   "family": "Roboto",
+   "pointSize": 10.0,
+   "pixelSize": 10
+  },
+  {
+   "cls": "QLabel",
+   "name": "propertyLegendLabelValueClips",
+   "family": "Roboto",
+   "pointSize": 10.0,
+   "pixelSize": 10
+  },
+  {
+   "cls": "QGraphicsView",
+   "name": "propertyLegendColorSpline",
+   "family": "Roboto",
+   "pointSize": 10.0,
+   "pixelSize": 10
+  },
+  {
+   "cls": "QLabel",
+   "name": "propertyLegendLabelSpline",
+   "family": "Roboto",
+   "pointSize": 10.0,
+   "pixelSize": 10
+  },
+  {
+   "cls": "QLabel",
+   "name": "propertyLegendAttrPlainIcon",
+   "family": "Roboto",
+   "pointSize": 10.0,
+   "pixelSize": 10
+  },
+  {
+   "cls": "QLabel",
+   "name": "propertyLegendAttrPlainDesc",
+   "family": "Roboto",
+   "pointSize": 10.0,
+   "pixelSize": 10
+  },
+  {
+   "cls": "QLabel",
+   "name": "propertyLegendRelPlainIcon",
+   "family": "Roboto",
+   "pointSize": 10.0,
+   "pixelSize": 10
+  },
+  {
+   "cls": "QLabel",
+   "name": "propertyLegendRelPlainDesc",
+   "family": "Roboto",
+   "pointSize": 10.0,
+   "pixelSize": 10
+  },
+  {
+   "cls": "QLabel",
+   "name": "propertyLegendCompIcon",
+   "family": "Roboto",
+   "pointSize": 10.0,
+   "pixelSize": 10
+  },
+  {
+   "cls": "QLabel",
+   "name": "propertyLegendCompDesc",
+   "family": "Roboto",
+   "pointSize": 10.0,
+   "pixelSize": 10
+  },
+  {
+   "cls": "QLabel",
+   "name": "propertyLegendConnIcon",
+   "family": "Roboto",
+   "pointSize": 10.0,
+   "pixelSize": 10
+  },
+  {
+   "cls": "QLabel",
+   "name": "propertyLegendConnDesc",
+   "family": "Roboto",
+   "pointSize": 10.0,
+   "pixelSize": 10
+  },
+  {
+   "cls": "QLabel",
+   "name": "propertyLegendTargetIcon",
+   "family": "Roboto",
+   "pointSize": 10.0,
+   "pixelSize": 10
+  },
+  {
+   "cls": "QLabel",
+   "name": "propertyLegendTargetDesc",
+   "family": "Roboto",
+   "pointSize": 10.0,
+   "pixelSize": 10
+  },
+  {
+   "cls": "QLabel",
+   "name": "inheritedPropertyIcon",
+   "family": "Roboto",
+   "pointSize": 10.0,
+   "pixelSize": 10
+  },
+  {
+   "cls": "QLabel",
+   "name": "inheritedPropertyText",
+   "family": "Roboto",
+   "pointSize": 10.0,
+   "pixelSize": 10
+  },
+  {
+   "cls": "QLabel",
+   "name": "propertyLegendAttrWithConnIcon",
+   "family": "Roboto",
+   "pointSize": 10.0,
+   "pixelSize": 10
+  },
+  {
+   "cls": "QLabel",
+   "name": "propertyLegendAttrWithConnDesc",
+   "family": "Roboto",
+   "pointSize": 10.0,
+   "pixelSize": 10
+  },
+  {
+   "cls": "QLabel",
+   "name": "propertyLegendRelWithTargetIcon",
+   "family": "Roboto",
+   "pointSize": 10.0,
+   "pixelSize": 10
+  },
+  {
+   "cls": "QLabel",
+   "name": "propertyLegendRelWithTargetDesc",
+   "family": "Roboto",
+   "pointSize": 10.0,
+   "pixelSize": 10
+  },
+  {
+   "cls": "QPushButton",
+   "name": "propertyLegendQButton",
+   "family": "Roboto",
+   "pointSize": 10.0,
+   "pixelSize": 10
+  },
+  {
+   "cls": "QLineEdit",
+   "name": "attrViewLineEdit",
+   "family": "Roboto",
+   "pointSize": 10.0,
+   "pixelSize": 10
+  },
+  {
+   "cls": "QPushButton",
+   "name": "attrViewFindNext",
+   "family": "Roboto",
+   "pointSize": 10.0,
+   "pixelSize": 10
+  },
+  {
+   "cls": "QSplitterHandle",
+   "name": "qt_splithandle_",
+   "family": "Roboto",
+   "pointSize": 10.0,
+   "pixelSize": 10
+  },
+  {
+   "cls": "QSplitter",
+   "name": "primStageSplitter",
+   "family": "Roboto",
+   "pointSize": 10.0,
+   "pixelSize": 10
+  },
+  {
+   "cls": "QFrame",
+   "name": "renderFrame",
+   "family": "Roboto",
+   "pointSize": 10.0,
+   "pixelSize": 10
+  },
+  {
+   "cls": "QMenuBar",
+   "name": "renderMenuBar",
+   "family": "Roboto",
+   "pointSize": 8.0,
+   "pixelSize": 8
+  },
+  {
+   "cls": "QFrame",
+   "name": "glFrame",
+   "family": "Roboto",
+   "pointSize": 10.0,
+   "pixelSize": 10
+  },
+  {
+   "cls": "StageView",
+   "name": "",
+   "family": "Roboto",
+   "pointSize": 10.0,
+   "pixelSize": 10
+  },
+  {
+   "cls": "QFrame",
+   "name": "primFrame",
+   "family": "Roboto",
+   "pointSize": 10.0,
+   "pixelSize": 10
+  },
+  {
+   "cls": "QMenuBar",
+   "name": "primViewMenuBar",
+   "family": "Roboto",
+   "pointSize": 8.0,
+   "pixelSize": 8
+  },
+  {
+   "cls": "PrimTreeWidget",
+   "name": "primView",
+   "family": "Roboto",
+   "pointSize": 10.0,
+   "pixelSize": 10
+  },
+  {
+   "cls": "PrimLegend",
+   "name": "primLegendContainer",
+   "family": "Roboto",
+   "pointSize": 10.0,
+   "pixelSize": 10
+  },
+  {
+   "cls": "QGraphicsView",
+   "name": "primLegendColorHasArcs",
+   "family": "Roboto",
+   "pointSize": 10.0,
+   "pixelSize": 10
+  },
+  {
+   "cls": "QLabel",
+   "name": "primLegendLabelHasArcs",
+   "family": "Roboto",
+   "pointSize": 10.0,
+   "pixelSize": 10
+  },
+  {
+   "cls": "QGraphicsView",
+   "name": "primLegendColorInstance",
+   "family": "Roboto",
+   "pointSize": 10.0,
+   "pixelSize": 10
+  },
+  {
+   "cls": "QLabel",
+   "name": "primLegendLabelInstance",
+   "family": "Roboto",
+   "pointSize": 10.0,
+   "pixelSize": 10
+  },
+  {
+   "cls": "QGraphicsView",
+   "name": "primLegendColorPrototype",
+   "family": "Roboto",
+   "pointSize": 10.0,
+   "pixelSize": 10
+  },
+  {
+   "cls": "QLabel",
+   "name": "primLegendLabelPrototype",
+   "family": "Roboto",
+   "pointSize": 10.0,
+   "pixelSize": 10
+  },
+  {
+   "cls": "QGraphicsView",
+   "name": "primLegendColorNormal",
+   "family": "Roboto",
+   "pointSize": 10.0,
+   "pixelSize": 10
+  },
+  {
+   "cls": "QLabel",
+   "name": "primLegendLabelNormal",
+   "family": "Roboto",
+   "pointSize": 10.0,
+   "pixelSize": 10
+  },
+  {
+   "cls": "QLabel",
+   "name": "primLegendLabelDimmed",
+   "family": "Roboto",
+   "pointSize": 10.0,
+   "pixelSize": 10
+  },
+  {
+   "cls": "QLabel",
+   "name": "primLegendLabelFontsAbstract",
+   "family": "Roboto",
+   "pointSize": 10.0,
+   "pixelSize": 10
+  },
+  {
+   "cls": "QLabel",
+   "name": "primLegendLabelFontsUndefined",
+   "family": "Roboto",
+   "pointSize": 10.0,
+   "pixelSize": 10
+  },
+  {
+   "cls": "QLabel",
+   "name": "primLegendLabelFontsDefined",
+   "family": "Roboto",
+   "pointSize": 10.0,
+   "pixelSize": 10
+  },
+  {
+   "cls": "QPushButton",
+   "name": "primLegendQButton",
+   "family": "Roboto",
+   "pointSize": 10.0,
+   "pixelSize": 10
+  },
+  {
+   "cls": "QLineEdit",
+   "name": "primViewLineEdit",
+   "family": "Roboto",
+   "pointSize": 10.0,
+   "pixelSize": 10
+  },
+  {
+   "cls": "QPushButton",
+   "name": "primViewFindNext",
+   "family": "Roboto",
+   "pointSize": 10.0,
+   "pixelSize": 10
+  },
+  {
+   "cls": "QLabel",
+   "name": "stageBegin",
+   "family": "Roboto",
+   "pointSize": 10.0,
+   "pixelSize": 10
+  },
+  {
+   "cls": "QLineEdit",
+   "name": "rangeBegin",
+   "family": "Roboto",
+   "pointSize": 10.0,
+   "pixelSize": 10
+  },
+  {
+   "cls": "FrameSlider",
+   "name": "frameSlider",
+   "family": "Roboto",
+   "pointSize": 10.0,
+   "pixelSize": 10
+  },
+  {
+   "cls": "QLineEdit",
+   "name": "rangeEnd",
+   "family": "Roboto",
+   "pointSize": 10.0,
+   "pixelSize": 10
+  },
+  {
+   "cls": "QLabel",
+   "name": "stageEnd",
+   "family": "Roboto",
+   "pointSize": 10.0,
+   "pixelSize": 10
+  },
+  {
+   "cls": "QCheckBox",
+   "name": "redrawOnScrub",
+   "family": "Roboto",
+   "pointSize": 10.0,
+   "pixelSize": 10
+  },
+  {
+   "cls": "QLabel",
+   "name": "stepSizeLabel",
+   "family": "Roboto",
+   "pointSize": 10.0,
+   "pixelSize": 10
+  },
+  {
+   "cls": "QLineEdit",
+   "name": "stepSize",
+   "family": "Roboto",
+   "pointSize": 10.0,
+   "pixelSize": 10
+  },
+  {
+   "cls": "QFrame",
+   "name": "line",
+   "family": "Roboto",
+   "pointSize": 10.0,
+   "pixelSize": 10
+  },
+  {
+   "cls": "QPushButton",
+   "name": "playButton",
+   "family": "Roboto",
+   "pointSize": 10.0,
+   "pixelSize": 10
+  },
+  {
+   "cls": "QLabel",
+   "name": "frameLabel",
+   "family": "Roboto",
+   "pointSize": 10.0,
+   "pixelSize": 10
+  },
+  {
+   "cls": "QLineEdit",
+   "name": "frameField",
+   "family": "Roboto",
+   "pointSize": 10.0,
+   "pixelSize": 10
+  },
+  {
+   "cls": "QStatusBar",
+   "name": "",
+   "family": "Roboto",
+   "pointSize": 10.0,
+   "pixelSize": 10
+  },
+  {
+   "cls": "QSizeGrip",
+   "name": "",
+   "family": "Roboto",
+   "pointSize": 10.0,
+   "pixelSize": 10
+  }
+ ]
+}

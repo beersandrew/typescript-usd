@@ -1,0 +1,34 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/usdImaging/usdImagingGL/tests/fixtures/testenvImages/capture.py",
+  "upstream": [
+    "pxr/usdImaging/usdImagingGL/CMakeLists.txt",
+    "pxr/usdImaging/usdImagingGL/testenv/testUsdImagingGLBasicDrawing.cpp"
+  ],
+  "payload": {
+    "test": "testUsdImagingGLResync",
+    "cmake": "pxr/usdImaging/usdImagingGL/CMakeLists.txt:2247",
+    "command": "<install>/tests/testUsdImagingGLResync --stage world.usda --unload /World/Model --write world.png",
+    "cwd": "copy of <source>/pxr/usdImaging/usdImagingGL/testenv/testUsdImagingGLResync",
+    "env": {
+      "TF_DEBUG": "HD_SAFE_MODE"
+    },
+    "expectedReturnCode": "0",
+    "returnCode": 0,
+    "images": [
+      {
+        "name": "world_0.png",
+        "written": true
+      },
+      {
+        "name": "world_1.png",
+        "written": true
+      },
+      {
+        "name": "world_2.png",
+        "written": true
+      }
+    ]
+  }
+}

@@ -1,0 +1,327 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/usd/usdMtlx/tests/upstream/fixtures/capture.py",
+  "upstream": [
+    "pxr/usd/usdMtlx/reader.cpp",
+    "pxr/usd/usdMtlx/parser.cpp"
+  ],
+  "payload": {
+    "ND_UsdPreviewSurface_surfaceshader": {
+      "inputs": {
+        "diffuseColor": {
+          "type": "color",
+          "arraySize": 0
+        },
+        "emissiveColor": {
+          "type": "color",
+          "arraySize": 0
+        },
+        "useSpecularWorkflow": {
+          "type": "int",
+          "arraySize": 0
+        },
+        "specularColor": {
+          "type": "color",
+          "arraySize": 0
+        },
+        "metallic": {
+          "type": "float",
+          "arraySize": 0
+        },
+        "roughness": {
+          "type": "float",
+          "arraySize": 0
+        },
+        "clearcoat": {
+          "type": "float",
+          "arraySize": 0
+        },
+        "clearcoatRoughness": {
+          "type": "float",
+          "arraySize": 0
+        },
+        "opacity": {
+          "type": "float",
+          "arraySize": 0
+        },
+        "opacityMode": {
+          "type": "int",
+          "arraySize": 0
+        },
+        "opacityThreshold": {
+          "type": "float",
+          "arraySize": 0
+        },
+        "ior": {
+          "type": "float",
+          "arraySize": 0
+        },
+        "normal": {
+          "type": "float",
+          "arraySize": 3
+        },
+        "displacement": {
+          "type": "float",
+          "arraySize": 0
+        },
+        "occlusion": {
+          "type": "float",
+          "arraySize": 0
+        }
+      },
+      "outputs": [
+        "out"
+      ]
+    },
+    "ND_standard_surface_surfaceshader": {
+      "inputs": {
+        "base": {
+          "type": "float",
+          "arraySize": 0
+        },
+        "base_color": {
+          "type": "color",
+          "arraySize": 0
+        },
+        "diffuse_roughness": {
+          "type": "float",
+          "arraySize": 0
+        },
+        "metalness": {
+          "type": "float",
+          "arraySize": 0
+        },
+        "specular": {
+          "type": "float",
+          "arraySize": 0
+        },
+        "specular_color": {
+          "type": "color",
+          "arraySize": 0
+        },
+        "specular_roughness": {
+          "type": "float",
+          "arraySize": 0
+        },
+        "specular_IOR": {
+          "type": "float",
+          "arraySize": 0
+        },
+        "specular_anisotropy": {
+          "type": "float",
+          "arraySize": 0
+        },
+        "specular_rotation": {
+          "type": "float",
+          "arraySize": 0
+        },
+        "transmission": {
+          "type": "float",
+          "arraySize": 0
+        },
+        "transmission_color": {
+          "type": "color",
+          "arraySize": 0
+        },
+        "transmission_depth": {
+          "type": "float",
+          "arraySize": 0
+        },
+        "transmission_scatter": {
+          "type": "color",
+          "arraySize": 0
+        },
+        "transmission_scatter_anisotropy": {
+          "type": "float",
+          "arraySize": 0
+        },
+        "transmission_dispersion": {
+          "type": "float",
+          "arraySize": 0
+        },
+        "transmission_extra_roughness": {
+          "type": "float",
+          "arraySize": 0
+        },
+        "subsurface": {
+          "type": "float",
+          "arraySize": 0
+        },
+        "subsurface_color": {
+          "type": "color",
+          "arraySize": 0
+        },
+        "subsurface_radius": {
+          "type": "color",
+          "arraySize": 0
+        },
+        "subsurface_scale": {
+          "type": "float",
+          "arraySize": 0
+        },
+        "subsurface_anisotropy": {
+          "type": "float",
+          "arraySize": 0
+        },
+        "sheen": {
+          "type": "float",
+          "arraySize": 0
+        },
+        "sheen_color": {
+          "type": "color",
+          "arraySize": 0
+        },
+        "sheen_roughness": {
+          "type": "float",
+          "arraySize": 0
+        },
+        "coat": {
+          "type": "float",
+          "arraySize": 0
+        },
+        "coat_color": {
+          "type": "color",
+          "arraySize": 0
+        },
+        "coat_roughness": {
+          "type": "float",
+          "arraySize": 0
+        },
+        "coat_anisotropy": {
+          "type": "float",
+          "arraySize": 0
+        },
+        "coat_rotation": {
+          "type": "float",
+          "arraySize": 0
+        },
+        "coat_IOR": {
+          "type": "float",
+          "arraySize": 0
+        },
+        "coat_normal": {
+          "type": "float",
+          "arraySize": 3
+        },
+        "coat_affect_color": {
+          "type": "float",
+          "arraySize": 0
+        },
+        "coat_affect_roughness": {
+          "type": "float",
+          "arraySize": 0
+        },
+        "thin_film_thickness": {
+          "type": "float",
+          "arraySize": 0
+        },
+        "thin_film_IOR": {
+          "type": "float",
+          "arraySize": 0
+        },
+        "emission": {
+          "type": "float",
+          "arraySize": 0
+        },
+        "emission_color": {
+          "type": "color",
+          "arraySize": 0
+        },
+        "opacity": {
+          "type": "color",
+          "arraySize": 0
+        },
+        "thin_walled": {
+          "type": "bool",
+          "arraySize": 0
+        },
+        "normal": {
+          "type": "float",
+          "arraySize": 3
+        },
+        "tangent": {
+          "type": "float",
+          "arraySize": 3
+        }
+      },
+      "outputs": [
+        "out"
+      ]
+    },
+    "ND_image_color3": {
+      "inputs": {
+        "file": {
+          "type": "string",
+          "arraySize": 0
+        },
+        "layer": {
+          "type": "string",
+          "arraySize": 0
+        },
+        "default": {
+          "type": "color",
+          "arraySize": 0
+        },
+        "texcoord": {
+          "type": "float",
+          "arraySize": 2
+        },
+        "uaddressmode": {
+          "type": "string",
+          "arraySize": 0
+        },
+        "vaddressmode": {
+          "type": "string",
+          "arraySize": 0
+        },
+        "filtertype": {
+          "type": "string",
+          "arraySize": 0
+        },
+        "framerange": {
+          "type": "string",
+          "arraySize": 0
+        },
+        "frameoffset": {
+          "type": "int",
+          "arraySize": 0
+        },
+        "frameendaction": {
+          "type": "string",
+          "arraySize": 0
+        }
+      },
+      "outputs": [
+        "out"
+      ]
+    },
+    "ND_normalmap_vector2": {
+      "inputs": {
+        "in": {
+          "type": "float",
+          "arraySize": 3
+        },
+        "scale": {
+          "type": "float",
+          "arraySize": 2
+        },
+        "normal": {
+          "type": "float",
+          "arraySize": 3
+        },
+        "tangent": {
+          "type": "float",
+          "arraySize": 3
+        },
+        "bitangent": {
+          "type": "float",
+          "arraySize": 3
+        }
+      },
+      "outputs": [
+        "out"
+      ]
+    }
+  }
+}

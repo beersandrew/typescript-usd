@@ -1,0 +1,7 @@
+#usda 1.0
+(subLayers = [@nested.usda@ (offset = 2; scale = 3)])
+over "World" {
+ over "Model" {
+ custom string note = "weak model opinion"
+ }
+}

@@ -1,0 +1,276 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/usd/usd/tests/fixtures/instanceKeyAncestralClips/capture.py",
+  "upstream": [
+    "pxr/usd/usd/instanceKey.cpp:84-89",
+    "pxr/usd/usd/clipSetDefinition.cpp:406-416",
+    "pxr/usd/usd/clipSetDefinition.cpp:537-562",
+    "pxr/usd/usd/clipCache.cpp:191-240",
+    "pxr/usd/usd/stage.cpp:3487-3494"
+  ],
+  "payload": {
+    "ancestral": {
+      "prototypeCount": 1,
+      "prims": {
+        "/SetA/Inst": {
+          "isInstance": true,
+          "prototype": "/__Prototype_1"
+        },
+        "/SetB/Inst": {
+          "isInstance": true,
+          "prototype": "/__Prototype_1"
+        }
+      },
+      "attrs": {
+        "/SetA/Inst/geom.size": {
+          "default": 2.0,
+          "values": [
+            [
+              0,
+              2.0
+            ],
+            [
+              5,
+              2.0
+            ],
+            [
+              10,
+              2.0
+            ]
+          ],
+          "timeSamples": [],
+          "source": "Usd.ResolveInfoSourceDefault"
+        },
+        "/SetB/Inst/geom.size": {
+          "default": 2.0,
+          "values": [
+            [
+              0,
+              2.0
+            ],
+            [
+              5,
+              2.0
+            ],
+            [
+              10,
+              2.0
+            ]
+          ],
+          "timeSamples": [],
+          "source": "Usd.ResolveInfoSourceDefault"
+        }
+      }
+    },
+    "ancestral_noinst": {
+      "prototypeCount": 0,
+      "prims": {
+        "/SetA/Inst": {
+          "isInstance": false,
+          "prototype": null
+        },
+        "/SetB/Inst": {
+          "isInstance": false,
+          "prototype": null
+        }
+      },
+      "attrs": {
+        "/SetA/Inst/geom.size": {
+          "default": 2.0,
+          "values": [
+            [
+              0,
+              5.0
+            ],
+            [
+              5,
+              10.0
+            ],
+            [
+              10,
+              15.0
+            ]
+          ],
+          "timeSamples": [
+            0.0,
+            10.0
+          ],
+          "source": "Usd.ResolveInfoSourceValueClips"
+        },
+        "/SetB/Inst/geom.size": {
+          "default": 2.0,
+          "values": [
+            [
+              0,
+              2.0
+            ],
+            [
+              5,
+              2.0
+            ],
+            [
+              10,
+              2.0
+            ]
+          ],
+          "timeSamples": [],
+          "source": "Usd.ResolveInfoSourceDefault"
+        }
+      }
+    },
+    "referenced": {
+      "prototypeCount": 1,
+      "prims": {
+        "/SetA/Inst": {
+          "isInstance": true,
+          "prototype": "/__Prototype_1"
+        },
+        "/SetB/Inst": {
+          "isInstance": true,
+          "prototype": "/__Prototype_1"
+        }
+      },
+      "attrs": {
+        "/SetA/Inst/geom.size": {
+          "default": 2.0,
+          "values": [
+            [
+              0,
+              2.0
+            ],
+            [
+              5,
+              2.0
+            ],
+            [
+              10,
+              2.0
+            ]
+          ],
+          "timeSamples": [],
+          "source": "Usd.ResolveInfoSourceDefault"
+        },
+        "/SetB/Inst/geom.size": {
+          "default": 2.0,
+          "values": [
+            [
+              0,
+              2.0
+            ],
+            [
+              5,
+              2.0
+            ],
+            [
+              10,
+              2.0
+            ]
+          ],
+          "timeSamples": [],
+          "source": "Usd.ResolveInfoSourceDefault"
+        }
+      }
+    },
+    "own": {
+      "prototypeCount": 1,
+      "prims": {
+        "/A": {
+          "isInstance": true,
+          "prototype": "/__Prototype_1"
+        },
+        "/B": {
+          "isInstance": false,
+          "prototype": null
+        }
+      },
+      "attrs": {
+        "/A.own": {
+          "default": null,
+          "values": [
+            [
+              0,
+              7.0
+            ],
+            [
+              5,
+              12.0
+            ],
+            [
+              10,
+              17.0
+            ]
+          ],
+          "timeSamples": [
+            0.0,
+            10.0
+          ],
+          "source": "Usd.ResolveInfoSourceValueClips"
+        },
+        "/A/geom.size": {
+          "default": 2.0,
+          "values": [
+            [
+              0,
+              2.0
+            ],
+            [
+              5,
+              2.0
+            ],
+            [
+              10,
+              2.0
+            ]
+          ],
+          "timeSamples": [],
+          "source": "Usd.ResolveInfoSourceDefault"
+        },
+        "/B.own": {
+          "default": null,
+          "values": [
+            [
+              0,
+              7.0
+            ],
+            [
+              5,
+              12.0
+            ],
+            [
+              10,
+              17.0
+            ]
+          ],
+          "timeSamples": [
+            0.0,
+            10.0
+          ],
+          "source": "Usd.ResolveInfoSourceValueClips"
+        },
+        "/B/geom.size": {
+          "default": 2.0,
+          "values": [
+            [
+              0,
+              5.0
+            ],
+            [
+              5,
+              10.0
+            ],
+            [
+              10,
+              15.0
+            ]
+          ],
+          "timeSamples": [
+            0.0,
+            10.0
+          ],
+          "source": "Usd.ResolveInfoSourceValueClips"
+        }
+      }
+    }
+  }
+}

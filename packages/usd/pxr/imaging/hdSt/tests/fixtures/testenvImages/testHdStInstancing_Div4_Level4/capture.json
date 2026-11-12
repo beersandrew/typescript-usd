@@ -1,0 +1,34 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/imaging/hdSt/tests/fixtures/testenvImages/capture.py",
+  "upstream": [
+    "pxr/imaging/hdSt/CMakeLists.txt",
+    "pxr/imaging/hdSt/testenv/testHdStBasicDrawing.cpp",
+    "pxr/imaging/hdSt/testenv/testHdStDisplayStyle.cpp",
+    "pxr/imaging/hdSt/testenv/testHdStCurveDrawing.cpp",
+    "pxr/imaging/hdSt/testenv/testHdStCurvePrimvarInterpolation.cpp",
+    "pxr/imaging/hdSt/testenv/testHdStInstancing.cpp",
+    "pxr/imaging/hdSt/testenv/testHdStSubdivision.cpp",
+    "pxr/imaging/hdSt/testenv/testHdStInitRepr.cpp",
+    "pxr/imaging/hdSt/testenv/testHdStTransition.cpp"
+  ],
+  "payload": {
+    "test": "testHdStInstancing_Div4_Level4",
+    "cmake": "pxr/imaging/hdSt/CMakeLists.txt:2693",
+    "command": "<install>/tests/testHdStInstancing --offscreen --div 5 --level 2 --write testHdStInstancing_div5_level2.png",
+    "cwd": "copy of <source>/pxr/imaging/hdSt/testenv/testHdStInstancing",
+    "env": {
+      "TF_DEBUG": "HD_SAFE_MODE",
+      "HGIGL_ENABLE_BINDLESS_BUFFER": "1"
+    },
+    "expectedReturnCode": "0",
+    "returnCode": 0,
+    "images": [
+      {
+        "name": "testHdStInstancing_div5_level2.png",
+        "written": true
+      }
+    ]
+  }
+}

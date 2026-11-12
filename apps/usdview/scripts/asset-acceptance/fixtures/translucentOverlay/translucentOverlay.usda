@@ -1,0 +1,75 @@
+#usda 1.0
+(
+    doc = """Asset-acceptance fixture (typescript-usd viewer): translucent surfaces under the viewer's overlays.
+    Two UsdPreviewSurface spheres with opacity 0.35 (Storm material tag translucent, drawn by HdxOitRenderTask and
+    composited by HdxOitResolveTask into the resolved color AOV only) in front of and beside an opaque cube. The cube
+    (size 6) encloses the viewer's world axes (2.5 units from the origin), so they are drawn but hidden by depth: the
+    expected image is the reference build's usdrecord render. Written for this repository (no upstream counterpart)."""
+    defaultPrim = "Fixture"
+    metersPerUnit = 1
+    upAxis = "Y"
+)
+
+def Xform "Fixture"
+{
+    def Cube "Block" (
+        prepend apiSchemas = ["MaterialBindingAPI"]
+    )
+    {
+        double size = 6
+        float3[] extent = [(-3, -3, -3), (3, 3, 3)]
+        rel material:binding = </Fixture/Looks/Clay>
+    }
+
+    def Sphere "GlassFront" (
+        prepend apiSchemas = ["MaterialBindingAPI"]
+    )
+    {
+        double radius = 2
+        float3[] extent = [(-2, -2, -2), (2, 2, 2)]
+        rel material:binding = </Fixture/Looks/Glass>
+        double3 xformOp:translate = (1.5, 1, 5.5)
+        uniform token[] xformOpOrder = ["xformOp:translate"]
+    }
+
+    def Sphere "GlassSide" (
+        prepend apiSchemas = ["MaterialBindingAPI"]
+    )
+    {
+        double radius = 2
+        float3[] extent = [(-2, -2, -2), (2, 2, 2)]
+        rel material:binding = </Fixture/Looks/Glass>
+        double3 xformOp:translate = (-6, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate"]
+    }
+
+    def Scope "Looks"
+    {
+        def Material "Clay"
+        {
+            token outputs:surface.connect = </Fixture/Looks/Clay/Surface.outputs:surface>
+
+            def Shader "Surface"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0.8, 0.25, 0.1)
+                float inputs:roughness = 0.6
+                token outputs:surface
+            }
+        }
+
+        def Material "Glass"
+        {
+            token outputs:surface.connect = </Fixture/Looks/Glass/Surface.outputs:surface>
+
+            def Shader "Surface"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0.2, 0.45, 0.9)
+                float inputs:opacity = 0.35
+                float inputs:roughness = 0.1
+                token outputs:surface
+            }
+        }
+    }
+}

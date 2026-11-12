@@ -1,0 +1,20 @@
+#usda 1.0
+
+def Volume "Vol"
+{
+    rel field:density = </Vol/density>
+    rel field:temperature = </Vol/temperature>
+    rel field:broken = [</Vol/density>, </Vol/temperature>]
+
+    def OpenVDBAsset "density"
+    {
+        asset filePath = @smoke.vdb@
+        token fieldName = "density"
+    }
+
+    def OpenVDBAsset "temperature"
+    {
+        asset filePath = @smoke.vdb@
+        token fieldName = "temperature"
+    }
+}

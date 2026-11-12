@@ -1,0 +1,5 @@
+import './plugin/registerPlugin.ts'
+export { UsdProfilesClaimsAPI as ClaimsAPI } from './claimsAPI.ts'
+export { UsdProfileRegistry as ProfileRegistry, QueryStatus, type CapabilityResult } from './profileRegistry.ts'
+export { UsdProfilesMarkdown as ProfilesMarkdown, UsdProfilesMermaid as ProfilesMermaid, UsdProfilesDot as ProfilesDot } from './profilesDocUtils.ts'
+export { UsdProfilesTokens as Tokens } from './tokens.ts'

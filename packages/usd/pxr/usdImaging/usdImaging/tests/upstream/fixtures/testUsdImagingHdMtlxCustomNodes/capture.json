@@ -1,0 +1,41 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/usdImaging/usdImaging/tests/upstream/fixtures/testUsdImagingHdMtlxCustomNodes/capture.py",
+  "upstream": [
+    "pxr/usdImaging/usdImaging/testenv/testUsdImagingHdMtlx.cpp",
+    "pxr/usdImaging/usdImagingGL/CMakeLists.txt",
+    "pxr/usd/usdMtlx/reader.cpp",
+    "pxr/imaging/hdMtlx/hdMtlx.cpp"
+  ],
+  "payload": {
+    "Local/simpleNodes": {
+      "returnCode": 0,
+      "stdout": "OK\n"
+    },
+    "Local/nestedNodes": {
+      "returnCode": 0,
+      "stdout": "OK\n"
+    },
+    "Local/surfaceShaderNodes": {
+      "returnCode": 0,
+      "stdout": "OK\n"
+    },
+    "Library/colorNode": {
+      "returnCode": 0,
+      "stdout": "OK\n"
+    },
+    "Library/nestedNodes": {
+      "returnCode": 0,
+      "stdout": "OK\n"
+    },
+    "Library/surfaceShaderNodes": {
+      "returnCode": 0,
+      "stdout": "OK\n"
+    },
+    "Library/texcoordNodes": {
+      "returnCode": 0,
+      "stdout": "OK\n"
+    }
+  }
+}

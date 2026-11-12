@@ -1,0 +1,15 @@
+{
+  "comment": "Viewer performance set (packages/usd/docs/performance-viewer.md): the asset-acceptance manifest's format (../asset-acceptance/assets.json; run.mjs --manifest). Same assets and ids as there, except skel_arm without the acceptance entry's fixed frame, so it plays its time range (1-10).",
+  "roots": {"ASWF": "../../../../../aswf-assets-091bb5c", "OPENUSD": "../../../../../OpenUSD-26.11.1"},
+  "groups": [
+    {"id": "perf", "label": "Viewer performance set", "assets": [
+      {"id": "bike", "label": "CarbonFrameBike", "path": "ASWF/full_assets/CarbonFrameBike/CarbonFrameBike.usdz"},
+      {"id": "vehicle", "label": "Vehicle (USD_Mini_Car_Kit vehicleVariants, default variant)", "path": "ASWF/full_assets/Vehicles/USD_Mini_Car_Kit/assets/vehicles/vehicleVariants.usda"},
+      {"id": "chess", "label": "OpenChessSet", "path": "ASWF/full_assets/OpenChessSet/chess_set.usda"},
+      {"id": "mcusd", "label": "McUsd", "path": "ASWF/full_assets/McUsd/McUsd.usda"},
+      {"id": "brainstem", "label": "BrainStem (UsdSkel)", "path": "ASWF/test_assets/USDZ/BrainStem/BrainStem.usdz", "guard": {"playback": true}},
+      {"id": "animated_cube", "label": "AnimatedCube", "path": "ASWF/test_assets/USDZ/AnimatedCube/AnimatedCube.usdz"},
+      {"id": "skel_arm", "label": "testUsdImagingGLUsdSkel arm (skinning), its time range", "path": "OPENUSD/pxr/usdImaging/usdImagingGL/testenv/testUsdImagingGLUsdSkel/arm.usda"}
+    ]}
+  ]
+}

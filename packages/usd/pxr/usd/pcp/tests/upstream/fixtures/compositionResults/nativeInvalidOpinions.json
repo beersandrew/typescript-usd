@@ -1,0 +1,34 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/usd/pcp/tests/upstream/fixtures/compositionResults/captureInvalidOpinions.py",
+  "upstream": [
+    "pxr/usd/sdf/layer.h:724-749",
+    "pxr/usd/pcp/primIndex.cpp:2214-2229",
+    "pxr/usd/pcp/primIndex.cpp:3458-3470",
+    "pxr/usd/pcp/layerStack.cpp:170-191"
+  ],
+  "payload": [
+    {
+      "case": "BasicInherits",
+      "stdoutEqual": true,
+      "errorEqual": true,
+      "stdoutSHA256": "1b29f48c1188f999d8cac7976e3facc5c70a1e28099f24459fdbe9734a10059f",
+      "errorSHA256": "66c302b1b28e50d8396181640568f847f30fce37127f256bb47814215ea252b2"
+    },
+    {
+      "case": "ErrorRelocateWithVariantSelection",
+      "stdoutEqual": true,
+      "errorEqual": true,
+      "stdoutSHA256": "e98c8dd3b80afaa9e5df26a00ce0b101d1700d5a140f1e4727d836a35cd9b008",
+      "errorSHA256": "db941adbb334ee73633af0e2f3e293a251d95205e3e5dd788b12308394cb4e6a"
+    },
+    {
+      "case": "SubrootReferenceAndVariants",
+      "stdoutEqual": true,
+      "errorEqual": true,
+      "stdoutSHA256": "38a4a49cce47b6556adcb58c30134d02637cdb9413c4dfbc16009289d1f7a324",
+      "errorSHA256": "0585660d08e9a2f97a2e996a09b64f788a2adb87ba801d807c55ff4522cda204"
+    }
+  ]
+}

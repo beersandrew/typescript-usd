@@ -1,0 +1,2208 @@
+{
+ "comment": "Generated from the FAITHFULNESS-DEBT / PLATFORM-DIVERGENCE code comments by the tooling kept outside this repository (FIXTURES.md); do not edit.",
+ "ids": {
+  "ar-explicit-cache-carrier": {
+   "tag": "PLATFORM-DIVERGENCE",
+   "definitions": [
+    {
+     "file": "packages/usd/pxr/usd/ar/src/resolver.ts",
+     "line": 629,
+     "tag": "PLATFORM-DIVERGENCE",
+     "text": "asynchronous browser hosts without AsyncContext cannot use thread-local Ar scopes. Carry the same resolver.cpp:953-1044 scope data explicitly with the immutable context until the host provides async-lane scope propagation; never use a global stack."
+    }
+   ],
+   "references": [],
+   "docs": [
+    "KNOWN-GAPS.md"
+   ]
+  },
+  "ar-host-resolver-carrier": {
+   "tag": "FAITHFULNESS-DEBT",
+   "definitions": [
+    {
+     "file": "packages/usd/pxr/usd/ar/src/internal.ts",
+     "line": 63,
+     "tag": "FAITHFULNESS-DEBT",
+     "text": "upstream has no per-context resolver instance; its tests register resolver plugins and read files (testenv), and usdGenSchema.py reads schema files through ArGetResolver(). Move those callers to registered resolvers or files, then remove this carrier, _ArResolverImplementationContext and ArDefaultResolver's forwarding to it."
+    }
+   ],
+   "references": [],
+   "docs": [
+    "KNOWN-GAPS.md"
+   ]
+  },
+  "ar-resolver-late-registration": {
+   "tag": "PLATFORM-DIVERGENCE",
+   "definitions": [
+    {
+     "file": "packages/usd/pxr/usd/ar/src/resolver.ts",
+     "line": 386,
+     "tag": "PLATFORM-DIVERGENCE",
+     "text": "upstream registers every plugin before the first ArGetResolver() and loads a resolver's plugin synchronously when the resolver is first used (_PluginResolver::Create, resolver.cpp:354-379), so the dispatching resolver finds its URI and package resolvers once, when it is constructed (resolver.cpp:449-462), and a type that cannot be manufactured is a coding error. On the web, plugins register at any time and a library plugin's module (import()) loads asynchronously, so a resolver type may be declared before its module has defined it. The dispatching resolver therefore looks again for URI and package resolver types whenever plugins were registered or resolver types defined since it last looked, and manufactures a resolver whose plugin is not loaded yet, or whose type has no factory yet, when it can (until then, its paths go to the primary resolver, as upstream when a URI resolver fails to load). The primary resolver is chosen once, when ArGetResolver() is first called, as upstream. A plugin loaded from a URL is loaded with PlugPlugin.LoadAsync."
+    }
+   ],
+   "references": [
+    {
+     "file": "packages/usd/pxr/usd/ar/tests/architecture/lateResolverRegistration.test.ts",
+     "line": 1,
+     "tag": "PLATFORM-DIVERGENCE"
+    }
+   ],
+   "docs": [
+    "KNOWN-GAPS.md",
+    "packages/usd/README.md"
+   ]
+  },
+  "constraintTarget-isModel": {
+   "tag": "FAITHFULNESS-DEBT",
+   "definitions": [
+    {
+     "file": "packages/usd/pxr/usd/usdGeom/src/constraintTarget.ts",
+     "line": 26,
+     "tag": "FAITHFULNESS-DEBT",
+     "text": "hard-coded model-kind set stands in for the KindRegistry hierarchy walk."
+    }
+   ],
+   "references": [],
+   "docs": []
+  },
+  "glf-shadow-gl": {
+   "tag": "PLATFORM-DIVERGENCE",
+   "definitions": [
+    {
+     "file": "packages/usd/pxr/imaging/glf/src/simpleShadowArray.ts",
+     "line": 10,
+     "tag": "PLATFORM-DIVERGENCE",
+     "text": "the OpenGL texture, sampler and framebuffer management (GetShadowMapTexture, GetShadowMapDepthSampler, GetShadowMapCompareSampler, BeginCapture, EndCapture, SetTextures, AllocSamplers, simpleShadowArray.cpp:46-62,163-445) is not ported: there is no OpenGL here. Storm allocates its shadow maps as render buffers (hdSt/simpleLightingShader.cpp:500-585) and does not use them."
+    }
+   ],
+   "references": [
+    {
+     "file": "packages/usd/pxr/imaging/glf/src/simpleShadowArray.ts",
+     "line": 42,
+     "tag": "PLATFORM-DIVERGENCE"
+    },
+    {
+     "file": "packages/usd/pxr/imaging/hdx/src/shadowTask.ts",
+     "line": 17,
+     "tag": "PLATFORM-DIVERGENCE"
+    }
+   ],
+   "docs": [
+    "KNOWN-GAPS.md"
+   ]
+  },
+  "hd-bar-shared-ptr": {
+   "tag": "PLATFORM-DIVERGENCE",
+   "definitions": [
+    {
+     "file": "packages/usd/pxr/imaging/hd/src/bufferArray.ts",
+     "line": 12,
+     "tag": "PLATFORM-DIVERGENCE",
+     "text": "the range list holds the ranges themselves; a range whose `_expired` flag is set is the expired weak_ptr (see bufferArrayRange.ts). GetRange returns the range (callers test `_expired` where upstream calls lock())."
+    },
+    {
+     "file": "packages/usd/pxr/imaging/hd/src/bufferArrayRange.ts",
+     "line": 12,
+     "tag": "PLATFORM-DIVERGENCE",
+     "text": "ranges are shared_ptrs upstream and buffer arrays hold weak_ptrs; the destructor notifies the owning array. JS has no shared_ptr use_count, so ranges carry an explicit reference count: every holder that keeps a range beyond the call that got it (an HdBufferArrayRangeContainer slot, an HdInstanceRegistry entry, a member such as HdStExtComputation::_inputRange or HdStInstancer:: _instancePrimvarRange) calls _retain() where upstream copies the shared_ptr into it and release() where upstream reassigns or destroys that copy. Local and argument shared_ptrs, which upstream drops before any GarbageCollect can run, are not counted. When the count returns to zero the range is expired (the weak_ptrs the buffer arrays hold stop locking) and _onExpired, the destructor analog the hdSt ranges override, runs once. A range no holder ever retained never expires: holders that are not counted (the hdx tasks, HdStRenderPassState, the dispatch buffers, unit tests) keep their ranges for their lifetime, where upstream frees a range whose only shared_ptr is dropped."
+    },
+    {
+     "file": "packages/usd/pxr/imaging/hd/src/bufferArrayRange.ts",
+     "line": 43,
+     "tag": "PLATFORM-DIVERGENCE",
+     "text": "a holder copies the shared_ptr (see the header)."
+    },
+    {
+     "file": "packages/usd/pxr/imaging/hd/src/bufferArrayRange.ts",
+     "line": 54,
+     "tag": "PLATFORM-DIVERGENCE",
+     "text": "a holder drops its shared_ptr copy; the last one runs the destructor (see the header)."
+    },
+    {
+     "file": "packages/usd/pxr/imaging/hd/src/bufferArrayRange.ts",
+     "line": 70,
+     "tag": "PLATFORM-DIVERGENCE",
+     "text": "the weak_ptr's expired()."
+    },
+    {
+     "file": "packages/usd/pxr/imaging/hdSt/src/bufferResource.ts",
+     "line": 27,
+     "tag": "PLATFORM-DIVERGENCE",
+     "text": "set by the last holder of a resource made by HdStResourceRegistry::RegisterBufferResource; the registry's GarbageCollectBufferResources then drops it, where upstream tests use_count() == 1."
+    },
+    {
+     "file": "packages/usd/pxr/imaging/hdSt/src/dispatchBuffer.ts",
+     "line": 173,
+     "tag": "PLATFORM-DIVERGENCE",
+     "text": "set by the last holder; the registry's GarbageCollectDispatchBuffers then drops (and destroys) the buffer, where upstream tests use_count() == 1."
+    },
+    {
+     "file": "packages/usd/pxr/imaging/hdSt/src/interleavedMemoryManager.ts",
+     "line": 20,
+     "tag": "PLATFORM-DIVERGENCE",
+     "text": "see vboMemoryManager.ts."
+    },
+    {
+     "file": "packages/usd/pxr/imaging/hdSt/src/vboMemoryManager.ts",
+     "line": 18,
+     "tag": "PLATFORM-DIVERGENCE",
+     "text": "the range destructor runs when the range is expired (_OnExpired); the buffer array destructor is destroy()."
+    },
+    {
+     "file": "packages/usd/pxr/imaging/hdSt/src/vboSimpleMemoryManager.ts",
+     "line": 13,
+     "tag": "PLATFORM-DIVERGENCE",
+     "text": "see vboMemoryManager.ts."
+    }
+   ],
+   "references": [
+    {
+     "file": "packages/usd/pxr/imaging/hd/src/rprim.ts",
+     "line": 200,
+     "tag": "PLATFORM-DIVERGENCE"
+    },
+    {
+     "file": "packages/usd/pxr/imaging/hd/src/rprimSharedData.ts",
+     "line": 23,
+     "tag": "PLATFORM-DIVERGENCE"
+    },
+    {
+     "file": "packages/usd/pxr/imaging/hdSt/src/bufferArrayRange.ts",
+     "line": 86,
+     "tag": "PLATFORM-DIVERGENCE"
+    },
+    {
+     "file": "packages/usd/pxr/imaging/hdSt/src/materialNetworkShader.ts",
+     "line": 13,
+     "tag": "PLATFORM-DIVERGENCE"
+    },
+    {
+     "file": "packages/usd/pxr/imaging/hdSt/src/pipelineDrawBatch.ts",
+     "line": 30,
+     "tag": "PLATFORM-DIVERGENCE"
+    },
+    {
+     "file": "packages/usd/pxr/imaging/hdSt/src/pipelineDrawBatch.ts",
+     "line": 830,
+     "tag": "PLATFORM-DIVERGENCE"
+    },
+    {
+     "file": "packages/usd/pxr/imaging/hdSt/src/resourceRegistry.ts",
+     "line": 780,
+     "tag": "PLATFORM-DIVERGENCE"
+    },
+    {
+     "file": "packages/usd/pxr/imaging/hdSt/src/resourceRegistry.ts",
+     "line": 792,
+     "tag": "PLATFORM-DIVERGENCE"
+    }
+   ],
+   "docs": []
+  },
+  "hd-bufferarray-legacy-api": {
+   "tag": "FAITHFULNESS-DEBT",
+   "definitions": [
+    {
+     "file": "packages/usd/pxr/imaging/hd/src/bufferArray.ts",
+     "line": 16,
+     "tag": "FAITHFULNESS-DEBT",
+     "text": "GarbageCollect, DebugDump and GetMaxNumElements have defaults; RemoveUnusedRanges also flags reallocation and reports whether a range went away; SetNeedsReallocation (overridden by the hdSt buffer arrays) and destroy are on the base."
+    }
+   ],
+   "references": [],
+   "docs": []
+  },
+  "hd-display-style-fusion": {
+   "tag": "FAITHFULNESS-DEBT",
+   "definitions": [
+    {
+     "file": "packages/usd/pxr/imaging/hd/src/displayStyle.ts",
+     "line": 8,
+     "tag": "FAITHFULNESS-DEBT",
+     "text": "this TypeScript unit covers pxr/imaging/hd/repr.h, pxr/imaging/hd/enums.h, pxr/imaging/hd/mesh.h, pxr/imaging/hd/sceneDelegate.h, and pxr/imaging/hd/renderIndex.cpp; split the value types and registries along those upstream file boundaries. Mirrors the CPU-side display-representation core of Hydra: - HdReprTokens / HdMeshReprDescTokens (hd/tokens.h, hd/mesh.h) - HdCullStyle / HdMeshGeomStyle (hd/enums.h) - HdReprSelector (hd/repr.{h,cpp}) - HdMeshReprDesc (hd/mesh.h) - HdDisplayStyle (hd/sceneDelegate.h) - HdMesh repr configuration registry (hd/mesh.cpp + hd/rprim.h _ReprDescConfigs, default reprs from hd/renderIndex.cpp)"
+    }
+   ],
+   "references": [],
+   "docs": []
+  },
+  "hd-instance-use-count": {
+   "tag": "PLATFORM-DIVERGENCE",
+   "definitions": [
+    {
+     "file": "packages/usd/pxr/imaging/hd/src/instanceRegistry.ts",
+     "line": 16,
+     "tag": "PLATFORM-DIVERGENCE",
+     "text": "_IsUnique tests `shared_ptr::use_count() == 1`, which JS cannot observe. Values with an explicit reference count (`_retain()`, `release()`, `_useCount()`: the HdBufferArrayRange scheme, hd/src/bufferArrayRange.ts, and the Storm topologies and vertex adjacency builders that follow it) count the registry as one holder: an entry's holder retains its value (the ValueHolder's shared_ptr copy, instanceRegistry.h:91-94) and releases it when the entry is replaced, erased by GarbageCollect or invalidated, and _IsUnique is `_useCount() === 1`. Other values (texture objects, shader code) count only the holders besides the registry and are unique when their `_expired` flag is set; values with neither are never collected."
+    }
+   ],
+   "references": [
+    {
+     "file": "packages/usd/pxr/imaging/hd/src/instanceRegistry.ts",
+     "line": 85,
+     "tag": "PLATFORM-DIVERGENCE"
+    },
+    {
+     "file": "packages/usd/pxr/imaging/hd/src/instanceRegistry.ts",
+     "line": 171,
+     "tag": "PLATFORM-DIVERGENCE"
+    },
+    {
+     "file": "packages/usd/pxr/imaging/hdSt/src/basisCurvesTopology.ts",
+     "line": 25,
+     "tag": "PLATFORM-DIVERGENCE"
+    },
+    {
+     "file": "packages/usd/pxr/imaging/hdSt/src/meshTopology.ts",
+     "line": 135,
+     "tag": "PLATFORM-DIVERGENCE"
+    },
+    {
+     "file": "packages/usd/pxr/imaging/hdSt/src/resourceRegistry.ts",
+     "line": 20,
+     "tag": "PLATFORM-DIVERGENCE"
+    },
+    {
+     "file": "packages/usd/pxr/imaging/hdSt/src/vertexAdjacency.ts",
+     "line": 46,
+     "tag": "PLATFORM-DIVERGENCE"
+    }
+   ],
+   "docs": []
+  },
+  "hd-instancer-builtin-names": {
+   "tag": "FAITHFULNESS-DEBT",
+   "definitions": [
+    {
+     "file": "packages/usd/pxr/imaging/hdSt/src/resourceBinder.ts",
+     "line": 19,
+     "tag": "FAITHFULNESS-DEBT",
+     "text": "HdInstancer's builtin primvar names are inlined until hd/instancer is ported."
+    },
+    {
+     "file": "packages/usd/pxr/imaging/hdSt/src/resourceBinder.ts",
+     "line": 517,
+     "tag": "FAITHFULNESS-DEBT",
+     "text": "HdInstancer (pxr/imaging/hd/instancer.{h,cpp}) is not ported; this is HdInstancer::GetBuiltinPrimvarNames (hd/instancer.cpp:47-57) verbatim. Replace with HdInstancer.GetBuiltinPrimvarNames() when hd/instancer is ported."
+    }
+   ],
+   "references": [],
+   "docs": []
+  },
+  "hd-render-index-legacy-sync": {
+   "tag": "FAITHFULNESS-DEBT",
+   "definitions": [
+    {
+     "file": "packages/usd/pxr/imaging/hd/src/rprim.ts",
+     "line": 14,
+     "tag": "FAITHFULNESS-DEBT",
+     "text": "upstream prims have the one Sync(sceneDelegate, ...) signature; natively the delegate is the emulation's HdSceneIndexAdapterSceneDelegate (renderIndex.cpp:148-252). This port's render index also syncs the prims it owns straight from the scene index prim (renderIndex.ts SyncAll). End-state: the single scene-delegate Sync through the adapter delegate, for rprims, sprims and bprims. The scene-index-only render index in renderIndex.ts calls Sync(sceneIndexPrim, dirtyBits, reprToken) on the rprims it owns. The abstract signature accepts both; a subclass implements the one its render index path uses."
+    }
+   ],
+   "references": [
+    {
+     "file": "packages/usd/pxr/imaging/hd/src/bprim.ts",
+     "line": 22,
+     "tag": "FAITHFULNESS-DEBT"
+    },
+    {
+     "file": "packages/usd/pxr/imaging/hd/src/sprim.ts",
+     "line": 22,
+     "tag": "FAITHFULNESS-DEBT"
+    },
+    {
+     "file": "packages/usd/pxr/imaging/hd/tests/upstream/unitTestDelegate.test.ts",
+     "line": 14,
+     "tag": "FAITHFULNESS-DEBT"
+    }
+   ],
+   "docs": []
+  },
+  "hd-repr-sync-retention": {
+   "tag": "FAITHFULNESS-DEBT",
+   "definitions": [
+    {
+     "file": "packages/usd/pxr/imaging/hd/src/renderIndex.ts",
+     "line": 632,
+     "tag": "FAITHFULNESS-DEBT",
+     "text": "upstream leaves dirty rprims unsynced when no render pass enqueued a collection (renderIndex.cpp:1790-1987); this scene-index-only SyncAll reuses the previous reprs so callers that sync outside a render pass keep the repr their last render selected. renderIndex.cpp:1691-1990 SyncAll(tasks, taskContext), as HdEngine calls it; SyncAll(reprToken, commitResources) syncs prims without tasks (see the header)."
+    }
+   ],
+   "references": [],
+   "docs": []
+  },
+  "hd-sampled-get-value-vtvalue": {
+   "tag": "FAITHFULNESS-DEBT",
+   "definitions": [
+    {
+     "file": "packages/usd/pxr/imaging/hd/src/dataSource.ts",
+     "line": 263,
+     "tag": "FAITHFULNESS-DEBT",
+     "text": "GetValue returns the typed value or a VtValue in this port (see \"Data source value conversion\" below). Retire this when GetValue returns a VtValue, as dataSource.h declares it."
+    }
+   ],
+   "references": [],
+   "docs": []
+  },
+  "hd-scene-index-name-registry-weak": {
+   "tag": "PLATFORM-DIVERGENCE",
+   "definitions": [
+    {
+     "file": "packages/usd/pxr/imaging/hd/src/sceneIndex.ts",
+     "line": 258,
+     "tag": "PLATFORM-DIVERGENCE",
+     "text": "upstream holds HdSceneIndexBasePtr weak pointers that expire when the last reference is released; JavaScript has no reference counts, so entries are WeakRefs that expire when the scene index is garbage collected."
+    }
+   ],
+   "references": [],
+   "docs": []
+  },
+  "hd-scene-index-plugin-json-ordering": {
+   "tag": "FAITHFULNESS-DEBT",
+   "definitions": [
+    {
+     "file": "packages/usd/pxr/imaging/hd/src/sceneIndexPluginRegistry.ts",
+     "line": 40,
+     "tag": "FAITHFULNESS-DEBT",
+     "text": "the \"tags\" and \"ordering\" metadata of the plugInfo entries and the JsonMetadataOnly and Hybrid ordering policies (_ComputeOrderedEntries, sceneIndexPluginRegistry.cpp:465-1098) are not ported; every policy orders as CppRegistrationOnly (_ComputeOrderedEntriesFromRegistration, sceneIndexPluginRegistry.cpp:494-566) -> port the JSON entries, the tag graph and the policies."
+    }
+   ],
+   "references": [],
+   "docs": [
+    "KNOWN-GAPS.md"
+   ]
+  },
+  "hd-scene-index-type-name": {
+   "tag": "PLATFORM-DIVERGENCE",
+   "definitions": [
+    {
+     "file": "packages/usd/pxr/imaging/hd/src/sceneIndex.ts",
+     "line": 127,
+     "tag": "PLATFORM-DIVERGENCE",
+     "text": "JavaScript has no typeid; the fallback is the class's constructor name, which a minifying bundler may shorten unless it keeps names."
+    }
+   ],
+   "references": [
+    {
+     "file": "apps/usdview/tests/hydra-scene-debugger-native.test.ts",
+     "line": 85,
+     "tag": "PLATFORM-DIVERGENCE"
+    },
+    {
+     "file": "packages/usd/pxr/imaging/hd/src/renderIndex.ts",
+     "line": 389,
+     "tag": "PLATFORM-DIVERGENCE"
+    }
+   ],
+   "docs": []
+  },
+  "hd-sprim-sprim-dependency": {
+   "tag": "FAITHFULNESS-DEBT",
+   "definitions": [
+    {
+     "file": "packages/usd/pxr/imaging/hdSt/src/light.ts",
+     "line": 13,
+     "tag": "FAITHFULNESS-DEBT",
+     "text": "the filter paths are read but no dependency is registered."
+    }
+   ],
+   "references": [
+    {
+     "file": "packages/usd/pxr/imaging/hdSt/src/light.ts",
+     "line": 437,
+     "tag": "FAITHFULNESS-DEBT"
+    },
+    {
+     "file": "packages/usd/pxr/imaging/hdSt/src/light.ts",
+     "line": 449,
+     "tag": "FAITHFULNESS-DEBT"
+    }
+   ],
+   "docs": []
+  },
+  "hd-system-messages": {
+   "tag": "FAITHFULNESS-DEBT",
+   "definitions": [
+    {
+     "file": "packages/usd/pxr/imaging/hdsi/src/locatorCachingSceneIndex.ts",
+     "line": 13,
+     "tag": "FAITHFULNESS-DEBT",
+     "text": "HdsiLocatorCachingSceneIndex:: _SystemMessage (dropCaches, locatorCachingSceneIndex.cpp:274-282) is not ported because this port's HdSceneIndexBase has no system message API (HdSceneIndexBase::SystemMessage, sceneIndex.h); port that API and this handler with it. Not ported: TfAutoMallocTag."
+    }
+   ],
+   "references": [],
+   "docs": []
+  },
+  "hd-tokens-grabbag": {
+   "tag": "FAITHFULNESS-DEBT",
+   "definitions": [
+    {
+     "file": "packages/usd/pxr/imaging/hd/src/tokens.ts",
+     "line": 9,
+     "tag": "FAITHFULNESS-DEBT",
+     "text": "this set carries many tokens upstream HD_TOKENS does NOT contain — they belong to per-schema TF_DECLARE_PUBLIC_TOKENS sets (mesh-topology, subdivision-tags, xform, mesh-schema, primvars, plus volume/material/instancer). The reader sets exist in meshSchema.ts; slimming HdTokens to upstream HD_TOKENS + re-pointing the ~60 authoring-side consumers is DEFERRED until hd is more fully built out. Runtime-transparent."
+    }
+   ],
+   "references": [],
+   "docs": []
+  },
+  "hd-typed-cast": {
+   "tag": "PLATFORM-DIVERGENCE",
+   "definitions": [
+    {
+     "file": "packages/usd/pxr/usdImaging/usdImaging/src/niInstanceAggregationSceneIndex.ts",
+     "line": 1173,
+     "tag": "PLATFORM-DIVERGENCE",
+     "text": "upstream casts to HdTypedSampledDataSource<SdfPath> / <VtArray<SdfPath>>. Element types do not exist at run time here: subclasses of HdPathDataSource / HdPathArrayDataSource are recognized, a VtValue by its type name, and otherwise a value is taken to be a path if it is a string that starts with '/' (tokens and identifiers never do)."
+    }
+   ],
+   "references": [],
+   "docs": []
+  },
+  "hd-typed-path-data-source": {
+   "tag": "PLATFORM-DIVERGENCE",
+   "definitions": [
+    {
+     "file": "packages/usd/pxr/imaging/hd/src/prefixingSceneIndex.ts",
+     "line": 9,
+     "tag": "PLATFORM-DIVERGENCE",
+     "text": "upstream wraps data sources by their C++ type (HdTypedSampledDataSource<SdfPath>, <VtArray<SdfPath>>, HdPathExpressionDataSource). In this port SdfPath and TfToken values are both strings, so a sampled data source is treated as a path (array) data source when its value at time 0 is an absolute path string (or an array/VtArray of them) and it is not typed as a token or string (HdRetainedTypedSampledDataSource.valueType). Path expressions are recognized by instanceof SdfPathExpression."
+    }
+   ],
+   "references": [
+    {
+     "file": "packages/usd/pxr/imaging/hd/src/prefixingSceneIndex.ts",
+     "line": 232,
+     "tag": "PLATFORM-DIVERGENCE"
+    }
+   ],
+   "docs": []
+  },
+  "hdsi-scene-index-plugins": {
+   "tag": "FAITHFULNESS-DEBT",
+   "definitions": [
+    {
+     "file": "packages/usd/pxr/imaging/hdsi/src/shaderResources.ts",
+     "line": 25,
+     "tag": "FAITHFULNESS-DEBT",
+     "text": "the \"Types\" entry of hdsi/plugInfo.json for HdsiDebuggingSceneIndexPlugin (plugInfo.json:6-11) is left out because that plugin (debuggingSceneIndexPlugin.cpp) is not ported; HdSceneIndexPluginRegistry would report a declared plugin without a factory -> port it and add its Type here."
+    }
+   ],
+   "references": [],
+   "docs": []
+  },
+  "hdst-bindless-handles": {
+   "tag": "PLATFORM-DIVERGENCE",
+   "definitions": [
+    {
+     "file": "packages/usd/pxr/imaging/hdSt/src/resourceBinder.ts",
+     "line": 18,
+     "tag": "PLATFORM-DIVERGENCE",
+     "text": "bindless handles are 0."
+    },
+    {
+     "file": "packages/usd/pxr/imaging/hdSt/src/resourceBinder.ts",
+     "line": 1947,
+     "tag": "PLATFORM-DIVERGENCE",
+     "text": "bindless handles exist only for HgiGL samplers/textures (HgiGLSampler::GetBindlessHandle); without HgiGL the dynamic_casts fail and upstream returns 0, as here."
+    }
+   ],
+   "references": [
+    {
+     "file": "packages/usd/pxr/imaging/hdSt/src/resourceBinder.ts",
+     "line": 1958,
+     "tag": "PLATFORM-DIVERGENCE"
+    },
+    {
+     "file": "packages/usd/pxr/imaging/hdSt/src/textureBinder.ts",
+     "line": 12,
+     "tag": "PLATFORM-DIVERGENCE"
+    }
+   ],
+   "docs": [
+    "KNOWN-GAPS.md"
+   ]
+  },
+  "hdst-compile-ahead": {
+   "tag": "PLATFORM-DIVERGENCE",
+   "definitions": [
+    {
+     "file": "packages/usd/pxr/imaging/hdSt/src/commandBuffer.ts",
+     "line": 347,
+     "tag": "PLATFORM-DIVERGENCE",
+     "text": "Storm compiles a batch's drawing program the first time the batch draws (executeDraw, pipelineDrawBatch.cpp:1361-1450), and a batch whose items are all frustum culled does not draw, so the programs of geometry coming into view are compiled on the frame it does (upstream too). Upstream's compile is the driver's, fast and native; here every program's GLSL is translated to WGSL on the page's one thread (hgiWebGPU/src/glsl), tens of milliseconds for a new material, which makes that frame long. So after a pass draws, and on the frames it draws nothing while textures load (renderPass.ts), the batches that have not drawn yet compile their programs ahead, within a budget per frame (HDST_COMPILE_AHEAD_MS, kept in the render param and shared by the passes), but not on the frame that built them. What is drawn does not change: a draw that finds its program compiled uses it as it would its own, and recompiles if its shaders changed meanwhile."
+    },
+    {
+     "file": "packages/usd/pxr/imaging/hdSt/src/drawBatch.ts",
+     "line": 492,
+     "tag": "PLATFORM-DIVERGENCE",
+     "text": "compiles this batch's drawing program for `state` now, as its next draw would (_getDrawingProgram, drawBatch.cpp:337-416), so that a batch whose items are all culled does not compile it on the frame they first come into view. Returns whether a program was compiled or looked up. HdStCommandBuffer compileDrawingProgramsAhead has the reason."
+    },
+    {
+     "file": "packages/usd/pxr/imaging/hdSt/src/pipelineDrawBatch.ts",
+     "line": 733,
+     "tag": "PLATFORM-DIVERGENCE",
+     "text": "created ahead of its first draw (compileDrawingProgramAhead), in the background where the Hgi can (hgiwebgpu-pipeline-ahead)."
+    },
+    {
+     "file": "packages/usd/pxr/imaging/hdSt/src/pipelineDrawBatch.ts",
+     "line": 1333,
+     "tag": "PLATFORM-DIVERGENCE",
+     "text": "the dispatch buffer first, as prepareDraw builds it before the draw compiles the program (the program's bindings name it)."
+    },
+    {
+     "file": "packages/usd/pxr/imaging/hdSt/src/renderDelegate.ts",
+     "line": 560,
+     "tag": "PLATFORM-DIVERGENCE",
+     "text": "this frame's budget for the passes' compiling ahead (HdStCommandBuffer.compileDrawingProgramsAhead)."
+    },
+    {
+     "file": "packages/usd/pxr/imaging/hdSt/src/renderParam.ts",
+     "line": 25,
+     "tag": "PLATFORM-DIVERGENCE",
+     "text": "what remains this frame of the time the render passes may spend compiling programs ahead (HdStCommandBuffer.compileDrawingProgramsAhead); CommitResources sets it once per frame."
+    },
+    {
+     "file": "packages/usd/pxr/imaging/hdSt/src/renderPass.ts",
+     "line": 50,
+     "tag": "PLATFORM-DIVERGENCE",
+     "text": "the milliseconds per frame the render passes may spend compiling the programs of batches that have not drawn yet (HdStCommandBuffer.compileDrawingProgramsAhead); 0 compiles each program at its first draw only, as upstream does."
+    },
+    {
+     "file": "packages/usd/pxr/imaging/hdSt/src/renderPass.ts",
+     "line": 177,
+     "tag": "PLATFORM-DIVERGENCE",
+     "text": "meanwhile the batches are built and their programs compiled, so the first frame that draws does not compile them all at once."
+    },
+    {
+     "file": "packages/usd/pxr/imaging/hdSt/src/renderPass.ts",
+     "line": 227,
+     "tag": "PLATFORM-DIVERGENCE",
+     "text": "the programs of batches that did not draw (HdStCommandBuffer.compileDrawingProgramsAhead)."
+    }
+   ],
+   "references": [
+    {
+     "file": "apps/usdview/tests/pipeline-ahead.test.ts",
+     "line": 1,
+     "tag": "PLATFORM-DIVERGENCE"
+    }
+   ],
+   "docs": [
+    "packages/usd/docs/performance-viewer.md"
+   ]
+  },
+  "hdst-dump-sourcefile": {
+   "tag": "FAITHFULNESS-DEBT",
+   "definitions": [
+    {
+     "file": "packages/usd/pxr/imaging/hdSt/src/glslProgram.ts",
+     "line": 187,
+     "tag": "FAITHFULNESS-DEBT",
+     "text": "upstream writes shaderSource to the file `fname` in the working directory (glslProgram.cpp:173-178); the library has no file output. Only the \"Write ...\" line is printed. Replace with a file write once the library has an output-file seam."
+    }
+   ],
+   "references": [
+    {
+     "file": "packages/usd/pxr/imaging/hdSt/src/glslProgram.ts",
+     "line": 13,
+     "tag": "FAITHFULNESS-DEBT"
+    }
+   ],
+   "docs": []
+  },
+  "hdst-gl-binding": {
+   "tag": "PLATFORM-DIVERGENCE",
+   "definitions": [
+    {
+     "file": "packages/usd/pxr/imaging/hdSt/src/resourceBinder.ts",
+     "line": 16,
+     "tag": "PLATFORM-DIVERGENCE",
+     "text": "the GL Bind*/Unbind* entry points keep upstream's control flow; their OpenGL calls are no-ops (no HgiGL)."
+    },
+    {
+     "file": "packages/usd/pxr/imaging/hdSt/src/resourceBinder.ts",
+     "line": 582,
+     "tag": "PLATFORM-DIVERGENCE",
+     "text": "glBindTextureUnit/glBindSampler have no counterpart without HgiGL; a no-op."
+    },
+    {
+     "file": "packages/usd/pxr/imaging/hdSt/src/resourceBinder.ts",
+     "line": 1675,
+     "tag": "PLATFORM-DIVERGENCE",
+     "text": "the GL binding entry points below issue OpenGL calls upstream (glBindBuffer, glVertexAttribPointer, glBindBufferBase, glUniform*, ...). HgiGL is not ported, so they keep upstream's control flow and diagnostics and the GL calls are no-ops. Replace with the GL calls if an HgiGL backend is ported; Storm on Hgi-generated resources (Metal, Vulkan, WebGPU) never calls them."
+    }
+   ],
+   "references": [
+    {
+     "file": "packages/usd/pxr/imaging/hdSt/src/resourceBinder.ts",
+     "line": 1882,
+     "tag": "PLATFORM-DIVERGENCE"
+    },
+    {
+     "file": "packages/usd/pxr/imaging/hdSt/src/resourceBinder.ts",
+     "line": 1896,
+     "tag": "PLATFORM-DIVERGENCE"
+    },
+    {
+     "file": "packages/usd/pxr/imaging/hdSt/src/resourceBinder.ts",
+     "line": 1909,
+     "tag": "PLATFORM-DIVERGENCE"
+    },
+    {
+     "file": "packages/usd/pxr/imaging/hdSt/src/resourceBinder.ts",
+     "line": 1926,
+     "tag": "PLATFORM-DIVERGENCE"
+    }
+   ],
+   "docs": [
+    "KNOWN-GAPS.md"
+   ]
+  },
+  "hdst-gpu-count-visible-readback": {
+   "tag": "PLATFORM-DIVERGENCE",
+   "definitions": [
+    {
+     "file": "packages/usd/pxr/imaging/hdSt/src/pipelineDrawBatch.ts",
+     "line": 1943,
+     "tag": "PLATFORM-DIVERGENCE",
+     "text": "pxr/imaging/hdSt/pipelineDrawBatch.cpp:1937-1955 blocks until the GPU finishes and returns the count. WebGPU reads a buffer back only through the asynchronous GPUBuffer.mapAsync, and Hgi submission returns a promise here (hdst-readbuffer-sync), so the count is the pre-cull count until the read-back resolves; an ExecuteDraw after that adds the read-back count."
+    }
+   ],
+   "references": [
+    {
+     "file": "packages/usd/pxr/imaging/hdSt/src/pipelineDrawBatch.ts",
+     "line": 36,
+     "tag": "PLATFORM-DIVERGENCE"
+    },
+    {
+     "file": "packages/usd/pxr/imaging/hdSt/tests/pipelineDrawBatch.test.ts",
+     "line": 539,
+     "tag": "PLATFORM-DIVERGENCE"
+    }
+   ],
+   "docs": [
+    "KNOWN-GAPS.md"
+   ]
+  },
+  "hdst-indirect-draw-batch": {
+   "tag": "PLATFORM-DIVERGENCE",
+   "definitions": [
+    {
+     "file": "packages/usd/pxr/imaging/hdSt/src/indirectDrawBatch.ts",
+     "line": 37,
+     "tag": "PLATFORM-DIVERGENCE",
+     "text": "pxr/imaging/hdSt/indirectDrawBatch.cpp:71-1943 implements the non-Hgi-resource-generation (OpenGL) draw batch; HdStCommandBuffer never selects it here because every Hgi backend generates resources. Port it if an OpenGL-style backend is added."
+    }
+   ],
+   "references": [],
+   "docs": []
+  },
+  "hdst-mesh-points-fastpath": {
+   "tag": "FAITHFULNESS-DEBT",
+   "definitions": [
+    {
+     "file": "packages/usd/pxr/imaging/hdSt/src/basisCurves.ts",
+     "line": 18,
+     "tag": "FAITHFULNESS-DEBT",
+     "text": "the points fastpath (basisCurves.cpp:931-1001) reads points and computed points from the terminal scene index through HdExtComputationPrimvarsSchema / HdPrimvarsSchema; as in mesh.ts, the authored points are read through the scene delegate's vertex primvar descriptors, and computed points are not considered."
+    },
+    {
+     "file": "packages/usd/pxr/imaging/hdSt/src/basisCurves.ts",
+     "line": 967,
+     "tag": "FAITHFULNESS-DEBT",
+     "text": "upstream reads the prim from renderIndex.GetTerminalSceneIndex() and checks HdExtComputationPrimvarsSchema (computed points, basisCurves.cpp:946-971) and HdPrimvarsSchema (authored points, basisCurves.cpp:973-1000); as in mesh.ts the authored points primvar is found through the scene delegate's vertex primvar descriptors instead."
+    }
+   ],
+   "references": [],
+   "docs": []
+  },
+  "hdst-node-no-gpu-compute": {
+   "tag": "PLATFORM-DIVERGENCE",
+   "definitions": [
+    {
+     "file": "packages/usd/pxr/imaging/hdSt/tests/bufferTestHgi.ts",
+     "line": 14,
+     "tag": "PLATFORM-DIVERGENCE",
+     "text": "Node has no WebGPU device, so this Hgi creates no shader functions or compute pipelines, and Storm's GPU computations (smooth and flat normals, quadrangulation, OpenSubdiv refinement through evalStencils) cannot run under vitest. Upstream runs them over the platform Hgi (e.g. testHdStMeshTopology.cpp:1000-1032). The ported tests skip those cases in Node (GpuComputeUnavailable in upstream/meshTopologyTestUtils.ts) and run them in Safari over HgiWebGPU: tests/browser/storm-image/hdst-gpu/run.mjs."
+    }
+   ],
+   "references": [
+    {
+     "file": "packages/usd/pxr/imaging/hdSt/tests/upstream/meshTopology.test.ts",
+     "line": 15,
+     "tag": "PLATFORM-DIVERGENCE"
+    },
+    {
+     "file": "packages/usd/pxr/imaging/hdSt/tests/upstream/meshTopology.test.ts",
+     "line": 454,
+     "tag": "PLATFORM-DIVERGENCE"
+    },
+    {
+     "file": "packages/usd/pxr/imaging/hdSt/tests/upstream/meshTopologyTestUtils.ts",
+     "line": 49,
+     "tag": "PLATFORM-DIVERGENCE"
+    },
+    {
+     "file": "packages/usd/pxr/imaging/hdSt/tests/upstream/quadrangulation.test.ts",
+     "line": 15,
+     "tag": "PLATFORM-DIVERGENCE"
+    },
+    {
+     "file": "packages/usd/pxr/imaging/hdSt/tests/upstream/quadrangulation.test.ts",
+     "line": 274,
+     "tag": "PLATFORM-DIVERGENCE"
+    },
+    {
+     "file": "packages/usd/pxr/imaging/hdSt/tests/upstream/subdivision.test.ts",
+     "line": 16,
+     "tag": "PLATFORM-DIVERGENCE"
+    }
+   ],
+   "docs": [
+    "KNOWN-GAPS.md",
+    "packages/usd/README.md"
+   ]
+  },
+  "hdst-osd-adaptive": {
+   "tag": "FAITHFULNESS-DEBT",
+   "definitions": [
+    {
+     "file": "packages/usd/pxr/imaging/hdSt/src/subdivision.ts",
+     "line": 870,
+     "tag": "FAITHFULNESS-DEBT",
+     "text": "subdivision.cpp:1046-1066 sets ENDCAP_BSPLINE_BASIS, useInfSharpPatch and generateLegacySharpCornerPatches and calls refiner->RefineAdaptive(patchOptions.GetRefineAdaptiveOptions()); the Far port has no adaptive refinement (packages/opensubdiv PROVENANCE.md), so no tables are built."
+    }
+   ],
+   "references": [
+    {
+     "file": "packages/usd/pxr/imaging/hdSt/src/meshTopology.ts",
+     "line": 22,
+     "tag": "FAITHFULNESS-DEBT"
+    },
+    {
+     "file": "packages/usd/pxr/imaging/hdSt/src/subdivision.ts",
+     "line": 30,
+     "tag": "FAITHFULNESS-DEBT"
+    }
+   ],
+   "docs": [
+    "KNOWN-GAPS.md",
+    "packages/opensubdiv/README.md",
+    "packages/usd/README.md"
+   ]
+  },
+  "hdst-osd-patch-source-msl": {
+   "tag": "PLATFORM-DIVERGENCE",
+   "definitions": [
+    {
+     "file": "packages/usd/pxr/imaging/hdSt/src/codeGen.ts",
+     "line": 1559,
+     "tag": "PLATFORM-DIVERGENCE",
+     "text": "Osd::MTLPatchShaderSource (opensubdiv/osd/mtlPatchShaderSource.h) is not ported; it is reachable only for an Hgi whose API name is Metal, which in this port are the codegen test doubles. It returns no source."
+    }
+   ],
+   "references": [],
+   "docs": []
+  },
+  "hdst-prim-types": {
+   "tag": "FAITHFULNESS-DEBT",
+   "definitions": [
+    {
+     "file": "packages/usd/pxr/imaging/hdSt/src/renderDelegate.ts",
+     "line": 12,
+     "tag": "FAITHFULNESS-DEBT",
+     "text": "port HdStSphere, HdStConicalFrustum, HdStCapsule, HdStDrawTarget and HdImageShader (renderDelegate.cpp:429-553) and create them here."
+    }
+   ],
+   "references": [],
+   "docs": [
+    "KNOWN-GAPS.md"
+   ]
+  },
+  "hdst-ptex": {
+   "tag": "FAITHFULNESS-DEBT",
+   "definitions": [
+    {
+     "file": "packages/usd/pxr/imaging/hdSt/src/ptexTextureObject.ts",
+     "line": 11,
+     "tag": "FAITHFULNESS-DEBT",
+     "text": "the Ptex reading path (ptexTextureObject.cpp:91-223, ptexMipmapTextureLoader.cpp) needs the Ptex library, which has no port here."
+    }
+   ],
+   "references": [],
+   "docs": [
+    "KNOWN-GAPS.md",
+    "packages/usd/docs/imaging-i2-textures.md",
+    "packages/usd/docs/imaging-status-chrome.json",
+    "packages/usd/docs/imaging-status.json",
+    "packages/usd/docs/imaging-status.md",
+    "packages/usd/tests/browser/imaging-status/classification.json"
+   ]
+  },
+  "hdst-readbuffer-sync": {
+   "tag": "PLATFORM-DIVERGENCE",
+   "definitions": [
+    {
+     "file": "packages/usd/pxr/imaging/hdSt/src/bufferUtils.ts",
+     "line": 9,
+     "tag": "PLATFORM-DIVERGENCE",
+     "text": "HdStReadBuffer submits the blit work with HgiSubmitWaitTypeWaitUntilCompleted and reads the CPU copy right away, as upstream does. Hgi.SubmitCmds returns a promise in this port; the bytes are present when the function returns only for a backend that completes GPU-to-CPU copies during submission (the recording test Hgi). An asynchronous backend (HgiWebGPU) fills them later."
+    }
+   ],
+   "references": [
+    {
+     "file": "packages/usd/pxr/imaging/hdSt/src/bufferUtils.ts",
+     "line": 197,
+     "tag": "PLATFORM-DIVERGENCE"
+    },
+    {
+     "file": "packages/usd/pxr/imaging/hdSt/tests/upstream/meshTopologyTestUtils.ts",
+     "line": 41,
+     "tag": "PLATFORM-DIVERGENCE"
+    },
+    {
+     "file": "packages/usd/pxr/imaging/hdSt/tests/upstream/testHdStSubdivision.ts",
+     "line": 23,
+     "tag": "PLATFORM-DIVERGENCE"
+    },
+    {
+     "file": "packages/usd/pxr/imaging/hdx/src/pickTask.ts",
+     "line": 23,
+     "tag": "PLATFORM-DIVERGENCE"
+    },
+    {
+     "file": "packages/usd/tests/browser/storm-image/hdst-gpu/main.ts",
+     "line": 18,
+     "tag": "PLATFORM-DIVERGENCE"
+    }
+   ],
+   "docs": [
+    "KNOWN-GAPS.md"
+   ]
+  },
+  "hdst-topology-types": {
+   "tag": "FAITHFULNESS-DEBT",
+   "definitions": [
+    {
+     "file": "packages/usd/pxr/imaging/hdSt/src/resourceRegistry.ts",
+     "line": 99,
+     "tag": "FAITHFULNESS-DEBT",
+     "text": "HdSt_MeshTopology (hdSt/meshTopology.h) and HdSt_BasisCurvesTopology (hdSt/basisCurvesTopology.h) are typed opaquely here; replace with `import type` from ./meshTopology.ts and ./basisCurvesTopology.ts."
+    }
+   ],
+   "references": [],
+   "docs": []
+  },
+  "hdst-unit-test-driver": {
+   "tag": "FAITHFULNESS-DEBT",
+   "definitions": [
+    {
+     "file": "packages/usd/pxr/imaging/hdSt/src/unitTestHelper.ts",
+     "line": 24,
+     "tag": "FAITHFULNESS-DEBT",
+     "text": "port it with the first test that uses it."
+    }
+   ],
+   "references": [],
+   "docs": []
+  },
+  "hdx-ocio": {
+   "tag": "FAITHFULNESS-DEBT",
+   "definitions": [
+    {
+     "file": "packages/usd/pxr/imaging/hdx/src/colorCorrectionTask.ts",
+     "line": 15,
+     "tag": "FAITHFULNESS-DEBT",
+     "text": "OpenColorIO is not ported. Upstream's non-OCIO build silently color corrects with sRGB when the openColorIO mode is requested; here _Sync additionally posts a warning (once per params change) so the substitution is diagnosed."
+    },
+    {
+     "file": "packages/usd/pxr/imaging/hdx/src/colorCorrectionTask.ts",
+     "line": 488,
+     "tag": "FAITHFULNESS-DEBT",
+     "text": "see the header."
+    }
+   ],
+   "references": [
+    {
+     "file": "packages/usd/pxr/imaging/hdx/tests/architecture/postProcessTasks.test.ts",
+     "line": 170,
+     "tag": "FAITHFULNESS-DEBT"
+    }
+   ],
+   "docs": [
+    "KNOWN-GAPS.md"
+   ]
+  },
+  "hgiwebgpu-alpha-to-coverage-mask": {
+   "tag": "PLATFORM-DIVERGENCE",
+   "definitions": [
+    {
+     "file": "packages/usd/pxr/imaging/hgiWebGPU/src/graphicsPipeline.ts",
+     "line": 465,
+     "tag": "PLATFORM-DIVERGENCE",
+     "text": "WebGPU rejects alpha to coverage with a sample_mask output (GPUFragmentState validation), which Metal allows; such a pipeline without alpha to one keeps its sample mask and draws without alpha to coverage. Without a fragment function there is no alpha for the coverage (WebGPU requires a fragment state for it)."
+    }
+   ],
+   "references": [],
+   "docs": [
+    "KNOWN-GAPS.md",
+    "packages/usd/docs/imaging-i2.md"
+   ]
+  },
+  "hgiwebgpu-border-mip": {
+   "tag": "PLATFORM-DIVERGENCE",
+   "definitions": [
+    {
+     "file": "packages/usd/pxr/imaging/hgiWebGPU/src/samplerState.ts",
+     "line": 50,
+     "tag": "PLATFORM-DIVERGENCE",
+     "text": "(1) the colour: the clamped sample's outside taps read the edge texels, so the result is mix(s, border, w) rather than s - (their weighted edge texels) + w * border; the two differ where the texels along the edge differ from the sample (none of the ASWF TextureFileFormatTests cards or the usdImagingGL images show it); (2) the two axes' shares are combined as for one bilinear footprint, 1 - (1 - w_u)(1 - w_v), which differs near the corners under trilinear or anisotropic filtering; (3) once a level is so small (under about four texels across) or the footprint so long that a tap inside the texture reaches the marked quarter, the share counts it as outside. 1D, 3D and array textures keep the analytic weight at the floor of the isotropic level of detail (Storm's border-addressed ones, the volume fields, have one level, where it is exact)."
+    }
+   ],
+   "references": [],
+   "docs": [
+    "KNOWN-GAPS.md",
+    "packages/usd/docs/imaging-status.md",
+    "packages/usd/tests/browser/imaging-status/classification.json"
+   ]
+  },
+  "hgiWebGPU-patch-indirect": {
+   "tag": "PLATFORM-DIVERGENCE",
+   "definitions": [
+    {
+     "file": "packages/usd/pxr/imaging/hgiWebGPU/src/graphicsCmds.ts",
+     "line": 419,
+     "tag": "PLATFORM-DIVERGENCE",
+     "text": "as for patches, GPU frustum culling's instance counts are not read."
+    },
+    {
+     "file": "packages/usd/pxr/imaging/hgiWebGPU/src/graphicsCmds.ts",
+     "line": 525,
+     "tag": "PLATFORM-DIVERGENCE",
+     "text": "instanceCount comes from the CPU copy, so GPU frustum culling's writes to the draw parameter buffer do not skip patch draws (the image is unchanged; culled draws are drawn)."
+    }
+   ],
+   "references": [],
+   "docs": [
+    "KNOWN-GAPS.md"
+   ]
+  },
+  "hgiwebgpu-pipeline-ahead": {
+   "tag": "PLATFORM-DIVERGENCE",
+   "definitions": [
+    {
+     "file": "packages/usd/pxr/imaging/hgiWebGPU/src/graphicsPipeline.ts",
+     "line": 132,
+     "tag": "PLATFORM-DIVERGENCE",
+     "text": "upstream creates the pipeline state here, synchronously, and so does this constructor unless `ahead`. Then the GPURenderPipeline is created with createRenderPipelineAsync: WebKit compiles a render pipeline's Metal shaders when it is created, and the first frame that draws with a pipeline from createRenderPipeline waits for that compile (up to seconds for the Storm programs a new room brings, the first time; performance-viewer.md, November 11); the asynchronous call compiles it in the background. A pipeline created ahead of its first draw (Storm's compile-ahead, hdSt/src/commandBuffer.ts) is ready by then; if not, its first use (getRenderPipelineState) creates it synchronously, as without `ahead`."
+    },
+    {
+     "file": "packages/usd/pxr/imaging/hgiWebGPU/src/hgi.ts",
+     "line": 346,
+     "tag": "PLATFORM-DIVERGENCE",
+     "text": "CreateGraphicsPipeline for a pipeline that will be used later, compiled in the background (HgiWebGPUGraphicsPipeline's constructor)."
+    }
+   ],
+   "references": [
+    {
+     "file": "apps/usdview/tests/pipeline-ahead.test.ts",
+     "line": 4,
+     "tag": "PLATFORM-DIVERGENCE"
+    },
+    {
+     "file": "packages/usd/pxr/imaging/hgiWebGPU/tests/pipelineAhead.test.ts",
+     "line": 5,
+     "tag": "PLATFORM-DIVERGENCE"
+    }
+   ],
+   "docs": [
+    "packages/usd/docs/performance-viewer.md"
+   ]
+  },
+  "hgiWebGPU-polygon-mode-line": {
+   "tag": "PLATFORM-DIVERGENCE",
+   "definitions": [
+    {
+     "file": "packages/usd/pxr/imaging/hgiWebGPU/src/shaderSection.ts",
+     "line": 778,
+     "tag": "PLATFORM-DIVERGENCE",
+     "text": "the line's attributes are interpolated along the line, Metal's over the triangle's plane, so fwidth-based edge tests (meshWire.glslfx) differ on near-threshold pixels (docs/imaging-i2.md section 2.2)."
+    }
+   ],
+   "references": [],
+   "docs": [
+    "KNOWN-GAPS.md",
+    "packages/usd/docs/imaging-i2.md",
+    "packages/usd/docs/imaging-status.md",
+    "packages/usd/tests/browser/imaging-status/classification.json"
+   ]
+  },
+  "hgiWebGPU-primitive-id": {
+   "tag": "PLATFORM-DIVERGENCE",
+   "definitions": [
+    {
+     "file": "packages/usd/pxr/imaging/hgiWebGPU/src/shaderGenerator.ts",
+     "line": 1219,
+     "tag": "PLATFORM-DIVERGENCE",
+     "text": "without the device feature 'primitive-index' (see above), a non-patch draw that reads gl_PrimitiveID reads 0."
+    }
+   ],
+   "references": [],
+   "docs": [
+    "KNOWN-GAPS.md"
+   ]
+  },
+  "hgiWebGPU-wide-points": {
+   "tag": "PLATFORM-DIVERGENCE",
+   "definitions": [
+    {
+     "file": "packages/usd/pxr/imaging/hgiWebGPU/src/shaderSection.ts",
+     "line": 508,
+     "tag": "PLATFORM-DIVERGENCE",
+     "text": "WebGPU has no point size, so a point-list vertex function (Storm gives gl_PointSize the point_size role only for points, hdSt/codeGen.cpp) is drawn with 6 vertices per point, the two triangles of a square gl_PointSize pixels wide around the point: WebGPU only rasterizes 1-pixel points. The fragment stage reads the corner's coordinate as gl_PointCoord. hgiMetal writes the size unchanged as [[point_size]] (hgiMetal/shaderGenerator.mm:727-756), which the Metal Shading Language specification 4.1 section 5.2.3.3 (Table 5.4) defines only as the \"size of a point primitive\", with no clamp or rounding; section 5.2.3.4 (Table 5.5) has [[point_coord]] range from 0 to 1 across the point, and section 1.7 puts the window origin at the upper left. The reference captures (testHdStBasicDrawing_*: 1,500 points of 0.45 to 2.8 pixels, single-sampled) show what Apple's rasterizer does with it: a pixel is covered when its center lies inside the square of gl_PointSize pixels around the projected point, the size neither rounded nor raised to one pixel, so a point smaller than a pixel covers the pixel only when its center is close enough to the pixel's (or none at all). The emulated square is that square, and the triangles' pixel-center coverage gives the same pixels."
+    }
+   ],
+   "references": [],
+   "docs": [
+    "KNOWN-GAPS.md",
+    "packages/usd/docs/imaging-status.md",
+    "packages/usd/tests/browser/imaging-status/classification.json"
+   ]
+  },
+  "hio-image-read-ahead": {
+   "tag": "PLATFORM-DIVERGENCE",
+   "definitions": [
+    {
+     "file": "packages/usd/pxr/imaging/hio/src/stbImage.ts",
+     "line": 58,
+     "tag": "PLATFORM-DIVERGENCE",
+     "text": "upstream reads and decodes an image when Storm's texture commit opens it, synchronously and on worker threads (hdSt/textureObjectRegistry.cpp:236-244), so a frame that brings in new textures draws with them. In the browser that read is a fetch and a decode the frame cannot wait for, and Storm draws nothing until it lands (hdSt/src/renderPass.ts). A client that knows which images a coming frame will open (a payload load schedule's next carriers) reads and decodes them ahead with _HioReadImageAhead; the open of such an image then takes the bytes and pixels read ahead instead of reading them again. What is opened, and when, is unchanged; only the read moves earlier. The client releases the images with _HioReleaseImageAhead."
+    }
+   ],
+   "references": [
+    {
+     "file": "apps/usdview/src/load-prefetch.ts",
+     "line": 28,
+     "tag": "PLATFORM-DIVERGENCE"
+    },
+    {
+     "file": "packages/usd/pxr/imaging/hio/tests/imageReadAhead.test.ts",
+     "line": 1,
+     "tag": "PLATFORM-DIVERGENCE"
+    }
+   ],
+   "docs": [
+    "apps/usdview/docs/viewer-contracts.md",
+    "packages/usd/docs/performance-viewer.md"
+   ]
+  },
+  "hio-js-reader": {
+   "tag": "FAITHFULNESS-DEBT",
+   "definitions": [
+    {
+     "file": "packages/usd/pxr/imaging/hio/src/dictionary.ts",
+     "line": 22,
+     "tag": "FAITHFULNESS-DEBT",
+     "text": "replace with a pxr/base/js port (js/json.cpp JsParseString + js/converter.h JsValueTypeConverter) once one exists."
+    }
+   ],
+   "references": [],
+   "docs": [
+    "KNOWN-GAPS.md"
+   ]
+  },
+  "js-no-copy-move": {
+   "tag": "PLATFORM-DIVERGENCE",
+   "definitions": [
+    {
+     "file": "packages/usd/pxr/exec/vdf/src/inputVector.ts",
+     "line": 96,
+     "tag": "PLATFORM-DIVERGENCE",
+     "text": "upstream has a const T& overload that copies the value and a T&& overload that moves it. JavaScript passes objects by reference and has no copy constructors, so there is one overload and it stores the value itself, as the move does."
+    }
+   ],
+   "references": [
+    {
+     "file": "packages/usd/pxr/exec/vdf/tests/upstream/testVdfBasic.test.ts",
+     "line": 395,
+     "tag": "PLATFORM-DIVERGENCE"
+    }
+   ],
+   "docs": []
+  },
+  "ni-primvar-value-type": {
+   "tag": "PLATFORM-DIVERGENCE",
+   "definitions": [
+    {
+     "file": "packages/usd/pxr/usdImaging/usdImaging/src/niInstanceAggregationSceneIndex.ts",
+     "line": 339,
+     "tag": "PLATFORM-DIVERGENCE",
+     "text": "a primvar value data source that returns a plain JS value (not a VtValue or VtArray) carries no type; no data source is made for it."
+    }
+   ],
+   "references": [],
+   "docs": []
+  },
+  "openexec-background-dealloc": {
+   "tag": "PLATFORM-DIVERGENCE",
+   "definitions": [
+    {
+     "file": "packages/usd/pxr/exec/vdf/src/dataManagerVector.ts",
+     "line": 108,
+     "tag": "PLATFORM-DIVERGENCE",
+     "text": "VdfDataManagerDeallocationMode::Background deallocates on a background thread (dataManagerAllocator.h:214-232) -> frees immediately here; a worker-based deallocator would restore the background release."
+    }
+   ],
+   "references": [],
+   "docs": []
+  },
+  "openexec-memory-usage": {
+   "tag": "PLATFORM-DIVERGENCE",
+   "definitions": [
+    {
+     "file": "packages/usd/pxr/exec/vdf/src/node.ts",
+     "line": 242,
+     "tag": "PLATFORM-DIVERGENCE",
+     "text": "JavaScript has no sizeof and does not expose an object's size, so a node reports only the memory of the data it holds that can be measured (an input vector's values); the fixed size of the node itself counts as 0. Totals in DumpStats (network.cpp:543-589) are therefore lower than native; no ported test reads the numbers."
+    },
+    {
+     "file": "packages/usd/pxr/exec/vdf/src/node.ts",
+     "line": 515,
+     "tag": "PLATFORM-DIVERGENCE",
+     "text": "the sizeof terms are 0, so this is the dynamic size alone."
+    }
+   ],
+   "references": [
+    {
+     "file": "packages/usd/pxr/exec/vdf/src/inputVector.ts",
+     "line": 67,
+     "tag": "PLATFORM-DIVERGENCE"
+    },
+    {
+     "file": "packages/usd/pxr/exec/vdf/src/networkStats.ts",
+     "line": 11,
+     "tag": "PLATFORM-DIVERGENCE"
+    }
+   ],
+   "docs": []
+  },
+  "openexec-parallel": {
+   "tag": "PLATFORM-DIVERGENCE",
+   "definitions": [
+    {
+     "file": "packages/usd/pxr/exec/exec/src/runtime.ts",
+     "line": 68,
+     "tag": "PLATFORM-DIVERGENCE",
+     "text": "EfPageCacheExecutor< VdfParallelExecutorEngine, VdfParallelDataManagerVector> (runtime.cpp:53-59) -> port the parallel executor engine and data manager."
+    },
+    {
+     "file": "packages/usd/pxr/exec/exec/src/runtime.ts",
+     "line": 289,
+     "tag": "PLATFORM-DIVERGENCE",
+     "text": "VdfSubExecutor< VdfParallelExecutorEngine, VdfParallelDataManagerVector> (runtime.cpp:259-263) -> port the parallel executor engine and data manager."
+    },
+    {
+     "file": "packages/usd/pxr/exec/vdf/src/schedule.ts",
+     "line": 54,
+     "tag": "PLATFORM-DIVERGENCE",
+     "text": "VdfSchedule task graph accessors (schedule.h:385-470) are read only by the parallel evaluation engine -> port _ScheduleTaskGraph (scheduler.cpp:646-1980) with the parallel engine."
+    },
+    {
+     "file": "packages/usd/pxr/exec/vdf/src/scheduler.ts",
+     "line": 776,
+     "tag": "PLATFORM-DIVERGENCE",
+     "text": "the scheduled task graph for the parallel evaluation engine (scheduler.cpp:646-1980: invocations, compute/inputs/keep/prep tasks, input dependencies) -> port it with the parallel engine, when VDF_ENABLE_PARALLEL_EVALUATION_ENGINE can be true."
+    },
+    {
+     "file": "packages/usd/pxr/exec/vdf/src/types.ts",
+     "line": 20,
+     "tag": "PLATFORM-DIVERGENCE",
+     "text": "VDF_ENABLE_PARALLEL_EVALUATION_ENGINE default true (types.cpp:13) -> default true once the parallel executor engine is ported."
+    }
+   ],
+   "references": [
+    {
+     "file": "packages/usd/pxr/exec/vdf/src/schedule.ts",
+     "line": 11,
+     "tag": "PLATFORM-DIVERGENCE"
+    },
+    {
+     "file": "packages/usd/pxr/exec/vdf/src/scheduleTasks.ts",
+     "line": 11,
+     "tag": "PLATFORM-DIVERGENCE"
+    },
+    {
+     "file": "packages/usd/pxr/exec/vdf/src/scheduler.ts",
+     "line": 12,
+     "tag": "PLATFORM-DIVERGENCE"
+    }
+   ],
+   "docs": [
+    "KNOWN-GAPS.md"
+   ]
+  },
+  "openexec-plugin-bundling": {
+   "tag": "FAITHFULNESS-DEBT",
+   "definitions": [
+    {
+     "file": "packages/usd/pxr/exec/execGeom/src/plugin/registerPlugin.ts",
+     "line": 20,
+     "tag": "FAITHFULNESS-DEBT",
+     "text": "the library is imported by URL (`import(url)`, base/plug/src/plugin.ts), which a bundler cannot follow; an application that bundles typescript-usd must serve xformable.js at that URL or substitute PlugRegistry's module importer -> a bundler-visible module reference for library plugins in typescript-usd/plug."
+    }
+   ],
+   "references": [],
+   "docs": []
+  },
+  "openexec-plugin-load": {
+   "tag": "FAITHFULNESS-DEBT",
+   "definitions": [
+    {
+     "file": "apps/usdview/src/exec-scene-index.ts",
+     "line": 17,
+     "tag": "FAITHFULNESS-DEBT",
+     "text": "upstream loads Exec plugins lazily and synchronously (exec/pluginData.cpp:42-52)."
+    },
+    {
+     "file": "packages/usd/pxr/exec/exec/src/internal.ts",
+     "line": 7,
+     "tag": "FAITHFULNESS-DEBT",
+     "text": "upstream loads an Exec plugin synchronously and lazily (exec/pluginData.cpp:42-52); on the web, callers await this before compiling (docs/openexec-x1.md decision D4)."
+    },
+    {
+     "file": "packages/usd/pxr/exec/exec/src/pluginData.ts",
+     "line": 105,
+     "tag": "FAITHFULNESS-DEBT",
+     "text": "PlugPlugin::Load() (plugin.cpp:323-355) loads the library synchronously; a TS library plugin must already be loaded with LoadAsync, e.g. by _interim_ExecLoadPluginsAsync() -> a synchronous Load once plugin loading has a synchronous path (decision D4)."
+    },
+    {
+     "file": "packages/usd/pxr/exec/exec/src/pluginData.ts",
+     "line": 234,
+     "tag": "FAITHFULNESS-DEBT",
+     "text": "upstream loads a schema's Exec plugin lazily and synchronously, on first lookup of the schema's computations (pluginData.cpp:48-59, definitionRegistry.cpp:860-883). Loading every Exec plugin up front runs each plugin's TF_REGISTRY_FUNCTION(ExecDefinitionRegistryTag) blocks as if the libraries had been loaded before the first lookup -> retire once PlugPlugin has a synchronous Load for library plugins."
+    }
+   ],
+   "references": [],
+   "docs": []
+  },
+  "openexec-speculation": {
+   "tag": "FAITHFULNESS-DEBT",
+   "definitions": [
+    {
+     "file": "packages/usd/pxr/exec/ef/src/maskedSubExecutor.ts",
+     "line": 37,
+     "tag": "FAITHFULNESS-DEBT",
+     "text": "maskedSubExecutor.h:47-50 binds VdfSpeculationExecutor<VdfSpeculationExecutorEngine, VdfDataManagerVector<Background>> -> port speculationExecutor.h and pass its constructor as the factory's speculation function. Until then ManufactureSpeculationExecutor posts a coding error and throws."
+    },
+    {
+     "file": "packages/usd/pxr/exec/ef/src/pageCacheExecutor.ts",
+     "line": 79,
+     "tag": "FAITHFULNESS-DEBT",
+     "text": "pageCacheExecutor.h:44-52 binds VdfSpeculationExecutor<EngineType<T>::SpeculationExecutorEngine, DataManagerType> -> port speculationExecutor.h and pass its constructor as the factory's speculation function. Until then ManufactureSpeculationExecutor posts a coding error and throws."
+    },
+    {
+     "file": "packages/usd/pxr/exec/ef/src/pageCacheSubExecutor.ts",
+     "line": 90,
+     "tag": "FAITHFULNESS-DEBT",
+     "text": "pageCacheSubExecutor.h:46-54 binds VdfSpeculationExecutor<EngineType<T>::SpeculationExecutorEngine, DataManagerType> -> port speculationExecutor.h and pass its constructor as the factory's speculation function. Until then ManufactureSpeculationExecutor posts a coding error and throws."
+    },
+    {
+     "file": "packages/usd/pxr/exec/vdf/src/executorFactory.ts",
+     "line": 64,
+     "tag": "FAITHFULNESS-DEBT",
+     "text": "executorFactory.h:55-56 constructs VdfSpeculationExecutor<SpeculationEngineType, DataManager> -> port speculationExecutor.h and pass its constructor here."
+    },
+    {
+     "file": "packages/usd/pxr/exec/vdf/src/simpleExecutor.ts",
+     "line": 42,
+     "tag": "FAITHFULNESS-DEBT",
+     "text": "simpleExecutor.cpp:51-52 constructs VdfSpeculationExecutor<VdfSpeculationExecutorEngine, VdfDataManagerHashTable> -> port speculationExecutor.h and construct it."
+    },
+    {
+     "file": "packages/usd/pxr/exec/vdf/src/testUtils.ts",
+     "line": 539,
+     "tag": "FAITHFULNESS-DEBT",
+     "text": "VdfSpeculationExecutor is not ported -> port speculationExecutor.h and construct it here."
+    }
+   ],
+   "references": [],
+   "docs": []
+  },
+  "openexec-stats": {
+   "tag": "FAITHFULNESS-DEBT",
+   "definitions": [
+    {
+     "file": "packages/usd/pxr/exec/vdf/src/executorInterface.ts",
+     "line": 50,
+     "tag": "FAITHFULNESS-DEBT",
+     "text": "VdfExecutionStats and its processors -> port executionStats.{h,cpp} and replace this opaque type with the class."
+    },
+    {
+     "file": "packages/usd/pxr/exec/vdf/src/pullBasedExecutorEngine.ts",
+     "line": 73,
+     "tag": "FAITHFULNESS-DEBT",
+     "text": "the engine logs node evaluation events and element counts to VdfExecutionStats (pullBasedExecutorEngine.h:403-408, 516-522, 914-921, 1051-1058, 1073-1075) -> port executionStats.{h,cpp} and log here. Executors without stats (the only kind that can exist while the stats class is not ported) take upstream's no-stats path."
+    },
+    {
+     "file": "packages/usd/pxr/exec/vdf/src/testUtils.ts",
+     "line": 517,
+     "tag": "FAITHFULNESS-DEBT",
+     "text": "VdfExecutionStatsProcessor is not ported -> port executionStatsProcessor.{h,cpp} and derive from it."
+    },
+    {
+     "file": "packages/usd/pxr/exec/vdf/src/testUtils.ts",
+     "line": 528,
+     "tag": "FAITHFULNESS-DEBT",
+     "text": "VdfExecutionStats is not ported -> port executionStats.{h,cpp} and wrap it here."
+    }
+   ],
+   "references": [],
+   "docs": []
+  },
+  "openexec-tfspan": {
+   "tag": "FAITHFULNESS-DEBT",
+   "definitions": [
+    {
+     "file": "packages/usd/pxr/exec/vdf/src/inputValuesPointer.ts",
+     "line": 126,
+     "tag": "FAITHFULNESS-DEBT",
+     "text": "the TfSpan<const T> conversion (inputValuesPointer.h:109-111) needs tf/span.h, which is not ported -> port TfSpan and return TfSpan(GetData(), GetSize())."
+    }
+   ],
+   "references": [],
+   "docs": [
+    "KNOWN-GAPS.md"
+   ]
+  },
+  "openexec-vt-failget": {
+   "tag": "FAITHFULNESS-DEBT",
+   "definitions": [
+    {
+     "file": "packages/usd/pxr/exec/execIr/src/controllerBuilder.ts",
+     "line": 49,
+     "tag": "FAITHFULNESS-DEBT",
+     "text": "after the coding error upstream returns a value-initialized T (Vt_DefaultValueFactory); typescript-usd/vt has no default-value factory, so this throws instead -> VtValue::Get's default-value fallback in typescript-usd/vt."
+    }
+   ],
+   "references": [],
+   "docs": []
+  },
+  "pcp-layer-stack-lifetime": {
+   "tag": "FAITHFULNESS-DEBT",
+   "definitions": [
+    {
+     "file": "packages/usd/pxr/usd/pcp/src/layerStackRegistry.ts",
+     "line": 79,
+     "tag": "FAITHFULNESS-DEBT",
+     "text": "upstream's registry holds layer stacks weakly; they expire the moment no prim index node, dependency, change lifeboat or caller references them (layerStackRegistry.cpp:200-258). Here unreferenced stacks are expired only when a cache applies changes (PcpCache._expireUnusedLayerStacks), and a stack only a caller holds is expired then too; the faithful replacement is reference-tracked expiry."
+    }
+   ],
+   "references": [],
+   "docs": [
+    "KNOWN-GAPS.md"
+   ]
+  },
+  "sdf-file-format-schemas": {
+   "tag": "FAITHFULNESS-DEBT",
+   "definitions": [
+    {
+     "file": "packages/usd/pxr/usd/pcp/src/layerStack.ts",
+     "line": 622,
+     "tag": "FAITHFULNESS-DEBT",
+     "text": "upstream each SdfFileFormat owns an SdfSchemaBase (SdfFileFormat::GetSchema, pxr/usd/sdf/fileFormat.h) that SdfLayer::GetSchema returns; this port has the single SdfSchema (SdfSpec.getSchema, sdf/src/spec.ts) and SdfLayer has no getSchema, so every Sdf layer answers with SdfSchema here. Replace by porting per-format schemas (SdfFileFormat::GetSchema, SdfLayer::GetSchema)."
+    }
+   ],
+   "references": [],
+   "docs": [
+    "KNOWN-GAPS.md"
+   ]
+  },
+  "sdf-find-async-resolver": {
+   "tag": "PLATFORM-DIVERGENCE",
+   "definitions": [
+    {
+     "file": "packages/usd/pxr/usd/sdf/src/layer.ts",
+     "line": 475,
+     "tag": "PLATFORM-DIVERGENCE",
+     "text": "upstream computes that real path with ArResolver::Resolve (layer.cpp:767-771). Resolve returns a promise in this port (ArResolver.resolve, ar/src/resolver.ts), because a browser resolver reads through asynchronous I/O, so the synchronous Find cannot call it: an identifier that names an open layer only through the resolver (a custom resolver's unanchored URI) is not found. FindOrOpen, which awaits Resolve, returns the open layer from the registry instead."
+    }
+   ],
+   "references": [
+    {
+     "file": "packages/usd/pxr/usd/usdUtils/tests/upstream/dependenciesCustomResolver.test.ts",
+     "line": 180,
+     "tag": "PLATFORM-DIVERGENCE"
+    }
+   ],
+   "docs": [
+    "KNOWN-GAPS.md"
+   ]
+  },
+  "sdf-layer-hints-relocates": {
+   "tag": "FAITHFULNESS-DEBT",
+   "definitions": [
+    {
+     "file": "packages/usd/pxr/usd/pcp/src/layerStack.ts",
+     "line": 659,
+     "tag": "FAITHFULNESS-DEBT",
+     "text": "upstream returns here when !layer->GetHints().mightHaveRelocates (layerStack.cpp:352-354), an optimization only; this port reads the fields of every layer."
+    }
+   ],
+   "references": [],
+   "docs": []
+  },
+  "sdf-path-interning": {
+   "tag": "FAITHFULNESS-DEBT",
+   "definitions": [
+    {
+     "file": "packages/usd/pxr/usd/usd/src/resolver.ts",
+     "line": 35,
+     "tag": "FAITHFULNESS-DEBT",
+     "text": "upstream interns SdfPath nodes (sdf/pathNode.cpp, SdfPath::AppendProperty path.cpp:941-983), so the property path a resolution builds is the same node every time and each SdfData lookup by it hashes a pointer (sdf/data.h, TfHashMap<SdfPath>). Here layers are keyed by path string; the spec path string of a prim path and property name is kept instead, so every resolution of the property looks layers up with one flat string whose hash is already computed rather than building and hashing a new one. Retired by interned path nodes with node-keyed SdfData (docs/performance-p1.md section 5, step 11)."
+    }
+   ],
+   "references": [],
+   "docs": [
+    "packages/usd/docs/performance-viewer.md"
+   ]
+  },
+  "sdr-default-value-vtvalue": {
+   "tag": "FAITHFULNESS-DEBT",
+   "definitions": [
+    {
+     "file": "packages/usd/pxr/usd/sdr/src/shaderNode.ts",
+     "line": 243,
+     "tag": "FAITHFULNESS-DEBT",
+     "text": "upstream also resets the default value to the resulting Sdf type's default; the raw default is kept here."
+    },
+    {
+     "file": "packages/usd/pxr/usd/sdr/src/shaderPropertyValue.ts",
+     "line": 11,
+     "tag": "FAITHFULNESS-DEBT",
+     "text": "SdrShaderProperty keeps the raw JavaScript default its parser gave it (shaderNode.ts). Parsers that build VtValues (the glslfx parser plugin) store them as is; values from USD shader definitions (UsdShadeShaderDefParserPlugin, shaderDefUtils.cpp) are wrapped here with the TfType of their Sdf value type ('sdrUsdDefinitionType' metadata), which is the VtValue upstream's USD attribute read produces. Replace with VtValue-typed defaults in SdrShaderProperty when its value conformance (shaderProperty.cpp) is ported."
+    }
+   ],
+   "references": [],
+   "docs": [
+    "KNOWN-GAPS.md"
+   ]
+  },
+  "sdr-plugin-late-registration": {
+   "tag": "PLATFORM-DIVERGENCE",
+   "definitions": [
+    {
+     "file": "packages/usd/pxr/usd/sdr/src/registry.ts",
+     "line": 95,
+     "tag": "PLATFORM-DIVERGENCE",
+     "text": "upstream registers every plugin before SdrRegistry is constructed and loads a plugin synchronously when its factory is asked for (TfType::GetFactory runs the type's definition callback, PlugPlugin::_DefineType -> Load), so the constructor finds and instantiates all plugins once (registry.cpp:274-280, 1050-1164). On the web plugins are registered at any time and a library plugin's module (import()) loads asynchronously, so a plugin type may be declared before its module has set its factory. The registry therefore looks for plugin types again whenever plugins were registered or a factory was set since it last looked (_FindAndInstantiatePlugins), and a type whose plugin is not loaded yet, or has no factory yet, is instantiated when it does instead of failing TF_VERIFY(pluginFactory)."
+    }
+   ],
+   "references": [],
+   "docs": []
+  },
+  "sdr-sdf-type-indicator": {
+   "tag": "FAITHFULNESS-DEBT",
+   "definitions": [
+    {
+     "file": "packages/usd/pxr/imaging/hdSt/src/materialNetwork.ts",
+     "line": 20,
+     "tag": "FAITHFULNESS-DEBT",
+     "text": "Sdr now has GetTypeAsSdfType (sdr/src/shaderNode.ts, shaderProperty.cpp:190-319), but this function does not call it, so such inputs fall through to the warning and vec3 fallback below; the end-state takes the Sdf type's default value."
+    }
+   ],
+   "references": [],
+   "docs": []
+  },
+  "sdr-shader-types-fusion": {
+   "tag": "FAITHFULNESS-DEBT",
+   "definitions": [
+    {
+     "file": "packages/usd/pxr/usd/sdr/src/shaderNode.ts",
+     "line": 7,
+     "tag": "FAITHFULNESS-DEBT",
+     "text": "this TypeScript unit covers pxr/usd/sdr/shaderProperty.h and pxr/usd/sdr/shaderNodeDiscoveryResult.h; split those value types along the upstream file boundaries."
+    }
+   ],
+   "references": [],
+   "docs": []
+  },
+  "sdr-shaderdefs-stage-open": {
+   "tag": "FAITHFULNESS-DEBT",
+   "definitions": [
+    {
+     "file": "packages/usd/pxr/usd/plugin/usdShaders/src/discoveryPlugin.ts",
+     "line": 11,
+     "tag": "FAITHFULNESS-DEBT",
+     "text": "DiscoverShaderNodes opens the definitions stage with UsdStage::Open (discoveryPlugin.cpp:55-67) and UsdShadeShaderDefParserPlugin opens it again by the result's resolved URI (usdShade/shaderDefParser.cpp:62-71). Stage.open is asynchronous here, so UsdShaders_RegisterShaderNodesAsync() (index.ts) opens the stage first, records it for the parser (usdShade/src/shaderDefParser.ts) and only then runs this plugin's SDR_REGISTER_DISCOVERY_PLUGIN (discoveryPlugin.cpp:96), after which SdrRegistry finds the type usdShaders/plugInfo.json declares through Plug -> a synchronous UsdStage open of a plugin resource layer; then the type registers when this module loads, DiscoverShaderNodes opens the stage itself and UsdShaders_RegisterShaderNodesAsync goes away."
+    },
+    {
+     "file": "packages/usd/pxr/usd/usdHydra/src/discoveryPlugin.ts",
+     "line": 12,
+     "tag": "FAITHFULNESS-DEBT",
+     "text": "as for UsdShadersDiscoveryPlugin (usd/plugin/usdShaders/src/discoveryPlugin.ts), DiscoverShaderNodes opens the definitions stage with UsdStage::Open (discoveryPlugin.cpp:59-69); Stage.open is asynchronous here, so UsdHydra_RegisterShaderNodesAsync() opens the stage first, records it for UsdShadeShaderDefParserPlugin and only then runs this plugin's SDR_REGISTER_DISCOVERY_PLUGIN (discoveryPlugin.cpp:99), after which SdrRegistry finds the type usdHydra/plugInfo.json declares through Plug -> a synchronous UsdStage open of a plugin resource layer."
+    }
+   ],
+   "references": [],
+   "docs": []
+  },
+  "tf-bits-hash": {
+   "tag": "FAITHFULNESS-DEBT",
+   "definitions": [
+    {
+     "file": "packages/usd/pxr/base/tf/src/bits.ts",
+     "line": 17,
+     "tag": "FAITHFULNESS-DEBT",
+     "text": "GetHash (bits.cpp:121-137) is ArchHash over the 64-bit words between the first and last set bit, seeded with the first set index. Here it is TfHashCombine over (first set index, set indices); equal bit arrays still hash alike, but the value differs from native. Faithful replacement: ArchHash64 over the 64-bit word layout."
+    }
+   ],
+   "references": [
+    {
+     "file": "packages/usd/pxr/base/tf/src/bits.ts",
+     "line": 204,
+     "tag": "FAITHFULNESS-DEBT"
+    }
+   ],
+   "docs": []
+  },
+  "tf-hash-char-ptr": {
+   "tag": "PLATFORM-DIVERGENCE",
+   "definitions": [
+    {
+     "file": "packages/usd/pxr/base/tf/src/hash.ts",
+     "line": 358,
+     "tag": "PLATFORM-DIVERGENCE",
+     "text": "JavaScript strings have no address, so this hashes the string value; the faithful form needs pointer identity, which JavaScript does not expose."
+    }
+   ],
+   "references": [],
+   "docs": []
+  },
+  "tf-hash-js-values": {
+   "tag": "PLATFORM-DIVERGENCE",
+   "definitions": [
+    {
+     "file": "packages/usd/pxr/base/tf/src/hash.ts",
+     "line": 32,
+     "tag": "PLATFORM-DIVERGENCE",
+     "text": "JavaScript numbers carry no C++ width, so a JS number always hashes as a double even where upstream hashes an integral (size_t, int); callers needing integral semantics pass a bigint or use Tf_HashState._AppendU64. Set/Map elements are visited in std::set/ std::map order only when every key is a number, bigint or string (strings compared by UTF-16 code unit, which differs from std::string's byte order only for supplementary-plane vs U+E000..U+FFFF characters); otherwise in insertion order. Objects without TfHashAppend/hash_value, symbols and functions have no upstream overload (upstream rejects them at compile time, or hashes a pointer, hash.h:135-141): they hash structurally (sorted own enumerable entries) or by name. The end-state is per-type TfHashAppend customizations on every hashed class."
+    }
+   ],
+   "references": [],
+   "docs": [
+    "KNOWN-GAPS.md"
+   ]
+  },
+  "usd-async-layer-open-composition": {
+   "tag": "PLATFORM-DIVERGENCE",
+   "definitions": [
+    {
+     "file": "packages/usd/pxr/usd/usd/src/stage.ts",
+     "line": 1814,
+     "tag": "PLATFORM-DIVERGENCE",
+     "text": "upstream processes layer changes synchronously inside the edit (UsdStage::_HandleLayersDidChange -> PcpChanges::DidChange, stage.cpp, pcp/changes.cpp:732-1393), opening any sublayer, reference or payload layer it needs with the synchronous SdfLayer::FindOrOpen. Opening a layer here goes through an asynchronous ArResolver (fetch in the browser), so a pass that needs an unopened layer throws PcpNeedsLayer, waits for the load (pcp/src/maybeAsync.ts) and finishes after the edit returns; callers read the recomposed stage after `await stage.flushChanges()`. An edit whose layers are already open recomposes synchronously, as upstream."
+    }
+   ],
+   "references": [
+    {
+     "file": "packages/usd/pxr/usd/pcp/src/maybeAsync.ts",
+     "line": 1,
+     "tag": "PLATFORM-DIVERGENCE"
+    }
+   ],
+   "docs": [
+    "KNOWN-GAPS.md"
+   ]
+  },
+  "usd-clip-layer-changes": {
+   "tag": "FAITHFULNESS-DEBT",
+   "definitions": [
+    {
+     "file": "packages/usd/pxr/usd/usd/src/stage.ts",
+     "line": 2251,
+     "tag": "FAITHFULNESS-DEBT",
+     "text": "value clip layers are listened to as well; upstream does not process their changes."
+    },
+    {
+     "file": "packages/usd/pxr/usd/usd/src/stage.ts",
+     "line": 2297,
+     "tag": "FAITHFULNESS-DEBT",
+     "text": "changes to Usd-owned dependencies that no Pcp layer stack uses (value clip layers) recompose the stage; upstream does not process them."
+    }
+   ],
+   "references": [],
+   "docs": [
+    "KNOWN-GAPS.md"
+   ]
+  },
+  "usdshade-validator-binding-helpers": {
+   "tag": "FAITHFULNESS-DEBT",
+   "definitions": [
+    {
+     "file": "packages/usd/pxr/usdValidation/usdShadeValidators/src/validators.ts",
+     "line": 50,
+     "tag": "FAITHFULNESS-DEBT",
+     "text": "CanContainPropertyName, CanApply (materialBindingAPI.cpp:954-958, the generated CanApply), and the DirectBinding / CollectionBinding classes with IsCollectionBindingRel (materialBindingAPI.cpp:209-310) are not on typescript-usd/usdShade's MaterialBindingAPI; they are written here from upstream. End-state: those members on MaterialBindingAPI, called from here."
+    }
+   ],
+   "references": [],
+   "docs": []
+  },
+  "usdshade-validator-sdr-property-compliance": {
+   "tag": "FAITHFULNESS-DEBT",
+   "definitions": [
+    {
+     "file": "packages/usd/pxr/usdValidation/usdShadeValidators/src/validators.ts",
+     "line": 315,
+     "tag": "FAITHFULNESS-DEBT",
+     "text": "typescript-usd/sdr's SdrShaderNode has no CheckPropertyCompliance, and its properties no GetDefaultValueAsSdfType, so the third comparison (shaderNode.cpp:334-335) is not made. End-state: SdrShaderNode.checkPropertyCompliance in typescript-usd/sdr, called from here."
+    }
+   ],
+   "references": [],
+   "docs": []
+  },
+  "usdshade-validator-shader-node-for-source-type": {
+   "tag": "FAITHFULNESS-DEBT",
+   "definitions": [
+    {
+     "file": "packages/usd/pxr/usdValidation/usdShadeValidators/src/validators.ts",
+     "line": 281,
+     "tag": "FAITHFULNESS-DEBT",
+     "text": "typescript-usd/usdShade's Shader has no GetShaderNodeForSourceType; it is written here from nodeDefAPI.cpp:429-465. End-state: Shader / NodeDefAPI.getShaderNodeForSourceType, called from here."
+    }
+   ],
+   "references": [],
+   "docs": []
+  },
+  "usdskel-query-fusion": {
+   "tag": "FAITHFULNESS-DEBT",
+   "definitions": [
+    {
+     "file": "packages/usd/pxr/usd/usdSkel/src/queries.ts",
+     "line": 7,
+     "tag": "FAITHFULNESS-DEBT",
+     "text": "this TypeScript query layer covers pxr/usd/usdSkel/skeletonQuery.h, pxr/usd/usdSkel/skinningQuery.h, pxr/usd/usdSkel/cache.h, and the extent registrations in root.cpp:142 and skeleton.cpp:216; split it along the upstream query and schema boundaries. Mirrors pxr/usd/usdSkel/{skeletonQuery,skinningQuery,cache}.h — the query layer tying schemas to the math: animation sampling onto the skeleton's joint order, skel-space concatenation, skinning transforms, and binding discovery under a SkelRoot."
+    }
+   ],
+   "references": [],
+   "docs": []
+  },
+  "usdskel-transform-dispatch-utilities": {
+   "tag": "FAITHFULNESS-DEBT",
+   "definitions": [
+    {
+     "file": "packages/usd/pxr/usd/usdSkel/src/utils.ts",
+     "line": 8,
+     "tag": "FAITHFULNESS-DEBT",
+     "text": "OpenUSD v26.08 pxr/usd/usdSkel/utils.cpp:1270-1710 also expose token-dispatched point, normal, face-varying-normal, and transform skinning; port those remaining overloads. Row-vector convention throughout (matches GfMatrix4d): child-to-skel = local · parentSkel; point transform p' = p · M."
+    }
+   ],
+   "references": [],
+   "docs": [
+    "KNOWN-GAPS.md"
+   ]
+  },
+  "usdUI-property-dict-key": {
+   "tag": "FAITHFULNESS-DEBT",
+   "definitions": [
+    {
+     "file": "packages/usd/pxr/usd/usdUI/src/objectHints.ts",
+     "line": 74,
+     "tag": "FAITHFULNESS-DEBT",
+     "text": "properties here have no SetMetadataByDictKey (UsdObject::SetMetadataByDictKey, object.h:351-356, which edits only the entry at the edit target). For properties this rewrites the whole composed dictionary at the edit target instead; the faithful replacement is a property SetMetadataByDictKey in pxr/usd/usd."
+    }
+   ],
+   "references": [],
+   "docs": []
+  },
+  "usdutils-abort-throws": {
+   "tag": "PLATFORM-DIVERGENCE",
+   "definitions": [
+    {
+     "file": "packages/usd/pxr/usd/usdUtils/src/coalescingDiagnosticDelegate.ts",
+     "line": 57,
+     "tag": "PLATFORM-DIVERGENCE",
+     "text": "JavaScript cannot abort the process. Where upstream calls TfLogCrash(reason, message, ...) and then ArchAbort(false), the delegate throws a FatalError TfError whose commentary is TfLogCrash's \"<reason>: <message>\" line and whose context is the crash's call context, as this port's TF_FATAL_ERROR and TfLogCrash throw. @internal Shared by this library's diagnostic delegates; not in the library entry."
+    },
+    {
+     "file": "packages/usd/pxr/usd/usdUtils/tests/upstream/conditionalAbortDiagnosticDelegate.test.ts",
+     "line": 39,
+     "tag": "PLATFORM-DIVERGENCE",
+     "text": "JavaScript cannot abort, so the delegate's abort path throws a FatalError TfError out of the post that triggered it; a 134 case here expects the case function to throw that error and a 0 case expects it to return."
+    }
+   ],
+   "references": [
+    {
+     "file": "packages/usd/pxr/usd/usdUtils/src/conditionalAbortDiagnosticDelegate.ts",
+     "line": 12,
+     "tag": "PLATFORM-DIVERGENCE"
+    }
+   ],
+   "docs": []
+  },
+  "usdutils-host-filesystem": {
+   "tag": "PLATFORM-DIVERGENCE",
+   "definitions": [
+    {
+     "file": "packages/usd/pxr/usd/usdUtils/src/assetLocalization.ts",
+     "line": 52,
+     "tag": "PLATFORM-DIVERGENCE",
+     "text": "upstream queries the file system directly for clip template globbing (TfIsDir, TfGlob) and external asset dependencies (TfPathExists, std::filesystem::relative), and writes temporary layer exports there (ArchMakeTmpFileName, TfDeleteFile). Here those queries go to the host's file system through Ar's platform file system seam; a browser has none, so there they find nothing, as for a non-filesystem resolver upstream."
+    }
+   ],
+   "references": [
+    {
+     "file": "packages/usd/pxr/usd/usdUtils/src/assetLocalization.ts",
+     "line": 103,
+     "tag": "PLATFORM-DIVERGENCE"
+    },
+    {
+     "file": "packages/usd/pxr/usd/usdUtils/src/assetLocalizationPackage.ts",
+     "line": 95,
+     "tag": "PLATFORM-DIVERGENCE"
+    },
+    {
+     "file": "packages/usd/pxr/usd/usdUtils/src/assetLocalizationPackage.ts",
+     "line": 511,
+     "tag": "PLATFORM-DIVERGENCE"
+    },
+    {
+     "file": "packages/usd/pxr/usd/usdUtils/src/usdzPackage.ts",
+     "line": 171,
+     "tag": "PLATFORM-DIVERGENCE"
+    }
+   ],
+   "docs": [
+    "KNOWN-GAPS.md"
+   ]
+  },
+  "usdutils-sdf-create-new-default-args": {
+   "tag": "FAITHFULNESS-DEBT",
+   "definitions": [
+    {
+     "file": "packages/usd/pxr/usd/sdf/src/layer.ts",
+     "line": 821,
+     "tag": "FAITHFULNESS-DEBT",
+     "text": "layer.cpp:556-568 also strips arguments equal to the format's GetDefaultFileFormatArguments(); SdfFileFormat here publishes no default arguments, so none are stripped. The faithful end state is SdfFileFormat.getDefaultFileFormatArguments, applied here and in findOrOpen."
+    }
+   ],
+   "references": [],
+   "docs": [
+    "KNOWN-GAPS.md"
+   ]
+  },
+  "usdutils-sparse-value-held-type": {
+   "tag": "PLATFORM-DIVERGENCE",
+   "definitions": [
+    {
+     "file": "packages/usd/pxr/usd/usdUtils/src/sparseValueWriter.ts",
+     "line": 14,
+     "tag": "PLATFORM-DIVERGENCE",
+     "text": "a VtValue knows its held C++ type, which _IsClose dispatches on (sparseValueWriter.cpp:126-185); a JavaScript value does not (a number may be a double, float, half or int). Each value is first converted to the attribute's declared value type, as the Python wrapper's UsdPythonToSdfType does (wrapSparseValueWriter.cpp: 21-50), and _IsClose dispatches on that declared type."
+    }
+   ],
+   "references": [],
+   "docs": []
+  },
+  "usdutils-stage-stats-no-malloc-tags": {
+   "tag": "PLATFORM-DIVERGENCE",
+   "definitions": [
+    {
+     "file": "packages/usd/pxr/usd/usdUtils/src/introspection.ts",
+     "line": 66,
+     "tag": "PLATFORM-DIVERGENCE",
+     "text": "approxMemoryInMb is reported only when TfMallocTag::IsInitialized() (introspection.cpp:35-48); JavaScript exposes no allocator to tag, so the tag system is never initialized and approxMemoryInMb is never reported."
+    }
+   ],
+   "references": [],
+   "docs": []
+  },
+  "usdutils-stitch-clips-serial-reduce": {
+   "tag": "PLATFORM-DIVERGENCE",
+   "definitions": [
+    {
+     "file": "packages/usd/pxr/usd/usdUtils/src/stitchClips.ts",
+     "line": 418,
+     "tag": "PLATFORM-DIVERGENCE",
+     "text": "tbb:: parallel_reduce (stitchClips.cpp:627-629) may split the clip range across threads and join the partial results; JavaScript has no shared-memory threads, so the whole range is reduced in one body, which is the reduction of an unsplit range."
+    }
+   ],
+   "references": [],
+   "docs": []
+  },
+  "usdValidation-async-validate": {
+   "tag": "PLATFORM-DIVERGENCE",
+   "definitions": [
+    {
+     "file": "packages/usd/pxr/usdValidation/usdValidation/src/validator.ts",
+     "line": 71,
+     "tag": "PLATFORM-DIVERGENCE",
+     "text": "upstream validator tasks may do synchronous I/O, e.g. usdUtilsValidators' tasks open every layer and resolve every asset a stage depends on (usdUtilsValidators/validators.cpp:44-45,189-190) and read usdz archives (validators.cpp:116,215-216). Layer opening, asset resolution and asset reads are asynchronous here (sdf/src/layer.ts, ar/src/resolver.ts), so a task may return a promise, and UsdValidationValidator.Validate and UsdValidationContext.Validate resolve to the errors rather than returning them."
+    }
+   ],
+   "references": [
+    {
+     "file": "packages/usd/pxr/usdValidation/usdUtilsValidators/src/validators.ts",
+     "line": 10,
+     "tag": "PLATFORM-DIVERGENCE"
+    },
+    {
+     "file": "packages/usd/pxr/usdValidation/usdUtilsValidators/tests/upstream/usdUtilsValidators.test.ts",
+     "line": 18,
+     "tag": "PLATFORM-DIVERGENCE"
+    },
+    {
+     "file": "packages/usd/pxr/usdValidation/usdValidation/src/context.ts",
+     "line": 181,
+     "tag": "PLATFORM-DIVERGENCE"
+    },
+    {
+     "file": "packages/usd/pxr/usdValidation/usdValidation/src/validator.ts",
+     "line": 188,
+     "tag": "PLATFORM-DIVERGENCE"
+    }
+   ],
+   "docs": []
+  },
+  "usdValidation-fixer-async-save": {
+   "tag": "PLATFORM-DIVERGENCE",
+   "definitions": [
+    {
+     "file": "packages/usd/pxr/usdValidation/usdValidation/src/fixer.ts",
+     "line": 72,
+     "tag": "PLATFORM-DIVERGENCE",
+     "text": "SdfLayer::Save is synchronous file I/O upstream (fixer.cpp:77); SdfLayer.save is asynchronous here (sdf/src/layer.ts), so ApplyFix resolves to the save's result rather than returning it."
+    }
+   ],
+   "references": [
+    {
+     "file": "packages/usd/pxr/usdValidation/usdValidation/tests/upstream/fixerPy.test.ts",
+     "line": 19,
+     "tag": "PLATFORM-DIVERGENCE"
+    }
+   ],
+   "docs": []
+  },
+  "usdValidation-plugin-late-registration": {
+   "tag": "PLATFORM-DIVERGENCE",
+   "definitions": [
+    {
+     "file": "packages/usd/pxr/usdValidation/usdValidation/src/registry.ts",
+     "line": 61,
+     "tag": "PLATFORM-DIVERGENCE",
+     "text": "upstream registers every plugin before the registry is constructed and reads every plugin's metadata once, in the constructor (registry.cpp:35-41, 76-190). On the web a plugin registers when its module is imported, at any time, so the registry also reads the \"Validators\" metadata of plugins registered after it was constructed (a PlugRegistry DidRegisterPlugins listener), and the plugin-name lookup GetValidatorMetadataForPlugins includes them."
+    }
+   ],
+   "references": [],
+   "docs": []
+  },
+  "usdValidation-serial-dispatch": {
+   "tag": "PLATFORM-DIVERGENCE",
+   "definitions": [
+    {
+     "file": "packages/usd/pxr/usdValidation/usdValidation/src/context.ts",
+     "line": 85,
+     "tag": "PLATFORM-DIVERGENCE",
+     "text": "upstream runs each validator's task on a WorkDispatcher and gathers errors under a mutex (context.cpp:279-619); JavaScript has no shared-memory threads, so the tasks run in order on the calling thread and the errors are in the order the tasks were dispatched."
+    }
+   ],
+   "references": [],
+   "docs": []
+  },
+  "usdValidation-task-kind": {
+   "tag": "PLATFORM-DIVERGENCE",
+   "definitions": [
+    {
+     "file": "packages/usd/pxr/usdValidation/usdValidation/src/validator.ts",
+     "line": 94,
+     "tag": "PLATFORM-DIVERGENCE",
+     "text": "upstream overloads the validator constructors and RegisterValidator / RegisterPluginValidator on the std::function type of the task (validator.h:133-153, registry.h:180- 350). A JavaScript function carries no parameter types, so the kind of task is named: here by the key of this object, and in UsdValidationRegistry by the Python binding's spellings (RegisterLayerValidator, RegisterPluginPrimValidator, ...; wrapRegistry.cpp:366-396)."
+    }
+   ],
+   "references": [],
+   "docs": []
+  },
+  "usdview-load-schedule-default": {
+   "tag": "PLATFORM-DIVERGENCE",
+   "definitions": [
+    {
+     "file": "apps/usdview/src/runtime.ts",
+     "line": 587,
+     "tag": "PLATFORM-DIVERGENCE",
+     "text": "unset, a scene that has a schedule plays by it too (usdview applies one only with a load-schedule plugin and --unloaded), because composing and drawing every payload of a large scene stalls the browser's frames. The progressive open already leaves every payload unloaded, so the schedule is read after the open and applied when the root layer has one. ?loadSchedule=0 or ?progressive=0 loads every payload, as usdview does."
+    }
+   ],
+   "references": [
+    {
+     "file": "apps/usdview/src/startup-options.ts",
+     "line": 26,
+     "tag": "PLATFORM-DIVERGENCE"
+    },
+    {
+     "file": "apps/usdview/tests/runtime-lifecycle.test.ts",
+     "line": 1404,
+     "tag": "PLATFORM-DIVERGENCE"
+    }
+   ],
+   "docs": [
+    "apps/usdview/docs/viewer-contracts.md"
+   ]
+  },
+  "usdview-tool-windows": {
+   "tag": "PLATFORM-DIVERGENCE",
+   "definitions": [
+    {
+     "file": "apps/usdview/src/hydra-scene-debugger-view.ts",
+     "line": 16,
+     "tag": "PLATFORM-DIVERGENCE",
+     "text": "usdview opens these as separate top-level Qt windows. A web component cannot open native windows, so each is a movable, resizable, non-modal panel inside the viewer."
+    }
+   ],
+   "references": [
+    {
+     "file": "apps/usdview/src/debug-flags.ts",
+     "line": 12,
+     "tag": "PLATFORM-DIVERGENCE"
+    }
+   ],
+   "docs": [
+    "KNOWN-GAPS.md"
+   ]
+  },
+  "usdview-vt-type-name": {
+   "tag": "FAITHFULNESS-DEBT",
+   "definitions": [
+    {
+     "file": "apps/usdview/src/hydra-scene-debugger.ts",
+     "line": 550,
+     "tag": "FAITHFULNESS-DEBT",
+     "text": "the library's VtValue type names are Sdf-style ('token', 'GfVec3f[]'); this maps them to the demangled C++ names native usdview shows. Retire it when VtValue::getTypeName returns the demangled C++ name as upstream does."
+    }
+   ],
+   "references": [],
+   "docs": []
+  },
+  "viewer-cpu-skinning-fallback": {
+   "tag": "PLATFORM-DIVERGENCE",
+   "definitions": [
+    {
+     "file": "apps/usdview/src/gpu-device-settings.ts",
+     "line": 38,
+     "tag": "PLATFORM-DIVERGENCE",
+     "text": "usdview never changes this setting itself; every native device it runs on has the buffers."
+    }
+   ],
+   "references": [],
+   "docs": [
+    "KNOWN-GAPS.md"
+   ]
+  },
+  "viewer-webkit-alpha-to-coverage": {
+   "tag": "PLATFORM-DIVERGENCE",
+   "definitions": [
+    {
+     "file": "apps/usdview/src/gpu-device-settings.ts",
+     "line": 60,
+     "tag": "PLATFORM-DIVERGENCE",
+     "text": "in WebKit, TF_DEBUG gains HDX_DISABLE_ALPHA_TO_COVERAGE. WebKit's WGSL-to-Metal compiler puts a volatile forward-progress counter into every shader loop, and a fragment function with such a loop that changes coverage (alpha to coverage, sample_mask, discard) loses the GPU's hidden surface removal, so large scenes draw at a few frames per second (packages/usd/docs/ performance-viewer.md, \"Alpha to coverage in Safari\"). It changes only partially transparent pixels of default-material draws and stored AOV alpha. A page whose TF_DEBUG names the code (`TF_DEBUG=-HDX_DISABLE_ALPHA_TO_COVERAGE` keeps alpha to coverage on) is kept as written."
+    }
+   ],
+   "references": [
+    {
+     "file": "apps/usdview/tests/gpu-device-settings.test.ts",
+     "line": 26,
+     "tag": "PLATFORM-DIVERGENCE"
+    }
+   ],
+   "docs": [
+    "KNOWN-GAPS.md"
+   ]
+  },
+  "vt-hash-held": {
+   "tag": "FAITHFULNESS-DEBT",
+   "definitions": [
+    {
+     "file": "packages/usd/pxr/base/vt/src/array.ts",
+     "line": 835,
+     "tag": "FAITHFULNESS-DEBT",
+     "text": "types with no layout here (tokens, paths, asset paths, dictionaries' nested values, schema types) fall back to TfHash's JavaScript mapping (tf/src/hash.ts), e.g. a token hashes its string rather than its interned pointer (tf/token.h:359-363)."
+    }
+   ],
+   "references": [],
+   "docs": []
+  },
+  "vt-hash-value-vtvalue": {
+   "tag": "FAITHFULNESS-DEBT",
+   "definitions": [
+    {
+     "file": "packages/usd/pxr/base/vt/src/hash.ts",
+     "line": 10,
+     "tag": "FAITHFULNESS-DEBT",
+     "text": "upstream VtHashValue(VtValue) is TfHash()(value): the TfHash code of hash_value(value) == GetHash() (value.h:1310-1312), not GetHash() itself. Here a VtValue argument returns its GetHash(), as callers treat VtHashValue(VtValue) as hashing the held value. The end-state is this function always returning TfHash(value)."
+    }
+   ],
+   "references": [],
+   "docs": []
+  },
+  "webgpu-binding-limits": {
+   "tag": "PLATFORM-DIVERGENCE",
+   "definitions": [
+    {
+     "file": "packages/usd/pxr/imaging/hgiWebGPU/src/computePipeline.ts",
+     "line": 49,
+     "tag": "PLATFORM-DIVERGENCE",
+     "text": "not created, and its dispatches are skipped (HgiWebGPUComputeCmds)."
+    },
+    {
+     "file": "packages/usd/pxr/imaging/hgiWebGPU/src/graphicsPipeline.ts",
+     "line": 295,
+     "tag": "PLATFORM-DIVERGENCE",
+     "text": "the pipeline is not created and its draws are recorded as nothing, so that the other draws of the pass still run: WebGPU would make the pipeline, and with it the whole command buffer, invalid."
+    }
+   ],
+   "references": [
+    {
+     "file": "apps/usdview/src/gpu-device-settings.ts",
+     "line": 30,
+     "tag": "PLATFORM-DIVERGENCE"
+    },
+    {
+     "file": "packages/usd/pxr/imaging/hgiWebGPU/tests/staticUse.test.ts",
+     "line": 94,
+     "tag": "PLATFORM-DIVERGENCE"
+    }
+   ],
+   "docs": [
+    "KNOWN-GAPS.md",
+    "packages/usd/docs/imaging-status.md",
+    "packages/usd/tests/browser/imaging-status/classification.json"
+   ]
+  },
+  "webgpu-binding-visibility": {
+   "tag": "PLATFORM-DIVERGENCE",
+   "definitions": [
+    {
+     "file": "packages/usd/pxr/imaging/hgiWebGPU/src/graphicsPipeline.ts",
+     "line": 256,
+     "tag": "PLATFORM-DIVERGENCE",
+     "text": "only of the functions this pipeline runs (hgiVulkan merges every function of the program, descriptorSetLayouts.cpp:65-123). Storm's programs for post-tessellation vertex draws also hold a vertex function that such a draw never runs (hgiMetal/graphicsPipeline.mm: 178-206 makes the post-tessellation function the vertex function), whose bindings would count against WebGPU's per-stage limits; and a variant (HgiPolygonModeLine, alpha to one) may use bindings its base function does not."
+    },
+    {
+     "file": "packages/usd/pxr/imaging/hgiWebGPU/src/shaderGenerator.ts",
+     "line": 1448,
+     "tag": "PLATFORM-DIVERGENCE",
+     "text": "a bind group layout entry here is visible only to the stages whose entry point statically uses the binding. hgiVulkan makes every buffer visible to all graphics stages and every texture to the geometry and fragment stages (descriptorSetLayouts.cpp:100-118), whatever the stage that declared it, and Storm declares its common resources (hdSt/codeGen.cpp:2902-3536, _resCommon) in every stage; Vulkan's per-stage descriptor limits are large, and hgiMetal's argument tables hold only what a function uses. WebGPU counts every visible entry against its per-stage limits (maxStorageBuffersPerShaderStage is 10 in Chrome on macOS), which Storm's declarations exceed in the vertex stage. A binding the stage declares but never reads keeps its entry, with no visibility for that stage, so the bind groups are the same for every stage."
+    },
+    {
+     "file": "packages/usd/pxr/imaging/hgiWebGPU/tests/staticUse.test.ts",
+     "line": 5,
+     "tag": "PLATFORM-DIVERGENCE",
+     "text": "a bind group layout entry is visible only to the stages whose entry point statically uses the binding (WGSL \"Resource Interface of a Shader\"), so the per-stage binding limits count what each stage reads (Chrome on macOS: 10 storage buffers per stage). hgiVulkan's merge (descriptorSetLayouts.cpp:100-118) makes buffers visible to every graphics stage instead."
+    }
+   ],
+   "references": [
+    {
+     "file": "packages/usd/pxr/imaging/hgiWebGPU/src/bindGroupLayouts.ts",
+     "line": 63,
+     "tag": "PLATFORM-DIVERGENCE"
+    }
+   ],
+   "docs": [
+    "KNOWN-GAPS.md"
+   ]
+  },
+  "webgpu-no-shader-double": {
+   "tag": "PLATFORM-DIVERGENCE",
+   "definitions": [
+    {
+     "file": "packages/usd/pxr/imaging/hgiWebGPU/src/capabilities.ts",
+     "line": 42,
+     "tag": "PLATFORM-DIVERGENCE",
+     "text": "WGSL has no f64, so ShaderDoublePrecision is unset, as hgiMetal sets it (capabilities.mm:73). Storm then uploads double primvars as float (mesh.cpp:1270-1277); code and tests that need double-precision shaders do not run on this device."
+    }
+   ],
+   "references": [
+    {
+     "file": "packages/usd/pxr/imaging/hdSt/tests/upstream/meshTopology.test.ts",
+     "line": 447,
+     "tag": "PLATFORM-DIVERGENCE"
+    }
+   ],
+   "docs": []
+  },
+  "webgpu-storage-buffer-limit": {
+   "tag": "PLATFORM-DIVERGENCE",
+   "definitions": [
+    {
+     "file": "packages/usd/pxr/imaging/hgiWebGPU/src/buffer.ts",
+     "line": 87,
+     "tag": "PLATFORM-DIVERGENCE",
+     "text": "the packed pulled attributes (HgiWebGPUPulledAttributePacker) copy again only the buffers whose version changed."
+    },
+    {
+     "file": "packages/usd/pxr/imaging/hgiWebGPU/src/graphicsPipeline.ts",
+     "line": 106,
+     "tag": "PLATFORM-DIVERGENCE",
+     "text": "the functions read the control point indices and the attributes from one buffer that HgiWebGPUGraphicsCmds packs (HgiWebGPUPulledAttributePacker)."
+    },
+    {
+     "file": "packages/usd/pxr/imaging/hgiWebGPU/src/graphicsPipeline.ts",
+     "line": 270,
+     "tag": "PLATFORM-DIVERGENCE",
+     "text": "over the device's binding limits (Chrome on macOS has 10 storage buffers per stage; Storm's draws with many primitive and instance primvars reach 15 with one binding per pulled attribute), the variant that pulls the control point indices and every attribute from one buffer, packed per draw from the bound index and vertex buffers by GPU copies (HgiWebGPUPulledAttributePacker). Metal pulls the attributes through its vertex buffer table instead (hgiMetal/graphicsPipeline.mm:54-157), which has no such limit."
+    },
+    {
+     "file": "packages/usd/pxr/imaging/hgiWebGPU/src/pulledAttributePacker.ts",
+     "line": 5,
+     "tag": "PLATFORM-DIVERGENCE",
+     "text": "the packed buffers of draws with vertex pulling whose pipeline takes the packed variant (HgiWebGPUGraphicsPipeline, HGIWEBGPU_FORCE_PACKED_ATTRIBUTES). Metal pulls a post-tessellation vertex function's attributes through its vertex buffer table (hgiMetal/graphicsPipeline.mm:54-157), 31 entries per stage; HgiWebGPU's emulation reads each one from a storage buffer binding, and WebGPU devices may have as few as 8 storage buffers per stage (Chrome on macOS: 10). The packed variant reads the control point indices and every attribute from one buffer: the bound index and vertex buffers copied whole, one after the other, with copyBufferToBuffer on the cmds' pre-pass encoder (submitted before its render pass, after every earlier submission, so the copy sees the buffers as the draw would). A packed buffer is kept per list of source buffers (rebuilt only when a source's identity or size changes) and records, per source range, the source's write version it holds (HgiWebGPUBuffer._noteWrite); a cmds copies again only the ranges whose source was written since. Costs extra GPU memory the size of its sources, and a GPU copy of a source each time it changes."
+    },
+    {
+     "file": "packages/usd/pxr/imaging/hgiWebGPU/src/shaderGenerator.ts",
+     "line": 122,
+     "tag": "PLATFORM-DIVERGENCE",
+     "text": "a function with vertex pulling reads the control point indices and its attributes from one packed buffer (HgiWebGPUPostTessVertexShaderSection `packed`)."
+    },
+    {
+     "file": "packages/usd/pxr/imaging/hgiWebGPU/src/shaderSection.ts",
+     "line": 543,
+     "tag": "PLATFORM-DIVERGENCE",
+     "text": "the variant that reads the control point indices and every pulled attribute from one buffer, `hgiWebGPU_pulled` at controlPointIndexBinding, which HgiWebGPUGraphicsCmds packs from the bound index and vertex buffers (HgiWebGPUPulledAttributePacker); the indices start at word hgiWebGPU_patchDraw.tess.w."
+    }
+   ],
+   "references": [
+    {
+     "file": "packages/usd/pxr/imaging/hgiWebGPU/tests/bufferWriteVersion.test.ts",
+     "line": 2,
+     "tag": "PLATFORM-DIVERGENCE"
+    }
+   ],
+   "docs": [
+    "KNOWN-GAPS.md",
+    "packages/usd/docs/imaging-status.md",
+    "packages/usd/docs/performance-viewer.md"
+   ]
+  },
+  "webkit-wgsl-atomic-compare-exchange": {
+   "tag": "PLATFORM-DIVERGENCE",
+   "definitions": [
+    {
+     "file": "packages/usd/pxr/imaging/hdx/src/pickTask.ts",
+     "line": 1219,
+     "tag": "PLATFORM-DIVERGENCE",
+     "text": "upstream binds the pick buffer for every resolve mode (pickTask.cpp:735-747); RenderDeepPicks (hdx/shaders/renderPass.glslfx:303) returns at once unless the buffer was initialized for resolveDeep. Its ATOMIC_COMP_SWAP translates to WGSL atomicCompareExchangeWeak, which Safari's WebGPU fails to compile to Metal in any stage (\"field may not be qualified with an address space\"), so binding it would fail every pick program. The buffer is bound only for resolveDeep, which stays unavailable in Safari until that is fixed."
+    }
+   ],
+   "references": [
+    {
+     "file": "packages/usd/pxr/imaging/hdx/src/pickTask.ts",
+     "line": 20,
+     "tag": "PLATFORM-DIVERGENCE"
+    }
+   ],
+   "docs": [
+    "KNOWN-GAPS.md"
+   ]
+  }
+ }
+}

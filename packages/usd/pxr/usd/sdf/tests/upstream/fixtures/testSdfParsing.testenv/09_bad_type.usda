@@ -1,0 +1,8 @@
+#usda 1.0
+(
+    """Tests for error condition while scanning string values."""
+)
+
+def MfScope "Root" {
+    FooBar value = "This is an unterminated string;
+}

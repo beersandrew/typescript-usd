@@ -1,0 +1,208 @@
+#usda 1.0
+(
+    defaultPrim = "World"
+    endTimeCode = 3
+    startTimeCode = 1
+)
+
+def Xform "World" (
+    kind = "group"
+)
+{
+    color3f[] primvars:tint = [(1, 0.5, 0)] (
+        interpolation = "constant"
+    )
+    float primvars:inheritedOnly = 3 (
+        interpolation = "constant"
+    )
+    float primvars:vertexOnly = 4 (
+        interpolation = "vertex"
+    )
+    double3 xformOp:translate = (1, 2, 3)
+    uniform token[] xformOpOrder = ["xformOp:translate"]
+
+    def Mesh "Mesh" (
+        prepend apiSchemas = ["MaterialBindingAPI"]
+    )
+    {
+        float3[] extent = [(0, 0, 0), (1, 1, 1)]
+        int[] faceVertexCounts = [4]
+        int[] faceVertexIndices = [0, 1, 2, 3]
+        rel material:binding = </World/Looks/Red>
+        point3f[] points = [(0, 0, 0), (1, 0, 0), (1, 1, 0), (0, 1, 0)]
+        texCoord2f[] primvars:st = [(0, 0), (1, 0), (1, 1), (0, 1)] (
+            interpolation = "vertex"
+        )
+        float primvars:tint = 2 (
+            interpolation = "vertex"
+        )
+        custom float animated.timeSamples = {
+            1: 0,
+            3: 10,
+        }
+        custom asset assetValue = @./textures/wood.png@
+        custom asset[] assetArray = [@a.usda@, @b.usda@]
+        custom float blocked = None
+        custom bool boolValue = 1
+        custom bool[] boolArray = [1, 0]
+        custom float connected
+        float connected.connect = </World/Looks/Red/Shader.outputs:out>
+        custom double doubleValue = 0.1
+        custom double[] doubleArray = [0.1, 1e-7, 12345678.5, 1e+22, -0, 100]
+        custom double bigDouble = 1234567.125
+        custom double tinyDouble = 0.0078125
+        custom float floatValue = 0.1
+        custom float[] floatArray = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7]
+        custom half halfValue = 0.1
+        custom half3 halfVector = (0.1, 65504, 0.0001)
+        custom int intValue = 1234567
+        custom int[] intArray = [1, 2, 3, 4, 5, 6]
+        custom int3 intVector = (1, -2, 3)
+        custom int64 int64Value = -9007199254740991
+        custom uint uintValue = 7
+        custom matrix4d matrixValue = ((1, 0, 0, 0), (0, 0.5, 0, 0), (0, 0, 1, 0), (10, 20.25, 30, 1))
+        custom matrix2d matrix2Value = ((1, 2), (3, 4))
+        custom matrix3d matrix3Value = ((1, 0, 0), (0, 1, 0), (0.5, 0, 1))
+        custom matrix4d[] matrixArray = [((1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 0, 1))]
+        custom quatf quatValue = (1, 0, 0.5, 0)
+        custom quatd quatdValue = (0.5, 0.1, 0.2, 0.3)
+        custom string stringValue = "hello world"
+        custom string[] stringArray = ["a b", "c"]
+        custom token tokenValue = "tok"
+        custom token[] tokenArray = ["x", "y"]
+        custom float3 vectorValue = (0.1, 1e-7, 1e20)
+        custom double3 vectorDouble = (0.1, 1e-7, 1e22)
+        custom double2 vector2Double = (123456789012345678, 0.000001)
+        custom float4 vector4Value = (1, 2.5, -3, 0)
+        custom color3f colorValue = (0.25, 0.5, 1)
+        custom float3[] emptyVectorArray = []
+        custom timecode timeValue = 24
+        custom string longString = "0123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789"
+        custom rel emptyRel
+        custom rel targets = [</World>, </World/Looks/Red>]
+    }
+
+    def Scope "Looks"
+    {
+        def Material "Red"
+        {
+            token outputs:surface.connect = </World/Looks/Red/Shader.outputs:surface>
+
+            def Shader "Shader"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                float outputs:out
+                token outputs:surface
+            }
+        }
+    }
+
+    def "Typeless"
+    {
+    }
+
+    def Camera "Cam"
+    {
+    }
+
+    def Camera "GuidesShown" (
+        prepend apiSchemas = ["VisibilityAPI"]
+    )
+    {
+        uniform token guideVisibility = "visible"
+    }
+
+    def Xform "Hidden"
+    {
+        token visibility = "invisible"
+
+        def Mesh "Child"
+        {
+        }
+    }
+
+    def Xform "Blinking"
+    {
+        token visibility.timeSamples = {
+            1: "inherited",
+            2: "invisible",
+        }
+    }
+
+    def Xform "Inactive" (
+        active = false
+    )
+    {
+    }
+
+    def Xform "Referencing" (
+        prepend references = </Proto>
+    )
+    {
+    }
+
+    def Xform "Varianted" (
+        variants = {
+            string look = "a"
+        }
+        prepend variantSets = "look"
+    )
+    {
+        variantSet "look" = {
+            "a" {
+            }
+        }
+    }
+
+    def Xform "Instance" (
+        instanceable = true
+        prepend references = </Proto>
+    )
+    {
+    }
+
+    def Xform "Named" (
+        displayName = "Friendly Name"
+    )
+    {
+    }
+
+    def Xform "Clipped" (
+        clips = {
+            dictionary default = {
+                double2[] active = [(1, 0)]
+                asset[] assetPaths = [@./clip.usda@]
+                string primPath = "/Clip"
+                double2[] times = [(1, 1), (3, 3)]
+            }
+        }
+    )
+    {
+        custom float clipped
+    }
+
+    def Xform "Labeled" (
+        prepend apiSchemas = ["SemanticsLabelsAPI:category"]
+    )
+    {
+        token[] semantics:labels:category = ["chair", "seat"]
+    }
+
+    over "Over"
+    {
+        def Xform "UnderOver"
+        {
+        }
+    }
+}
+
+class Xform "_Class"
+{
+}
+
+def Xform "Proto"
+{
+    def Cube "Cube"
+    {
+    }
+}

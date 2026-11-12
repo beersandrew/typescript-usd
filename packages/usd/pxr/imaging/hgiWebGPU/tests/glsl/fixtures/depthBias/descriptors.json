@@ -1,0 +1,128 @@
+{
+  "provenance": {
+    "release": "OpenUSD 26.11.1",
+    "build": "$OPENUSD_INSTALL (Metal, Apple M4 Pro)",
+    "script": "TF_DEBUG=\"HDST_DUMP_SHADER_SOURCE HDST_DUMP_SHADER_SOURCEFILE\" DYLD_LIBRARY_PATH=$OPENUSD_INSTALL/lib $OPENUSD_INSTALL/tests/testHdStDepthBias --offscreen",
+    "glsl": "<STAGE>_SHADER.glsl: the code generator's GLSL per stage as HDST_DUMP_SHADER_SOURCE prints it (shaderCodeDeclarations + shaderCode, pxr/imaging/hdSt/glslProgram.cpp)",
+    "descriptors": "The HgiShaderFunctionDesc resources of each stage, read from the generated MSL of the same run (HDST_DUMP_SHADER_SOURCEFILE: MSL*Inputs/Outputs, MSLBufferBindings, MSL*Uniforms, scope blocks) and the AddStageInput/AddBuffer calls of pxr/imaging/hdSt/codeGen.cpp:3125-3145, 3474-3540.",
+    "adaptations": [
+      "Built-in inputs with no WebGPU builtin are global members (zero) instead of stage inputs: hd_BaseInstance, gl_BaseVertex (unused by the GLSL), gl_PrimitiveID (hdPrimitiveID; HgiWebGPU reports PrimitiveIdEmulation, imaging-i1.md 4.2) and hd_BaryCoordNoPersp (Metal-only builtin barycentrics).",
+      "POST_TESS_VERTEX is described as a vertex stage, as HgiWebGPU's post-tessellation emulation will run it (imaging-i1.md 4.2): patch_id, gl_TessCoord and the per-control-point inputs (3 points per triangle patch) are global members that the emulation fills by vertex pulling."
+    ]
+  },
+  "stages": {
+    "COMPUTE": {
+      "stage": "compute",
+      "localSize": [64, 1, 1],
+      "constantParams": [
+        { "name": "cullMatrix", "type": "mat4" },
+        { "name": "drawRangeNDC", "type": "vec2" },
+        { "name": "drawCommandNumUints", "type": "uint" },
+        { "name": "indexEnd", "type": "uint" }
+      ],
+      "buffers": [
+        { "name": "constantPrimvars", "type": "ConstantData7", "bindIndex": 0, "binding": "array" },
+        { "name": "drawCommands", "type": "uint", "bindIndex": 5, "binding": "array", "writable": true },
+        { "name": "drawCullInput", "type": "uint", "bindIndex": 7, "binding": "array" }
+      ],
+      "stageInputs": [
+        { "name": "hd_GlobalInvocationID", "type": "uvec3", "role": "hdGlobalInvocationID" }
+      ]
+    },
+    "VERTEX": {
+      "stage": "vertex",
+      "globals": [
+        { "name": "hd_BaseInstance", "type": "uint" },
+        { "name": "gl_BaseVertex", "type": "uint" }
+      ],
+      "buffers": [
+        { "name": "constantPrimvars", "type": "ConstantData7", "bindIndex": 0, "binding": "array" },
+        { "name": "primitiveParam", "type": "int", "bindIndex": 1, "binding": "array" },
+        { "name": "edgeIndices", "type": "int", "bindIndex": 2, "binding": "array" },
+        { "name": "renderPassState", "type": "CustomBlockData1033", "bindIndex": 4, "binding": "uniformValue" }
+      ],
+      "stageInputs": [
+        { "name": "hd_VertexID", "type": "uint", "role": "hdVertexID" },
+        { "name": "hd_InstanceID", "type": "uint", "role": "hdInstanceID" },
+        { "name": "points", "type": "vec3", "location": 0 },
+        { "name": "drawingCoord0", "type": "ivec4", "location": 1 },
+        { "name": "drawingCoord1", "type": "ivec4", "location": 2 },
+        { "name": "drawingCoord2", "type": "ivec2", "location": 3 }
+      ],
+      "stageOutputs": [
+        { "name": "vs_interstageDrawingCoord0", "type": "ivec4", "interstageSlot": 0, "interpolation": "flat" },
+        { "name": "vs_interstageDrawingCoord1", "type": "ivec4", "interstageSlot": 1, "interpolation": "flat" },
+        { "name": "vs_interstageDrawingCoord2", "type": "ivec4", "interstageSlot": 2, "interpolation": "flat" },
+        { "name": "gl_Position", "type": "vec4", "role": "position" },
+        { "name": "gl_PointSize", "type": "float" },
+        { "name": "gl_ClipDistance", "type": "float", "arraySize": "HD_NUM_clipPlanes" }
+      ],
+      "stageOutputBlocks": [
+        { "blockName": "VertexData", "instanceName": "outData", "interstageSlot": 6, "members": [ { "name": "Peye", "type": "vec4" }, { "name": "Neye", "type": "vec3" } ] },
+        { "blockName": "PrimvarData", "instanceName": "outPrimvars", "interstageSlot": 8, "members": [ { "name": "points", "type": "vec3" } ] }
+      ]
+    },
+    "POST_TESS_VERTEX": {
+      "stage": "vertex",
+      "globals": [
+        { "name": "hd_BaseInstance", "type": "uint" },
+        { "name": "patch_id", "type": "uint" },
+        { "name": "gl_TessCoord", "type": "vec3" },
+        { "name": "drawingCoord0", "type": "ivec4", "arraySize": "3" },
+        { "name": "drawingCoord1", "type": "ivec4", "arraySize": "3" },
+        { "name": "drawingCoord2", "type": "ivec2", "arraySize": "3" },
+        { "name": "points", "type": "vec3", "arraySize": "3" }
+      ],
+      "buffers": [
+        { "name": "constantPrimvars", "type": "ConstantData7", "bindIndex": 0, "binding": "array" },
+        { "name": "primitiveParam", "type": "int", "bindIndex": 1, "binding": "array" },
+        { "name": "edgeIndices", "type": "int", "bindIndex": 2, "binding": "array" },
+        { "name": "renderPassState", "type": "CustomBlockData1033", "bindIndex": 4, "binding": "uniformValue" }
+      ],
+      "stageInputs": [
+        { "name": "hd_InstanceID", "type": "uint", "role": "hdInstanceID" }
+      ],
+      "stageOutputs": [
+        { "name": "vs_interstageDrawingCoord0", "type": "ivec4", "interstageSlot": 0, "interpolation": "flat" },
+        { "name": "vs_interstageDrawingCoord1", "type": "ivec4", "interstageSlot": 1, "interpolation": "flat" },
+        { "name": "vs_interstageDrawingCoord2", "type": "ivec4", "interstageSlot": 2, "interpolation": "flat" },
+        { "name": "hd_tessCoord", "type": "vec2", "interstageSlot": 5 },
+        { "name": "gl_Position", "type": "vec4", "role": "position" },
+        { "name": "gl_PointSize", "type": "float" },
+        { "name": "gl_ClipDistance", "type": "float", "arraySize": "HD_NUM_clipPlanes" }
+      ],
+      "stageOutputBlocks": [
+        { "blockName": "VertexData", "instanceName": "outData", "interstageSlot": 6, "members": [ { "name": "Peye", "type": "vec4" }, { "name": "Neye", "type": "vec3" } ] },
+        { "blockName": "PrimvarData", "instanceName": "outPrimvars", "interstageSlot": 8, "members": [ { "name": "points", "type": "vec3" } ] }
+      ]
+    },
+    "FRAGMENT": {
+      "stage": "fragment",
+      "globals": [
+        { "name": "gl_PrimitiveID", "type": "uint" },
+        { "name": "hd_BaryCoordNoPersp", "type": "vec3" }
+      ],
+      "buffers": [
+        { "name": "constantPrimvars", "type": "ConstantData7", "bindIndex": 0, "binding": "array" },
+        { "name": "primitiveParam", "type": "int", "bindIndex": 1, "binding": "array" },
+        { "name": "edgeIndices", "type": "int", "bindIndex": 2, "binding": "array" },
+        { "name": "renderPassState", "type": "CustomBlockData1033", "bindIndex": 4, "binding": "uniformValue" }
+      ],
+      "stageInputs": [
+        { "name": "gl_FrontFacing", "type": "bool", "role": "hdFrontFacing" },
+        { "name": "gl_FragCoord", "type": "vec4", "role": "hdFragCoord" },
+        { "name": "hd_tessCoord", "type": "vec2", "interstageSlot": 5 },
+        { "name": "vs_interstageDrawingCoord0", "type": "ivec4", "interstageSlot": 0, "interpolation": "flat" },
+        { "name": "vs_interstageDrawingCoord1", "type": "ivec4", "interstageSlot": 1, "interpolation": "flat" },
+        { "name": "vs_interstageDrawingCoord2", "type": "ivec4", "interstageSlot": 2, "interpolation": "flat" }
+      ],
+      "stageInputBlocks": [
+        { "blockName": "VertexData", "instanceName": "inData", "interstageSlot": 6, "members": [ { "name": "Peye", "type": "vec4" }, { "name": "Neye", "type": "vec3" } ] },
+        { "blockName": "PrimvarData", "instanceName": "inPrimvars", "interstageSlot": 8, "members": [ { "name": "points", "type": "vec3" } ] }
+      ],
+      "stageOutputs": [
+        { "name": "colorOut", "type": "vec4", "role": "color" }
+      ]
+    }
+  }
+}

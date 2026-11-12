@@ -1,0 +1,68 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/usd/sdf/tests/fixtures/quotedStrings/capture.py",
+  "upstream": [
+    "pxr/usd/sdf/parserHelpers.cpp:680-732",
+    "pxr/base/tf/stringUtils.cpp:1073-1110",
+    "pxr/usd/sdf/fileIO_Common.cpp:1025-1107"
+  ],
+  "payload": {
+    "cases": [
+      {
+        "name": "unknown",
+        "raw": "\\q",
+        "accepted": true,
+        "literal": "\"q\""
+      },
+      {
+        "name": "octal-one",
+        "raw": "\\1",
+        "accepted": true,
+        "literal": "\"\\x01\""
+      },
+      {
+        "name": "octal-two",
+        "raw": "\\12",
+        "accepted": true,
+        "literal": "\"\"\"\n\"\"\""
+      },
+      {
+        "name": "octal-three",
+        "raw": "\\1234",
+        "accepted": true,
+        "literal": "\"S4\""
+      },
+      {
+        "name": "octal-byte",
+        "raw": "\\777",
+        "accepted": true,
+        "literal": "\"\\xff\""
+      },
+      {
+        "name": "hex-empty",
+        "raw": "\\x",
+        "accepted": true,
+        "literal": "\"\""
+      },
+      {
+        "name": "nul-middle",
+        "raw": "left\\0right",
+        "accepted": true,
+        "literal": "\"left\""
+      },
+      {
+        "name": "utf8-bytes",
+        "raw": "\\xc3\\x89",
+        "accepted": true,
+        "literal": "\"\u00c9\""
+      },
+      {
+        "name": "escaped-newline",
+        "raw": "before\\\nafter",
+        "accepted": true,
+        "literal": "\"\"\"before\nafter\"\"\""
+      }
+    ]
+  }
+}

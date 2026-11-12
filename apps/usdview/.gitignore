@@ -1,0 +1,13 @@
+node_modules/
+dist/
+.vite/
+*.tsbuildinfo
+
+
+# Local assessment outputs (ASWF inventory and probes, browser result posts).
+/out/
+
+# Asset-acceptance renders and reports (some asset terms forbid committing renders).
+/scripts/asset-acceptance/out/
+/scripts/asset-acceptance/out-chrome/
+/scripts/viewer-perf/out/

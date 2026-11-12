@@ -1,0 +1,125 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/usd/sdf/tests/fixtures/framesPerSecond/capture.py",
+  "upstream": [
+    "pxr/usd/sdf/schema.cpp:345-353,776-777",
+    "pxr/usd/sdf/layer.cpp:1620-1622,1877-1879"
+  ],
+  "payload": {
+    "parsing": [
+      {
+        "literal": "0",
+        "text": "#usda 1.0\n( framesPerSecond = 0 )\ndef Xform \"World\" {}\n",
+        "accepted": false,
+        "error": "\n\tError in 'pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::_RaiseErrorPEGTL' at line 48 in file <source>/pxr/usd/sdf/textParserHelpers.h : 'invalid value for field \"framesPerSecond\" at 'framesPerSecond = 0 )' in </>\n'\n\tError in 'pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::_RaiseErrorPEGTL' at line 48 in file <source>/pxr/usd/sdf/textParserHelpers.h : ':2:3: invalid value for field \"framesPerSecond\" at 'framesPerSecond = 0 )' in </>\n'"
+      },
+      {
+        "literal": "-1",
+        "text": "#usda 1.0\n( framesPerSecond = -1 )\ndef Xform \"World\" {}\n",
+        "accepted": false,
+        "error": "\n\tError in 'pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::_RaiseErrorPEGTL' at line 48 in file <source>/pxr/usd/sdf/textParserHelpers.h : 'invalid value for field \"framesPerSecond\" at 'framesPerSecond = -1 )' in </>\n'\n\tError in 'pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::_RaiseErrorPEGTL' at line 48 in file <source>/pxr/usd/sdf/textParserHelpers.h : ':2:3: invalid value for field \"framesPerSecond\" at 'framesPerSecond = -1 )' in </>\n'"
+      },
+      {
+        "literal": "-0",
+        "text": "#usda 1.0\n( framesPerSecond = -0 )\ndef Xform \"World\" {}\n",
+        "accepted": false,
+        "error": "\n\tError in 'pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::_RaiseErrorPEGTL' at line 48 in file <source>/pxr/usd/sdf/textParserHelpers.h : 'invalid value for field \"framesPerSecond\" at 'framesPerSecond = -0 )' in </>\n'\n\tError in 'pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::_RaiseErrorPEGTL' at line 48 in file <source>/pxr/usd/sdf/textParserHelpers.h : ':2:3: invalid value for field \"framesPerSecond\" at 'framesPerSecond = -0 )' in </>\n'"
+      },
+      {
+        "literal": "24",
+        "text": "#usda 1.0\n( framesPerSecond = 24 )\ndef Xform \"World\" {}\n",
+        "accepted": true,
+        "value": 24.0
+      },
+      {
+        "literal": "23.976",
+        "text": "#usda 1.0\n( framesPerSecond = 23.976 )\ndef Xform \"World\" {}\n",
+        "accepted": true,
+        "value": 23.976
+      },
+      {
+        "literal": "0.125",
+        "text": "#usda 1.0\n( framesPerSecond = 0.125 )\ndef Xform \"World\" {}\n",
+        "accepted": true,
+        "value": 0.125
+      },
+      {
+        "literal": "inf",
+        "text": "#usda 1.0\n( framesPerSecond = inf )\ndef Xform \"World\" {}\n",
+        "accepted": true,
+        "value": "inf"
+      },
+      {
+        "literal": "-inf",
+        "text": "#usda 1.0\n( framesPerSecond = -inf )\ndef Xform \"World\" {}\n",
+        "accepted": false,
+        "error": "\n\tError in 'pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::_RaiseErrorPEGTL' at line 48 in file <source>/pxr/usd/sdf/textParserHelpers.h : 'invalid value for field \"framesPerSecond\" at 'framesPerSecond = -inf )' in </>\n'\n\tError in 'pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::_RaiseErrorPEGTL' at line 48 in file <source>/pxr/usd/sdf/textParserHelpers.h : ':2:3: invalid value for field \"framesPerSecond\" at 'framesPerSecond = -inf )' in </>\n'"
+      },
+      {
+        "literal": "nan",
+        "text": "#usda 1.0\n( framesPerSecond = nan )\ndef Xform \"World\" {}\n",
+        "accepted": false,
+        "error": "\n\tError in 'pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::_RaiseErrorPEGTL' at line 48 in file <source>/pxr/usd/sdf/textParserHelpers.h : 'invalid value for field \"framesPerSecond\" at 'framesPerSecond = nan )' in </>\n'\n\tError in 'pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::_RaiseErrorPEGTL' at line 48 in file <source>/pxr/usd/sdf/textParserHelpers.h : ':2:3: invalid value for field \"framesPerSecond\" at 'framesPerSecond = nan )' in </>\n'"
+      },
+      {
+        "literal": "\"24\"",
+        "text": "#usda 1.0\n( framesPerSecond = \"24\" )\ndef Xform \"World\" {}\n",
+        "accepted": false,
+        "error": "\n\tError in 'pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::_RaiseErrorPEGTL' at line 48 in file <source>/pxr/usd/sdf/textParserHelpers.h : 'Error parsing simple value: Failed to parse value (at sub-part 0 if there are multiple parts) at '\"24\" )' in </>\n'\n\tError in 'pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::_RaiseErrorPEGTL' at line 48 in file <source>/pxr/usd/sdf/textParserHelpers.h : ':2:21: Error parsing simple value: Failed to parse value (at sub-part 0 if there are multiple parts) at '\"24\" )' in </>\n'"
+      },
+      {
+        "literal": "true",
+        "text": "#usda 1.0\n( framesPerSecond = true )\ndef Xform \"World\" {}\n",
+        "accepted": false,
+        "error": "\n\tError in 'pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::_RaiseErrorPEGTL' at line 48 in file <source>/pxr/usd/sdf/textParserHelpers.h : 'Error parsing simple value: Failed to parse value (at sub-part 0 if there are multiple parts) at 'true )' in </>\n'\n\tError in 'pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::_RaiseErrorPEGTL' at line 48 in file <source>/pxr/usd/sdf/textParserHelpers.h : ':2:21: Error parsing simple value: Failed to parse value (at sub-part 0 if there are multiple parts) at 'true )' in </>\n'"
+      },
+      {
+        "literal": "0\n framesPerSecond = 24",
+        "text": "#usda 1.0\n( framesPerSecond = 0\n framesPerSecond = 24 )\ndef Xform \"World\" {}\n",
+        "accepted": false,
+        "error": "\n\tError in 'pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::_RaiseErrorPEGTL' at line 48 in file <source>/pxr/usd/sdf/textParserHelpers.h : 'invalid value for field \"framesPerSecond\" at 'framesPerSecond = 0' in </>\n'\n\tError in 'pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::_RaiseErrorPEGTL' at line 48 in file <source>/pxr/usd/sdf/textParserHelpers.h : ':2:3: invalid value for field \"framesPerSecond\" at 'framesPerSecond = 0' in </>\n'"
+      },
+      {
+        "literal": "24\n framesPerSecond = 0",
+        "text": "#usda 1.0\n( framesPerSecond = 24\n framesPerSecond = 0 )\ndef Xform \"World\" {}\n",
+        "accepted": false,
+        "error": "\n\tError in 'pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::_RaiseErrorPEGTL' at line 48 in file <source>/pxr/usd/sdf/textParserHelpers.h : 'invalid value for field \"framesPerSecond\" at 'framesPerSecond = 0 )' in </>\n'\n\tError in 'pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::_RaiseErrorPEGTL' at line 48 in file <source>/pxr/usd/sdf/textParserHelpers.h : ':3:2: invalid value for field \"framesPerSecond\" at 'framesPerSecond = 0 )' in </>\n'"
+      },
+      {
+        "literal": "24\n framesPerSecond = 30",
+        "text": "#usda 1.0\n( framesPerSecond = 24\n framesPerSecond = 30 )\ndef Xform \"World\" {}\n",
+        "accepted": true,
+        "value": 30.0
+      }
+    ],
+    "setters": [
+      {
+        "value": 0,
+        "stored": 0.0,
+        "authored": true
+      },
+      {
+        "value": -1,
+        "stored": -1.0,
+        "authored": true
+      },
+      {
+        "value": 24,
+        "stored": 24.0,
+        "authored": true
+      },
+      {
+        "value": 23.976,
+        "stored": 23.976,
+        "authored": true
+      }
+    ],
+    "failedImport": {
+      "framesPerSecond": 30.0,
+      "primNames": [
+        "Before"
+      ]
+    }
+  }
+}

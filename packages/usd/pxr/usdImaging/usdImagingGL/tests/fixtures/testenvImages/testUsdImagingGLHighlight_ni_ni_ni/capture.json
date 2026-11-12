@@ -1,0 +1,70 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/usdImaging/usdImagingGL/tests/fixtures/testenvImages/capture.py",
+  "upstream": [
+    "pxr/usdImaging/usdImagingGL/CMakeLists.txt",
+    "pxr/usdImaging/usdImagingGL/testenv/testUsdImagingGLBasicDrawing.cpp"
+  ],
+  "payload": {
+    "test": "testUsdImagingGLHighlight_ni_ni_ni",
+    "cmake": "pxr/usdImaging/usdImagingGL/CMakeLists.txt:1604",
+    "command": "<install>/tests/testUsdImagingGLHighlight -offscreen -frameAll -stage ni_ni_ni.usda -write testUsdImagingGLHighlight_ni_ni_ni.png",
+    "cwd": "copy of <source>/pxr/usdImaging/usdImagingGL/testenv/testUsdImagingGLHighlight",
+    "env": {
+      "TF_DEBUG": "HD_SAFE_MODE"
+    },
+    "expectedReturnCode": "0",
+    "returnCode": 0,
+    "images": [
+      {
+        "name": "testUsdImagingGLHighlight_ni_ni_ni_000.png",
+        "written": true
+      },
+      {
+        "name": "testUsdImagingGLHighlight_ni_ni_ni_001.png",
+        "written": true
+      },
+      {
+        "name": "testUsdImagingGLHighlight_ni_ni_ni_002.png",
+        "written": true
+      },
+      {
+        "name": "testUsdImagingGLHighlight_ni_ni_ni_003.png",
+        "written": true
+      },
+      {
+        "name": "testUsdImagingGLHighlight_ni_ni_ni_004.png",
+        "written": true
+      },
+      {
+        "name": "testUsdImagingGLHighlight_ni_ni_ni_005.png",
+        "written": true
+      },
+      {
+        "name": "testUsdImagingGLHighlight_ni_ni_ni_006.png",
+        "written": true
+      },
+      {
+        "name": "testUsdImagingGLHighlight_ni_ni_ni_007.png",
+        "written": true
+      },
+      {
+        "name": "testUsdImagingGLHighlight_ni_ni_ni_008.png",
+        "written": true
+      },
+      {
+        "name": "testUsdImagingGLHighlight_ni_ni_ni_009.png",
+        "written": true
+      },
+      {
+        "name": "testUsdImagingGLHighlight_ni_ni_ni_010.png",
+        "written": true
+      },
+      {
+        "name": "testUsdImagingGLHighlight_ni_ni_ni_011.png",
+        "written": true
+      }
+    ]
+  }
+}

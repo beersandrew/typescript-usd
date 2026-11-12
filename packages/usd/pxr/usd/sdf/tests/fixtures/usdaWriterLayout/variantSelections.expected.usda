@@ -1,0 +1,33 @@
+#usda 1.0
+
+def "A" (
+    variants = {
+        string Upper = "u"
+        string _under = "_"
+        string a = "2"
+        string preset = "x"
+        string resolution = "high"
+        string z = "1"
+    }
+    variantSets = ["z", "a"]
+)
+{
+    variantSet "z" = {
+        "1" (
+        ) {
+
+        }
+    }
+}
+
+over "E" (
+)
+{
+}
+
+over "F" (
+    kind = "component"
+)
+{
+}
+

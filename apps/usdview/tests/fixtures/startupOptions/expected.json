@@ -1,0 +1,542 @@
+{
+  "version": "26.11.1",
+  "upstream": [
+    "usdviewq/__init__.py:133-159,246-259,312-368",
+    "usdviewq/appController.py:1216-1286,1323-1408"
+  ],
+  "cli": [
+    {
+      "args": [],
+      "parsed": {
+        "camera": "main_cam",
+        "select": "/",
+        "complexity": "low",
+        "ff": null,
+        "lf": null,
+        "cf": null,
+        "mask": null
+      },
+      "warning": ""
+    },
+    {
+      "args": [
+        "--camera",
+        "main_cam"
+      ],
+      "parsed": {
+        "camera": "main_cam",
+        "select": "/",
+        "complexity": "low",
+        "ff": null,
+        "lf": null,
+        "cf": null,
+        "mask": null
+      },
+      "warning": ""
+    },
+    {
+      "args": [
+        "--camera",
+        "Rig/Camera"
+      ],
+      "parsed": {
+        "camera": "/Rig/Camera",
+        "select": "/",
+        "complexity": "low",
+        "ff": null,
+        "lf": null,
+        "cf": null,
+        "mask": null
+      },
+      "warning": "WARNING: camera path 'Rig/Camera' was not absolute, prepending '/' to make it absolute"
+    },
+    {
+      "args": [
+        "--camera",
+        "/World/Camera"
+      ],
+      "parsed": {
+        "camera": "/World/Camera",
+        "select": "/",
+        "complexity": "low",
+        "ff": null,
+        "lf": null,
+        "cf": null,
+        "mask": null
+      },
+      "warning": ""
+    },
+    {
+      "args": [
+        "--camera",
+        "/World.attr"
+      ],
+      "error": "invalid camera path - must be a raw prim path with no variant selections or properties - got: Sdf.Path('/World.attr')",
+      "warning": ""
+    },
+    {
+      "args": [
+        "--complexity",
+        "high"
+      ],
+      "parsed": {
+        "camera": "main_cam",
+        "select": "/",
+        "complexity": "high",
+        "ff": null,
+        "lf": null,
+        "cf": null,
+        "mask": null
+      },
+      "warning": ""
+    },
+    {
+      "args": [
+        "--complexity",
+        "invalid"
+      ],
+      "error": "2",
+      "warning": "usage: capture.py [-h] [--renderer {Storm,GL}] [--select PRIMPATH]\n                  [--camera CAMERA] [--mask PRIMPATH[,PRIMPATH...]]\n                  [--clearsettings] [--config {}] [--defaultsettings]\n                  [--norender] [--noplugins] [--unloaded] [--bboxStandin]\n                  [--timing] [--allow-async] [--traceToFile TRACETOFILE]\n                  [--traceFormat {chrome,trace}] [--tracePython]\n                  [--memstats {none,stage,stageAndImaging}]\n                  [--dumpFirstImage DUMPFIRSTIMAGE]\n                  [--viewportSize VIEWPORTSIZE] [--numThreads NUMTHREADS]\n                  [--ff FIRSTFRAME] [--lf LASTFRAME] [--cf CURRENTFRAME]\n                  [--complexity {low,medium,high,veryhigh}]\n                  [--quitAfterStartup] [--sessionLayer SESSIONLAYER]\n                  [--mute MUTELAYERSRE] [--detachLayers]\n                  [--detachLayersInclude PATTERN[,PATTERN...]]\n                  [--detachLayersExclude PATTERN[,PATTERN,...]]\n                  [usdFile]\ncapture.py: error: argument --complexity/-c: invalid fromId value: 'invalid'"
+    },
+    {
+      "args": [
+        "--ff",
+        "2",
+        "--lf",
+        "12",
+        "--cf",
+        "5"
+      ],
+      "parsed": {
+        "camera": "main_cam",
+        "select": "/",
+        "complexity": "low",
+        "ff": 2,
+        "lf": 12,
+        "cf": 5,
+        "mask": null
+      },
+      "warning": ""
+    },
+    {
+      "args": [
+        "--ff",
+        "1.5"
+      ],
+      "error": "2",
+      "warning": "usage: capture.py [-h] [--renderer {Storm,GL}] [--select PRIMPATH]\n                  [--camera CAMERA] [--mask PRIMPATH[,PRIMPATH...]]\n                  [--clearsettings] [--config {}] [--defaultsettings]\n                  [--norender] [--noplugins] [--unloaded] [--bboxStandin]\n                  [--timing] [--allow-async] [--traceToFile TRACETOFILE]\n                  [--traceFormat {chrome,trace}] [--tracePython]\n                  [--memstats {none,stage,stageAndImaging}]\n                  [--dumpFirstImage DUMPFIRSTIMAGE]\n                  [--viewportSize VIEWPORTSIZE] [--numThreads NUMTHREADS]\n                  [--ff FIRSTFRAME] [--lf LASTFRAME] [--cf CURRENTFRAME]\n                  [--complexity {low,medium,high,veryhigh}]\n                  [--quitAfterStartup] [--sessionLayer SESSIONLAYER]\n                  [--mute MUTELAYERSRE] [--detachLayers]\n                  [--detachLayersInclude PATTERN[,PATTERN...]]\n                  [--detachLayersExclude PATTERN[,PATTERN,...]]\n                  [usdFile]\ncapture.py: error: argument --ff: invalid int value: '1.5'"
+    },
+    {
+      "args": [
+        "--mask",
+        "/World/A,/World/B /Looks"
+      ],
+      "parsed": {
+        "camera": "main_cam",
+        "select": "/",
+        "complexity": "low",
+        "ff": null,
+        "lf": null,
+        "cf": null,
+        "mask": [
+          "/World/A",
+          "/World/B",
+          "/Looks"
+        ]
+      },
+      "warning": ""
+    },
+    {
+      "args": [
+        "--mask",
+        ""
+      ],
+      "parsed": {
+        "camera": "main_cam",
+        "select": "/",
+        "complexity": "low",
+        "ff": null,
+        "lf": null,
+        "cf": null,
+        "mask": ""
+      },
+      "warning": ""
+    },
+    {
+      "args": [
+        "--select",
+        "/World/A"
+      ],
+      "parsed": {
+        "camera": "main_cam",
+        "select": "/World/A",
+        "complexity": "low",
+        "ff": null,
+        "lf": null,
+        "cf": null,
+        "mask": null
+      },
+      "warning": ""
+    }
+  ],
+  "times": [
+    {
+      "options": {},
+      "current": 2.0,
+      "hasSamples": true,
+      "start": 2.0,
+      "end": 10.0,
+      "warning": ""
+    },
+    {
+      "options": {
+        "ff": 4
+      },
+      "current": 4.0,
+      "hasSamples": true,
+      "start": 4,
+      "end": 10.0,
+      "warning": ""
+    },
+    {
+      "options": {
+        "lf": 6
+      },
+      "current": 2.0,
+      "hasSamples": true,
+      "start": 2.0,
+      "end": 6.0,
+      "warning": ""
+    },
+    {
+      "options": {
+        "ff": 4,
+        "lf": 8,
+        "cf": 6
+      },
+      "current": 6.0,
+      "hasSamples": true,
+      "start": 4,
+      "end": 8.0,
+      "warning": ""
+    },
+    {
+      "options": {
+        "ff": 4,
+        "lf": 8,
+        "cf": 12
+      },
+      "current": 4.0,
+      "hasSamples": true,
+      "start": 4,
+      "end": 8.0,
+      "warning": "Warning: Invalid current frame specified (12)"
+    },
+    {
+      "options": {
+        "ff": -2,
+        "lf": 4,
+        "cf": 0
+      },
+      "current": -2.0,
+      "hasSamples": true,
+      "start": -2,
+      "end": 4.0,
+      "warning": ""
+    },
+    {
+      "options": {
+        "ff": 10,
+        "lf": 2
+      },
+      "current": 0.0,
+      "hasSamples": false,
+      "start": 0,
+      "end": 0,
+      "warning": "Warning: Invalid frame range (10, 2)"
+    }
+  ],
+  "populationSource": "#usda 1.0\n(\n    endTimeCode = 10\n    startTimeCode = 2\n)\n\ndef Xform \"World\"\n{\n    def Cube \"A\"\n    {\n    }\n\n    def Cube \"B\"\n    {\n    }\n\n    def Mesh \"Mesh\"\n    {\n        rel material:binding = </Looks/Mat>\n    }\n}\n\ndef Scope \"Looks\"\n{\n    def Material \"Mat\"\n    {\n    }\n}\n\n",
+  "masks": [
+    {
+      "paths": [],
+      "populated": [],
+      "mask": []
+    },
+    {
+      "paths": [
+        "/World/A"
+      ],
+      "populated": [
+        "/World",
+        "/World/A"
+      ],
+      "mask": [
+        "/World/A"
+      ]
+    },
+    {
+      "paths": [
+        "/World/Mesh"
+      ],
+      "populated": [
+        "/World",
+        "/World/Mesh"
+      ],
+      "mask": [
+        "/World/Mesh"
+      ]
+    },
+    {
+      "paths": [
+        "/World/A",
+        "/World/B"
+      ],
+      "populated": [
+        "/World",
+        "/World/A",
+        "/World/B"
+      ],
+      "mask": [
+        "/World/A",
+        "/World/B"
+      ]
+    }
+  ],
+  "cameras": [
+    {
+      "request": "Perspective",
+      "path": "/World/Rig/Perspective",
+      "warning": ""
+    },
+    {
+      "request": "/World/Rig/Perspective",
+      "path": "/World/Rig/Perspective",
+      "warning": ""
+    },
+    {
+      "request": "/Missing",
+      "path": null,
+      "warning": "WARNING: Camera path Sdf.Path('/Missing') did not exist in stage"
+    },
+    {
+      "request": "/World/Cube",
+      "path": null,
+      "warning": "WARNING: Camera path Sdf.Path('/World/Cube') was not a UsdGeom.Camera"
+    },
+    {
+      "request": "Absent",
+      "path": null,
+      "warning": ""
+    }
+  ],
+  "views": [
+    {
+      "name": "default",
+      "args": [],
+      "bounds": [
+        [
+          -1.0,
+          -1.0,
+          -1.0
+        ],
+        [
+          1.0,
+          1.0,
+          1.0
+        ]
+      ],
+      "cameraPath": null,
+      "selection": [
+        "/"
+      ],
+      "eye": [
+        0.0,
+        0.0,
+        2.280511605432573
+      ],
+      "matrix": [
+        1.2990380587041483,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.7320507843521864,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        -1.00000050000025,
+        1.280512245688696,
+        0.0,
+        0.0,
+        -1.0,
+        2.280511605432573
+      ],
+      "freeCenter": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "freeDistance": 2.280511605432573
+    },
+    {
+      "name": "camera",
+      "args": [
+        "--camera",
+        "/World/Rig/Perspective"
+      ],
+      "bounds": [
+        [
+          -1.0,
+          -1.0,
+          -1.0
+        ],
+        [
+          1.0,
+          1.0,
+          1.0
+        ]
+      ],
+      "cameraPath": "/World/Rig/Perspective",
+      "selection": [
+        "/"
+      ],
+      "eye": [
+        2.0,
+        1.0,
+        6.0
+      ],
+      "matrix": [
+        2.052476578181763,
+        0.4362673643665681,
+        -0.6307074859266621,
+        -0.7569756051701202,
+        -0.6342879467681847,
+        2.8470046699492184,
+        -0.07830771839882568,
+        -1.1085824660198953,
+        -0.3362273191925984,
+        -0.07146732290710778,
+        -0.9444146942571943,
+        5.9078975640214,
+        -0.3345461825966354,
+        -0.07110998629257223,
+        -0.9396926207859083,
+        6.378358076201293
+      ],
+      "freeCenter": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "freeDistance": 100
+    },
+    {
+      "name": "selection",
+      "args": [
+        "--select",
+        "/World/Cube"
+      ],
+      "bounds": [
+        [
+          -1.0,
+          -1.0,
+          -1.0
+        ],
+        [
+          1.0,
+          1.0,
+          1.0
+        ]
+      ],
+      "cameraPath": null,
+      "selection": [
+        "/World/Cube"
+      ],
+      "eye": [
+        0.0,
+        0.0,
+        2.280511605432573
+      ],
+      "matrix": [
+        1.2990380587041483,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.7320507843521864,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        -1.00000050000025,
+        1.280512245688696,
+        0.0,
+        0.0,
+        -1.0,
+        2.280511605432573
+      ],
+      "freeCenter": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "freeDistance": 2.280511605432573
+    },
+    {
+      "name": "both",
+      "args": [
+        "--camera",
+        "/World/Rig/Perspective",
+        "--select",
+        "/World/Cube"
+      ],
+      "bounds": [
+        [
+          -1.0,
+          -1.0,
+          -1.0
+        ],
+        [
+          1.0,
+          1.0,
+          1.0
+        ]
+      ],
+      "cameraPath": null,
+      "selection": [
+        "/World/Cube"
+      ],
+      "eye": [
+        1.1535507870083281,
+        0.24519478899823835,
+        3.2401600097182066
+      ],
+      "matrix": [
+        2.052476578181763,
+        0.4362673643665682,
+        -0.630707485926662,
+        -0.4310132827009317,
+        -0.6342879467681849,
+        2.8470046699492184,
+        -0.07830771839882568,
+        0.2873421884672879,
+        -0.33454634986981024,
+        -0.07111002184758315,
+        -0.9396930906324537,
+        2.448107485661194,
+        -0.3345461825966353,
+        -0.07110998629257223,
+        -0.9396926207859083,
+        3.4481062616074514
+      ],
+      "freeCenter": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "freeDistance": 3.448106261607451
+    }
+  ]
+}

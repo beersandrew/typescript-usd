@@ -1,0 +1,9 @@
+packages:
+  - packages/*
+  - packages/materialx/*
+  - packages/openvdb/*
+  - apps/*
+
+# esbuild (used by vite) ships a prebuilt binary, so its install script is not needed.
+allowBuilds:
+  esbuild: false

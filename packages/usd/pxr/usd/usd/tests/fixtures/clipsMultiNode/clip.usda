@@ -1,0 +1,36 @@
+#usda 1.0
+
+def "Clip"
+{
+    def "Class"
+    {
+        double value.timeSamples = {
+            0: 100,
+            10: 110,
+        }
+    }
+
+    def "Src"
+    {
+        double value.timeSamples = {
+            0: 200,
+            10: 210,
+        }
+    }
+
+    def "Strong"
+    {
+        double value.timeSamples = {
+            0: 300,
+            10: 310,
+        }
+    }
+
+    def "Ext"
+    {
+        double value.timeSamples = {
+            0: 400,
+            10: 410,
+        }
+    }
+}

@@ -1,0 +1,26 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/usd/sdf/tests/fixtures/crateMetadataValues/capture.py",
+  "upstream": [
+    "pxr/usd/sdf/schema.cpp:735",
+    "pxr/usd/sdf/schema.cpp:766",
+    "pxr/usd/sdf/crateData.cpp:830-850",
+    "pxr/usd/sdf/crateFile.cpp:1260-1267"
+  ],
+  "payload": {
+    "reopened": "#usda 1.0\n\ndef \"P\" (\n    customData = {\n        pathExpression e = \"/A//B\"\n    }\n    displayGroupOrder = [\"C\", \"B\"]\n)\n{\n    pathExpression[] arr = [\"/A//G*\", \"/A/C\"]\n    custom double c = 1 (\n        allowedTokens = [\"a\", \"b\"]\n    )\n}\n\n",
+    "allowedTokens": [
+      "a",
+      "b"
+    ],
+    "displayGroupOrder": [
+      "C",
+      "B"
+    ],
+    "customDataExpression": {
+      "type": "PathExpression",
+      "text": "/A//B"
+    }
+  }
+}

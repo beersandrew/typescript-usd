@@ -1,0 +1,12 @@
+#usda 1.0
+
+def Camera "Cam" (
+    prepend apiSchemas = ["BackPlateAPI:plateA", "BackPlateAPI:plateB"]
+)
+{
+    asset backPlate:plateA:image = @plate.png@
+    float2 backPlate:plateA:scale:tweak = (2, 3)
+    float3 backPlate:plateA:luma:slope = (0.5, 0.5, 0.5)
+    token backPlate:plateB:plateVisibility = "always"
+    float backPlate:plateB:depth:minOffset = 0.25
+}

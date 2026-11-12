@@ -1,0 +1,1991 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/usd/usd/tests/architecture/fixtures/loadedFlags/capture.py",
+  "upstream": [
+    "pxr/usd/usd/primData.cpp:103-140"
+  ],
+  "payload": {
+    "probes": [
+      "/",
+      "/A",
+      "/A/Child",
+      "/A/Child/Deep",
+      "/Plain",
+      "/Plain/Child",
+      "/Variant",
+      "/Variant/Deep",
+      "/I1",
+      "/I1/P",
+      "/I1/P/Deep",
+      "/I2",
+      "/I2/P",
+      "/I2/P/Deep",
+      "/New",
+      "/New/Child"
+    ],
+    "states": [
+      {
+        "traverse": [
+          "/I1",
+          "/I2"
+        ],
+        "flags": {
+          "/": {
+            "active": true,
+            "loaded": true
+          },
+          "/A": {
+            "active": true,
+            "loaded": false
+          },
+          "/A/Child": null,
+          "/A/Child/Deep": null,
+          "/Plain": {
+            "active": false,
+            "loaded": false
+          },
+          "/Plain/Child": null,
+          "/Variant": {
+            "active": true,
+            "loaded": false
+          },
+          "/Variant/Deep": null,
+          "/I1": {
+            "active": true,
+            "loaded": true
+          },
+          "/I1/P": {
+            "active": true,
+            "loaded": false
+          },
+          "/I1/P/Deep": null,
+          "/I2": {
+            "active": true,
+            "loaded": true
+          },
+          "/I2/P": {
+            "active": true,
+            "loaded": false
+          },
+          "/I2/P/Deep": null,
+          "/New": null,
+          "/New/Child": null
+        },
+        "prototypeRootsLoaded": true
+      },
+      {
+        "traverse": [
+          "/A",
+          "/I1",
+          "/I2"
+        ],
+        "flags": {
+          "/": {
+            "active": true,
+            "loaded": true
+          },
+          "/A": {
+            "active": true,
+            "loaded": true
+          },
+          "/A/Child": {
+            "active": true,
+            "loaded": false
+          },
+          "/A/Child/Deep": null,
+          "/Plain": {
+            "active": false,
+            "loaded": false
+          },
+          "/Plain/Child": null,
+          "/Variant": {
+            "active": true,
+            "loaded": false
+          },
+          "/Variant/Deep": null,
+          "/I1": {
+            "active": true,
+            "loaded": true
+          },
+          "/I1/P": {
+            "active": true,
+            "loaded": false
+          },
+          "/I1/P/Deep": null,
+          "/I2": {
+            "active": true,
+            "loaded": true
+          },
+          "/I2/P": {
+            "active": true,
+            "loaded": false
+          },
+          "/I2/P/Deep": null,
+          "/New": null,
+          "/New/Child": null
+        },
+        "prototypeRootsLoaded": true
+      },
+      {
+        "traverse": [
+          "/A",
+          "/A/Child",
+          "/A/Child/Deep",
+          "/I1",
+          "/I2"
+        ],
+        "flags": {
+          "/": {
+            "active": true,
+            "loaded": true
+          },
+          "/A": {
+            "active": true,
+            "loaded": true
+          },
+          "/A/Child": {
+            "active": true,
+            "loaded": true
+          },
+          "/A/Child/Deep": {
+            "active": true,
+            "loaded": true
+          },
+          "/Plain": {
+            "active": false,
+            "loaded": false
+          },
+          "/Plain/Child": null,
+          "/Variant": {
+            "active": true,
+            "loaded": false
+          },
+          "/Variant/Deep": null,
+          "/I1": {
+            "active": true,
+            "loaded": true
+          },
+          "/I1/P": {
+            "active": true,
+            "loaded": false
+          },
+          "/I1/P/Deep": null,
+          "/I2": {
+            "active": true,
+            "loaded": true
+          },
+          "/I2/P": {
+            "active": true,
+            "loaded": false
+          },
+          "/I2/P/Deep": null,
+          "/New": null,
+          "/New/Child": null
+        },
+        "prototypeRootsLoaded": true
+      },
+      {
+        "traverse": [
+          "/A",
+          "/I1",
+          "/I2"
+        ],
+        "flags": {
+          "/": {
+            "active": true,
+            "loaded": true
+          },
+          "/A": {
+            "active": true,
+            "loaded": true
+          },
+          "/A/Child": {
+            "active": true,
+            "loaded": false
+          },
+          "/A/Child/Deep": null,
+          "/Plain": {
+            "active": false,
+            "loaded": false
+          },
+          "/Plain/Child": null,
+          "/Variant": {
+            "active": true,
+            "loaded": false
+          },
+          "/Variant/Deep": null,
+          "/I1": {
+            "active": true,
+            "loaded": true
+          },
+          "/I1/P": {
+            "active": true,
+            "loaded": false
+          },
+          "/I1/P/Deep": null,
+          "/I2": {
+            "active": true,
+            "loaded": true
+          },
+          "/I2/P": {
+            "active": true,
+            "loaded": false
+          },
+          "/I2/P/Deep": null,
+          "/New": null,
+          "/New/Child": null
+        },
+        "prototypeRootsLoaded": true
+      },
+      {
+        "traverse": [
+          "/A",
+          "/A/Child",
+          "/A/Child/Deep",
+          "/Variant",
+          "/Variant/Deep",
+          "/I1",
+          "/I2"
+        ],
+        "flags": {
+          "/": {
+            "active": true,
+            "loaded": true
+          },
+          "/A": {
+            "active": true,
+            "loaded": true
+          },
+          "/A/Child": {
+            "active": true,
+            "loaded": true
+          },
+          "/A/Child/Deep": {
+            "active": true,
+            "loaded": true
+          },
+          "/Plain": {
+            "active": false,
+            "loaded": false
+          },
+          "/Plain/Child": null,
+          "/Variant": {
+            "active": true,
+            "loaded": true
+          },
+          "/Variant/Deep": {
+            "active": true,
+            "loaded": true
+          },
+          "/I1": {
+            "active": true,
+            "loaded": true
+          },
+          "/I1/P": {
+            "active": true,
+            "loaded": true
+          },
+          "/I1/P/Deep": {
+            "active": true,
+            "loaded": true
+          },
+          "/I2": {
+            "active": true,
+            "loaded": true
+          },
+          "/I2/P": {
+            "active": true,
+            "loaded": true
+          },
+          "/I2/P/Deep": {
+            "active": true,
+            "loaded": true
+          },
+          "/New": null,
+          "/New/Child": null
+        },
+        "prototypeRootsLoaded": true
+      },
+      {
+        "traverse": [
+          "/Variant",
+          "/Variant/Deep",
+          "/I1",
+          "/I2"
+        ],
+        "flags": {
+          "/": {
+            "active": true,
+            "loaded": true
+          },
+          "/A": {
+            "active": false,
+            "loaded": false
+          },
+          "/A/Child": null,
+          "/A/Child/Deep": null,
+          "/Plain": {
+            "active": false,
+            "loaded": false
+          },
+          "/Plain/Child": null,
+          "/Variant": {
+            "active": true,
+            "loaded": true
+          },
+          "/Variant/Deep": {
+            "active": true,
+            "loaded": true
+          },
+          "/I1": {
+            "active": true,
+            "loaded": true
+          },
+          "/I1/P": {
+            "active": true,
+            "loaded": true
+          },
+          "/I1/P/Deep": {
+            "active": true,
+            "loaded": true
+          },
+          "/I2": {
+            "active": true,
+            "loaded": true
+          },
+          "/I2/P": {
+            "active": true,
+            "loaded": true
+          },
+          "/I2/P/Deep": {
+            "active": true,
+            "loaded": true
+          },
+          "/New": null,
+          "/New/Child": null
+        },
+        "prototypeRootsLoaded": true
+      },
+      {
+        "traverse": [
+          "/A",
+          "/A/Child",
+          "/A/Child/Deep",
+          "/Variant",
+          "/Variant/Deep",
+          "/I1",
+          "/I2"
+        ],
+        "flags": {
+          "/": {
+            "active": true,
+            "loaded": true
+          },
+          "/A": {
+            "active": true,
+            "loaded": true
+          },
+          "/A/Child": {
+            "active": true,
+            "loaded": true
+          },
+          "/A/Child/Deep": {
+            "active": true,
+            "loaded": true
+          },
+          "/Plain": {
+            "active": false,
+            "loaded": false
+          },
+          "/Plain/Child": null,
+          "/Variant": {
+            "active": true,
+            "loaded": true
+          },
+          "/Variant/Deep": {
+            "active": true,
+            "loaded": true
+          },
+          "/I1": {
+            "active": true,
+            "loaded": true
+          },
+          "/I1/P": {
+            "active": true,
+            "loaded": true
+          },
+          "/I1/P/Deep": {
+            "active": true,
+            "loaded": true
+          },
+          "/I2": {
+            "active": true,
+            "loaded": true
+          },
+          "/I2/P": {
+            "active": true,
+            "loaded": true
+          },
+          "/I2/P/Deep": {
+            "active": true,
+            "loaded": true
+          },
+          "/New": null,
+          "/New/Child": null
+        },
+        "prototypeRootsLoaded": true
+      },
+      {
+        "traverse": [
+          "/A",
+          "/A/Child",
+          "/A/Child/Deep",
+          "/Plain",
+          "/Plain/Child",
+          "/Variant",
+          "/Variant/Deep",
+          "/I1",
+          "/I2"
+        ],
+        "flags": {
+          "/": {
+            "active": true,
+            "loaded": true
+          },
+          "/A": {
+            "active": true,
+            "loaded": true
+          },
+          "/A/Child": {
+            "active": true,
+            "loaded": true
+          },
+          "/A/Child/Deep": {
+            "active": true,
+            "loaded": true
+          },
+          "/Plain": {
+            "active": true,
+            "loaded": true
+          },
+          "/Plain/Child": {
+            "active": true,
+            "loaded": true
+          },
+          "/Variant": {
+            "active": true,
+            "loaded": true
+          },
+          "/Variant/Deep": {
+            "active": true,
+            "loaded": true
+          },
+          "/I1": {
+            "active": true,
+            "loaded": true
+          },
+          "/I1/P": {
+            "active": true,
+            "loaded": true
+          },
+          "/I1/P/Deep": {
+            "active": true,
+            "loaded": true
+          },
+          "/I2": {
+            "active": true,
+            "loaded": true
+          },
+          "/I2/P": {
+            "active": true,
+            "loaded": true
+          },
+          "/I2/P/Deep": {
+            "active": true,
+            "loaded": true
+          },
+          "/New": null,
+          "/New/Child": null
+        },
+        "prototypeRootsLoaded": true
+      },
+      {
+        "traverse": [
+          "/A",
+          "/A/Child",
+          "/A/Child/Deep",
+          "/Variant",
+          "/Variant/Deep",
+          "/I1",
+          "/I2"
+        ],
+        "flags": {
+          "/": {
+            "active": true,
+            "loaded": true
+          },
+          "/A": {
+            "active": true,
+            "loaded": true
+          },
+          "/A/Child": {
+            "active": true,
+            "loaded": true
+          },
+          "/A/Child/Deep": {
+            "active": true,
+            "loaded": true
+          },
+          "/Plain": {
+            "active": false,
+            "loaded": false
+          },
+          "/Plain/Child": null,
+          "/Variant": {
+            "active": true,
+            "loaded": true
+          },
+          "/Variant/Deep": {
+            "active": true,
+            "loaded": true
+          },
+          "/I1": {
+            "active": true,
+            "loaded": true
+          },
+          "/I1/P": {
+            "active": true,
+            "loaded": true
+          },
+          "/I1/P/Deep": {
+            "active": true,
+            "loaded": true
+          },
+          "/I2": {
+            "active": true,
+            "loaded": true
+          },
+          "/I2/P": {
+            "active": true,
+            "loaded": true
+          },
+          "/I2/P/Deep": {
+            "active": true,
+            "loaded": true
+          },
+          "/New": null,
+          "/New/Child": null
+        },
+        "prototypeRootsLoaded": true
+      },
+      {
+        "traverse": [
+          "/A",
+          "/A/Child",
+          "/A/Child/Deep",
+          "/Variant",
+          "/Variant/Deep",
+          "/I1",
+          "/I2"
+        ],
+        "flags": {
+          "/": {
+            "active": true,
+            "loaded": true
+          },
+          "/A": {
+            "active": true,
+            "loaded": true
+          },
+          "/A/Child": {
+            "active": true,
+            "loaded": true
+          },
+          "/A/Child/Deep": {
+            "active": true,
+            "loaded": true
+          },
+          "/Plain": {
+            "active": false,
+            "loaded": false
+          },
+          "/Plain/Child": null,
+          "/Variant": {
+            "active": true,
+            "loaded": true
+          },
+          "/Variant/Deep": {
+            "active": true,
+            "loaded": true
+          },
+          "/I1": {
+            "active": true,
+            "loaded": true
+          },
+          "/I1/P": {
+            "active": true,
+            "loaded": true
+          },
+          "/I1/P/Deep": {
+            "active": true,
+            "loaded": true
+          },
+          "/I2": {
+            "active": true,
+            "loaded": true
+          },
+          "/I2/P": {
+            "active": true,
+            "loaded": true
+          },
+          "/I2/P/Deep": {
+            "active": true,
+            "loaded": true
+          },
+          "/New": null,
+          "/New/Child": null
+        },
+        "prototypeRootsLoaded": true
+      },
+      {
+        "traverse": [
+          "/Plain",
+          "/Plain/Child",
+          "/A",
+          "/A/Child",
+          "/A/Child/Deep",
+          "/Variant",
+          "/Variant/Deep",
+          "/I1",
+          "/I2"
+        ],
+        "flags": {
+          "/": {
+            "active": true,
+            "loaded": true
+          },
+          "/A": {
+            "active": true,
+            "loaded": true
+          },
+          "/A/Child": {
+            "active": true,
+            "loaded": true
+          },
+          "/A/Child/Deep": {
+            "active": true,
+            "loaded": true
+          },
+          "/Plain": {
+            "active": true,
+            "loaded": true
+          },
+          "/Plain/Child": {
+            "active": true,
+            "loaded": true
+          },
+          "/Variant": {
+            "active": true,
+            "loaded": true
+          },
+          "/Variant/Deep": {
+            "active": true,
+            "loaded": true
+          },
+          "/I1": {
+            "active": true,
+            "loaded": true
+          },
+          "/I1/P": {
+            "active": true,
+            "loaded": true
+          },
+          "/I1/P/Deep": {
+            "active": true,
+            "loaded": true
+          },
+          "/I2": {
+            "active": true,
+            "loaded": true
+          },
+          "/I2/P": {
+            "active": true,
+            "loaded": true
+          },
+          "/I2/P/Deep": {
+            "active": true,
+            "loaded": true
+          },
+          "/New": null,
+          "/New/Child": null
+        },
+        "prototypeRootsLoaded": true
+      },
+      {
+        "traverse": [
+          "/A",
+          "/A/Child",
+          "/A/Child/Deep",
+          "/Variant",
+          "/Variant/Deep",
+          "/I1",
+          "/I2"
+        ],
+        "flags": {
+          "/": {
+            "active": true,
+            "loaded": true
+          },
+          "/A": {
+            "active": true,
+            "loaded": true
+          },
+          "/A/Child": {
+            "active": true,
+            "loaded": true
+          },
+          "/A/Child/Deep": {
+            "active": true,
+            "loaded": true
+          },
+          "/Plain": {
+            "active": false,
+            "loaded": false
+          },
+          "/Plain/Child": null,
+          "/Variant": {
+            "active": true,
+            "loaded": true
+          },
+          "/Variant/Deep": {
+            "active": true,
+            "loaded": true
+          },
+          "/I1": {
+            "active": true,
+            "loaded": true
+          },
+          "/I1/P": {
+            "active": true,
+            "loaded": true
+          },
+          "/I1/P/Deep": {
+            "active": true,
+            "loaded": true
+          },
+          "/I2": {
+            "active": true,
+            "loaded": true
+          },
+          "/I2/P": {
+            "active": true,
+            "loaded": true
+          },
+          "/I2/P/Deep": {
+            "active": true,
+            "loaded": true
+          },
+          "/New": null,
+          "/New/Child": null
+        },
+        "prototypeRootsLoaded": true
+      },
+      {
+        "traverse": [
+          "/A",
+          "/A/Child",
+          "/A/Child/Deep",
+          "/Variant",
+          "/I1",
+          "/I2"
+        ],
+        "flags": {
+          "/": {
+            "active": true,
+            "loaded": true
+          },
+          "/A": {
+            "active": true,
+            "loaded": true
+          },
+          "/A/Child": {
+            "active": true,
+            "loaded": true
+          },
+          "/A/Child/Deep": {
+            "active": true,
+            "loaded": true
+          },
+          "/Plain": {
+            "active": false,
+            "loaded": false
+          },
+          "/Plain/Child": null,
+          "/Variant": {
+            "active": true,
+            "loaded": true
+          },
+          "/Variant/Deep": null,
+          "/I1": {
+            "active": true,
+            "loaded": true
+          },
+          "/I1/P": {
+            "active": true,
+            "loaded": true
+          },
+          "/I1/P/Deep": {
+            "active": true,
+            "loaded": true
+          },
+          "/I2": {
+            "active": true,
+            "loaded": true
+          },
+          "/I2/P": {
+            "active": true,
+            "loaded": true
+          },
+          "/I2/P/Deep": {
+            "active": true,
+            "loaded": true
+          },
+          "/New": null,
+          "/New/Child": null
+        },
+        "prototypeRootsLoaded": true
+      },
+      {
+        "traverse": [
+          "/A",
+          "/A/Child",
+          "/A/Child/Deep",
+          "/Variant",
+          "/Variant/Deep",
+          "/I1",
+          "/I2"
+        ],
+        "flags": {
+          "/": {
+            "active": true,
+            "loaded": true
+          },
+          "/A": {
+            "active": true,
+            "loaded": true
+          },
+          "/A/Child": {
+            "active": true,
+            "loaded": true
+          },
+          "/A/Child/Deep": {
+            "active": true,
+            "loaded": true
+          },
+          "/Plain": {
+            "active": false,
+            "loaded": false
+          },
+          "/Plain/Child": null,
+          "/Variant": {
+            "active": true,
+            "loaded": true
+          },
+          "/Variant/Deep": {
+            "active": true,
+            "loaded": true
+          },
+          "/I1": {
+            "active": true,
+            "loaded": true
+          },
+          "/I1/P": {
+            "active": true,
+            "loaded": true
+          },
+          "/I1/P/Deep": {
+            "active": true,
+            "loaded": true
+          },
+          "/I2": {
+            "active": true,
+            "loaded": true
+          },
+          "/I2/P": {
+            "active": true,
+            "loaded": true
+          },
+          "/I2/P/Deep": {
+            "active": true,
+            "loaded": true
+          },
+          "/New": null,
+          "/New/Child": null
+        },
+        "prototypeRootsLoaded": true
+      },
+      {
+        "traverse": [
+          "/A",
+          "/A/Child",
+          "/A/Child/Deep",
+          "/I1",
+          "/I2"
+        ],
+        "flags": {
+          "/": {
+            "active": true,
+            "loaded": true
+          },
+          "/A": {
+            "active": true,
+            "loaded": true
+          },
+          "/A/Child": {
+            "active": true,
+            "loaded": true
+          },
+          "/A/Child/Deep": {
+            "active": true,
+            "loaded": true
+          },
+          "/Plain": {
+            "active": false,
+            "loaded": false
+          },
+          "/Plain/Child": null,
+          "/Variant": {
+            "active": true,
+            "loaded": false
+          },
+          "/Variant/Deep": null,
+          "/I1": {
+            "active": true,
+            "loaded": true
+          },
+          "/I1/P": {
+            "active": true,
+            "loaded": true
+          },
+          "/I1/P/Deep": {
+            "active": true,
+            "loaded": true
+          },
+          "/I2": {
+            "active": true,
+            "loaded": true
+          },
+          "/I2/P": {
+            "active": true,
+            "loaded": true
+          },
+          "/I2/P/Deep": {
+            "active": true,
+            "loaded": true
+          },
+          "/New": null,
+          "/New/Child": null
+        },
+        "prototypeRootsLoaded": true
+      },
+      {
+        "traverse": [
+          "/A",
+          "/A/Child",
+          "/A/Child/Deep",
+          "/I1",
+          "/I2"
+        ],
+        "flags": {
+          "/": {
+            "active": true,
+            "loaded": true
+          },
+          "/A": {
+            "active": true,
+            "loaded": true
+          },
+          "/A/Child": {
+            "active": true,
+            "loaded": true
+          },
+          "/A/Child/Deep": {
+            "active": true,
+            "loaded": true
+          },
+          "/Plain": {
+            "active": false,
+            "loaded": false
+          },
+          "/Plain/Child": null,
+          "/Variant": {
+            "active": true,
+            "loaded": false
+          },
+          "/Variant/Deep": null,
+          "/I1": {
+            "active": true,
+            "loaded": true
+          },
+          "/I1/P": {
+            "active": true,
+            "loaded": true
+          },
+          "/I1/P/Deep": {
+            "active": true,
+            "loaded": true
+          },
+          "/I2": {
+            "active": true,
+            "loaded": true
+          },
+          "/I2/P": {
+            "active": true,
+            "loaded": true
+          },
+          "/I2/P/Deep": {
+            "active": true,
+            "loaded": true
+          },
+          "/New": null,
+          "/New/Child": null
+        },
+        "prototypeRootsLoaded": true
+      },
+      {
+        "traverse": [
+          "/A",
+          "/A/Child",
+          "/A/Child/Deep",
+          "/I1",
+          "/I2"
+        ],
+        "flags": {
+          "/": {
+            "active": true,
+            "loaded": true
+          },
+          "/A": {
+            "active": true,
+            "loaded": true
+          },
+          "/A/Child": {
+            "active": true,
+            "loaded": true
+          },
+          "/A/Child/Deep": {
+            "active": true,
+            "loaded": true
+          },
+          "/Plain": {
+            "active": false,
+            "loaded": false
+          },
+          "/Plain/Child": null,
+          "/Variant": {
+            "active": true,
+            "loaded": false
+          },
+          "/Variant/Deep": null,
+          "/I1": {
+            "active": true,
+            "loaded": true
+          },
+          "/I1/P": {
+            "active": true,
+            "loaded": true
+          },
+          "/I1/P/Deep": {
+            "active": true,
+            "loaded": true
+          },
+          "/I2": {
+            "active": true,
+            "loaded": true
+          },
+          "/I2/P": {
+            "active": true,
+            "loaded": true
+          },
+          "/I2/P/Deep": {
+            "active": true,
+            "loaded": true
+          },
+          "/New": null,
+          "/New/Child": null
+        },
+        "prototypeRootsLoaded": true
+      },
+      {
+        "traverse": [
+          "/A",
+          "/A/Child",
+          "/A/Child/Deep",
+          "/Variant",
+          "/Variant/Deep",
+          "/I1",
+          "/I2"
+        ],
+        "flags": {
+          "/": {
+            "active": true,
+            "loaded": true
+          },
+          "/A": {
+            "active": true,
+            "loaded": true
+          },
+          "/A/Child": {
+            "active": true,
+            "loaded": true
+          },
+          "/A/Child/Deep": {
+            "active": true,
+            "loaded": true
+          },
+          "/Plain": {
+            "active": false,
+            "loaded": false
+          },
+          "/Plain/Child": null,
+          "/Variant": {
+            "active": true,
+            "loaded": true
+          },
+          "/Variant/Deep": {
+            "active": true,
+            "loaded": true
+          },
+          "/I1": {
+            "active": true,
+            "loaded": true
+          },
+          "/I1/P": {
+            "active": true,
+            "loaded": true
+          },
+          "/I1/P/Deep": {
+            "active": true,
+            "loaded": true
+          },
+          "/I2": {
+            "active": true,
+            "loaded": true
+          },
+          "/I2/P": {
+            "active": true,
+            "loaded": true
+          },
+          "/I2/P/Deep": {
+            "active": true,
+            "loaded": true
+          },
+          "/New": null,
+          "/New/Child": null
+        },
+        "prototypeRootsLoaded": true
+      },
+      {
+        "traverse": [
+          "/A",
+          "/A/Child",
+          "/A/Child/Deep",
+          "/Variant",
+          "/Variant/Deep",
+          "/I1",
+          "/I2"
+        ],
+        "flags": {
+          "/": {
+            "active": true,
+            "loaded": true
+          },
+          "/A": {
+            "active": true,
+            "loaded": true
+          },
+          "/A/Child": {
+            "active": true,
+            "loaded": true
+          },
+          "/A/Child/Deep": {
+            "active": true,
+            "loaded": true
+          },
+          "/Plain": {
+            "active": false,
+            "loaded": false
+          },
+          "/Plain/Child": null,
+          "/Variant": {
+            "active": true,
+            "loaded": true
+          },
+          "/Variant/Deep": {
+            "active": true,
+            "loaded": true
+          },
+          "/I1": {
+            "active": true,
+            "loaded": true
+          },
+          "/I1/P": {
+            "active": true,
+            "loaded": false
+          },
+          "/I1/P/Deep": null,
+          "/I2": {
+            "active": true,
+            "loaded": true
+          },
+          "/I2/P": {
+            "active": true,
+            "loaded": true
+          },
+          "/I2/P/Deep": {
+            "active": true,
+            "loaded": true
+          },
+          "/New": null,
+          "/New/Child": null
+        },
+        "prototypeRootsLoaded": true
+      },
+      {
+        "traverse": [
+          "/A",
+          "/A/Child",
+          "/A/Child/Deep",
+          "/Variant",
+          "/Variant/Deep",
+          "/I1",
+          "/I2"
+        ],
+        "flags": {
+          "/": {
+            "active": true,
+            "loaded": true
+          },
+          "/A": {
+            "active": true,
+            "loaded": true
+          },
+          "/A/Child": {
+            "active": true,
+            "loaded": true
+          },
+          "/A/Child/Deep": {
+            "active": true,
+            "loaded": true
+          },
+          "/Plain": {
+            "active": false,
+            "loaded": false
+          },
+          "/Plain/Child": null,
+          "/Variant": {
+            "active": true,
+            "loaded": true
+          },
+          "/Variant/Deep": {
+            "active": true,
+            "loaded": true
+          },
+          "/I1": {
+            "active": true,
+            "loaded": true
+          },
+          "/I1/P": {
+            "active": true,
+            "loaded": true
+          },
+          "/I1/P/Deep": {
+            "active": true,
+            "loaded": true
+          },
+          "/I2": {
+            "active": true,
+            "loaded": true
+          },
+          "/I2/P": {
+            "active": true,
+            "loaded": true
+          },
+          "/I2/P/Deep": {
+            "active": true,
+            "loaded": true
+          },
+          "/New": null,
+          "/New/Child": null
+        },
+        "prototypeRootsLoaded": true
+      },
+      {
+        "traverse": [
+          "/A",
+          "/A/Child",
+          "/A/Child/Deep",
+          "/Variant",
+          "/Variant/Deep",
+          "/I1",
+          "/I2"
+        ],
+        "flags": {
+          "/": {
+            "active": true,
+            "loaded": true
+          },
+          "/A": {
+            "active": true,
+            "loaded": true
+          },
+          "/A/Child": {
+            "active": true,
+            "loaded": true
+          },
+          "/A/Child/Deep": {
+            "active": true,
+            "loaded": true
+          },
+          "/Plain": {
+            "active": false,
+            "loaded": false
+          },
+          "/Plain/Child": null,
+          "/Variant": {
+            "active": true,
+            "loaded": true
+          },
+          "/Variant/Deep": {
+            "active": true,
+            "loaded": true
+          },
+          "/I1": {
+            "active": true,
+            "loaded": true
+          },
+          "/I1/P": {
+            "active": true,
+            "loaded": false
+          },
+          "/I1/P/Deep": null,
+          "/I2": {
+            "active": true,
+            "loaded": true
+          },
+          "/I2/P": {
+            "active": true,
+            "loaded": true
+          },
+          "/I2/P/Deep": {
+            "active": true,
+            "loaded": true
+          },
+          "/New": null,
+          "/New/Child": null
+        },
+        "prototypeRootsLoaded": true
+      },
+      {
+        "traverse": [
+          "/A",
+          "/A/Child",
+          "/A/Child/Deep",
+          "/Variant",
+          "/Variant/Deep",
+          "/I1",
+          "/I2"
+        ],
+        "flags": {
+          "/": {
+            "active": true,
+            "loaded": true
+          },
+          "/A": {
+            "active": true,
+            "loaded": true
+          },
+          "/A/Child": {
+            "active": true,
+            "loaded": true
+          },
+          "/A/Child/Deep": {
+            "active": true,
+            "loaded": true
+          },
+          "/Plain": {
+            "active": false,
+            "loaded": false
+          },
+          "/Plain/Child": null,
+          "/Variant": {
+            "active": true,
+            "loaded": true
+          },
+          "/Variant/Deep": {
+            "active": true,
+            "loaded": true
+          },
+          "/I1": {
+            "active": true,
+            "loaded": true
+          },
+          "/I1/P": {
+            "active": true,
+            "loaded": true
+          },
+          "/I1/P/Deep": {
+            "active": true,
+            "loaded": true
+          },
+          "/I2": {
+            "active": true,
+            "loaded": true
+          },
+          "/I2/P": {
+            "active": true,
+            "loaded": true
+          },
+          "/I2/P/Deep": {
+            "active": true,
+            "loaded": true
+          },
+          "/New": null,
+          "/New/Child": null
+        },
+        "prototypeRootsLoaded": true
+      },
+      {
+        "traverse": [
+          "/A",
+          "/A/Child",
+          "/A/Child/Deep",
+          "/Variant",
+          "/Variant/Deep",
+          "/I1",
+          "/I2",
+          "/New",
+          "/New/Child"
+        ],
+        "flags": {
+          "/": {
+            "active": true,
+            "loaded": true
+          },
+          "/A": {
+            "active": true,
+            "loaded": true
+          },
+          "/A/Child": {
+            "active": true,
+            "loaded": true
+          },
+          "/A/Child/Deep": {
+            "active": true,
+            "loaded": true
+          },
+          "/Plain": {
+            "active": false,
+            "loaded": false
+          },
+          "/Plain/Child": null,
+          "/Variant": {
+            "active": true,
+            "loaded": true
+          },
+          "/Variant/Deep": {
+            "active": true,
+            "loaded": true
+          },
+          "/I1": {
+            "active": true,
+            "loaded": true
+          },
+          "/I1/P": {
+            "active": true,
+            "loaded": true
+          },
+          "/I1/P/Deep": {
+            "active": true,
+            "loaded": true
+          },
+          "/I2": {
+            "active": true,
+            "loaded": true
+          },
+          "/I2/P": {
+            "active": true,
+            "loaded": true
+          },
+          "/I2/P/Deep": {
+            "active": true,
+            "loaded": true
+          },
+          "/New": {
+            "active": true,
+            "loaded": true
+          },
+          "/New/Child": {
+            "active": true,
+            "loaded": true
+          }
+        },
+        "prototypeRootsLoaded": true
+      },
+      {
+        "traverse": [
+          "/A",
+          "/A/Child",
+          "/A/Child/Deep",
+          "/Variant",
+          "/Variant/Deep",
+          "/I1",
+          "/I2"
+        ],
+        "flags": {
+          "/": {
+            "active": true,
+            "loaded": true
+          },
+          "/A": {
+            "active": true,
+            "loaded": true
+          },
+          "/A/Child": {
+            "active": true,
+            "loaded": true
+          },
+          "/A/Child/Deep": {
+            "active": true,
+            "loaded": true
+          },
+          "/Plain": {
+            "active": false,
+            "loaded": false
+          },
+          "/Plain/Child": null,
+          "/Variant": {
+            "active": true,
+            "loaded": true
+          },
+          "/Variant/Deep": {
+            "active": true,
+            "loaded": true
+          },
+          "/I1": {
+            "active": true,
+            "loaded": true
+          },
+          "/I1/P": {
+            "active": true,
+            "loaded": true
+          },
+          "/I1/P/Deep": {
+            "active": true,
+            "loaded": true
+          },
+          "/I2": {
+            "active": true,
+            "loaded": true
+          },
+          "/I2/P": {
+            "active": true,
+            "loaded": true
+          },
+          "/I2/P/Deep": {
+            "active": true,
+            "loaded": true
+          },
+          "/New": {
+            "active": false,
+            "loaded": false
+          },
+          "/New/Child": null
+        },
+        "prototypeRootsLoaded": true
+      },
+      {
+        "traverse": [
+          "/A",
+          "/A/Child",
+          "/A/Child/Deep",
+          "/Variant",
+          "/Variant/Deep",
+          "/I1",
+          "/I2",
+          "/New",
+          "/New/Child"
+        ],
+        "flags": {
+          "/": {
+            "active": true,
+            "loaded": true
+          },
+          "/A": {
+            "active": true,
+            "loaded": true
+          },
+          "/A/Child": {
+            "active": true,
+            "loaded": true
+          },
+          "/A/Child/Deep": {
+            "active": true,
+            "loaded": true
+          },
+          "/Plain": {
+            "active": false,
+            "loaded": false
+          },
+          "/Plain/Child": null,
+          "/Variant": {
+            "active": true,
+            "loaded": true
+          },
+          "/Variant/Deep": {
+            "active": true,
+            "loaded": true
+          },
+          "/I1": {
+            "active": true,
+            "loaded": true
+          },
+          "/I1/P": {
+            "active": true,
+            "loaded": true
+          },
+          "/I1/P/Deep": {
+            "active": true,
+            "loaded": true
+          },
+          "/I2": {
+            "active": true,
+            "loaded": true
+          },
+          "/I2/P": {
+            "active": true,
+            "loaded": true
+          },
+          "/I2/P/Deep": {
+            "active": true,
+            "loaded": true
+          },
+          "/New": {
+            "active": true,
+            "loaded": true
+          },
+          "/New/Child": {
+            "active": true,
+            "loaded": true
+          }
+        },
+        "prototypeRootsLoaded": true
+      },
+      {
+        "traverse": [
+          "/A",
+          "/A/Child",
+          "/A/Child/Deep",
+          "/Variant",
+          "/Variant/Deep",
+          "/I1",
+          "/I2"
+        ],
+        "flags": {
+          "/": {
+            "active": true,
+            "loaded": true
+          },
+          "/A": {
+            "active": true,
+            "loaded": true
+          },
+          "/A/Child": {
+            "active": true,
+            "loaded": true
+          },
+          "/A/Child/Deep": {
+            "active": true,
+            "loaded": true
+          },
+          "/Plain": {
+            "active": false,
+            "loaded": false
+          },
+          "/Plain/Child": null,
+          "/Variant": {
+            "active": true,
+            "loaded": true
+          },
+          "/Variant/Deep": {
+            "active": true,
+            "loaded": true
+          },
+          "/I1": {
+            "active": true,
+            "loaded": true
+          },
+          "/I1/P": {
+            "active": true,
+            "loaded": true
+          },
+          "/I1/P/Deep": {
+            "active": true,
+            "loaded": true
+          },
+          "/I2": {
+            "active": true,
+            "loaded": true
+          },
+          "/I2/P": {
+            "active": true,
+            "loaded": true
+          },
+          "/I2/P/Deep": {
+            "active": true,
+            "loaded": true
+          },
+          "/New": null,
+          "/New/Child": null
+        },
+        "prototypeRootsLoaded": true
+      },
+      {
+        "traverse": [
+          "/A",
+          "/A/Child",
+          "/A/Child/Deep"
+        ],
+        "flags": {
+          "/": {
+            "active": true,
+            "loaded": true
+          },
+          "/A": {
+            "active": true,
+            "loaded": true
+          },
+          "/A/Child": {
+            "active": true,
+            "loaded": true
+          },
+          "/A/Child/Deep": {
+            "active": true,
+            "loaded": true
+          },
+          "/Plain": null,
+          "/Plain/Child": null,
+          "/Variant": null,
+          "/Variant/Deep": null,
+          "/I1": null,
+          "/I1/P": null,
+          "/I1/P/Deep": null,
+          "/I2": null,
+          "/I2/P": null,
+          "/I2/P/Deep": null,
+          "/New": null,
+          "/New/Child": null
+        },
+        "prototypeRootsLoaded": true
+      },
+      {
+        "traverse": [
+          "/A",
+          "/A/Child",
+          "/A/Child/Deep",
+          "/Variant",
+          "/Variant/Deep",
+          "/I1",
+          "/I2"
+        ],
+        "flags": {
+          "/": {
+            "active": true,
+            "loaded": true
+          },
+          "/A": {
+            "active": true,
+            "loaded": true
+          },
+          "/A/Child": {
+            "active": true,
+            "loaded": true
+          },
+          "/A/Child/Deep": {
+            "active": true,
+            "loaded": true
+          },
+          "/Plain": {
+            "active": false,
+            "loaded": false
+          },
+          "/Plain/Child": null,
+          "/Variant": {
+            "active": true,
+            "loaded": true
+          },
+          "/Variant/Deep": {
+            "active": true,
+            "loaded": true
+          },
+          "/I1": {
+            "active": true,
+            "loaded": true
+          },
+          "/I1/P": {
+            "active": true,
+            "loaded": true
+          },
+          "/I1/P/Deep": {
+            "active": true,
+            "loaded": true
+          },
+          "/I2": {
+            "active": true,
+            "loaded": true
+          },
+          "/I2/P": {
+            "active": true,
+            "loaded": true
+          },
+          "/I2/P/Deep": {
+            "active": true,
+            "loaded": true
+          },
+          "/New": null,
+          "/New/Child": null
+        },
+        "prototypeRootsLoaded": true
+      }
+    ],
+    "memory": [
+      {
+        "traverse": [
+          "/New",
+          "/New/Child"
+        ],
+        "flags": {
+          "/": {
+            "active": true,
+            "loaded": true
+          },
+          "/A": null,
+          "/A/Child": null,
+          "/A/Child/Deep": null,
+          "/Plain": null,
+          "/Plain/Child": null,
+          "/Variant": null,
+          "/Variant/Deep": null,
+          "/I1": null,
+          "/I1/P": null,
+          "/I1/P/Deep": null,
+          "/I2": null,
+          "/I2/P": null,
+          "/I2/P/Deep": null,
+          "/New": {
+            "active": true,
+            "loaded": true
+          },
+          "/New/Child": {
+            "active": true,
+            "loaded": true
+          }
+        },
+        "prototypeRootsLoaded": true
+      },
+      {
+        "traverse": [],
+        "flags": {
+          "/": {
+            "active": true,
+            "loaded": true
+          },
+          "/A": null,
+          "/A/Child": null,
+          "/A/Child/Deep": null,
+          "/Plain": null,
+          "/Plain/Child": null,
+          "/Variant": null,
+          "/Variant/Deep": null,
+          "/I1": null,
+          "/I1/P": null,
+          "/I1/P/Deep": null,
+          "/I2": null,
+          "/I2/P": null,
+          "/I2/P/Deep": null,
+          "/New": {
+            "active": false,
+            "loaded": false
+          },
+          "/New/Child": null
+        },
+        "prototypeRootsLoaded": true
+      },
+      {
+        "traverse": [
+          "/New",
+          "/New/Child"
+        ],
+        "flags": {
+          "/": {
+            "active": true,
+            "loaded": true
+          },
+          "/A": null,
+          "/A/Child": null,
+          "/A/Child/Deep": null,
+          "/Plain": null,
+          "/Plain/Child": null,
+          "/Variant": null,
+          "/Variant/Deep": null,
+          "/I1": null,
+          "/I1/P": null,
+          "/I1/P/Deep": null,
+          "/I2": null,
+          "/I2/P": null,
+          "/I2/P/Deep": null,
+          "/New": {
+            "active": true,
+            "loaded": true
+          },
+          "/New/Child": {
+            "active": true,
+            "loaded": true
+          }
+        },
+        "prototypeRootsLoaded": true
+      }
+    ],
+    "prototypeCounts": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      2,
+      1,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      0,
+      2
+    ]
+  }
+}

@@ -1,0 +1,514 @@
+{
+ "release": "26.11.1",
+ "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+ "script": "pxr/base/tf/tests/upstream/fixtures/hash/capture.py",
+ "upstream": [
+  "pxr/base/tf/hash.cpp",
+  "pxr/base/tf/testenv/hash.cpp",
+  "pxr/base/tf/compressedBits.cpp"
+ ],
+ "payload": {
+  "cases": [
+   {
+    "label": "string:",
+    "code": "4d21fe9083be9c09"
+   },
+   {
+    "label": "string:a",
+    "code": "c187b367274dbd40"
+   },
+   {
+    "label": "string:hello world",
+    "code": "e12478caa446cf96"
+   },
+   {
+    "label": "string:abcdefghijklmnop",
+    "code": "b6762055dd5c3d15"
+   },
+   {
+    "label": "string:/World/Geom/Mesh_0001.points",
+    "code": "72fee8053bdfbff0"
+   },
+   {
+    "label": "string:utf8",
+    "code": "282a5b39306089c5"
+   },
+   {
+    "label": "string:x*191",
+    "code": "0ea92a21dc7a599d"
+   },
+   {
+    "label": "string:x*192",
+    "code": "7ea8059ba1cc6f51"
+   },
+   {
+    "label": "string:x*300",
+    "code": "c7a719b9dc7e8b59"
+   },
+   {
+    "label": "float:0",
+    "code": "0000000000000000"
+   },
+   {
+    "label": "float:-0",
+    "code": "0000000000000000"
+   },
+   {
+    "label": "float:1.23",
+    "code": "74d63d4dcd87e1ed"
+   },
+   {
+    "label": "double:0",
+    "code": "0000000000000000"
+   },
+   {
+    "label": "double:-0",
+    "code": "0000000000000000"
+   },
+   {
+    "label": "double:1",
+    "code": "000000000000b07a"
+   },
+   {
+    "label": "double:-1.5",
+    "code": "00000000000058dd"
+   },
+   {
+    "label": "double:3.14159",
+    "code": "86ea0c7c6d8beacb"
+   },
+   {
+    "label": "double:1e300",
+    "code": "cc9c36c42f5e8308"
+   },
+   {
+    "label": "double:5e-324",
+    "code": "557c4a7fb979379e"
+   },
+   {
+    "label": "double:inf",
+    "code": "000000000000b0ba"
+   },
+   {
+    "label": "double:-inf",
+    "code": "000000000000b03a"
+   },
+   {
+    "label": "double:nan",
+    "code": "000000000000589d"
+   },
+   {
+    "label": "bool:false",
+    "code": "0000000000000000"
+   },
+   {
+    "label": "bool:true",
+    "code": "557c4a7fb979379e"
+   },
+   {
+    "label": "int8:-1",
+    "code": "ab83b5804686c861"
+   },
+   {
+    "label": "uint8:255",
+    "code": "abd831cbc53f4299"
+   },
+   {
+    "label": "int16:-2",
+    "code": "56076b018d0c91c3"
+   },
+   {
+    "label": "uint16:65535",
+    "code": "ab830afd900582db"
+   },
+   {
+    "label": "int32:0",
+    "code": "0000000000000000"
+   },
+   {
+    "label": "int32:1",
+    "code": "557c4a7fb979379e"
+   },
+   {
+    "label": "int32:-1",
+    "code": "ab83b5804686c861"
+   },
+   {
+    "label": "int32:123",
+    "code": "d7bcc928207ca704"
+   },
+   {
+    "label": "int32:-2147483648",
+    "code": "00000080d5c15a40"
+   },
+   {
+    "label": "uint32:4294967295",
+    "code": "ab83b5809b0213e1"
+   },
+   {
+    "label": "int64:-9223372036854775808",
+    "code": "0000000000000080"
+   },
+   {
+    "label": "int64:9223372036854775807",
+    "code": "ab83b5804686c8e1"
+   },
+   {
+    "label": "uint64:18446744073709551615",
+    "code": "ab83b5804686c861"
+   },
+   {
+    "label": "uint64:72623859790382856",
+    "code": "a835b896c7402e1a"
+   },
+   {
+    "label": "int32:0",
+    "code": "0000000000000000"
+   },
+   {
+    "label": "int32:1",
+    "code": "557c4a7fb979379e"
+   },
+   {
+    "label": "int32:2",
+    "code": "aaf894fe72f36e3c"
+   },
+   {
+    "label": "int32:3",
+    "code": "ff74df7d2c6da6da"
+   },
+   {
+    "label": "int32:4",
+    "code": "54f129fde5e6dd78"
+   },
+   {
+    "label": "int32:5",
+    "code": "a96d747c9f601517"
+   },
+   {
+    "label": "int32:6",
+    "code": "fee9befb58da4cb5"
+   },
+   {
+    "label": "int32:7",
+    "code": "5366097b12548453"
+   },
+   {
+    "label": "int32:8",
+    "code": "a8e253facbcdbbf1"
+   },
+   {
+    "label": "int32:9",
+    "code": "fd5e9e798547f38f"
+   },
+   {
+    "label": "int32:0",
+    "code": "0000000000000000"
+   },
+   {
+    "label": "int32:10",
+    "code": "52dbe8f83ec12a2e"
+   },
+   {
+    "label": "int32:20",
+    "code": "a4b6d1f17d82555c"
+   },
+   {
+    "label": "int32:30",
+    "code": "f691baeabc43808a"
+   },
+   {
+    "label": "int32:40",
+    "code": "486da3e3fb04abb8"
+   },
+   {
+    "label": "int32:50",
+    "code": "9a488cdc3ac6d5e6"
+   },
+   {
+    "label": "int32:60",
+    "code": "ec2375d579870015"
+   },
+   {
+    "label": "int32:70",
+    "code": "3eff5dceb8482b43"
+   },
+   {
+    "label": "int32:80",
+    "code": "90da46c7f7095671"
+   },
+   {
+    "label": "int32:90",
+    "code": "e2b52fc036cb809f"
+   },
+   {
+    "label": "int32:0",
+    "code": "0000000000000000"
+   },
+   {
+    "label": "int32:100",
+    "code": "349118b9758cabcd"
+   },
+   {
+    "label": "int32:200",
+    "code": "68223172eb18579b"
+   },
+   {
+    "label": "int32:300",
+    "code": "9cb3492b61a50269"
+   },
+   {
+    "label": "int32:400",
+    "code": "d04462e4d631ae36"
+   },
+   {
+    "label": "int32:500",
+    "code": "04d67a9d4cbe5904"
+   },
+   {
+    "label": "int32:600",
+    "code": "38679356c24a05d2"
+   },
+   {
+    "label": "int32:700",
+    "code": "6cf8ab0f38d7b09f"
+   },
+   {
+    "label": "int32:800",
+    "code": "a089c4c8ad635c6d"
+   },
+   {
+    "label": "int32:900",
+    "code": "d41add8123f0073b"
+   },
+   {
+    "label": "int32:0",
+    "code": "0000000000000000"
+   },
+   {
+    "label": "int32:1000",
+    "code": "08acf53a997cb308"
+   },
+   {
+    "label": "int32:2000",
+    "code": "1058eb7532f96611"
+   },
+   {
+    "label": "int32:3000",
+    "code": "1804e1b0cb751a1a"
+   },
+   {
+    "label": "int32:4000",
+    "code": "20b0d6eb64f2cd22"
+   },
+   {
+    "label": "int32:5000",
+    "code": "285ccc26fe6e812b"
+   },
+   {
+    "label": "int32:6000",
+    "code": "3008c26197eb3434"
+   },
+   {
+    "label": "int32:7000",
+    "code": "38b4b79c3068e83c"
+   },
+   {
+    "label": "int32:8000",
+    "code": "4060add7c9e49b45"
+   },
+   {
+    "label": "int32:9000",
+    "code": "480ca31263614f4e"
+   },
+   {
+    "label": "int32:0",
+    "code": "0000000000000000"
+   },
+   {
+    "label": "int32:10000",
+    "code": "50b8984dfcdd0257"
+   },
+   {
+    "label": "int32:20000",
+    "code": "a070319bf8bb05ae"
+   },
+   {
+    "label": "int32:30000",
+    "code": "f028cae8f4990805"
+   },
+   {
+    "label": "int32:40000",
+    "code": "40e16236f1770b5c"
+   },
+   {
+    "label": "int32:50000",
+    "code": "9099fb83ed550eb3"
+   },
+   {
+    "label": "int32:60000",
+    "code": "e05194d1e933110a"
+   },
+   {
+    "label": "int32:70000",
+    "code": "300a2d1fe6111461"
+   },
+   {
+    "label": "int32:80000",
+    "code": "80c2c56ce2ef16b8"
+   },
+   {
+    "label": "int32:90000",
+    "code": "d07a5ebadecd190f"
+   },
+   {
+    "label": "vector<int>:1,2,3,4,5",
+    "code": "c90b98217a9bc6e0"
+   },
+   {
+    "label": "vector<int>:",
+    "code": "4d21fe9083be9c09"
+   },
+   {
+    "label": "vector<uint8_t>:1,2,3",
+    "code": "ca49721df45a5539"
+   },
+   {
+    "label": "vector<int64_t>:-1,2",
+    "code": "a2de8b38b93ee502"
+   },
+   {
+    "label": "vector<double>:1,2,3",
+    "code": "000000000000a802"
+   },
+   {
+    "label": "vector<double>:",
+    "code": "0000000000000000"
+   },
+   {
+    "label": "vector<float>:1.5,-0",
+    "code": "000060153b0e4c2f"
+   },
+   {
+    "label": "vector<string>:a,bc",
+    "code": "2138a2cf9c0d98f3"
+   },
+   {
+    "label": "set<int>:1,2,3,4,5",
+    "code": "ea5e1ccc94a50f3c"
+   },
+   {
+    "label": "map<int,uint32_t>:-1=1,2=3,-4=5",
+    "code": "7780cd70c30fba54"
+   },
+   {
+    "label": "map<string,double>:b=2,a=1",
+    "code": "6ba78ac16282534c"
+   },
+   {
+    "label": "pair<int,float>:1,2.34",
+    "code": "e39cf9857837cc77"
+   },
+   {
+    "label": "tuple<int,float>:1,2.34",
+    "code": "e39cf9857837cc77"
+   },
+   {
+    "label": "tuple<int,float,double>:1,2.34,5.678",
+    "code": "6a3faaa8a1b0fdc4"
+   },
+   {
+    "label": "vector<pair<int,float>>:x3",
+    "code": "667c94641ac5fecd"
+   },
+   {
+    "label": "MultipleThings",
+    "code": "09966779d298da9c"
+   },
+   {
+    "label": "Two:7,9",
+    "code": "256c301911f26b9d"
+   },
+   {
+    "label": "Combine:",
+    "code": "0000000000000000"
+   },
+   {
+    "label": "Combine:vint,intfloat,vp",
+    "code": "27bc92b5ebc18df3"
+   },
+   {
+    "label": "Combine:int32 1,int32 2",
+    "code": "a8e253facbcdbbf1"
+   },
+   {
+    "label": "Combine:int32 2,int32 1",
+    "code": "5366097b12548453"
+   },
+   {
+    "label": "Combine:string a,string b",
+    "code": "a91706e8ab852f20"
+   },
+   {
+    "label": "Combine:double 1.5,string x,bool true",
+    "code": "28367eaf42c4c243"
+   },
+   {
+    "label": "Combine:uint64 TfHash(string a),int32 3",
+    "code": "ddb41d59d8e17cce"
+   },
+   {
+    "label": "Combine:double 1,double 2,double 3",
+    "code": "000000000000a802"
+   },
+   {
+    "label": "CString:",
+    "code": "000000006bf50919"
+   },
+   {
+    "label": "CString:hello world",
+    "code": "000000009bff125d"
+   },
+   {
+    "label": "CompressedBits:0",
+    "code": "57ef9cf56ce898e6"
+   },
+   {
+    "label": "CompressedBitsFast:0",
+    "code": "8e445e22637c08ee"
+   },
+   {
+    "label": "CompressedBits:1",
+    "code": "26a27d8cf6e8164a"
+   },
+   {
+    "label": "CompressedBitsFast:1",
+    "code": "d7dd65773427d2d9"
+   },
+   {
+    "label": "CompressedBits:0000011111",
+    "code": "d4b254342b24adfb"
+   },
+   {
+    "label": "CompressedBitsFast:0000011111",
+    "code": "e87c92d7a1f2ec6b"
+   },
+   {
+    "label": "CompressedBits:1010101",
+    "code": "40abdfa8c726157d"
+   },
+   {
+    "label": "CompressedBitsFast:1010101",
+    "code": "8fde078ef3cd0e0c"
+   },
+   {
+    "label": "CompressedBits:1100111000011110000011111",
+    "code": "29954861c6d8b120"
+   },
+   {
+    "label": "CompressedBitsFast:1100111000011110000011111",
+    "code": "64f8cfa62dffacc3"
+   }
+  ]
+ }
+}

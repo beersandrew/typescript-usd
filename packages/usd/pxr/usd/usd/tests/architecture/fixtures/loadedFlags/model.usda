@@ -1,0 +1,5 @@
+#usda 1.0
+def Xform "Model"
+{
+    def Scope "P" (payload = @./two.usda@</Child>) {}
+}

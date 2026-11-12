@@ -1,0 +1,59 @@
+#usda 1.0
+(
+    doc = "root doc"
+    subLayers = [
+        @./sub/sub.usda@
+    ]
+    customLayerData = {
+        string note = "root"
+        asset tex = @./tex.png@
+    }
+    expressionVariables = {
+        string NAME = "x"
+    }
+    colorConfiguration = @./config.ocio@
+    colorManagementSystem = "OpenColorIO"
+    defaultPrim = "World"
+    upAxis = "Z"
+    metersPerUnit = 0.01
+    framesPerSecond = 30
+    timeCodesPerSecond = 30
+)
+
+def Xform "World" (
+    assetInfo = {
+        asset identifier = @./model.usd@
+        string name = "w"
+    }
+    customData = {
+        asset a = @./a.usd@
+        int rootOnly = 1
+    }
+    kind = "component"
+)
+{
+    uniform token[] xformOpOrder = ["xformOp:translate"]
+    double3 xformOp:translate = (1, 2, 3)
+    custom double myCustom = 1
+    double notCustom = 2
+    pathExpression expr = "/World/** - /World/B"
+    double blocked.timeSamples = {
+        0: 1,
+        1: None,
+        2: 3,
+    }
+    double blockedDefault = None
+    rel myRel = </World>
+    custom rel customRel
+    uniform string uni = "u"
+    double withMeta = 1 (
+        customData = {
+            asset p = @./p.usd@
+        }
+        displayName = "Meta"
+    )
+    asset[] arr.timeSamples = {
+        0: [@./x.usd@, @./y.usd@],
+        1: None,
+    }
+}

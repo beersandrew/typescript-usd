@@ -1,0 +1,343 @@
+/Root type=
+/Root/SkinningWithoutNormals type=
+/Root/SkinningWithoutNormals/Skinning type=
+/Root/SkinningWithoutNormals/Skinning/Box type=mesh
+	primvars: accelerations normals points skel:jointIndices skel:jointWeights velocities
+	extComputationPrimvar points interpolation=vertex role=point sourceComputation=/Root/SkinningWithoutNormals/Skinning/Box/skinningPointsComputation sourceComputationOutputName=skinnedPoints valueType=15,1
+/Root/SkinningWithoutNormals/Skinning/Box/skinningPointsInputAggregatorComputation type=extComputation
+	inputValues: blendShapeOffsetRanges=VtArray<GfVec2i> blendShapeOffsets=VtArray<GfVec4f> geomBindXform=GfMatrix4f hasConstantInfluences=bool influences=VtArray<GfVec2f> numBlendShapeOffsetRanges=int numInfluencesPerComponent=int restPoints=VtArray<GfVec3f>
+	dispatchCount=NULL elementCount=NULL glslKernel=empty cpuCallback=null
+/Root/SkinningWithoutNormals/Skinning/Box/skinningPointsComputation type=extComputation
+	inputValues: blendShapeWeights=VtArray<float> primWorldToLocal=GfMatrix4d skelLocalToWorld=GfMatrix4d skinningXforms=VtArray<GfMatrix4f>
+	inputComputation blendShapeOffsetRanges sourceComputation=/Root/SkinningWithoutNormals/Skinning/Box/skinningPointsInputAggregatorComputation sourceComputationOutputName=blendShapeOffsetRanges
+	inputComputation blendShapeOffsets sourceComputation=/Root/SkinningWithoutNormals/Skinning/Box/skinningPointsInputAggregatorComputation sourceComputationOutputName=blendShapeOffsets
+	inputComputation geomBindXform sourceComputation=/Root/SkinningWithoutNormals/Skinning/Box/skinningPointsInputAggregatorComputation sourceComputationOutputName=geomBindXform
+	inputComputation hasConstantInfluences sourceComputation=/Root/SkinningWithoutNormals/Skinning/Box/skinningPointsInputAggregatorComputation sourceComputationOutputName=hasConstantInfluences
+	inputComputation influences sourceComputation=/Root/SkinningWithoutNormals/Skinning/Box/skinningPointsInputAggregatorComputation sourceComputationOutputName=influences
+	inputComputation numBlendShapeOffsetRanges sourceComputation=/Root/SkinningWithoutNormals/Skinning/Box/skinningPointsInputAggregatorComputation sourceComputationOutputName=numBlendShapeOffsetRanges
+	inputComputation numInfluencesPerComponent sourceComputation=/Root/SkinningWithoutNormals/Skinning/Box/skinningPointsInputAggregatorComputation sourceComputationOutputName=numInfluencesPerComponent
+	inputComputation restPoints sourceComputation=/Root/SkinningWithoutNormals/Skinning/Box/skinningPointsInputAggregatorComputation sourceComputationOutputName=restPoints
+	output skinnedPoints valueType=15,1
+	dispatchCount=8 elementCount=8 glslKernel=nonempty cpuCallback=set
+	computationError=false
+	computed skinnedPoints 8
+		-0.600000024 -0.600000024 0
+		-0.600000024 0.600000024 0
+		0.600000024 0.600000024 0
+		0.600000024 -0.600000024 0
+		-0.600000024 -0.600000024 0.140000001
+		-0.600000024 0.600000024 0.140000001
+		0.600000024 0.600000024 0.140000001
+		0.600000024 -0.600000024 0.140000001
+/Root/SkinningWithoutNormals/Skeleton type=mesh
+/Root/SkinningWithVertexVaryingNormals type=
+/Root/SkinningWithVertexVaryingNormals/Skinning type=
+/Root/SkinningWithVertexVaryingNormals/Skinning/Box type=mesh
+	primvars: accelerations normals points skel:jointIndices skel:jointWeights velocities
+	extComputationPrimvar points interpolation=vertex role=point sourceComputation=/Root/SkinningWithVertexVaryingNormals/Skinning/Box/skinningPointsComputation sourceComputationOutputName=skinnedPoints valueType=15,1
+/Root/SkinningWithVertexVaryingNormals/Skinning/Box/skinningPointsInputAggregatorComputation type=extComputation
+	inputValues: blendShapeOffsetRanges=VtArray<GfVec2i> blendShapeOffsets=VtArray<GfVec4f> geomBindXform=GfMatrix4f hasConstantInfluences=bool influences=VtArray<GfVec2f> numBlendShapeOffsetRanges=int numInfluencesPerComponent=int restPoints=VtArray<GfVec3f>
+	dispatchCount=NULL elementCount=NULL glslKernel=empty cpuCallback=null
+/Root/SkinningWithVertexVaryingNormals/Skinning/Box/skinningPointsComputation type=extComputation
+	inputValues: blendShapeWeights=VtArray<float> primWorldToLocal=GfMatrix4d skelLocalToWorld=GfMatrix4d skinningXforms=VtArray<GfMatrix4f>
+	inputComputation blendShapeOffsetRanges sourceComputation=/Root/SkinningWithVertexVaryingNormals/Skinning/Box/skinningPointsInputAggregatorComputation sourceComputationOutputName=blendShapeOffsetRanges
+	inputComputation blendShapeOffsets sourceComputation=/Root/SkinningWithVertexVaryingNormals/Skinning/Box/skinningPointsInputAggregatorComputation sourceComputationOutputName=blendShapeOffsets
+	inputComputation geomBindXform sourceComputation=/Root/SkinningWithVertexVaryingNormals/Skinning/Box/skinningPointsInputAggregatorComputation sourceComputationOutputName=geomBindXform
+	inputComputation hasConstantInfluences sourceComputation=/Root/SkinningWithVertexVaryingNormals/Skinning/Box/skinningPointsInputAggregatorComputation sourceComputationOutputName=hasConstantInfluences
+	inputComputation influences sourceComputation=/Root/SkinningWithVertexVaryingNormals/Skinning/Box/skinningPointsInputAggregatorComputation sourceComputationOutputName=influences
+	inputComputation numBlendShapeOffsetRanges sourceComputation=/Root/SkinningWithVertexVaryingNormals/Skinning/Box/skinningPointsInputAggregatorComputation sourceComputationOutputName=numBlendShapeOffsetRanges
+	inputComputation numInfluencesPerComponent sourceComputation=/Root/SkinningWithVertexVaryingNormals/Skinning/Box/skinningPointsInputAggregatorComputation sourceComputationOutputName=numInfluencesPerComponent
+	inputComputation restPoints sourceComputation=/Root/SkinningWithVertexVaryingNormals/Skinning/Box/skinningPointsInputAggregatorComputation sourceComputationOutputName=restPoints
+	output skinnedPoints valueType=15,1
+	dispatchCount=8 elementCount=8 glslKernel=nonempty cpuCallback=set
+	computationError=false
+	computed skinnedPoints 8
+		-0.600000024 -0.600000024 0
+		-0.600000024 0.600000024 0
+		0.600000024 0.600000024 0
+		0.600000024 -0.600000024 0
+		-0.600000024 -0.600000024 0.140000001
+		-0.600000024 0.600000024 0.140000001
+		0.600000024 0.600000024 0.140000001
+		0.600000024 -0.600000024 0.140000001
+/Root/SkinningWithVertexVaryingNormals/Skeleton type=mesh
+/Root/SkinningWithVaryingNormals type=
+/Root/SkinningWithVaryingNormals/Skinning type=
+/Root/SkinningWithVaryingNormals/Skinning/Box type=mesh
+	primvars: accelerations normals points skel:jointIndices skel:jointWeights velocities
+	extComputationPrimvar points interpolation=vertex role=point sourceComputation=/Root/SkinningWithVaryingNormals/Skinning/Box/skinningPointsComputation sourceComputationOutputName=skinnedPoints valueType=15,1
+/Root/SkinningWithVaryingNormals/Skinning/Box/skinningPointsInputAggregatorComputation type=extComputation
+	inputValues: blendShapeOffsetRanges=VtArray<GfVec2i> blendShapeOffsets=VtArray<GfVec4f> geomBindXform=GfMatrix4f hasConstantInfluences=bool influences=VtArray<GfVec2f> numBlendShapeOffsetRanges=int numInfluencesPerComponent=int restPoints=VtArray<GfVec3f>
+	dispatchCount=NULL elementCount=NULL glslKernel=empty cpuCallback=null
+/Root/SkinningWithVaryingNormals/Skinning/Box/skinningPointsComputation type=extComputation
+	inputValues: blendShapeWeights=VtArray<float> primWorldToLocal=GfMatrix4d skelLocalToWorld=GfMatrix4d skinningXforms=VtArray<GfMatrix4f>
+	inputComputation blendShapeOffsetRanges sourceComputation=/Root/SkinningWithVaryingNormals/Skinning/Box/skinningPointsInputAggregatorComputation sourceComputationOutputName=blendShapeOffsetRanges
+	inputComputation blendShapeOffsets sourceComputation=/Root/SkinningWithVaryingNormals/Skinning/Box/skinningPointsInputAggregatorComputation sourceComputationOutputName=blendShapeOffsets
+	inputComputation geomBindXform sourceComputation=/Root/SkinningWithVaryingNormals/Skinning/Box/skinningPointsInputAggregatorComputation sourceComputationOutputName=geomBindXform
+	inputComputation hasConstantInfluences sourceComputation=/Root/SkinningWithVaryingNormals/Skinning/Box/skinningPointsInputAggregatorComputation sourceComputationOutputName=hasConstantInfluences
+	inputComputation influences sourceComputation=/Root/SkinningWithVaryingNormals/Skinning/Box/skinningPointsInputAggregatorComputation sourceComputationOutputName=influences
+	inputComputation numBlendShapeOffsetRanges sourceComputation=/Root/SkinningWithVaryingNormals/Skinning/Box/skinningPointsInputAggregatorComputation sourceComputationOutputName=numBlendShapeOffsetRanges
+	inputComputation numInfluencesPerComponent sourceComputation=/Root/SkinningWithVaryingNormals/Skinning/Box/skinningPointsInputAggregatorComputation sourceComputationOutputName=numInfluencesPerComponent
+	inputComputation restPoints sourceComputation=/Root/SkinningWithVaryingNormals/Skinning/Box/skinningPointsInputAggregatorComputation sourceComputationOutputName=restPoints
+	output skinnedPoints valueType=15,1
+	dispatchCount=8 elementCount=8 glslKernel=nonempty cpuCallback=set
+	computationError=false
+	computed skinnedPoints 8
+		-0.600000024 -0.600000024 0
+		-0.600000024 0.600000024 0
+		0.600000024 0.600000024 0
+		0.600000024 -0.600000024 0
+		-0.600000024 -0.600000024 0.140000001
+		-0.600000024 0.600000024 0.140000001
+		0.600000024 0.600000024 0.140000001
+		0.600000024 -0.600000024 0.140000001
+/Root/SkinningWithVaryingNormals/Skeleton type=mesh
+/Root/SkinningWithConstantNormals type=
+/Root/SkinningWithConstantNormals/Skinning type=
+/Root/SkinningWithConstantNormals/Skinning/Box type=mesh
+	primvars: accelerations normals points skel:jointIndices skel:jointWeights velocities
+	extComputationPrimvar points interpolation=vertex role=point sourceComputation=/Root/SkinningWithConstantNormals/Skinning/Box/skinningPointsComputation sourceComputationOutputName=skinnedPoints valueType=15,1
+/Root/SkinningWithConstantNormals/Skinning/Box/skinningPointsInputAggregatorComputation type=extComputation
+	inputValues: blendShapeOffsetRanges=VtArray<GfVec2i> blendShapeOffsets=VtArray<GfVec4f> geomBindXform=GfMatrix4f hasConstantInfluences=bool influences=VtArray<GfVec2f> numBlendShapeOffsetRanges=int numInfluencesPerComponent=int restPoints=VtArray<GfVec3f>
+	dispatchCount=NULL elementCount=NULL glslKernel=empty cpuCallback=null
+/Root/SkinningWithConstantNormals/Skinning/Box/skinningPointsComputation type=extComputation
+	inputValues: blendShapeWeights=VtArray<float> primWorldToLocal=GfMatrix4d skelLocalToWorld=GfMatrix4d skinningXforms=VtArray<GfMatrix4f>
+	inputComputation blendShapeOffsetRanges sourceComputation=/Root/SkinningWithConstantNormals/Skinning/Box/skinningPointsInputAggregatorComputation sourceComputationOutputName=blendShapeOffsetRanges
+	inputComputation blendShapeOffsets sourceComputation=/Root/SkinningWithConstantNormals/Skinning/Box/skinningPointsInputAggregatorComputation sourceComputationOutputName=blendShapeOffsets
+	inputComputation geomBindXform sourceComputation=/Root/SkinningWithConstantNormals/Skinning/Box/skinningPointsInputAggregatorComputation sourceComputationOutputName=geomBindXform
+	inputComputation hasConstantInfluences sourceComputation=/Root/SkinningWithConstantNormals/Skinning/Box/skinningPointsInputAggregatorComputation sourceComputationOutputName=hasConstantInfluences
+	inputComputation influences sourceComputation=/Root/SkinningWithConstantNormals/Skinning/Box/skinningPointsInputAggregatorComputation sourceComputationOutputName=influences
+	inputComputation numBlendShapeOffsetRanges sourceComputation=/Root/SkinningWithConstantNormals/Skinning/Box/skinningPointsInputAggregatorComputation sourceComputationOutputName=numBlendShapeOffsetRanges
+	inputComputation numInfluencesPerComponent sourceComputation=/Root/SkinningWithConstantNormals/Skinning/Box/skinningPointsInputAggregatorComputation sourceComputationOutputName=numInfluencesPerComponent
+	inputComputation restPoints sourceComputation=/Root/SkinningWithConstantNormals/Skinning/Box/skinningPointsInputAggregatorComputation sourceComputationOutputName=restPoints
+	output skinnedPoints valueType=15,1
+	dispatchCount=8 elementCount=8 glslKernel=nonempty cpuCallback=set
+	computationError=false
+	computed skinnedPoints 8
+		-0.600000024 -0.600000024 0
+		-0.600000024 0.600000024 0
+		0.600000024 0.600000024 0
+		0.600000024 -0.600000024 0
+		-0.600000024 -0.600000024 0.140000001
+		-0.600000024 0.600000024 0.140000001
+		0.600000024 0.600000024 0.140000001
+		0.600000024 -0.600000024 0.140000001
+/Root/SkinningWithConstantNormals/Skeleton type=mesh
+/Root/SkinningWithUniformNormals type=
+/Root/SkinningWithUniformNormals/Skinning type=
+/Root/SkinningWithUniformNormals/Skinning/Box type=mesh
+	primvars: accelerations normals points skel:jointIndices skel:jointWeights velocities
+	extComputationPrimvar points interpolation=vertex role=point sourceComputation=/Root/SkinningWithUniformNormals/Skinning/Box/skinningPointsComputation sourceComputationOutputName=skinnedPoints valueType=15,1
+/Root/SkinningWithUniformNormals/Skinning/Box/skinningPointsInputAggregatorComputation type=extComputation
+	inputValues: blendShapeOffsetRanges=VtArray<GfVec2i> blendShapeOffsets=VtArray<GfVec4f> geomBindXform=GfMatrix4f hasConstantInfluences=bool influences=VtArray<GfVec2f> numBlendShapeOffsetRanges=int numInfluencesPerComponent=int restPoints=VtArray<GfVec3f>
+	dispatchCount=NULL elementCount=NULL glslKernel=empty cpuCallback=null
+/Root/SkinningWithUniformNormals/Skinning/Box/skinningPointsComputation type=extComputation
+	inputValues: blendShapeWeights=VtArray<float> primWorldToLocal=GfMatrix4d skelLocalToWorld=GfMatrix4d skinningXforms=VtArray<GfMatrix4f>
+	inputComputation blendShapeOffsetRanges sourceComputation=/Root/SkinningWithUniformNormals/Skinning/Box/skinningPointsInputAggregatorComputation sourceComputationOutputName=blendShapeOffsetRanges
+	inputComputation blendShapeOffsets sourceComputation=/Root/SkinningWithUniformNormals/Skinning/Box/skinningPointsInputAggregatorComputation sourceComputationOutputName=blendShapeOffsets
+	inputComputation geomBindXform sourceComputation=/Root/SkinningWithUniformNormals/Skinning/Box/skinningPointsInputAggregatorComputation sourceComputationOutputName=geomBindXform
+	inputComputation hasConstantInfluences sourceComputation=/Root/SkinningWithUniformNormals/Skinning/Box/skinningPointsInputAggregatorComputation sourceComputationOutputName=hasConstantInfluences
+	inputComputation influences sourceComputation=/Root/SkinningWithUniformNormals/Skinning/Box/skinningPointsInputAggregatorComputation sourceComputationOutputName=influences
+	inputComputation numBlendShapeOffsetRanges sourceComputation=/Root/SkinningWithUniformNormals/Skinning/Box/skinningPointsInputAggregatorComputation sourceComputationOutputName=numBlendShapeOffsetRanges
+	inputComputation numInfluencesPerComponent sourceComputation=/Root/SkinningWithUniformNormals/Skinning/Box/skinningPointsInputAggregatorComputation sourceComputationOutputName=numInfluencesPerComponent
+	inputComputation restPoints sourceComputation=/Root/SkinningWithUniformNormals/Skinning/Box/skinningPointsInputAggregatorComputation sourceComputationOutputName=restPoints
+	output skinnedPoints valueType=15,1
+	dispatchCount=8 elementCount=8 glslKernel=nonempty cpuCallback=set
+	computationError=false
+	computed skinnedPoints 8
+		-0.600000024 -0.600000024 0
+		-0.600000024 0.600000024 0
+		0.600000024 0.600000024 0
+		0.600000024 -0.600000024 0
+		-0.600000024 -0.600000024 0.140000001
+		-0.600000024 0.600000024 0.140000001
+		0.600000024 0.600000024 0.140000001
+		0.600000024 -0.600000024 0.140000001
+/Root/SkinningWithUniformNormals/Skeleton type=mesh
+/Root/SkinningWithFaceVaryingNormals type=
+/Root/SkinningWithFaceVaryingNormals/Skinning type=
+/Root/SkinningWithFaceVaryingNormals/Skinning/Box type=mesh
+	primvars: accelerations normals points skel:jointIndices skel:jointWeights velocities
+	extComputationPrimvar points interpolation=vertex role=point sourceComputation=/Root/SkinningWithFaceVaryingNormals/Skinning/Box/skinningPointsComputation sourceComputationOutputName=skinnedPoints valueType=15,1
+/Root/SkinningWithFaceVaryingNormals/Skinning/Box/skinningPointsInputAggregatorComputation type=extComputation
+	inputValues: blendShapeOffsetRanges=VtArray<GfVec2i> blendShapeOffsets=VtArray<GfVec4f> geomBindXform=GfMatrix4f hasConstantInfluences=bool influences=VtArray<GfVec2f> numBlendShapeOffsetRanges=int numInfluencesPerComponent=int restPoints=VtArray<GfVec3f>
+	dispatchCount=NULL elementCount=NULL glslKernel=empty cpuCallback=null
+/Root/SkinningWithFaceVaryingNormals/Skinning/Box/skinningPointsComputation type=extComputation
+	inputValues: blendShapeWeights=VtArray<float> primWorldToLocal=GfMatrix4d skelLocalToWorld=GfMatrix4d skinningXforms=VtArray<GfMatrix4f>
+	inputComputation blendShapeOffsetRanges sourceComputation=/Root/SkinningWithFaceVaryingNormals/Skinning/Box/skinningPointsInputAggregatorComputation sourceComputationOutputName=blendShapeOffsetRanges
+	inputComputation blendShapeOffsets sourceComputation=/Root/SkinningWithFaceVaryingNormals/Skinning/Box/skinningPointsInputAggregatorComputation sourceComputationOutputName=blendShapeOffsets
+	inputComputation geomBindXform sourceComputation=/Root/SkinningWithFaceVaryingNormals/Skinning/Box/skinningPointsInputAggregatorComputation sourceComputationOutputName=geomBindXform
+	inputComputation hasConstantInfluences sourceComputation=/Root/SkinningWithFaceVaryingNormals/Skinning/Box/skinningPointsInputAggregatorComputation sourceComputationOutputName=hasConstantInfluences
+	inputComputation influences sourceComputation=/Root/SkinningWithFaceVaryingNormals/Skinning/Box/skinningPointsInputAggregatorComputation sourceComputationOutputName=influences
+	inputComputation numBlendShapeOffsetRanges sourceComputation=/Root/SkinningWithFaceVaryingNormals/Skinning/Box/skinningPointsInputAggregatorComputation sourceComputationOutputName=numBlendShapeOffsetRanges
+	inputComputation numInfluencesPerComponent sourceComputation=/Root/SkinningWithFaceVaryingNormals/Skinning/Box/skinningPointsInputAggregatorComputation sourceComputationOutputName=numInfluencesPerComponent
+	inputComputation restPoints sourceComputation=/Root/SkinningWithFaceVaryingNormals/Skinning/Box/skinningPointsInputAggregatorComputation sourceComputationOutputName=restPoints
+	output skinnedPoints valueType=15,1
+	dispatchCount=8 elementCount=8 glslKernel=nonempty cpuCallback=set
+	computationError=false
+	computed skinnedPoints 8
+		-0.600000024 -0.600000024 0
+		-0.600000024 0.600000024 0
+		0.600000024 0.600000024 0
+		0.600000024 -0.600000024 0
+		-0.600000024 -0.600000024 0.140000001
+		-0.600000024 0.600000024 0.140000001
+		0.600000024 0.600000024 0.140000001
+		0.600000024 -0.600000024 0.140000001
+/Root/SkinningWithFaceVaryingNormals/Skeleton type=mesh
+/Root/SkinningWithVertexVaryingPrimvarNormals type=
+/Root/SkinningWithVertexVaryingPrimvarNormals/Skinning type=
+/Root/SkinningWithVertexVaryingPrimvarNormals/Skinning/Box type=mesh
+	primvars: accelerations normals points skel:jointIndices skel:jointWeights velocities
+	extComputationPrimvar points interpolation=vertex role=point sourceComputation=/Root/SkinningWithVertexVaryingPrimvarNormals/Skinning/Box/skinningPointsComputation sourceComputationOutputName=skinnedPoints valueType=15,1
+/Root/SkinningWithVertexVaryingPrimvarNormals/Skinning/Box/skinningPointsInputAggregatorComputation type=extComputation
+	inputValues: blendShapeOffsetRanges=VtArray<GfVec2i> blendShapeOffsets=VtArray<GfVec4f> geomBindXform=GfMatrix4f hasConstantInfluences=bool influences=VtArray<GfVec2f> numBlendShapeOffsetRanges=int numInfluencesPerComponent=int restPoints=VtArray<GfVec3f>
+	dispatchCount=NULL elementCount=NULL glslKernel=empty cpuCallback=null
+/Root/SkinningWithVertexVaryingPrimvarNormals/Skinning/Box/skinningPointsComputation type=extComputation
+	inputValues: blendShapeWeights=VtArray<float> primWorldToLocal=GfMatrix4d skelLocalToWorld=GfMatrix4d skinningXforms=VtArray<GfMatrix4f>
+	inputComputation blendShapeOffsetRanges sourceComputation=/Root/SkinningWithVertexVaryingPrimvarNormals/Skinning/Box/skinningPointsInputAggregatorComputation sourceComputationOutputName=blendShapeOffsetRanges
+	inputComputation blendShapeOffsets sourceComputation=/Root/SkinningWithVertexVaryingPrimvarNormals/Skinning/Box/skinningPointsInputAggregatorComputation sourceComputationOutputName=blendShapeOffsets
+	inputComputation geomBindXform sourceComputation=/Root/SkinningWithVertexVaryingPrimvarNormals/Skinning/Box/skinningPointsInputAggregatorComputation sourceComputationOutputName=geomBindXform
+	inputComputation hasConstantInfluences sourceComputation=/Root/SkinningWithVertexVaryingPrimvarNormals/Skinning/Box/skinningPointsInputAggregatorComputation sourceComputationOutputName=hasConstantInfluences
+	inputComputation influences sourceComputation=/Root/SkinningWithVertexVaryingPrimvarNormals/Skinning/Box/skinningPointsInputAggregatorComputation sourceComputationOutputName=influences
+	inputComputation numBlendShapeOffsetRanges sourceComputation=/Root/SkinningWithVertexVaryingPrimvarNormals/Skinning/Box/skinningPointsInputAggregatorComputation sourceComputationOutputName=numBlendShapeOffsetRanges
+	inputComputation numInfluencesPerComponent sourceComputation=/Root/SkinningWithVertexVaryingPrimvarNormals/Skinning/Box/skinningPointsInputAggregatorComputation sourceComputationOutputName=numInfluencesPerComponent
+	inputComputation restPoints sourceComputation=/Root/SkinningWithVertexVaryingPrimvarNormals/Skinning/Box/skinningPointsInputAggregatorComputation sourceComputationOutputName=restPoints
+	output skinnedPoints valueType=15,1
+	dispatchCount=8 elementCount=8 glslKernel=nonempty cpuCallback=set
+	computationError=false
+	computed skinnedPoints 8
+		-0.600000024 -0.600000024 0
+		-0.600000024 0.600000024 0
+		0.600000024 0.600000024 0
+		0.600000024 -0.600000024 0
+		-0.600000024 -0.600000024 0.140000001
+		-0.600000024 0.600000024 0.140000001
+		0.600000024 0.600000024 0.140000001
+		0.600000024 -0.600000024 0.140000001
+/Root/SkinningWithVertexVaryingPrimvarNormals/Skeleton type=mesh
+/Root/SkinningWithVaryingPrimvarNormals type=
+/Root/SkinningWithVaryingPrimvarNormals/Skinning type=
+/Root/SkinningWithVaryingPrimvarNormals/Skinning/Box type=mesh
+	primvars: accelerations normals points skel:jointIndices skel:jointWeights velocities
+	extComputationPrimvar points interpolation=vertex role=point sourceComputation=/Root/SkinningWithVaryingPrimvarNormals/Skinning/Box/skinningPointsComputation sourceComputationOutputName=skinnedPoints valueType=15,1
+/Root/SkinningWithVaryingPrimvarNormals/Skinning/Box/skinningPointsInputAggregatorComputation type=extComputation
+	inputValues: blendShapeOffsetRanges=VtArray<GfVec2i> blendShapeOffsets=VtArray<GfVec4f> geomBindXform=GfMatrix4f hasConstantInfluences=bool influences=VtArray<GfVec2f> numBlendShapeOffsetRanges=int numInfluencesPerComponent=int restPoints=VtArray<GfVec3f>
+	dispatchCount=NULL elementCount=NULL glslKernel=empty cpuCallback=null
+/Root/SkinningWithVaryingPrimvarNormals/Skinning/Box/skinningPointsComputation type=extComputation
+	inputValues: blendShapeWeights=VtArray<float> primWorldToLocal=GfMatrix4d skelLocalToWorld=GfMatrix4d skinningXforms=VtArray<GfMatrix4f>
+	inputComputation blendShapeOffsetRanges sourceComputation=/Root/SkinningWithVaryingPrimvarNormals/Skinning/Box/skinningPointsInputAggregatorComputation sourceComputationOutputName=blendShapeOffsetRanges
+	inputComputation blendShapeOffsets sourceComputation=/Root/SkinningWithVaryingPrimvarNormals/Skinning/Box/skinningPointsInputAggregatorComputation sourceComputationOutputName=blendShapeOffsets
+	inputComputation geomBindXform sourceComputation=/Root/SkinningWithVaryingPrimvarNormals/Skinning/Box/skinningPointsInputAggregatorComputation sourceComputationOutputName=geomBindXform
+	inputComputation hasConstantInfluences sourceComputation=/Root/SkinningWithVaryingPrimvarNormals/Skinning/Box/skinningPointsInputAggregatorComputation sourceComputationOutputName=hasConstantInfluences
+	inputComputation influences sourceComputation=/Root/SkinningWithVaryingPrimvarNormals/Skinning/Box/skinningPointsInputAggregatorComputation sourceComputationOutputName=influences
+	inputComputation numBlendShapeOffsetRanges sourceComputation=/Root/SkinningWithVaryingPrimvarNormals/Skinning/Box/skinningPointsInputAggregatorComputation sourceComputationOutputName=numBlendShapeOffsetRanges
+	inputComputation numInfluencesPerComponent sourceComputation=/Root/SkinningWithVaryingPrimvarNormals/Skinning/Box/skinningPointsInputAggregatorComputation sourceComputationOutputName=numInfluencesPerComponent
+	inputComputation restPoints sourceComputation=/Root/SkinningWithVaryingPrimvarNormals/Skinning/Box/skinningPointsInputAggregatorComputation sourceComputationOutputName=restPoints
+	output skinnedPoints valueType=15,1
+	dispatchCount=8 elementCount=8 glslKernel=nonempty cpuCallback=set
+	computationError=false
+	computed skinnedPoints 8
+		-0.600000024 -0.600000024 0
+		-0.600000024 0.600000024 0
+		0.600000024 0.600000024 0
+		0.600000024 -0.600000024 0
+		-0.600000024 -0.600000024 0.140000001
+		-0.600000024 0.600000024 0.140000001
+		0.600000024 0.600000024 0.140000001
+		0.600000024 -0.600000024 0.140000001
+/Root/SkinningWithVaryingPrimvarNormals/Skeleton type=mesh
+/Root/SkinningWithConstantPrimvarNormals type=
+/Root/SkinningWithConstantPrimvarNormals/Skinning type=
+/Root/SkinningWithConstantPrimvarNormals/Skinning/Box type=mesh
+	primvars: accelerations normals points skel:jointIndices skel:jointWeights velocities
+	extComputationPrimvar points interpolation=vertex role=point sourceComputation=/Root/SkinningWithConstantPrimvarNormals/Skinning/Box/skinningPointsComputation sourceComputationOutputName=skinnedPoints valueType=15,1
+/Root/SkinningWithConstantPrimvarNormals/Skinning/Box/skinningPointsInputAggregatorComputation type=extComputation
+	inputValues: blendShapeOffsetRanges=VtArray<GfVec2i> blendShapeOffsets=VtArray<GfVec4f> geomBindXform=GfMatrix4f hasConstantInfluences=bool influences=VtArray<GfVec2f> numBlendShapeOffsetRanges=int numInfluencesPerComponent=int restPoints=VtArray<GfVec3f>
+	dispatchCount=NULL elementCount=NULL glslKernel=empty cpuCallback=null
+/Root/SkinningWithConstantPrimvarNormals/Skinning/Box/skinningPointsComputation type=extComputation
+	inputValues: blendShapeWeights=VtArray<float> primWorldToLocal=GfMatrix4d skelLocalToWorld=GfMatrix4d skinningXforms=VtArray<GfMatrix4f>
+	inputComputation blendShapeOffsetRanges sourceComputation=/Root/SkinningWithConstantPrimvarNormals/Skinning/Box/skinningPointsInputAggregatorComputation sourceComputationOutputName=blendShapeOffsetRanges
+	inputComputation blendShapeOffsets sourceComputation=/Root/SkinningWithConstantPrimvarNormals/Skinning/Box/skinningPointsInputAggregatorComputation sourceComputationOutputName=blendShapeOffsets
+	inputComputation geomBindXform sourceComputation=/Root/SkinningWithConstantPrimvarNormals/Skinning/Box/skinningPointsInputAggregatorComputation sourceComputationOutputName=geomBindXform
+	inputComputation hasConstantInfluences sourceComputation=/Root/SkinningWithConstantPrimvarNormals/Skinning/Box/skinningPointsInputAggregatorComputation sourceComputationOutputName=hasConstantInfluences
+	inputComputation influences sourceComputation=/Root/SkinningWithConstantPrimvarNormals/Skinning/Box/skinningPointsInputAggregatorComputation sourceComputationOutputName=influences
+	inputComputation numBlendShapeOffsetRanges sourceComputation=/Root/SkinningWithConstantPrimvarNormals/Skinning/Box/skinningPointsInputAggregatorComputation sourceComputationOutputName=numBlendShapeOffsetRanges
+	inputComputation numInfluencesPerComponent sourceComputation=/Root/SkinningWithConstantPrimvarNormals/Skinning/Box/skinningPointsInputAggregatorComputation sourceComputationOutputName=numInfluencesPerComponent
+	inputComputation restPoints sourceComputation=/Root/SkinningWithConstantPrimvarNormals/Skinning/Box/skinningPointsInputAggregatorComputation sourceComputationOutputName=restPoints
+	output skinnedPoints valueType=15,1
+	dispatchCount=8 elementCount=8 glslKernel=nonempty cpuCallback=set
+	computationError=false
+	computed skinnedPoints 8
+		-0.600000024 -0.600000024 0
+		-0.600000024 0.600000024 0
+		0.600000024 0.600000024 0
+		0.600000024 -0.600000024 0
+		-0.600000024 -0.600000024 0.140000001
+		-0.600000024 0.600000024 0.140000001
+		0.600000024 0.600000024 0.140000001
+		0.600000024 -0.600000024 0.140000001
+/Root/SkinningWithConstantPrimvarNormals/Skeleton type=mesh
+/Root/SkinningWithUniformPrimvarNormals type=
+/Root/SkinningWithUniformPrimvarNormals/Skinning type=
+/Root/SkinningWithUniformPrimvarNormals/Skinning/Box type=mesh
+	primvars: accelerations normals points skel:jointIndices skel:jointWeights velocities
+	extComputationPrimvar points interpolation=vertex role=point sourceComputation=/Root/SkinningWithUniformPrimvarNormals/Skinning/Box/skinningPointsComputation sourceComputationOutputName=skinnedPoints valueType=15,1
+/Root/SkinningWithUniformPrimvarNormals/Skinning/Box/skinningPointsInputAggregatorComputation type=extComputation
+	inputValues: blendShapeOffsetRanges=VtArray<GfVec2i> blendShapeOffsets=VtArray<GfVec4f> geomBindXform=GfMatrix4f hasConstantInfluences=bool influences=VtArray<GfVec2f> numBlendShapeOffsetRanges=int numInfluencesPerComponent=int restPoints=VtArray<GfVec3f>
+	dispatchCount=NULL elementCount=NULL glslKernel=empty cpuCallback=null
+/Root/SkinningWithUniformPrimvarNormals/Skinning/Box/skinningPointsComputation type=extComputation
+	inputValues: blendShapeWeights=VtArray<float> primWorldToLocal=GfMatrix4d skelLocalToWorld=GfMatrix4d skinningXforms=VtArray<GfMatrix4f>
+	inputComputation blendShapeOffsetRanges sourceComputation=/Root/SkinningWithUniformPrimvarNormals/Skinning/Box/skinningPointsInputAggregatorComputation sourceComputationOutputName=blendShapeOffsetRanges
+	inputComputation blendShapeOffsets sourceComputation=/Root/SkinningWithUniformPrimvarNormals/Skinning/Box/skinningPointsInputAggregatorComputation sourceComputationOutputName=blendShapeOffsets
+	inputComputation geomBindXform sourceComputation=/Root/SkinningWithUniformPrimvarNormals/Skinning/Box/skinningPointsInputAggregatorComputation sourceComputationOutputName=geomBindXform
+	inputComputation hasConstantInfluences sourceComputation=/Root/SkinningWithUniformPrimvarNormals/Skinning/Box/skinningPointsInputAggregatorComputation sourceComputationOutputName=hasConstantInfluences
+	inputComputation influences sourceComputation=/Root/SkinningWithUniformPrimvarNormals/Skinning/Box/skinningPointsInputAggregatorComputation sourceComputationOutputName=influences
+	inputComputation numBlendShapeOffsetRanges sourceComputation=/Root/SkinningWithUniformPrimvarNormals/Skinning/Box/skinningPointsInputAggregatorComputation sourceComputationOutputName=numBlendShapeOffsetRanges
+	inputComputation numInfluencesPerComponent sourceComputation=/Root/SkinningWithUniformPrimvarNormals/Skinning/Box/skinningPointsInputAggregatorComputation sourceComputationOutputName=numInfluencesPerComponent
+	inputComputation restPoints sourceComputation=/Root/SkinningWithUniformPrimvarNormals/Skinning/Box/skinningPointsInputAggregatorComputation sourceComputationOutputName=restPoints
+	output skinnedPoints valueType=15,1
+	dispatchCount=8 elementCount=8 glslKernel=nonempty cpuCallback=set
+	computationError=false
+	computed skinnedPoints 8
+		-0.600000024 -0.600000024 0
+		-0.600000024 0.600000024 0
+		0.600000024 0.600000024 0
+		0.600000024 -0.600000024 0
+		-0.600000024 -0.600000024 0.140000001
+		-0.600000024 0.600000024 0.140000001
+		0.600000024 0.600000024 0.140000001
+		0.600000024 -0.600000024 0.140000001
+/Root/SkinningWithUniformPrimvarNormals/Skeleton type=mesh
+/Root/SkinningWithFaceVaryingPrimvarNormals type=
+/Root/SkinningWithFaceVaryingPrimvarNormals/Skinning type=
+/Root/SkinningWithFaceVaryingPrimvarNormals/Skinning/Box type=mesh
+	primvars: accelerations normals points skel:jointIndices skel:jointWeights velocities
+	extComputationPrimvar points interpolation=vertex role=point sourceComputation=/Root/SkinningWithFaceVaryingPrimvarNormals/Skinning/Box/skinningPointsComputation sourceComputationOutputName=skinnedPoints valueType=15,1
+/Root/SkinningWithFaceVaryingPrimvarNormals/Skinning/Box/skinningPointsInputAggregatorComputation type=extComputation
+	inputValues: blendShapeOffsetRanges=VtArray<GfVec2i> blendShapeOffsets=VtArray<GfVec4f> geomBindXform=GfMatrix4f hasConstantInfluences=bool influences=VtArray<GfVec2f> numBlendShapeOffsetRanges=int numInfluencesPerComponent=int restPoints=VtArray<GfVec3f>
+	dispatchCount=NULL elementCount=NULL glslKernel=empty cpuCallback=null
+/Root/SkinningWithFaceVaryingPrimvarNormals/Skinning/Box/skinningPointsComputation type=extComputation
+	inputValues: blendShapeWeights=VtArray<float> primWorldToLocal=GfMatrix4d skelLocalToWorld=GfMatrix4d skinningXforms=VtArray<GfMatrix4f>
+	inputComputation blendShapeOffsetRanges sourceComputation=/Root/SkinningWithFaceVaryingPrimvarNormals/Skinning/Box/skinningPointsInputAggregatorComputation sourceComputationOutputName=blendShapeOffsetRanges
+	inputComputation blendShapeOffsets sourceComputation=/Root/SkinningWithFaceVaryingPrimvarNormals/Skinning/Box/skinningPointsInputAggregatorComputation sourceComputationOutputName=blendShapeOffsets
+	inputComputation geomBindXform sourceComputation=/Root/SkinningWithFaceVaryingPrimvarNormals/Skinning/Box/skinningPointsInputAggregatorComputation sourceComputationOutputName=geomBindXform
+	inputComputation hasConstantInfluences sourceComputation=/Root/SkinningWithFaceVaryingPrimvarNormals/Skinning/Box/skinningPointsInputAggregatorComputation sourceComputationOutputName=hasConstantInfluences
+	inputComputation influences sourceComputation=/Root/SkinningWithFaceVaryingPrimvarNormals/Skinning/Box/skinningPointsInputAggregatorComputation sourceComputationOutputName=influences
+	inputComputation numBlendShapeOffsetRanges sourceComputation=/Root/SkinningWithFaceVaryingPrimvarNormals/Skinning/Box/skinningPointsInputAggregatorComputation sourceComputationOutputName=numBlendShapeOffsetRanges
+	inputComputation numInfluencesPerComponent sourceComputation=/Root/SkinningWithFaceVaryingPrimvarNormals/Skinning/Box/skinningPointsInputAggregatorComputation sourceComputationOutputName=numInfluencesPerComponent
+	inputComputation restPoints sourceComputation=/Root/SkinningWithFaceVaryingPrimvarNormals/Skinning/Box/skinningPointsInputAggregatorComputation sourceComputationOutputName=restPoints
+	output skinnedPoints valueType=15,1
+	dispatchCount=8 elementCount=8 glslKernel=nonempty cpuCallback=set
+	computationError=false
+	computed skinnedPoints 8
+		-0.600000024 -0.600000024 0
+		-0.600000024 0.600000024 0
+		0.600000024 0.600000024 0
+		0.600000024 -0.600000024 0
+		-0.600000024 -0.600000024 0.140000001
+		-0.600000024 0.600000024 0.140000001
+		0.600000024 0.600000024 0.140000001
+		0.600000024 -0.600000024 0.140000001
+/Root/SkinningWithFaceVaryingPrimvarNormals/Skeleton type=mesh
+OK

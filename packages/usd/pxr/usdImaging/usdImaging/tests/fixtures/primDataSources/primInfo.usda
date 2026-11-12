@@ -1,0 +1,51 @@
+#usda 1.0
+
+def Xform "WithVariants" (
+    variants = {
+        string shape = "round"
+        string size = "big"
+    }
+    prepend variantSets = ["shape", "size"]
+)
+{
+    variantSet "shape" = {
+        "round" {
+            def Scope "Round"
+            {
+            }
+        }
+        "square" {
+        }
+    }
+    variantSet "size" = {
+        "big" {
+        }
+    }
+}
+
+over "OverPrim"
+{
+    def Scope "DefUnderOver"
+    {
+    }
+}
+
+class "ClassPrim"
+{
+}
+
+def Scope "Source"
+{
+    def Xform "Child"
+    {
+        double3 xformOp:translate = (1, 2, 3)
+        uniform token[] xformOpOrder = ["xformOp:translate"]
+    }
+}
+
+def Xform "Instance" (
+    instanceable = true
+    prepend references = </Source>
+)
+{
+}

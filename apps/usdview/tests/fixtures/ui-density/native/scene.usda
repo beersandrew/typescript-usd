@@ -1,0 +1,6 @@
+#usda 1.0
+def Scope "Model" {
+    custom int count = 3
+    rel target = </Target>
+}
+def Scope "Target" {}

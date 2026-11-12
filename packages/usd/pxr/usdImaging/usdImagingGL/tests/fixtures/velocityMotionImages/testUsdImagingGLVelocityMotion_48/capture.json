@@ -1,0 +1,35 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/usdImaging/usdImagingGL/tests/fixtures/velocityMotionImages/capture.py",
+  "upstream": [
+    "pxr/usdImaging/usdImagingGL/CMakeLists.txt",
+    "pxr/usdImaging/usdImagingGL/testenv/testUsdImagingGLBasicDrawing.cpp",
+    "pxr/imaging/hdsi/velocityMotionResolvingSceneIndex.cpp"
+  ],
+  "payload": {
+    "test": "testUsdImagingGLVelocityMotion_48",
+    "cmake": "pxr/usdImaging/usdImagingGL/CMakeLists.txt:4772",
+    "command": "<install>/tests/testUsdImagingGLBasicDrawing -offscreen -lighting -camlight -shading wireOnSurface -camera /World/main_cam -stage scene48.usda -times 1 2.5 4 -write testUsdImagingGLVelocityMotion48.png",
+    "cwd": "copy of <source>/pxr/usdImaging/usdImagingGL/testenv/testUsdImagingGLVelocityMotion",
+    "env": {
+      "TF_DEBUG": "HDSI_VELOCITY_MOTION HD_SAFE_MODE"
+    },
+    "expectedReturnCode": null,
+    "returnCode": 0,
+    "images": [
+      {
+        "name": "testUsdImagingGLVelocityMotion48_001.png",
+        "written": true
+      },
+      {
+        "name": "testUsdImagingGLVelocityMotion48_2.5.png",
+        "written": true
+      },
+      {
+        "name": "testUsdImagingGLVelocityMotion48_004.png",
+        "written": true
+      }
+    ]
+  }
+}

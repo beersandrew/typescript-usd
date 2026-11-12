@@ -1,0 +1,287 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/usdImaging/usdImagingGL/tests/fixtures/native/materialSubsets/capture.py",
+  "upstream": [
+    "pxr/usd/usdShade/materialBindingAPI.cpp",
+    "pxr/usd/usdGeom/subset.cpp",
+    "pxr/imaging/hd/meshUtil.cpp"
+  ],
+  "payload": {
+    "baseMaterial": "/Looks/Base",
+    "subsets": [
+      {
+        "id": "/Root/Mesh/RedFaces",
+        "materialId": "/Looks/Red",
+        "indices": [
+          0,
+          2
+        ],
+        "type": 0,
+        "triangles": [
+          [
+            0,
+            3,
+            2
+          ],
+          [
+            0,
+            2,
+            1
+          ],
+          [
+            0,
+            1,
+            5
+          ],
+          [
+            0,
+            5,
+            4
+          ]
+        ]
+      },
+      {
+        "id": "/Root/Mesh/GreenFaces",
+        "materialId": "/Looks/Green",
+        "indices": [
+          1
+        ],
+        "type": 0,
+        "triangles": [
+          [
+            4,
+            5,
+            6
+          ],
+          [
+            4,
+            6,
+            7
+          ]
+        ]
+      },
+      {
+        "id": "/Root/Mesh/InheritedFaces",
+        "materialId": "/Looks/Base",
+        "indices": [
+          3
+        ],
+        "type": 0,
+        "triangles": [
+          [
+            2,
+            3,
+            7
+          ],
+          [
+            2,
+            7,
+            6
+          ]
+        ]
+      }
+    ],
+    "counts": [
+      4,
+      4,
+      4,
+      4,
+      4,
+      4
+    ],
+    "indices": [
+      0,
+      3,
+      2,
+      1,
+      4,
+      5,
+      6,
+      7,
+      0,
+      1,
+      5,
+      4,
+      2,
+      3,
+      7,
+      6,
+      0,
+      4,
+      7,
+      3,
+      1,
+      2,
+      6,
+      5
+    ],
+    "points": [
+      [
+        -1.0,
+        -1.0,
+        -1.0
+      ],
+      [
+        1.0,
+        -1.0,
+        -1.0
+      ],
+      [
+        1.0,
+        1.0,
+        -1.0
+      ],
+      [
+        -1.0,
+        1.0,
+        -1.0
+      ],
+      [
+        -1.0,
+        -1.0,
+        1.0
+      ],
+      [
+        1.0,
+        -1.0,
+        1.0
+      ],
+      [
+        1.0,
+        1.0,
+        1.0
+      ],
+      [
+        -1.0,
+        1.0,
+        1.0
+      ]
+    ],
+    "faceSetType": 0,
+    "triangles": [
+      [
+        0,
+        3,
+        2
+      ],
+      [
+        0,
+        2,
+        1
+      ],
+      [
+        4,
+        5,
+        6
+      ],
+      [
+        4,
+        6,
+        7
+      ],
+      [
+        0,
+        1,
+        5
+      ],
+      [
+        0,
+        5,
+        4
+      ],
+      [
+        2,
+        3,
+        7
+      ],
+      [
+        2,
+        7,
+        6
+      ],
+      [
+        0,
+        4,
+        7
+      ],
+      [
+        0,
+        7,
+        3
+      ],
+      [
+        1,
+        2,
+        6
+      ],
+      [
+        1,
+        6,
+        5
+      ]
+    ],
+    "primitiveParams": [
+      1,
+      2,
+      5,
+      6,
+      9,
+      10,
+      13,
+      14,
+      17,
+      18,
+      21,
+      22
+    ],
+    "fallbackTriangles": [
+      [
+        0,
+        4,
+        7
+      ],
+      [
+        0,
+        7,
+        3
+      ],
+      [
+        1,
+        2,
+        6
+      ],
+      [
+        1,
+        6,
+        5
+      ]
+    ],
+    "worldMatrix": [
+      1.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      1.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      1.0,
+      0.0,
+      2.0,
+      3.0,
+      4.0,
+      1.0
+    ],
+    "validFamily": [
+      true,
+      ""
+    ],
+    "fallbackFaceIndices": [
+      4,
+      5
+    ]
+  }
+}

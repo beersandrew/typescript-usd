@@ -1,0 +1,35 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/usdImaging/usdImagingGL/tests/fixtures/testenvImages/capture.py",
+  "upstream": [
+    "pxr/usdImaging/usdImagingGL/CMakeLists.txt",
+    "pxr/usdImaging/usdImagingGL/testenv/testUsdImagingGLBasicDrawing.cpp"
+  ],
+  "payload": {
+    "test": "testUsdImagingGLUsdSkelExtCompGPU_arm",
+    "cmake": "pxr/usdImaging/usdImagingGL/CMakeLists.txt:3896",
+    "command": "<install>/tests/testUsdImagingGLBasicDrawing -offscreen -frameAll -lighting -camlight -shading wireOnSurface -stage arm.usda -times 1 3 7 -write usdSkel_arm_extComp_GPU.png",
+    "cwd": "copy of <source>/pxr/usdImaging/usdImagingGL/testenv/testUsdImagingGLUsdSkel",
+    "env": {
+      "TF_DEBUG": "HD_SAFE_MODE",
+      "USDSKELIMAGING_FORCE_CPU_COMPUTE": "0"
+    },
+    "expectedReturnCode": "0",
+    "returnCode": 0,
+    "images": [
+      {
+        "name": "usdSkel_arm_extComp_GPU_001.png",
+        "written": true
+      },
+      {
+        "name": "usdSkel_arm_extComp_GPU_003.png",
+        "written": true
+      },
+      {
+        "name": "usdSkel_arm_extComp_GPU_007.png",
+        "written": true
+      }
+    ]
+  }
+}

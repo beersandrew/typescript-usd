@@ -1,0 +1,29 @@
+{
+  "variantType": "Sphere",
+  "hidden": {
+    "/World": "invisible",
+    "/World/Shape": "invisible",
+    "/World/Sibling": "invisible",
+    "/Other": "inherited"
+  },
+  "shown": {
+    "/World": "inherited",
+    "/World/Shape": "inherited",
+    "/World/Sibling": "invisible",
+    "/Other": "inherited"
+  },
+  "isolated": {
+    "/World": "inherited",
+    "/World/Shape": "inherited",
+    "/World/Sibling": "invisible",
+    "/Other": "invisible"
+  },
+  "reset": {
+    "/World": "inherited",
+    "/World/Shape": "inherited",
+    "/World/Sibling": "inherited",
+    "/Other": "inherited"
+  },
+  "unloadedChild": false,
+  "loadedChild": true
+}

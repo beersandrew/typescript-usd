@@ -1,0 +1,111 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/base/gf/tests/upstream/genfix_rect2i.py",
+  "upstream": [
+    "pxr/base/gf/testenv/testGfRect2i.py"
+  ],
+  "payload": {
+    "null_isNull": true,
+    "null_isEmpty": true,
+    "null_isValid": false,
+    "null_minmax": {
+      "min": [
+        0,
+        0
+      ],
+      "max": [
+        -1,
+        -1
+      ]
+    },
+    "empty_notnull_isNull": false,
+    "empty_notnull_isEmpty": true,
+    "norm_input": {
+      "min": [
+        -1,
+        1
+      ],
+      "max": [
+        1,
+        -1
+      ]
+    },
+    "norm_result": {
+      "min": [
+        -1,
+        -1
+      ],
+      "max": [
+        1,
+        1
+      ]
+    },
+    "ctor_wh": {
+      "min": [
+        0,
+        0
+      ],
+      "max": [
+        0,
+        0
+      ]
+    },
+    "center": [
+      5,
+      5
+    ],
+    "area": 121,
+    "height": 11,
+    "width": 11,
+    "size": [
+      11,
+      11
+    ],
+    "translated": {
+      "min": [
+        10,
+        10
+      ],
+      "max": [
+        20,
+        20
+      ]
+    },
+    "intersection": {
+      "min": [
+        5,
+        5
+      ],
+      "max": [
+        10,
+        10
+      ]
+    },
+    "union": {
+      "min": [
+        0,
+        0
+      ],
+      "max": [
+        15,
+        15
+      ]
+    },
+    "iadd": {
+      "min": [
+        0,
+        0
+      ],
+      "max": [
+        15,
+        15
+      ]
+    },
+    "contains_3_3": true,
+    "contains_11_11": false,
+    "r1_ne_r2": true,
+    "repr_r1": "Gf.Rect2i(Gf.Vec2i(0, 0), Gf.Vec2i(10, 10))",
+    "str_null": "[(0, 0):(-1, -1)]"
+  }
+}

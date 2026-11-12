@@ -1,0 +1,64 @@
+{
+  "palette": {
+    "enabledText": [
+      227,
+      227,
+      227
+    ],
+    "disabledText": [
+      122,
+      122,
+      122
+    ],
+    "handle": [
+      [
+        207,
+        151,
+        53
+      ],
+      [
+        229,
+        162,
+        44
+      ]
+    ],
+    "disabledHandle": [
+      [
+        177,
+        161,
+        134
+      ],
+      [
+        188,
+        165,
+        125
+      ]
+    ],
+    "checked": [
+      229,
+      162,
+      44
+    ]
+  },
+  "nativeVersion": [
+    0,
+    26,
+    11
+  ],
+  "source": "OpenUSD-26.11.1 pxr/usdImaging/usdviewq/stageView.py:277-318,1623-1633,1705-1713; appController.py:2096-2140",
+  "lines": [
+    "     Render: 2.50 ms (400.00 FPS)",
+    "   Playback: N/A"
+  ],
+  "lineSpacing": 15,
+  "playback": [
+    {
+      "intervalMs": 40,
+      "text": "40.00 ms (25.00 FPS)"
+    },
+    {
+      "intervalMs": 251,
+      "text": "251.00 ms (3.98 FPS)"
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/usd/sdf/tests/fixtures/pathExpressionReferenceText/capture.py",
+  "upstream": [
+    "pxr/usd/sdf/pathExpression.cpp:507-510",
+    "pxr/usd/sdf/pathExpression.cpp:196-203"
+  ],
+  "payload": {
+    "flattened": "#usda 1.0\n\ndef Scope \"c\" (\n    apiSchemas = [\"CollectionAPI:a\", \"CollectionAPI:b\"]\n)\n{\n    uniform pathExpression collection:a:membershipExpression = \"/x %:b\"\n    uniform pathExpression collection:b:membershipExpression = \"/y\"\n}\n\n",
+    "composeOver": [
+      [
+        "/x %:b",
+        "/w",
+        "/x %:b"
+      ],
+      [
+        "/x %_ %/a:b",
+        "/w",
+        "/x /w %/a:b"
+      ],
+      [
+        "%:b",
+        "%:c",
+        "%:b"
+      ]
+    ],
+    "makeAtom": [
+      [
+        "",
+        "b",
+        "%:b"
+      ],
+      [
+        "/a",
+        "b",
+        "%/a:b"
+      ],
+      [
+        "",
+        "_",
+        "%_"
+      ]
+    ],
+    "replacePrefix": [
+      [
+        "/x/y %:b %/x:c",
+        "/x",
+        "/z",
+        "/z/y %:b %/z:c"
+      ]
+    ]
+  }
+}

@@ -1,0 +1,334 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/usdImaging/usdImagingGL/tests/fixtures/native/commonMaterials/capture.py",
+  "upstream": [
+    "pxr/imaging/hdSt/codeGen.cpp:6546-6558",
+    "pxr/usd/usdGeom/primvar.cpp"
+  ],
+  "payload": {
+    "meshes": {
+      "constant": {
+        "primvar": "displayColor",
+        "interpolation": "constant",
+        "values": [
+          [
+            0.20000000298023224,
+            0.30000001192092896,
+            0.4000000059604645
+          ]
+        ]
+      },
+      "uniform": {
+        "primvar": "displayColor",
+        "interpolation": "uniform",
+        "values": [
+          [
+            0.20000000298023224,
+            0.30000001192092896,
+            0.4000000059604645
+          ]
+        ]
+      },
+      "vertex": {
+        "primvar": "displayColor",
+        "interpolation": "vertex",
+        "values": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0
+          ]
+        ]
+      },
+      "varying": {
+        "primvar": "displayColor",
+        "interpolation": "varying",
+        "values": [
+          [
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      "faceVarying": {
+        "primvar": "displayColor",
+        "interpolation": "faceVarying",
+        "values": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0
+          ]
+        ]
+      },
+      "missing": {
+        "primvar": "displayColor",
+        "interpolation": "missing",
+        "values": [
+          [
+            0.699999988079071,
+            0.6000000238418579,
+            0.5
+          ]
+        ]
+      },
+      "named": {
+        "primvar": "paint",
+        "interpolation": "vertex",
+        "values": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0
+          ]
+        ]
+      },
+      "inherited/Mesh": {
+        "primvar": "displayColor",
+        "interpolation": "constant",
+        "values": [
+          [
+            0.20000000298023224,
+            0.30000001192092896,
+            0.4000000059604645
+          ]
+        ]
+      }
+    },
+    "transforms": [
+      {
+        "path": "/uv0",
+        "inputs": [
+          [
+            0,
+            0
+          ],
+          [
+            0.25,
+            0.75
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "outputs": [
+          [
+            0.25,
+            0.5
+          ],
+          [
+            0.75,
+            2.75
+          ],
+          [
+            2.25,
+            0.5
+          ],
+          [
+            0.25,
+            3.5
+          ]
+        ],
+        "channels": {
+          "roughness": "g",
+          "metallic": "b",
+          "occlusion": "r"
+        },
+        "roughnessOutputs": [
+          [
+            -0.5,
+            0.125
+          ],
+          [
+            0.25,
+            1.625
+          ],
+          [
+            2.5,
+            0.125
+          ],
+          [
+            -0.5,
+            2.125
+          ]
+        ]
+      },
+      {
+        "path": "/uv1",
+        "inputs": [
+          [
+            0,
+            0
+          ],
+          [
+            0.25,
+            0.75
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "outputs": [
+          [
+            0.25,
+            0.5
+          ],
+          [
+            -2.0,
+            1.0000000000000004
+          ],
+          [
+            0.25000000000000044,
+            2.5
+          ],
+          [
+            -2.75,
+            0.5000000000000007
+          ]
+        ],
+        "channels": {
+          "roughness": "g",
+          "metallic": "b",
+          "occlusion": "r"
+        },
+        "roughnessOutputs": [
+          [
+            -0.5,
+            0.125
+          ],
+          [
+            1.0000000000000002,
+            -0.6249999999999997
+          ],
+          [
+            -0.49999999999999933,
+            -2.875
+          ],
+          [
+            1.5,
+            0.12500000000000044
+          ]
+        ]
+      },
+      {
+        "path": "/uv2",
+        "inputs": [
+          [
+            0,
+            0
+          ],
+          [
+            0.25,
+            0.75
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "outputs": [
+          [
+            -1.0,
+            2.0
+          ],
+          [
+            0.823123314589262,
+            4.385759078323094
+          ],
+          [
+            -0.590423977855504,
+            1.713211781824477
+          ],
+          [
+            1.2943057454041842,
+            5.276608177155968
+          ]
+        ],
+        "channels": {
+          "roughness": "g",
+          "metallic": "b",
+          "occlusion": "r"
+        },
+        "roughnessOutputs": [
+          [
+            -0.5,
+            0.125
+          ],
+          [
+            -0.7460006213098253,
+            1.7839103936967722
+          ],
+          [
+            1.9574561328669753,
+            1.8457293090531381
+          ],
+          [
+            -1.647152872702092,
+            1.7633040885779836
+          ]
+        ]
+      }
+    ],
+    "defaultFallback": [
+      0.0,
+      0.0,
+      0.0
+    ]
+  }
+}

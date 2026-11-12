@@ -1,0 +1,44 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/usd/usdGeom/tests/fixtures/visibilityBatch/capture.py",
+  "upstream": [
+    "pxr/usd/usdGeom/testenv/testUsdGeomImageable/AllInvisible.usda",
+    "pxr/usd/usdGeom/imageable.cpp"
+  ],
+  "payload": {
+    "rows": [
+      {
+        "path": "/foo",
+        "local": "inherited",
+        "computed": "inherited"
+      },
+      {
+        "path": "/foo/bar1",
+        "local": "inherited",
+        "computed": "inherited"
+      },
+      {
+        "path": "/foo/bar1/thing1",
+        "local": "inherited",
+        "computed": "inherited"
+      },
+      {
+        "path": "/foo/bar1/thing2",
+        "local": "invisible",
+        "computed": "invisible"
+      },
+      {
+        "path": "/foo/bar2",
+        "local": "invisible",
+        "computed": "invisible"
+      },
+      {
+        "path": "/foo/bar2/thing",
+        "local": "invisible",
+        "computed": "invisible"
+      }
+    ],
+    "session": "#usda 1.0\n\nover \"foo\"\n{\n    token visibility = \"inherited\"\n\n    over \"bar1\"\n    {\n        token visibility = \"inherited\"\n\n        over \"thing1\"\n        {\n            token visibility = \"inherited\"\n        }\n\n        over \"thing2\"\n        {\n            token visibility = \"invisible\"\n        }\n    }\n\n    over \"bar2\"\n    {\n        token visibility = \"invisible\"\n    }\n}\n\n"
+  }
+}

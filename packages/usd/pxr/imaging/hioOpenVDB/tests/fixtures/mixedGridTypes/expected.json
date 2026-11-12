@@ -1,0 +1,132 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/imaging/hioOpenVDB/tests/fixtures/mixedGridTypes/capture.py",
+  "upstream": [
+    "pxr/imaging/hioOpenVDB/vdbTextureData.cpp"
+  ],
+  "payload": {
+    "descriptors": [
+      {
+        "name": "density",
+        "type": "Tree_float_5_4_3"
+      },
+      {
+        "name": "index",
+        "type": "Tree_int32_5_4_3"
+      },
+      {
+        "name": "mask",
+        "type": "Tree_bool_5_4_3"
+      },
+      {
+        "name": "temperature",
+        "type": "Tree_float_5_4_3"
+      }
+    ],
+    "reads": [
+      {
+        "file": "mixedGridTypes.vdb",
+        "grid": "index",
+        "read": false,
+        "warnings": [
+          "Unsupported OpenVDB grid type"
+        ]
+      },
+      {
+        "file": "mixedGridTypes.vdb",
+        "grid": "density",
+        "read": true,
+        "warnings": [],
+        "rangeMin": [
+          -2,
+          1,
+          3
+        ],
+        "rangeMax": [
+          3,
+          5,
+          5
+        ],
+        "matrix": [
+          0.25,
+          0,
+          0,
+          0,
+          0,
+          0.25,
+          0,
+          0,
+          0,
+          0,
+          0.25,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        "resized": [
+          6,
+          5,
+          3
+        ]
+      },
+      {
+        "file": "mixedGridTypes.vdb",
+        "grid": "mask",
+        "read": false,
+        "warnings": [
+          "Unsupported OpenVDB grid type"
+        ]
+      },
+      {
+        "file": "mixedGridTypes.vdb",
+        "grid": "temperature",
+        "read": true,
+        "warnings": [],
+        "rangeMin": [
+          10,
+          -4,
+          7
+        ],
+        "rangeMax": [
+          12,
+          -2,
+          7
+        ],
+        "matrix": [
+          0.5,
+          0,
+          0,
+          0,
+          0,
+          0.5,
+          0,
+          0,
+          0,
+          0,
+          0.5,
+          0,
+          1,
+          2,
+          -3,
+          1
+        ],
+        "resized": [
+          3,
+          3,
+          1
+        ]
+      },
+      {
+        "file": "mixedGridTypes.vdb",
+        "grid": "noSuchGrid",
+        "read": false,
+        "warnings": [
+          "OpenVDB file mixedGridTypes.vdb has no grid noSuchGrid"
+        ]
+      }
+    ]
+  }
+}

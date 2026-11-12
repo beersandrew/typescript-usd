@@ -1,0 +1,24 @@
+#usda 1.0
+(
+    subLayers = [
+        @./clipWeak.usda@
+    ]
+)
+
+over "Source" (
+    clips = {
+        dictionary default = {
+            double2[] active = [(1, 0)]
+            asset[] assetPaths = [@./clipData.usda@]
+            string primPath = "/Clip"
+            double2[] times = [(1, 1), (3, 3)]
+        }
+    }
+)
+{
+    over "Child"
+    {
+        double value
+    }
+}
+

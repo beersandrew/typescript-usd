@@ -1,0 +1,1173 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/usd/sdf/tests/upstream/fixtures/usdaFileFormatParsing/capture.py",
+  "upstream": [
+    "pxr/usd/sdf/testenv/testSdfUsdaFileFormatParsing.cpp"
+  ],
+  "payload": {
+    "cases": [
+      {
+        "function": "TestLayer",
+        "vector": "validExpressions",
+        "index": 0,
+        "rule": "LayerSpec",
+        "upstreamValid": true,
+        "layer": "#usda 1.0",
+        "nativeParses": true
+      },
+      {
+        "function": "TestLayer",
+        "vector": "validExpressions",
+        "index": 1,
+        "rule": "LayerSpec",
+        "upstreamValid": true,
+        "layer": "#usda 1.0\n\ndef Xform \"hello\"\n{\n\tdef Sphere \"world\"\n\t{\n\t}\n}",
+        "nativeParses": true
+      },
+      {
+        "function": "TestLayer",
+        "vector": "validExpressions",
+        "index": 2,
+        "rule": "LayerSpec",
+        "upstreamValid": true,
+        "layer": "#usda 1.0\n\nover \"refSphere\" (\n\tprepend references = @./HelloWorld.usda@\n)\n{\n}",
+        "nativeParses": true
+      },
+      {
+        "function": "TestLayer",
+        "vector": "validExpressions",
+        "index": 3,
+        "rule": "LayerSpec",
+        "upstreamValid": true,
+        "layer": "#usda 1.0\n(\n    doc = \"\"\"Generated from Composed Stage of root layer RefExample.usda\n\"\"\"\n)\n\ndef Xform \"refSphere\"\n{\n    double3 xformOp:translate = (4, 5, 6) \n    uniform token[] xformOpOrder = []\n\n    def Sphere \"world\"\n    {\n        float3[] extent = [(-2, -2, -2), (2, 2, 2)]\n        color3f[] primvars:displayColor = [(0, 0, 1)] \n        double radius = 2\n    }\n}\n\ndef Xform \"refSphere2\"\n{\n   double3 xformOp:translate = (4, 5, 6)\n    uniform token[] xformOpOrder = [\"xformOp:translate\"]\n\n    def Sphere \"world\"\n    {\n       float3[] extent = [(-2, -2, -2), (2, 2, 2)]\n        color3f[] primvars:displayColor = [(1, 0, 0)]\n        double radius = 2\n    }\n}",
+        "nativeParses": true
+      },
+      {
+        "function": "TestLayer",
+        "vector": "validExpressions",
+        "index": 4,
+        "rule": "LayerSpec",
+        "upstreamValid": true,
+        "layer": "#usda 1.0\n(\n    doc = \"\"\"Generated from Composed Stage of root layer RefExample.usda\n\"\"\"\n)\n\ndef Xform \"refSphere\"\n{\n    double3 xformOp:translate = (4, 5, 6) \n    uniform token[] xformOpOrder = [\"xformOp:translate\"]\n}\n\ndef Xform \"refSphere2\"\n{\n   double3 xformOp:translate = (4, 5, 6)\n    uniform token[] xformOpOrder = [\"xformOp:translate\"]\n\n}",
+        "nativeParses": true
+      },
+      {
+        "function": "TestLayer",
+        "vector": "validExpressions",
+        "index": 5,
+        "rule": "LayerSpec",
+        "upstreamValid": true,
+        "layer": "#usda 1.0\nreorder rootPrims = ['foo', '_', \"\"\"B_A_5\"\"\"]",
+        "nativeParses": true
+      },
+      {
+        "function": "TestLayer",
+        "vector": "invalidExpressions",
+        "index": 0,
+        "rule": "LayerSpec",
+        "upstreamValid": false,
+        "layer": "def Xform \"hello\"\n{\n\tdef Sphere \"world\"\n\t{\n\t}\n}",
+        "nativeParses": false
+      },
+      {
+        "function": "TestLayer",
+        "vector": "invalidExpressions",
+        "index": 1,
+        "rule": "LayerSpec",
+        "upstreamValid": false,
+        "layer": "usda 1.0\n\ndef Xform \"hello\"\n{\n\tdef Sphere \"world\"\n\t{\n\t}\n}",
+        "nativeParses": false
+      },
+      {
+        "function": "TestSplines",
+        "vector": "validExpressions",
+        "index": 0,
+        "rule": "LayerSpec",
+        "upstreamValid": true,
+        "layer": "#usda 1.0\n\ndef Xform \"Prim1\"\n{\n    double xformOp:rotateX.spline = {\n        bezier,\n   }\n}\n\n",
+        "nativeParses": true
+      },
+      {
+        "function": "TestSplines",
+        "vector": "validExpressions",
+        "index": 1,
+        "rule": "LayerSpec",
+        "upstreamValid": true,
+        "layer": "#usda 1.0\n\ndef Xform \"Prim1\"\n{\n    double xformOp:rotateX.spline = {\n        pre: linear,\n   }\n}\n\n",
+        "nativeParses": true
+      },
+      {
+        "function": "TestSplines",
+        "vector": "validExpressions",
+        "index": 2,
+        "rule": "LayerSpec",
+        "upstreamValid": true,
+        "layer": "#usda 1.0\n\ndef Xform \"Prim1\"\n{\n    double xformOp:rotateX.spline = {\n        post: sloped(0.57),\n   }\n}\n\n",
+        "nativeParses": true
+      },
+      {
+        "function": "TestSplines",
+        "vector": "validExpressions",
+        "index": 3,
+        "rule": "LayerSpec",
+        "upstreamValid": true,
+        "layer": "#usda 1.0\n\ndef Xform \"Prim1\"\n{\n    double xformOp:rotateX.spline = {\n        1: 5; pre (0); post held,\n   }\n}\n\n",
+        "nativeParses": true
+      },
+      {
+        "function": "TestSplines",
+        "vector": "validExpressions",
+        "index": 4,
+        "rule": "LayerSpec",
+        "upstreamValid": true,
+        "layer": "#usda 1.0\n\ndef Xform \"Prim1\"\n{\n    double xformOp:rotateX.spline = {\n        1: 5; pre (0, 0); post held,\n   }\n}\n\n",
+        "nativeParses": true
+      },
+      {
+        "function": "TestSplines",
+        "vector": "validExpressions",
+        "index": 5,
+        "rule": "LayerSpec",
+        "upstreamValid": true,
+        "layer": "#usda 1.0\n\ndef Xform \"Prim1\"\n{\n    double xformOp:rotateX.spline = {\n        loop: (15, 25, 0, 2, 11.7),\n   }\n}\n\n",
+        "nativeParses": true
+      },
+      {
+        "function": "TestSplines",
+        "vector": "validExpressions",
+        "index": 6,
+        "rule": "LayerSpec",
+        "upstreamValid": true,
+        "layer": "#usda 1.0\n\ndef Xform \"Prim1\"\n{\n    double xformOp:rotateX.spline = {\n        15: 8.18; post curve (2.49, 1.17); { string comment = \"climb!\" },\n   }\n}\n\n",
+        "nativeParses": true
+      },
+      {
+        "function": "TestSplines",
+        "vector": "validExpressions",
+        "index": 7,
+        "rule": "LayerSpec",
+        "upstreamValid": true,
+        "layer": "#usda 1.0\n\ndef Xform \"Prim1\"\n{\n    double xformOp:rotateX.spline = {\n        20: 14.72; pre (3.77, -1.4); post curve (1.1, -1.4),\n   }\n}\n\n",
+        "nativeParses": true
+      },
+      {
+        "function": "TestSplines",
+        "vector": "validExpressions",
+        "index": 8,
+        "rule": "LayerSpec",
+        "upstreamValid": true,
+        "layer": "#usda 1.0\n\ndef Xform \"Prim1\"\n{\n    double xformOp:rotateX.spline = {\n        7: 5.5 & 7.21,\n   }\n}\n\n",
+        "nativeParses": true
+      },
+      {
+        "function": "TestSplines",
+        "vector": "validExpressions",
+        "index": 9,
+        "rule": "LayerSpec",
+        "upstreamValid": true,
+        "layer": "#usda 1.0\n\ndef Xform \"Prim1\"\n{\n    double xformOp:rotateX.spline = {\n        7: 5.5 & 7.21; post held,\n   }\n}\n\n",
+        "nativeParses": true
+      },
+      {
+        "function": "TestLayerMetadata",
+        "vector": "validExpressions",
+        "index": 0,
+        "rule": "LayerMetadata",
+        "upstreamValid": true,
+        "layer": "#usda 1.0\n()",
+        "nativeParses": true
+      },
+      {
+        "function": "TestLayerMetadata",
+        "vector": "validExpressions",
+        "index": 1,
+        "rule": "LayerMetadata",
+        "upstreamValid": true,
+        "layer": "#usda 1.0\n(\n)",
+        "nativeParses": true
+      },
+      {
+        "function": "TestLayerMetadata",
+        "vector": "validExpressions",
+        "index": 2,
+        "rule": "LayerMetadata",
+        "upstreamValid": true,
+        "layer": "#usda 1.0\n(\"layerMetadata\"; foo = (3, 2, 1); doc=\"\"\"some documentation for\n layer \n metadata\n\"\"\"\n)",
+        "nativeParses": true
+      },
+      {
+        "function": "TestLayerMetadata",
+        "vector": "validExpressions",
+        "index": 3,
+        "rule": "LayerMetadata",
+        "upstreamValid": true,
+        "layer": "#usda 1.0\n(add foo = None\ndelete foo = [3, \"5 in a string\", bar,];prepend _=[(1, 2, \"3\")]\nappend F00 = None;\n\n\nreorder foo =\t[bar, baz, foo::bar])",
+        "nativeParses": true
+      },
+      {
+        "function": "TestLayerMetadata",
+        "vector": "validExpressions",
+        "index": 4,
+        "rule": "LayerMetadata",
+        "upstreamValid": true,
+        "layer": "#usda 1.0\n(subLayers = [])",
+        "nativeParses": true
+      },
+      {
+        "function": "TestLayerMetadata",
+        "vector": "validExpressions",
+        "index": 5,
+        "rule": "LayerMetadata",
+        "upstreamValid": true,
+        "layer": "#usda 1.0\n(subLayers = [];subLayers=[\n\n\n])",
+        "nativeParses": true
+      },
+      {
+        "function": "TestLayerMetadata",
+        "vector": "validExpressions",
+        "index": 6,
+        "rule": "LayerMetadata",
+        "upstreamValid": true,
+        "layer": "#usda 1.0\n(subLayers = [];subLayers=[\n\n\n]\nsubLayers\t=\t[\n\n@an/asset/ref@])",
+        "nativeParses": true
+      },
+      {
+        "function": "TestLayerMetadata",
+        "vector": "validExpressions",
+        "index": 7,
+        "rule": "LayerMetadata",
+        "upstreamValid": true,
+        "layer": "#usda 1.0\n(subLayers = [];subLayers=[\n\n\n]\nsubLayers\t=\t[\n\n@an/asset/ref@];subLayers=[@another/asset/ref@(offset = 6;\n scale=4.5e0)])",
+        "nativeParses": true
+      },
+      {
+        "function": "TestLayerMetadata",
+        "vector": "validExpressions",
+        "index": 8,
+        "rule": "LayerMetadata",
+        "upstreamValid": true,
+        "layer": "#usda 1.0\n(subLayers=[]#comment\nappend foo = None)",
+        "nativeParses": true
+      },
+      {
+        "function": "TestLayerMetadata",
+        "vector": "invalidExpressions",
+        "index": 0,
+        "rule": "LayerMetadata",
+        "upstreamValid": false,
+        "layer": "#usda 1.0\n(",
+        "nativeParses": false
+      },
+      {
+        "function": "TestLayerMetadata",
+        "vector": "invalidExpressions",
+        "index": 1,
+        "rule": "LayerMetadata",
+        "upstreamValid": false,
+        "layer": "#usda 1.0\n\n\n(\n\n",
+        "nativeParses": false
+      },
+      {
+        "function": "TestLayerMetadata",
+        "vector": "invalidExpressions",
+        "index": 2,
+        "rule": "LayerMetadata",
+        "upstreamValid": false,
+        "layer": "#usda 1.0\nsubLayers=[@@@an/asset/path@@@(offset=\"myOffset\")]",
+        "nativeParses": false
+      },
+      {
+        "function": "TestLayerMetadata",
+        "vector": "invalidExpressions",
+        "index": 3,
+        "rule": "LayerMetadata",
+        "upstreamValid": false,
+        "layer": "#usda 1.0\n(add foo = None\ndelete foo = [3, \"5 in a string\", bar,];prepend _=[(1, 2, \"3\")\nappend = None;\n\n\nreorder foo =\t[bar, baz, foo::bar])",
+        "nativeParses": false
+      },
+      {
+        "function": "TestLayerMetadata",
+        "vector": "invalidExpressions",
+        "index": 4,
+        "rule": "LayerMetadata",
+        "upstreamValid": false,
+        "layer": "#usda 1.0\n(subLayers = [];subLayers=[\n\n\n]\nsubLayers\t=\t[\n\n@an/asset/ref@];subLayers=[@another/asset/ref@[offset = 6,\n scale=4.5e0]])",
+        "nativeParses": false
+      },
+      {
+        "function": "TestPrim",
+        "vector": "validPrimStatements",
+        "index": 0,
+        "rule": "PrimSpec",
+        "upstreamValid": true,
+        "layer": "#usda 1.0\ndef \"foo\" {}",
+        "nativeParses": true
+      },
+      {
+        "function": "TestPrim",
+        "vector": "validPrimStatements",
+        "index": 1,
+        "rule": "PrimSpec",
+        "upstreamValid": true,
+        "layer": "#usda 1.0\ndef F00 \"foo\" {}",
+        "nativeParses": true
+      },
+      {
+        "function": "TestPrim",
+        "vector": "validPrimStatements",
+        "index": 2,
+        "rule": "PrimSpec",
+        "upstreamValid": true,
+        "layer": "#usda 1.0\nclass \"foo\" {}",
+        "nativeParses": true
+      },
+      {
+        "function": "TestPrim",
+        "vector": "validPrimStatements",
+        "index": 3,
+        "rule": "PrimSpec",
+        "upstreamValid": true,
+        "layer": "#usda 1.0\nclass _ \"foo\" {}",
+        "nativeParses": true
+      },
+      {
+        "function": "TestPrim",
+        "vector": "validPrimStatements",
+        "index": 4,
+        "rule": "PrimSpec",
+        "upstreamValid": true,
+        "layer": "#usda 1.0\nover \"foo\" {}",
+        "nativeParses": true
+      },
+      {
+        "function": "TestPrim",
+        "vector": "validPrimStatements",
+        "index": 5,
+        "rule": "PrimSpec",
+        "upstreamValid": true,
+        "layer": "#usda 1.0\nover __ \"B_A_5\" {}",
+        "nativeParses": true
+      },
+      {
+        "function": "TestPrim",
+        "vector": "validPrimStatements",
+        "index": 6,
+        "rule": "PrimSpec",
+        "upstreamValid": true,
+        "layer": "#usda 1.0\ndef Xform \"hello\"\n{\n\tdef Sphere \"world\"\n\t{\n\t}\n}",
+        "nativeParses": true
+      },
+      {
+        "function": "TestPrim",
+        "vector": "validPrimStatements",
+        "index": 7,
+        "rule": "PrimSpec",
+        "upstreamValid": true,
+        "layer": "#usda 1.0\ndef \"abc\"(){ /*hello*/ def \"abc\" {}\n}",
+        "nativeParses": true
+      },
+      {
+        "function": "TestPrim",
+        "vector": "validPrimStatements",
+        "index": 8,
+        "rule": "PrimSpec",
+        "upstreamValid": true,
+        "layer": "#usda 1.0\ndef \"cat\" (){\nreorder nameChildren = [\"dog\"]; /*comment*/ def \"dog\" {}\n}",
+        "nativeParses": true
+      },
+      {
+        "function": "TestPrim",
+        "vector": "validPrimStatements",
+        "index": 9,
+        "rule": "PrimSpec",
+        "upstreamValid": true,
+        "layer": "#usda 1.0\ndef \"cat\" (){reorder nameChildren = [\"dog\"] #comment\n reorder nameChildren = [\"whale\"]\n}",
+        "nativeParses": true
+      },
+      {
+        "function": "TestPrim",
+        "vector": "validPrimStatements",
+        "index": 10,
+        "rule": "PrimSpec",
+        "upstreamValid": true,
+        "layer": "#usda 1.0\ndef \"cat\" (){reorder nameChildren = [\"dog\"] #comment\n def \"dog\" {}\n}",
+        "nativeParses": true
+      },
+      {
+        "function": "TestPrim",
+        "vector": "validPrimStatements",
+        "index": 11,
+        "rule": "PrimSpec",
+        "upstreamValid": true,
+        "layer": "#usda 1.0\ndef \"cat\" (){#comment\n def \"dog\" {} //comment\n def \"whale\" {}\n}",
+        "nativeParses": true
+      },
+      {
+        "function": "TestPrim",
+        "vector": "invalidPrimStatements",
+        "index": 0,
+        "rule": "PrimSpec",
+        "upstreamValid": false,
+        "layer": "#usda 1.0\ndef",
+        "nativeParses": false
+      },
+      {
+        "function": "TestPrim",
+        "vector": "invalidPrimStatements",
+        "index": 1,
+        "rule": "PrimSpec",
+        "upstreamValid": false,
+        "layer": "#usda 1.0\ndef foo {}",
+        "nativeParses": false
+      },
+      {
+        "function": "TestPrim",
+        "vector": "invalidPrimStatements",
+        "index": 2,
+        "rule": "PrimSpec",
+        "upstreamValid": false,
+        "layer": "#usda 1.0\ndef Xform \"hello\"\n{\n\tdef Sphere \"world\"\n\t{\n\t}}",
+        "nativeParses": false
+      },
+      {
+        "function": "TestPrim",
+        "vector": "invalidPrimStatements",
+        "index": 3,
+        "rule": "PrimSpec",
+        "upstreamValid": false,
+        "layer": "#usda 1.0\nreorder rootPrims = ['foo', '_', \"\"\"B_A_5\"\"\"]",
+        "nativeParses": true
+      },
+      {
+        "function": "TestPrim",
+        "vector": "invalidPrimStatements",
+        "index": 4,
+        "rule": "PrimSpec",
+        "upstreamValid": false,
+        "layer": "#usda 1.0\ndef \"abc\"(){ def \"abc\" {} /*comment*/ }",
+        "nativeParses": false
+      },
+      {
+        "function": "TestPrim",
+        "vector": "invalidPrimStatements",
+        "index": 5,
+        "rule": "PrimSpec",
+        "upstreamValid": false,
+        "layer": "#usda 1.0\ndef \"cat\" (){\nreorder nameChildren = [\"dog\"] /*comment*/ def \"dog\" {}\n}",
+        "nativeParses": false
+      },
+      {
+        "function": "TestPrim",
+        "vector": "invalidPrimStatements",
+        "index": 6,
+        "rule": "PrimSpec",
+        "upstreamValid": false,
+        "layer": "#usda 1.0\ndef \"cat\" (){\ndef \"dog\" {} /*comment*/ def \"whale\" {}\n}",
+        "nativeParses": false
+      },
+      {
+        "function": "TestPrim",
+        "vector": "validExpressions",
+        "index": 0,
+        "rule": "PrimItem",
+        "upstreamValid": true,
+        "layer": "#usda 1.0\ndef \"P\" {\ncustom float[] add:delete:rootPrims\n\n}\n",
+        "nativeParses": true
+      },
+      {
+        "function": "TestPrim",
+        "vector": "validExpressions",
+        "index": 1,
+        "rule": "PrimItem",
+        "upstreamValid": true,
+        "layer": "#usda 1.0\ndef \"P\" {\nfloat3 foo;\n}\n",
+        "nativeParses": true
+      },
+      {
+        "function": "TestPrim",
+        "vector": "validExpressions",
+        "index": 2,
+        "rule": "PrimItem",
+        "upstreamValid": true,
+        "layer": "#usda 1.0\ndef \"P\" {\nuniform half bar_\t\t=  \"not a valid value but validated later\"\n\n}\n",
+        "nativeParses": false
+      },
+      {
+        "function": "TestPrim",
+        "vector": "validExpressions",
+        "index": 3,
+        "rule": "PrimItem",
+        "upstreamValid": true,
+        "layer": "#usda 1.0\ndef \"P\" {\ndouble3   [] foo.connect      =     None;\n}\n",
+        "nativeParses": true
+      },
+      {
+        "function": "TestPrim",
+        "vector": "validExpressions",
+        "index": 4,
+        "rule": "PrimItem",
+        "upstreamValid": true,
+        "layer": "#usda 1.0\ndef \"P\" {\nadd int2 foo:bar.connect=[]\n\n}\n",
+        "nativeParses": false
+      },
+      {
+        "function": "TestPrim",
+        "vector": "validExpressions",
+        "index": 5,
+        "rule": "PrimItem",
+        "upstreamValid": true,
+        "layer": "#usda 1.0\ndef \"P\" {\ndelete myType _F00_.connect\t=[\n\n\n\n];\n}\n",
+        "nativeParses": false
+      },
+      {
+        "function": "TestPrim",
+        "vector": "validExpressions",
+        "index": 6,
+        "rule": "PrimItem",
+        "upstreamValid": true,
+        "layer": "#usda 1.0\ndef \"P\" {\nprepend foo[] __:connect:_.connect=<Foo.bar[targ.attr].boom>\n\n}\n",
+        "nativeParses": true
+      },
+      {
+        "function": "TestPrim",
+        "vector": "validExpressions",
+        "index": 7,
+        "rule": "PrimItem",
+        "upstreamValid": true,
+        "layer": "#usda 1.0\ndef \"P\" {\nappend string bar__\t.\t  connect    \t\t =[<Foo.bar[targ.attr].boom>];\n}\n",
+        "nativeParses": true
+      },
+      {
+        "function": "TestPrim",
+        "vector": "validExpressions",
+        "index": 8,
+        "rule": "PrimItem",
+        "upstreamValid": true,
+        "layer": "#usda 1.0\ndef \"P\" {\nreorder foo::bar[] _baz00.connect=[<Foo.bar[targ.attr].boom>,\n<Foo.bar[targ.attr].boom>,]\n\n}\n",
+        "nativeParses": false
+      },
+      {
+        "function": "TestPrim",
+        "vector": "validExpressions",
+        "index": 9,
+        "rule": "PrimItem",
+        "upstreamValid": true,
+        "layer": "#usda 1.0\ndef \"P\" {\ncustom_type my:custom:type:instance:_:add.\t\ttimeSamples = {\n\n 24.567e23   : @foo\\asset\\ref@  ,\t\n 2: \"string value\",-77    :(\"tuple_value\", -65.8),\n45.65    :\t None\n};\n}\n",
+        "nativeParses": false
+      },
+      {
+        "function": "TestPrim",
+        "vector": "validExpressions",
+        "index": 10,
+        "rule": "PrimItem",
+        "upstreamValid": true,
+        "layer": "#usda 1.0\ndef \"P\" {\nuniform int3 foo          =     (7, 6,\n 2)(displayUnit=mm)\n\n}\n",
+        "nativeParses": true
+      },
+      {
+        "function": "TestPrim",
+        "vector": "validExpressions",
+        "index": 11,
+        "rule": "PrimItem",
+        "upstreamValid": true,
+        "layer": "#usda 1.0\ndef \"P\" {\nconfig int3 foo\t= (\n7,2,\n\n5)(doc=\"\"\"all list\n ops\n\"\"\";delete foo =[\"not an empty list\"] \t;\nadd bar::baz= [@@@asset\\ref\\@@@@@@ , [ 123e45]];prepend foo_bar=[\"string1\",'string2'];\nappend foo2bar5=[(34, 45, 56)]\n\nreorder foo2::bar5=[-.9876];\n)\n\n}\n",
+        "nativeParses": true
+      },
+      {
+        "function": "TestPrim",
+        "vector": "validExpressions",
+        "index": 12,
+        "rule": "PrimItem",
+        "upstreamValid": true,
+        "layer": "#usda 1.0\ndef \"P\" {\nadd rel add:delete\n\n}\n",
+        "nativeParses": true
+      },
+      {
+        "function": "TestPrim",
+        "vector": "validExpressions",
+        "index": 13,
+        "rule": "PrimItem",
+        "upstreamValid": true,
+        "layer": "#usda 1.0\ndef \"P\" {\ndelete custom rel foo_bar_23 = None;\n}\n",
+        "nativeParses": false
+      },
+      {
+        "function": "TestPrim",
+        "vector": "validExpressions",
+        "index": 14,
+        "rule": "PrimItem",
+        "upstreamValid": true,
+        "layer": "#usda 1.0\ndef \"P\" {\nprepend custom varying rel FOO_=[]\n\n}\n",
+        "nativeParses": false
+      },
+      {
+        "function": "TestPrim",
+        "vector": "validExpressions",
+        "index": 15,
+        "rule": "PrimItem",
+        "upstreamValid": true,
+        "layer": "#usda 1.0\ndef \"P\" {\nappend varying rel F00OO = <Foo.bar[targ.attr].boom>;\n}\n",
+        "nativeParses": true
+      },
+      {
+        "function": "TestPrim",
+        "vector": "validExpressions",
+        "index": 16,
+        "rule": "PrimItem",
+        "upstreamValid": true,
+        "layer": "#usda 1.0\ndef \"P\" {\nreorder rel foo =[<Foo.bar[targ.attr].boom>,\n<.bar>]\n\n}\n",
+        "nativeParses": true
+      },
+      {
+        "function": "TestPrim",
+        "vector": "validExpressions",
+        "index": 17,
+        "rule": "PrimItem",
+        "upstreamValid": true,
+        "layer": "#usda 1.0\ndef \"P\" {\nadd   \t\t   \t  rel  \t\t  add:delete;\n}\n",
+        "nativeParses": true
+      },
+      {
+        "function": "TestPrim",
+        "vector": "validExpressions",
+        "index": 18,
+        "rule": "PrimItem",
+        "upstreamValid": true,
+        "layer": "#usda 1.0\ndef \"P\" {\nprepend\t\t\tvarying            rel my:relationship=[<Foo.bar[targ.attr].boom>,\n\n<Foo.bar[targ.attr].boom>,\r\n<Foo.bar[targ.attr].boom>,\n]\n\n}\n",
+        "nativeParses": false
+      },
+      {
+        "function": "TestPrim",
+        "vector": "validExpressions",
+        "index": 19,
+        "rule": "PrimItem",
+        "upstreamValid": true,
+        "layer": "#usda 1.0\ndef \"P\" {\nrel F00OO = [  <Foo.bar[targ.attr].boom>   ];\n}\n",
+        "nativeParses": true
+      },
+      {
+        "function": "TestPrim",
+        "vector": "validExpressions",
+        "index": 20,
+        "rule": "PrimItem",
+        "upstreamValid": true,
+        "layer": "#usda 1.0\ndef \"P\" {\nvarying \t\t rel foo.\tdefault\t\t = <.bar>;\n}\n",
+        "nativeParses": true
+      },
+      {
+        "function": "TestPrim",
+        "vector": "validExpressions",
+        "index": 21,
+        "rule": "PrimItem",
+        "upstreamValid": true,
+        "layer": "#usda 1.0\ndef \"P\" {\nrel myRel = <.bar> (doc=\"\"\"all list\n ops\n\"\"\";delete foo =[\"not an empty list\"] ;\nadd bar::baz= [@@@asset\\ref\\@@@@@@ , [ 123e45]];prepend foo_bar=[\"string1\",'string2'];\nappend foo2bar5=[(34, 45, 56)]\n\nreorder foo2::bar5=[-.9876];\n)\n\n}\n",
+        "nativeParses": true
+      },
+      {
+        "function": "TestPrim",
+        "vector": "validExpressions",
+        "index": 22,
+        "rule": "PrimItem",
+        "upstreamValid": true,
+        "layer": "#usda 1.0\ndef \"P\" {\ncustom rel withoutAssignment(\n\tfoo =    baz\n\ndoc     =  \"my doc\"   ;  \n\t\treorder foo   =  None\ndelete bar::baz    =    [\"myString\", (23.4, -inf, @assetRef\\path@)]\n\n);\n}\n",
+        "nativeParses": true
+      },
+      {
+        "function": "TestPrim",
+        "vector": "validExpressions",
+        "index": 23,
+        "rule": "PrimItem",
+        "upstreamValid": true,
+        "layer": "#usda 1.0\ndef \"P\" {\nvariantSet \"shadingVariant\" = { \"blue\" {}}\n\n}\n",
+        "nativeParses": true
+      },
+      {
+        "function": "TestPrim",
+        "vector": "validExpressions",
+        "index": 24,
+        "rule": "PrimItem",
+        "upstreamValid": true,
+        "layer": "#usda 1.0\ndef \"P\" {\nvariantSet \"shadingVariant\" = {}\n\n}\n",
+        "nativeParses": true
+      },
+      {
+        "function": "TestPrim",
+        "vector": "validExpressions",
+        "index": 25,
+        "rule": "PrimItem",
+        "upstreamValid": true,
+        "layer": "#usda 1.0\ndef \"P\" {\nvariantSet 'shadingVaraint' = {'blue'{}'green'{}}\n\n}\n",
+        "nativeParses": true
+      },
+      {
+        "function": "TestPrim",
+        "vector": "validExpressions",
+        "index": 26,
+        "rule": "PrimItem",
+        "upstreamValid": true,
+        "layer": "#usda 1.0\ndef \"P\" {\nvariantSet \"shadingVariant\" = {\n\t\"blue\" {\n\t}\n}\n\n}\n",
+        "nativeParses": true
+      },
+      {
+        "function": "TestPrim",
+        "vector": "validExpressions",
+        "index": 27,
+        "rule": "PrimItem",
+        "upstreamValid": true,
+        "layer": "#usda 1.0\ndef \"P\" {\nvariantSet \"shadingVariant\" = {\n\t\"blue\" {\n\t}\n\n\t\"green\" {\n\t}\n\n\t\"red\" {\n\t}\n}\n\n}\n",
+        "nativeParses": true
+      },
+      {
+        "function": "TestPrim",
+        "vector": "validExpressions",
+        "index": 28,
+        "rule": "PrimItem",
+        "upstreamValid": true,
+        "layer": "#usda 1.0\ndef \"P\" {\nvariantSet \"shadingVariant\" = {\n\t\"blue\" {\n\t}\n\n\t\"green\" {\n\t}\n\n\t\"red\" {\n\t\tvariantSet \"subShadingVariant\" =\n\t\t{\n\t\t\t\"scarlet\" {\n\t\t\t}\n\t\t}\t\n}\n}\n\n}\n",
+        "nativeParses": true
+      },
+      {
+        "function": "TestPrim",
+        "vector": "validExpressions",
+        "index": 29,
+        "rule": "PrimItem",
+        "upstreamValid": true,
+        "layer": "#usda 1.0\ndef \"P\" {\nvariantSet \"shadingVariant\" = {\n\t\"blue\" {\n\t}\n\n\t\"green\" {\n\t}\n\n\t\"red\" {\n\t\tover \"world\"\n\t\t{}\n\t\n}\n}\n\n}\n",
+        "nativeParses": true
+      },
+      {
+        "function": "TestPrim",
+        "vector": "validExpressions",
+        "index": 30,
+        "rule": "PrimItem",
+        "upstreamValid": true,
+        "layer": "#usda 1.0\ndef \"P\" {\nvariantSet \"shadingVariant\" = {\n\t\"blue\" {\n\t}\n\n\t\"green\" {\n\t}\n\n\t\"red\" {\n\t\tover \"world\"\n\t\t{\n\t\t\tcolor3f[] primvars:displayColor = [(1, 0, 0)]\n\t\t}\n\t\n}\n}\n\n}\n",
+        "nativeParses": true
+      },
+      {
+        "function": "TestPrim",
+        "vector": "validExpressions",
+        "index": 31,
+        "rule": "PrimItem",
+        "upstreamValid": true,
+        "layer": "#usda 1.0\ndef \"P\" {\nreorder nameChildren = [\"foo\", \"bar\"];\n}\n",
+        "nativeParses": true
+      },
+      {
+        "function": "TestPrim",
+        "vector": "validExpressions",
+        "index": 32,
+        "rule": "PrimItem",
+        "upstreamValid": true,
+        "layer": "#usda 1.0\ndef \"P\" {\nreorder nameChildren = ['foo', 'bar',\n 'baz']\n\n}\n",
+        "nativeParses": true
+      },
+      {
+        "function": "TestPrim",
+        "vector": "validExpressions",
+        "index": 33,
+        "rule": "PrimItem",
+        "upstreamValid": true,
+        "layer": "#usda 1.0\ndef \"P\" {\nreorder properties = ['prop1', \"_prop2\"];\n}\n",
+        "nativeParses": true
+      },
+      {
+        "function": "TestPrim",
+        "vector": "invalidExpressions",
+        "index": 0,
+        "rule": "PrimItem",
+        "upstreamValid": false,
+        "layer": "#usda 1.0\ndef \"P\" {\ncustom float[] add:delete:rootPrims\n}\n",
+        "nativeParses": true
+      },
+      {
+        "function": "TestPrim",
+        "vector": "invalidExpressions",
+        "index": 1,
+        "rule": "PrimItem",
+        "upstreamValid": false,
+        "layer": "#usda 1.0\ndef \"P\" {\nfloat3 foo\n}\n",
+        "nativeParses": true
+      },
+      {
+        "function": "TestPrim",
+        "vector": "invalidExpressions",
+        "index": 2,
+        "rule": "PrimItem",
+        "upstreamValid": false,
+        "layer": "#usda 1.0\ndef \"P\" {\nvariantSet \"shadingVariant\" = { \"blue\" {}};\n}\n",
+        "nativeParses": false
+      },
+      {
+        "function": "TestPrim",
+        "vector": "invalidExpressions",
+        "index": 3,
+        "rule": "PrimItem",
+        "upstreamValid": false,
+        "layer": "#usda 1.0\ndef \"P\" {\nconfig int3 foo\t= (\n7,2,\n\n5)\n(doc=\"\"\"all list\n ops\n\"\"\";delete foo =[\"not an empty list\"] \n;\nadd bar::baz= [@@@asset\\ref\\@@@@@@ , [ 123e45]];prepend foo_bar=[\"string1\",'string2'];\nappend foo2bar5=[(34, 45, 56)]\n\nreorder foo2::bar5=[-.9876]\n;\n);\n}\n",
+        "nativeParses": false
+      },
+      {
+        "function": "TestPrim",
+        "vector": "invalidExpressions",
+        "index": 4,
+        "rule": "PrimItem",
+        "upstreamValid": false,
+        "layer": "#usda 1.0\ndef \"P\" {\ncustom rel withoutAssignment\n\n(\n\tfoo =    baz\n\ndoc     =  \"my doc\"   ;  \n\t\treorder foo   =  None\ndelete bar::baz    =    [\"myString\", (23.4, -inf, @assetRef\\path@)]\n\n);\n}\n",
+        "nativeParses": false
+      },
+      {
+        "function": "TestPrimMetadata",
+        "vector": "validExpressions",
+        "index": 0,
+        "rule": "PrimMetadata",
+        "upstreamValid": true,
+        "layer": "#usda 1.0\ndef \"P\" (\n\n\n) {}\n",
+        "nativeParses": true
+      },
+      {
+        "function": "TestPrimMetadata",
+        "vector": "validExpressions",
+        "index": 1,
+        "rule": "PrimMetadata",
+        "upstreamValid": true,
+        "layer": "#usda 1.0\ndef \"P\" () {}\n",
+        "nativeParses": true
+      },
+      {
+        "function": "TestPrimMetadata",
+        "vector": "validExpressions",
+        "index": 2,
+        "rule": "PrimMetadata",
+        "upstreamValid": true,
+        "layer": "#usda 1.0\ndef \"P\" (\"one piece of prim metadata\"    ;\n\n) {}\n",
+        "nativeParses": true
+      },
+      {
+        "function": "TestPrimMetadata",
+        "vector": "validExpressions",
+        "index": 3,
+        "rule": "PrimMetadata",
+        "upstreamValid": true,
+        "layer": "#usda 1.0\ndef \"P\" ('foo'; foo=\"\"\"bar\n\n\"\"\"   ; foo   =\t\t34.64\n\nadd __  =  None;delete foo\t=[-89.723   , \"foo_string\"]    ;prepend foo_bar=[bar\t, baz::foo]\nappend _056245 =    \t[@c:\\asset\\ref\\path@  ,];\n\n\n\n\nreorder _my__f00  = None;) {}\n",
+        "nativeParses": true
+      },
+      {
+        "function": "TestPrimMetadata",
+        "vector": "validExpressions",
+        "index": 4,
+        "rule": "PrimMetadata",
+        "upstreamValid": true,
+        "layer": "#usda 1.0\ndef \"P\" (    doc=\"\"\"my_Documentation \n\n string\n\"\"\") {}\n",
+        "nativeParses": true
+      },
+      {
+        "function": "TestPrimMetadata",
+        "vector": "validExpressions",
+        "index": 5,
+        "rule": "PrimMetadata",
+        "upstreamValid": true,
+        "layer": "#usda 1.0\ndef \"P\" (kind\t   =  '____'  ;   \n\n) {}\n",
+        "nativeParses": true
+      },
+      {
+        "function": "TestPrimMetadata",
+        "vector": "validExpressions",
+        "index": 6,
+        "rule": "PrimMetadata",
+        "upstreamValid": true,
+        "layer": "#usda 1.0\ndef \"P\" (kind = \"class\"\npermission=__foo) {}\n",
+        "nativeParses": false
+      },
+      {
+        "function": "TestPrimMetadata",
+        "vector": "validExpressions",
+        "index": 7,
+        "rule": "PrimMetadata",
+        "upstreamValid": true,
+        "layer": "#usda 1.0\ndef \"P\" (\t\tpayload\t\t = \tNone\n\npayload  =[]; payload=[  \n  \n  \n];payload=[\n\n@./asset1@  , @@@escaped_asset\\@@@_1@@@   ,\n\n]) {}\n",
+        "nativeParses": true
+      },
+      {
+        "function": "TestPrimMetadata",
+        "vector": "validExpressions",
+        "index": 8,
+        "rule": "PrimMetadata",
+        "upstreamValid": true,
+        "layer": "#usda 1.0\ndef \"P\" (payload=[@my_layer_ref@</my/path/ref>  (offset =  45\n  scale = 2.6)  ,  <just/a/path/ref>]) {}\n",
+        "nativeParses": false
+      },
+      {
+        "function": "TestPrimMetadata",
+        "vector": "validExpressions",
+        "index": 9,
+        "rule": "PrimMetadata",
+        "upstreamValid": true,
+        "layer": "#usda 1.0\ndef \"P\" (add payload=\t\t[@my_layer_ref@</my/path/ref>  (offset =  45\n  scale = 2.6)  ,  <just/a/path/ref>] ;\n\n  delete payload=\t\t[@my_layer_ref@</my/path/ref>  (offset =  45\n  scale = 2.6)  ,  <just/a/path/ref>]) {}\n",
+        "nativeParses": false
+      },
+      {
+        "function": "TestPrimMetadata",
+        "vector": "validExpressions",
+        "index": 10,
+        "rule": "PrimMetadata",
+        "upstreamValid": true,
+        "layer": "#usda 1.0\ndef \"P\" (  prepend payload=\t\t[@my_layer_ref@</my/path/ref>  (offset =  45\n  scale = 2.6)  ,  <just/a/path/ref>] ;\n\n  append payload=\t\t[@my_layer_ref@</my/path/ref>  (offset =  45\n  scale = 2.6)  ,  <just/a/path/ref>]) {}\n",
+        "nativeParses": false
+      },
+      {
+        "function": "TestPrimMetadata",
+        "vector": "validExpressions",
+        "index": 11,
+        "rule": "PrimMetadata",
+        "upstreamValid": true,
+        "layer": "#usda 1.0\ndef \"P\" (reorder payload=\t\t[<just/a/path/ref>   \t,\n@my_layer_ref@</my/path/ref>  (offset =  45\n  scale = 2.6)  ,  ]) {}\n",
+        "nativeParses": false
+      },
+      {
+        "function": "TestPrimMetadata",
+        "vector": "validExpressions",
+        "index": 12,
+        "rule": "PrimMetadata",
+        "upstreamValid": true,
+        "layer": "#usda 1.0\ndef \"P\" (references =  [] ;  \n  references = None) {}\n",
+        "nativeParses": true
+      },
+      {
+        "function": "TestPrimMetadata",
+        "vector": "validExpressions",
+        "index": 13,
+        "rule": "PrimMetadata",
+        "upstreamValid": true,
+        "layer": "#usda 1.0\ndef \"P\" (references=[@@@my_lay@@er_ref@@@</my/path/ref>  (offset =  45\n  scale = 2.6)]) {}\n",
+        "nativeParses": true
+      },
+      {
+        "function": "TestPrimMetadata",
+        "vector": "validExpressions",
+        "index": 14,
+        "rule": "PrimMetadata",
+        "upstreamValid": true,
+        "layer": "#usda 1.0\ndef \"P\" (references=[@@@my_lay@@er_ref@@@</my/path/ref>  ()]) {}\n",
+        "nativeParses": true
+      },
+      {
+        "function": "TestPrimMetadata",
+        "vector": "validExpressions",
+        "index": 15,
+        "rule": "PrimMetadata",
+        "upstreamValid": true,
+        "layer": "#usda 1.0\ndef \"P\" (references=[@@@my_lay@@er_ref@@@</my/path/ref>  (  \n\n)]) {}\n",
+        "nativeParses": true
+      },
+      {
+        "function": "TestPrimMetadata",
+        "vector": "validExpressions",
+        "index": 16,
+        "rule": "PrimMetadata",
+        "upstreamValid": true,
+        "layer": "#usda 1.0\ndef \"P\" (references=[@@@my_lay@@er_ref@@@</my/path/ref>  (  customData = { float \"my_key\" = 457.0e23})]) {}\n",
+        "nativeParses": true
+      },
+      {
+        "function": "TestPrimMetadata",
+        "vector": "validExpressions",
+        "index": 17,
+        "rule": "PrimMetadata",
+        "upstreamValid": true,
+        "layer": "#usda 1.0\ndef \"P\" (kind = \"custom_kind_01\"\nsymmetryFunction=\nsymmetryFunction=my_symmetry_function;prefixSubstitutions = {};suffixSubstitutions = {'key1':'my_value', 'key2':'68.32'}) {}\n",
+        "nativeParses": true
+      },
+      {
+        "function": "TestPrimMetadata",
+        "vector": "validExpressions",
+        "index": 18,
+        "rule": "PrimMetadata",
+        "upstreamValid": true,
+        "layer": "#usda 1.0\ndef \"P\" (explicit=foo_valu3\n'some string metadata') {}\n",
+        "nativeParses": true
+      },
+      {
+        "function": "TestPrimMetadata",
+        "vector": "validExpressions",
+        "index": 19,
+        "rule": "PrimMetadata",
+        "upstreamValid": true,
+        "layer": "#usda 1.0\ndef \"P\" (inherits =  []\n\n inherits=[];inherits=[\n\n\n  ]\ninherits=[ </my/prim_path/path>    ,\n <my/other/prim/path>]  \n) {}\n",
+        "nativeParses": true
+      },
+      {
+        "function": "TestPrimMetadata",
+        "vector": "validExpressions",
+        "index": 20,
+        "rule": "PrimMetadata",
+        "upstreamValid": true,
+        "layer": "#usda 1.0\ndef \"P\" (add inherits = [<this/new/prim/path> ];delete inherits=[]\n\nappend inherits=   [</prim/path/p1.property>, </prim/path/p2>   ];  prepend inherits = [</this/other/prim/path>  ]; reorder inherits = [</prim/path/p2>, </this/other/prim/path> ]) {}\n",
+        "nativeParses": false
+      },
+      {
+        "function": "TestPrimMetadata",
+        "vector": "validExpressions",
+        "index": 21,
+        "rule": "PrimMetadata",
+        "upstreamValid": true,
+        "layer": "#usda 1.0\ndef \"P\" (specializes = \t[]\nspecializes=[    \n\n\t\t  ]; specializes=None\n\nspecializes = [</prim/path/p1.property>, </prim/path/p2>   ,]) {}\n",
+        "nativeParses": false
+      },
+      {
+        "function": "TestPrimMetadata",
+        "vector": "validExpressions",
+        "index": 22,
+        "rule": "PrimMetadata",
+        "upstreamValid": true,
+        "layer": "#usda 1.0\ndef \"P\" (add specializes = []; \n\n delete specializes = None\n\nprepend specializes = [\n];append specializes = [</prim/path/p1.property>, \n</prim/path/p2>]\n\n\n  reorder specializes = [</another/prim/path.with_property>]) {}\n",
+        "nativeParses": false
+      },
+      {
+        "function": "TestPrimMetadata",
+        "vector": "validExpressions",
+        "index": 23,
+        "rule": "PrimMetadata",
+        "upstreamValid": true,
+        "layer": "#usda 1.0\ndef \"P\" (  variants = {\n\n  float3[] add = (8.3, 0.5,\n  6.7)\n\nstring shadingVariant = \"red\";}) {}\n",
+        "nativeParses": false
+      },
+      {
+        "function": "TestPrimMetadata",
+        "vector": "validExpressions",
+        "index": 24,
+        "rule": "PrimMetadata",
+        "upstreamValid": true,
+        "layer": "#usda 1.0\ndef \"P\" (\n\tvariants = {\n\t\tstring shadingVariant = \"green\"\n\t}\n\tprepend variantSets = \"shadingVariant\"\n) {}\n",
+        "nativeParses": true
+      },
+      {
+        "function": "TestPrimMetadata",
+        "vector": "validExpressions",
+        "index": 25,
+        "rule": "PrimMetadata",
+        "upstreamValid": true,
+        "layer": "#usda 1.0\ndef \"P\" (variantSets=[\"shadingVariant1\",\"shadingVariant2\",\"shadingVariant3\",\"shadingVariant4\",\"shadingVariant5\"]) {}\n",
+        "nativeParses": true
+      },
+      {
+        "function": "TestPrimMetadata",
+        "vector": "validExpressions",
+        "index": 26,
+        "rule": "PrimMetadata",
+        "upstreamValid": true,
+        "layer": "#usda 1.0\ndef \"P\" (\tvariantSets = [\"shadingVariant1\"  , \"shadingVariant2\",\n\"shadingVariant3\", 'shadingVariant4', \"\"\"shadingVariant5\"\"\"\n\n]) {}\n",
+        "nativeParses": true
+      },
+      {
+        "function": "TestPrimMetadata",
+        "vector": "validExpressions",
+        "index": 27,
+        "rule": "PrimMetadata",
+        "upstreamValid": true,
+        "layer": "#usda 1.0\ndef \"P\" (add variantSets=[\n\"shadingVariant\"]\ndelete variantSets=[\"shadingVariant\"]; prepend variantSets=\"___\"\n append variantSets=[\"56\", \"anotherVariant\"]; reorder variantSets    =\t[\n\n\"anotherVariant\",\n\n\"variant2\",\n]) {}\n",
+        "nativeParses": true
+      },
+      {
+        "function": "TestPrimMetadata",
+        "vector": "invalidExpressions",
+        "index": 0,
+        "rule": "PrimMetadata",
+        "upstreamValid": false,
+        "layer": "#usda 1.0\ndef \"P\" ( {}\n",
+        "nativeParses": false
+      },
+      {
+        "function": "TestPrimMetadata",
+        "vector": "invalidExpressions",
+        "index": 1,
+        "rule": "PrimMetadata",
+        "upstreamValid": false,
+        "layer": "#usda 1.0\ndef \"P\" (kind=   =  '____'  ;   \n\n) {}\n",
+        "nativeParses": false
+      },
+      {
+        "function": "TestPrimMetadata",
+        "vector": "invalidExpressions",
+        "index": 2,
+        "rule": "PrimMetadata",
+        "upstreamValid": false,
+        "layer": "#usda 1.0\ndef \"P\" (kind-class) {}\n",
+        "nativeParses": false
+      },
+      {
+        "function": "TestPrimMetadata",
+        "vector": "invalidExpressions",
+        "index": 3,
+        "rule": "PrimMetadata",
+        "upstreamValid": false,
+        "layer": "#usda 1.0\ndef \"P\" (payload=[@my_layer_ref@</my/path/ref>  (offset =  45\n  scale = 2.6)  ;  <just/a/path/ref>]) {}\n",
+        "nativeParses": false
+      },
+      {
+        "function": "TestPrimMetadata",
+        "vector": "invalidExpressions",
+        "index": 4,
+        "rule": "PrimMetadata",
+        "upstreamValid": false,
+        "layer": "#usda 1.0\ndef \"P\" (references=[@@@my_lay@@er_ref@@@</my/path/ref>  (  customData = { \"my_key\" = 457.0e23})]) {}\n",
+        "nativeParses": false
+      },
+      {
+        "function": "TestPrimMetadata",
+        "vector": "invalidExpressions",
+        "index": 5,
+        "rule": "PrimMetadata",
+        "upstreamValid": false,
+        "layer": "#usda 1.0\ndef \"P\" (kind = \"custom_kind_01\"\nsymmetryFunction=\nsymmetryFunction=my_symmetry_function;displayUnit=mm\n\n\n;permission=\tfoo) {}\n",
+        "nativeParses": false
+      },
+      {
+        "function": "TestPrimMetadata",
+        "vector": "invalidExpressions",
+        "index": 6,
+        "rule": "PrimMetadata",
+        "upstreamValid": false,
+        "layer": "#usda 1.0\ndef \"P\" (kind = \"custom_kind_01\"\nsymmetryFunction=\nsymmetryFunction=my_symmetry_function;prefixSubstitutions = {};suffixSubstitutions = {'key1'='my_value', 'key2'='68.32'}) {}\n",
+        "nativeParses": false
+      },
+      {
+        "function": "TestPrimMetadata",
+        "vector": "invalidExpressions",
+        "index": 7,
+        "rule": "PrimMetadata",
+        "upstreamValid": false,
+        "layer": "#usda 1.0\ndef \"P\" (variantSets=[]) {}\n",
+        "nativeParses": false
+      },
+      {
+        "function": "TestPrimMetadata",
+        "vector": "invalidExpressions",
+        "index": 8,
+        "rule": "PrimMetadata",
+        "upstreamValid": false,
+        "layer": "#usda 1.0\ndef \"P\" (variantSets=[56]) {}\n",
+        "nativeParses": false
+      },
+      {
+        "function": "TestPrimMetadata",
+        "vector": "invalidExpressions",
+        "index": 9,
+        "rule": "PrimMetadata",
+        "upstreamValid": false,
+        "layer": "#usda 1.0\ndef \"P\" (variantSets=[\"variant1\", 56]) {}\n",
+        "nativeParses": false
+      },
+      {
+        "function": "TestPrimMetadata",
+        "vector": "invalidExpressions",
+        "index": 10,
+        "rule": "PrimMetadata",
+        "upstreamValid": false,
+        "layer": "#usda 1.0\ndef \"P\" (\tvariantSets = [\"shadingVariant1\"  , \"shadingVariant2\"\n\"shadingVariant3\", 'shadingVariant4', \"\"\"shadingVariant5\"\"\"\n\n]) {}\n",
+        "nativeParses": false
+      }
+    ]
+  }
+}

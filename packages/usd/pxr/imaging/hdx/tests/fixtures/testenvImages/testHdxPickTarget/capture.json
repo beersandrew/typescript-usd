@@ -1,0 +1,61 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/imaging/hdx/tests/fixtures/testenvImages/capture.py",
+  "upstream": [
+    "pxr/imaging/hdx/CMakeLists.txt"
+  ],
+  "payload": {
+    "test": "testHdxPickTarget",
+    "cmake": "pxr/imaging/hdx/CMakeLists.txt:310",
+    "command": "<install>/tests/testHdxPickTarget --offscreen",
+    "cwd": "copy of <source>/pxr/imaging/hdx/testenv/testHdxPickTarget",
+    "env": {
+      "TF_DEBUG": "HDX_SELECTION_SETUP HD_SELECTION_UPDATE HD_SAFE_MODE"
+    },
+    "expectedReturnCode": "0",
+    "returnCode": 0,
+    "images": [
+      {
+        "name": "color1_unselected.png",
+        "written": true
+      },
+      {
+        "name": "color2_cube0_pick_face.png",
+        "written": true
+      },
+      {
+        "name": "color3_tet1_pick_faces.png",
+        "written": true
+      },
+      {
+        "name": "color4_tet0_pick_edge.png",
+        "written": true
+      },
+      {
+        "name": "color5_cube1_pick_edges.png",
+        "written": true
+      },
+      {
+        "name": "color6_cube1_pick_points.png",
+        "written": true
+      },
+      {
+        "name": "color7_cube1_pick_points_pick_through.png",
+        "written": true
+      },
+      {
+        "name": "color8_points_with_color.png",
+        "written": true
+      },
+      {
+        "name": "color9_cube0_wire_pick_face.png",
+        "written": true
+      },
+      {
+        "name": "color10_tet1_pick_prims.png",
+        "written": true
+      }
+    ]
+  }
+}

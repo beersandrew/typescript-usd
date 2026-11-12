@@ -1,0 +1,33 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/imaging/hdx/tests/fixtures/testenvImages/capture.py",
+  "upstream": [
+    "pxr/imaging/hdx/CMakeLists.txt"
+  ],
+  "payload": {
+    "test": "testHdxRenderTask",
+    "cmake": "pxr/imaging/hdx/CMakeLists.txt:346",
+    "command": "<install>/tests/testHdxRenderTask",
+    "cwd": "copy of <source>/pxr/imaging/hdx/testenv/testHdxRenderTask",
+    "env": {
+      "TF_DEBUG": "HD_SAFE_MODE"
+    },
+    "expectedReturnCode": "0",
+    "returnCode": 0,
+    "images": [
+      {
+        "name": "color1.png",
+        "written": true
+      },
+      {
+        "name": "color2.png",
+        "written": true
+      },
+      {
+        "name": "color3.png",
+        "written": true
+      }
+    ]
+  }
+}

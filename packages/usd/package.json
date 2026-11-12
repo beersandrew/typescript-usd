@@ -1,0 +1,806 @@
+{
+  "name": "typescript-usd",
+  "version": "0.1.0",
+  "description": "A TypeScript implementation of the core of OpenUSD: USD file formats, composition, and value resolution.",
+  "license": "SEE LICENSE IN LICENSE",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/beersandrew/typescript-usd.git"
+  },
+  "homepage": "https://github.com/beersandrew/typescript-usd",
+  "type": "module",
+  "sideEffects": [
+    "./pxr/imaging/hio/src/glslfxPrefetch.ts",
+    "./dist/pxr/imaging/hio/src/glslfxPrefetch.js",
+    "./pxr/usd/usdShade/src/udimUtils.ts",
+    "./dist/pxr/usd/usdShade/src/udimUtils.js",
+    "./pxr/usdImaging/usdImaging/src/cardTexturePrefetch.ts",
+    "./dist/pxr/usdImaging/usdImaging/src/cardTexturePrefetch.js",
+    "./pxr/usdImaging/usdSkelImaging/src/index.ts",
+    "./pxr/usdImaging/usdSkelImaging/src/resolvingSceneIndexPlugin.ts",
+    "./dist/pxr/usdImaging/usdSkelImaging/src/index.js",
+    "./dist/pxr/usdImaging/usdSkelImaging/src/resolvingSceneIndexPlugin.js",
+    "./pxr/usdImaging/usdSkelImaging/src/plugInfo.ts",
+    "./dist/pxr/usdImaging/usdSkelImaging/src/plugInfo.js",
+    "./dist/pxr/base/vt/src/index.js",
+    "./dist/pxr/base/vt/src/types.js",
+    "./dist/pxr/usd/usd/src/index.js",
+    "./dist/pxr/usd/usd/src/plugin/registerPlugin.js",
+    "./pxr/base/vt/src/index.ts",
+    "./pxr/base/vt/src/types.ts",
+    "./pxr/usd/usd/src/index.ts",
+    "./pxr/usd/usd/src/plugin/registerPlugin.ts",
+    "./pxr/usd/usdGeom/src/plugin/registerPlugin.ts",
+    "./dist/pxr/usd/usdGeom/src/plugin/registerPlugin.js",
+    "./pxr/usd/usdGeom/src/index.ts",
+    "./dist/pxr/usd/usdGeom/src/index.js",
+    "./pxr/usd/usdGeom/src/pointInstancer.ts",
+    "./dist/pxr/usd/usdGeom/src/pointInstancer.js",
+    "./pxr/usd/usdShade/src/index.ts",
+    "./pxr/usd/usdShade/src/plugin/registerPlugin.ts",
+    "./dist/pxr/usd/usdShade/src/index.js",
+    "./dist/pxr/usd/usdShade/src/plugin/registerPlugin.js",
+    "./pxr/usd/usdMtlx/src/index.ts",
+    "./pxr/usd/usdMtlx/src/plugin/registerPlugin.ts",
+    "./dist/pxr/usd/usdMtlx/src/index.js",
+    "./dist/pxr/usd/usdMtlx/src/plugin/registerPlugin.js",
+    "./pxr/usd/usdSkel/src/index.ts",
+    "./pxr/usd/usdSkel/src/plugin/registerPlugin.ts",
+    "./dist/pxr/usd/usdSkel/src/index.js",
+    "./dist/pxr/usd/usdSkel/src/plugin/registerPlugin.js",
+    "./pxr/usd/usdSemantics/src/index.ts",
+    "./dist/pxr/usd/usdSemantics/src/index.js",
+    "./pxr/usd/usdSemantics/src/plugin/registerPlugin.ts",
+    "./dist/pxr/usd/usdSemantics/src/plugin/registerPlugin.js",
+    "./pxr/usd/usdLux/src/index.ts",
+    "./dist/pxr/usd/usdLux/src/index.js",
+    "./pxr/usd/usdLux/src/sphereLight.ts",
+    "./dist/pxr/usd/usdLux/src/sphereLight.js",
+    "./pxr/usd/usdLux/src/rectLight.ts",
+    "./dist/pxr/usd/usdLux/src/rectLight.js",
+    "./pxr/usd/usdLux/src/diskLight.ts",
+    "./dist/pxr/usd/usdLux/src/diskLight.js",
+    "./pxr/usd/usdLux/src/cylinderLight.ts",
+    "./dist/pxr/usd/usdLux/src/cylinderLight.js",
+    "./pxr/usd/usdLux/src/portalLight.ts",
+    "./dist/pxr/usd/usdLux/src/portalLight.js",
+    "./pxr/usd/usdLux/src/lightDefParser.ts",
+    "./dist/pxr/usd/usdLux/src/lightDefParser.js",
+    "./pxr/usd/usdLux/src/discoveryPlugin.ts",
+    "./dist/pxr/usd/usdLux/src/discoveryPlugin.js",
+    "./pxr/usd/usdLux/src/plugin/registerPlugin.ts",
+    "./dist/pxr/usd/usdLux/src/plugin/registerPlugin.js",
+    "./pxr/imaging/hgiWebGPU/src/index.ts",
+    "./dist/pxr/imaging/hgiWebGPU/src/index.js",
+    "./pxr/imaging/hgiWebGPU/src/hgi.ts",
+    "./dist/pxr/imaging/hgiWebGPU/src/hgi.js",
+    "./pxr/imaging/hdSt/src/index.ts",
+    "./dist/pxr/imaging/hdSt/src/index.js",
+    "./pxr/imaging/plugin/hdStorm/src/index.ts",
+    "./dist/pxr/imaging/plugin/hdStorm/src/index.js",
+    "./pxr/usd/usdProfiles/src/index.ts",
+    "./dist/pxr/usd/usdProfiles/src/index.js",
+    "./pxr/usd/usdProfiles/src/plugin/registerPlugin.ts",
+    "./dist/pxr/usd/usdProfiles/src/plugin/registerPlugin.js",
+    "./pxr/usd/usdVol/src/index.ts",
+    "./dist/pxr/usd/usdVol/src/index.js",
+    "./pxr/usd/usdVol/src/plugin/registerPlugin.ts",
+    "./dist/pxr/usd/usdVol/src/plugin/registerPlugin.js",
+    "./pxr/usdImaging/usdImaging/src/plugInfo.ts",
+    "./dist/pxr/usdImaging/usdImaging/src/plugInfo.js",
+    "./pxr/usdImaging/usdVolImaging/src/index.ts",
+    "./dist/pxr/usdImaging/usdVolImaging/src/index.js",
+    "./pxr/imaging/hioOpenVDB/src/index.ts",
+    "./dist/pxr/imaging/hioOpenVDB/src/index.js",
+    "./pxr/imaging/hioOpenVDB/src/vdbTextureData.ts",
+    "./dist/pxr/imaging/hioOpenVDB/src/vdbTextureData.js",
+    "./pxr/usd/usdPhysics/src/index.ts",
+    "./dist/pxr/usd/usdPhysics/src/index.js",
+    "./pxr/usd/usdPhysics/src/plugin/registerPlugin.ts",
+    "./dist/pxr/usd/usdPhysics/src/plugin/registerPlugin.js",
+    "./pxr/usd/usdMedia/src/index.ts",
+    "./dist/pxr/usd/usdMedia/src/index.js",
+    "./pxr/usd/usdMedia/src/plugin/registerPlugin.ts",
+    "./dist/pxr/usd/usdMedia/src/plugin/registerPlugin.js",
+    "./pxr/usd/usdLod/src/index.ts",
+    "./dist/pxr/usd/usdLod/src/index.js",
+    "./pxr/usd/usdLod/src/plugin/registerPlugin.ts",
+    "./dist/pxr/usd/usdLod/src/plugin/registerPlugin.js",
+    "./pxr/usd/usdUI/src/index.ts",
+    "./dist/pxr/usd/usdUI/src/index.js",
+    "./pxr/usd/usdUI/src/plugin/registerPlugin.ts",
+    "./dist/pxr/usd/usdUI/src/plugin/registerPlugin.js",
+    "./pxr/usd/usdRi/src/index.ts",
+    "./dist/pxr/usd/usdRi/src/index.js",
+    "./pxr/usd/usdRi/src/plugin/registerPlugin.ts",
+    "./dist/pxr/usd/usdRi/src/plugin/registerPlugin.js",
+    "./pxr/usd/usdRender/src/index.ts",
+    "./dist/pxr/usd/usdRender/src/index.js",
+    "./pxr/usd/usdRender/src/plugin/registerPlugin.ts",
+    "./dist/pxr/usd/usdRender/src/plugin/registerPlugin.js",
+    "./pxr/usd/usdProc/src/index.ts",
+    "./dist/pxr/usd/usdProc/src/index.js",
+    "./pxr/usd/usdProc/src/plugin/registerPlugin.ts",
+    "./dist/pxr/usd/usdProc/src/plugin/registerPlugin.js",
+    "./pxr/usd/usdHydra/src/index.ts",
+    "./dist/pxr/usd/usdHydra/src/index.js",
+    "./pxr/usd/usdHydra/src/plugin/registerPlugin.ts",
+    "./dist/pxr/usd/usdHydra/src/plugin/registerPlugin.js",
+    "./pxr/exec/execIr/src/index.ts",
+    "./dist/pxr/exec/execIr/src/index.js",
+    "./pxr/exec/execIr/src/plugin/registerPlugin.ts",
+    "./dist/pxr/exec/execIr/src/plugin/registerPlugin.js",
+    "./pxr/exec/execIr/src/types.ts",
+    "./dist/pxr/exec/execIr/src/types.js",
+    "./pxr/exec/execIr/src/fkControllerComputations.ts",
+    "./dist/pxr/exec/execIr/src/fkControllerComputations.js",
+    "./pxr/exec/execIr/src/switchControllerComputations.ts",
+    "./dist/pxr/exec/execIr/src/switchControllerComputations.js",
+    "./pxr/exec/execIr/src/xformableComputations.ts",
+    "./dist/pxr/exec/execIr/src/xformableComputations.js",
+    "./pxr/exec/execGeom/src/index.ts",
+    "./dist/pxr/exec/execGeom/src/index.js",
+    "./pxr/exec/execGeom/src/plugin/registerPlugin.ts",
+    "./dist/pxr/exec/execGeom/src/plugin/registerPlugin.js",
+    "./pxr/exec/execGeom/src/xformable.ts",
+    "./dist/pxr/exec/execGeom/src/xformable.js",
+    "./pxr/usdImaging/usdExecImaging/src/index.ts",
+    "./dist/pxr/usdImaging/usdExecImaging/src/index.js",
+    "./pxr/usdImaging/usdExecImaging/src/plugInfo.ts",
+    "./dist/pxr/usdImaging/usdExecImaging/src/plugInfo.js",
+    "./pxr/usdImaging/usdExecImaging/src/stageSceneIndex.ts",
+    "./dist/pxr/usdImaging/usdExecImaging/src/stageSceneIndex.js",
+    "./pxr/usdImaging/usdExecImaging/src/debugCodes.ts",
+    "./pxr/usd/usdUtils/src/debugCodes.ts",
+    "./dist/pxr/usd/usdUtils/src/debugCodes.js",
+    "./dist/pxr/usdImaging/usdExecImaging/src/debugCodes.js",
+    "./pxr/usdImaging/usdImaging/src/stageSceneIndexInterface.ts",
+    "./dist/pxr/usdImaging/usdImaging/src/stageSceneIndexInterface.js",
+    "./pxr/usd/sdr/src/registry.ts",
+    "./dist/pxr/usd/sdr/src/registry.js",
+    "./pxr/usd/usdShade/src/shaderDefParser.ts",
+    "./dist/pxr/usd/usdShade/src/shaderDefParser.js",
+    "./pxr/usd/usdMtlx/src/discovery.ts",
+    "./dist/pxr/usd/usdMtlx/src/discovery.js",
+    "./pxr/usd/usdMtlx/src/parser.ts",
+    "./dist/pxr/usd/usdMtlx/src/parser.js",
+    "./pxr/usdImaging/plugin/sdrGlslfx/src/index.ts",
+    "./dist/pxr/usdImaging/plugin/sdrGlslfx/src/index.js",
+    "./pxr/usdImaging/plugin/sdrGlslfx/src/parserPlugin.ts",
+    "./dist/pxr/usdImaging/plugin/sdrGlslfx/src/parserPlugin.js",
+    "./pxr/imaging/hdSt/src/sceneIndexPlugins.ts",
+    "./dist/pxr/imaging/hdSt/src/sceneIndexPlugins.js",
+    "./pxr/imaging/hdSt/src/backPlateSceneIndexPlugin.ts",
+    "./dist/pxr/imaging/hdSt/src/backPlateSceneIndexPlugin.js",
+    "./pxr/imaging/hdSt/src/dependencyForwardingSceneIndexPlugin.ts",
+    "./dist/pxr/imaging/hdSt/src/dependencyForwardingSceneIndexPlugin.js",
+    "./pxr/imaging/hdSt/src/dependencySceneIndexPlugin.ts",
+    "./dist/pxr/imaging/hdSt/src/dependencySceneIndexPlugin.js",
+    "./pxr/imaging/hdSt/src/implicitSurfaceSceneIndexPlugin.ts",
+    "./dist/pxr/imaging/hdSt/src/implicitSurfaceSceneIndexPlugin.js",
+    "./pxr/imaging/hdSt/src/materialBindingResolvingSceneIndexPlugin.ts",
+    "./dist/pxr/imaging/hdSt/src/materialBindingResolvingSceneIndexPlugin.js",
+    "./pxr/imaging/hdSt/src/materialPrimvarTransferSceneIndexPlugin.ts",
+    "./dist/pxr/imaging/hdSt/src/materialPrimvarTransferSceneIndexPlugin.js",
+    "./pxr/imaging/hdSt/src/nodeIdentifierResolvingSceneIndexPlugin.ts",
+    "./dist/pxr/imaging/hdSt/src/nodeIdentifierResolvingSceneIndexPlugin.js",
+    "./pxr/imaging/hdSt/src/nurbsApproximatingSceneIndexPlugin.ts",
+    "./dist/pxr/imaging/hdSt/src/nurbsApproximatingSceneIndexPlugin.js",
+    "./pxr/imaging/hdSt/src/renderPassVisibilitySceneIndexPlugin.ts",
+    "./dist/pxr/imaging/hdSt/src/renderPassVisibilitySceneIndexPlugin.js",
+    "./pxr/imaging/hdSt/src/tetMeshConversionSceneIndexPlugin.ts",
+    "./dist/pxr/imaging/hdSt/src/tetMeshConversionSceneIndexPlugin.js",
+    "./pxr/imaging/hdSt/src/unboundMaterialPruningSceneIndexPlugin.ts",
+    "./dist/pxr/imaging/hdSt/src/unboundMaterialPruningSceneIndexPlugin.js",
+    "./pxr/imaging/hdSt/src/velocityMotionResolvingSceneIndexPlugin.ts",
+    "./dist/pxr/imaging/hdSt/src/velocityMotionResolvingSceneIndexPlugin.js",
+    "./pxr/usdValidation/usdValidation/src/index.ts",
+    "./dist/pxr/usdValidation/usdValidation/src/index.js",
+    "./pxr/usdValidation/usdValidation/src/plugin/registerPlugin.ts",
+    "./dist/pxr/usdValidation/usdValidation/src/plugin/registerPlugin.js",
+    "./pxr/usdValidation/usdValidation/src/coreValidators.ts",
+    "./dist/pxr/usdValidation/usdValidation/src/coreValidators.js",
+    "./pxr/usdValidation/usdGeomValidators/src/index.ts",
+    "./dist/pxr/usdValidation/usdGeomValidators/src/index.js",
+    "./pxr/usdValidation/usdGeomValidators/src/plugin/registerPlugin.ts",
+    "./dist/pxr/usdValidation/usdGeomValidators/src/plugin/registerPlugin.js",
+    "./pxr/usdValidation/usdGeomValidators/src/validators.ts",
+    "./dist/pxr/usdValidation/usdGeomValidators/src/validators.js",
+    "./pxr/usdValidation/usdShadeValidators/src/index.ts",
+    "./dist/pxr/usdValidation/usdShadeValidators/src/index.js",
+    "./pxr/usdValidation/usdShadeValidators/src/plugin/registerPlugin.ts",
+    "./dist/pxr/usdValidation/usdShadeValidators/src/plugin/registerPlugin.js",
+    "./pxr/usdValidation/usdShadeValidators/src/validators.ts",
+    "./dist/pxr/usdValidation/usdShadeValidators/src/validators.js",
+    "./pxr/usdValidation/usdSkelValidators/src/index.ts",
+    "./dist/pxr/usdValidation/usdSkelValidators/src/index.js",
+    "./pxr/usdValidation/usdSkelValidators/src/plugin/registerPlugin.ts",
+    "./dist/pxr/usdValidation/usdSkelValidators/src/plugin/registerPlugin.js",
+    "./pxr/usdValidation/usdSkelValidators/src/validators.ts",
+    "./dist/pxr/usdValidation/usdSkelValidators/src/validators.js",
+    "./pxr/usdValidation/usdPhysicsValidators/src/index.ts",
+    "./dist/pxr/usdValidation/usdPhysicsValidators/src/index.js",
+    "./pxr/usdValidation/usdPhysicsValidators/src/plugin/registerPlugin.ts",
+    "./dist/pxr/usdValidation/usdPhysicsValidators/src/plugin/registerPlugin.js",
+    "./pxr/usdValidation/usdPhysicsValidators/src/validators.ts",
+    "./dist/pxr/usdValidation/usdPhysicsValidators/src/validators.js",
+    "./pxr/usdValidation/usdLuxValidators/src/index.ts",
+    "./dist/pxr/usdValidation/usdLuxValidators/src/index.js",
+    "./pxr/usdValidation/usdLuxValidators/src/plugin/registerPlugin.ts",
+    "./dist/pxr/usdValidation/usdLuxValidators/src/plugin/registerPlugin.js",
+    "./pxr/usdValidation/usdLuxValidators/src/validators.ts",
+    "./dist/pxr/usdValidation/usdLuxValidators/src/validators.js",
+    "./pxr/usdValidation/usdMediaValidators/src/index.ts",
+    "./dist/pxr/usdValidation/usdMediaValidators/src/index.js",
+    "./pxr/usdValidation/usdMediaValidators/src/plugin/registerPlugin.ts",
+    "./dist/pxr/usdValidation/usdMediaValidators/src/plugin/registerPlugin.js",
+    "./pxr/usdValidation/usdMediaValidators/src/validators.ts",
+    "./dist/pxr/usdValidation/usdMediaValidators/src/validators.js",
+    "./pxr/usdValidation/usdLodValidators/src/index.ts",
+    "./dist/pxr/usdValidation/usdLodValidators/src/index.js",
+    "./pxr/usdValidation/usdLodValidators/src/plugin/registerPlugin.ts",
+    "./dist/pxr/usdValidation/usdLodValidators/src/plugin/registerPlugin.js",
+    "./pxr/usdValidation/usdLodValidators/src/validators.ts",
+    "./dist/pxr/usdValidation/usdLodValidators/src/validators.js",
+    "./pxr/usdValidation/usdUtilsValidators/src/index.ts",
+    "./dist/pxr/usdValidation/usdUtilsValidators/src/index.js",
+    "./pxr/usdValidation/usdUtilsValidators/src/plugin/registerPlugin.ts",
+    "./dist/pxr/usdValidation/usdUtilsValidators/src/plugin/registerPlugin.js",
+    "./pxr/usdValidation/usdUtilsValidators/src/validators.ts",
+    "./dist/pxr/usdValidation/usdUtilsValidators/src/validators.js"
+  ],
+  "exports": {
+    ".": "./pxr/index.ts",
+    "./arch": "./pxr/base/arch/src/index.ts",
+    "./arch/_internal": "./pxr/base/arch/src/internal.ts",
+    "./gf": "./pxr/base/gf/src/index.ts",
+    "./gf/camera": "./pxr/base/gf/src/camera.ts",
+    "./gf/frustum": "./pxr/base/gf/src/frustum.ts",
+    "./plug": "./pxr/base/plug/src/index.ts",
+    "./tf": "./pxr/base/tf/src/index.ts",
+    "./trace": "./pxr/base/trace/src/index.ts",
+    "./trace/_internal": "./pxr/base/trace/src/internal/index.ts",
+    "./ts": "./pxr/base/ts/src/index.ts",
+    "./ts/binary": "./pxr/base/ts/src/binary.ts",
+    "./vt": "./pxr/base/vt/src/index.ts",
+    "./ar": "./pxr/usd/ar/src/index.ts",
+    "./ar/_internal": "./pxr/usd/ar/src/internal.ts",
+    "./kind": "./pxr/usd/kind/src/index.ts",
+    "./pcp": "./pxr/usd/pcp/src/index.ts",
+    "./pcp/_internal": "./pxr/usd/pcp/src/internal.ts",
+    "./sdf": "./pxr/usd/sdf/src/index.ts",
+    "./sdf/_internal": "./pxr/usd/sdf/src/internal.ts",
+    "./sdf/changeList": "./pxr/usd/sdf/src/changeList.ts",
+    "./sdf/integerCoding": "./pxr/usd/sdf/src/integerCoding.ts",
+    "./sdf/layerOffset": "./pxr/usd/sdf/src/layerOffset.ts",
+    "./sdf/path": "./pxr/usd/sdf/src/path.ts",
+    "./sdf/pathTable": "./pxr/usd/sdf/src/pathTable.ts",
+    "./sdf/pathExpression": "./pxr/usd/sdf/src/pathExpression.ts",
+    "./sdf/variableExpression": "./pxr/usd/sdf/src/variableExpression.ts",
+    "./usd": "./pxr/usd/usd/src/index.ts",
+    "./usd/_internal": "./pxr/usd/usd/src/internal.ts",
+    "./usdGeom": "./pxr/usd/usdGeom/src/index.ts",
+    "./usdGeom/_internal": "./pxr/usd/usdGeom/src/internal.ts",
+    "./usdSkelImaging": "./pxr/usdImaging/usdSkelImaging/src/index.ts",
+    "./usdImaging": "./pxr/usdImaging/usdImaging/src/index.ts",
+    "./usdImaging/cardTexturePrefetch": "./pxr/usdImaging/usdImaging/src/cardTexturePrefetch.ts",
+    "./usdVolImaging": "./pxr/usdImaging/usdVolImaging/src/index.ts",
+    "./usdExecImaging": "./pxr/usdImaging/usdExecImaging/src/index.ts",
+    "./hd": "./pxr/imaging/hd/src/index.ts",
+    "./hdSt": "./pxr/imaging/hdSt/src/index.ts",
+    "./hdSt/materialx": "./pxr/imaging/hdSt/src/materialx.ts",
+    "./cameraUtil": "./pxr/imaging/cameraUtil/src/index.ts",
+    "./glf": "./pxr/imaging/glf/src/index.ts",
+    "./pxOsd": "./pxr/imaging/pxOsd/src/index.ts",
+    "./geomUtil": "./pxr/imaging/geomUtil/src/index.ts",
+    "./hgi": "./pxr/imaging/hgi/src/index.ts",
+    "./hgiWebGPU": "./pxr/imaging/hgiWebGPU/src/index.ts",
+    "./hgiInterop": "./pxr/imaging/hgiInterop/src/index.ts",
+    "./hdx": "./pxr/imaging/hdx/src/index.ts",
+    "./hdStorm": "./pxr/imaging/plugin/hdStorm/src/index.ts",
+    "./usdImagingGL": "./pxr/usdImaging/usdImagingGL/src/index.ts",
+    "./hio": "./pxr/imaging/hio/src/index.ts",
+    "./hio/_internal": "./pxr/imaging/hio/src/internal.ts",
+    "./hio/glslfxPrefetch": "./pxr/imaging/hio/src/glslfxPrefetch.ts",
+    "./hioOpenVDB": "./pxr/imaging/hioOpenVDB/src/index.ts",
+    "./usdShade": "./pxr/usd/usdShade/src/index.ts",
+    "./sdr": "./pxr/usd/sdr/src/index.ts",
+    "./usdShaders": "./pxr/usd/plugin/usdShaders/src/index.ts",
+    "./sdrGlslfx": "./pxr/usdImaging/plugin/sdrGlslfx/src/index.ts",
+    "./usdMtlx": "./pxr/usd/usdMtlx/src/index.ts",
+    "./hdMtlx": "./pxr/imaging/hdMtlx/src/index.ts",
+    "./hdsi": "./pxr/imaging/hdsi/src/index.ts",
+    "./usdSkel": "./pxr/usd/usdSkel/src/index.ts",
+    "./sdf/layerTree": "./pxr/usd/sdf/src/layerTree.ts",
+    "./usdSemantics": "./pxr/usd/usdSemantics/src/index.ts",
+    "./usdProfiles": "./pxr/usd/usdProfiles/src/index.ts",
+    "./usdProfiles/_internal": "./pxr/usd/usdProfiles/src/internal.ts",
+    "./usdLux": "./pxr/usd/usdLux/src/index.ts",
+    "./usdVol": "./pxr/usd/usdVol/src/index.ts",
+    "./usdPhysics": "./pxr/usd/usdPhysics/src/index.ts",
+    "./usdMedia": "./pxr/usd/usdMedia/src/index.ts",
+    "./usdLod": "./pxr/usd/usdLod/src/index.ts",
+    "./usdUI": "./pxr/usd/usdUI/src/index.ts",
+    "./usdUtils": "./pxr/usd/usdUtils/src/index.ts",
+    "./usdRi": "./pxr/usd/usdRi/src/index.ts",
+    "./usdRender": "./pxr/usd/usdRender/src/index.ts",
+    "./usdProc": "./pxr/usd/usdProc/src/index.ts",
+    "./usdHydra": "./pxr/usd/usdHydra/src/index.ts",
+    "./usdUtilsValidators": "./pxr/usdValidation/usdUtilsValidators/src/index.ts",
+    "./usdLodValidators": "./pxr/usdValidation/usdLodValidators/src/index.ts",
+    "./usdMediaValidators": "./pxr/usdValidation/usdMediaValidators/src/index.ts",
+    "./usdLuxValidators": "./pxr/usdValidation/usdLuxValidators/src/index.ts",
+    "./usdPhysicsValidators": "./pxr/usdValidation/usdPhysicsValidators/src/index.ts",
+    "./usdSkelValidators": "./pxr/usdValidation/usdSkelValidators/src/index.ts",
+    "./usdShadeValidators": "./pxr/usdValidation/usdShadeValidators/src/index.ts",
+    "./usdGeomValidators": "./pxr/usdValidation/usdGeomValidators/src/index.ts",
+    "./usdValidation": "./pxr/usdValidation/usdValidation/src/index.ts",
+    "./hdx/textures/StinsonBeach.hdr": "./pxr/imaging/hdx/textures/StinsonBeach.hdr",
+    "./work": "./pxr/base/work/src/index.ts",
+    "./vdf": "./pxr/exec/vdf/src/index.ts",
+    "./ef": "./pxr/exec/ef/src/index.ts",
+    "./esf": "./pxr/exec/esf/src/index.ts",
+    "./esfUsd": "./pxr/exec/esfUsd/src/index.ts",
+    "./exec": "./pxr/exec/exec/src/index.ts",
+    "./exec/_internal": "./pxr/exec/exec/src/internal.ts",
+    "./execUsd": "./pxr/exec/execUsd/src/index.ts",
+    "./execGeom": "./pxr/exec/execGeom/src/index.ts",
+    "./execGeom/xformable": "./pxr/exec/execGeom/src/xformable.ts",
+    "./execIr": "./pxr/exec/execIr/src/index.ts"
+  },
+  "files": [
+    "dist",
+    "LICENSE",
+    "NOTICE"
+  ],
+  "scripts": {
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit",
+    "build": "tsc -p tsconfig.build.json && node scripts/copy-resources.mjs",
+    "bench": "vitest bench --run"
+  },
+  "devDependencies": {
+    "@mtlx/core": "workspace:*",
+    "@mtlx/format": "workspace:*",
+    "@mtlx/genglsl": "workspace:*",
+    "@mtlx/genhw": "workspace:*",
+    "@mtlx/genshader": "workspace:*",
+    "@mtlx/libraries": "workspace:*",
+    "@mtlx/render": "workspace:*",
+    "@types/node": "^24.0.0",
+    "@vdb/nanovdb": "workspace:*",
+    "@vdb/openvdb": "workspace:*",
+    "@vitest/ui": "^3.2.6",
+    "@webgpu/types": "^0.1.74",
+    "typescript": "^5.8.0",
+    "vite": "^6.4.3",
+    "vitest": "^3.0.0"
+  },
+  "publishConfig": {
+    "exports": {
+      ".": {
+        "types": "./dist/pxr/index.d.ts",
+        "default": "./dist/pxr/index.js"
+      },
+      "./arch": {
+        "types": "./dist/pxr/base/arch/src/index.d.ts",
+        "default": "./dist/pxr/base/arch/src/index.js"
+      },
+      "./arch/_internal": {
+        "types": "./dist/pxr/base/arch/src/internal.d.ts",
+        "default": "./dist/pxr/base/arch/src/internal.js"
+      },
+      "./gf": {
+        "types": "./dist/pxr/base/gf/src/index.d.ts",
+        "default": "./dist/pxr/base/gf/src/index.js"
+      },
+      "./gf/camera": {
+        "types": "./dist/pxr/base/gf/src/camera.d.ts",
+        "default": "./dist/pxr/base/gf/src/camera.js"
+      },
+      "./gf/frustum": {
+        "types": "./dist/pxr/base/gf/src/frustum.d.ts",
+        "default": "./dist/pxr/base/gf/src/frustum.js"
+      },
+      "./plug": {
+        "types": "./dist/pxr/base/plug/src/index.d.ts",
+        "default": "./dist/pxr/base/plug/src/index.js"
+      },
+      "./tf": {
+        "types": "./dist/pxr/base/tf/src/index.d.ts",
+        "default": "./dist/pxr/base/tf/src/index.js"
+      },
+      "./trace": {
+        "types": "./dist/pxr/base/trace/src/index.d.ts",
+        "default": "./dist/pxr/base/trace/src/index.js"
+      },
+      "./trace/_internal": {
+        "types": "./dist/pxr/base/trace/src/internal/index.d.ts",
+        "default": "./dist/pxr/base/trace/src/internal/index.js"
+      },
+      "./ts": {
+        "types": "./dist/pxr/base/ts/src/index.d.ts",
+        "default": "./dist/pxr/base/ts/src/index.js"
+      },
+      "./ts/binary": {
+        "types": "./dist/pxr/base/ts/src/binary.d.ts",
+        "default": "./dist/pxr/base/ts/src/binary.js"
+      },
+      "./vt": {
+        "types": "./dist/pxr/base/vt/src/index.d.ts",
+        "default": "./dist/pxr/base/vt/src/index.js"
+      },
+      "./ar": {
+        "types": "./dist/pxr/usd/ar/src/index.d.ts",
+        "default": "./dist/pxr/usd/ar/src/index.js"
+      },
+      "./ar/_internal": {
+        "types": "./dist/pxr/usd/ar/src/internal.d.ts",
+        "default": "./dist/pxr/usd/ar/src/internal.js"
+      },
+      "./kind": {
+        "types": "./dist/pxr/usd/kind/src/index.d.ts",
+        "default": "./dist/pxr/usd/kind/src/index.js"
+      },
+      "./pcp": {
+        "types": "./dist/pxr/usd/pcp/src/index.d.ts",
+        "default": "./dist/pxr/usd/pcp/src/index.js"
+      },
+      "./pcp/_internal": {
+        "types": "./dist/pxr/usd/pcp/src/internal.d.ts",
+        "default": "./dist/pxr/usd/pcp/src/internal.js"
+      },
+      "./sdf": {
+        "types": "./dist/pxr/usd/sdf/src/index.d.ts",
+        "default": "./dist/pxr/usd/sdf/src/index.js"
+      },
+      "./sdf/_internal": {
+        "types": "./dist/pxr/usd/sdf/src/internal.d.ts",
+        "default": "./dist/pxr/usd/sdf/src/internal.js"
+      },
+      "./sdf/integerCoding": {
+        "types": "./dist/pxr/usd/sdf/src/integerCoding.d.ts",
+        "default": "./dist/pxr/usd/sdf/src/integerCoding.js"
+      },
+      "./sdf/layerOffset": {
+        "types": "./dist/pxr/usd/sdf/src/layerOffset.d.ts",
+        "default": "./dist/pxr/usd/sdf/src/layerOffset.js"
+      },
+      "./sdf/path": {
+        "types": "./dist/pxr/usd/sdf/src/path.d.ts",
+        "default": "./dist/pxr/usd/sdf/src/path.js"
+      },
+      "./sdf/pathExpression": {
+        "types": "./dist/pxr/usd/sdf/src/pathExpression.d.ts",
+        "default": "./dist/pxr/usd/sdf/src/pathExpression.js"
+      },
+      "./sdf/variableExpression": {
+        "types": "./dist/pxr/usd/sdf/src/variableExpression.d.ts",
+        "default": "./dist/pxr/usd/sdf/src/variableExpression.js"
+      },
+      "./usd": {
+        "types": "./dist/pxr/usd/usd/src/index.d.ts",
+        "default": "./dist/pxr/usd/usd/src/index.js"
+      },
+      "./usd/_internal": {
+        "types": "./dist/pxr/usd/usd/src/internal.d.ts",
+        "default": "./dist/pxr/usd/usd/src/internal.js"
+      },
+      "./sdf/changeList": {
+        "types": "./dist/pxr/usd/sdf/src/changeList.d.ts",
+        "default": "./dist/pxr/usd/sdf/src/changeList.js"
+      },
+      "./sdf/pathTable": {
+        "types": "./dist/pxr/usd/sdf/src/pathTable.d.ts",
+        "default": "./dist/pxr/usd/sdf/src/pathTable.js"
+      },
+      "./usdGeom": {
+        "types": "./dist/pxr/usd/usdGeom/src/index.d.ts",
+        "default": "./dist/pxr/usd/usdGeom/src/index.js"
+      },
+      "./usdGeom/_internal": {
+        "types": "./dist/pxr/usd/usdGeom/src/internal.d.ts",
+        "default": "./dist/pxr/usd/usdGeom/src/internal.js"
+      },
+      "./usdSkelImaging": {
+        "types": "./dist/pxr/usdImaging/usdSkelImaging/src/index.d.ts",
+        "default": "./dist/pxr/usdImaging/usdSkelImaging/src/index.js"
+      },
+      "./usdImaging": {
+        "types": "./dist/pxr/usdImaging/usdImaging/src/index.d.ts",
+        "default": "./dist/pxr/usdImaging/usdImaging/src/index.js"
+      },
+      "./usdImaging/cardTexturePrefetch": {
+        "types": "./dist/pxr/usdImaging/usdImaging/src/cardTexturePrefetch.d.ts",
+        "default": "./dist/pxr/usdImaging/usdImaging/src/cardTexturePrefetch.js"
+      },
+      "./usdVolImaging": {
+        "types": "./dist/pxr/usdImaging/usdVolImaging/src/index.d.ts",
+        "default": "./dist/pxr/usdImaging/usdVolImaging/src/index.js"
+      },
+      "./usdExecImaging": {
+        "types": "./dist/pxr/usdImaging/usdExecImaging/src/index.d.ts",
+        "default": "./dist/pxr/usdImaging/usdExecImaging/src/index.js"
+      },
+      "./hd": {
+        "types": "./dist/pxr/imaging/hd/src/index.d.ts",
+        "default": "./dist/pxr/imaging/hd/src/index.js"
+      },
+      "./hdSt": {
+        "types": "./dist/pxr/imaging/hdSt/src/index.d.ts",
+        "default": "./dist/pxr/imaging/hdSt/src/index.js"
+      },
+      "./hdSt/materialx": {
+        "types": "./dist/pxr/imaging/hdSt/src/materialx.d.ts",
+        "default": "./dist/pxr/imaging/hdSt/src/materialx.js"
+      },
+      "./pxOsd": {
+        "types": "./dist/pxr/imaging/pxOsd/src/index.d.ts",
+        "default": "./dist/pxr/imaging/pxOsd/src/index.js"
+      },
+      "./geomUtil": {
+        "types": "./dist/pxr/imaging/geomUtil/src/index.d.ts",
+        "default": "./dist/pxr/imaging/geomUtil/src/index.js"
+      },
+      "./cameraUtil": {
+        "types": "./dist/pxr/imaging/cameraUtil/src/index.d.ts",
+        "default": "./dist/pxr/imaging/cameraUtil/src/index.js"
+      },
+      "./glf": {
+        "types": "./dist/pxr/imaging/glf/src/index.d.ts",
+        "default": "./dist/pxr/imaging/glf/src/index.js"
+      },
+      "./hgi": {
+        "types": "./dist/pxr/imaging/hgi/src/index.d.ts",
+        "default": "./dist/pxr/imaging/hgi/src/index.js"
+      },
+      "./hgiWebGPU": {
+        "types": "./dist/pxr/imaging/hgiWebGPU/src/index.d.ts",
+        "default": "./dist/pxr/imaging/hgiWebGPU/src/index.js"
+      },
+      "./hgiInterop": {
+        "types": "./dist/pxr/imaging/hgiInterop/src/index.d.ts",
+        "default": "./dist/pxr/imaging/hgiInterop/src/index.js"
+      },
+      "./hdx": {
+        "types": "./dist/pxr/imaging/hdx/src/index.d.ts",
+        "default": "./dist/pxr/imaging/hdx/src/index.js"
+      },
+      "./hdStorm": {
+        "types": "./dist/pxr/imaging/plugin/hdStorm/src/index.d.ts",
+        "default": "./dist/pxr/imaging/plugin/hdStorm/src/index.js"
+      },
+      "./usdImagingGL": {
+        "types": "./dist/pxr/usdImaging/usdImagingGL/src/index.d.ts",
+        "default": "./dist/pxr/usdImaging/usdImagingGL/src/index.js"
+      },
+      "./hio": {
+        "types": "./dist/pxr/imaging/hio/src/index.d.ts",
+        "default": "./dist/pxr/imaging/hio/src/index.js"
+      },
+      "./hio/_internal": {
+        "types": "./dist/pxr/imaging/hio/src/internal.d.ts",
+        "default": "./dist/pxr/imaging/hio/src/internal.js"
+      },
+      "./hio/glslfxPrefetch": {
+        "types": "./dist/pxr/imaging/hio/src/glslfxPrefetch.d.ts",
+        "default": "./dist/pxr/imaging/hio/src/glslfxPrefetch.js"
+      },
+      "./hioOpenVDB": {
+        "types": "./dist/pxr/imaging/hioOpenVDB/src/index.d.ts",
+        "default": "./dist/pxr/imaging/hioOpenVDB/src/index.js"
+      },
+      "./usdShade": {
+        "types": "./dist/pxr/usd/usdShade/src/index.d.ts",
+        "default": "./dist/pxr/usd/usdShade/src/index.js"
+      },
+      "./sdr": {
+        "types": "./dist/pxr/usd/sdr/src/index.d.ts",
+        "default": "./dist/pxr/usd/sdr/src/index.js"
+      },
+      "./usdShaders": {
+        "types": "./dist/pxr/usd/plugin/usdShaders/src/index.d.ts",
+        "default": "./dist/pxr/usd/plugin/usdShaders/src/index.js"
+      },
+      "./sdrGlslfx": {
+        "types": "./dist/pxr/usdImaging/plugin/sdrGlslfx/src/index.d.ts",
+        "default": "./dist/pxr/usdImaging/plugin/sdrGlslfx/src/index.js"
+      },
+      "./usdMtlx": {
+        "types": "./dist/pxr/usd/usdMtlx/src/index.d.ts",
+        "default": "./dist/pxr/usd/usdMtlx/src/index.js"
+      },
+      "./hdMtlx": {
+        "types": "./dist/pxr/imaging/hdMtlx/src/index.d.ts",
+        "default": "./dist/pxr/imaging/hdMtlx/src/index.js"
+      },
+      "./hdsi": {
+        "types": "./dist/pxr/imaging/hdsi/src/index.d.ts",
+        "default": "./dist/pxr/imaging/hdsi/src/index.js"
+      },
+      "./usdSkel": {
+        "types": "./dist/pxr/usd/usdSkel/src/index.d.ts",
+        "default": "./dist/pxr/usd/usdSkel/src/index.js"
+      },
+      "./sdf/layerTree": {
+        "types": "./dist/pxr/usd/sdf/src/layerTree.d.ts",
+        "default": "./dist/pxr/usd/sdf/src/layerTree.js"
+      },
+      "./usdSemantics": {
+        "types": "./dist/pxr/usd/usdSemantics/src/index.d.ts",
+        "default": "./dist/pxr/usd/usdSemantics/src/index.js"
+      },
+      "./usdProfiles": {
+        "types": "./dist/pxr/usd/usdProfiles/src/index.d.ts",
+        "default": "./dist/pxr/usd/usdProfiles/src/index.js"
+      },
+      "./usdProfiles/_internal": {
+        "types": "./dist/pxr/usd/usdProfiles/src/internal.d.ts",
+        "default": "./dist/pxr/usd/usdProfiles/src/internal.js"
+      },
+      "./usdLux": {
+        "types": "./dist/pxr/usd/usdLux/src/index.d.ts",
+        "default": "./dist/pxr/usd/usdLux/src/index.js"
+      },
+      "./usdVol": {
+        "types": "./dist/pxr/usd/usdVol/src/index.d.ts",
+        "default": "./dist/pxr/usd/usdVol/src/index.js"
+      },
+      "./hdx/textures/StinsonBeach.hdr": "./dist/pxr/imaging/hdx/textures/StinsonBeach.hdr",
+      "./usdPhysics": {
+        "types": "./dist/pxr/usd/usdPhysics/src/index.d.ts",
+        "default": "./dist/pxr/usd/usdPhysics/src/index.js"
+      },
+      "./usdMedia": {
+        "types": "./dist/pxr/usd/usdMedia/src/index.d.ts",
+        "default": "./dist/pxr/usd/usdMedia/src/index.js"
+      },
+      "./usdLod": {
+        "types": "./dist/pxr/usd/usdLod/src/index.d.ts",
+        "default": "./dist/pxr/usd/usdLod/src/index.js"
+      },
+      "./usdUI": {
+        "types": "./dist/pxr/usd/usdUI/src/index.d.ts",
+        "default": "./dist/pxr/usd/usdUI/src/index.js"
+      },
+      "./usdUtils": {
+        "types": "./dist/pxr/usd/usdUtils/src/index.d.ts",
+        "default": "./dist/pxr/usd/usdUtils/src/index.js"
+      },
+      "./usdRi": {
+        "types": "./dist/pxr/usd/usdRi/src/index.d.ts",
+        "default": "./dist/pxr/usd/usdRi/src/index.js"
+      },
+      "./usdRender": {
+        "types": "./dist/pxr/usd/usdRender/src/index.d.ts",
+        "default": "./dist/pxr/usd/usdRender/src/index.js"
+      },
+      "./usdProc": {
+        "types": "./dist/pxr/usd/usdProc/src/index.d.ts",
+        "default": "./dist/pxr/usd/usdProc/src/index.js"
+      },
+      "./usdHydra": {
+        "types": "./dist/pxr/usd/usdHydra/src/index.d.ts",
+        "default": "./dist/pxr/usd/usdHydra/src/index.js"
+      },
+      "./usdUtilsValidators": {
+        "types": "./dist/pxr/usdValidation/usdUtilsValidators/src/index.d.ts",
+        "default": "./dist/pxr/usdValidation/usdUtilsValidators/src/index.js"
+      },
+      "./usdLodValidators": {
+        "types": "./dist/pxr/usdValidation/usdLodValidators/src/index.d.ts",
+        "default": "./dist/pxr/usdValidation/usdLodValidators/src/index.js"
+      },
+      "./usdMediaValidators": {
+        "types": "./dist/pxr/usdValidation/usdMediaValidators/src/index.d.ts",
+        "default": "./dist/pxr/usdValidation/usdMediaValidators/src/index.js"
+      },
+      "./usdLuxValidators": {
+        "types": "./dist/pxr/usdValidation/usdLuxValidators/src/index.d.ts",
+        "default": "./dist/pxr/usdValidation/usdLuxValidators/src/index.js"
+      },
+      "./usdPhysicsValidators": {
+        "types": "./dist/pxr/usdValidation/usdPhysicsValidators/src/index.d.ts",
+        "default": "./dist/pxr/usdValidation/usdPhysicsValidators/src/index.js"
+      },
+      "./usdSkelValidators": {
+        "types": "./dist/pxr/usdValidation/usdSkelValidators/src/index.d.ts",
+        "default": "./dist/pxr/usdValidation/usdSkelValidators/src/index.js"
+      },
+      "./usdShadeValidators": {
+        "types": "./dist/pxr/usdValidation/usdShadeValidators/src/index.d.ts",
+        "default": "./dist/pxr/usdValidation/usdShadeValidators/src/index.js"
+      },
+      "./usdGeomValidators": {
+        "types": "./dist/pxr/usdValidation/usdGeomValidators/src/index.d.ts",
+        "default": "./dist/pxr/usdValidation/usdGeomValidators/src/index.js"
+      },
+      "./usdValidation": {
+        "types": "./dist/pxr/usdValidation/usdValidation/src/index.d.ts",
+        "default": "./dist/pxr/usdValidation/usdValidation/src/index.js"
+      },
+      "./work": {
+        "types": "./dist/pxr/base/work/src/index.d.ts",
+        "default": "./dist/pxr/base/work/src/index.js"
+      },
+      "./vdf": {
+        "types": "./dist/pxr/exec/vdf/src/index.d.ts",
+        "default": "./dist/pxr/exec/vdf/src/index.js"
+      },
+      "./ef": {
+        "types": "./dist/pxr/exec/ef/src/index.d.ts",
+        "default": "./dist/pxr/exec/ef/src/index.js"
+      },
+      "./esf": {
+        "types": "./dist/pxr/exec/esf/src/index.d.ts",
+        "default": "./dist/pxr/exec/esf/src/index.js"
+      },
+      "./esfUsd": {
+        "types": "./dist/pxr/exec/esfUsd/src/index.d.ts",
+        "default": "./dist/pxr/exec/esfUsd/src/index.js"
+      },
+      "./exec": {
+        "types": "./dist/pxr/exec/exec/src/index.d.ts",
+        "default": "./dist/pxr/exec/exec/src/index.js"
+      },
+      "./exec/_internal": {
+        "types": "./dist/pxr/exec/exec/src/internal.d.ts",
+        "default": "./dist/pxr/exec/exec/src/internal.js"
+      },
+      "./execUsd": {
+        "types": "./dist/pxr/exec/execUsd/src/index.d.ts",
+        "default": "./dist/pxr/exec/execUsd/src/index.js"
+      },
+      "./execGeom": {
+        "types": "./dist/pxr/exec/execGeom/src/index.d.ts",
+        "default": "./dist/pxr/exec/execGeom/src/index.js"
+      },
+      "./execGeom/xformable": {
+        "types": "./dist/pxr/exec/execGeom/src/xformable.d.ts",
+        "default": "./dist/pxr/exec/execGeom/src/xformable.js"
+      },
+      "./execIr": {
+        "types": "./dist/pxr/exec/execIr/src/index.d.ts",
+        "default": "./dist/pxr/exec/execIr/src/index.js"
+      }
+    },
+    "types": "./dist/pxr/index.d.ts",
+    "main": "./dist/pxr/index.js"
+  },
+  "dependencies": {
+    "@opensubdiv/core": "workspace:*"
+  },
+  "peerDependencies": {
+    "@mtlx/core": "*",
+    "@mtlx/format": "*",
+    "@mtlx/genshader": "*",
+    "@mtlx/genhw": "*",
+    "@mtlx/genglsl": "*",
+    "@mtlx/render": "*",
+    "@mtlx/libraries": "*"
+  },
+  "peerDependenciesMeta": {
+    "@mtlx/core": {
+      "optional": true
+    },
+    "@mtlx/format": {
+      "optional": true
+    },
+    "@mtlx/genshader": {
+      "optional": true
+    },
+    "@mtlx/genhw": {
+      "optional": true
+    },
+    "@mtlx/genglsl": {
+      "optional": true
+    },
+    "@mtlx/render": {
+      "optional": true
+    },
+    "@mtlx/libraries": {
+      "optional": true
+    }
+  }
+}

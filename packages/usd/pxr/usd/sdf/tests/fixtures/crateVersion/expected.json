@@ -1,0 +1,68 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/usd/sdf/tests/fixtures/crateVersion/capture.py",
+  "upstream": [
+    "pxr/usd/sdf/crateFile.cpp"
+  ],
+  "payload": {
+    "rows": [
+      {
+        "minor": 4,
+        "readable": true
+      },
+      {
+        "minor": 5,
+        "readable": true
+      },
+      {
+        "minor": 6,
+        "readable": true
+      },
+      {
+        "minor": 7,
+        "readable": true
+      },
+      {
+        "minor": 8,
+        "readable": true
+      },
+      {
+        "minor": 9,
+        "readable": true
+      },
+      {
+        "minor": 10,
+        "readable": true
+      },
+      {
+        "minor": 11,
+        "readable": true
+      },
+      {
+        "minor": 12,
+        "readable": true
+      },
+      {
+        "minor": 13,
+        "readable": true
+      },
+      {
+        "minor": 14,
+        "readable": true
+      },
+      {
+        "minor": 15,
+        "readable": true
+      },
+      {
+        "minor": 16,
+        "readable": true
+      },
+      {
+        "minor": 17,
+        "readable": false
+      }
+    ]
+  }
+}

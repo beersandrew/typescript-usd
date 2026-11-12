@@ -1,0 +1,123 @@
+{
+  "formatArguments": {},
+  "unknownFormat": {
+    "raised": true,
+    "commentary": "Cannot determine file format for @<unknown>@"
+  },
+  "nativeVersion": "26.11.1",
+  "source": "pxr/usd/sdf/layer.cpp:943-994; usdaFileFormat.cpp:298-354; crateFileFormat.cpp Read metadataOnly ignored",
+  "emptyIdentifier": true,
+  "anonymousIdentifier": {
+    "raised": true,
+    "commentary": "Cannot determine file format for @<anonymous>@"
+  },
+  "missing": true,
+  "rows": [
+    {
+      "file": "root.usda",
+      "metadataOnly": false,
+      "anonymous": true,
+      "realPath": "",
+      "displayName": "review.usda",
+      "format": "usda",
+      "dirty": false,
+      "streamsData": false,
+      "rootPrims": [
+        "World"
+      ],
+      "export": "#usda 1.0\n(\n    defaultPrim = \"World\"\n    doc = \"disk metadata\"\n    endTimeCode = 4\n    startTimeCode = 1\n)\n\ndef Xform \"World\"\n{\n    double weight = 2\n}\n\n"
+    },
+    {
+      "file": "root.usda",
+      "metadataOnly": true,
+      "anonymous": true,
+      "realPath": "",
+      "displayName": "review.usda",
+      "format": "usda",
+      "dirty": false,
+      "streamsData": false,
+      "rootPrims": [],
+      "export": "#usda 1.0\n(\n    defaultPrim = \"World\"\n    doc = \"disk metadata\"\n    endTimeCode = 4\n    startTimeCode = 1\n)\n\n"
+    },
+    {
+      "file": "root.usdc",
+      "metadataOnly": false,
+      "anonymous": true,
+      "realPath": "",
+      "displayName": "review.usda",
+      "format": "usdc",
+      "dirty": false,
+      "streamsData": true,
+      "rootPrims": [
+        "World"
+      ],
+      "export": "#usda 1.0\n(\n    defaultPrim = \"World\"\n    doc = \"disk metadata\"\n    endTimeCode = 4\n    startTimeCode = 1\n)\n\ndef Xform \"World\"\n{\n    double weight = 2\n}\n\n"
+    },
+    {
+      "file": "root.usdc",
+      "metadataOnly": true,
+      "anonymous": true,
+      "realPath": "",
+      "displayName": "review.usda",
+      "format": "usdc",
+      "dirty": false,
+      "streamsData": true,
+      "rootPrims": [
+        "World"
+      ],
+      "export": "#usda 1.0\n(\n    defaultPrim = \"World\"\n    doc = \"disk metadata\"\n    endTimeCode = 4\n    startTimeCode = 1\n)\n\ndef Xform \"World\"\n{\n    double weight = 2\n}\n\n"
+    },
+    {
+      "file": "root.usdz",
+      "metadataOnly": false,
+      "anonymous": true,
+      "realPath": "",
+      "displayName": "review.usda",
+      "format": "usdz",
+      "dirty": false,
+      "streamsData": false,
+      "rootPrims": [
+        "World"
+      ],
+      "export": "#usda 1.0\n(\n    defaultPrim = \"World\"\n    doc = \"disk metadata\"\n    endTimeCode = 4\n    startTimeCode = 1\n)\n\ndef Xform \"World\"\n{\n    double weight = 2\n}\n\n"
+    },
+    {
+      "file": "root.usdz",
+      "metadataOnly": true,
+      "anonymous": true,
+      "realPath": "",
+      "displayName": "review.usda",
+      "format": "usdz",
+      "dirty": false,
+      "streamsData": false,
+      "rootPrims": [],
+      "export": "#usda 1.0\n(\n    defaultPrim = \"World\"\n    doc = \"disk metadata\"\n    endTimeCode = 4\n    startTimeCode = 1\n)\n\n"
+    }
+  ],
+  "invalid": [
+    {
+      "metadataOnly": false,
+      "opened": false,
+      "raised": true,
+      "export": null
+    },
+    {
+      "metadataOnly": true,
+      "opened": true,
+      "raised": false,
+      "export": "#usda 1.0\n(\n    doc = \"valid metadata before invalid body\"\n)\n\n"
+    }
+  ],
+  "isolation": {
+    "documentation": "disk metadata",
+    "sourceDocumentation": "unsaved source opinion",
+    "distinctAnonymous": true,
+    "sourceStillRegistered": true
+  },
+  "files": {
+    "root.usdc": "189b096f4c97060f94862475cc1953afe918f3372186956facbc303d3c2b3f25",
+    "invalid-body.usda": "8157fdda040d2e5bed4b8a3ab8d1d5bb9398a8264a8708087edbeb85884dbb7c",
+    "root.usdz": "19869647e3d3af3adc38c155c870ecc2f900ca363918f1d60324380584e5d3da",
+    "root.usda": "0233b9fbdf82d140f680957442869d1130bded8792e27e1a6ad8013ad1f027bd"
+  }
+}

@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<materialx version="1.39">
+  <nodedef name="ND_hdmtlx_test_tint_color3" node="hdmtlx_test_tint">
+    <input name="in" type="color3" value="1, 1, 1" />
+    <input name="amount" type="float" value="0.5" />
+    <output name="out" type="color3" />
+  </nodedef>
+  <nodegraph name="NG_hdmtlx_test_tint_color3" nodedef="ND_hdmtlx_test_tint_color3">
+    <multiply name="mult" type="color3">
+      <input name="in1" type="color3" interfacename="in" />
+      <input name="in2" type="float" interfacename="amount" />
+    </multiply>
+    <output name="out" type="color3" nodename="mult" />
+  </nodegraph>
+</materialx>

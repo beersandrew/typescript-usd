@@ -1,0 +1,73 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/usd/sdf/tests/fixtures/arrayEditTextVersion/capture.py",
+  "upstream": [
+    "pxr/usd/sdf/fileIO_Common.cpp:196-243,1122-1151",
+    "pxr/usd/sdf/fileIO.cpp:80-104"
+  ],
+  "payload": {
+    "cases": [
+      {
+        "name": "int",
+        "text": "#usda 1.2\ndef \"World\" {\nint[] a = edit [append 1]\n}\n",
+        "header": "#usda 1.0"
+      },
+      {
+        "name": "float",
+        "text": "#usda 1.2\ndef \"World\" {\nfloat[] a = edit [prepend 1.5]\n}\n",
+        "header": "#usda 1.0"
+      },
+      {
+        "name": "double3",
+        "text": "#usda 1.2\ndef \"World\" {\ndouble3[] a = edit [write (1, 2, 3) to [0]]\n}\n",
+        "header": "#usda 1.0"
+      },
+      {
+        "name": "bool",
+        "text": "#usda 1.2\ndef \"World\" {\nbool[] a = edit [append true]\n}\n",
+        "header": "#usda 1.0"
+      },
+      {
+        "name": "string",
+        "text": "#usda 1.2\ndef \"World\" {\nstring[] a = edit [append \"x\"]\n}\n",
+        "header": "#usda 1.2"
+      },
+      {
+        "name": "token",
+        "text": "#usda 1.2\ndef \"World\" {\ntoken[] a = edit [append \"x\"]\n}\n",
+        "header": "#usda 1.2"
+      },
+      {
+        "name": "asset",
+        "text": "#usda 1.2\ndef \"World\" {\nasset[] a = edit [append @x.usda@]\n}\n",
+        "header": "#usda 1.2"
+      },
+      {
+        "name": "pathExpression",
+        "text": "#usda 1.2\ndef \"World\" {\npathExpression[] a = edit [append \"/x\"]\n}\n",
+        "header": "#usda 1.2"
+      },
+      {
+        "name": "duration",
+        "text": "#usda 1.2\ndef \"World\" {\nduration[] a = edit [append 1]\n}\n",
+        "header": "#usda 1.4"
+      },
+      {
+        "name": "int-time-samples",
+        "text": "#usda 1.2\ndef \"World\" {\nint[] a.timeSamples = {\n 1: edit [append 1],\n}\n}\n",
+        "header": "#usda 1.0"
+      },
+      {
+        "name": "token-time-samples",
+        "text": "#usda 1.2\ndef \"World\" {\ntoken[] a.timeSamples = {\n 1: edit [append \"x\"],\n}\n}\n",
+        "header": "#usda 1.2"
+      },
+      {
+        "name": "int-and-token",
+        "text": "#usda 1.2\ndef \"World\" {\nint[] a = edit [append 1]\ntoken[] b = edit [append \"x\"]\n}\n",
+        "header": "#usda 1.2"
+      }
+    ]
+  }
+}

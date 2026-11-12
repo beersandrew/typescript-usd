@@ -1,0 +1,111 @@
+OpenVDB and NanoVDB (partial TypeScript port), part of typescript-usd
+
+OpenVDB and NanoVDB — Copyright Contributors to the OpenVDB Project
+https://github.com/AcademySoftwareFoundation/openvdb
+OpenVDB 13 and NanoVDB are licensed under the Apache License, Version 2.0
+(see LICENSE). OpenVDB 10.1.0 is licensed under the Mozilla Public License,
+v. 2.0 (see LICENSE-OpenVDB-10.1.0.txt).
+
+TypeScript port: Copyright (c) 2026 Andy Beers
+Licensed under the Apache License, Version 2.0, except the files that
+contain code ported from OpenVDB 10.1.0, which are licensed under the Mozilla
+Public License, v. 2.0:
+
+  openvdb/src/math/Mat4.ts
+  openvdb/src/tools/Dense.ts
+  openvdb/src/tools/GridTransformer.ts
+  openvdb/src/tools/Interpolation.ts
+  openvdb/src/tree/ValueAccessor.ts
+  openvdb/src/Grid.ts
+  openvdb/src/math/Maps.ts
+  openvdb/src/math/Transform.ts
+  openvdb/src/tree/Tree.ts
+
+Each of these says so in its header. The MPL 2.0 applies to each of those
+files as a whole; their source form is the file itself. All other files in
+this package are licensed under the Apache License, Version 2.0.
+
+This package is a partial TypeScript port of OpenVDB 13.0.1 and NanoVDB
+32.9.1, with additions from OpenVDB 10.1.0, included only to support
+OpenUSD's use of OpenVDB (see README.md). It is not affiliated with,
+endorsed by, or sponsored by the OpenVDB project or the Academy Software
+Foundation. The @vdb/openvdb and @vdb/nanovdb package names and the source
+layout mirror the upstream source tree; they imply no affiliation, and no
+trademark rights are claimed or granted.
+
+Each ported source file names the upstream files it ports and their
+copyright holders in its header. Third-party code that OpenVDB uses, ported
+here under its own licence:
+
+  Imath half (OpenVDB's math/Half.h) — openvdb/src/math/Half.ts. BSD
+  3-Clause License, as OpenEXR:
+
+    Copyright (c) Contributors to the OpenEXR Project. All rights reserved.
+
+    Redistribution and use in source and binary forms, with or without
+    modification, are permitted provided that the following conditions are
+    met:
+
+    1. Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+
+    2. Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in the
+    documentation and/or other materials provided with the distribution.
+
+    3. Neither the name of the copyright holder nor the names of its
+    contributors may be used to endorse or promote products derived from
+    this software without specific prior written permission.
+
+    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
+    IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED
+    TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A
+    PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+    HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+    SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED
+    TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+    PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+    LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+    NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+    SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+  c-blosc (the Blosc 1.x chunk decoder) — openvdb/src/io/Blosc.ts.
+
+    Copyright (C) 2009-2018 Francesc Alted <francesc@blosc.org>
+    Copyright (C) 2019-present Blosc Development team <blosc@blosc.org>
+
+    Redistribution and use in source and binary forms, with or without modification,
+    are permitted provided that the following conditions are met:
+
+     * Redistributions of source code must retain the above copyright notice, this
+       list of conditions and the following disclaimer.
+
+     * Redistributions in binary form must reproduce the above copyright notice,
+       this list of conditions and the following disclaimer in the documentation
+       and/or other materials provided with the distribution.
+
+     * Neither the name Francesc Alted nor the names of its contributors may be used
+       to endorse or promote products derived from this software without specific
+       prior written permission.
+
+    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+    ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+    WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+    DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR
+    ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+    (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+    LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON
+    ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+    (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+    SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+  LZ4 (the block decoder in openvdb/src/io/Blosc.ts). Copyright (C)
+  2011-present, Yann Collet. BSD 2-Clause License; the licence text is
+  reproduced in the root NOTICE of this repository (section 2, LZ4).
+
+Test fixtures: openvdb/tests/fixtures/gridTransformer/smoke_000002.vdb and
+densityAndHeat.vdb are verbatim copies of OpenUSD 26.11.1
+pxr/usdImaging/usdImagingGL/testenv/testUsdImagingGLVdbVolume/ files,
+Copyright Pixar, licensed under the Tomorrow Open Source Technology License
+1.0. generated.vdb and expected.json are written by capture.cpp in the same
+directory.

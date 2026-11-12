@@ -1,0 +1,1103 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/usdImaging/usdImaging/tests/fixtures/drawModeSceneIndex/capture.py",
+  "upstream": [
+    "pxr/usdImaging/usdImaging/drawModeSceneIndex.cpp",
+    "pxr/usdImaging/usdImaging/drawModeStandin.cpp",
+    "pxr/usdImaging/usdImaging/unloadedDrawModeSceneIndex.cpp",
+    "pxr/usdImaging/usdImaging/testenv/testUsdImagingDrawModeAggregationScope.cpp",
+    "pxr/usdImaging/usdImaging/testenv/testUsdImagingDrawModeAggregationScope/aggregationScope.usda"
+  ],
+  "payload": {
+    "prims": [
+      {
+        "path": "/",
+        "type": "",
+        "children": [
+          "/Bounds",
+          "/Cards",
+          "/Default",
+          "/Origin"
+        ],
+        "dataSource": {
+          "system": {
+            "assetResolution": {
+              "resolverContext": {
+                "type": "ArResolverContext",
+                "value": {
+                  "unhandled": "<'ArResolverContext' @ 0x74e10fd4e0>"
+                }
+              }
+            }
+          },
+          "sceneGlobals": {
+            "startTimeCode": {
+              "type": "double",
+              "value": 0
+            },
+            "endTimeCode": {
+              "type": "double",
+              "value": 0
+            },
+            "timeCodesPerSecond": {
+              "type": "double",
+              "value": 24
+            }
+          },
+          "__usdUpAxis": {
+            "upAxis": {
+              "type": "TfToken",
+              "value": "Y"
+            }
+          }
+        }
+      },
+      {
+        "path": "/Bounds",
+        "type": "",
+        "children": [
+          "/Bounds/boundsCurves"
+        ],
+        "dataSource": null
+      },
+      {
+        "path": "/Bounds/boundsCurves",
+        "type": "basisCurves",
+        "children": [],
+        "dataSource": {
+          "xform": {
+            "matrix": {
+              "type": "GfMatrix4d",
+              "value": [
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                1,
+                2,
+                3,
+                1
+              ]
+            },
+            "resetXformStack": {
+              "type": "bool",
+              "value": false
+            }
+          },
+          "purpose": null,
+          "visibility": null,
+          "instancedBy": null,
+          "displayStyle": {
+            "materialIsFinal": {
+              "type": "bool",
+              "value": true
+            },
+            "cullStyle": {
+              "type": "TfToken",
+              "value": "back"
+            }
+          },
+          "primOrigin": {
+            "scenePath": {
+              "type": "HdPrimOriginSchema::OriginPath",
+              "value": {
+                "unhandled": "HdPrimOriginSchema::OriginPath(/Bounds)"
+              }
+            }
+          },
+          "basisCurves": {
+            "topology": {
+              "curveVertexCounts": {
+                "type": "VtArray<int>",
+                "value": [
+                  24
+                ]
+              },
+              "curveIndices": {
+                "type": "VtArray<int>",
+                "value": [
+                  0,
+                  4,
+                  4,
+                  6,
+                  6,
+                  2,
+                  2,
+                  0,
+                  1,
+                  5,
+                  5,
+                  7,
+                  7,
+                  3,
+                  3,
+                  1,
+                  0,
+                  1,
+                  4,
+                  5,
+                  6,
+                  7,
+                  2,
+                  3
+                ]
+              },
+              "basis": {
+                "type": "TfToken",
+                "value": "bezier"
+              },
+              "type": {
+                "type": "TfToken",
+                "value": "linear"
+              },
+              "wrap": {
+                "type": "TfToken",
+                "value": "segmented"
+              }
+            }
+          },
+          "primvars": {
+            "widths": {
+              "primvarValue": {
+                "type": "VtArray<float>",
+                "value": [
+                  1
+                ]
+              },
+              "interpolation": {
+                "type": "TfToken",
+                "value": "constant"
+              },
+              "role": {
+                "type": "TfToken",
+                "value": ""
+              }
+            },
+            "displayColor": {
+              "primvarValue": {
+                "type": "GfVec3f",
+                "value": [
+                  1,
+                  0,
+                  0
+                ]
+              },
+              "interpolation": {
+                "type": "TfToken",
+                "value": "constant"
+              },
+              "role": {
+                "type": "TfToken",
+                "value": "color"
+              }
+            },
+            "displayOpacity": {
+              "primvarValue": {
+                "type": "VtArray<float>",
+                "value": [
+                  1
+                ]
+              },
+              "interpolation": {
+                "type": "TfToken",
+                "value": "constant"
+              },
+              "role": {
+                "type": "TfToken",
+                "value": ""
+              }
+            },
+            "points": {
+              "primvarValue": {
+                "type": "VtArray<GfVec3f>",
+                "value": [
+                  [
+                    0,
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    0,
+                    0
+                  ]
+                ]
+              },
+              "interpolation": {
+                "type": "TfToken",
+                "value": "vertex"
+              },
+              "role": {
+                "type": "TfToken",
+                "value": "point"
+              }
+            }
+          },
+          "extent": null
+        }
+      },
+      {
+        "path": "/Cards",
+        "type": "",
+        "children": [
+          "/Cards/cardsMesh",
+          "/Cards/subsetMaterialXPos"
+        ],
+        "dataSource": null
+      },
+      {
+        "path": "/Cards/cardsMesh",
+        "type": "mesh",
+        "children": [
+          "/Cards/cardsMesh/subsetXNeg",
+          "/Cards/cardsMesh/subsetXPos"
+        ],
+        "dataSource": {
+          "xform": null,
+          "purpose": null,
+          "visibility": null,
+          "instancedBy": null,
+          "displayStyle": {
+            "materialIsFinal": {
+              "type": "bool",
+              "value": true
+            },
+            "cullStyle": {
+              "type": "TfToken",
+              "value": "back"
+            }
+          },
+          "primOrigin": {
+            "scenePath": {
+              "type": "HdPrimOriginSchema::OriginPath",
+              "value": {
+                "unhandled": "HdPrimOriginSchema::OriginPath(/Cards)"
+              }
+            }
+          },
+          "mesh": {
+            "topology": {
+              "faceVertexCounts": {
+                "type": "VtArray<int>",
+                "value": [
+                  4,
+                  4
+                ]
+              },
+              "faceVertexIndices": {
+                "type": "VtArray<int>",
+                "value": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6,
+                  7
+                ]
+              },
+              "orientation": {
+                "type": "TfToken",
+                "value": "rightHanded"
+              }
+            },
+            "doubleSided": {
+              "type": "bool",
+              "value": false
+            }
+          },
+          "primvars": {
+            "widths": {
+              "primvarValue": {
+                "type": "VtArray<float>",
+                "value": [
+                  1
+                ]
+              },
+              "interpolation": {
+                "type": "TfToken",
+                "value": "constant"
+              },
+              "role": {
+                "type": "TfToken",
+                "value": ""
+              }
+            },
+            "displayColor": {
+              "primvarValue": {
+                "type": "GfVec3f",
+                "value": [
+                  0,
+                  1,
+                  0
+                ]
+              },
+              "interpolation": {
+                "type": "TfToken",
+                "value": "constant"
+              },
+              "role": {
+                "type": "TfToken",
+                "value": "color"
+              }
+            },
+            "displayOpacity": {
+              "primvarValue": {
+                "type": "VtArray<float>",
+                "value": [
+                  1
+                ]
+              },
+              "interpolation": {
+                "type": "TfToken",
+                "value": "constant"
+              },
+              "role": {
+                "type": "TfToken",
+                "value": ""
+              }
+            },
+            "points": {
+              "primvarValue": {
+                "type": "VtArray<GfVec3f>",
+                "value": [
+                  [
+                    0,
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    0,
+                    0
+                  ]
+                ]
+              },
+              "interpolation": {
+                "type": "TfToken",
+                "value": "vertex"
+              },
+              "role": {
+                "type": "TfToken",
+                "value": "point"
+              }
+            },
+            "cardsUv": {
+              "primvarValue": {
+                "type": "VtArray<GfVec2f>",
+                "value": [
+                  [
+                    1,
+                    1
+                  ],
+                  [
+                    0,
+                    1
+                  ],
+                  [
+                    0,
+                    0
+                  ],
+                  [
+                    1,
+                    0
+                  ],
+                  [
+                    0,
+                    1
+                  ],
+                  [
+                    1,
+                    1
+                  ],
+                  [
+                    1,
+                    0
+                  ],
+                  [
+                    0,
+                    0
+                  ]
+                ]
+              },
+              "interpolation": {
+                "type": "TfToken",
+                "value": "vertex"
+              },
+              "role": {
+                "type": "TfToken",
+                "value": ""
+              }
+            },
+            "displayRoughness": {
+              "primvarValue": {
+                "type": "VtArray<float>",
+                "value": [
+                  1
+                ]
+              },
+              "interpolation": {
+                "type": "TfToken",
+                "value": "constant"
+              },
+              "role": {
+                "type": "TfToken",
+                "value": ""
+              }
+            }
+          },
+          "extent": null
+        }
+      },
+      {
+        "path": "/Cards/cardsMesh/subsetXNeg",
+        "type": "geomSubset",
+        "children": [],
+        "dataSource": {
+          "geomSubset": {
+            "type": {
+              "type": "TfToken",
+              "value": "typeFaceSet"
+            },
+            "indices": {
+              "type": "VtArray<int>",
+              "value": [
+                1
+              ]
+            }
+          },
+          "visibility": {
+            "visibility": {
+              "type": "bool",
+              "value": true
+            }
+          },
+          "materialBindings": {
+            "": {
+              "path": {
+                "type": "SdfPath",
+                "value": "/Cards/subsetMaterialXPos"
+              }
+            }
+          },
+          "displayStyle": {
+            "materialIsFinal": {
+              "type": "bool",
+              "value": true
+            }
+          }
+        }
+      },
+      {
+        "path": "/Cards/cardsMesh/subsetXPos",
+        "type": "geomSubset",
+        "children": [],
+        "dataSource": {
+          "geomSubset": {
+            "type": {
+              "type": "TfToken",
+              "value": "typeFaceSet"
+            },
+            "indices": {
+              "type": "VtArray<int>",
+              "value": [
+                0
+              ]
+            }
+          },
+          "visibility": {
+            "visibility": {
+              "type": "bool",
+              "value": true
+            }
+          },
+          "materialBindings": {
+            "": {
+              "path": {
+                "type": "SdfPath",
+                "value": "/Cards/subsetMaterialXPos"
+              }
+            }
+          },
+          "displayStyle": {
+            "materialIsFinal": {
+              "type": "bool",
+              "value": true
+            }
+          }
+        }
+      },
+      {
+        "path": "/Cards/subsetMaterialXPos",
+        "type": "material",
+        "children": [],
+        "dataSource": {
+          "material": {
+            "": {
+              "nodes": {
+                "cardSurface": {
+                  "parameters": {
+                    "opacityThreshold": {
+                      "value": {
+                        "type": "float",
+                        "value": 0.100000001
+                      }
+                    }
+                  },
+                  "inputConnections": {
+                    "diffuseColor": [
+                      {
+                        "upstreamNodePath": {
+                          "type": "TfToken",
+                          "value": "cardTexture"
+                        },
+                        "upstreamNodeOutputName": {
+                          "type": "TfToken",
+                          "value": "rgb"
+                        }
+                      }
+                    ],
+                    "opacity": [
+                      {
+                        "upstreamNodePath": {
+                          "type": "TfToken",
+                          "value": "cardTexture"
+                        },
+                        "upstreamNodeOutputName": {
+                          "type": "TfToken",
+                          "value": "a"
+                        }
+                      }
+                    ]
+                  },
+                  "nodeIdentifier": {
+                    "type": "TfToken",
+                    "value": "UsdPreviewSurface"
+                  }
+                },
+                "cardTexture": {
+                  "parameters": {
+                    "wrapS": {
+                      "value": {
+                        "type": "TfToken",
+                        "value": "clamp"
+                      }
+                    },
+                    "wrapT": {
+                      "value": {
+                        "type": "TfToken",
+                        "value": "clamp"
+                      }
+                    },
+                    "fallback": {
+                      "value": {
+                        "type": "GfVec4f",
+                        "value": [
+                          0,
+                          1,
+                          0,
+                          1
+                        ]
+                      }
+                    },
+                    "file": {
+                      "value": {
+                        "type": "SdfAssetPath",
+                        "value": "xpos.png"
+                      }
+                    },
+                    "st": {
+                      "value": {
+                        "type": "TfToken",
+                        "value": "cardsUv"
+                      }
+                    }
+                  },
+                  "inputConnections": {
+                    "st": [
+                      {
+                        "upstreamNodePath": {
+                          "type": "TfToken",
+                          "value": "cardUvCoords"
+                        },
+                        "upstreamNodeOutputName": {
+                          "type": "TfToken",
+                          "value": "result"
+                        }
+                      }
+                    ]
+                  },
+                  "nodeIdentifier": {
+                    "type": "TfToken",
+                    "value": "UsdUVTexture"
+                  }
+                },
+                "cardUvCoords": {
+                  "parameters": {
+                    "varname": {
+                      "value": {
+                        "type": "TfToken",
+                        "value": "cardsUv"
+                      }
+                    }
+                  },
+                  "nodeIdentifier": {
+                    "type": "TfToken",
+                    "value": "UsdPrimvarReader_float2"
+                  }
+                }
+              },
+              "terminals": {
+                "surface": {
+                  "upstreamNodePath": {
+                    "type": "TfToken",
+                    "value": "cardSurface"
+                  },
+                  "upstreamNodeOutputName": {
+                    "type": "TfToken",
+                    "value": "surface"
+                  }
+                }
+              }
+            }
+          },
+          "builtinMaterial": {
+            "builtinMaterial": {
+              "type": "bool",
+              "value": true
+            }
+          }
+        }
+      },
+      {
+        "path": "/Default",
+        "type": "",
+        "children": [
+          "/Default/Geom"
+        ],
+        "dataSource": {
+          "__usdPrimInfo": {
+            "specifier": {
+              "type": "TfToken",
+              "value": "def"
+            },
+            "typeName": {
+              "type": "TfToken",
+              "value": "Xform"
+            },
+            "isLoaded": {
+              "type": "bool",
+              "value": true
+            },
+            "apiSchemas": null,
+            "kind": {
+              "type": "TfToken",
+              "value": "component"
+            },
+            "variantSelections": null
+          },
+          "primOrigin": {
+            "scenePath": {
+              "type": "HdPrimOriginSchema::OriginPath",
+              "value": {
+                "unhandled": "HdPrimOriginSchema::OriginPath(/Default)"
+              }
+            }
+          },
+          "visibility": null,
+          "xform": null,
+          "model": null
+        }
+      },
+      {
+        "path": "/Default/Geom",
+        "type": "mesh",
+        "children": [],
+        "dataSource": {
+          "__usdPrimInfo": {
+            "specifier": {
+              "type": "TfToken",
+              "value": "def"
+            },
+            "typeName": {
+              "type": "TfToken",
+              "value": "Mesh"
+            },
+            "isLoaded": {
+              "type": "bool",
+              "value": true
+            },
+            "apiSchemas": null,
+            "kind": null,
+            "variantSelections": null
+          },
+          "primOrigin": {
+            "scenePath": {
+              "type": "HdPrimOriginSchema::OriginPath",
+              "value": {
+                "unhandled": "HdPrimOriginSchema::OriginPath(/Default/Geom)"
+              }
+            }
+          },
+          "visibility": null,
+          "xform": null,
+          "extent": {
+            "min": {
+              "type": "GfVec3d",
+              "value": [
+                -1,
+                -1,
+                0
+              ]
+            },
+            "max": {
+              "type": "GfVec3d",
+              "value": [
+                1,
+                1,
+                0
+              ]
+            }
+          },
+          "primvars": {
+            "points": {
+              "interpolation": {
+                "type": "TfToken",
+                "value": "vertex"
+              },
+              "role": {
+                "type": "TfToken",
+                "value": "point"
+              },
+              "primvarValue": {
+                "type": "VtArray<GfVec3f>",
+                "value": [
+                  [
+                    -1,
+                    -1,
+                    0
+                  ],
+                  [
+                    1,
+                    -1,
+                    0
+                  ],
+                  [
+                    1,
+                    1,
+                    0
+                  ],
+                  [
+                    -1,
+                    1,
+                    0
+                  ]
+                ]
+              }
+            },
+            "velocities": null,
+            "accelerations": null,
+            "normals": null
+          },
+          "mesh": {
+            "topology": {
+              "faceVertexCounts": {
+                "type": "VtArray<int>",
+                "value": [
+                  4
+                ]
+              },
+              "faceVertexIndices": {
+                "type": "VtArray<int>",
+                "value": [
+                  0,
+                  1,
+                  2,
+                  3
+                ]
+              },
+              "holeIndices": {
+                "type": "VtArray<int>",
+                "value": []
+              },
+              "orientation": {
+                "type": "TfToken",
+                "value": "rightHanded"
+              }
+            },
+            "subdivisionScheme": {
+              "type": "TfToken",
+              "value": "catmullClark"
+            },
+            "doubleSided": {
+              "type": "bool",
+              "value": false
+            },
+            "subdivisionTags": {
+              "faceVaryingLinearInterpolation": {
+                "type": "TfToken",
+                "value": "cornersPlus1"
+              },
+              "interpolateBoundary": {
+                "type": "TfToken",
+                "value": "edgeAndCorner"
+              },
+              "triangleSubdivisionRule": {
+                "type": "TfToken",
+                "value": "catmullClark"
+              },
+              "cornerIndices": {
+                "type": "VtArray<int>",
+                "value": []
+              },
+              "cornerSharpnesses": {
+                "type": "VtArray<float>",
+                "value": []
+              },
+              "creaseIndices": {
+                "type": "VtArray<int>",
+                "value": []
+              },
+              "creaseLengths": {
+                "type": "VtArray<int>",
+                "value": []
+              },
+              "creaseSharpnesses": {
+                "type": "VtArray<float>",
+                "value": []
+              }
+            }
+          }
+        }
+      },
+      {
+        "path": "/Origin",
+        "type": "",
+        "children": [
+          "/Origin/originCurves"
+        ],
+        "dataSource": null
+      },
+      {
+        "path": "/Origin/originCurves",
+        "type": "basisCurves",
+        "children": [],
+        "dataSource": {
+          "xform": null,
+          "purpose": null,
+          "visibility": null,
+          "instancedBy": null,
+          "displayStyle": {
+            "materialIsFinal": {
+              "type": "bool",
+              "value": true
+            },
+            "cullStyle": {
+              "type": "TfToken",
+              "value": "back"
+            }
+          },
+          "primOrigin": {
+            "scenePath": {
+              "type": "HdPrimOriginSchema::OriginPath",
+              "value": {
+                "unhandled": "HdPrimOriginSchema::OriginPath(/Origin)"
+              }
+            }
+          },
+          "basisCurves": {
+            "topology": {
+              "curveVertexCounts": {
+                "type": "VtArray<int>",
+                "value": [
+                  6
+                ]
+              },
+              "curveIndices": {
+                "type": "VtArray<int>",
+                "value": [
+                  0,
+                  1,
+                  0,
+                  2,
+                  0,
+                  3
+                ]
+              },
+              "basis": {
+                "type": "TfToken",
+                "value": "bezier"
+              },
+              "type": {
+                "type": "TfToken",
+                "value": "linear"
+              },
+              "wrap": {
+                "type": "TfToken",
+                "value": "segmented"
+              }
+            }
+          },
+          "primvars": {
+            "widths": {
+              "primvarValue": {
+                "type": "VtArray<float>",
+                "value": [
+                  1
+                ]
+              },
+              "interpolation": {
+                "type": "TfToken",
+                "value": "constant"
+              },
+              "role": {
+                "type": "TfToken",
+                "value": ""
+              }
+            },
+            "displayColor": {
+              "primvarValue": {
+                "type": "GfVec3f",
+                "value": [
+                  0.180000007,
+                  0.180000007,
+                  0.180000007
+                ]
+              },
+              "interpolation": {
+                "type": "TfToken",
+                "value": "constant"
+              },
+              "role": {
+                "type": "TfToken",
+                "value": "color"
+              }
+            },
+            "displayOpacity": {
+              "primvarValue": {
+                "type": "VtArray<float>",
+                "value": [
+                  1
+                ]
+              },
+              "interpolation": {
+                "type": "TfToken",
+                "value": "constant"
+              },
+              "role": {
+                "type": "TfToken",
+                "value": ""
+              }
+            },
+            "points": {
+              "primvarValue": {
+                "type": "VtArray<GfVec3f>",
+                "value": [
+                  [
+                    0,
+                    0,
+                    0
+                  ],
+                  [
+                    1,
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    0
+                  ],
+                  [
+                    0,
+                    0,
+                    1
+                  ]
+                ]
+              },
+              "interpolation": {
+                "type": "TfToken",
+                "value": "vertex"
+              },
+              "role": {
+                "type": "TfToken",
+                "value": "point"
+              }
+            }
+          },
+          "extent": null
+        }
+      }
+    ]
+  }
+}

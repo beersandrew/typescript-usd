@@ -1,0 +1,28 @@
+#usda 1.0
+(
+    defaultPrim = "World"
+    subLayers = [@weak.usda@]
+    upAxis = "Y"
+)
+def Xform "World" {
+    def "Model" (
+        references = @reference.usda@</Source>
+        kind = "component"
+        documentation = "A composed inspection fixture"
+        customData = { string owner = "viewer" }
+    ) {
+        def Cube "Shape" {
+            double size = 2
+        }
+        custom float weight = 3 (documentation = "strong opinion")
+        custom point3f[] samples.timeSamples = {
+            0: [(0, 1, 2), (3, 4, 5)],
+            2: [(2, 3, 4), (5, 6, 7)]
+        }
+        custom float driven.connect = </World/Target.output>
+        rel related = [</World/Target>, </World/Target.output>, </World/Missing>]
+    }
+    def Scope "Target" {
+        custom float output = 7
+    }
+}

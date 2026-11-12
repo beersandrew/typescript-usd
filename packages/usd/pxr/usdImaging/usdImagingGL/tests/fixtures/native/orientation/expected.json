@@ -1,0 +1,21 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/usdImaging/usdImagingGL/tests/fixtures/native/orientation/capture.py",
+  "upstream": [
+    "pxr/imaging/hd/vertexAdjacency.cpp:37,104-107",
+    "pxr/imaging/hd/smoothNormals.cpp"
+  ],
+  "payload": {
+    "rightHanded": [
+      0,
+      0,
+      1
+    ],
+    "leftHanded": [
+      0,
+      0,
+      -1
+    ]
+  }
+}

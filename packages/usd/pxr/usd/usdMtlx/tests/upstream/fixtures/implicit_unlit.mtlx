@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<materialx version="1.39">
+  <constant name="color" type="color3">
+    <input name="value" type="color3" value="0.2, 0.4, 0.8" />
+  </constant>
+  <surface_unlit name="unlit" type="surfaceshader">
+    <input name="emission_color" type="color3" nodename="color" />
+  </surface_unlit>
+  <surfacematerial name="material" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="unlit" />
+  </surfacematerial>
+</materialx>

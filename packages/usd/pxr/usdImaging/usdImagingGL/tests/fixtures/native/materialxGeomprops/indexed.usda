@@ -1,0 +1,43 @@
+#usda 1.0
+(upAxis = "Y"
+ metersPerUnit = 1)
+def Material "Material" {
+ token outputs:mtlx:surface.connect = </Material/Surface.outputs:out>
+ def Shader "Surface" {
+  uniform token info:id = "ND_standard_surface_surfaceshader"
+  float inputs:base = 1
+  float inputs:specular = 0
+  float inputs:specular_roughness = 0.4
+  color3f inputs:base_color.connect = </Material/Convert.outputs:out>
+  token outputs:out
+ }
+ def Shader "Reader" {
+  uniform token info:id = "ND_geompropvalue_vector3"
+  string inputs:geomprop = "custom_color"
+  float3 inputs:default = (0.18, 0.4, 0.8)
+  float3 outputs:out
+ }
+ def Shader "Convert" {
+  uniform token info:id = "ND_convert_vector3_color3"
+  float3 inputs:in.connect = </Material/Reader.outputs:out>
+  color3f outputs:out
+ }
+}
+def Mesh "Quad" (
+ prepend apiSchemas = ["MaterialBindingAPI"]
+) {
+ rel material:binding = </Material>
+ point3f[] points = [(-1,-1,0),(1,-1,0),(1,1,0),(-1,1,0)]
+ int[] faceVertexCounts = [4]
+ int[] faceVertexIndices = [0,1,2,3]
+ token subdivisionScheme = "none"
+ float3[] primvars:custom_color = [(0.8,0.15,0.05),(0.05,0.8,0.15)] (interpolation = "faceVarying")
+ int[] primvars:custom_color:indices = [0,1,0,1]
+}
+def Camera "Camera" {
+ float focalLength = 50
+ float horizontalAperture = 36
+ float verticalAperture = 24
+ double3 xformOp:translate = (0,0,6)
+ uniform token[] xformOpOrder = ["xformOp:translate"]
+}

@@ -1,0 +1,53 @@
+#usda 1.0
+
+def "Asset" (
+    prepend apiSchemas = ["ClaimsAPI"]
+    customData = {
+        dictionary profilesInfo = {
+            dictionary capabilityUsages = {
+                token "typescript-usd.imaging.geom" = "hard"
+                token "usd.core" = "hard"
+                token "usd.core.colorspace" = "soft"
+                token "usd.mtlx.fileformat" = "hard"
+                token "vnd.example.hair" = "enhancement"
+            }
+            dictionary profileCompatibility = {
+                token[] "typescript-usd.web" = []
+                token[] "vnd.example.mobile_v1" = ["vnd.example.hair"]
+                token[] "vnd.example.review" = []
+            }
+        }
+    }
+)
+{
+    def "Child" (
+        prepend apiSchemas = ["ClaimsAPI"]
+        customData = {
+            dictionary profilesInfo = {
+                dictionary capabilityUsages = {
+                    token "usd.core.colorspace" = "hard"
+                }
+            }
+        }
+    )
+    {
+    }
+}
+
+def "Covered" (
+    prepend apiSchemas = ["ClaimsAPI"]
+    customData = {
+        dictionary profilesInfo = {
+            dictionary capabilityUsages = {
+                token "usd.core" = "hard"
+                token "usd.core.fileformat" = "soft"
+            }
+            dictionary profileCompatibility = {
+                token[] "typescript-usd.web" = []
+            }
+        }
+    }
+)
+{
+}
+

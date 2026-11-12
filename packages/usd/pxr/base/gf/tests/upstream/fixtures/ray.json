@@ -1,0 +1,194 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/base/gf/tests/upstream/genfix_ray.py",
+  "upstream": [
+    "pxr/base/gf/testenv/testGfRay.py"
+  ],
+  "payload": {
+    "transform_start": [
+      1.0,
+      0.23205080756887764,
+      3.598076211353316
+    ],
+    "transform_dir": [
+      2.0,
+      0.5980762113533162,
+      4.964101615137754
+    ],
+    "fcp_point": [
+      0.72,
+      0.96,
+      1.2
+    ],
+    "fcp_dist": 0.24,
+    "fcp_line1": {
+      "intersects": true,
+      "rayPoint": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "linePoint": [
+        -1.3333333333333353,
+        -2.3333333333333353,
+        -2.3333333333333353
+      ],
+      "rayDistance": 0.0,
+      "lineDistance": -4.041451884327384
+    },
+    "fcp_line2_intersects": false,
+    "fcp_seg1": {
+      "intersects": true,
+      "rayPoint": [
+        0.18,
+        0.24,
+        0.3
+      ],
+      "linePoint": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "rayDistance": 0.06,
+      "lineDistance": 0.0,
+      "closestRayPtToNearEnd": [
+        0.18,
+        0.24,
+        0.3
+      ],
+      "rayDistToNearEnd": 0.06
+    },
+    "fcp_seg2_intersects": false,
+    "tri1": {
+      "hit": true,
+      "distance": 0.3333333333333334,
+      "bary": [
+        0.3333333432674408,
+        0.3333333333333334,
+        0.3333333333333331
+      ],
+      "frontFacing": false
+    },
+    "tri2_hit": false,
+    "tri3": {
+      "hit": false,
+      "distance": 0.0,
+      "bary": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frontFacing": false
+    },
+    "tri_onsurface": {
+      "hit": true,
+      "distance": 0.0,
+      "frontFacing": false
+    },
+    "plane1": {
+      "hit": true,
+      "distance": 1.1547005383792515,
+      "frontFacing": false
+    },
+    "plane2_hit": false,
+    "plane3": {
+      "hit": true,
+      "distance": 0.0,
+      "frontFacing": false
+    },
+    "box1": [
+      true,
+      0.6666666666666666,
+      1.0
+    ],
+    "box2": [
+      false,
+      0.0,
+      0.0
+    ],
+    "box3": [
+      false,
+      0.0,
+      0.0
+    ],
+    "box4": [
+      true,
+      1.0,
+      2.0
+    ],
+    "box5": [
+      true,
+      -0.5,
+      0.5
+    ],
+    "box6": [
+      false,
+      0.0,
+      0.0
+    ],
+    "box7": [
+      true,
+      -1.0,
+      0.0
+    ],
+    "box8": [
+      false,
+      0.0,
+      0.0
+    ],
+    "box9": [
+      true,
+      1.0,
+      2.0
+    ],
+    "obox": [
+      true,
+      2.422649730810375,
+      3.5773502691896266
+    ],
+    "sph1": [
+      true,
+      0.5,
+      1.5
+    ],
+    "sph2": [
+      true,
+      -1.0,
+      -0.0
+    ],
+    "sph3": [
+      false,
+      0.0,
+      0.0
+    ],
+    "sph4": [
+      true,
+      -0.5,
+      0.5
+    ],
+    "sph5": [
+      true,
+      4.999999999999999,
+      15.0
+    ],
+    "sph6": [
+      false,
+      0.0,
+      0.0
+    ],
+    "sph7": [
+      true,
+      1.0,
+      1.0
+    ],
+    "sph8": [
+      true,
+      1.7695346483064331,
+      1.7695346483064331
+    ],
+    "sph8_negz": 1.7695346483064331,
+    "str_ray": "[(0.5, 0, 0) >> (0, 1, 0)]",
+    "repr_ray": "Gf.Ray(Gf.Vec3d(0.5, 0.0, 0.0), Gf.Vec3d(0.0, 1.0, 0.0))"
+  }
+}

@@ -1,0 +1,89 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/usd/usd/tests/fixtures/sessionNames/capture.py",
+  "upstream": [
+    "pxr/usd/usd/stage.cpp:874",
+    "pxr/base/tf/stringUtils.cpp:287",
+    "pxr/usd/sdf/assetPathResolver.cpp:394"
+  ],
+  "payload": [
+    {
+      "kind": "named",
+      "tag": "root.usda",
+      "root": "root.usda",
+      "session": "root-session.usda",
+      "sessionAnonymous": true
+    },
+    {
+      "kind": "named",
+      "tag": "shot.look.usdc",
+      "root": "shot.look.usdc",
+      "session": "shot.look-session.usda",
+      "sessionAnonymous": true
+    },
+    {
+      "kind": "named",
+      "tag": ".hidden.usda",
+      "root": ".hidden.usda",
+      "session": ".hidden-session.usda",
+      "sessionAnonymous": true
+    },
+    {
+      "kind": "named",
+      "tag": "file with spaces.usda",
+      "root": "file with spaces.usda",
+      "session": "file with spaces-session.usda",
+      "sessionAnonymous": true
+    },
+    {
+      "kind": "anonymous",
+      "tag": "",
+      "root": "",
+      "session": "-session.usda",
+      "sessionAnonymous": true
+    },
+    {
+      "kind": "anonymous",
+      "tag": "shot.usda",
+      "root": "shot.usda",
+      "session": "shot-session.usda",
+      "sessionAnonymous": true
+    },
+    {
+      "kind": "anonymous",
+      "tag": "shot.look.usda",
+      "root": "shot.look.usda",
+      "session": "shot.look-session.usda",
+      "sessionAnonymous": true
+    },
+    {
+      "kind": "anonymous",
+      "tag": "untagged",
+      "root": "untagged",
+      "session": "untagged-session.usda",
+      "sessionAnonymous": true
+    },
+    {
+      "kind": "anonymous",
+      "tag": "folder/shot.usda",
+      "root": "folder/shot.usda",
+      "session": "folder/shot-session.usda",
+      "sessionAnonymous": true
+    },
+    {
+      "kind": "anonymous",
+      "tag": ".hidden",
+      "root": ".hidden",
+      "session": "-session.usda",
+      "sessionAnonymous": true
+    },
+    {
+      "kind": "inMemory",
+      "tag": "",
+      "root": "tmp.usda",
+      "session": "tmp-session.usda",
+      "sessionAnonymous": true
+    }
+  ]
+}

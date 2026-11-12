@@ -1,0 +1,5 @@
+exit 0
+Draw mode standin(s) created, none on an instance binding scope:
+    /World/Instance1/cardsMesh
+    /World/Instance2/cardsMesh
+    /UsdNiPropagatedPrototypes/NoPrimvars_geomModel18fa44c87ca6c616___usdUpAxisc5a1cb23cb33294e/__Prototype_1/UsdNiInstancer/UsdNiPrototype/cardsMesh

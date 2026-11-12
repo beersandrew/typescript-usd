@@ -1,0 +1,76 @@
+{
+  "label": "imaging-step3-resolver-walk",
+  "bench": "bench/imaging.bench.ts",
+  "commit": "ff58099cee3ebfaef530d13e213528fdd3a8fe6e",
+  "dirty": false,
+  "date": "2026-11-02T01:54:37.600Z",
+  "machine": {
+    "platform": "darwin 27.2.0",
+    "cpu": "Apple M4 Pro",
+    "cores": 12,
+    "memoryGB": 24
+  },
+  "node": "v24.7.0",
+  "loadAverage1m": {
+    "before": 5,
+    "after": 5.4
+  },
+  "note": "Recorded on a shared developer machine under other load; compare means alongside min, sd and rme, not single runs.",
+  "results": [
+    {
+      "group": "imaging load (60 referenced assets, 1500 meshes)",
+      "name": "Stage.open",
+      "meanMs": 17.484,
+      "minMs": 15.317,
+      "maxMs": 22.066,
+      "p99Ms": 22.066,
+      "sdMs": 1.838,
+      "rmePercent": 7.52,
+      "samples": 10
+    },
+    {
+      "group": "imaging load (60 referenced assets, 1500 meshes)",
+      "name": "UsdImagingStageSceneIndex.SetStage (population)",
+      "meanMs": 45.275,
+      "minMs": 43.344,
+      "maxMs": 46.865,
+      "p99Ms": 46.865,
+      "sdMs": 1.331,
+      "rmePercent": 2.1,
+      "samples": 10
+    },
+    {
+      "group": "imaging load (60 referenced assets, 1500 meshes)",
+      "name": "prim data sources: material binding of every prim",
+      "meanMs": 204.065,
+      "minMs": 196.396,
+      "maxMs": 226.198,
+      "p99Ms": 226.198,
+      "sdMs": 8.968,
+      "rmePercent": 3.14,
+      "samples": 10
+    },
+    {
+      "group": "imaging load (60 referenced assets, 1500 meshes)",
+      "name": "HdRenderIndex.SyncAll, Storm on a mock device (with population)",
+      "meanMs": 669.589,
+      "minMs": 615.48,
+      "maxMs": 788.095,
+      "p99Ms": 788.095,
+      "sdMs": 61.332,
+      "rmePercent": 6.55,
+      "samples": 10
+    },
+    {
+      "group": "imaging load (60 referenced assets, 1500 meshes)",
+      "name": "UsdGeomBBoxCache.ComputeWorldBound of the set",
+      "meanMs": 59.232,
+      "minMs": 57.722,
+      "maxMs": 62.526,
+      "p99Ms": 62.526,
+      "sdMs": 1.47,
+      "rmePercent": 1.78,
+      "samples": 10
+    }
+  ]
+}

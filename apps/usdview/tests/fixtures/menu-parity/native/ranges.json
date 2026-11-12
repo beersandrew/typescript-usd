@@ -1,0 +1,21 @@
+{
+  "stage": [
+    "/Model",
+    "/Model/Triangle",
+    "/Model/Strand",
+    "/Model/Typeless",
+    "/Looks",
+    "/Looks/Mat",
+    "/Target"
+  ],
+  "pseudoRoot": [
+    "/",
+    "/Model",
+    "/Model/Triangle",
+    "/Model/Strand",
+    "/Model/Typeless",
+    "/Looks",
+    "/Looks/Mat",
+    "/Target"
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/usdImaging/usdImagingGL/tests/fixtures/testenvImages/capture.py",
+  "upstream": [
+    "pxr/usdImaging/usdImagingGL/CMakeLists.txt",
+    "pxr/usdImaging/usdImagingGL/testenv/testUsdImagingGLBasicDrawing.cpp"
+  ],
+  "payload": {
+    "test": "testUsdImagingGLHighlight",
+    "cmake": "pxr/usdImaging/usdImagingGL/CMakeLists.txt:1543",
+    "command": "<install>/tests/testUsdImagingGLHighlight -offscreen -frameAll -stage instance.usda -write testUsdImagingGLHighlight.png",
+    "cwd": "copy of <source>/pxr/usdImaging/usdImagingGL/testenv/testUsdImagingGLHighlight",
+    "env": {
+      "TF_DEBUG": "HD_SAFE_MODE"
+    },
+    "expectedReturnCode": "0",
+    "returnCode": 0,
+    "images": [
+      {
+        "name": "testUsdImagingGLHighlight_000.png",
+        "written": true
+      },
+      {
+        "name": "testUsdImagingGLHighlight_001.png",
+        "written": true
+      },
+      {
+        "name": "testUsdImagingGLHighlight_002.png",
+        "written": true
+      }
+    ]
+  }
+}

@@ -1,0 +1,6 @@
+#usda 1.0
+(
+    defaultPrim = "Root"
+)
+class "Inherit" { int first = 12; int second = 24 ; }
+def "Root" (inherits = </Inherit>) {}

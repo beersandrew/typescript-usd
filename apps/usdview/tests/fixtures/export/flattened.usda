@@ -1,0 +1,38 @@
+#usda 1.0
+(
+    defaultPrim = "World"
+    doc = """Generated from Composed Stage of root layer <checkout>/tests/fixtures/usd-workflow/native-audit/session-case/source.usda
+"""
+    endTimeCode = 24
+    framesPerSecond = 24
+    metersPerUnit = 1
+    startTimeCode = 0
+    timeCodesPerSecond = 24
+    upAxis = "Y"
+)
+
+def Xform "World"
+{
+    def Mesh "Mesh"
+    {
+        int[] faceVertexCounts = [4]
+        int[] faceVertexIndices = [0, 1, 2, 3]
+        point3f[] points = [(-1, -1, 0), (1, -1, 0), (1, 1, 0), (-1, 1, 0)]
+        color3f[] primvars:displayColor = [(0, 0, 1)]
+        uniform token subdivisionScheme = "none"
+        token visibility = "invisible"
+        double3 xformOp:translate.timeSamples = {
+            0: (0, 0, 0),
+            24: (0, 1, 0),
+        }
+        uniform token[] xformOpOrder = ["xformOp:translate"]
+    }
+
+    def Cube "Other"
+    {
+        double size = 0.5
+        double3 xformOp:translate = (3, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate"]
+    }
+}
+

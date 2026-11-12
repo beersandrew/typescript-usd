@@ -1,0 +1,20 @@
+{
+  "nativeVersion": [
+    0,
+    26,
+    11
+  ],
+  "sourceSha256": "11bd95965662e980839a64a06704658023a1fdbd9114393b0ad5d6af380ac3b7",
+  "sourceUnchanged": true,
+  "rootSublayer": "<checkout>/tests/fixtures/export/source.usda",
+  "start": 3.0,
+  "end": 18.0,
+  "defaultPrim": "World",
+  "metersPerUnit": 1.0,
+  "variant": "blue",
+  "visibility": "invisible",
+  "compositionErrors": [],
+  "anonymousPaths": [
+    "/Root"
+  ]
+}

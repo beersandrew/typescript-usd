@@ -1,0 +1,199 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/usd/sdf/tests/fixtures/metadataPlugInfo/capture.py",
+  "upstream": [
+    "pxr/usd/sdf/testenv/testSdfMetaDataPlugInfo.cpp:191-202",
+    "pxr/usd/sdf/testenv/testSdfMetaDataPlugInfo.testenv/plugInfo.json",
+    "pxr/usd/sdf/textParserHelpers.cpp:209-280"
+  ],
+  "payload": {
+    "unregistered": {
+      "fields": {
+        "avar": {
+          "holdingType": "SdfUnregisteredValue",
+          "raw": "true"
+        },
+        "note": {
+          "holdingType": "SdfUnregisteredValue",
+          "raw": "\"true\""
+        }
+      },
+      "listOp": {
+        "isExplicit": false,
+        "explicitItems": [],
+        "addedItems": [],
+        "deletedItems": [],
+        "prependedItems": [
+          "1, 2"
+        ],
+        "appendedItems": [],
+        "orderedItems": []
+      }
+    },
+    "fields": {
+      "matrix2d_single": {
+        "type": "matrix2d",
+        "value": [
+          [
+            0.5,
+            1.5
+          ],
+          [
+            2.5,
+            3.5
+          ]
+        ]
+      },
+      "quatd_single": {
+        "type": "quatd",
+        "value": [
+          1.0,
+          2.0,
+          3.0,
+          4.0
+        ]
+      },
+      "int2_single": {
+        "type": "int2",
+        "value": [
+          1,
+          2
+        ]
+      },
+      "double3_single": {
+        "type": "double3",
+        "value": [
+          0.5,
+          1.5,
+          2.5
+        ]
+      },
+      "float4_single": {
+        "type": "float4",
+        "value": [
+          1.0,
+          2.0,
+          3.0,
+          4.0
+        ]
+      },
+      "asset_single": {
+        "type": "asset",
+        "value": "/a/b.usd"
+      },
+      "bool_single": {
+        "type": "bool",
+        "value": true
+      },
+      "double_shaped": {
+        "type": "double[]",
+        "value": [
+          0.5,
+          1.5,
+          2.5
+        ]
+      },
+      "double_single": {
+        "type": "double",
+        "value": 2.25
+      },
+      "float_single": {
+        "type": "float",
+        "value": 1.5
+      },
+      "half_single": {
+        "type": "half",
+        "value": 0.5
+      },
+      "timecode_single": {
+        "type": "timecode",
+        "value": 3.0
+      },
+      "uchar_single": {
+        "type": "uchar",
+        "value": 7
+      },
+      "int_shaped": {
+        "type": "int[]",
+        "value": [
+          1,
+          2,
+          3
+        ]
+      },
+      "int_single": {
+        "type": "int",
+        "value": -5
+      },
+      "uint_single": {
+        "type": "uint",
+        "value": 12
+      },
+      "int64_single": {
+        "type": "int64",
+        "value": 9999999999
+      },
+      "uint64_single": {
+        "type": "uint64",
+        "value": 18000000000
+      },
+      "string_shaped": {
+        "type": "string[]",
+        "value": [
+          "a",
+          "b",
+          "c"
+        ]
+      },
+      "string_single": {
+        "type": "string",
+        "value": "hello world"
+      },
+      "token_single": {
+        "type": "token",
+        "value": "tok"
+      },
+      "dictionary_single": {
+        "type": "dictionary",
+        "value": {
+          "k1": "v1",
+          "k2": 5
+        }
+      },
+      "intlistop_single": {
+        "type": "intlistop",
+        "value": {
+          "isExplicit": true,
+          "explicitItems": [
+            1,
+            2,
+            3
+          ],
+          "addedItems": [],
+          "prependedItems": [],
+          "appendedItems": [],
+          "deletedItems": [],
+          "orderedItems": []
+        }
+      },
+      "stringlistop_single": {
+        "type": "stringlistop",
+        "value": {
+          "isExplicit": false,
+          "explicitItems": [],
+          "addedItems": [],
+          "prependedItems": [
+            "x",
+            "y"
+          ],
+          "appendedItems": [],
+          "deletedItems": [
+            "z"
+          ],
+          "orderedItems": []
+        }
+      }
+    }
+  }
+}

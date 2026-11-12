@@ -1,0 +1,18 @@
+#usda 1.0
+def Xform "Asset" (
+ variants = { string look = "red"
+ }
+ prepend variantSets = "look"
+) {
+ variantSet "look" = {
+  "red" {
+ custom string choice = "red"
+ }
+  "blue" {
+ custom string choice = "blue"
+ }
+ }
+ def Cube "Shape" {
+ double size = 2
+ }
+}

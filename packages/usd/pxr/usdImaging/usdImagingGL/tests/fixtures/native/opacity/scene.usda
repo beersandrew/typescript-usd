@@ -1,0 +1,250 @@
+#usda 1.0
+
+def Material "opaque"
+{
+    token outputs:surface.connect = </opaque/Surface.outputs:surface>
+
+    def Shader "Surface"
+    {
+        uniform token info:id = "UsdPreviewSurface"
+        float inputs:opacity = 1
+        token inputs:opacityMode = "presence"
+        float inputs:opacityThreshold = 0
+        token outputs:surface
+    }
+}
+
+def Material "constant"
+{
+    token outputs:surface.connect = </constant/Surface.outputs:surface>
+
+    def Shader "Surface"
+    {
+        uniform token info:id = "UsdPreviewSurface"
+        float inputs:opacity = 0.25
+        token inputs:opacityMode = "presence"
+        float inputs:opacityThreshold = 0
+        token outputs:surface
+    }
+}
+
+def Material "texture"
+{
+    token outputs:surface.connect = </texture/Surface.outputs:surface>
+
+    def Shader "Surface"
+    {
+        uniform token info:id = "UsdPreviewSurface"
+        float inputs:opacity = 1
+        float inputs:opacity.connect = </texture/Tex.outputs:a>
+        token inputs:opacityMode = "presence"
+        float inputs:opacityThreshold = 0
+        token outputs:surface
+    }
+
+    def Shader "Tex"
+    {
+        uniform token info:id = "UsdUVTexture"
+        float4 inputs:bias = (0.1, 0.2, 0.3, 0.125)
+        asset inputs:file = @opacity.png@
+        float4 inputs:scale = (0.5, 1, 2, 0.75)
+        token inputs:sourceColorSpace = "raw"
+        float2 inputs:st.connect = </texture/Transform.outputs:result>
+        token inputs:wrapS = "clamp"
+        token inputs:wrapT = "repeat"
+        float outputs:a
+    }
+
+    def Shader "UV"
+    {
+        uniform token info:id = "UsdPrimvarReader_float2"
+        token inputs:varname = "st"
+        float2 outputs:result
+    }
+
+    def Shader "Transform"
+    {
+        uniform token info:id = "UsdTransform2d"
+        float2 inputs:in.connect = </texture/UV.outputs:result>
+        float2 inputs:scale = (2, 3)
+        float2 inputs:translation = (0.25, 0.5)
+        float2 outputs:result
+    }
+}
+
+def Material "masked"
+{
+    token outputs:surface.connect = </masked/Surface.outputs:surface>
+
+    def Shader "Surface"
+    {
+        uniform token info:id = "UsdPreviewSurface"
+        float inputs:opacity = 1
+        float inputs:opacity.connect = </masked/Tex.outputs:a>
+        token inputs:opacityMode = "presence"
+        float inputs:opacityThreshold = 0.5
+        token outputs:surface
+    }
+
+    def Shader "Tex"
+    {
+        uniform token info:id = "UsdUVTexture"
+        float4 inputs:bias = (0.1, 0.2, 0.3, 0.125)
+        asset inputs:file = @opacity.png@
+        float4 inputs:scale = (0.5, 1, 2, 0.75)
+        token inputs:sourceColorSpace = "raw"
+        float2 inputs:st.connect = </masked/Transform.outputs:result>
+        token inputs:wrapS = "clamp"
+        token inputs:wrapT = "repeat"
+        float outputs:a
+    }
+
+    def Shader "UV"
+    {
+        uniform token info:id = "UsdPrimvarReader_float2"
+        token inputs:varname = "st"
+        float2 outputs:result
+    }
+
+    def Shader "Transform"
+    {
+        uniform token info:id = "UsdTransform2d"
+        float2 inputs:in.connect = </masked/UV.outputs:result>
+        float2 inputs:scale = (2, 3)
+        float2 inputs:translation = (0.25, 0.5)
+        float2 outputs:result
+    }
+}
+
+def Material "texture_r"
+{
+    token outputs:surface.connect = </texture_r/Surface.outputs:surface>
+
+    def Shader "Surface"
+    {
+        uniform token info:id = "UsdPreviewSurface"
+        float inputs:opacity = 1
+        float inputs:opacity.connect = </texture_r/Tex.outputs:r>
+        token inputs:opacityMode = "presence"
+        float inputs:opacityThreshold = 0
+        token outputs:surface
+    }
+
+    def Shader "Tex"
+    {
+        uniform token info:id = "UsdUVTexture"
+        float4 inputs:bias = (0.1, 0.2, 0.3, 0.125)
+        asset inputs:file = @opacity.png@
+        float4 inputs:scale = (0.5, 1, 2, 0.75)
+        token inputs:sourceColorSpace = "raw"
+        float2 inputs:st.connect = </texture_r/Transform.outputs:result>
+        token inputs:wrapS = "clamp"
+        token inputs:wrapT = "repeat"
+        float outputs:r
+    }
+
+    def Shader "UV"
+    {
+        uniform token info:id = "UsdPrimvarReader_float2"
+        token inputs:varname = "st"
+        float2 outputs:result
+    }
+
+    def Shader "Transform"
+    {
+        uniform token info:id = "UsdTransform2d"
+        float2 inputs:in.connect = </texture_r/UV.outputs:result>
+        float2 inputs:scale = (2, 3)
+        float2 inputs:translation = (0.25, 0.5)
+        float2 outputs:result
+    }
+}
+
+def Material "texture_g"
+{
+    token outputs:surface.connect = </texture_g/Surface.outputs:surface>
+
+    def Shader "Surface"
+    {
+        uniform token info:id = "UsdPreviewSurface"
+        float inputs:opacity = 1
+        float inputs:opacity.connect = </texture_g/Tex.outputs:g>
+        token inputs:opacityMode = "presence"
+        float inputs:opacityThreshold = 0
+        token outputs:surface
+    }
+
+    def Shader "Tex"
+    {
+        uniform token info:id = "UsdUVTexture"
+        float4 inputs:bias = (0.1, 0.2, 0.3, 0.125)
+        asset inputs:file = @opacity.png@
+        float4 inputs:scale = (0.5, 1, 2, 0.75)
+        token inputs:sourceColorSpace = "raw"
+        float2 inputs:st.connect = </texture_g/Transform.outputs:result>
+        token inputs:wrapS = "clamp"
+        token inputs:wrapT = "repeat"
+        float outputs:g
+    }
+
+    def Shader "UV"
+    {
+        uniform token info:id = "UsdPrimvarReader_float2"
+        token inputs:varname = "st"
+        float2 outputs:result
+    }
+
+    def Shader "Transform"
+    {
+        uniform token info:id = "UsdTransform2d"
+        float2 inputs:in.connect = </texture_g/UV.outputs:result>
+        float2 inputs:scale = (2, 3)
+        float2 inputs:translation = (0.25, 0.5)
+        float2 outputs:result
+    }
+}
+
+def Material "texture_b"
+{
+    token outputs:surface.connect = </texture_b/Surface.outputs:surface>
+
+    def Shader "Surface"
+    {
+        uniform token info:id = "UsdPreviewSurface"
+        float inputs:opacity = 1
+        float inputs:opacity.connect = </texture_b/Tex.outputs:b>
+        token inputs:opacityMode = "presence"
+        float inputs:opacityThreshold = 0
+        token outputs:surface
+    }
+
+    def Shader "Tex"
+    {
+        uniform token info:id = "UsdUVTexture"
+        float4 inputs:bias = (0.1, 0.2, 0.3, 0.125)
+        asset inputs:file = @opacity.png@
+        float4 inputs:scale = (0.5, 1, 2, 0.75)
+        token inputs:sourceColorSpace = "raw"
+        float2 inputs:st.connect = </texture_b/Transform.outputs:result>
+        token inputs:wrapS = "clamp"
+        token inputs:wrapT = "repeat"
+        float outputs:b
+    }
+
+    def Shader "UV"
+    {
+        uniform token info:id = "UsdPrimvarReader_float2"
+        token inputs:varname = "st"
+        float2 outputs:result
+    }
+
+    def Shader "Transform"
+    {
+        uniform token info:id = "UsdTransform2d"
+        float2 inputs:in.connect = </texture_b/UV.outputs:result>
+        float2 inputs:scale = (2, 3)
+        float2 inputs:translation = (0.25, 0.5)
+        float2 outputs:result
+    }
+}
+

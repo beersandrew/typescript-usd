@@ -1,0 +1,20 @@
+# The plugin search path fixture of pluginPath.test.ts: a directory on
+# PXR_PLUGINPATH_NAME (named without a trailing '/'), comment lines, and an
+# Includes entry. The Info block is upstream's
+# pxr/usd/usd/testenv/testUsdVariantFallbacks.testenv/plugInfo.json.
+{
+    "Plugins": [
+        {
+            "Type": "resource",
+            "Name": "testPlugPathVariantFallbacks",
+            "Info": {
+                "UsdVariantFallbacks": {
+                    "displayColor": [
+                        "green"
+                    ]
+                }
+            }
+        }
+    ],
+    "Includes": ["sub/"]
+}

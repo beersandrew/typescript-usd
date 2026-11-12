@@ -1,0 +1,37 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+*.tsbuildinfo
+
+# Logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+
+# OS junk
+.DS_Store
+**/.DS_Store
+Thumbs.db
+
+# Test / coverage artifacts
+coverage/
+*.actual.png
+*.diff.png
+
+# Env
+.env
+.env.local
+
+.claude/settings.local.json
+app-dist/
+
+
+
+.artifacts/

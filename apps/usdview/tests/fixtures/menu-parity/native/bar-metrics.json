@@ -1,0 +1,1058 @@
+[
+  {
+    "font": 10,
+    "window": {
+      "width": 1024,
+      "height": 836
+    },
+    "bars": [
+      {
+        "name": "primViewMenuBar",
+        "rect": {
+          "x": 2,
+          "y": 2,
+          "width": 459,
+          "height": 33
+        },
+        "sizeHint": {
+          "width": 95,
+          "height": 33
+        },
+        "minimumSizeHint": {
+          "width": 57,
+          "height": 33
+        },
+        "font": 8.0,
+        "verticalPolicy": "Policy.Minimum",
+        "actions": [
+          {
+            "text": "Navigation",
+            "rect": {
+              "x": 8,
+              "y": 0,
+              "width": 49,
+              "height": 14
+            }
+          },
+          {
+            "text": "Show",
+            "rect": {
+              "x": 57,
+              "y": 0,
+              "width": 30,
+              "height": 14
+            }
+          }
+        ]
+      },
+      {
+        "name": "renderMenuBar",
+        "rect": {
+          "x": 0,
+          "y": 2,
+          "width": 533,
+          "height": 33
+        },
+        "sizeHint": {
+          "width": 196,
+          "height": 33
+        },
+        "minimumSizeHint": {
+          "width": 50,
+          "height": 33
+        },
+        "font": 8.0,
+        "verticalPolicy": "Policy.Minimum",
+        "actions": [
+          {
+            "text": "Renderer",
+            "rect": {
+              "x": 8,
+              "y": 0,
+              "width": 42,
+              "height": 14
+            }
+          },
+          {
+            "text": "Display",
+            "rect": {
+              "x": 50,
+              "y": 0,
+              "width": 36,
+              "height": 14
+            }
+          },
+          {
+            "text": "Select",
+            "rect": {
+              "x": 86,
+              "y": 0,
+              "width": 32,
+              "height": 14
+            }
+          },
+          {
+            "text": "Camera",
+            "rect": {
+              "x": 118,
+              "y": 0,
+              "width": 38,
+              "height": 14
+            }
+          },
+          {
+            "text": "Lights",
+            "rect": {
+              "x": 156,
+              "y": 0,
+              "width": 32,
+              "height": 14
+            }
+          }
+        ]
+      }
+    ],
+    "scrollbars": [
+      {
+        "view": "primView",
+        "orientation": "vertical",
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 100,
+          "height": 30
+        },
+        "sizeHint": {
+          "width": 17,
+          "height": 81
+        },
+        "visible": false
+      },
+      {
+        "view": "primView",
+        "orientation": "horizontal",
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 460,
+          "height": 17
+        },
+        "sizeHint": {
+          "width": 81,
+          "height": 17
+        },
+        "visible": true
+      },
+      {
+        "view": "propertyView",
+        "orientation": "vertical",
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 100,
+          "height": 30
+        },
+        "sizeHint": {
+          "width": 17,
+          "height": 81
+        },
+        "visible": false
+      },
+      {
+        "view": "propertyView",
+        "orientation": "horizontal",
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 575,
+          "height": 17
+        },
+        "sizeHint": {
+          "width": 81,
+          "height": 17
+        },
+        "visible": true
+      }
+    ]
+  },
+  {
+    "font": 10,
+    "window": {
+      "width": 1440,
+      "height": 900
+    },
+    "bars": [
+      {
+        "name": "primViewMenuBar",
+        "rect": {
+          "x": 2,
+          "y": 2,
+          "width": 652,
+          "height": 33
+        },
+        "sizeHint": {
+          "width": 95,
+          "height": 33
+        },
+        "minimumSizeHint": {
+          "width": 57,
+          "height": 33
+        },
+        "font": 8.0,
+        "verticalPolicy": "Policy.Minimum",
+        "actions": [
+          {
+            "text": "Navigation",
+            "rect": {
+              "x": 8,
+              "y": 0,
+              "width": 49,
+              "height": 14
+            }
+          },
+          {
+            "text": "Show",
+            "rect": {
+              "x": 57,
+              "y": 0,
+              "width": 30,
+              "height": 14
+            }
+          }
+        ]
+      },
+      {
+        "name": "renderMenuBar",
+        "rect": {
+          "x": 0,
+          "y": 2,
+          "width": 756,
+          "height": 33
+        },
+        "sizeHint": {
+          "width": 196,
+          "height": 33
+        },
+        "minimumSizeHint": {
+          "width": 50,
+          "height": 33
+        },
+        "font": 8.0,
+        "verticalPolicy": "Policy.Minimum",
+        "actions": [
+          {
+            "text": "Renderer",
+            "rect": {
+              "x": 8,
+              "y": 0,
+              "width": 42,
+              "height": 14
+            }
+          },
+          {
+            "text": "Display",
+            "rect": {
+              "x": 50,
+              "y": 0,
+              "width": 36,
+              "height": 14
+            }
+          },
+          {
+            "text": "Select",
+            "rect": {
+              "x": 86,
+              "y": 0,
+              "width": 32,
+              "height": 14
+            }
+          },
+          {
+            "text": "Camera",
+            "rect": {
+              "x": 118,
+              "y": 0,
+              "width": 38,
+              "height": 14
+            }
+          },
+          {
+            "text": "Lights",
+            "rect": {
+              "x": 156,
+              "y": 0,
+              "width": 32,
+              "height": 14
+            }
+          }
+        ]
+      }
+    ],
+    "scrollbars": [
+      {
+        "view": "primView",
+        "orientation": "vertical",
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 100,
+          "height": 30
+        },
+        "sizeHint": {
+          "width": 17,
+          "height": 81
+        },
+        "visible": false
+      },
+      {
+        "view": "primView",
+        "orientation": "horizontal",
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 653,
+          "height": 17
+        },
+        "sizeHint": {
+          "width": 81,
+          "height": 17
+        },
+        "visible": true
+      },
+      {
+        "view": "propertyView",
+        "orientation": "vertical",
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 100,
+          "height": 30
+        },
+        "sizeHint": {
+          "width": 17,
+          "height": 81
+        },
+        "visible": false
+      },
+      {
+        "view": "propertyView",
+        "orientation": "horizontal",
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 855,
+          "height": 17
+        },
+        "sizeHint": {
+          "width": 81,
+          "height": 17
+        },
+        "visible": true
+      }
+    ]
+  },
+  {
+    "font": 10,
+    "window": {
+      "width": 1600,
+      "height": 917
+    },
+    "bars": [
+      {
+        "name": "primViewMenuBar",
+        "rect": {
+          "x": 2,
+          "y": 2,
+          "width": 726,
+          "height": 33
+        },
+        "sizeHint": {
+          "width": 95,
+          "height": 33
+        },
+        "minimumSizeHint": {
+          "width": 57,
+          "height": 33
+        },
+        "font": 8.0,
+        "verticalPolicy": "Policy.Minimum",
+        "actions": [
+          {
+            "text": "Navigation",
+            "rect": {
+              "x": 8,
+              "y": 0,
+              "width": 49,
+              "height": 14
+            }
+          },
+          {
+            "text": "Show",
+            "rect": {
+              "x": 57,
+              "y": 0,
+              "width": 30,
+              "height": 14
+            }
+          }
+        ]
+      },
+      {
+        "name": "renderMenuBar",
+        "rect": {
+          "x": 0,
+          "y": 2,
+          "width": 842,
+          "height": 33
+        },
+        "sizeHint": {
+          "width": 196,
+          "height": 33
+        },
+        "minimumSizeHint": {
+          "width": 50,
+          "height": 33
+        },
+        "font": 8.0,
+        "verticalPolicy": "Policy.Minimum",
+        "actions": [
+          {
+            "text": "Renderer",
+            "rect": {
+              "x": 8,
+              "y": 0,
+              "width": 42,
+              "height": 14
+            }
+          },
+          {
+            "text": "Display",
+            "rect": {
+              "x": 50,
+              "y": 0,
+              "width": 36,
+              "height": 14
+            }
+          },
+          {
+            "text": "Select",
+            "rect": {
+              "x": 86,
+              "y": 0,
+              "width": 32,
+              "height": 14
+            }
+          },
+          {
+            "text": "Camera",
+            "rect": {
+              "x": 118,
+              "y": 0,
+              "width": 38,
+              "height": 14
+            }
+          },
+          {
+            "text": "Lights",
+            "rect": {
+              "x": 156,
+              "y": 0,
+              "width": 32,
+              "height": 14
+            }
+          }
+        ]
+      }
+    ],
+    "scrollbars": [
+      {
+        "view": "primView",
+        "orientation": "vertical",
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 100,
+          "height": 30
+        },
+        "sizeHint": {
+          "width": 17,
+          "height": 81
+        },
+        "visible": false
+      },
+      {
+        "view": "primView",
+        "orientation": "horizontal",
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 727,
+          "height": 17
+        },
+        "sizeHint": {
+          "width": 81,
+          "height": 17
+        },
+        "visible": true
+      },
+      {
+        "view": "propertyView",
+        "orientation": "vertical",
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 100,
+          "height": 30
+        },
+        "sizeHint": {
+          "width": 17,
+          "height": 81
+        },
+        "visible": false
+      },
+      {
+        "view": "propertyView",
+        "orientation": "horizontal",
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 952,
+          "height": 17
+        },
+        "sizeHint": {
+          "width": 81,
+          "height": 17
+        },
+        "visible": true
+      }
+    ]
+  },
+  {
+    "font": 14,
+    "window": {
+      "width": 1024,
+      "height": 845
+    },
+    "bars": [
+      {
+        "name": "primViewMenuBar",
+        "rect": {
+          "x": 2,
+          "y": 2,
+          "width": 459,
+          "height": 33
+        },
+        "sizeHint": {
+          "width": 117,
+          "height": 33
+        },
+        "minimumSizeHint": {
+          "width": 71,
+          "height": 33
+        },
+        "font": 11.0,
+        "verticalPolicy": "Policy.Minimum",
+        "actions": [
+          {
+            "text": "Navigation",
+            "rect": {
+              "x": 8,
+              "y": 0,
+              "width": 63,
+              "height": 17
+            }
+          },
+          {
+            "text": "Show",
+            "rect": {
+              "x": 71,
+              "y": 0,
+              "width": 38,
+              "height": 17
+            }
+          }
+        ]
+      },
+      {
+        "name": "renderMenuBar",
+        "rect": {
+          "x": 0,
+          "y": 2,
+          "width": 533,
+          "height": 33
+        },
+        "sizeHint": {
+          "width": 247,
+          "height": 33
+        },
+        "minimumSizeHint": {
+          "width": 62,
+          "height": 33
+        },
+        "font": 11.0,
+        "verticalPolicy": "Policy.Minimum",
+        "actions": [
+          {
+            "text": "Renderer",
+            "rect": {
+              "x": 8,
+              "y": 0,
+              "width": 54,
+              "height": 17
+            }
+          },
+          {
+            "text": "Display",
+            "rect": {
+              "x": 62,
+              "y": 0,
+              "width": 46,
+              "height": 17
+            }
+          },
+          {
+            "text": "Select",
+            "rect": {
+              "x": 108,
+              "y": 0,
+              "width": 41,
+              "height": 17
+            }
+          },
+          {
+            "text": "Camera",
+            "rect": {
+              "x": 149,
+              "y": 0,
+              "width": 49,
+              "height": 17
+            }
+          },
+          {
+            "text": "Lights",
+            "rect": {
+              "x": 198,
+              "y": 0,
+              "width": 41,
+              "height": 17
+            }
+          }
+        ]
+      }
+    ],
+    "scrollbars": [
+      {
+        "view": "primView",
+        "orientation": "vertical",
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 100,
+          "height": 30
+        },
+        "sizeHint": {
+          "width": 17,
+          "height": 81
+        },
+        "visible": false
+      },
+      {
+        "view": "primView",
+        "orientation": "horizontal",
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 460,
+          "height": 17
+        },
+        "sizeHint": {
+          "width": 81,
+          "height": 17
+        },
+        "visible": true
+      },
+      {
+        "view": "propertyView",
+        "orientation": "vertical",
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 100,
+          "height": 30
+        },
+        "sizeHint": {
+          "width": 17,
+          "height": 81
+        },
+        "visible": false
+      },
+      {
+        "view": "propertyView",
+        "orientation": "horizontal",
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 575,
+          "height": 17
+        },
+        "sizeHint": {
+          "width": 81,
+          "height": 17
+        },
+        "visible": true
+      }
+    ]
+  },
+  {
+    "font": 14,
+    "window": {
+      "width": 1440,
+      "height": 900
+    },
+    "bars": [
+      {
+        "name": "primViewMenuBar",
+        "rect": {
+          "x": 2,
+          "y": 2,
+          "width": 652,
+          "height": 33
+        },
+        "sizeHint": {
+          "width": 117,
+          "height": 33
+        },
+        "minimumSizeHint": {
+          "width": 71,
+          "height": 33
+        },
+        "font": 11.0,
+        "verticalPolicy": "Policy.Minimum",
+        "actions": [
+          {
+            "text": "Navigation",
+            "rect": {
+              "x": 8,
+              "y": 0,
+              "width": 63,
+              "height": 17
+            }
+          },
+          {
+            "text": "Show",
+            "rect": {
+              "x": 71,
+              "y": 0,
+              "width": 38,
+              "height": 17
+            }
+          }
+        ]
+      },
+      {
+        "name": "renderMenuBar",
+        "rect": {
+          "x": 0,
+          "y": 2,
+          "width": 756,
+          "height": 33
+        },
+        "sizeHint": {
+          "width": 247,
+          "height": 33
+        },
+        "minimumSizeHint": {
+          "width": 62,
+          "height": 33
+        },
+        "font": 11.0,
+        "verticalPolicy": "Policy.Minimum",
+        "actions": [
+          {
+            "text": "Renderer",
+            "rect": {
+              "x": 8,
+              "y": 0,
+              "width": 54,
+              "height": 17
+            }
+          },
+          {
+            "text": "Display",
+            "rect": {
+              "x": 62,
+              "y": 0,
+              "width": 46,
+              "height": 17
+            }
+          },
+          {
+            "text": "Select",
+            "rect": {
+              "x": 108,
+              "y": 0,
+              "width": 41,
+              "height": 17
+            }
+          },
+          {
+            "text": "Camera",
+            "rect": {
+              "x": 149,
+              "y": 0,
+              "width": 49,
+              "height": 17
+            }
+          },
+          {
+            "text": "Lights",
+            "rect": {
+              "x": 198,
+              "y": 0,
+              "width": 41,
+              "height": 17
+            }
+          }
+        ]
+      }
+    ],
+    "scrollbars": [
+      {
+        "view": "primView",
+        "orientation": "vertical",
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 100,
+          "height": 30
+        },
+        "sizeHint": {
+          "width": 17,
+          "height": 81
+        },
+        "visible": false
+      },
+      {
+        "view": "primView",
+        "orientation": "horizontal",
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 653,
+          "height": 17
+        },
+        "sizeHint": {
+          "width": 81,
+          "height": 17
+        },
+        "visible": true
+      },
+      {
+        "view": "propertyView",
+        "orientation": "vertical",
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 100,
+          "height": 30
+        },
+        "sizeHint": {
+          "width": 17,
+          "height": 81
+        },
+        "visible": false
+      },
+      {
+        "view": "propertyView",
+        "orientation": "horizontal",
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 855,
+          "height": 17
+        },
+        "sizeHint": {
+          "width": 81,
+          "height": 17
+        },
+        "visible": true
+      }
+    ]
+  },
+  {
+    "font": 14,
+    "window": {
+      "width": 1600,
+      "height": 917
+    },
+    "bars": [
+      {
+        "name": "primViewMenuBar",
+        "rect": {
+          "x": 2,
+          "y": 2,
+          "width": 726,
+          "height": 33
+        },
+        "sizeHint": {
+          "width": 117,
+          "height": 33
+        },
+        "minimumSizeHint": {
+          "width": 71,
+          "height": 33
+        },
+        "font": 11.0,
+        "verticalPolicy": "Policy.Minimum",
+        "actions": [
+          {
+            "text": "Navigation",
+            "rect": {
+              "x": 8,
+              "y": 0,
+              "width": 63,
+              "height": 17
+            }
+          },
+          {
+            "text": "Show",
+            "rect": {
+              "x": 71,
+              "y": 0,
+              "width": 38,
+              "height": 17
+            }
+          }
+        ]
+      },
+      {
+        "name": "renderMenuBar",
+        "rect": {
+          "x": 0,
+          "y": 2,
+          "width": 842,
+          "height": 33
+        },
+        "sizeHint": {
+          "width": 247,
+          "height": 33
+        },
+        "minimumSizeHint": {
+          "width": 62,
+          "height": 33
+        },
+        "font": 11.0,
+        "verticalPolicy": "Policy.Minimum",
+        "actions": [
+          {
+            "text": "Renderer",
+            "rect": {
+              "x": 8,
+              "y": 0,
+              "width": 54,
+              "height": 17
+            }
+          },
+          {
+            "text": "Display",
+            "rect": {
+              "x": 62,
+              "y": 0,
+              "width": 46,
+              "height": 17
+            }
+          },
+          {
+            "text": "Select",
+            "rect": {
+              "x": 108,
+              "y": 0,
+              "width": 41,
+              "height": 17
+            }
+          },
+          {
+            "text": "Camera",
+            "rect": {
+              "x": 149,
+              "y": 0,
+              "width": 49,
+              "height": 17
+            }
+          },
+          {
+            "text": "Lights",
+            "rect": {
+              "x": 198,
+              "y": 0,
+              "width": 41,
+              "height": 17
+            }
+          }
+        ]
+      }
+    ],
+    "scrollbars": [
+      {
+        "view": "primView",
+        "orientation": "vertical",
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 100,
+          "height": 30
+        },
+        "sizeHint": {
+          "width": 17,
+          "height": 81
+        },
+        "visible": false
+      },
+      {
+        "view": "primView",
+        "orientation": "horizontal",
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 727,
+          "height": 17
+        },
+        "sizeHint": {
+          "width": 81,
+          "height": 17
+        },
+        "visible": true
+      },
+      {
+        "view": "propertyView",
+        "orientation": "vertical",
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 100,
+          "height": 30
+        },
+        "sizeHint": {
+          "width": 17,
+          "height": 81
+        },
+        "visible": false
+      },
+      {
+        "view": "propertyView",
+        "orientation": "horizontal",
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 952,
+          "height": 17
+        },
+        "sizeHint": {
+          "width": 81,
+          "height": 17
+        },
+        "visible": true
+      }
+    ]
+  }
+]

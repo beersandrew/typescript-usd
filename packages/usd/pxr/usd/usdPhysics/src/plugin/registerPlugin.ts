@@ -1,0 +1,13 @@
+// Ported from OpenUSD 26.11.1: pxr/usd/usdPhysics/generatedSchema.usda,
+//  pxr/usd/usdPhysics/plugInfo.json
+// Copyright 2016 Pixar. Tomorrow Open Source Technology License 1.0.
+// Translated to TypeScript and modified. See LICENSE and NOTICE.
+
+// OpenUSD 26.11.1 usdPhysics/plugInfo.json and generatedSchema.usda: link-time
+// schema registration. usdPhysics's schemas build on the libraries imported here
+// (usdPhysics/CMakeLists.txt LIBRARIES: usdGeom, usdShade).
+import 'typescript-usd/usdGeom'
+import 'typescript-usd/usdShade'
+import {Registry as PlugRegistry} from 'typescript-usd/plug'
+import {plugInfo,generatedSchemaUsda} from './plugData.ts'
+PlugRegistry.GetInstance().RegisterPlugins(plugInfo,{usdPhysics:{'generatedSchema.usda':generatedSchemaUsda}})

@@ -1,0 +1,42 @@
+{
+ "release": "26.11.1",
+ "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+ "script": "pxr/usd/sdf/tests/upstream/fixtures/zipFileLimits/capture.py",
+ "upstream": [
+  "pxr/usd/sdf/testenv/testSdfZipFileLimits.py",
+  "pxr/usd/sdf/CMakeLists.txt:745-752",
+  "pxr/usd/sdf/zipFile.cpp:32-56",
+  "pxr/usd/sdf/zipFile.cpp:973-988",
+  "pxr/usd/sdf/zipFile.cpp:1029-1036"
+ ],
+ "payload": {
+  "env": {
+   "SDF_MAX_ZIPFILE_SIZE": "195",
+   "SDF_MAX_ZIPFILE_ENTRY_SIZE": "64"
+  },
+  "maxZipFileEntrySize": 64,
+  "maxZipFileSize": 195,
+  "files": {
+   "0.usda": "#usda 1.0\n\n",
+   "1.usda": "#usda 1.0\n\nover \"Test0\"\n{\n}\n\n",
+   "5.usda": "#usda 1.0\n\nover \"Test0\"\n{\n}\n\nover \"Test1\"\n{\n}\n\nover \"Test2\"\n{\n}\n\nover \"Test3\"\n{\n}\n\nover \"Test4\"\n{\n}\n\n",
+   "11.usda": "#usda 1.0\n\nover \"Test0\"\n{\n}\n\nover \"Test1\"\n{\n}\n\nover \"Test2\"\n{\n}\n\nover \"Test3\"\n{\n}\n\nover \"Test4\"\n{\n}\n\nover \"Test5\"\n{\n}\n\nover \"Test6\"\n{\n}\n\nover \"Test7\"\n{\n}\n\nover \"Test8\"\n{\n}\n\nover \"Test9\"\n{\n}\n\nover \"Test10\"\n{\n}\n\n"
+  },
+  "validSize": 195,
+  "tooManyFilesAddErrors": [
+   "'11.usda' exceeds maximum allowable single file size (210 > 64)"
+  ],
+  "archiveTooBigSaveErrors": [
+   "Zipfile is larger than maximum size allowed by Zip32 (195)"
+  ],
+  "fileTooBigAddErrors": [
+   "'5.usda' exceeds maximum allowable single file size (101 > 64)"
+  ],
+  "archiveOnlyEnv": {
+   "SDF_MAX_ZIPFILE_SIZE": "195"
+  },
+  "tooManyFilesArchiveOnlyAddErrors": [
+   "Zipfile is larger than maximum size allowed by Zip32 (195)"
+  ]
+ }
+}

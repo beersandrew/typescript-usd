@@ -1,0 +1,7 @@
+#usda 1.0
+
+def MfScope "foo" (ignore = 0)  {
+    # Bad attempt at a repeat
+    bool[] shaped = [1 y10]
+}
+

@@ -1,0 +1,464 @@
+#usda 1.0
+
+def Mesh "constant" (
+    prepend apiSchemas = ["MaterialBindingAPI"]
+)
+{
+    int[] faceVertexCounts = [3]
+    int[] faceVertexIndices = [0, 1, 2]
+    rel material:binding = </constant/Material>
+    point3f[] points = [(0, 0, 0), (1, 0, 0), (0, 1, 0)]
+    color3f[] primvars:displayColor = [(0.2, 0.3, 0.4)] (
+        interpolation = "constant"
+    )
+    uniform token subdivisionScheme = "none"
+
+    def Material "Material"
+    {
+        token outputs:surface.connect = </constant/Material/Surface.outputs:surface>
+
+        def Shader "Surface"
+        {
+            uniform token info:id = "UsdPreviewSurface"
+            color3f inputs:diffuseColor.connect = </constant/Material/Reader.outputs:result>
+            token outputs:surface
+        }
+
+        def Shader "Reader"
+        {
+            uniform token info:id = "UsdPrimvarReader_float3"
+            float3 inputs:fallback = (0.7, 0.6, 0.5)
+            string inputs:varname = "displayColor"
+            float3 outputs:result
+        }
+    }
+}
+
+def Mesh "uniform" (
+    prepend apiSchemas = ["MaterialBindingAPI"]
+)
+{
+    int[] faceVertexCounts = [3]
+    int[] faceVertexIndices = [0, 1, 2]
+    rel material:binding = </uniform/Material>
+    point3f[] points = [(0, 0, 0), (1, 0, 0), (0, 1, 0)]
+    color3f[] primvars:displayColor = [(0.2, 0.3, 0.4)] (
+        interpolation = "uniform"
+    )
+    uniform token subdivisionScheme = "none"
+
+    def Material "Material"
+    {
+        token outputs:surface.connect = </uniform/Material/Surface.outputs:surface>
+
+        def Shader "Surface"
+        {
+            uniform token info:id = "UsdPreviewSurface"
+            color3f inputs:diffuseColor.connect = </uniform/Material/Reader.outputs:result>
+            token outputs:surface
+        }
+
+        def Shader "Reader"
+        {
+            uniform token info:id = "UsdPrimvarReader_float3"
+            float3 inputs:fallback = (0.7, 0.6, 0.5)
+            string inputs:varname = "displayColor"
+            float3 outputs:result
+        }
+    }
+}
+
+def Mesh "vertex" (
+    prepend apiSchemas = ["MaterialBindingAPI"]
+)
+{
+    int[] faceVertexCounts = [3]
+    int[] faceVertexIndices = [0, 1, 2]
+    rel material:binding = </vertex/Material>
+    point3f[] points = [(0, 0, 0), (1, 0, 0), (0, 1, 0)]
+    color3f[] primvars:displayColor = [(1, 0, 0), (0, 1, 0), (0, 0, 1)] (
+        interpolation = "vertex"
+    )
+    int[] primvars:displayColor:indices = [2, 0, 1]
+    uniform token subdivisionScheme = "none"
+
+    def Material "Material"
+    {
+        token outputs:surface.connect = </vertex/Material/Surface.outputs:surface>
+
+        def Shader "Surface"
+        {
+            uniform token info:id = "UsdPreviewSurface"
+            color3f inputs:diffuseColor.connect = </vertex/Material/Reader.outputs:result>
+            token outputs:surface
+        }
+
+        def Shader "Reader"
+        {
+            uniform token info:id = "UsdPrimvarReader_float3"
+            float3 inputs:fallback = (0.7, 0.6, 0.5)
+            string inputs:varname = "displayColor"
+            float3 outputs:result
+        }
+    }
+}
+
+def Mesh "varying" (
+    prepend apiSchemas = ["MaterialBindingAPI"]
+)
+{
+    int[] faceVertexCounts = [3]
+    int[] faceVertexIndices = [0, 1, 2]
+    rel material:binding = </varying/Material>
+    point3f[] points = [(0, 0, 0), (1, 0, 0), (0, 1, 0)]
+    color3f[] primvars:displayColor = [(1, 0, 0), (0, 1, 0), (0, 0, 1)] (
+        interpolation = "varying"
+    )
+    uniform token subdivisionScheme = "none"
+
+    def Material "Material"
+    {
+        token outputs:surface.connect = </varying/Material/Surface.outputs:surface>
+
+        def Shader "Surface"
+        {
+            uniform token info:id = "UsdPreviewSurface"
+            color3f inputs:diffuseColor.connect = </varying/Material/Reader.outputs:result>
+            token outputs:surface
+        }
+
+        def Shader "Reader"
+        {
+            uniform token info:id = "UsdPrimvarReader_float3"
+            float3 inputs:fallback = (0.7, 0.6, 0.5)
+            string inputs:varname = "displayColor"
+            float3 outputs:result
+        }
+    }
+}
+
+def Mesh "faceVarying" (
+    prepend apiSchemas = ["MaterialBindingAPI"]
+)
+{
+    int[] faceVertexCounts = [3]
+    int[] faceVertexIndices = [0, 1, 2]
+    rel material:binding = </faceVarying/Material>
+    point3f[] points = [(0, 0, 0), (1, 0, 0), (0, 1, 0)]
+    color3f[] primvars:displayColor = [(1, 0, 0), (0, 1, 0), (0, 0, 1)] (
+        interpolation = "faceVarying"
+    )
+    int[] primvars:displayColor:indices = [2, 0, 1]
+    uniform token subdivisionScheme = "none"
+
+    def Material "Material"
+    {
+        token outputs:surface.connect = </faceVarying/Material/Surface.outputs:surface>
+
+        def Shader "Surface"
+        {
+            uniform token info:id = "UsdPreviewSurface"
+            color3f inputs:diffuseColor.connect = </faceVarying/Material/Reader.outputs:result>
+            token outputs:surface
+        }
+
+        def Shader "Reader"
+        {
+            uniform token info:id = "UsdPrimvarReader_float3"
+            float3 inputs:fallback = (0.7, 0.6, 0.5)
+            string inputs:varname = "displayColor"
+            float3 outputs:result
+        }
+    }
+}
+
+def Mesh "missing" (
+    prepend apiSchemas = ["MaterialBindingAPI"]
+)
+{
+    int[] faceVertexCounts = [3]
+    int[] faceVertexIndices = [0, 1, 2]
+    rel material:binding = </missing/Material>
+    point3f[] points = [(0, 0, 0), (1, 0, 0), (0, 1, 0)]
+    uniform token subdivisionScheme = "none"
+
+    def Material "Material"
+    {
+        token outputs:surface.connect = </missing/Material/Surface.outputs:surface>
+
+        def Shader "Surface"
+        {
+            uniform token info:id = "UsdPreviewSurface"
+            color3f inputs:diffuseColor.connect = </missing/Material/Reader.outputs:result>
+            token outputs:surface
+        }
+
+        def Shader "Reader"
+        {
+            uniform token info:id = "UsdPrimvarReader_float3"
+            float3 inputs:fallback = (0.7, 0.6, 0.5)
+            string inputs:varname = "displayColor"
+            float3 outputs:result
+        }
+    }
+}
+
+def Mesh "named" (
+    prepend apiSchemas = ["MaterialBindingAPI"]
+)
+{
+    int[] faceVertexCounts = [3]
+    int[] faceVertexIndices = [0, 1, 2]
+    rel material:binding = </named/Material>
+    point3f[] points = [(0, 0, 0), (1, 0, 0), (0, 1, 0)]
+    color3f[] primvars:paint = [(1, 0, 0), (0, 1, 0), (0, 0, 1)] (
+        interpolation = "vertex"
+    )
+    int[] primvars:paint:indices = [2, 0, 1]
+    uniform token subdivisionScheme = "none"
+
+    def Material "Material"
+    {
+        token outputs:surface.connect = </named/Material/Surface.outputs:surface>
+
+        def Shader "Surface"
+        {
+            uniform token info:id = "UsdPreviewSurface"
+            color3f inputs:diffuseColor.connect = </named/Material/Reader.outputs:result>
+            token outputs:surface
+        }
+
+        def Shader "Reader"
+        {
+            uniform token info:id = "UsdPrimvarReader_float3"
+            float3 inputs:fallback = (0.7, 0.6, 0.5)
+            string inputs:varname = "paint"
+            float3 outputs:result
+        }
+    }
+}
+
+def "inherited"
+{
+    color3f[] primvars:displayColor = [(0.2, 0.3, 0.4)] (
+        interpolation = "constant"
+    )
+
+    def Mesh "Mesh" (
+        prepend apiSchemas = ["MaterialBindingAPI"]
+    )
+    {
+        int[] faceVertexCounts = [3]
+        int[] faceVertexIndices = [0, 1, 2]
+        rel material:binding = </inherited/Material>
+        point3f[] points = [(0, 0, 0), (1, 0, 0), (0, 1, 0)]
+        uniform token subdivisionScheme = "none"
+    }
+
+    def Material "Material"
+    {
+        token outputs:surface.connect = </inherited/Material/Surface.outputs:surface>
+
+        def Shader "Surface"
+        {
+            uniform token info:id = "UsdPreviewSurface"
+            color3f inputs:diffuseColor.connect = </inherited/Material/Reader.outputs:result>
+            token outputs:surface
+        }
+
+        def Shader "Reader"
+        {
+            uniform token info:id = "UsdPrimvarReader_float3"
+            float3 inputs:fallback = (0.7, 0.6, 0.5)
+            string inputs:varname = "displayColor"
+            float3 outputs:result
+        }
+    }
+}
+
+def Material "uv0"
+{
+    token outputs:surface.connect = </uv0/Surface.outputs:surface>
+
+    def Shader "Surface"
+    {
+        uniform token info:id = "UsdPreviewSurface"
+        color3f inputs:diffuseColor.connect = </uv0/Tex.outputs:rgb>
+        float inputs:metallic.connect = </uv0/RoughTex.outputs:b>
+        float inputs:occlusion.connect = </uv0/RoughTex.outputs:r>
+        float inputs:opacity.connect = </uv0/Tex.outputs:a>
+        float inputs:roughness.connect = </uv0/RoughTex.outputs:g>
+        token outputs:surface
+    }
+
+    def Shader "Tex"
+    {
+        uniform token info:id = "UsdUVTexture"
+        asset inputs:file = @checker.png@
+        float2 inputs:st.connect = </uv0/Transform.outputs:result>
+        float outputs:a
+        float3 outputs:rgb
+    }
+
+    def Shader "Reader"
+    {
+        uniform token info:id = "UsdPrimvarReader_float2"
+        string inputs:varname = "st"
+        float2 outputs:result
+    }
+
+    def Shader "Transform"
+    {
+        uniform token info:id = "UsdTransform2d"
+        float2 inputs:in.connect = </uv0/Reader.outputs:result>
+        float inputs:rotation = 0
+        float2 inputs:scale = (2, 3)
+        float2 inputs:translation = (0.25, 0.5)
+        float2 outputs:result
+    }
+
+    def Shader "RoughTex"
+    {
+        uniform token info:id = "UsdUVTexture"
+        asset inputs:file = @checker.png@
+        float2 inputs:st.connect = </uv0/RoughTransform.outputs:result>
+        float outputs:b
+        float outputs:g
+        float outputs:r
+    }
+
+    def Shader "RoughTransform"
+    {
+        uniform token info:id = "UsdTransform2d"
+        float2 inputs:in.connect = </uv0/Reader.outputs:result>
+        float inputs:rotation = 0
+        float2 inputs:scale = (3, 2)
+        float2 inputs:translation = (-0.5, 0.125)
+        float2 outputs:result
+    }
+}
+
+def Material "uv1"
+{
+    token outputs:surface.connect = </uv1/Surface.outputs:surface>
+
+    def Shader "Surface"
+    {
+        uniform token info:id = "UsdPreviewSurface"
+        color3f inputs:diffuseColor.connect = </uv1/Tex.outputs:rgb>
+        float inputs:metallic.connect = </uv1/RoughTex.outputs:b>
+        float inputs:occlusion.connect = </uv1/RoughTex.outputs:r>
+        float inputs:opacity.connect = </uv1/Tex.outputs:a>
+        float inputs:roughness.connect = </uv1/RoughTex.outputs:g>
+        token outputs:surface
+    }
+
+    def Shader "Tex"
+    {
+        uniform token info:id = "UsdUVTexture"
+        asset inputs:file = @checker.png@
+        float2 inputs:st.connect = </uv1/Transform.outputs:result>
+        float outputs:a
+        float3 outputs:rgb
+    }
+
+    def Shader "Reader"
+    {
+        uniform token info:id = "UsdPrimvarReader_float2"
+        string inputs:varname = "st"
+        float2 outputs:result
+    }
+
+    def Shader "Transform"
+    {
+        uniform token info:id = "UsdTransform2d"
+        float2 inputs:in.connect = </uv1/Reader.outputs:result>
+        float inputs:rotation = 90
+        float2 inputs:scale = (2, 3)
+        float2 inputs:translation = (0.25, 0.5)
+        float2 outputs:result
+    }
+
+    def Shader "RoughTex"
+    {
+        uniform token info:id = "UsdUVTexture"
+        asset inputs:file = @checker.png@
+        float2 inputs:st.connect = </uv1/RoughTransform.outputs:result>
+        float outputs:b
+        float outputs:g
+        float outputs:r
+    }
+
+    def Shader "RoughTransform"
+    {
+        uniform token info:id = "UsdTransform2d"
+        float2 inputs:in.connect = </uv1/Reader.outputs:result>
+        float inputs:rotation = -90
+        float2 inputs:scale = (3, 2)
+        float2 inputs:translation = (-0.5, 0.125)
+        float2 outputs:result
+    }
+}
+
+def Material "uv2"
+{
+    token outputs:surface.connect = </uv2/Surface.outputs:surface>
+
+    def Shader "Surface"
+    {
+        uniform token info:id = "UsdPreviewSurface"
+        color3f inputs:diffuseColor.connect = </uv2/Tex.outputs:rgb>
+        float inputs:metallic.connect = </uv2/RoughTex.outputs:b>
+        float inputs:occlusion.connect = </uv2/RoughTex.outputs:r>
+        float inputs:opacity.connect = </uv2/Tex.outputs:a>
+        float inputs:roughness.connect = </uv2/RoughTex.outputs:g>
+        token outputs:surface
+    }
+
+    def Shader "Tex"
+    {
+        uniform token info:id = "UsdUVTexture"
+        asset inputs:file = @checker.png@
+        float2 inputs:st.connect = </uv2/Transform.outputs:result>
+        float outputs:a
+        float3 outputs:rgb
+    }
+
+    def Shader "Reader"
+    {
+        uniform token info:id = "UsdPrimvarReader_float2"
+        string inputs:varname = "st"
+        float2 outputs:result
+    }
+
+    def Shader "Transform"
+    {
+        uniform token info:id = "UsdTransform2d"
+        float2 inputs:in.connect = </uv2/Reader.outputs:result>
+        float inputs:rotation = -35
+        float2 inputs:scale = (0.5, 4)
+        float2 inputs:translation = (-1, 2)
+        float2 outputs:result
+    }
+
+    def Shader "RoughTex"
+    {
+        uniform token info:id = "UsdUVTexture"
+        asset inputs:file = @checker.png@
+        float2 inputs:st.connect = </uv2/RoughTransform.outputs:result>
+        float outputs:b
+        float outputs:g
+        float outputs:r
+    }
+
+    def Shader "RoughTransform"
+    {
+        uniform token info:id = "UsdTransform2d"
+        float2 inputs:in.connect = </uv2/Reader.outputs:result>
+        float inputs:rotation = 35
+        float2 inputs:scale = (3, 2)
+        float2 inputs:translation = (-0.5, 0.125)
+        float2 outputs:result
+    }
+}
+

@@ -1,0 +1,26 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/usdImaging/usdImagingGL/tests/fixtures/testenvImages/capture.py",
+  "upstream": [
+    "pxr/usdImaging/usdImagingGL/CMakeLists.txt",
+    "pxr/usdImaging/usdImagingGL/testenv/testUsdImagingGLBasicDrawing.cpp"
+  ],
+  "payload": {
+    "test": "testUsdImagingGLDomeLight_rough",
+    "cmake": "pxr/usdImaging/usdImagingGL/CMakeLists.txt:509",
+    "command": "<install>/tests/testUsdImagingGLBasicDrawing -frameAll -offscreen -lighting -sceneLights -shading smooth -complexity 1.3 -stage sphereRough.usda -write testUsdImagingGLDomeLight_rough.png",
+    "cwd": "copy of <source>/pxr/usdImaging/usdImagingGL/testenv/testUsdImagingGLDomeLight",
+    "env": {
+      "TF_DEBUG": "HD_SAFE_MODE"
+    },
+    "expectedReturnCode": null,
+    "returnCode": 0,
+    "images": [
+      {
+        "name": "testUsdImagingGLDomeLight_rough.png",
+        "written": true
+      }
+    ]
+  }
+}

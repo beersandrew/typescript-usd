@@ -1,0 +1,31 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/imaging/hdMtlx/tests/upstream/fixtures/customNodeDef/capture.py",
+  "upstream": [
+    "pxr/imaging/hdMtlx/hdMtlx.cpp",
+    "pxr/usd/sdr/registry.cpp",
+    "pxr/usd/usdMtlx/parser.cpp"
+  ],
+  "payload": {
+    "sdrNodeFound": true,
+    "implementationName": "ND_hdmtlx_test_tint_color3",
+    "implementationURIIsAsset": true,
+    "inStdLibraries": false,
+    "nodeDef": {
+      "name": "ND_hdmtlx_test_tint_color3",
+      "type": "color3",
+      "node": "hdmtlx_test_tint",
+      "inputs": [
+        [
+          "in",
+          "color3"
+        ],
+        [
+          "amount",
+          "float"
+        ]
+      ]
+    }
+  }
+}

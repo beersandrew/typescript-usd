@@ -1,0 +1,71 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/imaging/hdSt/tests/fixtures/pipelineDrawBatch/capture.py",
+  "upstream": [
+    "pxr/imaging/hdSt/testenv/testHdStDepthBias.cpp",
+    "pxr/imaging/hdSt/pipelineDrawBatch.cpp:600-878"
+  ],
+  "payload": {
+    "batches": [
+      {
+        "commands": [
+          [
+            12,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "numUInt32": 16,
+        "useDrawIndexed": 1,
+        "useInstanceCulling": 0,
+        "numDrawItems": 1,
+        "numVisible": 1,
+        "totalElements": 12,
+        "totalVerts": 8
+      },
+      {
+        "commands": [
+          [
+            12,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "numUInt32": 16,
+        "useDrawIndexed": 1,
+        "useInstanceCulling": 0,
+        "numDrawItems": 1,
+        "numVisible": 1,
+        "totalElements": 12,
+        "totalVerts": 8
+      }
+    ]
+  }
+}

@@ -1,0 +1,166 @@
+{
+  "dictionaryExport": "#usda 1.0\n(\n    customLayerData = {\n        duration relative = 2.5\n    }\n)\n\n",
+  "nativeVersion": "26.11.1",
+  "source": "gf/duration.h:22-145; duration.cpp:18-31; sdf/schema.cpp:479,1969,2027; ts/splineData.h:729-738; sdf/crateDataTypes.h Duration61; ts/binary.cpp descriptor5/version4",
+  "scalars": [
+    {
+      "value": 0,
+      "text": "0",
+      "repr": "Gf.Duration(0)",
+      "add": 2.0,
+      "subtract": -2.0,
+      "multiply": 0.0,
+      "divide": 0.0,
+      "ratio": 0.0,
+      "negated": -0.0,
+      "negatedText": "-0"
+    },
+    {
+      "value": 1.25,
+      "text": "1.25",
+      "repr": "Gf.Duration(1.25)",
+      "add": 3.25,
+      "subtract": -0.75,
+      "multiply": 2.5,
+      "divide": 0.625,
+      "ratio": 0.625,
+      "negated": -1.25,
+      "negatedText": "-1.25"
+    },
+    {
+      "value": -2.5,
+      "text": "-2.5",
+      "repr": "Gf.Duration(-2.5)",
+      "add": -0.5,
+      "subtract": -4.5,
+      "multiply": -5.0,
+      "divide": -1.25,
+      "ratio": -1.25,
+      "negated": 2.5,
+      "negatedText": "2.5"
+    },
+    {
+      "value": 0.3333333333333333,
+      "text": "0.333333",
+      "repr": "Gf.Duration(0.333333)",
+      "add": 2.3333333333333335,
+      "subtract": -1.6666666666666667,
+      "multiply": 0.6666666666666666,
+      "divide": 0.16666666666666666,
+      "ratio": 0.16666666666666666,
+      "negated": -0.3333333333333333,
+      "negatedText": "-0.333333"
+    },
+    {
+      "value": 1e-06,
+      "text": "1e-06",
+      "repr": "Gf.Duration(1e-06)",
+      "add": 2.000001,
+      "subtract": -1.999999,
+      "multiply": 2e-06,
+      "divide": 5e-07,
+      "ratio": 5e-07,
+      "negated": -1e-06,
+      "negatedText": "-1e-06"
+    },
+    {
+      "value": 1000000.0,
+      "text": "1e+06",
+      "repr": "Gf.Duration(1e+06)",
+      "add": 1000002.0,
+      "subtract": 999998.0,
+      "multiply": 2000000.0,
+      "divide": 500000.0,
+      "ratio": 500000.0,
+      "negated": -1000000.0,
+      "negatedText": "-1e+06"
+    },
+    {
+      "value": 123456.5,
+      "text": "123456",
+      "repr": "Gf.Duration(123456)",
+      "add": 123458.5,
+      "subtract": 123454.5,
+      "multiply": 246913.0,
+      "divide": 61728.25,
+      "ratio": 61728.25,
+      "negated": -123456.5,
+      "negatedText": "-123456"
+    },
+    {
+      "value": 123458.5,
+      "text": "123458",
+      "repr": "Gf.Duration(123458)",
+      "add": 123460.5,
+      "subtract": 123456.5,
+      "multiply": 246917.0,
+      "divide": 61729.25,
+      "ratio": 61729.25,
+      "negated": -123458.5,
+      "negatedText": "-123458"
+    },
+    {
+      "value": 999998.5,
+      "text": "999998",
+      "repr": "Gf.Duration(999998)",
+      "add": 1000000.5,
+      "subtract": 999996.5,
+      "multiply": 1999997.0,
+      "divide": 499999.25,
+      "ratio": 499999.25,
+      "negated": -999998.5,
+      "negatedText": "-999998"
+    }
+  ],
+  "types": {
+    "scalar": "duration",
+    "array": "duration[]",
+    "cppType": "GfDuration",
+    "tfType": "GfDuration"
+  },
+  "spline": {
+    "typeName": "duration",
+    "timeValued": true,
+    "samples": [
+      [
+        14,
+        44.0
+      ],
+      [
+        16,
+        35.5
+      ],
+      [
+        18,
+        27.0
+      ]
+    ],
+    "scaled": [
+      [
+        33,
+        88.0
+      ],
+      [
+        37,
+        71.0
+      ],
+      [
+        41,
+        54.0
+      ]
+    ]
+  },
+  "layer": {
+    "scalar": -1.25,
+    "array": [
+      1.0,
+      2.5
+    ],
+    "export": "#usda 1.4\n\ndef \"Test\"\n{\n    duration motion.spline = {\n        14: 44; pre (0, 0); post linear,\n        18: 27; post linear,\n    }\n    duration[] offsets = [1, 2.5]\n    duration relative = -1.25\n}\n\n",
+    "crateVersion": [
+      0,
+      16,
+      0
+    ]
+  }
+}

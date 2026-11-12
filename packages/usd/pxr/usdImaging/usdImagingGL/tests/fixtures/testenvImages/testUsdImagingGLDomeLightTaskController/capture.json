@@ -1,0 +1,30 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/usdImaging/usdImagingGL/tests/fixtures/testenvImages/capture.py",
+  "upstream": [
+    "pxr/usdImaging/usdImagingGL/CMakeLists.txt",
+    "pxr/usdImaging/usdImagingGL/testenv/testUsdImagingGLBasicDrawing.cpp"
+  ],
+  "payload": {
+    "test": "testUsdImagingGLDomeLightTaskController",
+    "cmake": "pxr/usdImaging/usdImagingGL/CMakeLists.txt:4749",
+    "command": "<install>/tests/testUsdImagingGLTaskController --lightTexture testImage.png --stage test.usda",
+    "cwd": "copy of <source>/pxr/usdImaging/usdImagingGL/testenv/testUsdImagingGLDomeLightTaskController",
+    "env": {
+      "TF_DEBUG": "HD_SAFE_MODE"
+    },
+    "expectedReturnCode": null,
+    "returnCode": 0,
+    "images": [
+      {
+        "name": "initialDome.png",
+        "written": true
+      },
+      {
+        "name": "rotatedDome.png",
+        "written": true
+      }
+    ]
+  }
+}

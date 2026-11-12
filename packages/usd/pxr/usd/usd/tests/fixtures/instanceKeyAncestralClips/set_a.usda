@@ -1,0 +1,23 @@
+#usda 1.0
+(
+    defaultPrim = "Set"
+)
+
+def "Set" (
+    clips = {
+        dictionary default = {
+            double2[] active = [(0, 0)]
+            asset[] assetPaths = [@./clip_set.usda@]
+            string primPath = "/Set"
+            double2[] times = [(0, 0), (10, 10)]
+        }
+    }
+)
+{
+    def "Inst" (
+        instanceable = true
+        references = @./prop.usda@
+    )
+    {
+    }
+}

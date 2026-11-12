@@ -1,0 +1,34 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/usdImaging/usdImagingGL/tests/fixtures/nurbsTetMeshImages/capture.py",
+  "upstream": [
+    "pxr/usdImaging/usdImagingGL/CMakeLists.txt",
+    "pxr/usdImaging/usdImagingGL/testenv/testUsdImagingGLBasicDrawing.cpp"
+  ],
+  "payload": {
+    "test": "testUsdImagingGLNurbsCurves_refined",
+    "cmake": "pxr/usdImaging/usdImagingGL/CMakeLists.txt:1240",
+    "command": "<install>/tests/testUsdImagingGLBasicDrawing -frameAll -offscreen -times 0 50 150 -complexity 1.1 -stage testCurves.usda -write testUsdImagingGLNurbsCurves_refined.png",
+    "cwd": "copy of <source>/pxr/usdImaging/usdImagingGL/testenv/testUsdImagingGLNurbsCurves",
+    "env": {
+      "TF_DEBUG": "HD_SAFE_MODE"
+    },
+    "expectedReturnCode": "0",
+    "returnCode": 0,
+    "images": [
+      {
+        "name": "testUsdImagingGLNurbsCurves_refined_000.png",
+        "written": true
+      },
+      {
+        "name": "testUsdImagingGLNurbsCurves_refined_050.png",
+        "written": true
+      },
+      {
+        "name": "testUsdImagingGLNurbsCurves_refined_150.png",
+        "written": true
+      }
+    ]
+  }
+}

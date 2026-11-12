@@ -1,0 +1,30 @@
+# A file format plugin delivered as an ES module. LibraryPath is relative to
+# this file; registering it by URL makes Sdf import the module the first time
+# a .demo layer is opened.
+{
+    "Plugins": [
+        {
+            "Info": {
+                "Types": {
+                    "DemoFileFormat": {
+                        "bases": [
+                            "SdfFileFormat"
+                        ],
+                        "displayName": "Demo prim list",
+                        "extensions": [
+                            "demo"
+                        ],
+                        "formatId": "demo",
+                        "primary": true,
+                        "supportsEditing": false,
+                        "supportsWriting": false,
+                        "target": "usd"
+                    }
+                }
+            },
+            "LibraryPath": "demoFileFormat.js",
+            "Name": "demoFileFormat",
+            "Type": "library"
+        }
+    ]
+}

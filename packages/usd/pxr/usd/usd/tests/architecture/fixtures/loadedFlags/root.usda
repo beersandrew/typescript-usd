@@ -1,0 +1,27 @@
+#usda 1.0
+(
+    subLayers = [@./weak.usda@]
+)
+def Scope "A" (payload = @./one.usda@</A>) {}
+def Scope "Plain"
+{
+    def Scope "Child" {}
+}
+def Scope "Variant" (
+    variants = { string mode = "full" }
+    prepend variantSets = "mode"
+)
+{
+    variantSet "mode" = {
+        "full" (payload = @./two.usda@</Child>) {}
+        "empty" {}
+    }
+}
+def Xform "I1" (
+    references = @./model.usda@</Model>
+    instanceable = true
+) {}
+def Xform "I2" (
+    references = @./model.usda@</Model>
+    instanceable = true
+) {}

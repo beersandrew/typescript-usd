@@ -1,0 +1,21 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/imaging/hdx/tests/fixtures/testenvImages/capture.py",
+  "upstream": [
+    "pxr/imaging/hdx/CMakeLists.txt"
+  ],
+  "payload": {
+    "test": "testHdxOitShaderRetention",
+    "cmake": "pxr/imaging/hdx/CMakeLists.txt:360",
+    "command": "<install>/tests/testHdxOitShaderRetention",
+    "cwd": "empty directory",
+    "env": {
+      "TF_DEBUG": "HD_SAFE_MODE",
+      "HDX_ENABLE_OIT": "1"
+    },
+    "expectedReturnCode": "0",
+    "returnCode": 0,
+    "images": []
+  }
+}

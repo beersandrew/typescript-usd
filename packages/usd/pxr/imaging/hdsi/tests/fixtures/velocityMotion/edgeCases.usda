@@ -1,0 +1,143 @@
+#usda 1.0
+(
+    doc = """Velocity-motion edge cases for the HdsiVelocityMotionResolvingSceneIndex
+    capture (capture.cpp): point counts that change between samples, mismatched
+    velocity samples, too few velocities, accelerations at other times,
+    UsdGeomMotionAPI nonlinearSampleCount, quatf orientations, scales, and a
+    timeCodesPerSecond other than 24."""
+    startTimeCode = 1
+    endTimeCode = 9
+    timeCodesPerSecond = 12
+    upAxis = "Y"
+)
+
+def Xform "World"
+{
+    def Points "Rain"
+    {
+        point3f[] points.timeSamples = {
+            1: [(0, 4, 0), (1, 4, 0), (2, 4, 0), (3, 4, 0)],
+            5: [(0, 3, 0), (1, 3, 0), (2, 3, 0), (3, 3, 0), (4, 4, 0), (5, 4, 0)],
+            9: [(0, 2, 0), (1, 2, 0)]
+        }
+        vector3f[] velocities.timeSamples = {
+            1: [(0, -6, 0), (0.5, -6, 0), (0, -7, 0.25), (-0.5, -5, 0)],
+            5: [(0, -6, 0), (0.5, -6, 0), (0, -7, 0.25), (-0.5, -5, 0), (0.1, -4, 0), (0, -4, 0)],
+            9: [(0, -6, 0), (0.5, -6, 0)]
+        }
+        vector3f[] accelerations.timeSamples = {
+            1: [(0, -9.8, 0), (0, -9.8, 0), (1, -9.8, 0), (0, -9.8, -1)],
+            5: [(0, -9.8, 0), (0, -9.8, 0), (1, -9.8, 0), (0, -9.8, -1), (0, -9.8, 0), (0, -9.8, 0)],
+            9: [(0, -9.8, 0), (0, -9.8, 0)]
+        }
+        float[] widths = [0.1]
+    }
+
+    def Points "Snow" (
+        prepend apiSchemas = ["MotionAPI"]
+    )
+    {
+        int motion:nonlinearSampleCount = 5
+        point3f[] points.timeSamples = {
+            1: [(0, 5, 1), (1, 5, 1), (2, 5, 1)],
+            5: [(0, 4, 1), (1, 4, 1)]
+        }
+        vector3f[] velocities.timeSamples = {
+            1: [(0.3, -1, 0), (-0.3, -1, 0.2), (0, -1.2, 0)],
+            5: [(0.3, -1, 0), (-0.3, -1, 0.2)]
+        }
+        vector3f[] accelerations = [(0.5, 0, 0), (-0.5, 0, 0), (0, 0.25, 0)]
+    }
+
+    def Points "MismatchedVelocities"
+    {
+        point3f[] points.timeSamples = {
+            1: [(0, 0, 0), (1, 0, 0)],
+            5: [(0, 1, 0), (1, 1, 0)]
+        }
+        vector3f[] velocities.timeSamples = {
+            1: [(1, 0, 0), (1, 0, 0)],
+            3: [(0, 1, 0), (0, 1, 0)]
+        }
+    }
+
+    def Points "FewerVelocities"
+    {
+        point3f[] points.timeSamples = {
+            1: [(0, 0, 2), (1, 0, 2), (2, 0, 2)],
+            5: [(0, 1, 2), (1, 1, 2), (2, 1, 2)]
+        }
+        vector3f[] velocities = [(1, 0, 0), (1, 0, 0)]
+    }
+
+    def Points "AccelerationsElsewhere"
+    {
+        point3f[] points.timeSamples = {
+            1: [(0, 0, 3)],
+            5: [(0, 1, 3)]
+        }
+        vector3f[] velocities.timeSamples = {
+            1: [(2, 0, 0)],
+            5: [(2, 0, 0)]
+        }
+        vector3f[] accelerations.timeSamples = {
+            2: [(0, -9.8, 0)],
+            6: [(0, -9.8, 0)]
+        }
+    }
+
+    def Mesh "Tri" (
+        prepend apiSchemas = ["MotionAPI"]
+    )
+    {
+        float motion:blurScale = 0.5
+        int[] faceVertexCounts = [3]
+        int[] faceVertexIndices = [0, 1, 2]
+        point3f[] points.timeSamples = {
+            1: [(0, 0, 4), (1, 0, 4), (0, 1, 4)],
+            5: [(0, 0, 5), (1, 0, 5), (0, 1, 5)]
+        }
+        vector3f[] velocities = [(0, 0, 3), (0, 0, 3), (0, 0, 3)]
+    }
+
+    def PointInstancer "Instancer"
+    {
+        point3f[] positions.timeSamples = {
+            1: [(0, 0, 6), (1, 0, 6)],
+            5: [(0, 0, 7), (1, 0, 7), (2, 0, 7)]
+        }
+        vector3f[] velocities.timeSamples = {
+            1: [(1, 0, 0), (0, 2, 0)],
+            5: [(1, 0, 0), (0, 2, 0), (0, 0, -1)]
+        }
+        vector3f[] accelerations.timeSamples = {
+            1: [(0, -1, 0), (0, -1, 0)],
+            5: [(0, -1, 0), (0, -1, 0), (0, -1, 0)]
+        }
+        quatf[] orientationsf.timeSamples = {
+            1: [(1, 0, 0, 0), (0.7071068, 0.7071068, 0, 0)],
+            5: [(1, 0, 0, 0), (0.7071068, 0.7071068, 0, 0), (0, 0, 1, 0)]
+        }
+        vector3f[] angularVelocities.timeSamples = {
+            1: [(0, 0, 90), (30, 0, 0)],
+            5: [(0, 0, 90), (30, 0, 0), (0, 45, 0)]
+        }
+        float3[] scales.timeSamples = {
+            1: [(1, 1, 1), (2, 2, 2)],
+            5: [(1, 1, 1), (2, 2, 2), (3, 3, 3)]
+        }
+        int[] protoIndices.timeSamples = {
+            1: [0, 0],
+            5: [0, 0, 0]
+        }
+        rel prototypes = [</World/Instancer/Prototypes/Proto>]
+
+        def Xform "Prototypes"
+        {
+            def Cube "Proto"
+            {
+                double size = 0.25
+            }
+        }
+    }
+}

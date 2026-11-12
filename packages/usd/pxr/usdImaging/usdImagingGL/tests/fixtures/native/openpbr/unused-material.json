@@ -1,0 +1,55 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/usdImaging/usdImagingGL/tests/fixtures/native/openpbr/capture.py",
+  "upstream": [
+    "pxr/usdImaging/usdAppUtils/frameRecorder.cpp",
+    "pxr/usdImaging/bin/usdrecord/usdrecord.py"
+  ],
+  "payload": {
+    "source": "pxr/usdImaging/usdImagingGL/tests/fixtures/native/openpbr/unused-material.usda",
+    "sourceSha256": "7e6db463d2c9db798fbed31cafebae0d8d0d6efcd8386e6a4fe977528495c2c5",
+    "camera": "/Camera",
+    "renderer": "HdStormRendererPlugin",
+    "cameraLight": true,
+    "complexity": 1.0,
+    "time": 0,
+    "colorCorrection": "sRGB",
+    "imageWidth": 900,
+    "recorderSuccess": true,
+    "validVisualReference": true,
+    "imageHeight": 600,
+    "samples": [
+      {
+        "x": 450,
+        "y": 300,
+        "rgba": [
+          231,
+          108,
+          63,
+          255
+        ]
+      },
+      {
+        "x": 350,
+        "y": 250,
+        "rgba": [
+          230,
+          108,
+          63,
+          255
+        ]
+      },
+      {
+        "x": 550,
+        "y": 350,
+        "rgba": [
+          230,
+          108,
+          63,
+          255
+        ]
+      }
+    ]
+  }
+}

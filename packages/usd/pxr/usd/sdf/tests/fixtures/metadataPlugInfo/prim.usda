@@ -1,0 +1,34 @@
+#usda 1.0
+
+def "Foo" (
+    asset_single = @/a/b.usd@
+    bool_single = true
+    dictionary_single = {
+        string k1 = "v1"
+        int k2 = 5
+    }
+    double3_single = (0.5, 1.5, 2.5)
+    double_shaped = [0.5, 1.5, 2.5]
+    double_single = 2.25
+    float4_single = (1, 2, 3, 4)
+    float_single = 1.5
+    half_single = 0.5
+    int2_single = (1, 2)
+    int64_single = 9999999999
+    int_shaped = [1, 2, 3]
+    int_single = -5
+    intlistop_single = [1, 2, 3]
+    matrix2d_single = ( (0.5, 1.5), (2.5, 3.5) )
+    quatd_single = (1, 2, 3, 4)
+    string_shaped = ["a", "b", "c"]
+    string_single = "hello world"
+    delete stringlistop_single = ["z"]
+    prepend stringlistop_single = ["x", "y"]
+    timecode_single = 3
+    token_single = "tok"
+    uchar_single = 7
+    uint64_single = 18000000000
+    uint_single = 12
+)
+{
+}

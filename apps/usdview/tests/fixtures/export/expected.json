@@ -1,0 +1,134 @@
+{
+  "nativeVersion": [
+    0,
+    26,
+    11
+  ],
+  "sourceSha256": "11bd95965662e980839a64a06704658023a1fdbd9114393b0ad5d6af380ac3b7",
+  "sourceUnchanged": true,
+  "edit": {
+    "path": "/World/Mesh",
+    "variantSet": "look",
+    "selection": "blue",
+    "visibility": "invisible"
+  },
+  "live": {
+    "prims": [
+      "/World",
+      "/World/Mesh",
+      "/World/Other"
+    ],
+    "variant": "blue",
+    "variants": [
+      "look"
+    ],
+    "color": [
+      [
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "visibility": "invisible",
+    "timeSamples": [
+      0.0,
+      24.0
+    ],
+    "sampleValues": [
+      [
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        1.0,
+        0.0
+      ]
+    ],
+    "start": 0.0,
+    "end": 24.0,
+    "upAxis": "Y",
+    "metersPerUnit": 1.0,
+    "compositionErrors": []
+  },
+  "sessionReopened": {
+    "prims": [
+      "/World",
+      "/World/Mesh",
+      "/World/Other"
+    ],
+    "variant": "blue",
+    "variants": [
+      "look"
+    ],
+    "color": [
+      [
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "visibility": "invisible",
+    "timeSamples": [
+      0.0,
+      24.0
+    ],
+    "sampleValues": [
+      [
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        1.0,
+        0.0
+      ]
+    ],
+    "start": 0.0,
+    "end": 24.0,
+    "upAxis": "Y",
+    "metersPerUnit": 1.0,
+    "compositionErrors": []
+  },
+  "flattened": {
+    "prims": [
+      "/World",
+      "/World/Mesh",
+      "/World/Other"
+    ],
+    "variant": "",
+    "variants": [],
+    "color": [
+      [
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "visibility": "invisible",
+    "timeSamples": [
+      0.0,
+      24.0
+    ],
+    "sampleValues": [
+      [
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        1.0,
+        0.0
+      ]
+    ],
+    "start": 0.0,
+    "end": 24.0,
+    "upAxis": "Y",
+    "metersPerUnit": 1.0,
+    "compositionErrors": []
+  },
+  "scope": "Native values; raw session is reopened with original root through two-layer Usd.Stage.Open. Flatten opens independently; no GUI dialog test."
+}

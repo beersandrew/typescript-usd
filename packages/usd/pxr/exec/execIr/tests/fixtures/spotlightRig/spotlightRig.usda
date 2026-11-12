@@ -1,0 +1,75 @@
+#usda 1.0
+(
+    "Authored by capture.py: an IrFkController-driven spotlight rig for OpenExec tests."
+    defaultPrim = "Rig"
+    endTimeCode = 48
+    framesPerSecond = 24
+    metersPerUnit = 1
+    startTimeCode = 1
+    timeCodesPerSecond = 24
+    upAxis = "Y"
+)
+
+def Xform "Rig"
+{
+    matrix4d xformOp:transform = ( (0.9659258262890683, 0, -0.25881904510252074, 0), (0, 1, 0, 0), (0.25881904510252074, 0, 0.9659258262890683, 0), (0, 0.5, -1, 1) )
+    uniform token[] xformOpOrder = ["xformOp:transform"]
+
+    def Scope "Controls"
+    {
+        def IrFkController "PanTilt"
+        {
+            double in:rx.timeSamples = {
+                1: -15,
+                12: -30,
+                24: -45,
+                36: -30,
+                48: -10,
+            }
+            double in:ry.timeSamples = {
+                1: 20,
+                12: 65,
+                24: 110,
+                36: 160,
+                48: 205,
+            }
+            double in:rz.timeSamples = {
+                1: 0,
+                24: 12.5,
+                48: 0,
+            }
+            double in:tx = 1.25
+            double in:ty = 3.5
+            double in:tz = -2
+        }
+
+        def IrFkController "PlateControl"
+        {
+            double in:rx = -90
+            double in:tx = 0.75
+            double in:ty = 1.6
+            double in:tz = 2.25
+        }
+    }
+
+    def Xform "Lamp"
+    {
+        matrix4d xformOp:transform = ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (1.25, 3.5, -2, 1) )
+        prepend matrix4d xformOp:transform.connect = </Rig/Controls/PanTilt.out:space>
+        uniform token[] xformOpOrder = ["xformOp:transform"]
+
+        def SphereLight "Bulb"
+        {
+            matrix4d xformOp:transform = ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, -0.25, 1) )
+            uniform token[] xformOpOrder = ["xformOp:transform"]
+        }
+    }
+
+    def Mesh "Plate"
+    {
+        matrix4d xformOp:transform = ( (1, 0, 0, 0), (0, 2.220446049250313e-16, -1, 0), (0, 1, 2.220446049250313e-16, 0), (0.75, -1.6, 2.25, 1) )
+        prepend matrix4d xformOp:transform.connect = </Rig/Controls/PlateControl.out:space>
+        uniform token[] xformOpOrder = ["xformOp:transform"]
+    }
+}
+

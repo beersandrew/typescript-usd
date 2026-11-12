@@ -1,0 +1,64 @@
+#usda 1.0
+
+def "Props" (
+    variantSets = "v"
+)
+{
+    rel r
+    double x = 1
+    variantSet "v" = {
+        "a" (
+            variantSets = "inner"
+        ) {
+            float y = 2
+            variantSet "inner" = {
+                "b" {
+                    int z = 3
+
+                }
+            }
+
+        }
+    }
+}
+
+def "Children" (
+    variantSets = ["v", "w"]
+)
+{
+    def "C"
+    {
+    }
+    variantSet "v" = {
+        "a" {
+
+        }
+    }
+    variantSet "w" = {
+        "b" {
+            double q = 1
+
+            def "D"
+            {
+            }
+
+        }
+    }
+}
+
+def "Both" (
+    variantSets = "v"
+)
+{
+    double x = 1
+
+    def "C"
+    {
+    }
+    variantSet "v" = {
+        "a" {
+
+        }
+    }
+}
+

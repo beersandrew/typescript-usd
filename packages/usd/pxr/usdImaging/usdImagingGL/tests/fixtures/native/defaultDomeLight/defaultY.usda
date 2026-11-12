@@ -1,0 +1,47 @@
+#usda 1.0
+(
+    upAxis = "Y"
+)
+
+def Mesh "Quad" (
+    prepend apiSchemas = ["MaterialBindingAPI"]
+)
+{
+    int[] faceVertexCounts = [4]
+    int[] faceVertexIndices = [0, 1, 2, 3]
+    rel material:binding = </Material>
+    point3f[] points = [(-1, -1, 0), (1, -1, 0), (1, 1, 0), (-1, 1, 0)]
+    uniform token subdivisionScheme = "none"
+}
+
+def Material "Material"
+{
+    token outputs:surface.connect = </Material/Surface.outputs:surface>
+
+    def Shader "Surface"
+    {
+        uniform token info:id = "UsdPreviewSurface"
+        color3f inputs:diffuseColor = (0.5, 0.5, 0.5)
+        token outputs:surface
+    }
+}
+
+def "_UsdImaging_Storm"
+{
+    def "lights"
+    {
+        def DomeLight "light_1"
+        {
+            asset inputs:texture:file = @./StinsonBeach.hdr@
+        }
+    }
+}
+
+def Camera "Camera"
+{
+    float focalLength = 50
+    float horizontalAperture = 36
+    float verticalAperture = 36
+    double3 xformOp:translate = (0, 0, 6)
+    uniform token[] xformOpOrder = ["xformOp:translate"]
+}

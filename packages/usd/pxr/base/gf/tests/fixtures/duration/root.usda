@@ -1,0 +1,10 @@
+#usda 1.0
+def "Test"
+{
+    duration relative = -1.25
+    duration[] offsets = [1, 2.5]
+    duration motion.spline = {
+        14: 44; post linear,
+        18: 27; post linear,
+    }
+}

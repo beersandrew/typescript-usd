@@ -1,0 +1,55 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/base/gf/tests/upstream/genfix_line.py",
+  "upstream": [
+    "pxr/base/gf/testenv/testGfLine.py"
+  ],
+  "payload": {
+    "set_point0": [
+      1.0,
+      2.0,
+      3.0
+    ],
+    "set_dir": [
+      0.3713906763541037,
+      0.5570860145311556,
+      0.7427813527082074
+    ],
+    "getpoint_half": [
+      0.0,
+      0.5,
+      0.0
+    ],
+    "getpoint_one": [
+      0.0,
+      1.0,
+      0.0
+    ],
+    "dir_set_111": [
+      0.5773502691896258,
+      0.5773502691896258,
+      0.5773502691896258
+    ],
+    "fcp_point": [
+      0.6666666666666669,
+      0.6666666666666669,
+      0.6666666666666669
+    ],
+    "fcp_t": 1.1547005383792517,
+    "parallel_intersects": false,
+    "fcps_intersects": true,
+    "fcps_p1": [
+      0.25,
+      0.25,
+      0.25
+    ],
+    "fcps_p2": [
+      0.75,
+      0.25,
+      -0.25
+    ],
+    "fcps_t1": 0.4330127018922193,
+    "fcps_t2": -0.4330127018922193
+  }
+}

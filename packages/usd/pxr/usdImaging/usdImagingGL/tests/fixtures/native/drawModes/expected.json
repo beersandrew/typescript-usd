@@ -1,0 +1,1692 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/usdImaging/usdImagingGL/tests/fixtures/native/drawModes/capture.py",
+  "upstream": [
+    "pxr/usdImaging/usdviewq/stageView.py:585-597",
+    "pxr/usdImaging/usdviewq/stageView.py:1146-1193",
+    "pxr/usdImaging/usdviewq/stageView.py:1388-1525",
+    "pxr/usdImaging/usdviewq/common.py:136-154",
+    "pxr/usdImaging/usdviewq/viewSettingsDataModel.py:24-40",
+    "pxr/usdImaging/usdImagingGL/engine.cpp:2589-2690",
+    "pxr/imaging/hd/renderIndex.cpp:1008-1074",
+    "pxr/imaging/hdSt/meshShaderKey.cpp",
+    "pxr/imaging/hdSt/shaders/meshWire.glslfx",
+    "pxr/imaging/hdSt/shaders/terminals.glslfx:57-126",
+    "pxr/imaging/hdx/shaders/selection.glslfx:441-474"
+  ],
+  "payload": {
+    "hgi": "Metal",
+    "imageWidth": 192,
+    "imageHeight": 128,
+    "camera": "/Camera",
+    "colorCorrection": "sRGB",
+    "clearColor": [
+      0.07074,
+      0.07074,
+      0.07074,
+      1.0
+    ],
+    "defaultMaterial": {
+      "ambient": 0.2,
+      "specular": 0.1
+    },
+    "sceneAmbient": [
+      0.01,
+      0.01,
+      0.01,
+      1.0
+    ],
+    "cases": [
+      {
+        "name": "Wireframe",
+        "renderMode": "Wireframe",
+        "drawMode": "DRAW_WIREFRAME",
+        "highlightColor": "Yellow",
+        "selectionColor": [
+          1.0,
+          1.0,
+          0.0,
+          0.5
+        ],
+        "selection": [
+          "/World/Quad"
+        ],
+        "image": "images/Wireframe.png",
+        "samples": {
+          "background": {
+            "x": 6,
+            "y": 6,
+            "rgba": [
+              75,
+              75,
+              75,
+              255
+            ]
+          },
+          "quadCenter": {
+            "x": 35,
+            "y": 64,
+            "rgba": [
+              75,
+              75,
+              75,
+              255
+            ]
+          },
+          "quadInteriorDiagonal": {
+            "x": 24,
+            "y": 74,
+            "rgba": [
+              75,
+              75,
+              75,
+              255
+            ]
+          },
+          "quadLeftEdge": {
+            "x": 13,
+            "y": 59,
+            "rgba": [
+              7,
+              7,
+              7,
+              255
+            ]
+          },
+          "quadCorner": {
+            "x": 13,
+            "y": 85,
+            "rgba": [
+              38,
+              38,
+              38,
+              255
+            ]
+          },
+          "pentagonCenter": {
+            "x": 156,
+            "y": 64,
+            "rgba": [
+              75,
+              75,
+              75,
+              255
+            ]
+          },
+          "pentagonBottomEdge": {
+            "x": 156,
+            "y": 83,
+            "rgba": [
+              38,
+              38,
+              38,
+              255
+            ]
+          },
+          "pentagonCorner": {
+            "x": 170,
+            "y": 83,
+            "rgba": [
+              7,
+              7,
+              7,
+              255
+            ]
+          },
+          "boxFrontFace": {
+            "x": 106,
+            "y": 72,
+            "rgba": [
+              75,
+              75,
+              75,
+              255
+            ]
+          },
+          "boxFrontFaceNearCorner": {
+            "x": 121,
+            "y": 59,
+            "rgba": [
+              75,
+              75,
+              75,
+              255
+            ]
+          },
+          "boxTopFace": {
+            "x": 100,
+            "y": 45,
+            "rgba": [
+              75,
+              75,
+              75,
+              255
+            ]
+          },
+          "boxCorner": {
+            "x": 127,
+            "y": 54,
+            "rgba": [
+              7,
+              7,
+              7,
+              255
+            ]
+          }
+        }
+      },
+      {
+        "name": "WireframeOnSurface",
+        "renderMode": "WireframeOnSurface",
+        "drawMode": "DRAW_WIREFRAME_ON_SURFACE",
+        "highlightColor": "Yellow",
+        "selectionColor": [
+          1.0,
+          1.0,
+          0.0,
+          0.5
+        ],
+        "selection": [
+          "/World/Quad"
+        ],
+        "image": "images/WireframeOnSurface.png",
+        "samples": {
+          "background": {
+            "x": 6,
+            "y": 6,
+            "rgba": [
+              75,
+              75,
+              75,
+              255
+            ]
+          },
+          "quadCenter": {
+            "x": 35,
+            "y": 64,
+            "rgba": [
+              213,
+              233,
+              191,
+              255
+            ]
+          },
+          "quadInteriorDiagonal": {
+            "x": 24,
+            "y": 74,
+            "rgba": [
+              212,
+              231,
+              189,
+              255
+            ]
+          },
+          "quadLeftEdge": {
+            "x": 13,
+            "y": 59,
+            "rgba": [
+              123,
+              132,
+              112,
+              255
+            ]
+          },
+          "quadCorner": {
+            "x": 13,
+            "y": 85,
+            "rgba": [
+              128,
+              138,
+              116,
+              255
+            ]
+          },
+          "pentagonCenter": {
+            "x": 156,
+            "y": 64,
+            "rgba": [
+              165,
+              239,
+              165,
+              255
+            ]
+          },
+          "pentagonBottomEdge": {
+            "x": 156,
+            "y": 83,
+            "rgba": [
+              113,
+              161,
+              113,
+              255
+            ]
+          },
+          "pentagonCorner": {
+            "x": 170,
+            "y": 83,
+            "rgba": [
+              112,
+              160,
+              112,
+              255
+            ]
+          },
+          "boxFrontFace": {
+            "x": 106,
+            "y": 72,
+            "rgba": [
+              200,
+              128,
+              106,
+              255
+            ]
+          },
+          "boxFrontFaceNearCorner": {
+            "x": 121,
+            "y": 59,
+            "rgba": [
+              141,
+              90,
+              74,
+              255
+            ]
+          },
+          "boxTopFace": {
+            "x": 100,
+            "y": 45,
+            "rgba": [
+              115,
+              73,
+              60,
+              255
+            ]
+          },
+          "boxCorner": {
+            "x": 127,
+            "y": 54,
+            "rgba": [
+              81,
+              58,
+              52,
+              255
+            ]
+          }
+        }
+      },
+      {
+        "name": "Smooth Shaded",
+        "renderMode": "Smooth Shaded",
+        "drawMode": "DRAW_SHADED_SMOOTH",
+        "highlightColor": "Yellow",
+        "selectionColor": [
+          1.0,
+          1.0,
+          0.0,
+          0.5
+        ],
+        "selection": [
+          "/World/Quad"
+        ],
+        "image": "images/Smooth_Shaded.png",
+        "samples": {
+          "background": {
+            "x": 6,
+            "y": 6,
+            "rgba": [
+              75,
+              75,
+              75,
+              255
+            ]
+          },
+          "quadCenter": {
+            "x": 35,
+            "y": 64,
+            "rgba": [
+              213,
+              233,
+              191,
+              255
+            ]
+          },
+          "quadInteriorDiagonal": {
+            "x": 24,
+            "y": 74,
+            "rgba": [
+              212,
+              231,
+              189,
+              255
+            ]
+          },
+          "quadLeftEdge": {
+            "x": 13,
+            "y": 59,
+            "rgba": [
+              161,
+              175,
+              146,
+              255
+            ]
+          },
+          "quadCorner": {
+            "x": 13,
+            "y": 85,
+            "rgba": [
+              161,
+              175,
+              145,
+              255
+            ]
+          },
+          "pentagonCenter": {
+            "x": 156,
+            "y": 64,
+            "rgba": [
+              165,
+              239,
+              165,
+              255
+            ]
+          },
+          "pentagonBottomEdge": {
+            "x": 156,
+            "y": 83,
+            "rgba": [
+              148,
+              213,
+              148,
+              255
+            ]
+          },
+          "pentagonCorner": {
+            "x": 170,
+            "y": 83,
+            "rgba": [
+              147,
+              211,
+              147,
+              255
+            ]
+          },
+          "boxFrontFace": {
+            "x": 106,
+            "y": 72,
+            "rgba": [
+              200,
+              128,
+              106,
+              255
+            ]
+          },
+          "boxFrontFaceNearCorner": {
+            "x": 121,
+            "y": 59,
+            "rgba": [
+              141,
+              90,
+              74,
+              255
+            ]
+          },
+          "boxTopFace": {
+            "x": 100,
+            "y": 45,
+            "rgba": [
+              115,
+              73,
+              60,
+              255
+            ]
+          },
+          "boxCorner": {
+            "x": 127,
+            "y": 54,
+            "rgba": [
+              103,
+              71,
+              62,
+              255
+            ]
+          }
+        }
+      },
+      {
+        "name": "Points",
+        "renderMode": "Points",
+        "drawMode": "DRAW_POINTS",
+        "highlightColor": "Yellow",
+        "selectionColor": [
+          1.0,
+          1.0,
+          0.0,
+          0.5
+        ],
+        "selection": [
+          "/World/Quad"
+        ],
+        "image": "images/Points.png",
+        "samples": {
+          "background": {
+            "x": 6,
+            "y": 6,
+            "rgba": [
+              75,
+              75,
+              75,
+              255
+            ]
+          },
+          "quadCenter": {
+            "x": 35,
+            "y": 64,
+            "rgba": [
+              75,
+              75,
+              75,
+              255
+            ]
+          },
+          "quadInteriorDiagonal": {
+            "x": 24,
+            "y": 74,
+            "rgba": [
+              75,
+              75,
+              75,
+              255
+            ]
+          },
+          "quadLeftEdge": {
+            "x": 13,
+            "y": 59,
+            "rgba": [
+              75,
+              75,
+              75,
+              255
+            ]
+          },
+          "quadCorner": {
+            "x": 13,
+            "y": 85,
+            "rgba": [
+              203,
+              224,
+              179,
+              255
+            ]
+          },
+          "pentagonCenter": {
+            "x": 156,
+            "y": 64,
+            "rgba": [
+              75,
+              75,
+              75,
+              255
+            ]
+          },
+          "pentagonBottomEdge": {
+            "x": 156,
+            "y": 83,
+            "rgba": [
+              75,
+              75,
+              75,
+              255
+            ]
+          },
+          "pentagonCorner": {
+            "x": 170,
+            "y": 83,
+            "rgba": [
+              149,
+              231,
+              149,
+              255
+            ]
+          },
+          "boxFrontFace": {
+            "x": 106,
+            "y": 72,
+            "rgba": [
+              75,
+              75,
+              75,
+              255
+            ]
+          },
+          "boxFrontFaceNearCorner": {
+            "x": 121,
+            "y": 59,
+            "rgba": [
+              75,
+              75,
+              75,
+              255
+            ]
+          },
+          "boxTopFace": {
+            "x": 100,
+            "y": 45,
+            "rgba": [
+              75,
+              75,
+              75,
+              255
+            ]
+          },
+          "boxCorner": {
+            "x": 127,
+            "y": 54,
+            "rgba": [
+              231,
+              149,
+              124,
+              255
+            ]
+          }
+        }
+      },
+      {
+        "name": "Flat Shaded",
+        "renderMode": "Flat Shaded",
+        "drawMode": "DRAW_SHADED_FLAT",
+        "highlightColor": "Yellow",
+        "selectionColor": [
+          1.0,
+          1.0,
+          0.0,
+          0.5
+        ],
+        "selection": [
+          "/World/Quad"
+        ],
+        "image": "images/Flat_Shaded.png",
+        "samples": {
+          "background": {
+            "x": 6,
+            "y": 6,
+            "rgba": [
+              75,
+              75,
+              75,
+              255
+            ]
+          },
+          "quadCenter": {
+            "x": 35,
+            "y": 64,
+            "rgba": [
+              213,
+              233,
+              191,
+              255
+            ]
+          },
+          "quadInteriorDiagonal": {
+            "x": 24,
+            "y": 74,
+            "rgba": [
+              212,
+              231,
+              189,
+              255
+            ]
+          },
+          "quadLeftEdge": {
+            "x": 13,
+            "y": 59,
+            "rgba": [
+              161,
+              175,
+              146,
+              255
+            ]
+          },
+          "quadCorner": {
+            "x": 13,
+            "y": 85,
+            "rgba": [
+              161,
+              175,
+              145,
+              255
+            ]
+          },
+          "pentagonCenter": {
+            "x": 156,
+            "y": 64,
+            "rgba": [
+              165,
+              239,
+              165,
+              255
+            ]
+          },
+          "pentagonBottomEdge": {
+            "x": 156,
+            "y": 83,
+            "rgba": [
+              148,
+              213,
+              148,
+              255
+            ]
+          },
+          "pentagonCorner": {
+            "x": 170,
+            "y": 83,
+            "rgba": [
+              147,
+              211,
+              147,
+              255
+            ]
+          },
+          "boxFrontFace": {
+            "x": 106,
+            "y": 72,
+            "rgba": [
+              198,
+              128,
+              106,
+              255
+            ]
+          },
+          "boxFrontFaceNearCorner": {
+            "x": 121,
+            "y": 59,
+            "rgba": [
+              197,
+              127,
+              105,
+              255
+            ]
+          },
+          "boxTopFace": {
+            "x": 100,
+            "y": 45,
+            "rgba": [
+              130,
+              82,
+              68,
+              255
+            ]
+          },
+          "boxCorner": {
+            "x": 127,
+            "y": 54,
+            "rgba": [
+              160,
+              106,
+              90,
+              255
+            ]
+          }
+        }
+      },
+      {
+        "name": "Geom Only",
+        "renderMode": "Geom Only",
+        "drawMode": "DRAW_GEOM_ONLY",
+        "highlightColor": "Yellow",
+        "selectionColor": [
+          1.0,
+          1.0,
+          0.0,
+          0.5
+        ],
+        "selection": [
+          "/World/Quad"
+        ],
+        "image": "images/Geom_Only.png",
+        "samples": {
+          "background": {
+            "x": 6,
+            "y": 6,
+            "rgba": [
+              75,
+              75,
+              75,
+              255
+            ]
+          },
+          "quadCenter": {
+            "x": 35,
+            "y": 64,
+            "rgba": [
+              203,
+              224,
+              179,
+              255
+            ]
+          },
+          "quadInteriorDiagonal": {
+            "x": 24,
+            "y": 74,
+            "rgba": [
+              203,
+              224,
+              179,
+              255
+            ]
+          },
+          "quadLeftEdge": {
+            "x": 13,
+            "y": 59,
+            "rgba": [
+              157,
+              172,
+              139,
+              255
+            ]
+          },
+          "quadCorner": {
+            "x": 13,
+            "y": 85,
+            "rgba": [
+              157,
+              172,
+              139,
+              255
+            ]
+          },
+          "pentagonCenter": {
+            "x": 156,
+            "y": 64,
+            "rgba": [
+              149,
+              231,
+              149,
+              255
+            ]
+          },
+          "pentagonBottomEdge": {
+            "x": 156,
+            "y": 83,
+            "rgba": [
+              135,
+              206,
+              135,
+              255
+            ]
+          },
+          "pentagonCorner": {
+            "x": 170,
+            "y": 83,
+            "rgba": [
+              135,
+              206,
+              135,
+              255
+            ]
+          },
+          "boxFrontFace": {
+            "x": 106,
+            "y": 72,
+            "rgba": [
+              231,
+              149,
+              124,
+              255
+            ]
+          },
+          "boxFrontFaceNearCorner": {
+            "x": 121,
+            "y": 59,
+            "rgba": [
+              231,
+              149,
+              124,
+              255
+            ]
+          },
+          "boxTopFace": {
+            "x": 100,
+            "y": 45,
+            "rgba": [
+              231,
+              149,
+              124,
+              255
+            ]
+          },
+          "boxCorner": {
+            "x": 127,
+            "y": 54,
+            "rgba": [
+              206,
+              135,
+              114,
+              255
+            ]
+          }
+        }
+      },
+      {
+        "name": "Geom Smooth",
+        "renderMode": "Geom Smooth",
+        "drawMode": "DRAW_GEOM_SMOOTH",
+        "highlightColor": "Yellow",
+        "selectionColor": [
+          1.0,
+          1.0,
+          0.0,
+          0.5
+        ],
+        "selection": [
+          "/World/Quad"
+        ],
+        "image": "images/Geom_Smooth.png",
+        "samples": {
+          "background": {
+            "x": 6,
+            "y": 6,
+            "rgba": [
+              75,
+              75,
+              75,
+              255
+            ]
+          },
+          "quadCenter": {
+            "x": 35,
+            "y": 64,
+            "rgba": [
+              213,
+              233,
+              191,
+              255
+            ]
+          },
+          "quadInteriorDiagonal": {
+            "x": 24,
+            "y": 74,
+            "rgba": [
+              212,
+              231,
+              189,
+              255
+            ]
+          },
+          "quadLeftEdge": {
+            "x": 13,
+            "y": 59,
+            "rgba": [
+              161,
+              175,
+              146,
+              255
+            ]
+          },
+          "quadCorner": {
+            "x": 13,
+            "y": 85,
+            "rgba": [
+              161,
+              175,
+              145,
+              255
+            ]
+          },
+          "pentagonCenter": {
+            "x": 156,
+            "y": 64,
+            "rgba": [
+              165,
+              239,
+              165,
+              255
+            ]
+          },
+          "pentagonBottomEdge": {
+            "x": 156,
+            "y": 83,
+            "rgba": [
+              148,
+              213,
+              148,
+              255
+            ]
+          },
+          "pentagonCorner": {
+            "x": 170,
+            "y": 83,
+            "rgba": [
+              147,
+              211,
+              147,
+              255
+            ]
+          },
+          "boxFrontFace": {
+            "x": 106,
+            "y": 72,
+            "rgba": [
+              200,
+              128,
+              106,
+              255
+            ]
+          },
+          "boxFrontFaceNearCorner": {
+            "x": 121,
+            "y": 59,
+            "rgba": [
+              141,
+              90,
+              74,
+              255
+            ]
+          },
+          "boxTopFace": {
+            "x": 100,
+            "y": 45,
+            "rgba": [
+              115,
+              73,
+              60,
+              255
+            ]
+          },
+          "boxCorner": {
+            "x": 127,
+            "y": 54,
+            "rgba": [
+              103,
+              71,
+              62,
+              255
+            ]
+          }
+        }
+      },
+      {
+        "name": "Geom Flat",
+        "renderMode": "Geom Flat",
+        "drawMode": "DRAW_GEOM_FLAT",
+        "highlightColor": "Yellow",
+        "selectionColor": [
+          1.0,
+          1.0,
+          0.0,
+          0.5
+        ],
+        "selection": [
+          "/World/Quad"
+        ],
+        "image": "images/Geom_Flat.png",
+        "samples": {
+          "background": {
+            "x": 6,
+            "y": 6,
+            "rgba": [
+              75,
+              75,
+              75,
+              255
+            ]
+          },
+          "quadCenter": {
+            "x": 35,
+            "y": 64,
+            "rgba": [
+              213,
+              233,
+              191,
+              255
+            ]
+          },
+          "quadInteriorDiagonal": {
+            "x": 24,
+            "y": 74,
+            "rgba": [
+              212,
+              231,
+              189,
+              255
+            ]
+          },
+          "quadLeftEdge": {
+            "x": 13,
+            "y": 59,
+            "rgba": [
+              161,
+              175,
+              146,
+              255
+            ]
+          },
+          "quadCorner": {
+            "x": 13,
+            "y": 85,
+            "rgba": [
+              161,
+              175,
+              145,
+              255
+            ]
+          },
+          "pentagonCenter": {
+            "x": 156,
+            "y": 64,
+            "rgba": [
+              165,
+              239,
+              165,
+              255
+            ]
+          },
+          "pentagonBottomEdge": {
+            "x": 156,
+            "y": 83,
+            "rgba": [
+              148,
+              213,
+              148,
+              255
+            ]
+          },
+          "pentagonCorner": {
+            "x": 170,
+            "y": 83,
+            "rgba": [
+              147,
+              211,
+              147,
+              255
+            ]
+          },
+          "boxFrontFace": {
+            "x": 106,
+            "y": 72,
+            "rgba": [
+              198,
+              128,
+              106,
+              255
+            ]
+          },
+          "boxFrontFaceNearCorner": {
+            "x": 121,
+            "y": 59,
+            "rgba": [
+              197,
+              127,
+              105,
+              255
+            ]
+          },
+          "boxTopFace": {
+            "x": 100,
+            "y": 45,
+            "rgba": [
+              130,
+              82,
+              68,
+              255
+            ]
+          },
+          "boxCorner": {
+            "x": 127,
+            "y": 54,
+            "rgba": [
+              160,
+              106,
+              90,
+              255
+            ]
+          }
+        }
+      },
+      {
+        "name": "Hidden Surface Wireframe",
+        "renderMode": "Hidden Surface Wireframe",
+        "drawMode": "DRAW_WIREFRAME",
+        "highlightColor": "Yellow",
+        "selectionColor": [
+          1.0,
+          1.0,
+          0.0,
+          0.5
+        ],
+        "selection": [
+          "/World/Quad"
+        ],
+        "image": "images/Hidden_Surface_Wireframe.png",
+        "samples": {
+          "background": {
+            "x": 6,
+            "y": 6,
+            "rgba": [
+              75,
+              75,
+              75,
+              255
+            ]
+          },
+          "quadCenter": {
+            "x": 35,
+            "y": 64,
+            "rgba": [
+              76,
+              76,
+              76,
+              255
+            ]
+          },
+          "quadInteriorDiagonal": {
+            "x": 24,
+            "y": 74,
+            "rgba": [
+              76,
+              76,
+              76,
+              255
+            ]
+          },
+          "quadLeftEdge": {
+            "x": 13,
+            "y": 59,
+            "rgba": [
+              7,
+              7,
+              7,
+              255
+            ]
+          },
+          "quadCorner": {
+            "x": 13,
+            "y": 85,
+            "rgba": [
+              38,
+              38,
+              38,
+              255
+            ]
+          },
+          "pentagonCenter": {
+            "x": 156,
+            "y": 64,
+            "rgba": [
+              76,
+              76,
+              76,
+              255
+            ]
+          },
+          "pentagonBottomEdge": {
+            "x": 156,
+            "y": 83,
+            "rgba": [
+              38,
+              38,
+              38,
+              255
+            ]
+          },
+          "pentagonCorner": {
+            "x": 170,
+            "y": 83,
+            "rgba": [
+              7,
+              7,
+              7,
+              255
+            ]
+          },
+          "boxFrontFace": {
+            "x": 106,
+            "y": 72,
+            "rgba": [
+              76,
+              76,
+              76,
+              255
+            ]
+          },
+          "boxFrontFaceNearCorner": {
+            "x": 121,
+            "y": 59,
+            "rgba": [
+              76,
+              76,
+              76,
+              255
+            ]
+          },
+          "boxTopFace": {
+            "x": 100,
+            "y": 45,
+            "rgba": [
+              76,
+              76,
+              76,
+              255
+            ]
+          },
+          "boxCorner": {
+            "x": 127,
+            "y": 54,
+            "rgba": [
+              7,
+              7,
+              7,
+              255
+            ]
+          }
+        }
+      },
+      {
+        "name": "Smooth Shaded, Cyan",
+        "renderMode": "Smooth Shaded",
+        "drawMode": "DRAW_SHADED_SMOOTH",
+        "highlightColor": "Cyan",
+        "selectionColor": [
+          0.0,
+          1.0,
+          1.0,
+          0.5
+        ],
+        "selection": [
+          "/World/Quad"
+        ],
+        "image": "images/Smooth_Shaded_Cyan.png",
+        "samples": {
+          "background": {
+            "x": 6,
+            "y": 6,
+            "rgba": [
+              75,
+              75,
+              75,
+              255
+            ]
+          },
+          "quadCenter": {
+            "x": 35,
+            "y": 64,
+            "rgba": [
+              118,
+              233,
+              255,
+              255
+            ]
+          },
+          "quadInteriorDiagonal": {
+            "x": 24,
+            "y": 74,
+            "rgba": [
+              116,
+              231,
+              254,
+              255
+            ]
+          },
+          "quadLeftEdge": {
+            "x": 13,
+            "y": 59,
+            "rgba": [
+              97,
+              175,
+              192,
+              255
+            ]
+          },
+          "quadCorner": {
+            "x": 13,
+            "y": 85,
+            "rgba": [
+              96,
+              175,
+              191,
+              255
+            ]
+          },
+          "pentagonCenter": {
+            "x": 156,
+            "y": 64,
+            "rgba": [
+              165,
+              239,
+              165,
+              255
+            ]
+          },
+          "pentagonBottomEdge": {
+            "x": 156,
+            "y": 83,
+            "rgba": [
+              148,
+              213,
+              148,
+              255
+            ]
+          },
+          "pentagonCorner": {
+            "x": 170,
+            "y": 83,
+            "rgba": [
+              147,
+              211,
+              147,
+              255
+            ]
+          },
+          "boxFrontFace": {
+            "x": 106,
+            "y": 72,
+            "rgba": [
+              200,
+              128,
+              106,
+              255
+            ]
+          },
+          "boxFrontFaceNearCorner": {
+            "x": 121,
+            "y": 59,
+            "rgba": [
+              141,
+              90,
+              74,
+              255
+            ]
+          },
+          "boxTopFace": {
+            "x": 100,
+            "y": 45,
+            "rgba": [
+              115,
+              73,
+              60,
+              255
+            ]
+          },
+          "boxCorner": {
+            "x": 127,
+            "y": 54,
+            "rgba": [
+              103,
+              71,
+              62,
+              255
+            ]
+          }
+        }
+      },
+      {
+        "name": "Smooth Shaded, engine default color",
+        "renderMode": "Smooth Shaded",
+        "drawMode": "DRAW_SHADED_SMOOTH",
+        "highlightColor": null,
+        "selectionColor": null,
+        "selection": [
+          "/World/Quad"
+        ],
+        "image": "images/Smooth_Shaded_engine_default_color.png",
+        "samples": {
+          "background": {
+            "x": 6,
+            "y": 6,
+            "rgba": [
+              75,
+              75,
+              75,
+              255
+            ]
+          },
+          "quadCenter": {
+            "x": 35,
+            "y": 64,
+            "rgba": [
+              255,
+              255,
+              82,
+              255
+            ]
+          },
+          "quadInteriorDiagonal": {
+            "x": 24,
+            "y": 74,
+            "rgba": [
+              255,
+              255,
+              79,
+              255
+            ]
+          },
+          "quadLeftEdge": {
+            "x": 13,
+            "y": 59,
+            "rgba": [
+              195,
+              195,
+              75,
+              255
+            ]
+          },
+          "quadCorner": {
+            "x": 13,
+            "y": 85,
+            "rgba": [
+              195,
+              195,
+              75,
+              255
+            ]
+          },
+          "pentagonCenter": {
+            "x": 156,
+            "y": 64,
+            "rgba": [
+              165,
+              239,
+              165,
+              255
+            ]
+          },
+          "pentagonBottomEdge": {
+            "x": 156,
+            "y": 83,
+            "rgba": [
+              148,
+              213,
+              148,
+              255
+            ]
+          },
+          "pentagonCorner": {
+            "x": 170,
+            "y": 83,
+            "rgba": [
+              147,
+              211,
+              147,
+              255
+            ]
+          },
+          "boxFrontFace": {
+            "x": 106,
+            "y": 72,
+            "rgba": [
+              200,
+              128,
+              106,
+              255
+            ]
+          },
+          "boxFrontFaceNearCorner": {
+            "x": 121,
+            "y": 59,
+            "rgba": [
+              141,
+              90,
+              74,
+              255
+            ]
+          },
+          "boxTopFace": {
+            "x": 100,
+            "y": 45,
+            "rgba": [
+              115,
+              73,
+              60,
+              255
+            ]
+          },
+          "boxCorner": {
+            "x": 127,
+            "y": 54,
+            "rgba": [
+              103,
+              71,
+              62,
+              255
+            ]
+          }
+        }
+      },
+      {
+        "name": "Smooth Shaded, nothing selected",
+        "renderMode": "Smooth Shaded",
+        "drawMode": "DRAW_SHADED_SMOOTH",
+        "highlightColor": "Yellow",
+        "selectionColor": [
+          1.0,
+          1.0,
+          0.0,
+          0.5
+        ],
+        "selection": [],
+        "image": "images/Smooth_Shaded_nothing_selected.png",
+        "samples": {
+          "background": {
+            "x": 6,
+            "y": 6,
+            "rgba": [
+              75,
+              75,
+              75,
+              255
+            ]
+          },
+          "quadCenter": {
+            "x": 35,
+            "y": 64,
+            "rgba": [
+              144,
+              199,
+              251,
+              255
+            ]
+          },
+          "quadInteriorDiagonal": {
+            "x": 24,
+            "y": 74,
+            "rgba": [
+              142,
+              197,
+              249,
+              255
+            ]
+          },
+          "quadLeftEdge": {
+            "x": 13,
+            "y": 59,
+            "rgba": [
+              113,
+              151,
+              188,
+              255
+            ]
+          },
+          "quadCorner": {
+            "x": 13,
+            "y": 85,
+            "rgba": [
+              113,
+              151,
+              187,
+              255
+            ]
+          },
+          "pentagonCenter": {
+            "x": 156,
+            "y": 64,
+            "rgba": [
+              165,
+              239,
+              165,
+              255
+            ]
+          },
+          "pentagonBottomEdge": {
+            "x": 156,
+            "y": 83,
+            "rgba": [
+              148,
+              213,
+              148,
+              255
+            ]
+          },
+          "pentagonCorner": {
+            "x": 170,
+            "y": 83,
+            "rgba": [
+              147,
+              211,
+              147,
+              255
+            ]
+          },
+          "boxFrontFace": {
+            "x": 106,
+            "y": 72,
+            "rgba": [
+              200,
+              128,
+              106,
+              255
+            ]
+          },
+          "boxFrontFaceNearCorner": {
+            "x": 121,
+            "y": 59,
+            "rgba": [
+              141,
+              90,
+              74,
+              255
+            ]
+          },
+          "boxTopFace": {
+            "x": 100,
+            "y": 45,
+            "rgba": [
+              115,
+              73,
+              60,
+              255
+            ]
+          },
+          "boxCorner": {
+            "x": 127,
+            "y": 54,
+            "rgba": [
+              103,
+              71,
+              62,
+              255
+            ]
+          }
+        }
+      }
+    ]
+  }
+}

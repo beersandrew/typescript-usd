@@ -1,0 +1,408 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/usdImaging/usdVolImaging/tests/fixtures/testUsdImagingGLVdbVolume/capture.py",
+  "upstream": [
+    "pxr/usdImaging/usdImagingGL/testenv/testUsdImagingGLVdbVolume/vdbVolumeFallbackMaterial.usda",
+    "pxr/usdImaging/usdImaging/dataSourceVolume.cpp",
+    "pxr/usdImaging/usdVolImaging/dataSourceFieldAsset.cpp",
+    "pxr/imaging/hioOpenVDB/vdbTextureData.cpp",
+    "pxr/imaging/hdSt/field.cpp",
+    "pxr/usdImaging/usdImagingGL/testenv/testUsdImagingGLVdbVolume/vdbVolumeTargetMemory.usda"
+  ],
+  "payload": {
+    "times": [
+      {
+        "time": 1,
+        "volume": {
+          "primType": "volume",
+          "volumeFieldBinding": {
+            "density": "/VdbVolume/Density"
+          }
+        },
+        "field": {
+          "primType": "openvdbAsset",
+          "volumeFieldNames": [
+            "filePath",
+            "fieldName",
+            "fieldIndex",
+            "fieldDataType",
+            "vectorDataRoleHint",
+            "fieldDataType",
+            "fieldClass"
+          ],
+          "filePath": {
+            "assetPath": "smoke_000001.vdb",
+            "resolvedBase": "smoke_000001.vdb"
+          },
+          "fieldName": "density",
+          "fieldIndex": 0,
+          "fieldDataType": "",
+          "vectorDataRoleHint": "None"
+        },
+        "densityData": {
+          "file": "smoke_000001.vdb",
+          "grid": "density",
+          "read": false
+        }
+      },
+      {
+        "time": 2,
+        "volume": {
+          "primType": "volume",
+          "volumeFieldBinding": {
+            "density": "/VdbVolume/Density"
+          }
+        },
+        "field": {
+          "primType": "openvdbAsset",
+          "volumeFieldNames": [
+            "filePath",
+            "fieldName",
+            "fieldIndex",
+            "fieldDataType",
+            "vectorDataRoleHint",
+            "fieldDataType",
+            "fieldClass"
+          ],
+          "filePath": {
+            "assetPath": "smoke_000002.vdb",
+            "resolvedBase": "smoke_000002.vdb"
+          },
+          "fieldName": "density",
+          "fieldIndex": 0,
+          "fieldDataType": "",
+          "vectorDataRoleHint": "None"
+        },
+        "densityData": {
+          "file": "smoke_000002.vdb",
+          "grid": "density",
+          "read": true,
+          "rangeMin": [
+            1,
+            1,
+            11
+          ],
+          "rangeMax": [
+            51,
+            49,
+            90
+          ],
+          "matrix": [
+            0.13260097801685333,
+            0,
+            0,
+            0,
+            0,
+            0.13290348649024963,
+            0,
+            0,
+            0,
+            0,
+            0.1316968947649002,
+            0,
+            -3.4476253986358643,
+            -3.322587013244629,
+            -2.6402316093444824,
+            1
+          ],
+          "resized": [
+            51,
+            49,
+            80
+          ],
+          "format": 12,
+          "bytes": 799680,
+          "rawFnv1a64": "e2ef6c9e0b0e6bb9"
+        }
+      },
+      {
+        "time": 3,
+        "volume": {
+          "primType": "volume",
+          "volumeFieldBinding": {
+            "density": "/VdbVolume/Density"
+          }
+        },
+        "field": {
+          "primType": "openvdbAsset",
+          "volumeFieldNames": [
+            "filePath",
+            "fieldName",
+            "fieldIndex",
+            "fieldDataType",
+            "vectorDataRoleHint",
+            "fieldDataType",
+            "fieldClass"
+          ],
+          "filePath": {
+            "assetPath": "smoke_000003.vdb",
+            "resolvedBase": "smoke_000003.vdb"
+          },
+          "fieldName": "density",
+          "fieldIndex": 0,
+          "fieldDataType": "",
+          "vectorDataRoleHint": "None"
+        },
+        "densityData": {
+          "file": "smoke_000003.vdb",
+          "grid": "density",
+          "read": true,
+          "rangeMin": [
+            1,
+            1,
+            3
+          ],
+          "rangeMax": [
+            51,
+            49,
+            98
+          ],
+          "matrix": [
+            0.13260097801685333,
+            0,
+            0,
+            0,
+            0,
+            0.13290348649024963,
+            0,
+            0,
+            0,
+            0,
+            0.1316968947649002,
+            0,
+            -3.4476253986358643,
+            -3.322587013244629,
+            -2.6402316093444824,
+            1
+          ],
+          "resized": [
+            51,
+            49,
+            96
+          ],
+          "format": 12,
+          "bytes": 959616,
+          "rawFnv1a64": "434c629aef68317f"
+        }
+      }
+    ],
+    "densityAndHeat": [
+      {
+        "file": "densityAndHeat.vdb",
+        "grid": "density",
+        "read": true,
+        "rangeMin": [
+          1,
+          1,
+          31
+        ],
+        "rangeMax": [
+          23,
+          23,
+          72
+        ],
+        "matrix": [
+          0.7033765912055969,
+          0,
+          0,
+          0,
+          0,
+          0.7033765912055969,
+          0,
+          0,
+          0,
+          0,
+          0.7164551019668579,
+          0,
+          -8.440519332885742,
+          -8.440519332885742,
+          -24.134912490844727,
+          1
+        ],
+        "resized": [
+          23,
+          23,
+          42
+        ],
+        "format": 12,
+        "bytes": 88872,
+        "rawFnv1a64": "a1d3bacdc4bc2496"
+      },
+      {
+        "file": "densityAndHeat.vdb",
+        "grid": "heat",
+        "read": true,
+        "rangeMin": [
+          2,
+          2,
+          31
+        ],
+        "rangeMax": [
+          23,
+          22,
+          62
+        ],
+        "matrix": [
+          0.7033765912055969,
+          0,
+          0,
+          0,
+          0,
+          0.7033765912055969,
+          0,
+          0,
+          0,
+          0,
+          0.7164551019668579,
+          0,
+          -8.440519332885742,
+          -8.440519332885742,
+          -24.134912490844727,
+          1
+        ],
+        "resized": [
+          22,
+          21,
+          32
+        ],
+        "format": 12,
+        "bytes": 59136,
+        "rawFnv1a64": "099c7c21c6f0d6e4"
+      },
+      {
+        "file": "densityAndHeat.vdb",
+        "grid": "noSuchGrid",
+        "read": false
+      }
+    ],
+    "targetMemory": [
+      {
+        "file": "smoke_000002.vdb",
+        "grid": "density",
+        "targetMemory": 5242,
+        "read": true,
+        "rangeMin": [
+          0,
+          0,
+          1
+        ],
+        "rangeMax": [
+          7,
+          7,
+          13
+        ],
+        "matrix": [
+          0.8840065201123556,
+          0,
+          0,
+          0,
+          0,
+          0.8860232432683309,
+          0,
+          0,
+          0,
+          0,
+          0.8779792984326681,
+          0,
+          -3.4476253986358643,
+          -3.322587013244629,
+          -2.6402316093444824,
+          1
+        ],
+        "resized": [
+          8,
+          8,
+          13
+        ],
+        "format": 12,
+        "bytes": 3328,
+        "rawFnv1a64": "e2b9198d3933342f"
+      },
+      {
+        "file": "smoke_000003.vdb",
+        "grid": "density",
+        "targetMemory": 5242,
+        "read": true,
+        "rangeMin": [
+          0,
+          0,
+          0
+        ],
+        "rangeMax": [
+          7,
+          7,
+          14
+        ],
+        "matrix": [
+          0.9092638492584229,
+          0,
+          0,
+          0,
+          0,
+          0.9113381930759974,
+          0,
+          0,
+          0,
+          0,
+          0.90306442124503,
+          0,
+          -3.4476253986358643,
+          -3.322587013244629,
+          -2.6402316093444824,
+          1
+        ],
+        "resized": [
+          8,
+          8,
+          15
+        ],
+        "format": 12,
+        "bytes": 3840,
+        "rawFnv1a64": "b6e2621513a259c3"
+      },
+      {
+        "file": "densityAndHeat.vdb",
+        "grid": "heat",
+        "targetMemory": 4096,
+        "read": true,
+        "rangeMin": [
+          0,
+          0,
+          10
+        ],
+        "rangeMax": [
+          8,
+          8,
+          22
+        ],
+        "matrix": [
+          2.0461864471435547,
+          0,
+          0,
+          0,
+          0,
+          2.0461864471435547,
+          0,
+          0,
+          0,
+          0,
+          2.084233023903587,
+          0,
+          -8.440519332885742,
+          -8.440519332885742,
+          -24.134912490844727,
+          1
+        ],
+        "resized": [
+          9,
+          9,
+          13
+        ],
+        "format": 12,
+        "bytes": 4212,
+        "rawFnv1a64": "6554b8f8d06d89a3"
+      }
+    ]
+  }
+}

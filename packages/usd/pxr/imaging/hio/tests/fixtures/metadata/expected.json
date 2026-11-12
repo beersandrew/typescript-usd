@@ -1,0 +1,147 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/imaging/hio/tests/fixtures/metadata/capture.py",
+  "upstream": [
+    "pxr/imaging/plugin/hioOpenEXR/OpenEXRImage.cpp:553-613,680-728",
+    "pxr/imaging/hio/stbImage.cpp:337-340"
+  ],
+  "payload": [
+    {
+      "file": "0-worldtoscreen.exr",
+      "queries": {
+        "worldtoscreen": {
+          "type": "GfMatrix4d",
+          "value": "( (0.5, 0, 0, 0), (0, 0.25, 0, 0), (0, 0, 1, 0), (-0.5, -0.5, 0, 1) )"
+        },
+        "worldToNDC": null,
+        "worldToScreen": null,
+        "NP": null,
+        "absent": null
+      }
+    },
+    {
+      "file": "1-worldToNDC.exr",
+      "queries": {
+        "worldtoscreen": {
+          "type": "GfMatrix4d",
+          "value": "( (0.5, 0, 0, 0), (0, 0.25, 0, 0), (0, 0, 1, 0), (-0.5, -0.5, 0, 1) )"
+        },
+        "worldToNDC": {
+          "type": "GfMatrix4d",
+          "value": "( (0.5, 0, 0, 0), (0, 0.25, 0, 0), (0, 0, 1, 0), (-0.5, -0.5, 0, 1) )"
+        },
+        "worldToScreen": {
+          "type": "GfMatrix4d",
+          "value": "( (0.5, 0, 0, 0), (0, 0.25, 0, 0), (0, 0, 1, 0), (-0.5, -0.5, 0, 1) )"
+        },
+        "NP": {
+          "type": "GfMatrix4d",
+          "value": "( (0.5, 0, 0, 0), (0, 0.25, 0, 0), (0, 0, 1, 0), (-0.5, -0.5, 0, 1) )"
+        },
+        "absent": null
+      }
+    },
+    {
+      "file": "2-worldToScreen.exr",
+      "queries": {
+        "worldtoscreen": null,
+        "worldToNDC": null,
+        "worldToScreen": {
+          "type": "GfMatrix4d",
+          "value": "( (0.5, 0, 0, 0), (0, 0.25, 0, 0), (0, 0, 1, 0), (-0.5, -0.5, 0, 1) )"
+        },
+        "NP": null,
+        "absent": null
+      }
+    },
+    {
+      "file": "3-NP.exr",
+      "queries": {
+        "worldtoscreen": null,
+        "worldToNDC": null,
+        "worldToScreen": null,
+        "NP": {
+          "type": "GfMatrix4d",
+          "value": "( (0.5, 0, 0, 0), (0, 0.25, 0, 0), (0, 0, 1, 0), (-0.5, -0.5, 0, 1) )"
+        },
+        "absent": null
+      }
+    },
+    {
+      "file": "4-m44f.exr",
+      "queries": {
+        "worldtoscreen": {
+          "type": "GfMatrix4f",
+          "value": "( (0.5, 0, 0, 0), (0, 0.25, 0, 0), (0, 0, 1, 0), (-0.5, -0.5, 0, 1) )"
+        },
+        "worldToNDC": null,
+        "worldToScreen": null,
+        "NP": null,
+        "absent": null
+      }
+    },
+    {
+      "file": "5-floatvector.exr",
+      "queries": {
+        "worldtoscreen": {
+          "type": "int",
+          "unstableNativeValue": true
+        },
+        "worldToNDC": null,
+        "worldToScreen": null,
+        "NP": null,
+        "absent": null
+      }
+    },
+    {
+      "file": "6-wrongType.exr",
+      "queries": {
+        "worldtoscreen": {
+          "type": "string",
+          "value": "no matrix"
+        },
+        "worldToNDC": null,
+        "worldToScreen": null,
+        "NP": null,
+        "absent": null
+      }
+    },
+    {
+      "file": "7-absent.exr",
+      "queries": {
+        "worldtoscreen": null,
+        "worldToNDC": null,
+        "worldToScreen": null,
+        "NP": null,
+        "absent": null
+      }
+    },
+    {
+      "file": "8-tiled.exr",
+      "queries": {
+        "worldtoscreen": {
+          "type": "GfMatrix4d",
+          "value": "( (0.5, 0, 0, 0), (0, 0.25, 0, 0), (0, 0, 1, 0), (-0.5, -0.5, 0, 1) )"
+        },
+        "worldToNDC": null,
+        "worldToScreen": null,
+        "NP": null,
+        "absent": null
+      }
+    },
+    {
+      "file": "9-multipart.exr",
+      "queries": {
+        "worldtoscreen": {
+          "type": "GfMatrix4d",
+          "value": "( (0.5, 0, 0, 0), (0, 0.25, 0, 0), (0, 0, 1, 0), (-0.5, -0.5, 0, 1) )"
+        },
+        "worldToNDC": null,
+        "worldToScreen": null,
+        "NP": null,
+        "absent": null
+      }
+    }
+  ]
+}

@@ -1,0 +1,79 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/usdImaging/usdImaging/tests/fixtures/geomSubsetMaterialBind/capture.py",
+  "upstream": [
+    "pxr/usd/usdShade/materialBindingAPI.cpp",
+    "pxr/usd/usdGeom/subset.cpp",
+    "pxr/usdImaging/usdImaging/sceneIndices.cpp",
+    "pxr/usdImaging/usdImaging/geomSubsetAdapter.cpp",
+    "pxr/imaging/hd/sceneIndexAdapterSceneDelegate.cpp",
+    "pxr/imaging/hd/unitTestNullRenderDelegate.cpp"
+  ],
+  "payload": {
+    "prims": {
+      "/Root/Tiles": {
+        "allPurpose": {
+          "material": null,
+          "bindingRel": null
+        },
+        "preview": {
+          "material": null,
+          "bindingRel": null
+        },
+        "materialBindSubsets": [
+          "/Root/Tiles/A",
+          "/Root/Tiles/B",
+          "/Root/Tiles/C"
+        ],
+        "materialBindSubsetsFamilyType": "partition",
+        "familyType": "partition"
+      },
+      "/Root/Tiles/A": {
+        "allPurpose": {
+          "material": "/Root/Looks/Red",
+          "bindingRel": "/Root/Tiles/A.material:binding"
+        },
+        "preview": {
+          "material": "/Root/Looks/Red",
+          "bindingRel": "/Root/Tiles/A.material:binding"
+        },
+        "familyName": "materialBind",
+        "elementType": "face",
+        "indices": [
+          0
+        ]
+      },
+      "/Root/Tiles/B": {
+        "allPurpose": {
+          "material": "/Root/Looks/Green",
+          "bindingRel": "/Root/Tiles/B.material:binding"
+        },
+        "preview": {
+          "material": "/Root/Looks/Green",
+          "bindingRel": "/Root/Tiles/B.material:binding"
+        },
+        "familyName": "materialBind",
+        "elementType": "face",
+        "indices": [
+          1
+        ]
+      },
+      "/Root/Tiles/C": {
+        "allPurpose": {
+          "material": "/Root/Looks/Blue",
+          "bindingRel": "/Root/Tiles/C.material:binding"
+        },
+        "preview": {
+          "material": "/Root/Looks/Blue",
+          "bindingRel": "/Root/Tiles/C.material:binding"
+        },
+        "familyName": "materialBind",
+        "elementType": "face",
+        "indices": [
+          2
+        ]
+      }
+    }
+  }
+}

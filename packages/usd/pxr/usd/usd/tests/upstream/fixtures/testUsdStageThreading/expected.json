@@ -1,0 +1,30 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/usd/usd/tests/upstream/fixtures/testUsdStageThreading/capture.py",
+  "upstream": [
+    "pxr/usd/usd/testenv/testUsdStageThreading.cpp"
+  ],
+  "payload": {
+    "a/test.usda": {
+      "didLoad": true,
+      "digest": "/: \n/Group: Scope\n\tproperty: proxyPrim\n\tproperty: purpose\n\tproperty: visibility\n/Group/PayloadChild: Scope\n\tproperty: proxyPrim\n\tproperty: purpose\n\tproperty: visibility\n/Group/UndefinedModelChild: Scope\n\tproperty: proxyPrim\n\tproperty: purpose\n\tproperty: visibility\n/Group/ModelChild: Model\n/Group/LocalChild: Scope\n\tproperty: proxyPrim\n\tproperty: purpose\n\tproperty: visibility\n/PropertyOrder: \n\tproperty: A0\n\tproperty: a1\n\tproperty: a2\n\tproperty: A3\n\tproperty: a4\n\tproperty: a5\n\tproperty: a10\n\tproperty: A20\n"
+    },
+    "b/test.usda": {
+      "didLoad": true,
+      "digest": "/: \n/World: Scope\n\tproperty: proxyPrim\n\tproperty: purpose\n\tproperty: visibility\n/World/sets: Scope\n\tproperty: proxyPrim\n\tproperty: purpose\n\tproperty: visibility\n/World/sets/Set_1: Scope\n\tproperty: proxyPrim\n\tproperty: purpose\n\tproperty: visibility\n/World/sets/Set_2: Scope\n\tproperty: proxyPrim\n\tproperty: purpose\n\tproperty: visibility\n"
+    },
+    "c/test.usda": {
+      "didLoad": true,
+      "digest": "/: \n/a1: \n/a1/a2: \n/c1: \n/c1/c2: \n/c1/c2/c3: \n"
+    },
+    "d/test.usda": {
+      "didLoad": true,
+      "digest": "/: \n/AirConditioner: \n/Scope: Scope\n\tproperty: proxyPrim\n\tproperty: purpose\n\tproperty: visibility\n"
+    },
+    "e/test.usda": {
+      "didLoad": true,
+      "digest": "/: \n/AirConditioner: \n/Scope: Scope\n\tproperty: proxyPrim\n\tproperty: purpose\n\tproperty: visibility\n"
+    }
+  }
+}

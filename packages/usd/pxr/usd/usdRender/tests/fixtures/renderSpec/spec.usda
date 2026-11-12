@@ -1,0 +1,138 @@
+#usda 1.0
+(
+    doc = "Port-authored fixture for UsdRenderComputeSpec (no upstream testenv)."
+    renderSettingsPrimPath = "/Render/Settings"
+)
+
+def Camera "Cam"
+{
+    float horizontalAperture = 36
+    float verticalAperture = 24
+}
+
+def Camera "Cam2"
+{
+    float horizontalAperture = 20
+    float verticalAperture = 20
+}
+
+def Scope "Shaders"
+{
+    def Shader "Filter"
+    {
+        token outputs:out
+    }
+}
+
+def Scope "Render"
+{
+    def RenderSettings "Settings"
+    {
+        rel camera = </Cam>
+        int2 resolution = (1920, 1080)
+        float pixelAspectRatio = 1
+        token aspectRatioConformPolicy = "expandAperture"
+        float4 dataWindowNDC = (0, 0.1, 1, 0.9)
+        uniform token[] includedPurposes = ["default", "render"]
+        uniform token[] materialBindingPurposes = ["full", ""]
+        rel products = [</Render/Expand>, </Render/Crop>, </Render/AdjW>,
+                        </Render/AdjH>, </Render/AdjPAR>, </Render/NoCam>,
+                        </Render/Missing>, </Render/Shutter>]
+        int ri:hider:maxsamples = 64
+        string ri:bucket:order = "spiral"
+        float karma:samples = 8
+        token outputs:ri:displayFilters.connect = </Shaders/Filter.outputs:out>
+        token outputs:ri:sampleFilters
+        rel ri:lights = [</Cam>, </Cam2>]
+        int unnamespaced = 3
+    }
+
+    def RenderProduct "Expand"
+    {
+        token productName = "expand.exr"
+        rel orderedVars = [</Render/Vars/color>, </Render/Vars/alpha>]
+        string ri:display:driver = "openexr"
+    }
+
+    def RenderProduct "Crop"
+    {
+        token productName = "crop.exr"
+        token aspectRatioConformPolicy = "cropAperture"
+        rel camera = </Cam2>
+        int2 resolution = (640, 480)
+        rel orderedVars = [</Render/Vars/alpha>, </Render/Vars/depth>, </Render/Vars/bogus>]
+    }
+
+    def RenderProduct "AdjW"
+    {
+        token productType = "deepRaster"
+        token productName = "adjw.exr"
+        token aspectRatioConformPolicy = "adjustApertureWidth"
+        float pixelAspectRatio = 2
+        uniform bool disableDepthOfField = true
+    }
+
+    def RenderProduct "AdjH"
+    {
+        token productName = "adjh.exr"
+        token aspectRatioConformPolicy = "adjustApertureHeight"
+        int2 resolution = (512, 1024)
+        float4 dataWindowNDC = (-0.1, -0.1, 1.1, 1.1)
+    }
+
+    def RenderProduct "AdjPAR"
+    {
+        token productName = "adjpar.exr"
+        token aspectRatioConformPolicy = "adjustPixelAspectRatio"
+        uniform bool disableMotionBlur = true
+    }
+
+    def RenderProduct "NoCam"
+    {
+        token productName = "nocam.exr"
+        rel camera = </NoSuchCamera>
+    }
+
+    def Scope "Missing"
+    {
+    }
+
+    def RenderProduct "Shutter"
+    {
+        token productName = "shutter.exr"
+        uniform bool instantaneousShutter = true
+    }
+
+    def Scope "Vars"
+    {
+        def RenderVar "color"
+        {
+            string sourceName = "Ci"
+            string ri:filter = "gaussian"
+            float[] ri:filterwidth = [2, 2]
+        }
+
+        def RenderVar "alpha"
+        {
+            token dataType = "float"
+            string sourceName = "a"
+        }
+
+        def RenderVar "depth"
+        {
+            token dataType = "float"
+            string sourceName = "z"
+            token sourceType = "lpe"
+            int karma:quality = 2
+        }
+
+        def Scope "bogus"
+        {
+        }
+    }
+
+    def RenderPass "Pass"
+    {
+        rel renderSource = </Render/Settings>
+    }
+}

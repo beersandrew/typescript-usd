@@ -1,0 +1,75 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/usd/usdSkel/tests/fixtures/rootExtentNoBindings/capture.py",
+  "upstream": [
+    "pxr/usd/usdSkel/root.cpp",
+    "pxr/usdImaging/usdImagingGL/testenv/testUsdImagingGLSkeleton/skeleton.usda"
+  ],
+  "payload": {
+    "stage": "pxr/usdImaging/usdImagingGL/testenv/testUsdImagingGLSkeleton/skeleton.usda",
+    "prim": "/SkelChar",
+    "extents": [
+      {
+        "time": null,
+        "extent": [
+          [
+            -97.8438491821289,
+            -14.79217529296875,
+            3.683138132095337
+          ],
+          [
+            97.8438491821289,
+            8.80325698852539,
+            173.41873168945312
+          ]
+        ]
+      },
+      {
+        "time": 1,
+        "extent": [
+          [
+            -25.499467849731445,
+            -19.966249465942383,
+            4.867249011993408
+          ],
+          [
+            27.54881477355957,
+            18.719579696655273,
+            169.4654541015625
+          ]
+        ]
+      },
+      {
+        "time": 2,
+        "extent": [
+          [
+            -25.441986083984375,
+            -19.875045776367188,
+            5.359180450439453
+          ],
+          [
+            27.474184036254883,
+            18.397842407226562,
+            169.4228515625
+          ]
+        ]
+      },
+      {
+        "time": 3,
+        "extent": [
+          [
+            -25.499467849731445,
+            -19.966249465942383,
+            4.867249011993408
+          ],
+          [
+            27.54881477355957,
+            18.719579696655273,
+            169.4654541015625
+          ]
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,624 @@
+{
+  "nativeVersion": [
+    0,
+    26,
+    11
+  ],
+  "defaults": {
+    "showInactivePrims": true,
+    "showAllPrototypePrims": false,
+    "showUndefinedPrims": false,
+    "showAbstractPrims": false,
+    "showPrimDisplayNames": true
+  },
+  "cases": [
+    {
+      "settings": {
+        "showInactivePrims": true,
+        "showAllPrototypePrims": false,
+        "showUndefinedPrims": false,
+        "showAbstractPrims": false,
+        "showPrimDisplayNames": true
+      },
+      "rows": [
+        {
+          "path": "/",
+          "label": "root"
+        },
+        {
+          "path": "/World",
+          "label": "World"
+        },
+        {
+          "path": "/World/Active",
+          "label": "Friendly prim"
+        },
+        {
+          "path": "/World/Inactive",
+          "label": "Inactive"
+        },
+        {
+          "path": "/World/Source",
+          "label": "Source"
+        },
+        {
+          "path": "/World/Source/Geom",
+          "label": "Geom"
+        },
+        {
+          "path": "/World/Instance",
+          "label": "Instance"
+        },
+        {
+          "path": "/World/Instance/Geom",
+          "label": "Geom"
+        }
+      ]
+    },
+    {
+      "settings": {
+        "showInactivePrims": false,
+        "showAllPrototypePrims": false,
+        "showUndefinedPrims": false,
+        "showAbstractPrims": false,
+        "showPrimDisplayNames": true
+      },
+      "rows": [
+        {
+          "path": "/",
+          "label": "root"
+        },
+        {
+          "path": "/World",
+          "label": "World"
+        },
+        {
+          "path": "/World/Active",
+          "label": "Friendly prim"
+        },
+        {
+          "path": "/World/Source",
+          "label": "Source"
+        },
+        {
+          "path": "/World/Source/Geom",
+          "label": "Geom"
+        },
+        {
+          "path": "/World/Instance",
+          "label": "Instance"
+        },
+        {
+          "path": "/World/Instance/Geom",
+          "label": "Geom"
+        }
+      ]
+    },
+    {
+      "settings": {
+        "showInactivePrims": true,
+        "showAllPrototypePrims": false,
+        "showUndefinedPrims": true,
+        "showAbstractPrims": false,
+        "showPrimDisplayNames": true
+      },
+      "rows": [
+        {
+          "path": "/",
+          "label": "root"
+        },
+        {
+          "path": "/World",
+          "label": "World"
+        },
+        {
+          "path": "/World/Active",
+          "label": "Friendly prim"
+        },
+        {
+          "path": "/World/Inactive",
+          "label": "Inactive"
+        },
+        {
+          "path": "/World/Source",
+          "label": "Source"
+        },
+        {
+          "path": "/World/Source/Geom",
+          "label": "Geom"
+        },
+        {
+          "path": "/World/Undefined",
+          "label": "Undefined"
+        },
+        {
+          "path": "/World/Undefined/Child",
+          "label": "Child"
+        },
+        {
+          "path": "/World/Instance",
+          "label": "Instance"
+        },
+        {
+          "path": "/World/Instance/Geom",
+          "label": "Geom"
+        }
+      ]
+    },
+    {
+      "settings": {
+        "showInactivePrims": true,
+        "showAllPrototypePrims": false,
+        "showUndefinedPrims": false,
+        "showAbstractPrims": true,
+        "showPrimDisplayNames": true
+      },
+      "rows": [
+        {
+          "path": "/",
+          "label": "root"
+        },
+        {
+          "path": "/World",
+          "label": "World"
+        },
+        {
+          "path": "/World/Active",
+          "label": "Friendly prim"
+        },
+        {
+          "path": "/World/Inactive",
+          "label": "Inactive"
+        },
+        {
+          "path": "/World/Source",
+          "label": "Source"
+        },
+        {
+          "path": "/World/Source/Geom",
+          "label": "Geom"
+        },
+        {
+          "path": "/World/Abstract",
+          "label": "Abstract"
+        },
+        {
+          "path": "/World/Abstract/Child",
+          "label": "Child"
+        },
+        {
+          "path": "/World/Instance",
+          "label": "Instance"
+        },
+        {
+          "path": "/World/Instance/Geom",
+          "label": "Geom"
+        }
+      ]
+    },
+    {
+      "settings": {
+        "showInactivePrims": true,
+        "showAllPrototypePrims": true,
+        "showUndefinedPrims": false,
+        "showAbstractPrims": false,
+        "showPrimDisplayNames": true
+      },
+      "rows": [
+        {
+          "path": "/",
+          "label": "root"
+        },
+        {
+          "path": "/World",
+          "label": "World"
+        },
+        {
+          "path": "/World/Active",
+          "label": "Friendly prim"
+        },
+        {
+          "path": "/World/Inactive",
+          "label": "Inactive"
+        },
+        {
+          "path": "/World/Source",
+          "label": "Source"
+        },
+        {
+          "path": "/World/Source/Geom",
+          "label": "Geom"
+        },
+        {
+          "path": "/World/Instance",
+          "label": "Instance"
+        },
+        {
+          "path": "/World/Instance/Geom",
+          "label": "Geom"
+        },
+        {
+          "path": "/__Prototype_1",
+          "label": "__Prototype_1"
+        },
+        {
+          "path": "/__Prototype_1/Geom",
+          "label": "Geom"
+        }
+      ]
+    },
+    {
+      "settings": {
+        "showInactivePrims": true,
+        "showAllPrototypePrims": true,
+        "showUndefinedPrims": true,
+        "showAbstractPrims": true,
+        "showPrimDisplayNames": true
+      },
+      "rows": [
+        {
+          "path": "/",
+          "label": "root"
+        },
+        {
+          "path": "/World",
+          "label": "World"
+        },
+        {
+          "path": "/World/Active",
+          "label": "Friendly prim"
+        },
+        {
+          "path": "/World/Inactive",
+          "label": "Inactive"
+        },
+        {
+          "path": "/World/Source",
+          "label": "Source"
+        },
+        {
+          "path": "/World/Source/Geom",
+          "label": "Geom"
+        },
+        {
+          "path": "/World/Undefined",
+          "label": "Undefined"
+        },
+        {
+          "path": "/World/Undefined/Child",
+          "label": "Child"
+        },
+        {
+          "path": "/World/Abstract",
+          "label": "Abstract"
+        },
+        {
+          "path": "/World/Abstract/Child",
+          "label": "Child"
+        },
+        {
+          "path": "/World/Instance",
+          "label": "Instance"
+        },
+        {
+          "path": "/World/Instance/Geom",
+          "label": "Geom"
+        },
+        {
+          "path": "/__Prototype_1",
+          "label": "__Prototype_1"
+        },
+        {
+          "path": "/__Prototype_1/Geom",
+          "label": "Geom"
+        }
+      ]
+    },
+    {
+      "settings": {
+        "showInactivePrims": true,
+        "showAllPrototypePrims": false,
+        "showUndefinedPrims": false,
+        "showAbstractPrims": false,
+        "showPrimDisplayNames": false
+      },
+      "rows": [
+        {
+          "path": "/",
+          "label": "root"
+        },
+        {
+          "path": "/World",
+          "label": "World"
+        },
+        {
+          "path": "/World/Active",
+          "label": "Active"
+        },
+        {
+          "path": "/World/Inactive",
+          "label": "Inactive"
+        },
+        {
+          "path": "/World/Source",
+          "label": "Source"
+        },
+        {
+          "path": "/World/Source/Geom",
+          "label": "Geom"
+        },
+        {
+          "path": "/World/Instance",
+          "label": "Instance"
+        },
+        {
+          "path": "/World/Instance/Geom",
+          "label": "Geom"
+        }
+      ]
+    }
+  ],
+  "removals": [
+    {
+      "key": "showInactivePrims",
+      "checked": false,
+      "initial": [
+        "/World/Inactive",
+        "/World/Active"
+      ],
+      "selected": [
+        "/World/Active"
+      ]
+    },
+    {
+      "key": "showInactivePrims",
+      "checked": true,
+      "initial": [
+        "/World/Inactive",
+        "/World/Active"
+      ],
+      "selected": [
+        "/World/Active"
+      ]
+    },
+    {
+      "key": "showUndefinedPrims",
+      "checked": false,
+      "initial": [
+        "/World/Undefined",
+        "/World/Active"
+      ],
+      "selected": [
+        "/World/Active"
+      ]
+    },
+    {
+      "key": "showUndefinedPrims",
+      "checked": true,
+      "initial": [
+        "/World/Undefined",
+        "/World/Active"
+      ],
+      "selected": [
+        "/World/Active"
+      ]
+    },
+    {
+      "key": "showAbstractPrims",
+      "checked": false,
+      "initial": [
+        "/World/Abstract",
+        "/World/Active"
+      ],
+      "selected": [
+        "/World/Active"
+      ]
+    },
+    {
+      "key": "showAbstractPrims",
+      "checked": true,
+      "initial": [
+        "/World/Abstract",
+        "/World/Active"
+      ],
+      "selected": [
+        "/World/Active"
+      ]
+    },
+    {
+      "key": "showAllPrototypePrims",
+      "checked": false,
+      "initial": [
+        "/__Prototype_1",
+        "/World/Active"
+      ],
+      "selected": [
+        "/World/Active"
+      ]
+    },
+    {
+      "key": "showAllPrototypePrims",
+      "checked": true,
+      "initial": [
+        "/__Prototype_1",
+        "/World/Active"
+      ],
+      "selected": [
+        "/World/Active"
+      ]
+    }
+  ],
+  "depths": [
+    {
+      "depth": 1,
+      "expanded": [
+        "/"
+      ],
+      "visible": [
+        "/",
+        "/L1"
+      ]
+    },
+    {
+      "depth": 2,
+      "expanded": [
+        "/",
+        "/L1"
+      ],
+      "visible": [
+        "/",
+        "/L1",
+        "/L1/L2"
+      ]
+    },
+    {
+      "depth": 3,
+      "expanded": [
+        "/",
+        "/L1",
+        "/L1/L2"
+      ],
+      "visible": [
+        "/",
+        "/L1",
+        "/L1/L2",
+        "/L1/L2/L3"
+      ]
+    },
+    {
+      "depth": 4,
+      "expanded": [
+        "/",
+        "/L1",
+        "/L1/L2",
+        "/L1/L2/L3"
+      ],
+      "visible": [
+        "/",
+        "/L1",
+        "/L1/L2",
+        "/L1/L2/L3",
+        "/L1/L2/L3/L4"
+      ]
+    },
+    {
+      "depth": 5,
+      "expanded": [
+        "/",
+        "/L1",
+        "/L1/L2",
+        "/L1/L2/L3",
+        "/L1/L2/L3/L4"
+      ],
+      "visible": [
+        "/",
+        "/L1",
+        "/L1/L2",
+        "/L1/L2/L3",
+        "/L1/L2/L3/L4",
+        "/L1/L2/L3/L4/L5"
+      ]
+    },
+    {
+      "depth": 6,
+      "expanded": [
+        "/",
+        "/L1",
+        "/L1/L2",
+        "/L1/L2/L3",
+        "/L1/L2/L3/L4",
+        "/L1/L2/L3/L4/L5"
+      ],
+      "visible": [
+        "/",
+        "/L1",
+        "/L1/L2",
+        "/L1/L2/L3",
+        "/L1/L2/L3/L4",
+        "/L1/L2/L3/L4/L5",
+        "/L1/L2/L3/L4/L5/L6"
+      ]
+    },
+    {
+      "depth": 7,
+      "expanded": [
+        "/",
+        "/L1",
+        "/L1/L2",
+        "/L1/L2/L3",
+        "/L1/L2/L3/L4",
+        "/L1/L2/L3/L4/L5",
+        "/L1/L2/L3/L4/L5/L6"
+      ],
+      "visible": [
+        "/",
+        "/L1",
+        "/L1/L2",
+        "/L1/L2/L3",
+        "/L1/L2/L3/L4",
+        "/L1/L2/L3/L4/L5",
+        "/L1/L2/L3/L4/L5/L6",
+        "/L1/L2/L3/L4/L5/L6/L7"
+      ]
+    },
+    {
+      "depth": 8,
+      "expanded": [
+        "/",
+        "/L1",
+        "/L1/L2",
+        "/L1/L2/L3",
+        "/L1/L2/L3/L4",
+        "/L1/L2/L3/L4/L5",
+        "/L1/L2/L3/L4/L5/L6",
+        "/L1/L2/L3/L4/L5/L6/L7"
+      ],
+      "visible": [
+        "/",
+        "/L1",
+        "/L1/L2",
+        "/L1/L2/L3",
+        "/L1/L2/L3/L4",
+        "/L1/L2/L3/L4/L5",
+        "/L1/L2/L3/L4/L5/L6",
+        "/L1/L2/L3/L4/L5/L6/L7",
+        "/L1/L2/L3/L4/L5/L6/L7/L8"
+      ]
+    },
+    {
+      "depth": 1000000,
+      "expanded": [
+        "/",
+        "/L1",
+        "/L1/L2",
+        "/L1/L2/L3",
+        "/L1/L2/L3/L4",
+        "/L1/L2/L3/L4/L5",
+        "/L1/L2/L3/L4/L5/L6",
+        "/L1/L2/L3/L4/L5/L6/L7",
+        "/L1/L2/L3/L4/L5/L6/L7/L8",
+        "/L1/L2/L3/L4/L5/L6/L7/L8/L9"
+      ],
+      "visible": [
+        "/",
+        "/L1",
+        "/L1/L2",
+        "/L1/L2/L3",
+        "/L1/L2/L3/L4",
+        "/L1/L2/L3/L4/L5",
+        "/L1/L2/L3/L4/L5/L6",
+        "/L1/L2/L3/L4/L5/L6/L7",
+        "/L1/L2/L3/L4/L5/L6/L7/L8",
+        "/L1/L2/L3/L4/L5/L6/L7/L8/L9",
+        "/L1/L2/L3/L4/L5/L6/L7/L8/L9/L10"
+      ]
+    },
+    {
+      "depth": 0,
+      "expanded": [],
+      "visible": [
+        "/"
+      ]
+    }
+  ]
+}

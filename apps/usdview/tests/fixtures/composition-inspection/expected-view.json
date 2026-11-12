@@ -1,0 +1,362 @@
+{
+  "nativeVersion": "26.11.1",
+  "source": [
+    "usdviewq/appController.py:4427-4504",
+    "usdviewq/mainWindowUI.ui:1105-1147"
+  ],
+  "headers": [
+    "Layer",
+    "Arc Type",
+    "Arc Path",
+    "Has Spec"
+  ],
+  "indentation": 15,
+  "alternatingRowColors": true,
+  "rows": {
+    "/World/Model": [
+      {
+        "text": [
+          "root.usda",
+          "root",
+          "/World/Model",
+          "yes"
+        ],
+        "depth": 0,
+        "expanded": true,
+        "dimmed": false,
+        "layer": "root.usda",
+        "path": "/World/Model"
+      },
+      {
+        "text": [
+          "weak.usda",
+          "sublayer",
+          "/World/Model",
+          "yes"
+        ],
+        "depth": 1,
+        "expanded": true,
+        "dimmed": false,
+        "layer": "weak.usda",
+        "path": "/World/Model"
+      },
+      {
+        "text": [
+          "nested.usda",
+          "sublayer",
+          "/World/Model",
+          "yes"
+        ],
+        "depth": 2,
+        "expanded": true,
+        "dimmed": false,
+        "layer": "nested.usda",
+        "path": "/World/Model"
+      },
+      {
+        "text": [
+          "asset.usda",
+          "reference",
+          "/Asset",
+          "yes"
+        ],
+        "depth": 1,
+        "expanded": true,
+        "dimmed": false,
+        "layer": "asset.usda",
+        "path": "/Asset"
+      },
+      {
+        "text": [
+          "asset.usda",
+          "variant",
+          "/Asset{look=blue}",
+          "yes"
+        ],
+        "depth": 2,
+        "expanded": true,
+        "dimmed": false,
+        "layer": "asset.usda",
+        "path": "/Asset{look=blue}"
+      }
+    ],
+    "/World/Model/Shape": [
+      {
+        "text": [
+          "root.usda",
+          "root",
+          "/World/Model/Shape",
+          "no"
+        ],
+        "depth": 0,
+        "expanded": true,
+        "dimmed": true,
+        "layer": "root.usda",
+        "path": null
+      },
+      {
+        "text": [
+          "weak.usda",
+          "sublayer",
+          "/World/Model/Shape",
+          "no"
+        ],
+        "depth": 1,
+        "expanded": true,
+        "dimmed": true,
+        "layer": "weak.usda",
+        "path": null
+      },
+      {
+        "text": [
+          "nested.usda",
+          "sublayer",
+          "/World/Model/Shape",
+          "no"
+        ],
+        "depth": 2,
+        "expanded": true,
+        "dimmed": true,
+        "layer": "nested.usda",
+        "path": null
+      },
+      {
+        "text": [
+          "asset.usda",
+          "reference",
+          "/Asset",
+          "yes"
+        ],
+        "depth": 1,
+        "expanded": true,
+        "dimmed": false,
+        "layer": "asset.usda",
+        "path": "/Asset/Shape"
+      }
+    ],
+    "/World/Instance": [
+      {
+        "text": [
+          "root.usda",
+          "root",
+          "/World/Instance",
+          "yes"
+        ],
+        "depth": 0,
+        "expanded": true,
+        "dimmed": false,
+        "layer": "root.usda",
+        "path": "/World/Instance"
+      },
+      {
+        "text": [
+          "weak.usda",
+          "sublayer",
+          "/World/Instance",
+          "no"
+        ],
+        "depth": 1,
+        "expanded": true,
+        "dimmed": true,
+        "layer": "weak.usda",
+        "path": null
+      },
+      {
+        "text": [
+          "nested.usda",
+          "sublayer",
+          "/World/Instance",
+          "no"
+        ],
+        "depth": 2,
+        "expanded": true,
+        "dimmed": true,
+        "layer": "nested.usda",
+        "path": null
+      },
+      {
+        "text": [
+          "asset.usda",
+          "reference",
+          "/Asset",
+          "yes"
+        ],
+        "depth": 1,
+        "expanded": true,
+        "dimmed": false,
+        "layer": "asset.usda",
+        "path": "/Asset"
+      },
+      {
+        "text": [
+          "asset.usda",
+          "variant",
+          "/Asset{look=red}",
+          "yes"
+        ],
+        "depth": 2,
+        "expanded": true,
+        "dimmed": false,
+        "layer": "asset.usda",
+        "path": "/Asset{look=red}"
+      }
+    ],
+    "/World/Instance/Shape": [
+      {
+        "text": [
+          "root.usda",
+          "root",
+          "/World/Instance/Shape",
+          "no"
+        ],
+        "depth": 0,
+        "expanded": true,
+        "dimmed": true,
+        "layer": "root.usda",
+        "path": null
+      },
+      {
+        "text": [
+          "weak.usda",
+          "sublayer",
+          "/World/Instance/Shape",
+          "no"
+        ],
+        "depth": 1,
+        "expanded": true,
+        "dimmed": true,
+        "layer": "weak.usda",
+        "path": null
+      },
+      {
+        "text": [
+          "nested.usda",
+          "sublayer",
+          "/World/Instance/Shape",
+          "no"
+        ],
+        "depth": 2,
+        "expanded": true,
+        "dimmed": true,
+        "layer": "nested.usda",
+        "path": null
+      },
+      {
+        "text": [
+          "asset.usda",
+          "reference",
+          "/Asset",
+          "yes"
+        ],
+        "depth": 1,
+        "expanded": true,
+        "dimmed": false,
+        "layer": "asset.usda",
+        "path": "/Asset/Shape"
+      }
+    ],
+    "/": [
+      {
+        "text": [
+          "root.usda",
+          "root",
+          "/",
+          "yes"
+        ],
+        "depth": 0,
+        "expanded": true,
+        "dimmed": false,
+        "layer": "root.usda",
+        "path": "/"
+      },
+      {
+        "text": [
+          "weak.usda",
+          "sublayer",
+          "/",
+          "yes"
+        ],
+        "depth": 1,
+        "expanded": true,
+        "dimmed": false,
+        "layer": "weak.usda",
+        "path": "/"
+      },
+      {
+        "text": [
+          "nested.usda",
+          "sublayer",
+          "/",
+          "yes"
+        ],
+        "depth": 2,
+        "expanded": true,
+        "dimmed": false,
+        "layer": "nested.usda",
+        "path": "/"
+      }
+    ]
+  },
+  "keys": [
+    {
+      "key": "Right",
+      "text": [
+        "weak.usda",
+        "sublayer",
+        "/World/Model",
+        "yes"
+      ],
+      "expanded": true,
+      "currentLayer": "weak.usda",
+      "currentSpec": "/World/Model"
+    },
+    {
+      "key": "Left",
+      "text": [
+        "weak.usda",
+        "sublayer",
+        "/World/Model",
+        "yes"
+      ],
+      "expanded": false,
+      "currentLayer": "weak.usda",
+      "currentSpec": "/World/Model"
+    },
+    {
+      "key": "Right",
+      "text": [
+        "weak.usda",
+        "sublayer",
+        "/World/Model",
+        "yes"
+      ],
+      "expanded": true,
+      "currentLayer": "weak.usda",
+      "currentSpec": "/World/Model"
+    },
+    {
+      "key": "Down",
+      "text": [
+        "nested.usda",
+        "sublayer",
+        "/World/Model",
+        "yes"
+      ],
+      "expanded": true,
+      "currentLayer": "nested.usda",
+      "currentSpec": "/World/Model"
+    },
+    {
+      "key": "Right",
+      "text": [
+        "nested.usda",
+        "sublayer",
+        "/World/Model",
+        "yes"
+      ],
+      "expanded": true,
+      "currentLayer": "nested.usda",
+      "currentSpec": "/World/Model"
+    }
+  ]
+}

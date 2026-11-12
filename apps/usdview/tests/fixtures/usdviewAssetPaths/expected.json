@@ -1,0 +1,93 @@
+{
+  "nativeVersion": [
+    0,
+    26,
+    11
+  ],
+  "cases": [
+    {
+      "name": "found",
+      "time": 1,
+      "typeName": "asset",
+      "short": "@./existing.txt@",
+      "copy": "@./existing.txt@",
+      "authored": "./existing.txt",
+      "evaluated": "",
+      "resolved": "$FIXTURE/existing.txt",
+      "value": "Sdf.AssetPath(authoredPath='./existing.txt', resolvedPath='$FIXTURE/existing.txt')"
+    },
+    {
+      "name": "missing",
+      "time": 1,
+      "typeName": "asset",
+      "short": "@./missing.txt@",
+      "copy": "@./missing.txt@",
+      "authored": "./missing.txt",
+      "evaluated": "",
+      "resolved": "",
+      "value": "Sdf.AssetPath(authoredPath='./missing.txt')"
+    },
+    {
+      "name": "empty",
+      "time": 1,
+      "typeName": "asset",
+      "short": "@@",
+      "copy": "@@",
+      "authored": "",
+      "evaluated": "",
+      "resolved": "",
+      "value": "Sdf.AssetPath(authoredPath='')"
+    },
+    {
+      "name": "paths",
+      "time": 1,
+      "typeName": "asset[]",
+      "short": "asset[3]: [@./existing.txt@, @./missing.txt@, @@]",
+      "copy": "[@./existing.txt@, @./missing.txt@, @@]",
+      "elements": [
+        {
+          "authored": "./existing.txt",
+          "evaluated": "",
+          "resolved": "$FIXTURE/existing.txt"
+        },
+        {
+          "authored": "./missing.txt",
+          "evaluated": "",
+          "resolved": ""
+        },
+        {
+          "authored": "",
+          "evaluated": "",
+          "resolved": ""
+        }
+      ],
+      "entries": [
+        "Sdf.AssetPath(authoredPath='./existing.txt', resolvedPath='$FIXTURE/existing.txt')",
+        "Sdf.AssetPath(authoredPath='./missing.txt')",
+        "Sdf.AssetPath(authoredPath='')"
+      ]
+    },
+    {
+      "name": "sampled",
+      "time": 1,
+      "typeName": "asset",
+      "short": "@./existing.txt@",
+      "copy": "@./existing.txt@",
+      "authored": "./existing.txt",
+      "evaluated": "",
+      "resolved": "$FIXTURE/existing.txt",
+      "value": "Sdf.AssetPath(authoredPath='./existing.txt', resolvedPath='$FIXTURE/existing.txt')"
+    },
+    {
+      "name": "sampled",
+      "time": 2,
+      "typeName": "asset",
+      "short": "@./missing.txt@",
+      "copy": "@./missing.txt@",
+      "authored": "./missing.txt",
+      "evaluated": "",
+      "resolved": "",
+      "value": "Sdf.AssetPath(authoredPath='./missing.txt')"
+    }
+  ]
+}

@@ -1,0 +1,175 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/usdImaging/usdImagingGL/tests/fixtures/native/nonmeshReprs/capture.py",
+  "upstream": [
+    "pxr/usdImaging/usdviewq/stageView.py:585-597",
+    "pxr/usdImaging/usdviewq/stageView.py:1146-1193",
+    "pxr/usdImaging/usdviewq/stageView.py:1388-1525",
+    "pxr/usdImaging/usdviewq/common.py:136-154",
+    "pxr/usdImaging/usdviewq/viewSettingsDataModel.py:24-40",
+    "pxr/usdImaging/usdImagingGL/engine.cpp:2589-2690",
+    "pxr/imaging/hd/renderIndex.cpp:1076-1116",
+    "pxr/imaging/hdSt/points.cpp:433-465",
+    "pxr/imaging/hdSt/renderBuffer.cpp:39-61,117-174",
+    "pxr/imaging/hdSt/basisCurves.cpp:286-390,431-480,730-750",
+    "pxr/imaging/hdSt/meshShaderKey.cpp",
+    "pxr/imaging/hdSt/shaders/meshWire.glslfx",
+    "pxr/imaging/hdSt/shaders/terminals.glslfx:57-126",
+    "pxr/imaging/hdx/shaders/selection.glslfx:441-474"
+  ],
+  "payload": {
+    "reprs": [
+      {
+        "repr": "hull",
+        "pointsStyle": 1,
+        "curvesStyle": 2,
+        "terminal": "surfaceShader"
+      },
+      {
+        "repr": "smoothHull",
+        "pointsStyle": 1,
+        "curvesStyle": 2,
+        "terminal": "surfaceShader"
+      },
+      {
+        "repr": "wire",
+        "pointsStyle": 1,
+        "curvesStyle": 1,
+        "terminal": "surfaceShader"
+      },
+      {
+        "repr": "wireOnSurf",
+        "pointsStyle": 1,
+        "curvesStyle": 2,
+        "terminal": "surfaceShader"
+      },
+      {
+        "repr": "solidWireOnSurf",
+        "pointsStyle": 1,
+        "curvesStyle": 2,
+        "terminal": "surfaceShader"
+      },
+      {
+        "repr": "refined",
+        "pointsStyle": 1,
+        "curvesStyle": 2,
+        "terminal": "surfaceShader"
+      },
+      {
+        "repr": "refinedWire",
+        "pointsStyle": 1,
+        "curvesStyle": 1,
+        "terminal": "surfaceShader"
+      },
+      {
+        "repr": "refinedWireOnSurf",
+        "pointsStyle": 1,
+        "curvesStyle": 2,
+        "terminal": "surfaceShader"
+      },
+      {
+        "repr": "refinedSolidWireOnSurf",
+        "pointsStyle": 1,
+        "curvesStyle": 2,
+        "terminal": "surfaceShader"
+      },
+      {
+        "repr": "points",
+        "pointsStyle": 1,
+        "curvesStyle": 3,
+        "terminal": "surfaceShader"
+      }
+    ],
+    "curves": {
+      "Linear": {
+        "points": [
+          [
+            -0.5,
+            -0.7,
+            0
+          ],
+          [
+            0.5,
+            0.7,
+            0
+          ],
+          [
+            1.5,
+            -0.7,
+            0
+          ],
+          [
+            2.5,
+            0.7,
+            0
+          ]
+        ],
+        "pointIndices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "lineIndices": [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            2,
+            3
+          ]
+        ]
+      },
+      "Cubic": {
+        "points": [
+          [
+            -2.7,
+            -1.4,
+            0
+          ],
+          [
+            -2.2,
+            -0.4,
+            0
+          ],
+          [
+            -1.5,
+            -0.4,
+            0
+          ],
+          [
+            -1,
+            -1.4,
+            0
+          ]
+        ],
+        "pointIndices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "lineIndices": [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            2,
+            3
+          ]
+        ]
+      }
+    }
+  }
+}

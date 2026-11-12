@@ -1,0 +1,12 @@
+#usda 1.0
+(subLayers = [@weak.usda@])
+def Xform "World" {
+ def Xform "Model" (
+  prepend references = @asset.usda@</Asset>
+  variants = { string look = "A"; string orphan = "strong"; string blocked = "" }
+ ) {}
+ def Xform "Instance" (
+  instanceable = true
+  prepend references = @asset.usda@</Asset>
+ ) {}
+}

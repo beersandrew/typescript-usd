@@ -1,0 +1,1016 @@
+{
+  "generatedBy": "the tooling kept outside this repository (FIXTURES.md), from the surface @upstream tags",
+  "note": "upstream: the OpenUSD 26.11.1 symbol (none: surface-only, see naming-map-exceptions.md); core: the core symbols the member calls, as <library>:<Class>.<member>; naming: rule (derived by style-guide rules 2/3/8/9) or exception.",
+  "entries": [
+    {
+      "upstream": "UsdAttribute",
+      "core": [],
+      "surface": "Attribute",
+      "kind": "class",
+      "naming": "rule"
+    },
+    {
+      "upstream": "UsdAttribute::Block",
+      "core": [
+        "usd:Attribute.block"
+      ],
+      "surface": "Attribute.block",
+      "kind": "method",
+      "naming": "rule"
+    },
+    {
+      "upstream": "none",
+      "core": [],
+      "surface": "Attribute.core",
+      "kind": "getter",
+      "naming": "exception"
+    },
+    {
+      "upstream": "none",
+      "core": [
+        "usd:Attribute.isValid"
+      ],
+      "surface": "Attribute.fromCore",
+      "kind": "static method",
+      "naming": "exception"
+    },
+    {
+      "upstream": "UsdAttribute::Get",
+      "core": [
+        "usd:Attribute.getValueAtTime",
+        "usd:UsdTimeCode.Default"
+      ],
+      "surface": "Attribute.get",
+      "kind": "method",
+      "naming": "rule"
+    },
+    {
+      "upstream": "UsdAttribute::HasAuthoredValue",
+      "core": [
+        "usd:Attribute.hasAuthoredValue"
+      ],
+      "surface": "Attribute.hasAuthoredValue",
+      "kind": "getter",
+      "naming": "rule"
+    },
+    {
+      "upstream": "UsdObject::GetName",
+      "core": [
+        "usd:Attribute.name"
+      ],
+      "surface": "Attribute.name",
+      "kind": "getter",
+      "naming": "rule"
+    },
+    {
+      "upstream": "UsdObject::GetPath",
+      "core": [
+        "usd:Attribute.getPath"
+      ],
+      "surface": "Attribute.path",
+      "kind": "getter",
+      "naming": "rule"
+    },
+    {
+      "upstream": "UsdObject::GetPrim",
+      "core": [
+        "usd:Attribute.getPrim"
+      ],
+      "surface": "Attribute.prim",
+      "kind": "getter",
+      "naming": "rule"
+    },
+    {
+      "upstream": "UsdAttribute::Set",
+      "core": [
+        "usd:Attribute.set",
+        "usd:Attribute.setTimeSample"
+      ],
+      "surface": "Attribute.set",
+      "kind": "method",
+      "naming": "rule"
+    },
+    {
+      "upstream": "UsdAttribute::GetTimeSamples",
+      "core": [
+        "usd:Attribute.getTimeSampleKeys"
+      ],
+      "surface": "Attribute.timeSamples",
+      "kind": "getter",
+      "naming": "rule"
+    },
+    {
+      "upstream": "UsdAttribute::GetTypeName",
+      "core": [
+        "usd:Attribute.typeName"
+      ],
+      "surface": "Attribute.typeName",
+      "kind": "getter",
+      "naming": "rule"
+    },
+    {
+      "upstream": "UsdAttribute::ValueMightBeTimeVarying",
+      "core": [
+        "usd:Attribute.valueMightBeTimeVarying"
+      ],
+      "surface": "Attribute.valueMightBeTimeVarying",
+      "kind": "method",
+      "naming": "rule"
+    },
+    {
+      "upstream": "SdfChangeBlock",
+      "core": [],
+      "surface": "ChangeBlock",
+      "kind": "class",
+      "naming": "rule"
+    },
+    {
+      "upstream": "SdfChangeBlock::~SdfChangeBlock",
+      "core": [
+        "sdf:SdfChangeBlock.close"
+      ],
+      "surface": "ChangeBlock.[Symbol.dispose]",
+      "kind": "method",
+      "naming": "rule"
+    },
+    {
+      "upstream": "SdfChangeBlock::~SdfChangeBlock",
+      "core": [
+        "sdf:SdfChangeBlock.close"
+      ],
+      "surface": "ChangeBlock.close",
+      "kind": "method",
+      "naming": "rule"
+    },
+    {
+      "upstream": "UsdPrim::CreateAttribute",
+      "core": [],
+      "surface": "CreateAttributeOptions",
+      "kind": "interface",
+      "naming": "rule"
+    },
+    {
+      "upstream": "UsdPrim::CreateAttribute(custom)",
+      "core": [],
+      "surface": "CreateAttributeOptions.custom",
+      "kind": "field",
+      "naming": "rule"
+    },
+    {
+      "upstream": "UsdPrim::CreateAttribute(variability)",
+      "core": [],
+      "surface": "CreateAttributeOptions.variability",
+      "kind": "field",
+      "naming": "rule"
+    },
+    {
+      "upstream": "UsdEditContext",
+      "core": [],
+      "surface": "EditContext",
+      "kind": "class",
+      "naming": "rule"
+    },
+    {
+      "upstream": "UsdEditContext::~UsdEditContext",
+      "core": [
+        "usd:UsdEditContext.close"
+      ],
+      "surface": "EditContext.[Symbol.dispose]",
+      "kind": "method",
+      "naming": "rule"
+    },
+    {
+      "upstream": "UsdEditContext::~UsdEditContext",
+      "core": [
+        "usd:UsdEditContext.close"
+      ],
+      "surface": "EditContext.close",
+      "kind": "method",
+      "naming": "rule"
+    },
+    {
+      "upstream": "UsdStage::Export",
+      "core": [],
+      "surface": "ExportOptions",
+      "kind": "interface",
+      "naming": "rule"
+    },
+    {
+      "upstream": "UsdStage::Export(addSourceFileComment)",
+      "core": [],
+      "surface": "ExportOptions.addSourceFileComment",
+      "kind": "field",
+      "naming": "rule"
+    },
+    {
+      "upstream": "UsdStage::InitialLoadSet",
+      "core": [],
+      "surface": "InitialLoadSet",
+      "kind": "const",
+      "naming": "rule"
+    },
+    {
+      "upstream": "UsdStage::LoadAll",
+      "core": [],
+      "surface": "InitialLoadSet.LoadAll",
+      "kind": "enumerator",
+      "naming": "rule"
+    },
+    {
+      "upstream": "UsdStage::LoadNone",
+      "core": [],
+      "surface": "InitialLoadSet.LoadNone",
+      "kind": "enumerator",
+      "naming": "rule"
+    },
+    {
+      "upstream": "SdfLayer",
+      "core": [],
+      "surface": "Layer",
+      "kind": "class",
+      "naming": "rule"
+    },
+    {
+      "upstream": "none",
+      "core": [],
+      "surface": "Layer.core",
+      "kind": "getter",
+      "naming": "exception"
+    },
+    {
+      "upstream": "SdfLayer::CreateAnonymous",
+      "core": [
+        "sdf:Layer.createAnonymous"
+      ],
+      "surface": "Layer.createAnonymous",
+      "kind": "static method",
+      "naming": "rule"
+    },
+    {
+      "upstream": "SdfLayer::GetDisplayName",
+      "core": [
+        "sdf:Layer.getDisplayName"
+      ],
+      "surface": "Layer.displayName",
+      "kind": "getter",
+      "naming": "rule"
+    },
+    {
+      "upstream": "SdfLayer::Export",
+      "core": [
+        "sdf:Layer.export"
+      ],
+      "surface": "Layer.export",
+      "kind": "method",
+      "naming": "rule"
+    },
+    {
+      "upstream": "SdfLayer::ExportToString",
+      "core": [
+        "sdf:Layer.exportToString"
+      ],
+      "surface": "Layer.exportToString",
+      "kind": "method",
+      "naming": "rule"
+    },
+    {
+      "upstream": "none",
+      "core": [],
+      "surface": "Layer.fromCore",
+      "kind": "static method",
+      "naming": "exception"
+    },
+    {
+      "upstream": "SdfLayer::GetIdentifier",
+      "core": [
+        "sdf:Layer.identifier"
+      ],
+      "surface": "Layer.identifier",
+      "kind": "getter",
+      "naming": "rule"
+    },
+    {
+      "upstream": "SdfLayer::ImportFromString",
+      "core": [
+        "sdf:Layer.importFromString"
+      ],
+      "surface": "Layer.importFromString",
+      "kind": "method",
+      "naming": "rule"
+    },
+    {
+      "upstream": "SdfLayer::IsAnonymous",
+      "core": [
+        "sdf:Layer.isAnonymous"
+      ],
+      "surface": "Layer.isAnonymous",
+      "kind": "getter",
+      "naming": "rule"
+    },
+    {
+      "upstream": "SdfLayer::Save",
+      "core": [
+        "sdf:Layer.save"
+      ],
+      "surface": "Layer.save",
+      "kind": "method",
+      "naming": "rule"
+    },
+    {
+      "upstream": "UsdGeomMesh",
+      "core": [],
+      "surface": "Mesh",
+      "kind": "class",
+      "naming": "rule"
+    },
+    {
+      "upstream": "UsdGeomMesh::UsdGeomMesh",
+      "core": [
+        "usdGeom:Mesh",
+        "usd:Prim.getStage"
+      ],
+      "surface": "Mesh.constructor",
+      "kind": "constructor",
+      "naming": "rule"
+    },
+    {
+      "upstream": "none",
+      "core": [],
+      "surface": "Mesh.core",
+      "kind": "getter",
+      "naming": "exception"
+    },
+    {
+      "upstream": "UsdGeomMesh::Define",
+      "core": [
+        "usdGeom:Mesh.define",
+        "usdGeom:Mesh",
+        "usd:Prim.getStage",
+        "usd:SchemaBase.prim"
+      ],
+      "surface": "Mesh.define",
+      "kind": "static method",
+      "naming": "rule"
+    },
+    {
+      "upstream": "UsdGeomBoundable::GetExtentAttr",
+      "core": [
+        "usd:Attribute.isValid",
+        "usdGeom:Boundable.getExtentAttr"
+      ],
+      "surface": "Mesh.extent",
+      "kind": "getter",
+      "naming": "rule"
+    },
+    {
+      "upstream": "UsdGeomMesh::GetFaceVertexCountsAttr",
+      "core": [
+        "usd:Attribute.isValid",
+        "usdGeom:Mesh.getFaceVertexCountsAttr"
+      ],
+      "surface": "Mesh.faceVertexCounts",
+      "kind": "getter",
+      "naming": "rule"
+    },
+    {
+      "upstream": "UsdGeomMesh::GetFaceVertexIndicesAttr",
+      "core": [
+        "usd:Attribute.isValid",
+        "usdGeom:Mesh.getFaceVertexIndicesAttr"
+      ],
+      "surface": "Mesh.faceVertexIndices",
+      "kind": "getter",
+      "naming": "rule"
+    },
+    {
+      "upstream": "UsdGeomPointBased::GetNormalsAttr",
+      "core": [
+        "usd:Attribute.isValid",
+        "usdGeom:PointBased.getNormalsAttr"
+      ],
+      "surface": "Mesh.normals",
+      "kind": "getter",
+      "naming": "rule"
+    },
+    {
+      "upstream": "UsdGeomPointBased::GetPointsAttr",
+      "core": [
+        "usd:Attribute.isValid",
+        "usdGeom:PointBased.getPointsAttr"
+      ],
+      "surface": "Mesh.points",
+      "kind": "getter",
+      "naming": "rule"
+    },
+    {
+      "upstream": "UsdSchemaBase::GetPrim",
+      "core": [
+        "usd:SchemaBase.prim"
+      ],
+      "surface": "Mesh.prim",
+      "kind": "getter",
+      "naming": "rule"
+    },
+    {
+      "upstream": "UsdNotice::ObjectsChanged",
+      "core": [],
+      "surface": "ObjectsChangedEvent",
+      "kind": "class",
+      "naming": "rule"
+    },
+    {
+      "upstream": "UsdNotice::ObjectsChanged::GetChangedInfoOnlyPaths",
+      "core": [
+        "usd:ObjectsChanged.getChangedInfoOnlyPaths"
+      ],
+      "surface": "ObjectsChangedEvent.changedInfoOnlyPaths",
+      "kind": "getter",
+      "naming": "rule"
+    },
+    {
+      "upstream": "none",
+      "core": [],
+      "surface": "ObjectsChangedEvent.constructor",
+      "kind": "constructor",
+      "naming": "exception"
+    },
+    {
+      "upstream": "none",
+      "core": [],
+      "surface": "ObjectsChangedEvent.core",
+      "kind": "getter",
+      "naming": "exception"
+    },
+    {
+      "upstream": "UsdNotice::ObjectsChanged::GetResyncedPaths",
+      "core": [
+        "usd:ObjectsChanged.getResyncedPaths"
+      ],
+      "surface": "ObjectsChangedEvent.resyncedPaths",
+      "kind": "getter",
+      "naming": "rule"
+    },
+    {
+      "upstream": "UsdStage::Open",
+      "core": [],
+      "surface": "OpenOptions",
+      "kind": "interface",
+      "naming": "rule"
+    },
+    {
+      "upstream": "UsdStage::Open(load)",
+      "core": [],
+      "surface": "OpenOptions.load",
+      "kind": "field",
+      "naming": "rule"
+    },
+    {
+      "upstream": "UsdStage::OpenMasked(mask)",
+      "core": [],
+      "surface": "OpenOptions.mask",
+      "kind": "field",
+      "naming": "rule"
+    },
+    {
+      "upstream": "none",
+      "core": [],
+      "surface": "OpenOptions.signal",
+      "kind": "field",
+      "naming": "exception"
+    },
+    {
+      "upstream": "UsdPrim",
+      "core": [],
+      "surface": "Prim",
+      "kind": "class",
+      "naming": "rule"
+    },
+    {
+      "upstream": "UsdPrim::GetAttribute",
+      "core": [
+        "usd:Attribute.isValid",
+        "usd:Prim.getAttr"
+      ],
+      "surface": "Prim.attribute",
+      "kind": "method",
+      "naming": "rule"
+    },
+    {
+      "upstream": "UsdPrim::GetAttributes",
+      "core": [
+        "usd:Prim.getAttributes",
+        "usd:Attribute.isValid"
+      ],
+      "surface": "Prim.attributes",
+      "kind": "getter",
+      "naming": "rule"
+    },
+    {
+      "upstream": "UsdPrim::GetChildren",
+      "core": [
+        "usd:Prim.getChildren"
+      ],
+      "surface": "Prim.children",
+      "kind": "getter",
+      "naming": "rule"
+    },
+    {
+      "upstream": "none",
+      "core": [],
+      "surface": "Prim.core",
+      "kind": "getter",
+      "naming": "exception"
+    },
+    {
+      "upstream": "UsdPrim::CreateAttribute",
+      "core": [
+        "usd:Prim.createAttribute",
+        "usd:Attribute.isValid"
+      ],
+      "surface": "Prim.createAttribute",
+      "kind": "method",
+      "naming": "rule"
+    },
+    {
+      "upstream": "none",
+      "core": [],
+      "surface": "Prim.fromCore",
+      "kind": "static method",
+      "naming": "exception"
+    },
+    {
+      "upstream": "UsdPrim::HasAttribute",
+      "core": [
+        "usd:Prim.hasAttribute"
+      ],
+      "surface": "Prim.hasAttribute",
+      "kind": "method",
+      "naming": "rule"
+    },
+    {
+      "upstream": "UsdPrim::IsA",
+      "core": [
+        "usd:Prim.isA"
+      ],
+      "surface": "Prim.isA",
+      "kind": "method",
+      "naming": "rule"
+    },
+    {
+      "upstream": "UsdPrim::IsActive",
+      "core": [
+        "usd:Prim.isActive"
+      ],
+      "surface": "Prim.isActive",
+      "kind": "getter",
+      "naming": "rule"
+    },
+    {
+      "upstream": "UsdPrim::IsDefined",
+      "core": [
+        "usd:Prim.isDefined"
+      ],
+      "surface": "Prim.isDefined",
+      "kind": "getter",
+      "naming": "rule"
+    },
+    {
+      "upstream": "UsdPrim::IsLoaded",
+      "core": [
+        "usd:Prim.isLoaded"
+      ],
+      "surface": "Prim.isLoaded",
+      "kind": "getter",
+      "naming": "rule"
+    },
+    {
+      "upstream": "UsdPrim::GetParent",
+      "core": [
+        "usd:Prim.getParent"
+      ],
+      "surface": "Prim.parent",
+      "kind": "getter",
+      "naming": "rule"
+    },
+    {
+      "upstream": "UsdObject::GetPath",
+      "core": [
+        "usd:Prim.path"
+      ],
+      "surface": "Prim.path",
+      "kind": "getter",
+      "naming": "rule"
+    },
+    {
+      "upstream": "UsdPrim::SetActive",
+      "core": [
+        "usd:Prim.setActive"
+      ],
+      "surface": "Prim.setActive",
+      "kind": "method",
+      "naming": "rule"
+    },
+    {
+      "upstream": "UsdPrim::GetSpecifier",
+      "core": [
+        "usd:Prim.getSpecifier"
+      ],
+      "surface": "Prim.specifier",
+      "kind": "getter",
+      "naming": "rule"
+    },
+    {
+      "upstream": "UsdObject::GetStage",
+      "core": [
+        "usd:Prim.getStage"
+      ],
+      "surface": "Prim.stage",
+      "kind": "getter",
+      "naming": "rule"
+    },
+    {
+      "upstream": "UsdPrim::GetTypeName",
+      "core": [
+        "usd:Prim.typeName"
+      ],
+      "surface": "Prim.typeName",
+      "kind": "getter",
+      "naming": "rule"
+    },
+    {
+      "upstream": "Usd_PrimFlagsPredicate",
+      "core": [],
+      "surface": "PrimFlagsPredicate",
+      "kind": "const",
+      "naming": "rule"
+    },
+    {
+      "upstream": "UsdPrimAllPrimsPredicate",
+      "core": [],
+      "surface": "PrimFlagsPredicate.UsdPrimAllPrimsPredicate",
+      "kind": "enumerator",
+      "naming": "rule"
+    },
+    {
+      "upstream": "UsdPrimDefaultPredicate",
+      "core": [],
+      "surface": "PrimFlagsPredicate.UsdPrimDefaultPredicate",
+      "kind": "enumerator",
+      "naming": "rule"
+    },
+    {
+      "upstream": "VtArray::cdata",
+      "core": [],
+      "surface": "ReadonlyValue",
+      "kind": "type",
+      "naming": "exception"
+    },
+    {
+      "upstream": "SdfSpecifier",
+      "core": [],
+      "surface": "Specifier",
+      "kind": "const",
+      "naming": "rule"
+    },
+    {
+      "upstream": "SdfSpecifierClass",
+      "core": [],
+      "surface": "Specifier.SdfSpecifierClass",
+      "kind": "enumerator",
+      "naming": "rule"
+    },
+    {
+      "upstream": "SdfSpecifierDef",
+      "core": [],
+      "surface": "Specifier.SdfSpecifierDef",
+      "kind": "enumerator",
+      "naming": "rule"
+    },
+    {
+      "upstream": "SdfSpecifierOver",
+      "core": [],
+      "surface": "Specifier.SdfSpecifierOver",
+      "kind": "enumerator",
+      "naming": "rule"
+    },
+    {
+      "upstream": "UsdStage",
+      "core": [],
+      "surface": "Stage",
+      "kind": "class",
+      "naming": "rule"
+    },
+    {
+      "upstream": "UsdStage::~UsdStage",
+      "core": [
+        "tf:TfNoticeKey.revoke",
+        "usd:Stage.dispose"
+      ],
+      "surface": "Stage.[Symbol.dispose]",
+      "kind": "method",
+      "naming": "rule"
+    },
+    {
+      "upstream": "TfNotice::Register",
+      "core": [
+        "tf:TfNotice.Register",
+        "usd:ObjectsChanged"
+      ],
+      "surface": "Stage.addEventListener",
+      "kind": "method",
+      "naming": "exception"
+    },
+    {
+      "upstream": "SdfChangeBlock::SdfChangeBlock",
+      "core": [
+        "sdf:sdfChangeBlock",
+        "sdf:SdfChangeBlock"
+      ],
+      "surface": "Stage.changeBlock",
+      "kind": "method",
+      "naming": "exception"
+    },
+    {
+      "upstream": "UsdStage::~UsdStage",
+      "core": [
+        "tf:TfNoticeKey.revoke",
+        "usd:Stage.dispose"
+      ],
+      "surface": "Stage.close",
+      "kind": "method",
+      "naming": "rule"
+    },
+    {
+      "upstream": "none",
+      "core": [],
+      "surface": "Stage.core",
+      "kind": "getter",
+      "naming": "exception"
+    },
+    {
+      "upstream": "UsdStage::CreateInMemory",
+      "core": [
+        "usd:Stage.createNew"
+      ],
+      "surface": "Stage.createInMemory",
+      "kind": "static method",
+      "naming": "rule"
+    },
+    {
+      "upstream": "UsdStage::GetDefaultPrim",
+      "core": [
+        "usd:Stage.getDefaultPrim"
+      ],
+      "surface": "Stage.defaultPrim",
+      "kind": "getter",
+      "naming": "rule"
+    },
+    {
+      "upstream": "UsdStage::DefinePrim",
+      "core": [
+        "usd:Stage.definePrim"
+      ],
+      "surface": "Stage.definePrim",
+      "kind": "method",
+      "naming": "rule"
+    },
+    {
+      "upstream": "UsdEditContext::UsdEditContext",
+      "core": [
+        "usd:UsdEditContext"
+      ],
+      "surface": "Stage.editContext",
+      "kind": "method",
+      "naming": "exception"
+    },
+    {
+      "upstream": "UsdStage::GetEditTarget",
+      "core": [
+        "usd:UsdEditTarget.getLayer",
+        "usd:Stage.getEditTarget"
+      ],
+      "surface": "Stage.editTarget",
+      "kind": "getter",
+      "naming": "rule"
+    },
+    {
+      "upstream": "UsdStage::GetEndTimeCode",
+      "core": [
+        "usd:Stage.endTimeCode"
+      ],
+      "surface": "Stage.endTimeCode",
+      "kind": "getter",
+      "naming": "rule"
+    },
+    {
+      "upstream": "UsdStage::Export",
+      "core": [
+        "usd:Stage.export"
+      ],
+      "surface": "Stage.export",
+      "kind": "method",
+      "naming": "rule"
+    },
+    {
+      "upstream": "UsdStage::ExportToString",
+      "core": [
+        "sdf:Layer.exportToString",
+        "usd:Stage.flatten"
+      ],
+      "surface": "Stage.exportToString",
+      "kind": "method",
+      "naming": "rule"
+    },
+    {
+      "upstream": "UsdStage::Flatten",
+      "core": [
+        "usd:Stage.flatten"
+      ],
+      "surface": "Stage.flatten",
+      "kind": "method",
+      "naming": "rule"
+    },
+    {
+      "upstream": "none",
+      "core": [],
+      "surface": "Stage.fromCore",
+      "kind": "static method",
+      "naming": "exception"
+    },
+    {
+      "upstream": "UsdStage::Open",
+      "core": [
+        "usd:Stage.openMasked",
+        "usd:StagePopulationMask",
+        "usd:Stage.open",
+        "usd:Stage.dispose"
+      ],
+      "surface": "Stage.open",
+      "kind": "static method",
+      "naming": "rule"
+    },
+    {
+      "upstream": "UsdStage::GetPrimAtPath",
+      "core": [
+        "usd:Stage.getPrim"
+      ],
+      "surface": "Stage.prim",
+      "kind": "method",
+      "naming": "exception"
+    },
+    {
+      "upstream": "UsdStage::GetPseudoRoot",
+      "core": [
+        "usd:Stage.getPrim"
+      ],
+      "surface": "Stage.pseudoRoot",
+      "kind": "getter",
+      "naming": "rule"
+    },
+    {
+      "upstream": "UsdStage::GetRootLayer",
+      "core": [
+        "usd:Stage.getRootLayer"
+      ],
+      "surface": "Stage.rootLayer",
+      "kind": "getter",
+      "naming": "rule"
+    },
+    {
+      "upstream": "UsdStage::Save",
+      "core": [
+        "usd:Stage.save"
+      ],
+      "surface": "Stage.save",
+      "kind": "method",
+      "naming": "rule"
+    },
+    {
+      "upstream": "UsdStage::GetSessionLayer",
+      "core": [
+        "usd:Stage.getSessionLayer"
+      ],
+      "surface": "Stage.sessionLayer",
+      "kind": "getter",
+      "naming": "rule"
+    },
+    {
+      "upstream": "UsdStage::SetEditTarget",
+      "core": [
+        "usd:Stage.setEditTarget"
+      ],
+      "surface": "Stage.setEditTarget",
+      "kind": "method",
+      "naming": "rule"
+    },
+    {
+      "upstream": "UsdStage::GetStartTimeCode",
+      "core": [
+        "usd:Stage.startTimeCode"
+      ],
+      "surface": "Stage.startTimeCode",
+      "kind": "getter",
+      "naming": "rule"
+    },
+    {
+      "upstream": "UsdStage::GetTimeCodesPerSecond",
+      "core": [
+        "usd:Stage.timeCodesPerSecond"
+      ],
+      "surface": "Stage.timeCodesPerSecond",
+      "kind": "getter",
+      "naming": "rule"
+    },
+    {
+      "upstream": "UsdStage::Traverse",
+      "core": [
+        "usd:Stage.traverse",
+        "usd:TraverseInstanceProxies",
+        "usd:Stage.getPrim"
+      ],
+      "surface": "Stage.traverse",
+      "kind": "method",
+      "naming": "rule"
+    },
+    {
+      "upstream": "UsdEditContext::UsdEditContext",
+      "core": [
+        "usd:UsdEditContext",
+        "usd:UsdEditContext.close"
+      ],
+      "surface": "Stage.withEditTarget",
+      "kind": "method",
+      "naming": "exception"
+    },
+    {
+      "upstream": "UsdNotice",
+      "core": [],
+      "surface": "StageEventMap",
+      "kind": "interface",
+      "naming": "exception"
+    },
+    {
+      "upstream": "UsdNotice::ObjectsChanged",
+      "core": [],
+      "surface": "StageEventMap.objectschanged",
+      "kind": "field",
+      "naming": "rule"
+    },
+    {
+      "upstream": "UsdStage::Traverse",
+      "core": [],
+      "surface": "TraverseOptions",
+      "kind": "interface",
+      "naming": "rule"
+    },
+    {
+      "upstream": "UsdTraverseInstanceProxies",
+      "core": [],
+      "surface": "TraverseOptions.instanceProxies",
+      "kind": "field",
+      "naming": "exception"
+    },
+    {
+      "upstream": "UsdStage::Traverse(predicate)",
+      "core": [],
+      "surface": "TraverseOptions.predicate",
+      "kind": "field",
+      "naming": "rule"
+    },
+    {
+      "upstream": "VtArray",
+      "core": [],
+      "surface": "TypedArray",
+      "kind": "type",
+      "naming": "exception"
+    },
+    {
+      "upstream": "TfPyConvertTfErrorsToPythonException",
+      "core": [],
+      "surface": "UsdError",
+      "kind": "class",
+      "naming": "exception"
+    },
+    {
+      "upstream": "none",
+      "core": [],
+      "surface": "UsdError.constructor",
+      "kind": "constructor",
+      "naming": "exception"
+    },
+    {
+      "upstream": "TfErrorMark::GetBegin",
+      "core": [],
+      "surface": "UsdError.errors",
+      "kind": "property",
+      "naming": "exception"
+    },
+    {
+      "upstream": "VtArray::assign",
+      "core": [],
+      "surface": "ValueInput",
+      "kind": "type",
+      "naming": "exception"
+    }
+  ]
+}

@@ -1,0 +1,157 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/usdImaging/usdImagingGL/tests/fixtures/native/opacity/capture.py",
+  "upstream": [
+    "pxr/usd/usdShade/connectableAPI.cpp",
+    "pxr/usdImaging/usdImaging/materialParamUtils.cpp"
+  ],
+  "payload": {
+    "materials": {
+      "opaque": {
+        "opacity": 1.0,
+        "opacityMode": "presence",
+        "opacityThreshold": 0.0
+      },
+      "constant": {
+        "opacity": 0.25,
+        "opacityMode": "presence",
+        "opacityThreshold": 0.0
+      },
+      "texture": {
+        "opacity": 1.0,
+        "opacityMode": "presence",
+        "opacityThreshold": 0.0,
+        "channel": "a",
+        "scale": [
+          0.5,
+          1.0,
+          2.0,
+          0.75
+        ],
+        "bias": [
+          0.10000000149011612,
+          0.20000000298023224,
+          0.30000001192092896,
+          0.125
+        ],
+        "uvScale": [
+          2.0,
+          3.0
+        ],
+        "uvTranslate": [
+          0.25,
+          0.5
+        ]
+      },
+      "masked": {
+        "opacity": 1.0,
+        "opacityMode": "presence",
+        "opacityThreshold": 0.5,
+        "channel": "a",
+        "scale": [
+          0.5,
+          1.0,
+          2.0,
+          0.75
+        ],
+        "bias": [
+          0.10000000149011612,
+          0.20000000298023224,
+          0.30000001192092896,
+          0.125
+        ],
+        "uvScale": [
+          2.0,
+          3.0
+        ],
+        "uvTranslate": [
+          0.25,
+          0.5
+        ]
+      },
+      "texture_r": {
+        "opacity": 1.0,
+        "opacityMode": "presence",
+        "opacityThreshold": 0.0,
+        "channel": "r",
+        "scale": [
+          0.5,
+          1.0,
+          2.0,
+          0.75
+        ],
+        "bias": [
+          0.10000000149011612,
+          0.20000000298023224,
+          0.30000001192092896,
+          0.125
+        ],
+        "uvScale": [
+          2.0,
+          3.0
+        ],
+        "uvTranslate": [
+          0.25,
+          0.5
+        ]
+      },
+      "texture_g": {
+        "opacity": 1.0,
+        "opacityMode": "presence",
+        "opacityThreshold": 0.0,
+        "channel": "g",
+        "scale": [
+          0.5,
+          1.0,
+          2.0,
+          0.75
+        ],
+        "bias": [
+          0.10000000149011612,
+          0.20000000298023224,
+          0.30000001192092896,
+          0.125
+        ],
+        "uvScale": [
+          2.0,
+          3.0
+        ],
+        "uvTranslate": [
+          0.25,
+          0.5
+        ]
+      },
+      "texture_b": {
+        "opacity": 1.0,
+        "opacityMode": "presence",
+        "opacityThreshold": 0.0,
+        "channel": "b",
+        "scale": [
+          0.5,
+          1.0,
+          2.0,
+          0.75
+        ],
+        "bias": [
+          0.10000000149011612,
+          0.20000000298023224,
+          0.30000001192092896,
+          0.125
+        ],
+        "uvScale": [
+          2.0,
+          3.0
+        ],
+        "uvTranslate": [
+          0.25,
+          0.5
+        ]
+      }
+    },
+    "defaultSt": [
+      0.0,
+      0.0
+    ]
+  }
+}

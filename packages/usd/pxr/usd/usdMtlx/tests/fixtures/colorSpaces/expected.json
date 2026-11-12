@@ -1,0 +1,16 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/usd/usdMtlx/tests/fixtures/colorSpaces/capture.py",
+  "upstream": [
+    "pxr/usd/usdMtlx/reader.cpp:455-497",
+    "pxr/usd/usdMtlx/reader.cpp:557-559"
+  ],
+  "payload": {
+    "colorSpaces": {
+      "/MaterialX/Materials/Material.inputs:emission_color": "srgb_texture",
+      "/MaterialX/Materials/Material/Images/Color.inputs:file": "srgb_texture",
+      "/MaterialX/NodeGraphs/Images/Color.inputs:file": "srgb_texture"
+    }
+  }
+}

@@ -1,0 +1,268 @@
+STARTING testHdSceneIndex
+1) TestFlatteningSceneIndex...
+PrimAdded: /A, huh
+PrimAdded: /A/B, huh
+PrimAdded: /A/B/C, huh
+
+-- SCENE -----------------------
+/A (huh)
+/A/B (huh)
+  @xform: 
+    @matrix: ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 10, 1) )
+/A/B/C (huh)
+  @xform: 
+    @matrix: ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (5, 0, 0, 1) )
+
+-- FLATTENED SCENE ------------
+/A (huh)
+  (@coordSysBinding)
+  @primvars: 
+  (@purpose)
+  @visibility: 
+    @visibility: 1
+  @xform: 
+    @matrix: ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 0, 1) )
+    @resetXformStack: 1
+/A/B (huh)
+  @xform: 
+    @matrix: ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 10, 1) )
+    @resetXformStack: 1
+  (@coordSysBinding)
+  @primvars: 
+  (@purpose)
+  @visibility: 
+    @visibility: 1
+/A/B/C (huh)
+  @xform: 
+    @matrix: ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (5, 0, 10, 1) )
+    @resetXformStack: 1
+  (@coordSysBinding)
+  @primvars: 
+  (@purpose)
+  @visibility: 
+    @visibility: 1
+INITIAL LEAF SCENE XFORM matches.
+FLATTENED LEAF SCENE XFORM matches.
+
+-- DIRTYING SCENE ------------
+PrimAdded: /A/B, huh
+PrimDirtied: /A/B/C, coordSysBinding,primvars,purpose,visibility,xform,
+
+-- SCENE -----------------------
+/A (huh)
+/A/B (huh)
+  @xform: 
+    @matrix: ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 20, 1) )
+/A/B/C (huh)
+  @xform: 
+    @matrix: ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (5, 0, 0, 1) )
+
+-- FLATTENED SCENE ------------
+/A (huh)
+  (@coordSysBinding)
+  @primvars: 
+  (@purpose)
+  @visibility: 
+    @visibility: 1
+  @xform: 
+    @matrix: ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 0, 1) )
+    @resetXformStack: 1
+/A/B (huh)
+  @xform: 
+    @matrix: ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 20, 1) )
+    @resetXformStack: 1
+  (@coordSysBinding)
+  @primvars: 
+  (@purpose)
+  @visibility: 
+    @visibility: 1
+/A/B/C (huh)
+  @xform: 
+    @matrix: ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (5, 0, 20, 1) )
+    @resetXformStack: 1
+  (@coordSysBinding)
+  @primvars: 
+  (@purpose)
+  @visibility: 
+    @visibility: 1
+UPDATED INITIAL LEAF SCENE XFORM matches.
+UPDATED FLATTENED LEAF SCENE XFORM matches.
+
+-- REMOVING XFORM FROM A/B ON SCENE ----
+PrimAdded: /A/B, huh
+PrimDirtied: /A/B/C, coordSysBinding,primvars,purpose,visibility,xform,
+
+-- SCENE -----------------------
+/A (huh)
+/A/B (huh)
+/A/B/C (huh)
+  @xform: 
+    @matrix: ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (5, 0, 0, 1) )
+
+-- FLATTENED SCENE ------------
+/A (huh)
+  (@coordSysBinding)
+  @primvars: 
+  (@purpose)
+  @visibility: 
+    @visibility: 1
+  @xform: 
+    @matrix: ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 0, 1) )
+    @resetXformStack: 1
+/A/B (huh)
+  (@coordSysBinding)
+  @primvars: 
+  (@purpose)
+  @visibility: 
+    @visibility: 1
+  @xform: 
+    @matrix: ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 0, 1) )
+    @resetXformStack: 1
+/A/B/C (huh)
+  @xform: 
+    @matrix: ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (5, 0, 0, 1) )
+    @resetXformStack: 1
+  (@coordSysBinding)
+  @primvars: 
+  (@purpose)
+  @visibility: 
+    @visibility: 1
+FINAL LEAF SCENE XFORM matches.
+FINAL FLATTENED LEAF SCENE XFORM matches.
+...SUCCEEDED
+2) TestPrefixingSceneIndex...
+
+-- SCENE -----------------------
+/ ()
+/A (huh)
+/A/C (huh)
+  @somePath: /A/B
+  @someContainer: 
+    @anotherPath: /A/B/C/D
+    @relativePath: F/G
+    @pathArray: [/A/B/C/D, /A/B]
+    @pathExpression: /A/B
+    @relativePathExpression: F/G
+    @membershipExpression: /A// - %/A:shadowLink
+/A/B (huh)
+
+-- PREFIXED SCENE --------------
+/ ()
+/E ()
+/E/F ()
+/E/F/G ()
+/E/F/G/A (huh)
+/E/F/G/A/C (huh)
+  @somePath: /E/F/G/A/B
+  @someContainer: 
+    @anotherPath: /E/F/G/A/B/C/D
+    @relativePath: F/G
+    @pathArray: [/E/F/G/A/B/C/D, /E/F/G/A/B]
+    @pathExpression: /E/F/G/A/B
+    @relativePathExpression: F/G
+    @membershipExpression: /E/F/G/A// - %/E/F/G/A:shadowLink
+/E/F/G/A/B (huh)
+COMPARING TOP-LEVEL ABSOLUTE PATH matches.
+COMPARING NESTED ABSOLUTE PATH matches.
+COMPARING NESTED RELATIVED PATH matches.
+COMPARING PATH ARRAY matches.
+COMPARING NESTED ABSOLUTE PATH EXPRESSION matches.
+COMPARING NESTED RELATIVE PATH EXPRESSION matches.
+COMPARING NESTED MEMBERSHIP EXPRESSION matches.
+TESTING GetChildPrimPaths('/E/F/G/A')) matches.
+TESTING GetChildPrimPaths('/E/X/Y/Z')) matches.
+TESTING GetChildPrimPaths('/E/F')) matches.
+TESTING GetChildPrimPaths('/E')) matches.
+TESTING GetChildPrimPaths('/E/X')) matches.
+TESTING GetChildPrimPaths('')) matches.
+TESTING GetChildPrimPaths('/')) matches.
+...SUCCEEDED
+3) TestMergingSceneIndex...
+/ ()
+/A (group)
+  @uniqueToA: 0
+  @common: 0
+  @uniqueToB: 1
+/A/AA (group)
+  @value: 1
+/A/BB (group)
+  @value: 1
+/B (group)
+  @value: 1
+testing common value: matches.
+testing uniqueToA value: matches.
+testing uniqueToB value: matches.
+testing /A/AA value: matches.
+testing /A/BB value: matches.
+...SUCCEEDED
+4) TestMergingSceneIndexPrimAddedNotices...
+comparing repopulation from input b
+comparing repopulation from input a
+...SUCCEEDED
+5) TestDependencyForwardingSceneIndex...
+/ ()
+/F (group)
+  (@__dependencies)
+/E (group)
+  (@__dependencies)
+/D (group)
+  (@__dependencies)
+/C (group)
+  (@__dependencies)
+/B (group)
+  (@__dependencies)
+/A (group)
+DIRTYING "/A @taco" -> matches.
+DIRTYING "/A @(prim level)" -> matches.
+CYCLE CHECK: DIRTYING "/D @attr1" -> matches.
+CYCLE CHECK: DIRTYING "/E @attr2" -> matches.
+CYCLE CHECK: DIRTYING "/E @attr3" -> matches.
+...SUCCEEDED
+6) TestDependencyForwardingSceneIndexEviction...
+/ ()
+/C (group)
+/B (group)
+  (@__dependencies)
+/A (group)
+Removing "/B" -> matches.
+Remove Affected (affected paths):  matches.
+Remove Affected (depended on paths):  matches.
+/ ()
+/C (group)
+/B (group)
+  (@__dependencies)
+/A (group)
+Removing "/A" -> matches.
+Remove Depended On (affected paths):  matches.
+Remove Depended On (depended on paths):  matches.
+/ ()
+/C (group)
+/B (group)
+  (@__dependencies)
+/A (group)
+Removing "/C" -> matches.
+Remove Prim Without Dependencies (affected paths):  matches.
+Remove Prim Without Dependencies  (depended on paths):  matches.
+...SUCCEEDED
+7) TestDependencyForwardingSceneIndexForDependentDependencies...
+/ ()
+/Tiger (group)
+  @hungry: 0
+  @growl: 0
+/Cat (group)
+  @hungry: 0
+  @meow: 0
+/Dog (group)
+  @hungry: 0
+  @bark: 0
+/Human (group)
+  (@__dependencies)
+  @pets: [/Dog, /Cat]
+  @feed: 0
+Dirty "/Human.pets" -> matches.
+Remove Affected (affected paths):  matches.
+Remove Affected (depended on paths):  matches.
+Dirty "/Tiger.hungry" -> matches.
+Dirty "/Dog.hungry" -> matches.
+...SUCCEEDED
+DONE testHdSceneIndex

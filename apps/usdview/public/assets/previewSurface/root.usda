@@ -1,0 +1,16 @@
+#usda 1.0
+(subLayers = [@./nested/material.usda@])
+def Xform "World" (prepend apiSchemas = ["MaterialBindingAPI"]) {
+    rel material:binding = </Material> (bindMaterialAs = "strongerThanDescendants")
+    def Mesh "Mesh" (prepend apiSchemas = ["MaterialBindingAPI"]) {
+        rel material:binding = </Other>
+        uniform token subdivisionScheme = "none"
+        int[] faceVertexCounts = [4]
+        int[] faceVertexIndices = [0, 1, 2, 3]
+        point3f[] points = [(-1,-1,0), (1,-1,0), (1,1,0), (-1,1,0)]
+        float3[] extent = [(-1,-1,0),(1,1,0)]
+        uniform bool doubleSided = true
+        texCoord2f[] primvars:st = [(0,0),(1,0),(1,1),(0,1)] (interpolation = "vertex")
+    }
+}
+def Material "Other" {}

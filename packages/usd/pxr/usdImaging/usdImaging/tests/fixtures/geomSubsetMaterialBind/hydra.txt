@@ -1,0 +1,22 @@
+== default
+rprim /Root/Tiles materialId= visible=0 invisibleFaces=[0, 1, 2]
+geomSubset /Root/Tiles/A type=typeFaceSet indices=[0] visibility=0 materialBindings[]=/Root/Looks/Red materialBindings[full]=null materialBindings[preview]=null
+geomSubset /Root/Tiles/B type=typeFaceSet indices=[1] visibility=0 materialBindings[]=/Root/Looks/Green materialBindings[full]=null materialBindings[preview]=null
+geomSubset /Root/Tiles/C type=typeFaceSet indices=[2] visibility=0 materialBindings[]=/Root/Looks/Blue materialBindings[full]=null materialBindings[preview]=null
+== time 1
+rprim /Root/Tiles materialId= visible=1 invisibleFaces=[]
+  subset /Root/Tiles/A type=0 materialId=/Root/Looks/Red indices=[0]
+  subset /Root/Tiles/B type=0 materialId=/Root/Looks/Green indices=[1]
+  subset /Root/Tiles/C type=0 materialId=/Root/Looks/Blue indices=[2]
+geomSubset /Root/Tiles/A type=typeFaceSet indices=[0] visibility=1 materialBindings[]=/Root/Looks/Red materialBindings[full]=null materialBindings[preview]=null
+geomSubset /Root/Tiles/B type=typeFaceSet indices=[1] visibility=1 materialBindings[]=/Root/Looks/Green materialBindings[full]=null materialBindings[preview]=null
+geomSubset /Root/Tiles/C type=typeFaceSet indices=[2] visibility=1 materialBindings[]=/Root/Looks/Blue materialBindings[full]=null materialBindings[preview]=null
+== time 2
+rprim /Root/Tiles materialId= visible=1 invisibleFaces=[]
+  subset /Root/Tiles/A type=0 materialId=/Root/Looks/Red indices=[0]
+  subset /Root/Tiles/B type=0 materialId=/Root/Looks/Green indices=[1]
+  subset /Root/Tiles/C type=0 materialId=/Root/Looks/Blue indices=[2]
+geomSubset /Root/Tiles/A type=typeFaceSet indices=[0] visibility=1 materialBindings[]=/Root/Looks/Red materialBindings[full]=null materialBindings[preview]=null
+geomSubset /Root/Tiles/B type=typeFaceSet indices=[1] visibility=1 materialBindings[]=/Root/Looks/Green materialBindings[full]=null materialBindings[preview]=null
+geomSubset /Root/Tiles/C type=typeFaceSet indices=[2] visibility=1 materialBindings[]=/Root/Looks/Blue materialBindings[full]=null materialBindings[preview]=null
+OK

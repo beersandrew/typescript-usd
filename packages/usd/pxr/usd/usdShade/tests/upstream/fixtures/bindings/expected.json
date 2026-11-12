@@ -1,0 +1,96 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/usd/usdShade/tests/upstream/fixtures/bindings/capture.py",
+  "upstream": [
+    "pxr/usd/usdShade/materialBindingAPI.cpp"
+  ],
+  "payload": {
+    "bindings": [
+      {
+        "primPath": "/World/A",
+        "purpose": "",
+        "binding": {
+          "materialPath": "/Looks/Base",
+          "bindingRelPath": "/World.material:binding"
+        }
+      },
+      {
+        "primPath": "/World/A",
+        "purpose": "full",
+        "binding": {
+          "materialPath": "/Looks/Collection",
+          "bindingRelPath": "/World.material:binding:collection:full:selected"
+        }
+      },
+      {
+        "primPath": "/World/A",
+        "purpose": "preview",
+        "binding": {
+          "materialPath": "/Looks/Base",
+          "bindingRelPath": "/World.material:binding"
+        }
+      },
+      {
+        "primPath": "/World/B",
+        "purpose": "",
+        "binding": {
+          "materialPath": "/Looks/Base",
+          "bindingRelPath": "/World.material:binding"
+        }
+      },
+      {
+        "primPath": "/World/B",
+        "purpose": "full",
+        "binding": {
+          "materialPath": "/Looks/Collection",
+          "bindingRelPath": "/World.material:binding:collection:full:selected"
+        }
+      },
+      {
+        "primPath": "/World/B",
+        "purpose": "preview",
+        "binding": {
+          "materialPath": "/Looks/Base",
+          "bindingRelPath": "/World.material:binding"
+        }
+      },
+      {
+        "primPath": "/World/C",
+        "purpose": "",
+        "binding": {
+          "materialPath": "/Looks/Child",
+          "bindingRelPath": "/World/C.material:binding"
+        }
+      },
+      {
+        "primPath": "/World/C",
+        "purpose": "full",
+        "binding": {
+          "materialPath": "/Looks/Child",
+          "bindingRelPath": "/World/C.material:binding"
+        }
+      },
+      {
+        "primPath": "/World/C",
+        "purpose": "preview",
+        "binding": {
+          "materialPath": "/Looks/Child",
+          "bindingRelPath": "/World/C.material:binding"
+        }
+      }
+    ],
+    "rebindings": [
+      {
+        "requested": "weakerThanDescendants",
+        "direct": "weakerThanDescendants",
+        "collection": "weakerThanDescendants"
+      },
+      {
+        "requested": "fallbackStrength",
+        "direct": "weakerThanDescendants",
+        "collection": "weakerThanDescendants"
+      }
+    ]
+  }
+}

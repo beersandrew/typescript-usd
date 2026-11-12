@@ -1,0 +1,90 @@
+# The capability profile of this viewer: typescript-usd with its Storm port on
+# WebGPU. A resource plugin in the form usdProfiles/userDoc/overview.md
+# describes. Capabilities named usd.* are OpenUSD 26.11.1's own
+# (pxr/usd/usd/plugInfo.json, pxr/usd/usdMtlx/plugInfo.json); upstream names
+# nothing finer, so the rest are typescript-usd.* names. Each docstring states
+# its limits; README.md "Known not to work" has the detail.
+# usd.core.colorspace is not claimed: ColorSpaceAPI opinions are authored and
+# resolved, but the Storm port does not apply them when shading.
+{
+    "Plugins": [
+        {
+            "Info": {
+                "Profiles": {
+                    "Capabilities": {
+                        "typescript-usd": {
+                            "predecessors": ["usd.core"],
+                            "name": "typescript-usd",
+                            "docstring": "Capabilities typescript-usd names for itself, below upstream's usd.core. OpenUSD 26.11.1 defines no finer capability names.",
+                            "style": "vendor",
+                            "subgraph": "typescript-usd"
+                        },
+                        "typescript-usd.imaging": {
+                            "predecessors": ["typescript-usd"],
+                            "name": "Storm on WebGPU",
+                            "docstring": "A subset of UsdImaging, Hydra and Storm, with Hgi adapted to WebGPU and shaders in WGSL. Needs WebGPU; there is no other renderer. Large meshes over the device's buffer limits fail; translucency is sorted, not order-independent.",
+                            "style": "vendor",
+                            "subgraph": "typescript-usd"
+                        },
+                        "typescript-usd.imaging.geom": {
+                            "predecessors": ["typescript-usd.imaging"],
+                            "name": "Geometry imaging",
+                            "docstring": "Mesh, Cube, Sphere, Cylinder, Cone, Capsule, Plane, Points, BasisCurves, GeomSubset, PointInstancer and native instances, each with limits. Subdivision is uniform refinement at levels 0 to 2 only. NurbsCurves, NurbsPatch, HermiteCurves, TetMesh and volumes are not imaged; nested point instancers and several instancing arrangements are rejected.",
+                            "style": "vendor",
+                            "subgraph": "typescript-usd"
+                        },
+                        "typescript-usd.imaging.previewSurface": {
+                            "predecessors": ["typescript-usd.imaging"],
+                            "name": "UsdPreviewSurface imaging",
+                            "docstring": "UsdPreviewSurface with UsdUVTexture, float2 and float3 primvar readers and one UsdTransform2d. No displacement, connected opacity textures, multiple UV sets or other shader nodes. Textures: PNG, JPEG, GIF, BMP, WebP, AVIF, Radiance HDR, and ZIP-compressed HALF RGB(A) scanline OpenEXR only.",
+                            "style": "vendor",
+                            "subgraph": "typescript-usd"
+                        },
+                        "typescript-usd.imaging.mtlx": {
+                            "predecessors": ["typescript-usd.imaging", "usd.mtlx"],
+                            "name": "MaterialX imaging",
+                            "docstring": "MaterialX materials through a MaterialX-to-WGSL generator: one UV set and one sampler per material, no custom node implementations.",
+                            "style": "vendor",
+                            "subgraph": "typescript-usd"
+                        },
+                        "typescript-usd.imaging.lux": {
+                            "predecessors": ["typescript-usd.imaging"],
+                            "name": "Light imaging",
+                            "docstring": "Dome, Sphere, Rect and Distant lights. No Disk or Cylinder lights, light filters or connected light inputs; shadows from the first distant light only.",
+                            "style": "vendor",
+                            "subgraph": "typescript-usd"
+                        },
+                        "typescript-usd.imaging.skel": {
+                            "predecessors": ["typescript-usd.imaging"],
+                            "name": "Skinning",
+                            "docstring": "UsdSkel skinning on the CPU. Several skinning combinations are rejected; no BakeSkinning.",
+                            "style": "vendor",
+                            "subgraph": "typescript-usd"
+                        },
+                        "typescript-usd.web": {
+                            "predecessors": [
+                                "usd.core",
+                                "usd.core.fileformat",
+                                "usd.mtlx.fileformat",
+                                "typescript-usd.imaging.geom",
+                                "typescript-usd.imaging.previewSurface",
+                                "typescript-usd.imaging.mtlx",
+                                "typescript-usd.imaging.lux",
+                                "typescript-usd.imaging.skel"
+                            ],
+                            "name": "typescript-usd web viewer",
+                            "docstring": "What usdview in this repository opens and draws: USDA, USDC, USD and USDZ layers, composition and value resolution (usd.core, partially ported), file format plugins loaded as ES modules (usd.core.fileformat), .mtlx layers (usd.mtlx.fileformat), and the imaging capabilities below, each with its stated limits. A research implementation, not tested in production.",
+                            "style": "profile",
+                            "subgraph": "typescript-usd",
+                            "isProfile": true
+                        }
+                    }
+                }
+            },
+            "Name": "typescriptUsdWebProfile",
+            "Type": "resource",
+            "Root": ".",
+            "ResourcePath": "."
+        }
+    ]
+}

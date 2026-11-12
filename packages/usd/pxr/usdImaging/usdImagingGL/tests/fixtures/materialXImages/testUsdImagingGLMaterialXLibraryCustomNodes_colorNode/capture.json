@@ -1,0 +1,27 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/usdImaging/usdImagingGL/tests/fixtures/materialXImages/capture.py",
+  "upstream": [
+    "pxr/usdImaging/usdImagingGL/CMakeLists.txt",
+    "pxr/usdImaging/usdImagingGL/testenv/testUsdImagingGLBasicDrawing.cpp"
+  ],
+  "payload": {
+    "test": "testUsdImagingGLMaterialXLibraryCustomNodes_colorNode",
+    "cmake": "pxr/usdImaging/usdImagingGL/CMakeLists.txt:5379",
+    "command": "<install>/tests/testUsdImagingGLBasicDrawing -lighting -sceneLights -shading smooth -complexity 1.3 -offscreen -camera /Camera -stage colorNode.usda -write colorNode.png",
+    "cwd": "copy of <source>/pxr/usdImaging/usdImagingGL/testenv/testUsdImagingGLMaterialXLibraryCustomNodes",
+    "env": {
+      "TF_DEBUG": "HD_SAFE_MODE",
+      "PXR_MTLX_PLUGIN_SEARCH_PATHS": "./libraryNodes"
+    },
+    "expectedReturnCode": "0",
+    "returnCode": 0,
+    "images": [
+      {
+        "name": "colorNode.png",
+        "written": true
+      }
+    ]
+  }
+}

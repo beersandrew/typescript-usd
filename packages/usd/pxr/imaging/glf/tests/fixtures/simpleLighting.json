@@ -1,0 +1,141 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/imaging/glf/tests/fixtures/capture.py",
+  "upstream": [
+    "pxr/imaging/glf/simpleLight.cpp:14-38",
+    "pxr/imaging/glf/simpleMaterial.cpp:14-21",
+    "pxr/imaging/glf/wrapSimpleLight.cpp",
+    "pxr/imaging/glf/wrapSimpleMaterial.cpp"
+  ],
+  "payload": {
+    "defaultLight": {
+      "ambient": [
+        0.20000000298023224,
+        0.20000000298023224,
+        0.20000000298023224,
+        1.0
+      ],
+      "diffuse": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "specular": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "position": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "spotDirection": [
+        0.0,
+        0.0,
+        -1.0
+      ],
+      "spotCutoff": 180.0,
+      "spotFalloff": 0.0,
+      "attenuation": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "isCameraSpaceLight": false,
+      "hasShadow": false,
+      "shadowResolution": 512,
+      "shadowBias": 0.0,
+      "shadowBlur": 0.0,
+      "shadowIndexStart": 0,
+      "shadowIndexEnd": 0,
+      "transform": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "shadowMatrices": [
+        [
+          [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      ],
+      "isDomeLight": false,
+      "id": ""
+    },
+    "defaultMaterial": {
+      "ambient": [
+        0.20000000298023224,
+        0.20000000298023224,
+        0.20000000298023224,
+        1.0
+      ],
+      "diffuse": [
+        0.800000011920929,
+        0.800000011920929,
+        0.800000011920929,
+        1.0
+      ],
+      "specular": [
+        0.5,
+        0.5,
+        0.5,
+        1.0
+      ],
+      "emission": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "shininess": 32.0
+    }
+  }
+}

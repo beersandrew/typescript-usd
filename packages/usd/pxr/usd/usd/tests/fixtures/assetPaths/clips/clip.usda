@@ -1,0 +1,4 @@
+#usda 1.0
+over "Asset" {
+ asset clipped.timeSamples = { 0: @../existing.txt@, 2: @../existing.txt@ }
+}

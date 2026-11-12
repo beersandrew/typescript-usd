@@ -1,0 +1,4910 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/usd/usd/tests/upstream/fixtures/resolveTarget/capture.py",
+  "upstream": [
+    "pxr/usd/usd/testenv/testUsdResolveTargetPy.py",
+    "pxr/usd/usd/testenv/testUsdResolveTarget.testenv"
+  ],
+  "payload": {
+    "times": [
+      -1,
+      1,
+      1.5,
+      2,
+      3,
+      4,
+      5,
+      6,
+      10,
+      12,
+      14,
+      16
+    ],
+    "rows": [
+      {
+        "arc": 0,
+        "layer": "session",
+        "kind": "upTo",
+        "target": {
+          "startNode": "/Parent/RefChild",
+          "startLayer": "session",
+          "stopNode": null,
+          "stopLayer": null
+        },
+        "attributes": {
+          "foo": {
+            "default": 6.0,
+            "values": [
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0
+            ],
+            "samples": [],
+            "interval": [],
+            "bracket": [],
+            "numSamples": 0,
+            "hasValue": true,
+            "hasAuthoredValue": true,
+            "hasAuthoredValueOpinion": true,
+            "hasFallbackValue": false,
+            "fallbackValue": null,
+            "varying": false
+          },
+          "bar": {
+            "default": 5,
+            "values": [
+              6,
+              6,
+              6,
+              6,
+              6,
+              6,
+              6,
+              1,
+              1,
+              1,
+              1,
+              1
+            ],
+            "samples": [
+              1.0,
+              6.0
+            ],
+            "interval": [],
+            "bracket": [
+              1.0,
+              6.0
+            ],
+            "numSamples": 2,
+            "hasValue": true,
+            "hasAuthoredValue": true,
+            "hasAuthoredValueOpinion": true,
+            "hasFallbackValue": false,
+            "fallbackValue": null,
+            "varying": true
+          },
+          "var": {
+            "default": null,
+            "values": [
+              6,
+              6,
+              6,
+              6,
+              6,
+              6,
+              6,
+              1,
+              1,
+              1,
+              1,
+              1
+            ],
+            "samples": [
+              1.0,
+              6.0
+            ],
+            "interval": [],
+            "bracket": [
+              1.0,
+              6.0
+            ],
+            "numSamples": 2,
+            "hasValue": true,
+            "hasAuthoredValue": true,
+            "hasAuthoredValueOpinion": true,
+            "hasFallbackValue": false,
+            "fallbackValue": null,
+            "varying": true
+          },
+          "radius": {
+            "default": 6.0,
+            "values": [
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0
+            ],
+            "samples": [],
+            "interval": [],
+            "bracket": [],
+            "numSamples": 0,
+            "hasValue": true,
+            "hasAuthoredValue": true,
+            "hasAuthoredValueOpinion": true,
+            "hasFallbackValue": true,
+            "fallbackValue": 1.0,
+            "varying": false
+          },
+          "sub1": {
+            "default": "sub1_def",
+            "values": [
+              "sub1_1",
+              "sub1_1",
+              "sub1_1",
+              "sub1_1",
+              "sub1_1",
+              "sub1_1",
+              "sub1_5",
+              "sub1_5",
+              "sub1_5",
+              "sub1_5",
+              "sub1_5",
+              "sub1_5"
+            ],
+            "samples": [
+              1.0,
+              5.0
+            ],
+            "interval": [
+              5.0
+            ],
+            "bracket": [
+              1.0,
+              5.0
+            ],
+            "numSamples": 2,
+            "hasValue": true,
+            "hasAuthoredValue": true,
+            "hasAuthoredValueOpinion": true,
+            "hasFallbackValue": false,
+            "fallbackValue": null,
+            "varying": true
+          },
+          "ref_sub1": {
+            "default": "ref_sub1_def",
+            "values": [
+              "ref_sub1_1",
+              "ref_sub1_1",
+              "ref_sub1_1",
+              "ref_sub1_2",
+              "ref_sub1_2",
+              "ref_sub1_2",
+              "ref_sub1_2",
+              "ref_sub1_2",
+              "ref_sub1_2",
+              "ref_sub1_2",
+              "ref_sub1_2",
+              "ref_sub1_2"
+            ],
+            "samples": [
+              1.0,
+              2.0
+            ],
+            "interval": [
+              2.0
+            ],
+            "bracket": [
+              2.0,
+              2.0
+            ],
+            "numSamples": 2,
+            "hasValue": true,
+            "hasAuthoredValue": true,
+            "hasAuthoredValueOpinion": true,
+            "hasFallbackValue": false,
+            "fallbackValue": null,
+            "varying": true
+          }
+        }
+      },
+      {
+        "arc": 0,
+        "layer": "session",
+        "kind": "strongerThan",
+        "target": {
+          "startNode": "/Parent/RefChild",
+          "startLayer": "session",
+          "stopNode": "/Parent/RefChild",
+          "stopLayer": "session"
+        },
+        "attributes": {
+          "foo": {
+            "default": null,
+            "values": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            "samples": [],
+            "interval": [],
+            "bracket": [],
+            "numSamples": 0,
+            "hasValue": false,
+            "hasAuthoredValue": false,
+            "hasAuthoredValueOpinion": false,
+            "hasFallbackValue": false,
+            "fallbackValue": null,
+            "varying": false
+          },
+          "bar": {
+            "default": null,
+            "values": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            "samples": [],
+            "interval": [],
+            "bracket": [],
+            "numSamples": 0,
+            "hasValue": false,
+            "hasAuthoredValue": false,
+            "hasAuthoredValueOpinion": false,
+            "hasFallbackValue": false,
+            "fallbackValue": null,
+            "varying": false
+          },
+          "var": {
+            "default": null,
+            "values": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            "samples": [],
+            "interval": [],
+            "bracket": [],
+            "numSamples": 0,
+            "hasValue": false,
+            "hasAuthoredValue": false,
+            "hasAuthoredValueOpinion": false,
+            "hasFallbackValue": false,
+            "fallbackValue": null,
+            "varying": false
+          },
+          "radius": {
+            "default": 1.0,
+            "values": [
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0
+            ],
+            "samples": [],
+            "interval": [],
+            "bracket": [],
+            "numSamples": 0,
+            "hasValue": true,
+            "hasAuthoredValue": false,
+            "hasAuthoredValueOpinion": false,
+            "hasFallbackValue": true,
+            "fallbackValue": 1.0,
+            "varying": false
+          },
+          "sub1": {
+            "default": null,
+            "values": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            "samples": [],
+            "interval": [],
+            "bracket": [],
+            "numSamples": 0,
+            "hasValue": false,
+            "hasAuthoredValue": false,
+            "hasAuthoredValueOpinion": false,
+            "hasFallbackValue": false,
+            "fallbackValue": null,
+            "varying": false
+          },
+          "ref_sub1": {
+            "default": null,
+            "values": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            "samples": [],
+            "interval": [],
+            "bracket": [],
+            "numSamples": 0,
+            "hasValue": false,
+            "hasAuthoredValue": false,
+            "hasAuthoredValueOpinion": false,
+            "hasFallbackValue": false,
+            "fallbackValue": null,
+            "varying": false
+          }
+        }
+      },
+      {
+        "arc": 0,
+        "layer": "root.usda",
+        "kind": "upTo",
+        "target": {
+          "startNode": "/Parent/RefChild",
+          "startLayer": "root.usda",
+          "stopNode": null,
+          "stopLayer": null
+        },
+        "attributes": {
+          "foo": {
+            "default": 6.0,
+            "values": [
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0
+            ],
+            "samples": [],
+            "interval": [],
+            "bracket": [],
+            "numSamples": 0,
+            "hasValue": true,
+            "hasAuthoredValue": true,
+            "hasAuthoredValueOpinion": true,
+            "hasFallbackValue": false,
+            "fallbackValue": null,
+            "varying": false
+          },
+          "bar": {
+            "default": 5,
+            "values": [
+              6,
+              6,
+              6,
+              6,
+              6,
+              6,
+              6,
+              1,
+              1,
+              1,
+              1,
+              1
+            ],
+            "samples": [
+              1.0,
+              6.0
+            ],
+            "interval": [],
+            "bracket": [
+              1.0,
+              6.0
+            ],
+            "numSamples": 2,
+            "hasValue": true,
+            "hasAuthoredValue": true,
+            "hasAuthoredValueOpinion": true,
+            "hasFallbackValue": false,
+            "fallbackValue": null,
+            "varying": true
+          },
+          "var": {
+            "default": null,
+            "values": [
+              6,
+              6,
+              6,
+              6,
+              6,
+              6,
+              6,
+              1,
+              1,
+              1,
+              1,
+              1
+            ],
+            "samples": [
+              1.0,
+              6.0
+            ],
+            "interval": [],
+            "bracket": [
+              1.0,
+              6.0
+            ],
+            "numSamples": 2,
+            "hasValue": true,
+            "hasAuthoredValue": true,
+            "hasAuthoredValueOpinion": true,
+            "hasFallbackValue": false,
+            "fallbackValue": null,
+            "varying": true
+          },
+          "radius": {
+            "default": 6.0,
+            "values": [
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0
+            ],
+            "samples": [],
+            "interval": [],
+            "bracket": [],
+            "numSamples": 0,
+            "hasValue": true,
+            "hasAuthoredValue": true,
+            "hasAuthoredValueOpinion": true,
+            "hasFallbackValue": true,
+            "fallbackValue": 1.0,
+            "varying": false
+          },
+          "sub1": {
+            "default": "sub1_def",
+            "values": [
+              "sub1_1",
+              "sub1_1",
+              "sub1_1",
+              "sub1_1",
+              "sub1_1",
+              "sub1_1",
+              "sub1_5",
+              "sub1_5",
+              "sub1_5",
+              "sub1_5",
+              "sub1_5",
+              "sub1_5"
+            ],
+            "samples": [
+              1.0,
+              5.0
+            ],
+            "interval": [
+              5.0
+            ],
+            "bracket": [
+              1.0,
+              5.0
+            ],
+            "numSamples": 2,
+            "hasValue": true,
+            "hasAuthoredValue": true,
+            "hasAuthoredValueOpinion": true,
+            "hasFallbackValue": false,
+            "fallbackValue": null,
+            "varying": true
+          },
+          "ref_sub1": {
+            "default": "ref_sub1_def",
+            "values": [
+              "ref_sub1_1",
+              "ref_sub1_1",
+              "ref_sub1_1",
+              "ref_sub1_2",
+              "ref_sub1_2",
+              "ref_sub1_2",
+              "ref_sub1_2",
+              "ref_sub1_2",
+              "ref_sub1_2",
+              "ref_sub1_2",
+              "ref_sub1_2",
+              "ref_sub1_2"
+            ],
+            "samples": [
+              1.0,
+              2.0
+            ],
+            "interval": [
+              2.0
+            ],
+            "bracket": [
+              2.0,
+              2.0
+            ],
+            "numSamples": 2,
+            "hasValue": true,
+            "hasAuthoredValue": true,
+            "hasAuthoredValueOpinion": true,
+            "hasFallbackValue": false,
+            "fallbackValue": null,
+            "varying": true
+          }
+        }
+      },
+      {
+        "arc": 0,
+        "layer": "root.usda",
+        "kind": "strongerThan",
+        "target": {
+          "startNode": "/Parent/RefChild",
+          "startLayer": "session",
+          "stopNode": "/Parent/RefChild",
+          "stopLayer": "root.usda"
+        },
+        "attributes": {
+          "foo": {
+            "default": null,
+            "values": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            "samples": [],
+            "interval": [],
+            "bracket": [],
+            "numSamples": 0,
+            "hasValue": false,
+            "hasAuthoredValue": false,
+            "hasAuthoredValueOpinion": false,
+            "hasFallbackValue": false,
+            "fallbackValue": null,
+            "varying": false
+          },
+          "bar": {
+            "default": null,
+            "values": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            "samples": [],
+            "interval": [],
+            "bracket": [],
+            "numSamples": 0,
+            "hasValue": false,
+            "hasAuthoredValue": false,
+            "hasAuthoredValueOpinion": false,
+            "hasFallbackValue": false,
+            "fallbackValue": null,
+            "varying": false
+          },
+          "var": {
+            "default": null,
+            "values": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            "samples": [],
+            "interval": [],
+            "bracket": [],
+            "numSamples": 0,
+            "hasValue": false,
+            "hasAuthoredValue": false,
+            "hasAuthoredValueOpinion": false,
+            "hasFallbackValue": false,
+            "fallbackValue": null,
+            "varying": false
+          },
+          "radius": {
+            "default": 1.0,
+            "values": [
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0
+            ],
+            "samples": [],
+            "interval": [],
+            "bracket": [],
+            "numSamples": 0,
+            "hasValue": true,
+            "hasAuthoredValue": false,
+            "hasAuthoredValueOpinion": false,
+            "hasFallbackValue": true,
+            "fallbackValue": 1.0,
+            "varying": false
+          },
+          "sub1": {
+            "default": null,
+            "values": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            "samples": [],
+            "interval": [],
+            "bracket": [],
+            "numSamples": 0,
+            "hasValue": false,
+            "hasAuthoredValue": false,
+            "hasAuthoredValueOpinion": false,
+            "hasFallbackValue": false,
+            "fallbackValue": null,
+            "varying": false
+          },
+          "ref_sub1": {
+            "default": null,
+            "values": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            "samples": [],
+            "interval": [],
+            "bracket": [],
+            "numSamples": 0,
+            "hasValue": false,
+            "hasAuthoredValue": false,
+            "hasAuthoredValueOpinion": false,
+            "hasFallbackValue": false,
+            "fallbackValue": null,
+            "varying": false
+          }
+        }
+      },
+      {
+        "arc": 0,
+        "layer": "sub1.usda",
+        "kind": "upTo",
+        "target": {
+          "startNode": "/Parent/RefChild",
+          "startLayer": "sub1.usda",
+          "stopNode": null,
+          "stopLayer": null
+        },
+        "attributes": {
+          "foo": {
+            "default": 5.0,
+            "values": [
+              5.0,
+              5.0,
+              5.0,
+              5.0,
+              5.0,
+              5.0,
+              5.0,
+              5.0,
+              5.0,
+              5.0,
+              5.0,
+              5.0
+            ],
+            "samples": [],
+            "interval": [],
+            "bracket": [],
+            "numSamples": 0,
+            "hasValue": true,
+            "hasAuthoredValue": true,
+            "hasAuthoredValueOpinion": true,
+            "hasFallbackValue": false,
+            "fallbackValue": null,
+            "varying": false
+          },
+          "bar": {
+            "default": 5,
+            "values": [
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            "samples": [],
+            "interval": [],
+            "bracket": [],
+            "numSamples": 0,
+            "hasValue": true,
+            "hasAuthoredValue": true,
+            "hasAuthoredValueOpinion": true,
+            "hasFallbackValue": false,
+            "fallbackValue": null,
+            "varying": false
+          },
+          "var": {
+            "default": null,
+            "values": [
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1
+            ],
+            "samples": [
+              1.0,
+              5.0
+            ],
+            "interval": [
+              5.0
+            ],
+            "bracket": [
+              1.0,
+              5.0
+            ],
+            "numSamples": 2,
+            "hasValue": true,
+            "hasAuthoredValue": true,
+            "hasAuthoredValueOpinion": true,
+            "hasFallbackValue": false,
+            "fallbackValue": null,
+            "varying": true
+          },
+          "radius": {
+            "default": 5.0,
+            "values": [
+              5.0,
+              5.0,
+              5.0,
+              5.0,
+              5.0,
+              5.0,
+              5.0,
+              5.0,
+              5.0,
+              5.0,
+              5.0,
+              5.0
+            ],
+            "samples": [],
+            "interval": [],
+            "bracket": [],
+            "numSamples": 0,
+            "hasValue": true,
+            "hasAuthoredValue": true,
+            "hasAuthoredValueOpinion": true,
+            "hasFallbackValue": true,
+            "fallbackValue": 1.0,
+            "varying": false
+          },
+          "sub1": {
+            "default": "sub1_def",
+            "values": [
+              "sub1_1",
+              "sub1_1",
+              "sub1_1",
+              "sub1_1",
+              "sub1_1",
+              "sub1_1",
+              "sub1_5",
+              "sub1_5",
+              "sub1_5",
+              "sub1_5",
+              "sub1_5",
+              "sub1_5"
+            ],
+            "samples": [
+              1.0,
+              5.0
+            ],
+            "interval": [
+              5.0
+            ],
+            "bracket": [
+              1.0,
+              5.0
+            ],
+            "numSamples": 2,
+            "hasValue": true,
+            "hasAuthoredValue": true,
+            "hasAuthoredValueOpinion": true,
+            "hasFallbackValue": false,
+            "fallbackValue": null,
+            "varying": true
+          },
+          "ref_sub1": {
+            "default": "ref_sub1_def",
+            "values": [
+              "ref_sub1_1",
+              "ref_sub1_1",
+              "ref_sub1_1",
+              "ref_sub1_2",
+              "ref_sub1_2",
+              "ref_sub1_2",
+              "ref_sub1_2",
+              "ref_sub1_2",
+              "ref_sub1_2",
+              "ref_sub1_2",
+              "ref_sub1_2",
+              "ref_sub1_2"
+            ],
+            "samples": [
+              1.0,
+              2.0
+            ],
+            "interval": [
+              2.0
+            ],
+            "bracket": [
+              2.0,
+              2.0
+            ],
+            "numSamples": 2,
+            "hasValue": true,
+            "hasAuthoredValue": true,
+            "hasAuthoredValueOpinion": true,
+            "hasFallbackValue": false,
+            "fallbackValue": null,
+            "varying": true
+          }
+        }
+      },
+      {
+        "arc": 0,
+        "layer": "sub1.usda",
+        "kind": "strongerThan",
+        "target": {
+          "startNode": "/Parent/RefChild",
+          "startLayer": "session",
+          "stopNode": "/Parent/RefChild",
+          "stopLayer": "sub1.usda"
+        },
+        "attributes": {
+          "foo": {
+            "default": 6.0,
+            "values": [
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0
+            ],
+            "samples": [],
+            "interval": [],
+            "bracket": [],
+            "numSamples": 0,
+            "hasValue": true,
+            "hasAuthoredValue": true,
+            "hasAuthoredValueOpinion": true,
+            "hasFallbackValue": false,
+            "fallbackValue": null,
+            "varying": false
+          },
+          "bar": {
+            "default": null,
+            "values": [
+              6,
+              6,
+              6,
+              6,
+              6,
+              6,
+              6,
+              1,
+              1,
+              1,
+              1,
+              1
+            ],
+            "samples": [
+              1.0,
+              6.0
+            ],
+            "interval": [],
+            "bracket": [
+              1.0,
+              6.0
+            ],
+            "numSamples": 2,
+            "hasValue": true,
+            "hasAuthoredValue": true,
+            "hasAuthoredValueOpinion": true,
+            "hasFallbackValue": false,
+            "fallbackValue": null,
+            "varying": true
+          },
+          "var": {
+            "default": null,
+            "values": [
+              6,
+              6,
+              6,
+              6,
+              6,
+              6,
+              6,
+              1,
+              1,
+              1,
+              1,
+              1
+            ],
+            "samples": [
+              1.0,
+              6.0
+            ],
+            "interval": [],
+            "bracket": [
+              1.0,
+              6.0
+            ],
+            "numSamples": 2,
+            "hasValue": true,
+            "hasAuthoredValue": true,
+            "hasAuthoredValueOpinion": true,
+            "hasFallbackValue": false,
+            "fallbackValue": null,
+            "varying": true
+          },
+          "radius": {
+            "default": 6.0,
+            "values": [
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0
+            ],
+            "samples": [],
+            "interval": [],
+            "bracket": [],
+            "numSamples": 0,
+            "hasValue": true,
+            "hasAuthoredValue": true,
+            "hasAuthoredValueOpinion": true,
+            "hasFallbackValue": true,
+            "fallbackValue": 1.0,
+            "varying": false
+          },
+          "sub1": {
+            "default": null,
+            "values": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            "samples": [],
+            "interval": [],
+            "bracket": [],
+            "numSamples": 0,
+            "hasValue": false,
+            "hasAuthoredValue": false,
+            "hasAuthoredValueOpinion": false,
+            "hasFallbackValue": false,
+            "fallbackValue": null,
+            "varying": false
+          },
+          "ref_sub1": {
+            "default": null,
+            "values": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            "samples": [],
+            "interval": [],
+            "bracket": [],
+            "numSamples": 0,
+            "hasValue": false,
+            "hasAuthoredValue": false,
+            "hasAuthoredValueOpinion": false,
+            "hasFallbackValue": false,
+            "fallbackValue": null,
+            "varying": false
+          }
+        }
+      },
+      {
+        "arc": 0,
+        "layer": "sub2.usda",
+        "kind": "upTo",
+        "target": {
+          "startNode": "/Parent/RefChild",
+          "startLayer": "sub2.usda",
+          "stopNode": null,
+          "stopLayer": null
+        },
+        "attributes": {
+          "foo": {
+            "default": 4.0,
+            "values": [
+              4.0,
+              4.0,
+              4.0,
+              4.0,
+              4.0,
+              4.0,
+              4.0,
+              4.0,
+              4.0,
+              4.0,
+              4.0,
+              4.0
+            ],
+            "samples": [],
+            "interval": [],
+            "bracket": [],
+            "numSamples": 0,
+            "hasValue": true,
+            "hasAuthoredValue": true,
+            "hasAuthoredValueOpinion": true,
+            "hasFallbackValue": false,
+            "fallbackValue": null,
+            "varying": false
+          },
+          "bar": {
+            "default": 3,
+            "values": [
+              4,
+              4,
+              4,
+              4,
+              4,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1
+            ],
+            "samples": [
+              1.0,
+              4.0
+            ],
+            "interval": [
+              4.0
+            ],
+            "bracket": [
+              1.0,
+              4.0
+            ],
+            "numSamples": 2,
+            "hasValue": true,
+            "hasAuthoredValue": true,
+            "hasAuthoredValueOpinion": true,
+            "hasFallbackValue": false,
+            "fallbackValue": null,
+            "varying": true
+          },
+          "var": {
+            "default": null,
+            "values": [
+              4,
+              4,
+              4,
+              4,
+              4,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1
+            ],
+            "samples": [
+              1.0,
+              4.0
+            ],
+            "interval": [
+              4.0
+            ],
+            "bracket": [
+              1.0,
+              4.0
+            ],
+            "numSamples": 2,
+            "hasValue": true,
+            "hasAuthoredValue": true,
+            "hasAuthoredValueOpinion": true,
+            "hasFallbackValue": false,
+            "fallbackValue": null,
+            "varying": true
+          },
+          "radius": {
+            "default": 4.0,
+            "values": [
+              4.0,
+              4.0,
+              4.0,
+              4.0,
+              4.0,
+              4.0,
+              4.0,
+              4.0,
+              4.0,
+              4.0,
+              4.0,
+              4.0
+            ],
+            "samples": [],
+            "interval": [],
+            "bracket": [],
+            "numSamples": 0,
+            "hasValue": true,
+            "hasAuthoredValue": true,
+            "hasAuthoredValueOpinion": true,
+            "hasFallbackValue": true,
+            "fallbackValue": 1.0,
+            "varying": false
+          },
+          "sub1": {
+            "default": null,
+            "values": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            "samples": [],
+            "interval": [],
+            "bracket": [],
+            "numSamples": 0,
+            "hasValue": false,
+            "hasAuthoredValue": false,
+            "hasAuthoredValueOpinion": false,
+            "hasFallbackValue": false,
+            "fallbackValue": null,
+            "varying": false
+          },
+          "ref_sub1": {
+            "default": "ref_sub1_def",
+            "values": [
+              "ref_sub1_1",
+              "ref_sub1_1",
+              "ref_sub1_1",
+              "ref_sub1_2",
+              "ref_sub1_2",
+              "ref_sub1_2",
+              "ref_sub1_2",
+              "ref_sub1_2",
+              "ref_sub1_2",
+              "ref_sub1_2",
+              "ref_sub1_2",
+              "ref_sub1_2"
+            ],
+            "samples": [
+              1.0,
+              2.0
+            ],
+            "interval": [
+              2.0
+            ],
+            "bracket": [
+              2.0,
+              2.0
+            ],
+            "numSamples": 2,
+            "hasValue": true,
+            "hasAuthoredValue": true,
+            "hasAuthoredValueOpinion": true,
+            "hasFallbackValue": false,
+            "fallbackValue": null,
+            "varying": true
+          }
+        }
+      },
+      {
+        "arc": 0,
+        "layer": "sub2.usda",
+        "kind": "strongerThan",
+        "target": {
+          "startNode": "/Parent/RefChild",
+          "startLayer": "session",
+          "stopNode": "/Parent/RefChild",
+          "stopLayer": "sub2.usda"
+        },
+        "attributes": {
+          "foo": {
+            "default": 6.0,
+            "values": [
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0
+            ],
+            "samples": [],
+            "interval": [],
+            "bracket": [],
+            "numSamples": 0,
+            "hasValue": true,
+            "hasAuthoredValue": true,
+            "hasAuthoredValueOpinion": true,
+            "hasFallbackValue": false,
+            "fallbackValue": null,
+            "varying": false
+          },
+          "bar": {
+            "default": 5,
+            "values": [
+              6,
+              6,
+              6,
+              6,
+              6,
+              6,
+              6,
+              1,
+              1,
+              1,
+              1,
+              1
+            ],
+            "samples": [
+              1.0,
+              6.0
+            ],
+            "interval": [],
+            "bracket": [
+              1.0,
+              6.0
+            ],
+            "numSamples": 2,
+            "hasValue": true,
+            "hasAuthoredValue": true,
+            "hasAuthoredValueOpinion": true,
+            "hasFallbackValue": false,
+            "fallbackValue": null,
+            "varying": true
+          },
+          "var": {
+            "default": null,
+            "values": [
+              6,
+              6,
+              6,
+              6,
+              6,
+              6,
+              6,
+              1,
+              1,
+              1,
+              1,
+              1
+            ],
+            "samples": [
+              1.0,
+              6.0
+            ],
+            "interval": [],
+            "bracket": [
+              1.0,
+              6.0
+            ],
+            "numSamples": 2,
+            "hasValue": true,
+            "hasAuthoredValue": true,
+            "hasAuthoredValueOpinion": true,
+            "hasFallbackValue": false,
+            "fallbackValue": null,
+            "varying": true
+          },
+          "radius": {
+            "default": 6.0,
+            "values": [
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0
+            ],
+            "samples": [],
+            "interval": [],
+            "bracket": [],
+            "numSamples": 0,
+            "hasValue": true,
+            "hasAuthoredValue": true,
+            "hasAuthoredValueOpinion": true,
+            "hasFallbackValue": true,
+            "fallbackValue": 1.0,
+            "varying": false
+          },
+          "sub1": {
+            "default": "sub1_def",
+            "values": [
+              "sub1_1",
+              "sub1_1",
+              "sub1_1",
+              "sub1_1",
+              "sub1_1",
+              "sub1_1",
+              "sub1_5",
+              "sub1_5",
+              "sub1_5",
+              "sub1_5",
+              "sub1_5",
+              "sub1_5"
+            ],
+            "samples": [
+              1.0,
+              5.0
+            ],
+            "interval": [
+              5.0
+            ],
+            "bracket": [
+              1.0,
+              5.0
+            ],
+            "numSamples": 2,
+            "hasValue": true,
+            "hasAuthoredValue": true,
+            "hasAuthoredValueOpinion": true,
+            "hasFallbackValue": false,
+            "fallbackValue": null,
+            "varying": true
+          },
+          "ref_sub1": {
+            "default": null,
+            "values": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            "samples": [],
+            "interval": [],
+            "bracket": [],
+            "numSamples": 0,
+            "hasValue": false,
+            "hasAuthoredValue": false,
+            "hasAuthoredValueOpinion": false,
+            "hasFallbackValue": false,
+            "fallbackValue": null,
+            "varying": false
+          }
+        }
+      },
+      {
+        "arc": 1,
+        "layer": "session",
+        "kind": "upTo",
+        "target": {
+          "startNode": "/InternalRef/RefChild",
+          "startLayer": "session",
+          "stopNode": null,
+          "stopLayer": null
+        },
+        "attributes": {
+          "foo": {
+            "default": 3.0,
+            "values": [
+              3.0,
+              3.0,
+              3.0,
+              3.0,
+              3.0,
+              3.0,
+              3.0,
+              3.0,
+              3.0,
+              3.0,
+              3.0,
+              3.0
+            ],
+            "samples": [],
+            "interval": [],
+            "bracket": [],
+            "numSamples": 0,
+            "hasValue": true,
+            "hasAuthoredValue": true,
+            "hasAuthoredValueOpinion": true,
+            "hasFallbackValue": false,
+            "fallbackValue": null,
+            "varying": false
+          },
+          "bar": {
+            "default": 3,
+            "values": [
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3
+            ],
+            "samples": [],
+            "interval": [],
+            "bracket": [],
+            "numSamples": 0,
+            "hasValue": true,
+            "hasAuthoredValue": true,
+            "hasAuthoredValueOpinion": true,
+            "hasFallbackValue": false,
+            "fallbackValue": null,
+            "varying": false
+          },
+          "var": {
+            "default": null,
+            "values": [
+              3,
+              3,
+              3,
+              3,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1
+            ],
+            "samples": [
+              1.0,
+              3.0
+            ],
+            "interval": [
+              3.0
+            ],
+            "bracket": [
+              1.0,
+              3.0
+            ],
+            "numSamples": 2,
+            "hasValue": true,
+            "hasAuthoredValue": true,
+            "hasAuthoredValueOpinion": true,
+            "hasFallbackValue": false,
+            "fallbackValue": null,
+            "varying": true
+          },
+          "radius": {
+            "default": 3.0,
+            "values": [
+              3.0,
+              3.0,
+              3.0,
+              3.0,
+              3.0,
+              3.0,
+              3.0,
+              3.0,
+              3.0,
+              3.0,
+              3.0,
+              3.0
+            ],
+            "samples": [],
+            "interval": [],
+            "bracket": [],
+            "numSamples": 0,
+            "hasValue": true,
+            "hasAuthoredValue": true,
+            "hasAuthoredValueOpinion": true,
+            "hasFallbackValue": true,
+            "fallbackValue": 1.0,
+            "varying": false
+          },
+          "sub1": {
+            "default": null,
+            "values": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            "samples": [],
+            "interval": [],
+            "bracket": [],
+            "numSamples": 0,
+            "hasValue": false,
+            "hasAuthoredValue": false,
+            "hasAuthoredValueOpinion": false,
+            "hasFallbackValue": false,
+            "fallbackValue": null,
+            "varying": false
+          },
+          "ref_sub1": {
+            "default": "ref_sub1_def",
+            "values": [
+              "ref_sub1_1",
+              "ref_sub1_1",
+              "ref_sub1_1",
+              "ref_sub1_2",
+              "ref_sub1_2",
+              "ref_sub1_2",
+              "ref_sub1_2",
+              "ref_sub1_2",
+              "ref_sub1_2",
+              "ref_sub1_2",
+              "ref_sub1_2",
+              "ref_sub1_2"
+            ],
+            "samples": [
+              1.0,
+              2.0
+            ],
+            "interval": [
+              2.0
+            ],
+            "bracket": [
+              2.0,
+              2.0
+            ],
+            "numSamples": 2,
+            "hasValue": true,
+            "hasAuthoredValue": true,
+            "hasAuthoredValueOpinion": true,
+            "hasFallbackValue": false,
+            "fallbackValue": null,
+            "varying": true
+          }
+        }
+      },
+      {
+        "arc": 1,
+        "layer": "session",
+        "kind": "strongerThan",
+        "target": {
+          "startNode": "/Parent/RefChild",
+          "startLayer": "session",
+          "stopNode": "/InternalRef/RefChild",
+          "stopLayer": "session"
+        },
+        "attributes": {
+          "foo": {
+            "default": 6.0,
+            "values": [
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0
+            ],
+            "samples": [],
+            "interval": [],
+            "bracket": [],
+            "numSamples": 0,
+            "hasValue": true,
+            "hasAuthoredValue": true,
+            "hasAuthoredValueOpinion": true,
+            "hasFallbackValue": false,
+            "fallbackValue": null,
+            "varying": false
+          },
+          "bar": {
+            "default": 5,
+            "values": [
+              6,
+              6,
+              6,
+              6,
+              6,
+              6,
+              6,
+              1,
+              1,
+              1,
+              1,
+              1
+            ],
+            "samples": [
+              1.0,
+              6.0
+            ],
+            "interval": [],
+            "bracket": [
+              1.0,
+              6.0
+            ],
+            "numSamples": 2,
+            "hasValue": true,
+            "hasAuthoredValue": true,
+            "hasAuthoredValueOpinion": true,
+            "hasFallbackValue": false,
+            "fallbackValue": null,
+            "varying": true
+          },
+          "var": {
+            "default": null,
+            "values": [
+              6,
+              6,
+              6,
+              6,
+              6,
+              6,
+              6,
+              1,
+              1,
+              1,
+              1,
+              1
+            ],
+            "samples": [
+              1.0,
+              6.0
+            ],
+            "interval": [],
+            "bracket": [
+              1.0,
+              6.0
+            ],
+            "numSamples": 2,
+            "hasValue": true,
+            "hasAuthoredValue": true,
+            "hasAuthoredValueOpinion": true,
+            "hasFallbackValue": false,
+            "fallbackValue": null,
+            "varying": true
+          },
+          "radius": {
+            "default": 6.0,
+            "values": [
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0
+            ],
+            "samples": [],
+            "interval": [],
+            "bracket": [],
+            "numSamples": 0,
+            "hasValue": true,
+            "hasAuthoredValue": true,
+            "hasAuthoredValueOpinion": true,
+            "hasFallbackValue": true,
+            "fallbackValue": 1.0,
+            "varying": false
+          },
+          "sub1": {
+            "default": "sub1_def",
+            "values": [
+              "sub1_1",
+              "sub1_1",
+              "sub1_1",
+              "sub1_1",
+              "sub1_1",
+              "sub1_1",
+              "sub1_5",
+              "sub1_5",
+              "sub1_5",
+              "sub1_5",
+              "sub1_5",
+              "sub1_5"
+            ],
+            "samples": [
+              1.0,
+              5.0
+            ],
+            "interval": [
+              5.0
+            ],
+            "bracket": [
+              1.0,
+              5.0
+            ],
+            "numSamples": 2,
+            "hasValue": true,
+            "hasAuthoredValue": true,
+            "hasAuthoredValueOpinion": true,
+            "hasFallbackValue": false,
+            "fallbackValue": null,
+            "varying": true
+          },
+          "ref_sub1": {
+            "default": null,
+            "values": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            "samples": [],
+            "interval": [],
+            "bracket": [],
+            "numSamples": 0,
+            "hasValue": false,
+            "hasAuthoredValue": false,
+            "hasAuthoredValueOpinion": false,
+            "hasFallbackValue": false,
+            "fallbackValue": null,
+            "varying": false
+          }
+        }
+      },
+      {
+        "arc": 1,
+        "layer": "root.usda",
+        "kind": "upTo",
+        "target": {
+          "startNode": "/InternalRef/RefChild",
+          "startLayer": "root.usda",
+          "stopNode": null,
+          "stopLayer": null
+        },
+        "attributes": {
+          "foo": {
+            "default": 3.0,
+            "values": [
+              3.0,
+              3.0,
+              3.0,
+              3.0,
+              3.0,
+              3.0,
+              3.0,
+              3.0,
+              3.0,
+              3.0,
+              3.0,
+              3.0
+            ],
+            "samples": [],
+            "interval": [],
+            "bracket": [],
+            "numSamples": 0,
+            "hasValue": true,
+            "hasAuthoredValue": true,
+            "hasAuthoredValueOpinion": true,
+            "hasFallbackValue": false,
+            "fallbackValue": null,
+            "varying": false
+          },
+          "bar": {
+            "default": 3,
+            "values": [
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3
+            ],
+            "samples": [],
+            "interval": [],
+            "bracket": [],
+            "numSamples": 0,
+            "hasValue": true,
+            "hasAuthoredValue": true,
+            "hasAuthoredValueOpinion": true,
+            "hasFallbackValue": false,
+            "fallbackValue": null,
+            "varying": false
+          },
+          "var": {
+            "default": null,
+            "values": [
+              3,
+              3,
+              3,
+              3,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1
+            ],
+            "samples": [
+              1.0,
+              3.0
+            ],
+            "interval": [
+              3.0
+            ],
+            "bracket": [
+              1.0,
+              3.0
+            ],
+            "numSamples": 2,
+            "hasValue": true,
+            "hasAuthoredValue": true,
+            "hasAuthoredValueOpinion": true,
+            "hasFallbackValue": false,
+            "fallbackValue": null,
+            "varying": true
+          },
+          "radius": {
+            "default": 3.0,
+            "values": [
+              3.0,
+              3.0,
+              3.0,
+              3.0,
+              3.0,
+              3.0,
+              3.0,
+              3.0,
+              3.0,
+              3.0,
+              3.0,
+              3.0
+            ],
+            "samples": [],
+            "interval": [],
+            "bracket": [],
+            "numSamples": 0,
+            "hasValue": true,
+            "hasAuthoredValue": true,
+            "hasAuthoredValueOpinion": true,
+            "hasFallbackValue": true,
+            "fallbackValue": 1.0,
+            "varying": false
+          },
+          "sub1": {
+            "default": null,
+            "values": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            "samples": [],
+            "interval": [],
+            "bracket": [],
+            "numSamples": 0,
+            "hasValue": false,
+            "hasAuthoredValue": false,
+            "hasAuthoredValueOpinion": false,
+            "hasFallbackValue": false,
+            "fallbackValue": null,
+            "varying": false
+          },
+          "ref_sub1": {
+            "default": "ref_sub1_def",
+            "values": [
+              "ref_sub1_1",
+              "ref_sub1_1",
+              "ref_sub1_1",
+              "ref_sub1_2",
+              "ref_sub1_2",
+              "ref_sub1_2",
+              "ref_sub1_2",
+              "ref_sub1_2",
+              "ref_sub1_2",
+              "ref_sub1_2",
+              "ref_sub1_2",
+              "ref_sub1_2"
+            ],
+            "samples": [
+              1.0,
+              2.0
+            ],
+            "interval": [
+              2.0
+            ],
+            "bracket": [
+              2.0,
+              2.0
+            ],
+            "numSamples": 2,
+            "hasValue": true,
+            "hasAuthoredValue": true,
+            "hasAuthoredValueOpinion": true,
+            "hasFallbackValue": false,
+            "fallbackValue": null,
+            "varying": true
+          }
+        }
+      },
+      {
+        "arc": 1,
+        "layer": "root.usda",
+        "kind": "strongerThan",
+        "target": {
+          "startNode": "/Parent/RefChild",
+          "startLayer": "session",
+          "stopNode": "/InternalRef/RefChild",
+          "stopLayer": "root.usda"
+        },
+        "attributes": {
+          "foo": {
+            "default": 6.0,
+            "values": [
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0
+            ],
+            "samples": [],
+            "interval": [],
+            "bracket": [],
+            "numSamples": 0,
+            "hasValue": true,
+            "hasAuthoredValue": true,
+            "hasAuthoredValueOpinion": true,
+            "hasFallbackValue": false,
+            "fallbackValue": null,
+            "varying": false
+          },
+          "bar": {
+            "default": 5,
+            "values": [
+              6,
+              6,
+              6,
+              6,
+              6,
+              6,
+              6,
+              1,
+              1,
+              1,
+              1,
+              1
+            ],
+            "samples": [
+              1.0,
+              6.0
+            ],
+            "interval": [],
+            "bracket": [
+              1.0,
+              6.0
+            ],
+            "numSamples": 2,
+            "hasValue": true,
+            "hasAuthoredValue": true,
+            "hasAuthoredValueOpinion": true,
+            "hasFallbackValue": false,
+            "fallbackValue": null,
+            "varying": true
+          },
+          "var": {
+            "default": null,
+            "values": [
+              6,
+              6,
+              6,
+              6,
+              6,
+              6,
+              6,
+              1,
+              1,
+              1,
+              1,
+              1
+            ],
+            "samples": [
+              1.0,
+              6.0
+            ],
+            "interval": [],
+            "bracket": [
+              1.0,
+              6.0
+            ],
+            "numSamples": 2,
+            "hasValue": true,
+            "hasAuthoredValue": true,
+            "hasAuthoredValueOpinion": true,
+            "hasFallbackValue": false,
+            "fallbackValue": null,
+            "varying": true
+          },
+          "radius": {
+            "default": 6.0,
+            "values": [
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0
+            ],
+            "samples": [],
+            "interval": [],
+            "bracket": [],
+            "numSamples": 0,
+            "hasValue": true,
+            "hasAuthoredValue": true,
+            "hasAuthoredValueOpinion": true,
+            "hasFallbackValue": true,
+            "fallbackValue": 1.0,
+            "varying": false
+          },
+          "sub1": {
+            "default": "sub1_def",
+            "values": [
+              "sub1_1",
+              "sub1_1",
+              "sub1_1",
+              "sub1_1",
+              "sub1_1",
+              "sub1_1",
+              "sub1_5",
+              "sub1_5",
+              "sub1_5",
+              "sub1_5",
+              "sub1_5",
+              "sub1_5"
+            ],
+            "samples": [
+              1.0,
+              5.0
+            ],
+            "interval": [
+              5.0
+            ],
+            "bracket": [
+              1.0,
+              5.0
+            ],
+            "numSamples": 2,
+            "hasValue": true,
+            "hasAuthoredValue": true,
+            "hasAuthoredValueOpinion": true,
+            "hasFallbackValue": false,
+            "fallbackValue": null,
+            "varying": true
+          },
+          "ref_sub1": {
+            "default": null,
+            "values": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            "samples": [],
+            "interval": [],
+            "bracket": [],
+            "numSamples": 0,
+            "hasValue": false,
+            "hasAuthoredValue": false,
+            "hasAuthoredValueOpinion": false,
+            "hasFallbackValue": false,
+            "fallbackValue": null,
+            "varying": false
+          }
+        }
+      },
+      {
+        "arc": 1,
+        "layer": "sub1.usda",
+        "kind": "upTo",
+        "target": {
+          "startNode": "/InternalRef/RefChild",
+          "startLayer": "sub1.usda",
+          "stopNode": null,
+          "stopLayer": null
+        },
+        "attributes": {
+          "foo": {
+            "default": 3.0,
+            "values": [
+              3.0,
+              3.0,
+              3.0,
+              3.0,
+              3.0,
+              3.0,
+              3.0,
+              3.0,
+              3.0,
+              3.0,
+              3.0,
+              3.0
+            ],
+            "samples": [],
+            "interval": [],
+            "bracket": [],
+            "numSamples": 0,
+            "hasValue": true,
+            "hasAuthoredValue": true,
+            "hasAuthoredValueOpinion": true,
+            "hasFallbackValue": false,
+            "fallbackValue": null,
+            "varying": false
+          },
+          "bar": {
+            "default": 3,
+            "values": [
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3
+            ],
+            "samples": [],
+            "interval": [],
+            "bracket": [],
+            "numSamples": 0,
+            "hasValue": true,
+            "hasAuthoredValue": true,
+            "hasAuthoredValueOpinion": true,
+            "hasFallbackValue": false,
+            "fallbackValue": null,
+            "varying": false
+          },
+          "var": {
+            "default": null,
+            "values": [
+              3,
+              3,
+              3,
+              3,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1
+            ],
+            "samples": [
+              1.0,
+              3.0
+            ],
+            "interval": [
+              3.0
+            ],
+            "bracket": [
+              1.0,
+              3.0
+            ],
+            "numSamples": 2,
+            "hasValue": true,
+            "hasAuthoredValue": true,
+            "hasAuthoredValueOpinion": true,
+            "hasFallbackValue": false,
+            "fallbackValue": null,
+            "varying": true
+          },
+          "radius": {
+            "default": 3.0,
+            "values": [
+              3.0,
+              3.0,
+              3.0,
+              3.0,
+              3.0,
+              3.0,
+              3.0,
+              3.0,
+              3.0,
+              3.0,
+              3.0,
+              3.0
+            ],
+            "samples": [],
+            "interval": [],
+            "bracket": [],
+            "numSamples": 0,
+            "hasValue": true,
+            "hasAuthoredValue": true,
+            "hasAuthoredValueOpinion": true,
+            "hasFallbackValue": true,
+            "fallbackValue": 1.0,
+            "varying": false
+          },
+          "sub1": {
+            "default": null,
+            "values": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            "samples": [],
+            "interval": [],
+            "bracket": [],
+            "numSamples": 0,
+            "hasValue": false,
+            "hasAuthoredValue": false,
+            "hasAuthoredValueOpinion": false,
+            "hasFallbackValue": false,
+            "fallbackValue": null,
+            "varying": false
+          },
+          "ref_sub1": {
+            "default": "ref_sub1_def",
+            "values": [
+              "ref_sub1_1",
+              "ref_sub1_1",
+              "ref_sub1_1",
+              "ref_sub1_2",
+              "ref_sub1_2",
+              "ref_sub1_2",
+              "ref_sub1_2",
+              "ref_sub1_2",
+              "ref_sub1_2",
+              "ref_sub1_2",
+              "ref_sub1_2",
+              "ref_sub1_2"
+            ],
+            "samples": [
+              1.0,
+              2.0
+            ],
+            "interval": [
+              2.0
+            ],
+            "bracket": [
+              2.0,
+              2.0
+            ],
+            "numSamples": 2,
+            "hasValue": true,
+            "hasAuthoredValue": true,
+            "hasAuthoredValueOpinion": true,
+            "hasFallbackValue": false,
+            "fallbackValue": null,
+            "varying": true
+          }
+        }
+      },
+      {
+        "arc": 1,
+        "layer": "sub1.usda",
+        "kind": "strongerThan",
+        "target": {
+          "startNode": "/Parent/RefChild",
+          "startLayer": "session",
+          "stopNode": "/InternalRef/RefChild",
+          "stopLayer": "sub1.usda"
+        },
+        "attributes": {
+          "foo": {
+            "default": 6.0,
+            "values": [
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0
+            ],
+            "samples": [],
+            "interval": [],
+            "bracket": [],
+            "numSamples": 0,
+            "hasValue": true,
+            "hasAuthoredValue": true,
+            "hasAuthoredValueOpinion": true,
+            "hasFallbackValue": false,
+            "fallbackValue": null,
+            "varying": false
+          },
+          "bar": {
+            "default": 5,
+            "values": [
+              6,
+              6,
+              6,
+              6,
+              6,
+              6,
+              6,
+              1,
+              1,
+              1,
+              1,
+              1
+            ],
+            "samples": [
+              1.0,
+              6.0
+            ],
+            "interval": [],
+            "bracket": [
+              1.0,
+              6.0
+            ],
+            "numSamples": 2,
+            "hasValue": true,
+            "hasAuthoredValue": true,
+            "hasAuthoredValueOpinion": true,
+            "hasFallbackValue": false,
+            "fallbackValue": null,
+            "varying": true
+          },
+          "var": {
+            "default": null,
+            "values": [
+              6,
+              6,
+              6,
+              6,
+              6,
+              6,
+              6,
+              1,
+              1,
+              1,
+              1,
+              1
+            ],
+            "samples": [
+              1.0,
+              6.0
+            ],
+            "interval": [],
+            "bracket": [
+              1.0,
+              6.0
+            ],
+            "numSamples": 2,
+            "hasValue": true,
+            "hasAuthoredValue": true,
+            "hasAuthoredValueOpinion": true,
+            "hasFallbackValue": false,
+            "fallbackValue": null,
+            "varying": true
+          },
+          "radius": {
+            "default": 6.0,
+            "values": [
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0
+            ],
+            "samples": [],
+            "interval": [],
+            "bracket": [],
+            "numSamples": 0,
+            "hasValue": true,
+            "hasAuthoredValue": true,
+            "hasAuthoredValueOpinion": true,
+            "hasFallbackValue": true,
+            "fallbackValue": 1.0,
+            "varying": false
+          },
+          "sub1": {
+            "default": "sub1_def",
+            "values": [
+              "sub1_1",
+              "sub1_1",
+              "sub1_1",
+              "sub1_1",
+              "sub1_1",
+              "sub1_1",
+              "sub1_5",
+              "sub1_5",
+              "sub1_5",
+              "sub1_5",
+              "sub1_5",
+              "sub1_5"
+            ],
+            "samples": [
+              1.0,
+              5.0
+            ],
+            "interval": [
+              5.0
+            ],
+            "bracket": [
+              1.0,
+              5.0
+            ],
+            "numSamples": 2,
+            "hasValue": true,
+            "hasAuthoredValue": true,
+            "hasAuthoredValueOpinion": true,
+            "hasFallbackValue": false,
+            "fallbackValue": null,
+            "varying": true
+          },
+          "ref_sub1": {
+            "default": null,
+            "values": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            "samples": [],
+            "interval": [],
+            "bracket": [],
+            "numSamples": 0,
+            "hasValue": false,
+            "hasAuthoredValue": false,
+            "hasAuthoredValueOpinion": false,
+            "hasFallbackValue": false,
+            "fallbackValue": null,
+            "varying": false
+          }
+        }
+      },
+      {
+        "arc": 1,
+        "layer": "sub2.usda",
+        "kind": "upTo",
+        "target": {
+          "startNode": "/InternalRef/RefChild",
+          "startLayer": "sub2.usda",
+          "stopNode": null,
+          "stopLayer": null
+        },
+        "attributes": {
+          "foo": {
+            "default": 3.0,
+            "values": [
+              3.0,
+              3.0,
+              3.0,
+              3.0,
+              3.0,
+              3.0,
+              3.0,
+              3.0,
+              3.0,
+              3.0,
+              3.0,
+              3.0
+            ],
+            "samples": [],
+            "interval": [],
+            "bracket": [],
+            "numSamples": 0,
+            "hasValue": true,
+            "hasAuthoredValue": true,
+            "hasAuthoredValueOpinion": true,
+            "hasFallbackValue": false,
+            "fallbackValue": null,
+            "varying": false
+          },
+          "bar": {
+            "default": 3,
+            "values": [
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3
+            ],
+            "samples": [],
+            "interval": [],
+            "bracket": [],
+            "numSamples": 0,
+            "hasValue": true,
+            "hasAuthoredValue": true,
+            "hasAuthoredValueOpinion": true,
+            "hasFallbackValue": false,
+            "fallbackValue": null,
+            "varying": false
+          },
+          "var": {
+            "default": null,
+            "values": [
+              3,
+              3,
+              3,
+              3,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1
+            ],
+            "samples": [
+              1.0,
+              3.0
+            ],
+            "interval": [
+              3.0
+            ],
+            "bracket": [
+              1.0,
+              3.0
+            ],
+            "numSamples": 2,
+            "hasValue": true,
+            "hasAuthoredValue": true,
+            "hasAuthoredValueOpinion": true,
+            "hasFallbackValue": false,
+            "fallbackValue": null,
+            "varying": true
+          },
+          "radius": {
+            "default": 3.0,
+            "values": [
+              3.0,
+              3.0,
+              3.0,
+              3.0,
+              3.0,
+              3.0,
+              3.0,
+              3.0,
+              3.0,
+              3.0,
+              3.0,
+              3.0
+            ],
+            "samples": [],
+            "interval": [],
+            "bracket": [],
+            "numSamples": 0,
+            "hasValue": true,
+            "hasAuthoredValue": true,
+            "hasAuthoredValueOpinion": true,
+            "hasFallbackValue": true,
+            "fallbackValue": 1.0,
+            "varying": false
+          },
+          "sub1": {
+            "default": null,
+            "values": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            "samples": [],
+            "interval": [],
+            "bracket": [],
+            "numSamples": 0,
+            "hasValue": false,
+            "hasAuthoredValue": false,
+            "hasAuthoredValueOpinion": false,
+            "hasFallbackValue": false,
+            "fallbackValue": null,
+            "varying": false
+          },
+          "ref_sub1": {
+            "default": "ref_sub1_def",
+            "values": [
+              "ref_sub1_1",
+              "ref_sub1_1",
+              "ref_sub1_1",
+              "ref_sub1_2",
+              "ref_sub1_2",
+              "ref_sub1_2",
+              "ref_sub1_2",
+              "ref_sub1_2",
+              "ref_sub1_2",
+              "ref_sub1_2",
+              "ref_sub1_2",
+              "ref_sub1_2"
+            ],
+            "samples": [
+              1.0,
+              2.0
+            ],
+            "interval": [
+              2.0
+            ],
+            "bracket": [
+              2.0,
+              2.0
+            ],
+            "numSamples": 2,
+            "hasValue": true,
+            "hasAuthoredValue": true,
+            "hasAuthoredValueOpinion": true,
+            "hasFallbackValue": false,
+            "fallbackValue": null,
+            "varying": true
+          }
+        }
+      },
+      {
+        "arc": 1,
+        "layer": "sub2.usda",
+        "kind": "strongerThan",
+        "target": {
+          "startNode": "/Parent/RefChild",
+          "startLayer": "session",
+          "stopNode": "/InternalRef/RefChild",
+          "stopLayer": "sub2.usda"
+        },
+        "attributes": {
+          "foo": {
+            "default": 6.0,
+            "values": [
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0
+            ],
+            "samples": [],
+            "interval": [],
+            "bracket": [],
+            "numSamples": 0,
+            "hasValue": true,
+            "hasAuthoredValue": true,
+            "hasAuthoredValueOpinion": true,
+            "hasFallbackValue": false,
+            "fallbackValue": null,
+            "varying": false
+          },
+          "bar": {
+            "default": 5,
+            "values": [
+              6,
+              6,
+              6,
+              6,
+              6,
+              6,
+              6,
+              1,
+              1,
+              1,
+              1,
+              1
+            ],
+            "samples": [
+              1.0,
+              6.0
+            ],
+            "interval": [],
+            "bracket": [
+              1.0,
+              6.0
+            ],
+            "numSamples": 2,
+            "hasValue": true,
+            "hasAuthoredValue": true,
+            "hasAuthoredValueOpinion": true,
+            "hasFallbackValue": false,
+            "fallbackValue": null,
+            "varying": true
+          },
+          "var": {
+            "default": null,
+            "values": [
+              6,
+              6,
+              6,
+              6,
+              6,
+              6,
+              6,
+              1,
+              1,
+              1,
+              1,
+              1
+            ],
+            "samples": [
+              1.0,
+              6.0
+            ],
+            "interval": [],
+            "bracket": [
+              1.0,
+              6.0
+            ],
+            "numSamples": 2,
+            "hasValue": true,
+            "hasAuthoredValue": true,
+            "hasAuthoredValueOpinion": true,
+            "hasFallbackValue": false,
+            "fallbackValue": null,
+            "varying": true
+          },
+          "radius": {
+            "default": 6.0,
+            "values": [
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0
+            ],
+            "samples": [],
+            "interval": [],
+            "bracket": [],
+            "numSamples": 0,
+            "hasValue": true,
+            "hasAuthoredValue": true,
+            "hasAuthoredValueOpinion": true,
+            "hasFallbackValue": true,
+            "fallbackValue": 1.0,
+            "varying": false
+          },
+          "sub1": {
+            "default": "sub1_def",
+            "values": [
+              "sub1_1",
+              "sub1_1",
+              "sub1_1",
+              "sub1_1",
+              "sub1_1",
+              "sub1_1",
+              "sub1_5",
+              "sub1_5",
+              "sub1_5",
+              "sub1_5",
+              "sub1_5",
+              "sub1_5"
+            ],
+            "samples": [
+              1.0,
+              5.0
+            ],
+            "interval": [
+              5.0
+            ],
+            "bracket": [
+              1.0,
+              5.0
+            ],
+            "numSamples": 2,
+            "hasValue": true,
+            "hasAuthoredValue": true,
+            "hasAuthoredValueOpinion": true,
+            "hasFallbackValue": false,
+            "fallbackValue": null,
+            "varying": true
+          },
+          "ref_sub1": {
+            "default": null,
+            "values": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            "samples": [],
+            "interval": [],
+            "bracket": [],
+            "numSamples": 0,
+            "hasValue": false,
+            "hasAuthoredValue": false,
+            "hasAuthoredValueOpinion": false,
+            "hasFallbackValue": false,
+            "fallbackValue": null,
+            "varying": false
+          }
+        }
+      },
+      {
+        "arc": 2,
+        "layer": "ref.usda",
+        "kind": "upTo",
+        "target": {
+          "startNode": "/RefParent/RefChild",
+          "startLayer": "ref.usda",
+          "stopNode": null,
+          "stopLayer": null
+        },
+        "attributes": {
+          "foo": {
+            "default": 3.0,
+            "values": [
+              3.0,
+              3.0,
+              3.0,
+              3.0,
+              3.0,
+              3.0,
+              3.0,
+              3.0,
+              3.0,
+              3.0,
+              3.0,
+              3.0
+            ],
+            "samples": [],
+            "interval": [],
+            "bracket": [],
+            "numSamples": 0,
+            "hasValue": true,
+            "hasAuthoredValue": true,
+            "hasAuthoredValueOpinion": true,
+            "hasFallbackValue": false,
+            "fallbackValue": null,
+            "varying": false
+          },
+          "bar": {
+            "default": 3,
+            "values": [
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3
+            ],
+            "samples": [],
+            "interval": [],
+            "bracket": [],
+            "numSamples": 0,
+            "hasValue": true,
+            "hasAuthoredValue": true,
+            "hasAuthoredValueOpinion": true,
+            "hasFallbackValue": false,
+            "fallbackValue": null,
+            "varying": false
+          },
+          "var": {
+            "default": null,
+            "values": [
+              3,
+              3,
+              3,
+              3,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1
+            ],
+            "samples": [
+              1.0,
+              3.0
+            ],
+            "interval": [
+              3.0
+            ],
+            "bracket": [
+              1.0,
+              3.0
+            ],
+            "numSamples": 2,
+            "hasValue": true,
+            "hasAuthoredValue": true,
+            "hasAuthoredValueOpinion": true,
+            "hasFallbackValue": false,
+            "fallbackValue": null,
+            "varying": true
+          },
+          "radius": {
+            "default": 3.0,
+            "values": [
+              3.0,
+              3.0,
+              3.0,
+              3.0,
+              3.0,
+              3.0,
+              3.0,
+              3.0,
+              3.0,
+              3.0,
+              3.0,
+              3.0
+            ],
+            "samples": [],
+            "interval": [],
+            "bracket": [],
+            "numSamples": 0,
+            "hasValue": true,
+            "hasAuthoredValue": true,
+            "hasAuthoredValueOpinion": true,
+            "hasFallbackValue": true,
+            "fallbackValue": 1.0,
+            "varying": false
+          },
+          "sub1": {
+            "default": null,
+            "values": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            "samples": [],
+            "interval": [],
+            "bracket": [],
+            "numSamples": 0,
+            "hasValue": false,
+            "hasAuthoredValue": false,
+            "hasAuthoredValueOpinion": false,
+            "hasFallbackValue": false,
+            "fallbackValue": null,
+            "varying": false
+          },
+          "ref_sub1": {
+            "default": "ref_sub1_def",
+            "values": [
+              "ref_sub1_1",
+              "ref_sub1_1",
+              "ref_sub1_1",
+              "ref_sub1_2",
+              "ref_sub1_2",
+              "ref_sub1_2",
+              "ref_sub1_2",
+              "ref_sub1_2",
+              "ref_sub1_2",
+              "ref_sub1_2",
+              "ref_sub1_2",
+              "ref_sub1_2"
+            ],
+            "samples": [
+              1.0,
+              2.0
+            ],
+            "interval": [
+              2.0
+            ],
+            "bracket": [
+              2.0,
+              2.0
+            ],
+            "numSamples": 2,
+            "hasValue": true,
+            "hasAuthoredValue": true,
+            "hasAuthoredValueOpinion": true,
+            "hasFallbackValue": false,
+            "fallbackValue": null,
+            "varying": true
+          }
+        }
+      },
+      {
+        "arc": 2,
+        "layer": "ref.usda",
+        "kind": "strongerThan",
+        "target": {
+          "startNode": "/Parent/RefChild",
+          "startLayer": "session",
+          "stopNode": "/RefParent/RefChild",
+          "stopLayer": "ref.usda"
+        },
+        "attributes": {
+          "foo": {
+            "default": 6.0,
+            "values": [
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0
+            ],
+            "samples": [],
+            "interval": [],
+            "bracket": [],
+            "numSamples": 0,
+            "hasValue": true,
+            "hasAuthoredValue": true,
+            "hasAuthoredValueOpinion": true,
+            "hasFallbackValue": false,
+            "fallbackValue": null,
+            "varying": false
+          },
+          "bar": {
+            "default": 5,
+            "values": [
+              6,
+              6,
+              6,
+              6,
+              6,
+              6,
+              6,
+              1,
+              1,
+              1,
+              1,
+              1
+            ],
+            "samples": [
+              1.0,
+              6.0
+            ],
+            "interval": [],
+            "bracket": [
+              1.0,
+              6.0
+            ],
+            "numSamples": 2,
+            "hasValue": true,
+            "hasAuthoredValue": true,
+            "hasAuthoredValueOpinion": true,
+            "hasFallbackValue": false,
+            "fallbackValue": null,
+            "varying": true
+          },
+          "var": {
+            "default": null,
+            "values": [
+              6,
+              6,
+              6,
+              6,
+              6,
+              6,
+              6,
+              1,
+              1,
+              1,
+              1,
+              1
+            ],
+            "samples": [
+              1.0,
+              6.0
+            ],
+            "interval": [],
+            "bracket": [
+              1.0,
+              6.0
+            ],
+            "numSamples": 2,
+            "hasValue": true,
+            "hasAuthoredValue": true,
+            "hasAuthoredValueOpinion": true,
+            "hasFallbackValue": false,
+            "fallbackValue": null,
+            "varying": true
+          },
+          "radius": {
+            "default": 6.0,
+            "values": [
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0
+            ],
+            "samples": [],
+            "interval": [],
+            "bracket": [],
+            "numSamples": 0,
+            "hasValue": true,
+            "hasAuthoredValue": true,
+            "hasAuthoredValueOpinion": true,
+            "hasFallbackValue": true,
+            "fallbackValue": 1.0,
+            "varying": false
+          },
+          "sub1": {
+            "default": "sub1_def",
+            "values": [
+              "sub1_1",
+              "sub1_1",
+              "sub1_1",
+              "sub1_1",
+              "sub1_1",
+              "sub1_1",
+              "sub1_5",
+              "sub1_5",
+              "sub1_5",
+              "sub1_5",
+              "sub1_5",
+              "sub1_5"
+            ],
+            "samples": [
+              1.0,
+              5.0
+            ],
+            "interval": [
+              5.0
+            ],
+            "bracket": [
+              1.0,
+              5.0
+            ],
+            "numSamples": 2,
+            "hasValue": true,
+            "hasAuthoredValue": true,
+            "hasAuthoredValueOpinion": true,
+            "hasFallbackValue": false,
+            "fallbackValue": null,
+            "varying": true
+          },
+          "ref_sub1": {
+            "default": null,
+            "values": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            "samples": [],
+            "interval": [],
+            "bracket": [],
+            "numSamples": 0,
+            "hasValue": false,
+            "hasAuthoredValue": false,
+            "hasAuthoredValueOpinion": false,
+            "hasFallbackValue": false,
+            "fallbackValue": null,
+            "varying": false
+          }
+        }
+      },
+      {
+        "arc": 2,
+        "layer": "ref_sub1.usda",
+        "kind": "upTo",
+        "target": {
+          "startNode": "/RefParent/RefChild",
+          "startLayer": "ref_sub1.usda",
+          "stopNode": null,
+          "stopLayer": null
+        },
+        "attributes": {
+          "foo": {
+            "default": 2.0,
+            "values": [
+              2.0,
+              2.0,
+              2.0,
+              2.0,
+              2.0,
+              2.0,
+              2.0,
+              2.0,
+              2.0,
+              2.0,
+              2.0,
+              2.0
+            ],
+            "samples": [],
+            "interval": [],
+            "bracket": [],
+            "numSamples": 0,
+            "hasValue": true,
+            "hasAuthoredValue": true,
+            "hasAuthoredValueOpinion": true,
+            "hasFallbackValue": false,
+            "fallbackValue": null,
+            "varying": false
+          },
+          "bar": {
+            "default": 1,
+            "values": [
+              2,
+              2,
+              2,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1
+            ],
+            "samples": [
+              1.0,
+              2.0
+            ],
+            "interval": [
+              2.0
+            ],
+            "bracket": [
+              2.0,
+              2.0
+            ],
+            "numSamples": 2,
+            "hasValue": true,
+            "hasAuthoredValue": true,
+            "hasAuthoredValueOpinion": true,
+            "hasFallbackValue": false,
+            "fallbackValue": null,
+            "varying": true
+          },
+          "var": {
+            "default": null,
+            "values": [
+              2,
+              2,
+              2,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1
+            ],
+            "samples": [
+              1.0,
+              2.0
+            ],
+            "interval": [
+              2.0
+            ],
+            "bracket": [
+              2.0,
+              2.0
+            ],
+            "numSamples": 2,
+            "hasValue": true,
+            "hasAuthoredValue": true,
+            "hasAuthoredValueOpinion": true,
+            "hasFallbackValue": false,
+            "fallbackValue": null,
+            "varying": true
+          },
+          "radius": {
+            "default": 2.0,
+            "values": [
+              2.0,
+              2.0,
+              2.0,
+              2.0,
+              2.0,
+              2.0,
+              2.0,
+              2.0,
+              2.0,
+              2.0,
+              2.0,
+              2.0
+            ],
+            "samples": [],
+            "interval": [],
+            "bracket": [],
+            "numSamples": 0,
+            "hasValue": true,
+            "hasAuthoredValue": true,
+            "hasAuthoredValueOpinion": true,
+            "hasFallbackValue": true,
+            "fallbackValue": 1.0,
+            "varying": false
+          },
+          "sub1": {
+            "default": null,
+            "values": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            "samples": [],
+            "interval": [],
+            "bracket": [],
+            "numSamples": 0,
+            "hasValue": false,
+            "hasAuthoredValue": false,
+            "hasAuthoredValueOpinion": false,
+            "hasFallbackValue": false,
+            "fallbackValue": null,
+            "varying": false
+          },
+          "ref_sub1": {
+            "default": "ref_sub1_def",
+            "values": [
+              "ref_sub1_1",
+              "ref_sub1_1",
+              "ref_sub1_1",
+              "ref_sub1_2",
+              "ref_sub1_2",
+              "ref_sub1_2",
+              "ref_sub1_2",
+              "ref_sub1_2",
+              "ref_sub1_2",
+              "ref_sub1_2",
+              "ref_sub1_2",
+              "ref_sub1_2"
+            ],
+            "samples": [
+              1.0,
+              2.0
+            ],
+            "interval": [
+              2.0
+            ],
+            "bracket": [
+              2.0,
+              2.0
+            ],
+            "numSamples": 2,
+            "hasValue": true,
+            "hasAuthoredValue": true,
+            "hasAuthoredValueOpinion": true,
+            "hasFallbackValue": false,
+            "fallbackValue": null,
+            "varying": true
+          }
+        }
+      },
+      {
+        "arc": 2,
+        "layer": "ref_sub1.usda",
+        "kind": "strongerThan",
+        "target": {
+          "startNode": "/Parent/RefChild",
+          "startLayer": "session",
+          "stopNode": "/RefParent/RefChild",
+          "stopLayer": "ref_sub1.usda"
+        },
+        "attributes": {
+          "foo": {
+            "default": 6.0,
+            "values": [
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0
+            ],
+            "samples": [],
+            "interval": [],
+            "bracket": [],
+            "numSamples": 0,
+            "hasValue": true,
+            "hasAuthoredValue": true,
+            "hasAuthoredValueOpinion": true,
+            "hasFallbackValue": false,
+            "fallbackValue": null,
+            "varying": false
+          },
+          "bar": {
+            "default": 5,
+            "values": [
+              6,
+              6,
+              6,
+              6,
+              6,
+              6,
+              6,
+              1,
+              1,
+              1,
+              1,
+              1
+            ],
+            "samples": [
+              1.0,
+              6.0
+            ],
+            "interval": [],
+            "bracket": [
+              1.0,
+              6.0
+            ],
+            "numSamples": 2,
+            "hasValue": true,
+            "hasAuthoredValue": true,
+            "hasAuthoredValueOpinion": true,
+            "hasFallbackValue": false,
+            "fallbackValue": null,
+            "varying": true
+          },
+          "var": {
+            "default": null,
+            "values": [
+              6,
+              6,
+              6,
+              6,
+              6,
+              6,
+              6,
+              1,
+              1,
+              1,
+              1,
+              1
+            ],
+            "samples": [
+              1.0,
+              6.0
+            ],
+            "interval": [],
+            "bracket": [
+              1.0,
+              6.0
+            ],
+            "numSamples": 2,
+            "hasValue": true,
+            "hasAuthoredValue": true,
+            "hasAuthoredValueOpinion": true,
+            "hasFallbackValue": false,
+            "fallbackValue": null,
+            "varying": true
+          },
+          "radius": {
+            "default": 6.0,
+            "values": [
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0
+            ],
+            "samples": [],
+            "interval": [],
+            "bracket": [],
+            "numSamples": 0,
+            "hasValue": true,
+            "hasAuthoredValue": true,
+            "hasAuthoredValueOpinion": true,
+            "hasFallbackValue": true,
+            "fallbackValue": 1.0,
+            "varying": false
+          },
+          "sub1": {
+            "default": "sub1_def",
+            "values": [
+              "sub1_1",
+              "sub1_1",
+              "sub1_1",
+              "sub1_1",
+              "sub1_1",
+              "sub1_1",
+              "sub1_5",
+              "sub1_5",
+              "sub1_5",
+              "sub1_5",
+              "sub1_5",
+              "sub1_5"
+            ],
+            "samples": [
+              1.0,
+              5.0
+            ],
+            "interval": [
+              5.0
+            ],
+            "bracket": [
+              1.0,
+              5.0
+            ],
+            "numSamples": 2,
+            "hasValue": true,
+            "hasAuthoredValue": true,
+            "hasAuthoredValueOpinion": true,
+            "hasFallbackValue": false,
+            "fallbackValue": null,
+            "varying": true
+          },
+          "ref_sub1": {
+            "default": null,
+            "values": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            "samples": [],
+            "interval": [],
+            "bracket": [],
+            "numSamples": 0,
+            "hasValue": false,
+            "hasAuthoredValue": false,
+            "hasAuthoredValueOpinion": false,
+            "hasFallbackValue": false,
+            "fallbackValue": null,
+            "varying": false
+          }
+        }
+      },
+      {
+        "arc": 2,
+        "layer": "ref_sub2.usda",
+        "kind": "upTo",
+        "target": {
+          "startNode": "/RefParent/RefChild",
+          "startLayer": "ref_sub2.usda",
+          "stopNode": null,
+          "stopLayer": null
+        },
+        "attributes": {
+          "foo": {
+            "default": 1.0,
+            "values": [
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0
+            ],
+            "samples": [],
+            "interval": [],
+            "bracket": [],
+            "numSamples": 0,
+            "hasValue": true,
+            "hasAuthoredValue": true,
+            "hasAuthoredValueOpinion": true,
+            "hasFallbackValue": false,
+            "fallbackValue": null,
+            "varying": false
+          },
+          "bar": {
+            "default": 1,
+            "values": [
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1
+            ],
+            "samples": [],
+            "interval": [],
+            "bracket": [],
+            "numSamples": 0,
+            "hasValue": true,
+            "hasAuthoredValue": true,
+            "hasAuthoredValueOpinion": true,
+            "hasFallbackValue": false,
+            "fallbackValue": null,
+            "varying": false
+          },
+          "var": {
+            "default": null,
+            "values": [
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1
+            ],
+            "samples": [
+              1.0
+            ],
+            "interval": [],
+            "bracket": [
+              1.0,
+              1.0
+            ],
+            "numSamples": 1,
+            "hasValue": true,
+            "hasAuthoredValue": true,
+            "hasAuthoredValueOpinion": true,
+            "hasFallbackValue": false,
+            "fallbackValue": null,
+            "varying": false
+          },
+          "radius": {
+            "default": 1.0,
+            "values": [
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0
+            ],
+            "samples": [],
+            "interval": [],
+            "bracket": [],
+            "numSamples": 0,
+            "hasValue": true,
+            "hasAuthoredValue": true,
+            "hasAuthoredValueOpinion": true,
+            "hasFallbackValue": true,
+            "fallbackValue": 1.0,
+            "varying": false
+          },
+          "sub1": {
+            "default": null,
+            "values": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            "samples": [],
+            "interval": [],
+            "bracket": [],
+            "numSamples": 0,
+            "hasValue": false,
+            "hasAuthoredValue": false,
+            "hasAuthoredValueOpinion": false,
+            "hasFallbackValue": false,
+            "fallbackValue": null,
+            "varying": false
+          },
+          "ref_sub1": {
+            "default": null,
+            "values": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            "samples": [],
+            "interval": [],
+            "bracket": [],
+            "numSamples": 0,
+            "hasValue": false,
+            "hasAuthoredValue": false,
+            "hasAuthoredValueOpinion": false,
+            "hasFallbackValue": false,
+            "fallbackValue": null,
+            "varying": false
+          }
+        }
+      },
+      {
+        "arc": 2,
+        "layer": "ref_sub2.usda",
+        "kind": "strongerThan",
+        "target": {
+          "startNode": "/Parent/RefChild",
+          "startLayer": "session",
+          "stopNode": "/RefParent/RefChild",
+          "stopLayer": "ref_sub2.usda"
+        },
+        "attributes": {
+          "foo": {
+            "default": 6.0,
+            "values": [
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0
+            ],
+            "samples": [],
+            "interval": [],
+            "bracket": [],
+            "numSamples": 0,
+            "hasValue": true,
+            "hasAuthoredValue": true,
+            "hasAuthoredValueOpinion": true,
+            "hasFallbackValue": false,
+            "fallbackValue": null,
+            "varying": false
+          },
+          "bar": {
+            "default": 5,
+            "values": [
+              6,
+              6,
+              6,
+              6,
+              6,
+              6,
+              6,
+              1,
+              1,
+              1,
+              1,
+              1
+            ],
+            "samples": [
+              1.0,
+              6.0
+            ],
+            "interval": [],
+            "bracket": [
+              1.0,
+              6.0
+            ],
+            "numSamples": 2,
+            "hasValue": true,
+            "hasAuthoredValue": true,
+            "hasAuthoredValueOpinion": true,
+            "hasFallbackValue": false,
+            "fallbackValue": null,
+            "varying": true
+          },
+          "var": {
+            "default": null,
+            "values": [
+              6,
+              6,
+              6,
+              6,
+              6,
+              6,
+              6,
+              1,
+              1,
+              1,
+              1,
+              1
+            ],
+            "samples": [
+              1.0,
+              6.0
+            ],
+            "interval": [],
+            "bracket": [
+              1.0,
+              6.0
+            ],
+            "numSamples": 2,
+            "hasValue": true,
+            "hasAuthoredValue": true,
+            "hasAuthoredValueOpinion": true,
+            "hasFallbackValue": false,
+            "fallbackValue": null,
+            "varying": true
+          },
+          "radius": {
+            "default": 6.0,
+            "values": [
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0
+            ],
+            "samples": [],
+            "interval": [],
+            "bracket": [],
+            "numSamples": 0,
+            "hasValue": true,
+            "hasAuthoredValue": true,
+            "hasAuthoredValueOpinion": true,
+            "hasFallbackValue": true,
+            "fallbackValue": 1.0,
+            "varying": false
+          },
+          "sub1": {
+            "default": "sub1_def",
+            "values": [
+              "sub1_1",
+              "sub1_1",
+              "sub1_1",
+              "sub1_1",
+              "sub1_1",
+              "sub1_1",
+              "sub1_5",
+              "sub1_5",
+              "sub1_5",
+              "sub1_5",
+              "sub1_5",
+              "sub1_5"
+            ],
+            "samples": [
+              1.0,
+              5.0
+            ],
+            "interval": [
+              5.0
+            ],
+            "bracket": [
+              1.0,
+              5.0
+            ],
+            "numSamples": 2,
+            "hasValue": true,
+            "hasAuthoredValue": true,
+            "hasAuthoredValueOpinion": true,
+            "hasFallbackValue": false,
+            "fallbackValue": null,
+            "varying": true
+          },
+          "ref_sub1": {
+            "default": "ref_sub1_def",
+            "values": [
+              "ref_sub1_1",
+              "ref_sub1_1",
+              "ref_sub1_1",
+              "ref_sub1_2",
+              "ref_sub1_2",
+              "ref_sub1_2",
+              "ref_sub1_2",
+              "ref_sub1_2",
+              "ref_sub1_2",
+              "ref_sub1_2",
+              "ref_sub1_2",
+              "ref_sub1_2"
+            ],
+            "samples": [
+              1.0,
+              2.0
+            ],
+            "interval": [
+              2.0
+            ],
+            "bracket": [
+              2.0,
+              2.0
+            ],
+            "numSamples": 2,
+            "hasValue": true,
+            "hasAuthoredValue": true,
+            "hasAuthoredValueOpinion": true,
+            "hasFallbackValue": false,
+            "fallbackValue": null,
+            "varying": true
+          }
+        }
+      }
+    ],
+    "editTargets": [
+      {
+        "arc": 0,
+        "layer": "sub2.usda",
+        "upTo": {
+          "startNode": "/Parent/RefChild",
+          "startLayer": "sub2.usda",
+          "stopNode": null,
+          "stopLayer": null
+        },
+        "strongerThan": {
+          "startNode": "/Parent/RefChild",
+          "startLayer": "session",
+          "stopNode": "/Parent/RefChild",
+          "stopLayer": "sub2.usda"
+        },
+        "values": {
+          "default": 4.0,
+          "values": [
+            4.0,
+            4.0,
+            4.0,
+            4.0,
+            4.0,
+            4.0,
+            4.0,
+            4.0,
+            4.0,
+            4.0,
+            4.0,
+            4.0
+          ],
+          "samples": [],
+          "interval": [],
+          "bracket": [],
+          "numSamples": 0,
+          "hasValue": true,
+          "hasAuthoredValue": true,
+          "hasAuthoredValueOpinion": true,
+          "hasFallbackValue": false,
+          "fallbackValue": null,
+          "varying": false
+        }
+      },
+      {
+        "arc": 1,
+        "layer": "sub2.usda",
+        "upTo": {
+          "startNode": "/InternalRef/RefChild",
+          "startLayer": "sub2.usda",
+          "stopNode": null,
+          "stopLayer": null
+        },
+        "strongerThan": {
+          "startNode": "/Parent/RefChild",
+          "startLayer": "session",
+          "stopNode": "/InternalRef/RefChild",
+          "stopLayer": "sub2.usda"
+        },
+        "values": {
+          "default": 3.0,
+          "values": [
+            3.0,
+            3.0,
+            3.0,
+            3.0,
+            3.0,
+            3.0,
+            3.0,
+            3.0,
+            3.0,
+            3.0,
+            3.0,
+            3.0
+          ],
+          "samples": [],
+          "interval": [],
+          "bracket": [],
+          "numSamples": 0,
+          "hasValue": true,
+          "hasAuthoredValue": true,
+          "hasAuthoredValueOpinion": true,
+          "hasFallbackValue": false,
+          "fallbackValue": null,
+          "varying": false
+        }
+      },
+      {
+        "arc": 2,
+        "layer": "ref_sub2.usda",
+        "upTo": {
+          "startNode": "/RefParent/RefChild",
+          "startLayer": "ref_sub2.usda",
+          "stopNode": null,
+          "stopLayer": null
+        },
+        "strongerThan": {
+          "startNode": "/Parent/RefChild",
+          "startLayer": "session",
+          "stopNode": "/RefParent/RefChild",
+          "stopLayer": "ref_sub2.usda"
+        },
+        "values": {
+          "default": 1.0,
+          "values": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "samples": [],
+          "interval": [],
+          "bracket": [],
+          "numSamples": 0,
+          "hasValue": true,
+          "hasAuthoredValue": true,
+          "hasAuthoredValueOpinion": true,
+          "hasFallbackValue": false,
+          "fallbackValue": null,
+          "varying": false
+        }
+      }
+    ],
+    "nullQuery": {
+      "default": 5,
+      "values": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "samples": [
+        1.0,
+        6.0
+      ],
+      "interval": [],
+      "bracket": [
+        1.0,
+        6.0
+      ],
+      "numSamples": 2,
+      "hasValue": true,
+      "hasAuthoredValue": true,
+      "hasAuthoredValueOpinion": true,
+      "hasFallbackValue": false,
+      "fallbackValue": null,
+      "varying": true
+    },
+    "clipRows": [
+      {
+        "arc": 0,
+        "layer": "session",
+        "kind": "upTo",
+        "target": {
+          "startNode": "/World/Child",
+          "startLayer": "session",
+          "stopNode": null,
+          "stopLayer": null
+        },
+        "query": {
+          "default": 20.0,
+          "values": [
+            20.0,
+            20.0,
+            20.0,
+            20.0,
+            20.0,
+            20.0,
+            20.0,
+            20.0,
+            20.0,
+            20.0,
+            20.0,
+            20.0
+          ],
+          "samples": [],
+          "interval": [],
+          "bracket": [],
+          "numSamples": 0,
+          "hasValue": true,
+          "hasAuthoredValue": true,
+          "hasAuthoredValueOpinion": true,
+          "hasFallbackValue": false,
+          "fallbackValue": null,
+          "varying": false
+        }
+      },
+      {
+        "arc": 0,
+        "layer": "session",
+        "kind": "strongerThan",
+        "target": {
+          "startNode": "/World/Child",
+          "startLayer": "session",
+          "stopNode": "/World/Child",
+          "stopLayer": "session"
+        },
+        "query": {
+          "default": null,
+          "values": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          "samples": [],
+          "interval": [],
+          "bracket": [],
+          "numSamples": 0,
+          "hasValue": false,
+          "hasAuthoredValue": false,
+          "hasAuthoredValueOpinion": false,
+          "hasFallbackValue": false,
+          "fallbackValue": null,
+          "varying": false
+        }
+      },
+      {
+        "arc": 0,
+        "layer": "clipRoot.usda",
+        "kind": "upTo",
+        "target": {
+          "startNode": "/World/Child",
+          "startLayer": "clipRoot.usda",
+          "stopNode": null,
+          "stopLayer": null
+        },
+        "query": {
+          "default": 20.0,
+          "values": [
+            20.0,
+            20.0,
+            20.0,
+            20.0,
+            20.0,
+            20.0,
+            20.0,
+            20.0,
+            20.0,
+            20.0,
+            20.0,
+            20.0
+          ],
+          "samples": [],
+          "interval": [],
+          "bracket": [],
+          "numSamples": 0,
+          "hasValue": true,
+          "hasAuthoredValue": true,
+          "hasAuthoredValueOpinion": true,
+          "hasFallbackValue": false,
+          "fallbackValue": null,
+          "varying": false
+        }
+      },
+      {
+        "arc": 0,
+        "layer": "clipRoot.usda",
+        "kind": "strongerThan",
+        "target": {
+          "startNode": "/World/Child",
+          "startLayer": "session",
+          "stopNode": "/World/Child",
+          "stopLayer": "clipRoot.usda"
+        },
+        "query": {
+          "default": null,
+          "values": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          "samples": [],
+          "interval": [],
+          "bracket": [],
+          "numSamples": 0,
+          "hasValue": false,
+          "hasAuthoredValue": false,
+          "hasAuthoredValueOpinion": false,
+          "hasFallbackValue": false,
+          "fallbackValue": null,
+          "varying": false
+        }
+      },
+      {
+        "arc": 1,
+        "layer": "session",
+        "kind": "upTo",
+        "target": {
+          "startNode": "/Empty/Child",
+          "startLayer": "session",
+          "stopNode": null,
+          "stopLayer": null
+        },
+        "query": {
+          "default": 99.0,
+          "values": [
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            20.0,
+            30.0
+          ],
+          "samples": [
+            12.0,
+            16.0
+          ],
+          "interval": [],
+          "bracket": [
+            12.0,
+            12.0
+          ],
+          "numSamples": 2,
+          "hasValue": true,
+          "hasAuthoredValue": true,
+          "hasAuthoredValueOpinion": true,
+          "hasFallbackValue": false,
+          "fallbackValue": null,
+          "varying": true
+        }
+      },
+      {
+        "arc": 1,
+        "layer": "session",
+        "kind": "strongerThan",
+        "target": {
+          "startNode": "/World/Child",
+          "startLayer": "session",
+          "stopNode": "/Empty/Child",
+          "stopLayer": "session"
+        },
+        "query": {
+          "default": 20.0,
+          "values": [
+            20.0,
+            20.0,
+            20.0,
+            20.0,
+            20.0,
+            20.0,
+            20.0,
+            20.0,
+            20.0,
+            20.0,
+            20.0,
+            20.0
+          ],
+          "samples": [],
+          "interval": [],
+          "bracket": [],
+          "numSamples": 0,
+          "hasValue": true,
+          "hasAuthoredValue": true,
+          "hasAuthoredValueOpinion": true,
+          "hasFallbackValue": false,
+          "fallbackValue": null,
+          "varying": false
+        }
+      },
+      {
+        "arc": 1,
+        "layer": "clipRoot.usda",
+        "kind": "upTo",
+        "target": {
+          "startNode": "/Empty/Child",
+          "startLayer": "clipRoot.usda",
+          "stopNode": null,
+          "stopLayer": null
+        },
+        "query": {
+          "default": 99.0,
+          "values": [
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            20.0,
+            30.0
+          ],
+          "samples": [
+            12.0,
+            16.0
+          ],
+          "interval": [],
+          "bracket": [
+            12.0,
+            12.0
+          ],
+          "numSamples": 2,
+          "hasValue": true,
+          "hasAuthoredValue": true,
+          "hasAuthoredValueOpinion": true,
+          "hasFallbackValue": false,
+          "fallbackValue": null,
+          "varying": true
+        }
+      },
+      {
+        "arc": 1,
+        "layer": "clipRoot.usda",
+        "kind": "strongerThan",
+        "target": {
+          "startNode": "/World/Child",
+          "startLayer": "session",
+          "stopNode": "/Empty/Child",
+          "stopLayer": "clipRoot.usda"
+        },
+        "query": {
+          "default": 20.0,
+          "values": [
+            20.0,
+            20.0,
+            20.0,
+            20.0,
+            20.0,
+            20.0,
+            20.0,
+            20.0,
+            20.0,
+            20.0,
+            20.0,
+            20.0
+          ],
+          "samples": [],
+          "interval": [],
+          "bracket": [],
+          "numSamples": 0,
+          "hasValue": true,
+          "hasAuthoredValue": true,
+          "hasAuthoredValueOpinion": true,
+          "hasFallbackValue": false,
+          "fallbackValue": null,
+          "varying": false
+        }
+      },
+      {
+        "arc": 2,
+        "layer": "clipRef.usda",
+        "kind": "upTo",
+        "target": {
+          "startNode": "/Source/Child",
+          "startLayer": "clipRef.usda",
+          "stopNode": null,
+          "stopLayer": null
+        },
+        "query": {
+          "default": 99.0,
+          "values": [
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            20.0,
+            30.0
+          ],
+          "samples": [
+            12.0,
+            16.0
+          ],
+          "interval": [],
+          "bracket": [
+            12.0,
+            12.0
+          ],
+          "numSamples": 2,
+          "hasValue": true,
+          "hasAuthoredValue": true,
+          "hasAuthoredValueOpinion": true,
+          "hasFallbackValue": false,
+          "fallbackValue": null,
+          "varying": true
+        }
+      },
+      {
+        "arc": 2,
+        "layer": "clipRef.usda",
+        "kind": "strongerThan",
+        "target": {
+          "startNode": "/World/Child",
+          "startLayer": "session",
+          "stopNode": "/Source/Child",
+          "stopLayer": "clipRef.usda"
+        },
+        "query": {
+          "default": 20.0,
+          "values": [
+            20.0,
+            20.0,
+            20.0,
+            20.0,
+            20.0,
+            20.0,
+            20.0,
+            20.0,
+            20.0,
+            20.0,
+            20.0,
+            20.0
+          ],
+          "samples": [],
+          "interval": [],
+          "bracket": [],
+          "numSamples": 0,
+          "hasValue": true,
+          "hasAuthoredValue": true,
+          "hasAuthoredValueOpinion": true,
+          "hasFallbackValue": false,
+          "fallbackValue": null,
+          "varying": false
+        }
+      },
+      {
+        "arc": 2,
+        "layer": "clipWeak.usda",
+        "kind": "upTo",
+        "target": {
+          "startNode": "/Source/Child",
+          "startLayer": "clipWeak.usda",
+          "stopNode": null,
+          "stopLayer": null
+        },
+        "query": {
+          "default": 99.0,
+          "values": [
+            99.0,
+            99.0,
+            99.0,
+            99.0,
+            99.0,
+            99.0,
+            99.0,
+            99.0,
+            99.0,
+            99.0,
+            99.0,
+            99.0
+          ],
+          "samples": [],
+          "interval": [],
+          "bracket": [],
+          "numSamples": 0,
+          "hasValue": true,
+          "hasAuthoredValue": true,
+          "hasAuthoredValueOpinion": true,
+          "hasFallbackValue": false,
+          "fallbackValue": null,
+          "varying": false
+        }
+      },
+      {
+        "arc": 2,
+        "layer": "clipWeak.usda",
+        "kind": "strongerThan",
+        "target": {
+          "startNode": "/World/Child",
+          "startLayer": "session",
+          "stopNode": "/Source/Child",
+          "stopLayer": "clipWeak.usda"
+        },
+        "query": {
+          "default": 20.0,
+          "values": [
+            20.0,
+            20.0,
+            20.0,
+            20.0,
+            20.0,
+            20.0,
+            20.0,
+            20.0,
+            20.0,
+            20.0,
+            20.0,
+            20.0
+          ],
+          "samples": [],
+          "interval": [],
+          "bracket": [],
+          "numSamples": 0,
+          "hasValue": true,
+          "hasAuthoredValue": true,
+          "hasAuthoredValueOpinion": true,
+          "hasFallbackValue": false,
+          "fallbackValue": null,
+          "varying": false
+        }
+      }
+    ]
+  }
+}

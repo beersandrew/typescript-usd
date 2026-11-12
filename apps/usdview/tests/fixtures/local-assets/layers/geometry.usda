@@ -1,0 +1,7 @@
+#usda 1.0
+ def Xform "World" {
+    def Cube "Cube" {
+        double size = 2
+        asset texture = @../textures/checker.png@
+    }
+ }

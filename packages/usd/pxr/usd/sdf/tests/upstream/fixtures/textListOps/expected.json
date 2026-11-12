@@ -1,0 +1,117 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/usd/sdf/tests/upstream/fixtures/textListOps/capture.py",
+  "upstream": [
+    "pxr/usd/sdf/textFileFormatParser.h:1143-1201",
+    "pxr/usd/sdf/textFileFormatParser.h:1492-1521",
+    "pxr/usd/sdf/textFileFormatParser.h:671-676",
+    "pxr/usd/sdf/textFileFormatParser.h:736-746",
+    "pxr/usd/sdf/textFileFormatParser.h:1374-1385",
+    "pxr/usd/sdf/textFileFormatParser.h:1509-1521"
+  ],
+  "payload": {
+    "reorder-rel": {
+      "text": "#usda 1.0\n\ndef \"A\"\n{\n    reorder rel r = [</B>, </C>]\n}\n",
+      "exported": "#usda 1.0\n\ndef \"A\"\n{\n    reorder rel r = [\n        </B>,\n        </C>,\n    ]\n}\n\n"
+    },
+    "reorder-custom-rel": {
+      "text": "#usda 1.0\n\ndef \"A\"\n{\n    reorder custom rel r = [</B>]\n}\n",
+      "exported": "#usda 1.0\n\ndef \"A\"\n{\n    custom rel r\n    reorder rel r = </B>\n}\n\n"
+    },
+    "reorder-varying-rel": {
+      "text": "#usda 1.0\n\ndef \"A\"\n{\n    reorder varying rel r = [</B>, </C>]\n}\n",
+      "exported": "#usda 1.0\n\ndef \"A\"\n{\n    reorder varying rel r = [\n        </B>,\n        </C>,\n    ]\n}\n\n"
+    },
+    "reorder-connect": {
+      "text": "#usda 1.0\n\ndef \"A\"\n{\n    reorder double a.connect = [</B.x>]\n}\n",
+      "exported": "#usda 1.0\n\ndef \"A\"\n{\n    reorder double a.connect = </B.x>\n}\n\n"
+    },
+    "reorder-properties": {
+      "text": "#usda 1.0\n\ndef \"A\"\n{\n    double b\n    double a\n    reorder properties = [\"a\", \"b\"]\n}\n",
+      "exported": "#usda 1.0\n\ndef \"A\"\n{\n    reorder properties = [\"a\", \"b\"]\n    double a\n    double b\n}\n\n"
+    },
+    "prepend-connect": {
+      "text": "#usda 1.0\n\ndef \"A\"\n{\n    prepend double a.connect = </B.x>\n}\n",
+      "exported": "#usda 1.0\n\ndef \"A\"\n{\n    prepend double a.connect = </B.x>\n}\n\n"
+    },
+    "bad-reorder-attribute": {
+      "text": "#usda 1.0\n\ndef \"A\"\n{\n    reorder double a = 1\n}\n",
+      "errors": [
+        ":5:22: parse error matching pxrInternal_v0_26_11__pxrReserved___pegtl::seq<pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::AttributeDeclaration, pxrInternal_v0_26_11__pxrReserved___pegtl::pad<pxrInternal_v0_26_11__pxrReserved__::Sdf_PathParser::Dot, pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::InlinePadding>, pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::KeywordConnect, pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::Assignment, pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::ConnectValue> at '= 1' in </A.a>\n"
+      ]
+    },
+    "bad-prepend-attribute": {
+      "text": "#usda 1.0\n\ndef \"A\"\n{\n    prepend double a = 1\n}\n",
+      "errors": [
+        ":5:22: parse error matching pxrInternal_v0_26_11__pxrReserved___pegtl::seq<pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::AttributeDeclaration, pxrInternal_v0_26_11__pxrReserved___pegtl::pad<pxrInternal_v0_26_11__pxrReserved__::Sdf_PathParser::Dot, pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::InlinePadding>, pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::KeywordConnect, pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::Assignment, pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::ConnectValue> at '= 1' in </A.a>\n"
+      ]
+    },
+    "bad-append-attribute-declaration": {
+      "text": "#usda 1.0\n\ndef \"A\"\n{\n    append double a\n}\n",
+      "errors": [
+        ":5:20: parse error matching pxrInternal_v0_26_11__pxrReserved___pegtl::seq<pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::AttributeDeclaration, pxrInternal_v0_26_11__pxrReserved___pegtl::pad<pxrInternal_v0_26_11__pxrReserved__::Sdf_PathParser::Dot, pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::InlinePadding>, pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::KeywordConnect, pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::Assignment, pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::ConnectValue> at '' in </A.a>\n"
+      ]
+    },
+    "bad-delete-time-samples": {
+      "text": "#usda 1.0\n\ndef \"A\"\n{\n    delete double a.timeSamples = { 1: 2 }\n}\n",
+      "errors": [
+        ":5:21: parse error matching pxrInternal_v0_26_11__pxrReserved___pegtl::seq<pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::AttributeDeclaration, pxrInternal_v0_26_11__pxrReserved___pegtl::pad<pxrInternal_v0_26_11__pxrReserved__::Sdf_PathParser::Dot, pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::InlinePadding>, pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::KeywordConnect, pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::Assignment, pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::ConnectValue> at 'timeSamples = { 1: 2 }' in </A.a>\n"
+      ]
+    },
+    "bad-add-uniform-attribute": {
+      "text": "#usda 1.0\n\ndef \"A\"\n{\n    add uniform token a = \"x\"\n}\n",
+      "errors": [
+        ":5:25: parse error matching pxrInternal_v0_26_11__pxrReserved___pegtl::seq<pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::AttributeDeclaration, pxrInternal_v0_26_11__pxrReserved___pegtl::pad<pxrInternal_v0_26_11__pxrReserved__::Sdf_PathParser::Dot, pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::InlinePadding>, pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::KeywordConnect, pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::Assignment, pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::ConnectValue> at '= \"x\"' in </A.a>\n"
+      ]
+    },
+    "variant-sets": {
+      "text": "#usda 1.0\n\ndef \"A\" (\n    variantSets = [\"v\", \"w\"]\n)\n{\n}\n",
+      "exported": "#usda 1.0\n\ndef \"A\" (\n    variantSets = [\"v\", \"w\"]\n)\n{\n}\n\n"
+    },
+    "variant-sets-single": {
+      "text": "#usda 1.0\n\ndef \"A\" (\n    prepend variantSets = \"v\"\n)\n{\n}\n",
+      "exported": "#usda 1.0\n\ndef \"A\" (\n    prepend variantSets = \"v\"\n)\n{\n}\n\n"
+    },
+    "bad-variant-sets-none": {
+      "text": "#usda 1.0\n\ndef \"A\" (\n    variantSets = None\n)\n{\n}\n",
+      "errors": [
+        ":4:19: Expected string or list of strings enclosed in [] separated by , at 'None' in </A>\n"
+      ]
+    },
+    "bad-variant-sets-empty": {
+      "text": "#usda 1.0\n\ndef \"A\" (\n    variantSets = []\n)\n{\n}\n",
+      "errors": [
+        ":4:20: parse error matching pxrInternal_v0_26_11__pxrReserved___pegtl::pad<pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::ListOf<pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::String>, pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::MultilinePadding> at ']' in </A>\n"
+      ]
+    },
+    "bad-prepend-variant-sets-empty": {
+      "text": "#usda 1.0\n\ndef \"A\" (\n    prepend variantSets = []\n)\n{\n}\n",
+      "errors": [
+        ":4:28: parse error matching pxrInternal_v0_26_11__pxrReserved___pegtl::pad<pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::ListOf<pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::String>, pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::MultilinePadding> at ']' in </A>\n"
+      ]
+    },
+    "variant-sets-trailing-comma": {
+      "text": "#usda 1.0\n\ndef \"A\" (\n    variantSets = [\"v\",]\n)\n{\n}\n",
+      "exported": "#usda 1.0\n\ndef \"A\" (\n    variantSets = \"v\"\n)\n{\n}\n\n"
+    },
+    "bad-reorder-name-children-empty": {
+      "text": "#usda 1.0\n\ndef \"A\"\n{\n    reorder nameChildren = []\n}\n",
+      "errors": [
+        ":5:29: parse error matching pxrInternal_v0_26_11__pxrReserved___pegtl::pad<pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::ListOf<pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::String>, pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::MultilinePadding> at ']' in </A>\n"
+      ]
+    },
+    "bad-reorder-properties-none": {
+      "text": "#usda 1.0\n\ndef \"A\"\n{\n    reorder properties = None\n}\n",
+      "errors": [
+        ":5:13: parse error matching pxrInternal_v0_26_11__pxrReserved___pegtl::seq<pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::AttributeDeclaration, pxrInternal_v0_26_11__pxrReserved___pegtl::pad<pxrInternal_v0_26_11__pxrReserved__::Sdf_PathParser::Dot, pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::InlinePadding>, pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::KeywordConnect, pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::Assignment, pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::ConnectValue> at 'properties = None' in </A>\n"
+      ]
+    },
+    "bad-reorder-root-prims-empty": {
+      "text": "#usda 1.0\n\nreorder rootPrims = []\n",
+      "errors": [
+        ":3:22: parse error matching pxrInternal_v0_26_11__pxrReserved___pegtl::pad<pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::ListOf<pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::String>, pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::MultilinePadding> at ']' in </>\n"
+      ]
+    }
+  }
+}

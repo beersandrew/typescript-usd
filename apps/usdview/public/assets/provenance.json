@@ -1,0 +1,194 @@
+{
+  "license": "TOST-1.0: the Tomorrow Open Source Technology License 1.0, the licence of typescript-usd (LICENSE) and of OpenUSD. No third-party scene assets are included.",
+  "openusd": {
+    "repository": "https://github.com/PixarAnimationStudios/OpenUSD",
+    "tag": "v26.11.1",
+    "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b"
+  },
+  "origins": {
+    "local": "Authored for typescript-usd's viewer",
+    "OpenUSD 26.11.1, unchanged": "Byte-identical copy of the OpenUSD source file named by source (SHA-256 checked)"
+  },
+  "files": [
+    {
+      "file": "README.md",
+      "origin": "local",
+      "license": "TOST-1.0"
+    },
+    {
+      "file": "cameraControls/LICENSE",
+      "origin": "local",
+      "license": "TOST-1.0"
+    },
+    {
+      "file": "cameraControls/README.txt",
+      "origin": "local",
+      "license": "TOST-1.0"
+    },
+    {
+      "file": "cameraControls/scene.usda",
+      "origin": "local",
+      "license": "TOST-1.0"
+    },
+    {
+      "file": "composed_cubes.usda",
+      "origin": "local",
+      "license": "TOST-1.0"
+    },
+    {
+      "file": "cube.usda",
+      "origin": "local",
+      "license": "TOST-1.0"
+    },
+    {
+      "file": "displayControls/LICENSE",
+      "origin": "local",
+      "license": "TOST-1.0"
+    },
+    {
+      "file": "displayControls/README.txt",
+      "origin": "local",
+      "license": "TOST-1.0"
+    },
+    {
+      "file": "displayControls/scene.usda",
+      "origin": "local",
+      "license": "TOST-1.0"
+    },
+    {
+      "file": "inspectionControls/README.txt",
+      "origin": "local",
+      "license": "TOST-1.0"
+    },
+    {
+      "file": "inspectionControls/reference.usda",
+      "origin": "local",
+      "license": "TOST-1.0"
+    },
+    {
+      "file": "inspectionControls/root.usda",
+      "origin": "local",
+      "license": "TOST-1.0"
+    },
+    {
+      "file": "inspectionControls/weak.usda",
+      "origin": "local",
+      "license": "TOST-1.0"
+    },
+    {
+      "file": "materialx/multiUv/LICENSE",
+      "origin": "local",
+      "license": "TOST-1.0"
+    },
+    {
+      "file": "materialx/multiUv/README.txt",
+      "origin": "local",
+      "license": "TOST-1.0"
+    },
+    {
+      "file": "materialx/multiUv/checker.png",
+      "origin": "local",
+      "license": "TOST-1.0"
+    },
+    {
+      "file": "materialx/multiUv/material.mtlx",
+      "origin": "local",
+      "license": "TOST-1.0"
+    },
+    {
+      "file": "materialx/multiUv/stage.usda",
+      "origin": "local",
+      "license": "TOST-1.0"
+    },
+    {
+      "file": "previewSurface/README.txt",
+      "origin": "local",
+      "license": "TOST-1.0"
+    },
+    {
+      "file": "previewSurface/expected.json",
+      "origin": "local",
+      "license": "TOST-1.0"
+    },
+    {
+      "file": "previewSurface/generateTexture.py",
+      "origin": "local",
+      "license": "TOST-1.0"
+    },
+    {
+      "file": "previewSurface/nested/material.usda",
+      "origin": "local",
+      "license": "TOST-1.0"
+    },
+    {
+      "file": "previewSurface/nested/texture.png",
+      "origin": "local",
+      "license": "TOST-1.0"
+    },
+    {
+      "file": "previewSurface/root.usda",
+      "origin": "local",
+      "license": "TOST-1.0"
+    },
+    {
+      "file": "scenes.json",
+      "origin": "local",
+      "license": "TOST-1.0"
+    },
+    {
+      "file": "timeReview/scene.usda",
+      "origin": "local",
+      "license": "TOST-1.0"
+    },
+    {
+      "file": "torus.usda",
+      "origin": "local",
+      "license": "TOST-1.0"
+    },
+    {
+      "file": "volumes/OpenUSD-LICENSE.txt",
+      "origin": "OpenUSD 26.11.1, unchanged",
+      "source": "https://raw.githubusercontent.com/PixarAnimationStudios/OpenUSD/96c1989167d2aaab5bd34627f32a321a6b79866b/LICENSE.txt",
+      "sha256": "4d6e8e3a9bd0104e10c48e3bc6af2f0976448a70a377d20cef674740f96f4452",
+      "license": "TOST-1.0"
+    },
+    {
+      "file": "volumes/provenance.json",
+      "origin": "local (sources of the OpenUSD volume files)",
+      "license": "TOST-1.0"
+    },
+    {
+      "file": "volumes/smoke_000001.vdb",
+      "origin": "OpenUSD 26.11.1, unchanged",
+      "source": "https://raw.githubusercontent.com/PixarAnimationStudios/OpenUSD/96c1989167d2aaab5bd34627f32a321a6b79866b/pxr/usdImaging/usdImagingGL/testenv/testUsdImagingGLVdbVolume/smoke_000001.vdb",
+      "sha256": "24b88e3fa16aadab5504bdaa0dc9cfd3b7fae438c552d8cdcae437675f519909",
+      "license": "TOST-1.0"
+    },
+    {
+      "file": "volumes/smoke_000002.vdb",
+      "origin": "OpenUSD 26.11.1, unchanged",
+      "source": "https://raw.githubusercontent.com/PixarAnimationStudios/OpenUSD/96c1989167d2aaab5bd34627f32a321a6b79866b/pxr/usdImaging/usdImagingGL/testenv/testUsdImagingGLVdbVolume/smoke_000002.vdb",
+      "sha256": "dfac28d4433be1c8315b4119c150ef4632f50d0c0a71f6b69e0d4d700f9e4200",
+      "license": "TOST-1.0"
+    },
+    {
+      "file": "volumes/smoke_000003.vdb",
+      "origin": "OpenUSD 26.11.1, unchanged",
+      "source": "https://raw.githubusercontent.com/PixarAnimationStudios/OpenUSD/96c1989167d2aaab5bd34627f32a321a6b79866b/pxr/usdImaging/usdImagingGL/testenv/testUsdImagingGLVdbVolume/smoke_000003.vdb",
+      "sha256": "5673ee56fc461d676d52e8aec78734236aa4982aa7db95647c0fdda6bf58c5ab",
+      "license": "TOST-1.0"
+    },
+    {
+      "file": "volumes/vdbVolume.usda",
+      "origin": "local",
+      "license": "TOST-1.0"
+    },
+    {
+      "file": "volumes/vdbVolumeFallbackMaterial.usda",
+      "origin": "OpenUSD 26.11.1, unchanged",
+      "source": "https://raw.githubusercontent.com/PixarAnimationStudios/OpenUSD/96c1989167d2aaab5bd34627f32a321a6b79866b/pxr/usdImaging/usdImagingGL/testenv/testUsdImagingGLVdbVolume/vdbVolumeFallbackMaterial.usda",
+      "sha256": "fcdb471718ea07622bfb6540c1312b58634fac4c995aaedc95ab8458ed6a060a",
+      "license": "TOST-1.0"
+    }
+  ]
+}

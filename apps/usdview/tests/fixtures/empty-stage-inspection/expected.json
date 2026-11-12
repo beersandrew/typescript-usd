@@ -1,0 +1,17 @@
+{
+  "nativeVersion": [
+    0,
+    26,
+    11
+  ],
+  "sourceRevision": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "method": "Usd.Stage.TraverseAll() preserves undefined and abstract prims; default Traverse excludes them. Native usdview may show these via display filters.",
+  "allPaths": [
+    "/Base",
+    "/Base/Look",
+    "/World",
+    "/World/Look",
+    "/World/Camera"
+  ],
+  "defaultPaths": []
+}

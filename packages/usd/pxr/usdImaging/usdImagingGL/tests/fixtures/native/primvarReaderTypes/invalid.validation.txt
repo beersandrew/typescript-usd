@@ -1,0 +1,3 @@
+invalid
+Node interface error: Input 'base_color' doesn't match declaration: <standard_surface name="Surface" type="surfaceshader">
+Node interface error: Input 'fallback' doesn't match declaration: <UsdPrimvarReader name="Material_Reader" type="vector3" nodedef="ND_UsdPrimvarReader_vector3">

@@ -1,0 +1,1886 @@
+{
+ "release": "26.11.1",
+ "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+ "script": "pxr/imaging/hio/tests/fixtures/glslfxAssets/capture.py",
+ "upstream": [
+  "pxr/imaging/hio/glslfx.cpp",
+  "pxr/usd/ar/defaultResolver.cpp",
+  "pxr/usdImaging/usdImagingGL/testenv/testUsdImagingGLSimpleVolumes",
+  "pxr/usdImaging/usdImagingGL/testenv/testUsdImagingGLVdbVolume"
+ ],
+ "payload": {
+  "cases": [
+   {
+    "case": {
+     "name": "testUsdImagingGLSimpleVolumes/constantShader.glslfx",
+     "kind": "file",
+     "input": "<scene>/testUsdImagingGLSimpleVolumes/constantShader.glslfx",
+     "technique": "default",
+     "sourceKeys": [
+      "fragmentShader",
+      "geometryShader",
+      "geometryShaderInjection",
+      "preamble",
+      "tessControlShader",
+      "tessEvalShader",
+      "postTessControlShader",
+      "postTessVertexShader",
+      "vertexShader",
+      "vertexShaderInjection",
+      "surfaceShader",
+      "displacementShader",
+      "volumeShader"
+     ],
+     "layoutKeys": []
+    },
+    "result": {
+     "valid": true,
+     "reason": "",
+     "ctor": {
+      "errors": [],
+      "warnings": []
+     },
+     "filePath": "<scene>/testUsdImagingGLSimpleVolumes/constantShader.glslfx",
+     "files": [
+      "<scene>/testUsdImagingGLSimpleVolumes/constantShader.glslfx"
+     ],
+     "hash": "10892055747765416521",
+     "surface": "// line 25 \"constantShader.glslfx\"\n\nvec4 surfaceShader(vec4 Peye, vec3 Neye, vec4 color, vec4 patchCoord)\n{\n    float alpha = 0.7;\n    return vec4(vec3(0.2, 0.8, 0.2) * alpha, alpha);\n}\n\n",
+     "displacement": "",
+     "volume": "",
+     "accessorDiagnostics": {
+      "errors": [],
+      "warnings": []
+     },
+     "sources": [
+      [
+       "fragmentShader",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "geometryShader",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "geometryShaderInjection",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "preamble",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "tessControlShader",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "tessEvalShader",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "postTessControlShader",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "postTessVertexShader",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "vertexShader",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "vertexShaderInjection",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "surfaceShader",
+       "// line 25 \"constantShader.glslfx\"\n\nvec4 surfaceShader(vec4 Peye, vec3 Neye, vec4 color, vec4 patchCoord)\n{\n    float alpha = 0.7;\n    return vec4(vec3(0.2, 0.8, 0.2) * alpha, alpha);\n}\n\n",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "displacementShader",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "volumeShader",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ]
+     ],
+     "layouts": [],
+     "parameters": [],
+     "textures": [],
+     "attributes": [],
+     "metadata": {
+      "dict": [
+       [
+        "materialTag",
+        {
+         "string": "translucent"
+        }
+       ]
+      ]
+     }
+    }
+   },
+   {
+    "case": {
+     "name": "testUsdImagingGLSimpleVolumes/ellipsoidalVolume.glslfx",
+     "kind": "file",
+     "input": "<scene>/testUsdImagingGLSimpleVolumes/ellipsoidalVolume.glslfx",
+     "technique": "default",
+     "sourceKeys": [
+      "fragmentShader",
+      "geometryShader",
+      "geometryShaderInjection",
+      "preamble",
+      "tessControlShader",
+      "tessEvalShader",
+      "postTessControlShader",
+      "postTessVertexShader",
+      "vertexShader",
+      "vertexShaderInjection",
+      "surfaceShader",
+      "displacementShader",
+      "volumeShader"
+     ],
+     "layoutKeys": []
+    },
+    "result": {
+     "valid": true,
+     "reason": "",
+     "ctor": {
+      "errors": [],
+      "warnings": []
+     },
+     "filePath": "<scene>/testUsdImagingGLSimpleVolumes/ellipsoidalVolume.glslfx",
+     "files": [
+      "<scene>/testUsdImagingGLSimpleVolumes/ellipsoidalVolume.glslfx"
+     ],
+     "hash": "7106558634114089675",
+     "surface": "",
+     "displacement": "",
+     "volume": "// line 28 \"ellipsoidalVolume.glslfx\"\n\n// Forward declare function.\nFORWARD_DECL(vec3 coordsToLocalVolumeSpace(vec3));\n\n// The functions given here are for an ellipsoid shaped volume of constant\n// density not emitting light.\n\n// \"Distance\" of point p in local space to center of bounding box.\n// It is such that it is >0.5 exactly for the points outside the ellipsoid\n// bounded by the bounding box.\nfloat\nscaledDistance(vec3 coords)\n{\n    const vec3 p = coordsToLocalVolumeSpace(coords);\n\n    // Bounding box\n    const vec3 localMin = HdGet_bboxLocalMin().xyz;\n    const vec3 localMax = HdGet_bboxLocalMax().xyz;\n\n    vec3 relativeToCenter = p - (localMin + localMax) / 2;\n    relativeToCenter /= (localMax - localMin);\n\n    return length(relativeToCenter);\n}\n\n// Extinction function, returns sum of absorption and out-scattering cross\n// ratio.\n//\n// Here: constant on ellipsoid and zero outside.\nfloat\nextinctionFunction(vec3 coords)\n{\n    const float density = 1.5;\n\n    // Note that we want a decreasing step function, so we swapped the\n    // arguments to step.\n    return density * step(scaledDistance(coords), 0.5);\n}\n\n// Scattering function, returns in-scattering cross-section (will be combined\n// with phase function).\n//\n// Here: constant on ellipsoid and zero outside.\nfloat\nscatteringFunction(vec3 coords)\n{\n    const float scattering = 0.5;\n\n    // Note that we want a decreasing step function, so we swapped the\n    // arguments to step.\n    return scattering * step(scaledDistance(coords), 0.5);\n}\n\n// Emission function, returns emission cross-section.\n//\n// Here: zero since volume is not emitting light.\nvec3\nemissionFunction(vec3 coords)\n{\n    const vec3 emission = HdGet_emissionColor();\n\n    return emission;\n}\n\n// Phase function in volume rendering equation.\n//\n// Here: isotropic.\nfloat\nphaseFunction(vec3 direction1, vec3 direction2)\n{\n    const float pi = 3.14159265358979;\n    const float sphereArea = 4.0 * pi;\n    const float inverseSphereArea = 1.0 / sphereArea;\n\n    return inverseSphereArea;\n}\n\n\n",
+     "accessorDiagnostics": {
+      "errors": [],
+      "warnings": []
+     },
+     "sources": [
+      [
+       "fragmentShader",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "geometryShader",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "geometryShaderInjection",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "preamble",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "tessControlShader",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "tessEvalShader",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "postTessControlShader",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "postTessVertexShader",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "vertexShader",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "vertexShaderInjection",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "surfaceShader",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "displacementShader",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "volumeShader",
+       "// line 28 \"ellipsoidalVolume.glslfx\"\n\n// Forward declare function.\nFORWARD_DECL(vec3 coordsToLocalVolumeSpace(vec3));\n\n// The functions given here are for an ellipsoid shaped volume of constant\n// density not emitting light.\n\n// \"Distance\" of point p in local space to center of bounding box.\n// It is such that it is >0.5 exactly for the points outside the ellipsoid\n// bounded by the bounding box.\nfloat\nscaledDistance(vec3 coords)\n{\n    const vec3 p = coordsToLocalVolumeSpace(coords);\n\n    // Bounding box\n    const vec3 localMin = HdGet_bboxLocalMin().xyz;\n    const vec3 localMax = HdGet_bboxLocalMax().xyz;\n\n    vec3 relativeToCenter = p - (localMin + localMax) / 2;\n    relativeToCenter /= (localMax - localMin);\n\n    return length(relativeToCenter);\n}\n\n// Extinction function, returns sum of absorption and out-scattering cross\n// ratio.\n//\n// Here: constant on ellipsoid and zero outside.\nfloat\nextinctionFunction(vec3 coords)\n{\n    const float density = 1.5;\n\n    // Note that we want a decreasing step function, so we swapped the\n    // arguments to step.\n    return density * step(scaledDistance(coords), 0.5);\n}\n\n// Scattering function, returns in-scattering cross-section (will be combined\n// with phase function).\n//\n// Here: constant on ellipsoid and zero outside.\nfloat\nscatteringFunction(vec3 coords)\n{\n    const float scattering = 0.5;\n\n    // Note that we want a decreasing step function, so we swapped the\n    // arguments to step.\n    return scattering * step(scaledDistance(coords), 0.5);\n}\n\n// Emission function, returns emission cross-section.\n//\n// Here: zero since volume is not emitting light.\nvec3\nemissionFunction(vec3 coords)\n{\n    const vec3 emission = HdGet_emissionColor();\n\n    return emission;\n}\n\n// Phase function in volume rendering equation.\n//\n// Here: isotropic.\nfloat\nphaseFunction(vec3 direction1, vec3 direction2)\n{\n    const float pi = 3.14159265358979;\n    const float sphereArea = 4.0 * pi;\n    const float inverseSphereArea = 1.0 / sphereArea;\n\n    return inverseSphereArea;\n}\n\n\n",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ]
+     ],
+     "layouts": [],
+     "parameters": [
+      {
+       "name": "emissionColor",
+       "default": {
+        "vector": [
+         {
+          "double": 0
+         },
+         {
+          "double": 0
+         },
+         {
+          "double": 0
+         }
+        ]
+       },
+       "doc": "",
+       "role": 0
+      }
+     ],
+     "textures": [],
+     "attributes": [],
+     "metadata": {
+      "dict": []
+     }
+    }
+   },
+   {
+    "case": {
+     "name": "testUsdImagingGLVdbVolume/checkerboardShader.glslfx",
+     "kind": "file",
+     "input": "<scene>/testUsdImagingGLVdbVolume/checkerboardShader.glslfx",
+     "technique": "default",
+     "sourceKeys": [
+      "fragmentShader",
+      "geometryShader",
+      "geometryShaderInjection",
+      "preamble",
+      "tessControlShader",
+      "tessEvalShader",
+      "postTessControlShader",
+      "postTessVertexShader",
+      "vertexShader",
+      "vertexShaderInjection",
+      "surfaceShader",
+      "displacementShader",
+      "volumeShader"
+     ],
+     "layoutKeys": []
+    },
+    "result": {
+     "valid": true,
+     "reason": "",
+     "ctor": {
+      "errors": [],
+      "warnings": []
+     },
+     "filePath": "<scene>/testUsdImagingGLVdbVolume/checkerboardShader.glslfx",
+     "files": [
+      "<scene>/testUsdImagingGLVdbVolume/checkerboardShader.glslfx"
+     ],
+     "hash": "17849377892630671441",
+     "surface": "// line 27 \"checkerboardShader.glslfx\"\n\nvec4 surfaceShader(vec4 Peye, vec3 Neye, vec4 color, vec4 patchCoord)\n{\n    vec2 t = round(HdGet_st());\n    float v = mod(t.x + t.y, 2.0);\n\n    return vec4(vec3(v), 1.0);\n}\n\n",
+     "displacement": "",
+     "volume": "",
+     "accessorDiagnostics": {
+      "errors": [],
+      "warnings": []
+     },
+     "sources": [
+      [
+       "fragmentShader",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "geometryShader",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "geometryShaderInjection",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "preamble",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "tessControlShader",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "tessEvalShader",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "postTessControlShader",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "postTessVertexShader",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "vertexShader",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "vertexShaderInjection",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "surfaceShader",
+       "// line 27 \"checkerboardShader.glslfx\"\n\nvec4 surfaceShader(vec4 Peye, vec3 Neye, vec4 color, vec4 patchCoord)\n{\n    vec2 t = round(HdGet_st());\n    float v = mod(t.x + t.y, 2.0);\n\n    return vec4(vec3(v), 1.0);\n}\n\n",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "displacementShader",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "volumeShader",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ]
+     ],
+     "layouts": [],
+     "parameters": [
+      {
+       "name": "st",
+       "default": {
+        "vector": [
+         {
+          "double": 0
+         },
+         {
+          "double": 0
+         }
+        ]
+       },
+       "doc": "",
+       "role": 0
+      }
+     ],
+     "textures": [],
+     "attributes": [],
+     "metadata": {
+      "dict": []
+     }
+    }
+   },
+   {
+    "case": {
+     "name": "testUsdImagingGLVdbVolume/volumeShaderDensity.glslfx",
+     "kind": "file",
+     "input": "<scene>/testUsdImagingGLVdbVolume/volumeShaderDensity.glslfx",
+     "technique": "default",
+     "sourceKeys": [
+      "fragmentShader",
+      "geometryShader",
+      "geometryShaderInjection",
+      "preamble",
+      "tessControlShader",
+      "tessEvalShader",
+      "postTessControlShader",
+      "postTessVertexShader",
+      "vertexShader",
+      "vertexShaderInjection",
+      "surfaceShader",
+      "displacementShader",
+      "volumeShader"
+     ],
+     "layoutKeys": []
+    },
+    "result": {
+     "valid": true,
+     "reason": "",
+     "ctor": {
+      "errors": [],
+      "warnings": []
+     },
+     "filePath": "<scene>/testUsdImagingGLVdbVolume/volumeShaderDensity.glslfx",
+     "files": [
+      "<scene>/testUsdImagingGLVdbVolume/volumeShaderDensity.glslfx"
+     ],
+     "hash": "9703531103306828826",
+     "surface": "",
+     "displacement": "",
+     "volume": "// line 45 \"volumeShaderDensity.glslfx\"\n\n// Return zero density unless the value we read for fallbackReader is (1,4,9).\n// This tests that a field reader node defaults to its fallback value when the\n// corresponding field does not exist on the volume.\nfloat\ncheckFallbackValue(vec3 s)\n{\n    vec3 expectedFallbackValue = vec3(1,4,9);\n    float diffFromExpected = length(HdGet_fallbackReader(s) - expectedFallbackValue);\n\n    return step(diffFromExpected, 0.01);\n}\n\nfloat\ngetDensitySample(vec3 p)\n{\n    return HdGet_density(p) * checkFallbackValue(p) * HdGet_densityScale();\n}\n\n// Extinction function, returns sum of absorption and out-scattering cross\n// ratio.\n//\nfloat\nextinctionFunction(vec3 p)\n{\n    return getDensitySample(p);\n}\n\n// Scattering function, returns in-scattering cross-section (will be combined\n// with phase function).\nfloat\nscatteringFunction(vec3 p)\n{\n    return getDensitySample(p) * HdGet_albedo();\n}\n\n// Emission function, returns emission cross-section.\n//\n// Here: constant on ellipsoid and zero outside.\nvec3\nemissionFunction(vec3 p)\n{\n    return vec3(0.0);\n}\n\n// Phase function in volume rendering equation.\n//\n// Here: isotropic.\nfloat\nphaseFunction(vec3 direction1, vec3 direction2)\n{\n    const float pi = 3.14159265358979;\n    const float sphereArea = 4.0 * pi;\n    const float inverseSphereArea = 1.0 / sphereArea;\n\n    return inverseSphereArea;\n}\n\n\n",
+     "accessorDiagnostics": {
+      "errors": [],
+      "warnings": []
+     },
+     "sources": [
+      [
+       "fragmentShader",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "geometryShader",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "geometryShaderInjection",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "preamble",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "tessControlShader",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "tessEvalShader",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "postTessControlShader",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "postTessVertexShader",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "vertexShader",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "vertexShaderInjection",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "surfaceShader",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "displacementShader",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "volumeShader",
+       "// line 45 \"volumeShaderDensity.glslfx\"\n\n// Return zero density unless the value we read for fallbackReader is (1,4,9).\n// This tests that a field reader node defaults to its fallback value when the\n// corresponding field does not exist on the volume.\nfloat\ncheckFallbackValue(vec3 s)\n{\n    vec3 expectedFallbackValue = vec3(1,4,9);\n    float diffFromExpected = length(HdGet_fallbackReader(s) - expectedFallbackValue);\n\n    return step(diffFromExpected, 0.01);\n}\n\nfloat\ngetDensitySample(vec3 p)\n{\n    return HdGet_density(p) * checkFallbackValue(p) * HdGet_densityScale();\n}\n\n// Extinction function, returns sum of absorption and out-scattering cross\n// ratio.\n//\nfloat\nextinctionFunction(vec3 p)\n{\n    return getDensitySample(p);\n}\n\n// Scattering function, returns in-scattering cross-section (will be combined\n// with phase function).\nfloat\nscatteringFunction(vec3 p)\n{\n    return getDensitySample(p) * HdGet_albedo();\n}\n\n// Emission function, returns emission cross-section.\n//\n// Here: constant on ellipsoid and zero outside.\nvec3\nemissionFunction(vec3 p)\n{\n    return vec3(0.0);\n}\n\n// Phase function in volume rendering equation.\n//\n// Here: isotropic.\nfloat\nphaseFunction(vec3 direction1, vec3 direction2)\n{\n    const float pi = 3.14159265358979;\n    const float sphereArea = 4.0 * pi;\n    const float inverseSphereArea = 1.0 / sphereArea;\n\n    return inverseSphereArea;\n}\n\n\n",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ]
+     ],
+     "layouts": [],
+     "parameters": [
+      {
+       "name": "albedo",
+       "default": {
+        "vector": [
+         {
+          "double": 0
+         },
+         {
+          "double": 0
+         },
+         {
+          "double": 0
+         }
+        ]
+       },
+       "doc": "",
+       "role": 0
+      },
+      {
+       "name": "density",
+       "default": {
+        "double": 0
+       },
+       "doc": "",
+       "role": 0
+      },
+      {
+       "name": "densityScale",
+       "default": {
+        "double": 0.1
+       },
+       "doc": "",
+       "role": 0
+      },
+      {
+       "name": "fallbackReader",
+       "default": {
+        "vector": [
+         {
+          "double": 0
+         },
+         {
+          "double": 0
+         },
+         {
+          "double": 0
+         }
+        ]
+       },
+       "doc": "",
+       "role": 0
+      }
+     ],
+     "textures": [],
+     "attributes": [],
+     "metadata": {
+      "dict": []
+     }
+    }
+   },
+   {
+    "case": {
+     "name": "testUsdImagingGLVdbVolume/volumeShaderTwoFields.glslfx",
+     "kind": "file",
+     "input": "<scene>/testUsdImagingGLVdbVolume/volumeShaderTwoFields.glslfx",
+     "technique": "default",
+     "sourceKeys": [
+      "fragmentShader",
+      "geometryShader",
+      "geometryShaderInjection",
+      "preamble",
+      "tessControlShader",
+      "tessEvalShader",
+      "postTessControlShader",
+      "postTessVertexShader",
+      "vertexShader",
+      "vertexShaderInjection",
+      "surfaceShader",
+      "displacementShader",
+      "volumeShader"
+     ],
+     "layoutKeys": []
+    },
+    "result": {
+     "valid": true,
+     "reason": "",
+     "ctor": {
+      "errors": [],
+      "warnings": []
+     },
+     "filePath": "<scene>/testUsdImagingGLVdbVolume/volumeShaderTwoFields.glslfx",
+     "files": [
+      "<scene>/testUsdImagingGLVdbVolume/volumeShaderTwoFields.glslfx"
+     ],
+     "hash": "3136319570326106931",
+     "surface": "",
+     "displacement": "",
+     "volume": "// line 50 \"volumeShaderTwoFields.glslfx\"\n\nfloat\ngetDensitySample(vec3 p)\n{\n    return HdGet_density(p);\n}\n\n// Extinction function, returns sum of absorption and out-scattering cross\n// ratio.\n//\nfloat\nextinctionFunction(vec3 p)\n{\n    return getDensitySample(p) * HdGet_densityScale();\n}\n\n// Scattering function, returns in-scattering cross-section (will be combined\n// with phase function).\nfloat\nscatteringFunction(vec3 p)\n{\n    return getDensitySample(p) * HdGet_albedo();\n}\n\n// Emission function, returns emission cross-section.\n//\nvec3\nemissionFunction(vec3 p)\n{\n    const float heat = HdGet_heatScale() * HdGet_heat(p);\n\n    return getDensitySample(p) * vec3(min(0.5 * heat, 0.5), min(0.1 * heat, 0.5), 0.0);\n}\n\n// Phase function in volume rendering equation.\n//\n// Here: isotropic.\nfloat\nphaseFunction(vec3 direction1, vec3 direction2)\n{\n    const float pi = 3.14159265358979;\n    const float sphereArea = 4.0 * pi;\n    const float inverseSphereArea = 1.0 / sphereArea;\n\n    return inverseSphereArea;\n}\n\n\n",
+     "accessorDiagnostics": {
+      "errors": [],
+      "warnings": []
+     },
+     "sources": [
+      [
+       "fragmentShader",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "geometryShader",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "geometryShaderInjection",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "preamble",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "tessControlShader",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "tessEvalShader",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "postTessControlShader",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "postTessVertexShader",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "vertexShader",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "vertexShaderInjection",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "surfaceShader",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "displacementShader",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "volumeShader",
+       "// line 50 \"volumeShaderTwoFields.glslfx\"\n\nfloat\ngetDensitySample(vec3 p)\n{\n    return HdGet_density(p);\n}\n\n// Extinction function, returns sum of absorption and out-scattering cross\n// ratio.\n//\nfloat\nextinctionFunction(vec3 p)\n{\n    return getDensitySample(p) * HdGet_densityScale();\n}\n\n// Scattering function, returns in-scattering cross-section (will be combined\n// with phase function).\nfloat\nscatteringFunction(vec3 p)\n{\n    return getDensitySample(p) * HdGet_albedo();\n}\n\n// Emission function, returns emission cross-section.\n//\nvec3\nemissionFunction(vec3 p)\n{\n    const float heat = HdGet_heatScale() * HdGet_heat(p);\n\n    return getDensitySample(p) * vec3(min(0.5 * heat, 0.5), min(0.1 * heat, 0.5), 0.0);\n}\n\n// Phase function in volume rendering equation.\n//\n// Here: isotropic.\nfloat\nphaseFunction(vec3 direction1, vec3 direction2)\n{\n    const float pi = 3.14159265358979;\n    const float sphereArea = 4.0 * pi;\n    const float inverseSphereArea = 1.0 / sphereArea;\n\n    return inverseSphereArea;\n}\n\n\n",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ]
+     ],
+     "layouts": [],
+     "parameters": [
+      {
+       "name": "albedo",
+       "default": {
+        "double": 0
+       },
+       "doc": "",
+       "role": 0
+      },
+      {
+       "name": "density",
+       "default": {
+        "double": 0
+       },
+       "doc": "",
+       "role": 0
+      },
+      {
+       "name": "densityScale",
+       "default": {
+        "double": 0
+       },
+       "doc": "",
+       "role": 0
+      },
+      {
+       "name": "heat",
+       "default": {
+        "double": 0
+       },
+       "doc": "",
+       "role": 0
+      },
+      {
+       "name": "heatScale",
+       "default": {
+        "double": 0
+       },
+       "doc": "",
+       "role": 0
+      }
+     ],
+     "textures": [],
+     "attributes": [],
+     "metadata": {
+      "dict": []
+     }
+    }
+   },
+   {
+    "case": {
+     "name": "authored/main.glslfx",
+     "kind": "file",
+     "input": "<scene>/authored/main.glslfx",
+     "technique": "default",
+     "sourceKeys": [
+      "fragmentShader",
+      "geometryShader",
+      "geometryShaderInjection",
+      "preamble",
+      "tessControlShader",
+      "tessEvalShader",
+      "postTessControlShader",
+      "postTessVertexShader",
+      "vertexShader",
+      "vertexShaderInjection",
+      "surfaceShader",
+      "displacementShader",
+      "volumeShader"
+     ],
+     "layoutKeys": []
+    },
+    "result": {
+     "valid": true,
+     "reason": "",
+     "ctor": {
+      "errors": [],
+      "warnings": []
+     },
+     "filePath": "<scene>/authored/main.glslfx",
+     "files": [
+      "<install>/lib/usd/hdSt/resources/shaders/instancing.glslfx",
+      "<scene>/authored/lib/common.glslfx",
+      "<scene>/authored/lib/sibling.glslfx",
+      "<scene>/authored/main.glslfx",
+      "<scene>/authored/shared.glslfx"
+     ],
+     "hash": "10887577211663835951",
+     "surface": "// line 6 \"main.glslfx\"\nvoid main_surface();\n\n// line 4 \"common.glslfx\"\nvoid common_a();\n\n// line 2 \"shared.glslfx\"\nvoid shared_b();\n\n// line 2 \"sibling.glslfx\"\nvoid sibling_c();\n\n",
+     "displacement": "",
+     "volume": "",
+     "accessorDiagnostics": {
+      "errors": [],
+      "warnings": []
+     },
+     "sources": [
+      [
+       "fragmentShader",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "geometryShader",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "geometryShaderInjection",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "preamble",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "tessControlShader",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "tessEvalShader",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "postTessControlShader",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "postTessVertexShader",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "vertexShader",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "vertexShaderInjection",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "surfaceShader",
+       "// line 6 \"main.glslfx\"\nvoid main_surface();\n\n// line 4 \"common.glslfx\"\nvoid common_a();\n\n// line 2 \"shared.glslfx\"\nvoid shared_b();\n\n// line 2 \"sibling.glslfx\"\nvoid sibling_c();\n\n",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "displacementShader",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "volumeShader",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ]
+     ],
+     "layouts": [],
+     "parameters": [],
+     "textures": [],
+     "attributes": [],
+     "metadata": {
+      "dict": []
+     }
+    }
+   },
+   {
+    "case": {
+     "name": "authored/lib/common.glslfx",
+     "kind": "file",
+     "input": "<scene>/authored/lib/common.glslfx",
+     "technique": "default",
+     "sourceKeys": [
+      "fragmentShader",
+      "geometryShader",
+      "geometryShaderInjection",
+      "preamble",
+      "tessControlShader",
+      "tessEvalShader",
+      "postTessControlShader",
+      "postTessVertexShader",
+      "vertexShader",
+      "vertexShaderInjection",
+      "surfaceShader",
+      "displacementShader",
+      "volumeShader"
+     ],
+     "layoutKeys": []
+    },
+    "result": {
+     "valid": true,
+     "reason": "",
+     "ctor": {
+      "errors": [],
+      "warnings": []
+     },
+     "filePath": "<scene>/authored/lib/common.glslfx",
+     "files": [
+      "<scene>/authored/lib/common.glslfx",
+      "<scene>/authored/lib/sibling.glslfx",
+      "<scene>/authored/shared.glslfx"
+     ],
+     "hash": "8395143070046461036",
+     "surface": "",
+     "displacement": "",
+     "volume": "",
+     "accessorDiagnostics": {
+      "errors": [],
+      "warnings": []
+     },
+     "sources": [
+      [
+       "fragmentShader",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "geometryShader",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "geometryShaderInjection",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "preamble",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "tessControlShader",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "tessEvalShader",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "postTessControlShader",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "postTessVertexShader",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "vertexShader",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "vertexShaderInjection",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "surfaceShader",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "displacementShader",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "volumeShader",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ]
+     ],
+     "layouts": [],
+     "parameters": [],
+     "textures": [],
+     "attributes": [],
+     "metadata": {
+      "dict": []
+     }
+    }
+   },
+   {
+    "case": {
+     "name": "authored/shared.glslfx",
+     "kind": "file",
+     "input": "<scene>/authored/shared.glslfx",
+     "technique": "default",
+     "sourceKeys": [
+      "fragmentShader",
+      "geometryShader",
+      "geometryShaderInjection",
+      "preamble",
+      "tessControlShader",
+      "tessEvalShader",
+      "postTessControlShader",
+      "postTessVertexShader",
+      "vertexShader",
+      "vertexShaderInjection",
+      "surfaceShader",
+      "displacementShader",
+      "volumeShader"
+     ],
+     "layoutKeys": []
+    },
+    "result": {
+     "valid": true,
+     "reason": "",
+     "ctor": {
+      "errors": [],
+      "warnings": []
+     },
+     "filePath": "<scene>/authored/shared.glslfx",
+     "files": [
+      "<scene>/authored/shared.glslfx"
+     ],
+     "hash": "7444900866491933581",
+     "surface": "",
+     "displacement": "",
+     "volume": "",
+     "accessorDiagnostics": {
+      "errors": [],
+      "warnings": []
+     },
+     "sources": [
+      [
+       "fragmentShader",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "geometryShader",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "geometryShaderInjection",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "preamble",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "tessControlShader",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "tessEvalShader",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "postTessControlShader",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "postTessVertexShader",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "vertexShader",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "vertexShaderInjection",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "surfaceShader",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "displacementShader",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "volumeShader",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ]
+     ],
+     "layouts": [],
+     "parameters": [],
+     "textures": [],
+     "attributes": [],
+     "metadata": {
+      "dict": []
+     }
+    }
+   },
+   {
+    "case": {
+     "name": "authored/lib/sibling.glslfx",
+     "kind": "file",
+     "input": "<scene>/authored/lib/sibling.glslfx",
+     "technique": "default",
+     "sourceKeys": [
+      "fragmentShader",
+      "geometryShader",
+      "geometryShaderInjection",
+      "preamble",
+      "tessControlShader",
+      "tessEvalShader",
+      "postTessControlShader",
+      "postTessVertexShader",
+      "vertexShader",
+      "vertexShaderInjection",
+      "surfaceShader",
+      "displacementShader",
+      "volumeShader"
+     ],
+     "layoutKeys": []
+    },
+    "result": {
+     "valid": true,
+     "reason": "",
+     "ctor": {
+      "errors": [],
+      "warnings": []
+     },
+     "filePath": "<scene>/authored/lib/sibling.glslfx",
+     "files": [
+      "<scene>/authored/lib/sibling.glslfx"
+     ],
+     "hash": "15086530722675490192",
+     "surface": "",
+     "displacement": "",
+     "volume": "",
+     "accessorDiagnostics": {
+      "errors": [],
+      "warnings": []
+     },
+     "sources": [
+      [
+       "fragmentShader",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "geometryShader",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "geometryShaderInjection",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "preamble",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "tessControlShader",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "tessEvalShader",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "postTessControlShader",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "postTessVertexShader",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "vertexShader",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "vertexShaderInjection",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "surfaceShader",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "displacementShader",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "volumeShader",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ]
+     ],
+     "layouts": [],
+     "parameters": [],
+     "textures": [],
+     "attributes": [],
+     "metadata": {
+      "dict": []
+     }
+    }
+   },
+   {
+    "case": {
+     "name": "authored/missingImport.glslfx",
+     "kind": "file",
+     "input": "<scene>/authored/missingImport.glslfx",
+     "technique": "default",
+     "sourceKeys": [
+      "fragmentShader",
+      "geometryShader",
+      "geometryShaderInjection",
+      "preamble",
+      "tessControlShader",
+      "tessEvalShader",
+      "postTessControlShader",
+      "postTessVertexShader",
+      "vertexShader",
+      "vertexShaderInjection",
+      "surfaceShader",
+      "displacementShader",
+      "volumeShader"
+     ],
+     "layoutKeys": []
+    },
+    "result": {
+     "valid": false,
+     "reason": "",
+     "ctor": {
+      "errors": [],
+      "warnings": [
+       "File doesn't exist: \"./missing.glslfx\"\n"
+      ]
+     },
+     "filePath": "<scene>/authored/missingImport.glslfx",
+     "files": [
+      "<scene>/authored/missingImport.glslfx"
+     ],
+     "hash": "1082863974834261136",
+     "surface": "",
+     "displacement": "",
+     "volume": "",
+     "accessorDiagnostics": {
+      "errors": [],
+      "warnings": []
+     },
+     "sources": [
+      [
+       "fragmentShader",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "geometryShader",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "geometryShaderInjection",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "preamble",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "tessControlShader",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "tessEvalShader",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "postTessControlShader",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "postTessVertexShader",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "vertexShader",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "vertexShaderInjection",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "surfaceShader",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "displacementShader",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "volumeShader",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ]
+     ],
+     "layouts": [],
+     "parameters": [],
+     "textures": [],
+     "attributes": [],
+     "metadata": {
+      "dict": []
+     }
+    }
+   },
+   {
+    "case": {
+     "name": "authored/missing.glslfx",
+     "kind": "file",
+     "input": "<scene>/authored/missing.glslfx",
+     "technique": "default",
+     "sourceKeys": [
+      "fragmentShader",
+      "geometryShader",
+      "geometryShaderInjection",
+      "preamble",
+      "tessControlShader",
+      "tessEvalShader",
+      "postTessControlShader",
+      "postTessVertexShader",
+      "vertexShader",
+      "vertexShaderInjection",
+      "surfaceShader",
+      "displacementShader",
+      "volumeShader"
+     ],
+     "layoutKeys": []
+    },
+    "result": {
+     "valid": false,
+     "reason": "",
+     "ctor": {
+      "errors": [],
+      "warnings": [
+       "File doesn't exist: \"<scene>/authored/missing.glslfx\"\n"
+      ]
+     },
+     "filePath": "",
+     "files": [],
+     "hash": "0",
+     "surface": "",
+     "displacement": "",
+     "volume": "",
+     "accessorDiagnostics": {
+      "errors": [],
+      "warnings": []
+     },
+     "sources": [
+      [
+       "fragmentShader",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "geometryShader",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "geometryShaderInjection",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "preamble",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "tessControlShader",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "tessEvalShader",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "postTessControlShader",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "postTessVertexShader",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "vertexShader",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "vertexShaderInjection",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "surfaceShader",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "displacementShader",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ],
+      [
+       "volumeShader",
+       "",
+       {
+        "errors": [],
+        "warnings": []
+       }
+      ]
+     ],
+     "layouts": [],
+     "parameters": [],
+     "textures": [],
+     "attributes": [],
+     "metadata": {
+      "dict": []
+     }
+    }
+   }
+  ]
+ }
+}

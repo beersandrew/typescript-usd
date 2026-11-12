@@ -1,0 +1,405 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/usd/sdf/tests/fixtures/boolLiterals/capture.py",
+  "upstream": [
+    "pxr/usd/sdf/parserHelpers.h:157-190",
+    "pxr/usd/sdf/parserHelpers.cpp:651-677"
+  ],
+  "payload": {
+    "cases": [
+      {
+        "literal": "true",
+        "shape": "scalar",
+        "text": "#usda 1.0\ndef \"P\" {\n    bool a = true\n}\n",
+        "accepted": true,
+        "value": true
+      },
+      {
+        "literal": "true",
+        "shape": "array",
+        "text": "#usda 1.0\ndef \"P\" {\n    bool[] a = [true]\n}\n",
+        "accepted": true,
+        "value": [
+          true
+        ]
+      },
+      {
+        "literal": "false",
+        "shape": "scalar",
+        "text": "#usda 1.0\ndef \"P\" {\n    bool a = false\n}\n",
+        "accepted": true,
+        "value": false
+      },
+      {
+        "literal": "false",
+        "shape": "array",
+        "text": "#usda 1.0\ndef \"P\" {\n    bool[] a = [false]\n}\n",
+        "accepted": true,
+        "value": [
+          false
+        ]
+      },
+      {
+        "literal": "TRUE",
+        "shape": "scalar",
+        "text": "#usda 1.0\ndef \"P\" {\n    bool a = TRUE\n}\n",
+        "accepted": true,
+        "value": true
+      },
+      {
+        "literal": "TRUE",
+        "shape": "array",
+        "text": "#usda 1.0\ndef \"P\" {\n    bool[] a = [TRUE]\n}\n",
+        "accepted": true,
+        "value": [
+          true
+        ]
+      },
+      {
+        "literal": "False",
+        "shape": "scalar",
+        "text": "#usda 1.0\ndef \"P\" {\n    bool a = False\n}\n",
+        "accepted": true,
+        "value": false
+      },
+      {
+        "literal": "False",
+        "shape": "array",
+        "text": "#usda 1.0\ndef \"P\" {\n    bool[] a = [False]\n}\n",
+        "accepted": true,
+        "value": [
+          false
+        ]
+      },
+      {
+        "literal": "yes",
+        "shape": "scalar",
+        "text": "#usda 1.0\ndef \"P\" {\n    bool a = yes\n}\n",
+        "accepted": true,
+        "value": true
+      },
+      {
+        "literal": "yes",
+        "shape": "array",
+        "text": "#usda 1.0\ndef \"P\" {\n    bool[] a = [yes]\n}\n",
+        "accepted": true,
+        "value": [
+          true
+        ]
+      },
+      {
+        "literal": "no",
+        "shape": "scalar",
+        "text": "#usda 1.0\ndef \"P\" {\n    bool a = no\n}\n",
+        "accepted": true,
+        "value": false
+      },
+      {
+        "literal": "no",
+        "shape": "array",
+        "text": "#usda 1.0\ndef \"P\" {\n    bool[] a = [no]\n}\n",
+        "accepted": true,
+        "value": [
+          false
+        ]
+      },
+      {
+        "literal": "Yes",
+        "shape": "scalar",
+        "text": "#usda 1.0\ndef \"P\" {\n    bool a = Yes\n}\n",
+        "accepted": true,
+        "value": true
+      },
+      {
+        "literal": "Yes",
+        "shape": "array",
+        "text": "#usda 1.0\ndef \"P\" {\n    bool[] a = [Yes]\n}\n",
+        "accepted": true,
+        "value": [
+          true
+        ]
+      },
+      {
+        "literal": "NO",
+        "shape": "scalar",
+        "text": "#usda 1.0\ndef \"P\" {\n    bool a = NO\n}\n",
+        "accepted": true,
+        "value": false
+      },
+      {
+        "literal": "NO",
+        "shape": "array",
+        "text": "#usda 1.0\ndef \"P\" {\n    bool[] a = [NO]\n}\n",
+        "accepted": true,
+        "value": [
+          false
+        ]
+      },
+      {
+        "literal": "on",
+        "shape": "scalar",
+        "text": "#usda 1.0\ndef \"P\" {\n    bool a = on\n}\n",
+        "accepted": false
+      },
+      {
+        "literal": "on",
+        "shape": "array",
+        "text": "#usda 1.0\ndef \"P\" {\n    bool[] a = [on]\n}\n",
+        "accepted": false
+      },
+      {
+        "literal": "off",
+        "shape": "scalar",
+        "text": "#usda 1.0\ndef \"P\" {\n    bool a = off\n}\n",
+        "accepted": false
+      },
+      {
+        "literal": "off",
+        "shape": "array",
+        "text": "#usda 1.0\ndef \"P\" {\n    bool[] a = [off]\n}\n",
+        "accepted": false
+      },
+      {
+        "literal": "On",
+        "shape": "scalar",
+        "text": "#usda 1.0\ndef \"P\" {\n    bool a = On\n}\n",
+        "accepted": false
+      },
+      {
+        "literal": "On",
+        "shape": "array",
+        "text": "#usda 1.0\ndef \"P\" {\n    bool[] a = [On]\n}\n",
+        "accepted": false
+      },
+      {
+        "literal": "OFF",
+        "shape": "scalar",
+        "text": "#usda 1.0\ndef \"P\" {\n    bool a = OFF\n}\n",
+        "accepted": false
+      },
+      {
+        "literal": "OFF",
+        "shape": "array",
+        "text": "#usda 1.0\ndef \"P\" {\n    bool[] a = [OFF]\n}\n",
+        "accepted": false
+      },
+      {
+        "literal": "y",
+        "shape": "scalar",
+        "text": "#usda 1.0\ndef \"P\" {\n    bool a = y\n}\n",
+        "accepted": false
+      },
+      {
+        "literal": "y",
+        "shape": "array",
+        "text": "#usda 1.0\ndef \"P\" {\n    bool[] a = [y]\n}\n",
+        "accepted": false
+      },
+      {
+        "literal": "t",
+        "shape": "scalar",
+        "text": "#usda 1.0\ndef \"P\" {\n    bool a = t\n}\n",
+        "accepted": false
+      },
+      {
+        "literal": "t",
+        "shape": "array",
+        "text": "#usda 1.0\ndef \"P\" {\n    bool[] a = [t]\n}\n",
+        "accepted": false
+      },
+      {
+        "literal": "1",
+        "shape": "scalar",
+        "text": "#usda 1.0\ndef \"P\" {\n    bool a = 1\n}\n",
+        "accepted": true,
+        "value": true
+      },
+      {
+        "literal": "1",
+        "shape": "array",
+        "text": "#usda 1.0\ndef \"P\" {\n    bool[] a = [1]\n}\n",
+        "accepted": true,
+        "value": [
+          true
+        ]
+      },
+      {
+        "literal": "0",
+        "shape": "scalar",
+        "text": "#usda 1.0\ndef \"P\" {\n    bool a = 0\n}\n",
+        "accepted": true,
+        "value": false
+      },
+      {
+        "literal": "0",
+        "shape": "array",
+        "text": "#usda 1.0\ndef \"P\" {\n    bool[] a = [0]\n}\n",
+        "accepted": true,
+        "value": [
+          false
+        ]
+      },
+      {
+        "literal": "2",
+        "shape": "scalar",
+        "text": "#usda 1.0\ndef \"P\" {\n    bool a = 2\n}\n",
+        "accepted": true,
+        "value": true
+      },
+      {
+        "literal": "2",
+        "shape": "array",
+        "text": "#usda 1.0\ndef \"P\" {\n    bool[] a = [2]\n}\n",
+        "accepted": true,
+        "value": [
+          true
+        ]
+      },
+      {
+        "literal": "-1",
+        "shape": "scalar",
+        "text": "#usda 1.0\ndef \"P\" {\n    bool a = -1\n}\n",
+        "accepted": true,
+        "value": true
+      },
+      {
+        "literal": "-1",
+        "shape": "array",
+        "text": "#usda 1.0\ndef \"P\" {\n    bool[] a = [-1]\n}\n",
+        "accepted": true,
+        "value": [
+          true
+        ]
+      },
+      {
+        "literal": "0.5",
+        "shape": "scalar",
+        "text": "#usda 1.0\ndef \"P\" {\n    bool a = 0.5\n}\n",
+        "accepted": true,
+        "value": true
+      },
+      {
+        "literal": "0.5",
+        "shape": "array",
+        "text": "#usda 1.0\ndef \"P\" {\n    bool[] a = [0.5]\n}\n",
+        "accepted": true,
+        "value": [
+          true
+        ]
+      },
+      {
+        "literal": "\"true\"",
+        "shape": "scalar",
+        "text": "#usda 1.0\ndef \"P\" {\n    bool a = \"true\"\n}\n",
+        "accepted": true,
+        "value": true
+      },
+      {
+        "literal": "\"true\"",
+        "shape": "array",
+        "text": "#usda 1.0\ndef \"P\" {\n    bool[] a = [\"true\"]\n}\n",
+        "accepted": true,
+        "value": [
+          true
+        ]
+      },
+      {
+        "literal": "\"No\"",
+        "shape": "scalar",
+        "text": "#usda 1.0\ndef \"P\" {\n    bool a = \"No\"\n}\n",
+        "accepted": true,
+        "value": false
+      },
+      {
+        "literal": "\"No\"",
+        "shape": "array",
+        "text": "#usda 1.0\ndef \"P\" {\n    bool[] a = [\"No\"]\n}\n",
+        "accepted": true,
+        "value": [
+          false
+        ]
+      },
+      {
+        "literal": "\"on\"",
+        "shape": "scalar",
+        "text": "#usda 1.0\ndef \"P\" {\n    bool a = \"on\"\n}\n",
+        "accepted": false
+      },
+      {
+        "literal": "\"on\"",
+        "shape": "array",
+        "text": "#usda 1.0\ndef \"P\" {\n    bool[] a = [\"on\"]\n}\n",
+        "accepted": false
+      },
+      {
+        "literal": "\"off\"",
+        "shape": "scalar",
+        "text": "#usda 1.0\ndef \"P\" {\n    bool a = \"off\"\n}\n",
+        "accepted": false
+      },
+      {
+        "literal": "\"off\"",
+        "shape": "array",
+        "text": "#usda 1.0\ndef \"P\" {\n    bool[] a = [\"off\"]\n}\n",
+        "accepted": false
+      },
+      {
+        "literal": "\"1\"",
+        "shape": "scalar",
+        "text": "#usda 1.0\ndef \"P\" {\n    bool a = \"1\"\n}\n",
+        "accepted": true,
+        "value": true
+      },
+      {
+        "literal": "\"1\"",
+        "shape": "array",
+        "text": "#usda 1.0\ndef \"P\" {\n    bool[] a = [\"1\"]\n}\n",
+        "accepted": true,
+        "value": [
+          true
+        ]
+      },
+      {
+        "literal": "\"0\"",
+        "shape": "scalar",
+        "text": "#usda 1.0\ndef \"P\" {\n    bool a = \"0\"\n}\n",
+        "accepted": true,
+        "value": false
+      },
+      {
+        "literal": "\"0\"",
+        "shape": "array",
+        "text": "#usda 1.0\ndef \"P\" {\n    bool[] a = [\"0\"]\n}\n",
+        "accepted": true,
+        "value": [
+          false
+        ]
+      },
+      {
+        "literal": "\"maybe\"",
+        "shape": "scalar",
+        "text": "#usda 1.0\ndef \"P\" {\n    bool a = \"maybe\"\n}\n",
+        "accepted": false
+      },
+      {
+        "literal": "\"maybe\"",
+        "shape": "array",
+        "text": "#usda 1.0\ndef \"P\" {\n    bool[] a = [\"maybe\"]\n}\n",
+        "accepted": false
+      },
+      {
+        "literal": "\"\"",
+        "shape": "scalar",
+        "text": "#usda 1.0\ndef \"P\" {\n    bool a = \"\"\n}\n",
+        "accepted": false
+      },
+      {
+        "literal": "\"\"",
+        "shape": "array",
+        "text": "#usda 1.0\ndef \"P\" {\n    bool[] a = [\"\"]\n}\n",
+        "accepted": false
+      }
+    ]
+  }
+}

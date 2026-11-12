@@ -1,0 +1,1005 @@
+{
+ "nativeVersion": [
+  0,
+  26,
+  11
+ ],
+ "source": "OpenUSD-26.11.1 pxr/usdImaging/usdviewq/hydraObserver.cpp, wrapHydraObserver.cpp, hydraSceneDebugger.py; usdImagingGL/engine.cpp",
+ "registeredNames": [
+  "[Terminal SI] Renderer: GL"
+ ],
+ "targeted": true,
+ "terminal": {
+  "displayName": "HdDependencyForwardingSceneIndex",
+  "inputs": [
+   {
+    "name": "HdsiPrimIdSceneIndex",
+    "inputs": [
+     {
+      "name": "HdsiUnboundMaterialPruningSceneIndex",
+      "inputs": [
+       {
+        "name": "HdSt: declare Storm dependencies",
+        "inputs": [
+         {
+          "name": "(anonymous namespace)::_RenderPassVisibilitySceneIndex",
+          "inputs": [
+           {
+            "name": "HdsiMaterialPrimvarTransferSceneIndex",
+            "inputs": [
+             {
+              "name": "HdsiRenderPassPruneSceneIndex",
+              "inputs": [
+               {
+                "name": "HdsiVelocityMotionResolvingSceneIndex",
+                "inputs": [
+                 {
+                  "name": "HdsiTetMeshConversionSceneIndex",
+                  "inputs": [
+                   {
+                    "name": "HdsiNurbsApproximatingSceneIndex",
+                    "inputs": [
+                     {
+                      "name": "HdSiNodeIdentifierResolvingSceneIndex (glslfx)",
+                      "inputs": [
+                       {
+                        "name": "HdsiMaterialBindingResolvingSceneIndex",
+                        "inputs": [
+                         {
+                          "name": "HdsiImplicitSurfaceSceneIndex",
+                          "inputs": [
+                           {
+                            "name": "HdsiBackPlateSceneIndex",
+                            "inputs": [
+                             {
+                              "name": "HdsiSceneMaterialPruningSceneIndex",
+                              "inputs": [
+                               {
+                                "name": "Dome Light Camera Visibility Scene Index",
+                                "inputs": [
+                                 {
+                                  "name": "Scene Globals Scene Index",
+                                  "inputs": [
+                                   {
+                                    "name": "HdMergingSceneIndex",
+                                    "inputs": [
+                                     {
+                                      "name": "HdsiLegacyDisplayStyleOverrideSceneIndex",
+                                      "inputs": [
+                                       {
+                                        "name": "UsdImagingSceneIndex",
+                                        "inputs": []
+                                       }
+                                      ]
+                                     },
+                                     {
+                                      "name": "HdxTaskControllerSceneIndex",
+                                      "inputs": []
+                                     }
+                                    ]
+                                   }
+                                  ]
+                                 }
+                                ]
+                               }
+                              ]
+                             }
+                            ]
+                           }
+                          ]
+                         }
+                        ]
+                       }
+                      ]
+                     }
+                    ]
+                   }
+                  ]
+                 }
+                ]
+               }
+              ]
+             }
+            ]
+           }
+          ]
+         }
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "nestedInputDisplayNames": [
+   "HdDependencyForwardingSceneIndex",
+   "HdsiPrimIdSceneIndex",
+   "HdsiUnboundMaterialPruningSceneIndex",
+   "HdSt: declare Storm dependencies",
+   "(anonymous namespace)::_RenderPassVisibilitySceneIndex",
+   "HdsiMaterialPrimvarTransferSceneIndex",
+   "HdsiRenderPassPruneSceneIndex",
+   "HdsiVelocityMotionResolvingSceneIndex",
+   "HdsiTetMeshConversionSceneIndex",
+   "HdsiNurbsApproximatingSceneIndex",
+   "HdSiNodeIdentifierResolvingSceneIndex (glslfx)",
+   "HdsiMaterialBindingResolvingSceneIndex",
+   "HdsiImplicitSurfaceSceneIndex",
+   "HdsiBackPlateSceneIndex",
+   "HdsiSceneMaterialPruningSceneIndex",
+   "Dome Light Camera Visibility Scene Index",
+   "Scene Globals Scene Index",
+   "HdMergingSceneIndex",
+   "HdsiLegacyDisplayStyleOverrideSceneIndex",
+   "HdxTaskControllerSceneIndex",
+   "UsdImagingSceneIndex"
+  ],
+  "rootChildren": [
+   "/World",
+   "/_UsdImaging_GL_<id>"
+  ],
+  "worldChildren": [
+   "/World/Cube",
+   "/World/Sphere"
+  ]
+ },
+ "shared": {
+  "displayName": "HdsiUnboundMaterialPruningSceneIndex",
+  "prims": [
+   {
+    "path": "/World",
+    "type": "",
+    "dataSource": {
+     "kind": "container",
+     "children": [
+      [
+       "__usdPrimInfo",
+       {
+        "kind": "container",
+        "children": [
+         [
+          "specifier",
+          null
+         ],
+         [
+          "typeName",
+          null
+         ],
+         [
+          "isLoaded",
+          null
+         ]
+        ]
+       }
+      ],
+      [
+       "primOrigin",
+       {
+        "kind": "container",
+        "children": [
+         [
+          "scenePath",
+          null
+         ]
+        ]
+       }
+      ],
+      [
+       "visibility",
+       {
+        "kind": "container",
+        "children": [
+         [
+          "visibility",
+          null
+         ]
+        ]
+       }
+      ],
+      [
+       "xform",
+       {
+        "kind": "container",
+        "children": [
+         [
+          "matrix",
+          null
+         ],
+         [
+          "resetXformStack",
+          null
+         ]
+        ]
+       }
+      ],
+      [
+       "__usdUpAxis",
+       {
+        "kind": "container",
+        "children": [
+         [
+          "upAxis",
+          null
+         ]
+        ]
+       }
+      ],
+      [
+       "primvars",
+       {
+        "kind": "container",
+        "children": []
+       }
+      ],
+      [
+       "displayStyle",
+       {
+        "kind": "container",
+        "children": [
+         [
+          "refineLevel",
+          null
+         ],
+         [
+          "cullStyle",
+          null
+         ]
+        ]
+       }
+      ]
+     ]
+    }
+   },
+   {
+    "path": "/World/Cube",
+    "type": "mesh",
+    "dataSource": {
+     "kind": "container",
+     "children": [
+      [
+       "mesh",
+       {
+        "kind": "container",
+        "children": [
+         [
+          "topology",
+          null
+         ],
+         [
+          "subdivisionScheme",
+          null
+         ],
+         [
+          "doubleSided",
+          null
+         ]
+        ]
+       }
+      ],
+      [
+       "primvars",
+       {
+        "kind": "container",
+        "children": [
+         [
+          "points",
+          null
+         ]
+        ]
+       }
+      ],
+      [
+       "__dependencies",
+       {
+        "kind": "container",
+        "children": [
+         [
+          "implicitToMesh",
+          null
+         ],
+         [
+          "storm_materialBindingsToDependency",
+          null
+         ]
+        ]
+       }
+      ],
+      [
+       "__usdPrimInfo",
+       {
+        "kind": "container",
+        "children": [
+         [
+          "specifier",
+          null
+         ],
+         [
+          "typeName",
+          null
+         ],
+         [
+          "isLoaded",
+          null
+         ]
+        ]
+       }
+      ],
+      [
+       "primOrigin",
+       {
+        "kind": "container",
+        "children": [
+         [
+          "scenePath",
+          null
+         ]
+        ]
+       }
+      ],
+      [
+       "visibility",
+       {
+        "kind": "container",
+        "children": [
+         [
+          "visibility",
+          null
+         ]
+        ]
+       }
+      ],
+      [
+       "xform",
+       {
+        "kind": "container",
+        "children": [
+         [
+          "matrix",
+          null
+         ],
+         [
+          "resetXformStack",
+          null
+         ]
+        ]
+       }
+      ],
+      [
+       "__usdUpAxis",
+       {
+        "kind": "container",
+        "children": [
+         [
+          "upAxis",
+          null
+         ]
+        ]
+       }
+      ],
+      [
+       "displayStyle",
+       {
+        "kind": "container",
+        "children": [
+         [
+          "refineLevel",
+          null
+         ],
+         [
+          "cullStyle",
+          null
+         ]
+        ]
+       }
+      ]
+     ]
+    }
+   },
+   {
+    "path": "/World/Sphere",
+    "type": "mesh",
+    "dataSource": {
+     "kind": "container",
+     "children": [
+      [
+       "mesh",
+       {
+        "kind": "container",
+        "children": [
+         [
+          "topology",
+          null
+         ],
+         [
+          "subdivisionScheme",
+          null
+         ],
+         [
+          "doubleSided",
+          null
+         ]
+        ]
+       }
+      ],
+      [
+       "primvars",
+       {
+        "kind": "container",
+        "children": [
+         [
+          "points",
+          null
+         ]
+        ]
+       }
+      ],
+      [
+       "__dependencies",
+       {
+        "kind": "container",
+        "children": [
+         [
+          "implicitToMesh",
+          null
+         ],
+         [
+          "storm_materialBindingsToDependency",
+          null
+         ]
+        ]
+       }
+      ],
+      [
+       "__usdPrimInfo",
+       {
+        "kind": "container",
+        "children": [
+         [
+          "specifier",
+          null
+         ],
+         [
+          "typeName",
+          null
+         ],
+         [
+          "isLoaded",
+          null
+         ]
+        ]
+       }
+      ],
+      [
+       "primOrigin",
+       {
+        "kind": "container",
+        "children": [
+         [
+          "scenePath",
+          null
+         ]
+        ]
+       }
+      ],
+      [
+       "visibility",
+       {
+        "kind": "container",
+        "children": [
+         [
+          "visibility",
+          null
+         ]
+        ]
+       }
+      ],
+      [
+       "xform",
+       {
+        "kind": "container",
+        "children": [
+         [
+          "matrix",
+          null
+         ],
+         [
+          "resetXformStack",
+          null
+         ]
+        ]
+       }
+      ],
+      [
+       "geomXformVectors",
+       {
+        "kind": "container",
+        "children": [
+         [
+          "translation",
+          null
+         ],
+         [
+          "rotation",
+          null
+         ],
+         [
+          "rotationOrder",
+          null
+         ],
+         [
+          "scale",
+          null
+         ],
+         [
+          "pivot",
+          null
+         ]
+        ]
+       }
+      ],
+      [
+       "__usdUpAxis",
+       {
+        "kind": "container",
+        "children": [
+         [
+          "upAxis",
+          null
+         ]
+        ]
+       }
+      ],
+      [
+       "displayStyle",
+       {
+        "kind": "container",
+        "children": [
+         [
+          "refineLevel",
+          null
+         ],
+         [
+          "cullStyle",
+          null
+         ]
+        ]
+       }
+      ]
+     ]
+    }
+   }
+  ],
+  "values": {
+   "sphere xform matrix": {
+    "locator": "xform/matrix",
+    "type": "GfMatrix4d",
+    "array": false,
+    "rows": [
+     "( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (3, 0, 0, 1) )"
+    ]
+   },
+   "cube visibility": {
+    "locator": "visibility/visibility",
+    "type": "bool",
+    "array": false,
+    "rows": [
+     "True"
+    ]
+   },
+   "cube points": {
+    "locator": "primvars/points/primvarValue",
+    "type": "VtArray<GfVec3f>",
+    "array": false,
+    "rows": [
+     "[(1, 1, 1), (-1, 1, 1), (-1, -1, 1), (1, -1, 1), (-1, -1, -1), (-1, 1, -1), (1, 1, -1), (1, -1, -1)]"
+    ]
+   },
+   "cube points interpolation": {
+    "locator": "primvars/points/interpolation",
+    "type": "TfToken",
+    "array": false,
+    "rows": [
+     "vertex"
+    ]
+   },
+   "cube type name": {
+    "locator": "__usdPrimInfo/typeName",
+    "type": "TfToken",
+    "array": false,
+    "rows": [
+     "Cube"
+    ]
+   },
+   "cube face vertex counts": {
+    "locator": "mesh/topology/faceVertexCounts",
+    "type": "VtArray<int>",
+    "array": false,
+    "rows": [
+     "[4, 4, 4, 4, 4, 4]"
+    ]
+   },
+   "cube primvars": {
+    "locator": "primvars",
+    "kind": "container"
+   },
+   "cube size (removed by implicit surface conversion)": {
+    "locator": "cube/size",
+    "kind": "none"
+   }
+  }
+ },
+ "edits": [
+  {
+   "edit": "set /World/Cube.size = 3",
+   "notices": [
+    [
+     "dirtied",
+     [
+      [
+       "/World/Cube",
+       "cube/size,"
+      ],
+      [
+       "/World/Cube",
+       "cube/size,"
+      ]
+     ]
+    ]
+   ],
+   "value": {
+    "header": [
+     "VtArray<GfVec3f>"
+    ],
+    "rows": [
+     [
+      "[(1, 1, 1), (-1, 1, 1), (-1, -1, 1), (1, -1, 1), (-1, -1, -1), (-1, 1, -1), (1, 1, -1), (1, -1, -1)]"
+     ]
+    ]
+   }
+  },
+  {
+   "edit": "define Cone /World/Cone",
+   "notices": [
+    [
+     "added",
+     [
+      [
+       "/World/Cone",
+       "mesh"
+      ]
+     ]
+    ]
+   ],
+   "value": {
+    "header": [
+     "VtArray<GfVec3f>"
+    ],
+    "rows": [
+     [
+      "[(1, 1, 1), (-1, 1, 1), (-1, -1, 1), (1, -1, 1), (-1, -1, -1), (-1, 1, -1), (1, 1, -1), (1, -1, -1)]"
+     ]
+    ]
+   }
+  },
+  {
+   "edit": "deactivate /World/Sphere",
+   "notices": [
+    [
+     "removed",
+     [
+      "/World/Sphere"
+     ]
+    ]
+   ],
+   "value": {
+    "header": [
+     "VtArray<GfVec3f>"
+    ],
+    "rows": [
+     [
+      "[(1, 1, 1), (-1, 1, 1), (-1, -1, 1), (1, -1, 1), (-1, -1, -1), (-1, 1, -1), (1, 1, -1), (1, -1, -1)]"
+     ]
+    ]
+   }
+  }
+ ],
+ "panel": {
+  "chooser": [
+   "[Terminal SI] Renderer: GL"
+  ],
+  "labelAfterChoose": "<b><i>( HdDependencyForwardingSceneIndex )</i></b> [Terminal SI] Renderer: GL",
+  "treeAfterChoose": {
+   "texts": [],
+   "expanded": false,
+   "indicator": "DontShowIndicatorWhenChildless",
+   "children": [
+    {
+     "texts": [
+      "/"
+     ],
+     "expanded": false,
+     "indicator": "ShowIndicator",
+     "children": []
+    }
+   ]
+  },
+  "labelAfterInput": "<b><i>( HdsiUnboundMaterialPruningSceneIndex )</i></b> ",
+  "inputsEnabled": true,
+  "treeExpanded": {
+   "texts": [],
+   "expanded": false,
+   "indicator": "DontShowIndicatorWhenChildless",
+   "children": [
+    {
+     "texts": [
+      "/"
+     ],
+     "expanded": true,
+     "indicator": "ShowIndicator",
+     "children": [
+      {
+       "texts": [
+        "World",
+        ""
+       ],
+       "expanded": true,
+       "indicator": "ShowIndicator",
+       "children": [
+        {
+         "texts": [
+          "Cube",
+          "mesh"
+         ],
+         "expanded": false,
+         "indicator": "ShowIndicator",
+         "children": []
+        },
+        {
+         "texts": [
+          "Sphere",
+          "mesh"
+         ],
+         "expanded": false,
+         "indicator": "ShowIndicator",
+         "children": []
+        }
+       ]
+      },
+      {
+       "texts": [
+        "_UsdImaging_GL_0x7939aacf18",
+        ""
+       ],
+       "expanded": false,
+       "indicator": "ShowIndicator",
+       "children": []
+      }
+     ]
+    }
+   ]
+  },
+  "dsTree": {
+   "texts": [],
+   "expanded": false,
+   "indicator": "DontShowIndicatorWhenChildless",
+   "children": [
+    {
+     "texts": [
+      "<Cube>"
+     ],
+     "expanded": true,
+     "indicator": "ShowIndicator",
+     "children": [
+      {
+       "texts": [
+        "mesh"
+       ],
+       "expanded": false,
+       "indicator": "ShowIndicator",
+       "children": []
+      },
+      {
+       "texts": [
+        "primvars"
+       ],
+       "expanded": true,
+       "indicator": "ShowIndicator",
+       "children": [
+        {
+         "texts": [
+          "points"
+         ],
+         "expanded": true,
+         "indicator": "ShowIndicator",
+         "children": [
+          {
+           "texts": [
+            "primvarValue"
+           ],
+           "expanded": false,
+           "indicator": "DontShowIndicator",
+           "children": []
+          },
+          {
+           "texts": [
+            "interpolation"
+           ],
+           "expanded": false,
+           "indicator": "DontShowIndicator",
+           "children": []
+          },
+          {
+           "texts": [
+            "role"
+           ],
+           "expanded": false,
+           "indicator": "DontShowIndicator",
+           "children": []
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "texts": [
+        "__dependencies"
+       ],
+       "expanded": false,
+       "indicator": "ShowIndicator",
+       "children": []
+      },
+      {
+       "texts": [
+        "__usdPrimInfo"
+       ],
+       "expanded": false,
+       "indicator": "ShowIndicator",
+       "children": []
+      },
+      {
+       "texts": [
+        "primOrigin"
+       ],
+       "expanded": false,
+       "indicator": "ShowIndicator",
+       "children": []
+      },
+      {
+       "texts": [
+        "visibility"
+       ],
+       "expanded": false,
+       "indicator": "ShowIndicator",
+       "children": []
+      },
+      {
+       "texts": [
+        "xform"
+       ],
+       "expanded": false,
+       "indicator": "ShowIndicator",
+       "children": []
+      },
+      {
+       "texts": [
+        "__usdUpAxis"
+       ],
+       "expanded": false,
+       "indicator": "ShowIndicator",
+       "children": []
+      },
+      {
+       "texts": [
+        "displayStyle"
+       ],
+       "expanded": false,
+       "indicator": "ShowIndicator",
+       "children": []
+      }
+     ]
+    }
+   ]
+  },
+  "valueSelected": {
+   "header": [
+    "VtArray<GfVec3f>"
+   ],
+   "rows": [
+    [
+     "[(1, 1, 1), (-1, 1, 1), (-1, -1, 1), (1, -1, 1), (-1, -1, -1), (-1, 1, -1), (1, 1, -1), (1, -1, -1)]"
+    ]
+   ]
+  },
+  "loggerLabel": "<b><i>( HdsiUnboundMaterialPruningSceneIndex )</i></b> ",
+  "treeAfterEdits": {
+   "texts": [],
+   "expanded": false,
+   "indicator": "DontShowIndicatorWhenChildless",
+   "children": [
+    {
+     "texts": [
+      "/"
+     ],
+     "expanded": true,
+     "indicator": "ShowIndicator",
+     "children": [
+      {
+       "texts": [
+        "World",
+        ""
+       ],
+       "expanded": true,
+       "indicator": "ShowIndicator",
+       "children": [
+        {
+         "texts": [
+          "Cube",
+          "mesh"
+         ],
+         "expanded": false,
+         "indicator": "ShowIndicator",
+         "children": []
+        },
+        {
+         "texts": [
+          "Cone",
+          "mesh"
+         ],
+         "expanded": false,
+         "indicator": "DontShowIndicatorWhenChildless",
+         "children": []
+        }
+       ]
+      },
+      {
+       "texts": [
+        "_UsdImaging_GL_0x7939aacf18",
+        ""
+       ],
+       "expanded": false,
+       "indicator": "ShowIndicator",
+       "children": []
+      }
+     ]
+    }
+   ]
+  },
+  "logger": [
+   [
+    "dirtied",
+    [
+     [
+      "/World/Cube",
+      "cube/size,"
+     ],
+     [
+      "/World/Cube",
+      "cube/size,"
+     ]
+    ]
+   ],
+   [
+    "added",
+    [
+     [
+      "/World/Cone",
+      "mesh"
+     ]
+    ]
+   ],
+   [
+    "removed",
+    [
+     [
+      "/World/Sphere",
+      ""
+     ]
+    ]
+   ]
+  ],
+  "loggerHeader": [
+   "Notice Type/ Prim Path",
+   "Value"
+  ]
+ }
+}

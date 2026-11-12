@@ -1,0 +1,165 @@
+{
+  "nativeVersion": [
+    0,
+    26,
+    11
+  ],
+  "rows": [
+    {
+      "role": "ATTRIBUTE",
+      "name": "number",
+      "value": "2.5",
+      "targets": [],
+      "actions": [
+        {
+          "text": "Copy Property Name",
+          "enabled": true,
+          "copied": "number"
+        },
+        {
+          "text": "Copy Property Value",
+          "enabled": true,
+          "copied": "2.5"
+        },
+        {
+          "text": "View Spline",
+          "enabled": false
+        }
+      ]
+    },
+    {
+      "role": "RELATIONSHIP_WITH_TARGETS",
+      "name": "targets",
+      "value": "/A, /B.input",
+      "targets": [
+        "/A",
+        "/B.input"
+      ],
+      "actions": [
+        {
+          "text": "Copy Property Name",
+          "enabled": true,
+          "copied": "targets"
+        },
+        {
+          "text": "Copy Property Value",
+          "enabled": true,
+          "copied": "[Sdf.Path('/A'), Sdf.Path('/B.input')]"
+        },
+        {
+          "text": "Copy Target Path(s) As Text",
+          "enabled": true,
+          "error": "TypeError"
+        },
+        {
+          "text": "Select Target Path(s)",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "role": "ATTRIBUTE_WITH_CONNNECTIONS",
+      "name": "connected",
+      "value": "2.5",
+      "targets": [
+        "/B.input"
+      ],
+      "actions": [
+        {
+          "text": "Copy Property Name",
+          "enabled": true,
+          "copied": "connected"
+        },
+        {
+          "text": "Copy Property Value",
+          "enabled": true,
+          "copied": "2.5"
+        },
+        {
+          "text": "Copy Target Path(s) As Text",
+          "enabled": true,
+          "error": "TypeError"
+        },
+        {
+          "text": "Select Target Path(s)",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "role": "TARGET",
+      "name": "/B.input",
+      "value": "",
+      "targets": [],
+      "actions": [
+        {
+          "text": "Copy Target Path As Text",
+          "enabled": true,
+          "copied": "/B.input"
+        },
+        {
+          "text": "Select Target Path",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "role": "CONNECTION",
+      "name": "/B.input",
+      "value": "",
+      "targets": [],
+      "actions": [
+        {
+          "text": "Copy Target Path As Text",
+          "enabled": true,
+          "copied": "/B.input"
+        },
+        {
+          "text": "Select Target Path",
+          "enabled": true
+        }
+      ]
+    }
+  ],
+  "selections": [
+    {
+      "paths": [
+        "/A",
+        "/B.input"
+      ],
+      "prims": [
+        "/A",
+        "/B"
+      ],
+      "properties": [
+        "/B.input"
+      ],
+      "error": null
+    },
+    {
+      "paths": [
+        "/B.input"
+      ],
+      "prims": [
+        "/B"
+      ],
+      "properties": [
+        "/B.input"
+      ],
+      "error": null
+    },
+    {
+      "paths": [
+        "/A",
+        "/Missing"
+      ],
+      "prims": [
+        "/B"
+      ],
+      "properties": [
+        "/B.input"
+      ],
+      "error": "PrimNotFoundException"
+    }
+  ]
+}

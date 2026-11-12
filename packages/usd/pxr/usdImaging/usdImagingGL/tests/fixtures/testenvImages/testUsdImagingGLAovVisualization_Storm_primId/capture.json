@@ -1,0 +1,28 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/usdImaging/usdImagingGL/tests/fixtures/testenvImages/capture.py",
+  "upstream": [
+    "pxr/usdImaging/usdImagingGL/CMakeLists.txt",
+    "pxr/usdImaging/usdImagingGL/testenv/testUsdImagingGLBasicDrawing.cpp"
+  ],
+  "payload": {
+    "test": "testUsdImagingGLAovVisualization_Storm_primId",
+    "cmake": "pxr/usdImaging/usdImagingGL/CMakeLists.txt:4711",
+    "command": "<install>/tests/testUsdImagingGLBasicDrawing -offscreen -stage viz_aov.usda -rendererAov primId -clear 0 0 0 1 -lighting -camera /main_cam -write testUsdImagingGLAovVisualization_Storm_primId.png",
+    "cwd": "copy of <source>/pxr/usdImaging/usdImagingGL/testenv/testUsdImagingGLAovVisualization",
+    "env": {
+      "TF_DEBUG": "HD_SAFE_MODE"
+    },
+    "expectedReturnCode": "0",
+    "returnCode": 0,
+    "images": [
+      {
+        "name": "testUsdImagingGLAovVisualization_Storm_primId.png",
+        "written": true
+      }
+    ],
+    "nondeterministic": "the primId AOV colours change between runs of the reference build (4 runs, 4 images, with or without HD_DISABLE_MULTITHREADED_RPRIM_SYNC)",
+    "imagesDeclared": false
+  }
+}

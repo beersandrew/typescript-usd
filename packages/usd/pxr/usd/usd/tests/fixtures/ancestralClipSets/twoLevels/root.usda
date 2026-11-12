@@ -1,0 +1,21 @@
+#usda 1.0
+def "Model" (
+  clips = {
+    dictionary a = {
+double2[] active = [(1, 0)]
+asset[] assetPaths = [@./red.usda@]
+string primPath = "/Clip"
+}
+  }
+) {
+def "Child" (clips = { dictionary b = {
+double2[] active = [(1, 0)]
+asset[] assetPaths = [@./blue.usda@]
+string primPath = "/Clip/Child"
+} }
+  clipSets = ["b"]) {
+  def "Leaf" {
+    double value
+  }
+}
+}

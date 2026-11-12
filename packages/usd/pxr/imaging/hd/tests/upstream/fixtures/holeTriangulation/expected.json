@@ -1,0 +1,166 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/imaging/hd/tests/upstream/fixtures/holeTriangulation/capture.py",
+  "upstream": [
+    "pxr/imaging/hd/meshUtil.cpp"
+  ],
+  "payload": {
+    "cases": [
+      {
+        "orientation": "rightHanded",
+        "counts": [
+          3,
+          4,
+          3
+        ],
+        "holes": [
+          1
+        ],
+        "indices": [
+          0,
+          1,
+          2,
+          7,
+          8,
+          9
+        ],
+        "faces": [
+          0,
+          2
+        ],
+        "uv": [
+          0,
+          0.25,
+          1,
+          1.25,
+          2,
+          2.25,
+          7,
+          7.25,
+          8,
+          8.25,
+          9,
+          9.25
+        ]
+      },
+      {
+        "orientation": "leftHanded",
+        "counts": [
+          3,
+          4,
+          3
+        ],
+        "holes": [
+          1
+        ],
+        "indices": [
+          0,
+          2,
+          1,
+          7,
+          9,
+          8
+        ],
+        "faces": [
+          0,
+          2
+        ],
+        "uv": [
+          0,
+          0.25,
+          2,
+          2.25,
+          1,
+          1.25,
+          7,
+          7.25,
+          9,
+          9.25,
+          8,
+          8.25
+        ]
+      },
+      {
+        "orientation": "rightHanded",
+        "counts": [
+          3,
+          3
+        ],
+        "holes": [
+          0
+        ],
+        "indices": [
+          3,
+          4,
+          5
+        ],
+        "faces": [
+          1
+        ],
+        "uv": [
+          3,
+          3.25,
+          4,
+          4.25,
+          5,
+          5.25
+        ]
+      },
+      {
+        "orientation": "leftHanded",
+        "counts": [
+          3,
+          3
+        ],
+        "holes": [
+          0
+        ],
+        "indices": [
+          3,
+          5,
+          4
+        ],
+        "faces": [
+          1
+        ],
+        "uv": [
+          3,
+          3.25,
+          5,
+          5.25,
+          4,
+          4.25
+        ]
+      },
+      {
+        "orientation": "rightHanded",
+        "counts": [
+          3,
+          3
+        ],
+        "holes": [
+          0,
+          1
+        ],
+        "indices": [],
+        "faces": [],
+        "uv": []
+      },
+      {
+        "orientation": "leftHanded",
+        "counts": [
+          3,
+          3
+        ],
+        "holes": [
+          0,
+          1
+        ],
+        "indices": [],
+        "faces": [],
+        "uv": []
+      }
+    ]
+  }
+}

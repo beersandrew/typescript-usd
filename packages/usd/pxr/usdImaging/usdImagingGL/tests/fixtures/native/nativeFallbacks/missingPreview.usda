@@ -1,0 +1,78 @@
+#usda 1.0
+(upAxis = "Y")
+def Material "Authored" {
+ token outputs:surface.connect = </Authored/Surface.outputs:surface>
+ def Shader "Surface" {
+  uniform token info:id = "UsdPreviewSurface"
+  color3f inputs:diffuseColor = (0, 0, 0)
+  int inputs:useSpecularWorkflow = 1
+  color3f inputs:specularColor = (0, 0, 0)
+  color3f inputs:emissiveColor.connect = </Authored/Texture.outputs:rgb>
+  float inputs:opacity.connect = </Authored/Texture.outputs:a>
+  token outputs:surface
+ }
+ def Shader "Texture" {
+  uniform token info:id = "UsdUVTexture"
+  asset inputs:file = @missing.png@
+  float4 inputs:fallback = (0.1, 0.2, 0.3, 0.9)
+  float2 inputs:st.connect = </Authored/Reader.outputs:result>
+  float3 outputs:rgb
+  float outputs:a
+ }
+ def Shader "Reader" {
+  uniform token info:id = "UsdPrimvarReader_float2"
+  string inputs:varname = "st"
+  float2 outputs:result
+ }
+}
+def Material "Unauthored" {
+ token outputs:surface.connect = </Unauthored/Surface.outputs:surface>
+ def Shader "Surface" {
+  uniform token info:id = "UsdPreviewSurface"
+  color3f inputs:diffuseColor = (0, 0, 0)
+  int inputs:useSpecularWorkflow = 1
+  color3f inputs:specularColor = (0, 0, 0)
+  color3f inputs:emissiveColor.connect = </Unauthored/Texture.outputs:rgb>
+  float inputs:opacity.connect = </Unauthored/Texture.outputs:a>
+  token outputs:surface
+ }
+ def Shader "Texture" {
+  uniform token info:id = "UsdUVTexture"
+  asset inputs:file = @missing_unauthored.png@
+  float2 inputs:st.connect = </Unauthored/Reader.outputs:result>
+  float3 outputs:rgb
+  float outputs:a
+ }
+ def Shader "Reader" {
+  uniform token info:id = "UsdPrimvarReader_float2"
+  string inputs:varname = "st"
+  float2 outputs:result
+ }
+}
+def Mesh "AuthoredQuad" (
+ prepend apiSchemas = ["MaterialBindingAPI"]
+) {
+ rel material:binding = </Authored>
+ point3f[] points = [(-1,-1,0),(0,-1,0),(0,1,0),(-1,1,0)]
+ int[] faceVertexCounts = [4]
+ int[] faceVertexIndices = [0,1,2,3]
+ token subdivisionScheme = "none"
+ float2[] primvars:st = [(0,0),(1,0),(1,1),(0,1)] (interpolation = "vertex")
+}
+def Mesh "UnauthoredQuad" (
+ prepend apiSchemas = ["MaterialBindingAPI"]
+) {
+ rel material:binding = </Unauthored>
+ point3f[] points = [(0,-1,0),(1,-1,0),(1,1,0),(0,1,0)]
+ int[] faceVertexCounts = [4]
+ int[] faceVertexIndices = [0,1,2,3]
+ token subdivisionScheme = "none"
+ float2[] primvars:st = [(0,0),(1,0),(1,1),(0,1)] (interpolation = "vertex")
+}
+def Camera "Camera" {
+ float focalLength = 50
+ float horizontalAperture = 36
+ float verticalAperture = 24
+ double3 xformOp:translate = (0,0,6)
+ uniform token[] xformOpOrder = ["xformOp:translate"]
+}

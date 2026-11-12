@@ -1,0 +1,944 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/usdImaging/usdImagingGL/tests/fixtures/native/nonmeshReprs/capture.py",
+  "upstream": [
+    "pxr/usdImaging/usdviewq/stageView.py:585-597",
+    "pxr/usdImaging/usdviewq/stageView.py:1146-1193",
+    "pxr/usdImaging/usdviewq/stageView.py:1388-1525",
+    "pxr/usdImaging/usdviewq/common.py:136-154",
+    "pxr/usdImaging/usdviewq/viewSettingsDataModel.py:24-40",
+    "pxr/usdImaging/usdImagingGL/engine.cpp:2589-2690",
+    "pxr/imaging/hd/renderIndex.cpp:1076-1116",
+    "pxr/imaging/hdSt/points.cpp:433-465",
+    "pxr/imaging/hdSt/renderBuffer.cpp:39-61,117-174",
+    "pxr/imaging/hdSt/basisCurves.cpp:286-390,431-480,730-750",
+    "pxr/imaging/hdSt/meshShaderKey.cpp",
+    "pxr/imaging/hdSt/shaders/meshWire.glslfx",
+    "pxr/imaging/hdSt/shaders/terminals.glslfx:57-126",
+    "pxr/imaging/hdx/shaders/selection.glslfx:441-474"
+  ],
+  "payload": {
+    "hgi": "Metal",
+    "imageWidth": 192,
+    "imageHeight": 128,
+    "camera": "/Camera",
+    "colorCorrection": "sRGB",
+    "clearColor": [
+      0.07074,
+      0.07074,
+      0.07074,
+      1.0
+    ],
+    "presentationSamples": 0,
+    "viewMatrix": [
+      [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        -11.0,
+        1.0
+      ]
+    ],
+    "projectionMatrix": [
+      [
+        2.7777777777777772,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        4.166666666666666,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        -1.000002000002,
+        -1.0
+      ],
+      [
+        0.0,
+        0.0,
+        -2.000002000002,
+        0.0
+      ]
+    ],
+    "cameraLightPosition": [
+      0.0,
+      0.0,
+      11.0
+    ],
+    "defaultMaterial": {
+      "ambient": 0.2,
+      "specular": 0.1
+    },
+    "sceneAmbient": [
+      0.01,
+      0.01,
+      0.01,
+      1.0
+    ],
+    "cases": [
+      {
+        "name": "Smooth Shaded refine0",
+        "renderMode": "Smooth Shaded",
+        "refineLevel": 0,
+        "complexity": 1.0,
+        "hiddenCubic": false,
+        "drawMode": "DRAW_SHADED_SMOOTH",
+        "highlightColor": null,
+        "selectionColor": null,
+        "selection": [],
+        "image": "images/Smooth_Shaded_refine0.png",
+        "samples": {
+          "background": {
+            "x": 6,
+            "y": 6,
+            "rgba": [
+              75,
+              75,
+              75,
+              255
+            ]
+          },
+          "cloudCenter": {
+            "x": 35,
+            "y": 64,
+            "rgba": [
+              144,
+              199,
+              251,
+              255
+            ]
+          },
+          "linearControlPoint": {
+            "x": 108,
+            "y": 47,
+            "rgba": [
+              169,
+              243,
+              169,
+              255
+            ]
+          },
+          "linearSegmentMiddle": {
+            "x": 120,
+            "y": 64,
+            "rgba": [
+              169,
+              243,
+              169,
+              255
+            ]
+          },
+          "linearPatchInterior": {
+            "x": 122,
+            "y": 64,
+            "rgba": [
+              75,
+              75,
+              75,
+              255
+            ]
+          },
+          "cubicControlPoint": {
+            "x": 42,
+            "y": 73,
+            "rgba": [
+              182,
+              131,
+              117,
+              255
+            ]
+          },
+          "cubicHullMiddle": {
+            "x": 51,
+            "y": 73,
+            "rgba": [
+              215,
+              151,
+              133,
+              255
+            ]
+          }
+        }
+      },
+      {
+        "name": "Wireframe refine0",
+        "renderMode": "Wireframe",
+        "refineLevel": 0,
+        "complexity": 1.0,
+        "hiddenCubic": false,
+        "drawMode": "DRAW_WIREFRAME",
+        "highlightColor": null,
+        "selectionColor": null,
+        "selection": [],
+        "image": "images/Wireframe_refine0.png",
+        "samples": {
+          "background": {
+            "x": 6,
+            "y": 6,
+            "rgba": [
+              75,
+              75,
+              75,
+              255
+            ]
+          },
+          "cloudCenter": {
+            "x": 35,
+            "y": 64,
+            "rgba": [
+              7,
+              7,
+              7,
+              255
+            ]
+          },
+          "linearControlPoint": {
+            "x": 108,
+            "y": 47,
+            "rgba": [
+              7,
+              7,
+              7,
+              255
+            ]
+          },
+          "linearSegmentMiddle": {
+            "x": 120,
+            "y": 64,
+            "rgba": [
+              7,
+              7,
+              7,
+              255
+            ]
+          },
+          "linearPatchInterior": {
+            "x": 122,
+            "y": 64,
+            "rgba": [
+              75,
+              75,
+              75,
+              255
+            ]
+          },
+          "cubicControlPoint": {
+            "x": 42,
+            "y": 73,
+            "rgba": [
+              54,
+              54,
+              54,
+              255
+            ]
+          },
+          "cubicHullMiddle": {
+            "x": 51,
+            "y": 73,
+            "rgba": [
+              38,
+              38,
+              38,
+              255
+            ]
+          }
+        }
+      },
+      {
+        "name": "Points refine0",
+        "renderMode": "Points",
+        "refineLevel": 0,
+        "complexity": 1.0,
+        "hiddenCubic": false,
+        "drawMode": "DRAW_POINTS",
+        "highlightColor": null,
+        "selectionColor": null,
+        "selection": [],
+        "image": "images/Points_refine0.png",
+        "samples": {
+          "background": {
+            "x": 6,
+            "y": 6,
+            "rgba": [
+              75,
+              75,
+              75,
+              255
+            ]
+          },
+          "cloudCenter": {
+            "x": 35,
+            "y": 64,
+            "rgba": [
+              124,
+              188,
+              243,
+              255
+            ]
+          },
+          "linearControlPoint": {
+            "x": 108,
+            "y": 47,
+            "rgba": [
+              149,
+              231,
+              149,
+              255
+            ]
+          },
+          "linearSegmentMiddle": {
+            "x": 120,
+            "y": 64,
+            "rgba": [
+              75,
+              75,
+              75,
+              255
+            ]
+          },
+          "linearPatchInterior": {
+            "x": 122,
+            "y": 64,
+            "rgba": [
+              75,
+              75,
+              75,
+              255
+            ]
+          },
+          "cubicControlPoint": {
+            "x": 42,
+            "y": 73,
+            "rgba": [
+              231,
+              149,
+              124,
+              255
+            ]
+          },
+          "cubicHullMiddle": {
+            "x": 51,
+            "y": 73,
+            "rgba": [
+              75,
+              75,
+              75,
+              255
+            ]
+          }
+        }
+      },
+      {
+        "name": "Geom Only refine0",
+        "renderMode": "Geom Only",
+        "refineLevel": 0,
+        "complexity": 1.0,
+        "hiddenCubic": false,
+        "drawMode": "DRAW_GEOM_ONLY",
+        "highlightColor": null,
+        "selectionColor": null,
+        "selection": [],
+        "image": "images/Geom_Only_refine0.png",
+        "samples": {
+          "background": {
+            "x": 6,
+            "y": 6,
+            "rgba": [
+              75,
+              75,
+              75,
+              255
+            ]
+          },
+          "cloudCenter": {
+            "x": 35,
+            "y": 64,
+            "rgba": [
+              124,
+              188,
+              243,
+              255
+            ]
+          },
+          "linearControlPoint": {
+            "x": 108,
+            "y": 47,
+            "rgba": [
+              149,
+              231,
+              149,
+              255
+            ]
+          },
+          "linearSegmentMiddle": {
+            "x": 120,
+            "y": 64,
+            "rgba": [
+              149,
+              231,
+              149,
+              255
+            ]
+          },
+          "linearPatchInterior": {
+            "x": 122,
+            "y": 64,
+            "rgba": [
+              75,
+              75,
+              75,
+              255
+            ]
+          },
+          "cubicControlPoint": {
+            "x": 42,
+            "y": 73,
+            "rgba": [
+              176,
+              119,
+              103,
+              255
+            ]
+          },
+          "cubicHullMiddle": {
+            "x": 51,
+            "y": 73,
+            "rgba": [
+              206,
+              135,
+              114,
+              255
+            ]
+          }
+        }
+      },
+      {
+        "name": "Hidden Surface Wireframe refine0",
+        "renderMode": "Hidden Surface Wireframe",
+        "refineLevel": 0,
+        "complexity": 1.0,
+        "hiddenCubic": false,
+        "drawMode": "DRAW_WIREFRAME",
+        "highlightColor": null,
+        "selectionColor": null,
+        "selection": [],
+        "image": "images/Hidden_Surface_Wireframe_refine0.png",
+        "samples": {
+          "background": {
+            "x": 6,
+            "y": 6,
+            "rgba": [
+              75,
+              75,
+              75,
+              255
+            ]
+          },
+          "cloudCenter": {
+            "x": 35,
+            "y": 64,
+            "rgba": [
+              7,
+              7,
+              7,
+              255
+            ]
+          },
+          "linearControlPoint": {
+            "x": 108,
+            "y": 47,
+            "rgba": [
+              7,
+              7,
+              7,
+              255
+            ]
+          },
+          "linearSegmentMiddle": {
+            "x": 120,
+            "y": 64,
+            "rgba": [
+              7,
+              7,
+              7,
+              255
+            ]
+          },
+          "linearPatchInterior": {
+            "x": 122,
+            "y": 64,
+            "rgba": [
+              75,
+              75,
+              75,
+              255
+            ]
+          },
+          "cubicControlPoint": {
+            "x": 42,
+            "y": 73,
+            "rgba": [
+              54,
+              54,
+              54,
+              255
+            ]
+          },
+          "cubicHullMiddle": {
+            "x": 51,
+            "y": 73,
+            "rgba": [
+              38,
+              38,
+              38,
+              255
+            ]
+          }
+        }
+      },
+      {
+        "name": "Smooth Shaded refine1",
+        "renderMode": "Smooth Shaded",
+        "refineLevel": 1,
+        "complexity": 1.1,
+        "hiddenCubic": true,
+        "drawMode": "DRAW_SHADED_SMOOTH",
+        "highlightColor": null,
+        "selectionColor": null,
+        "selection": [],
+        "image": "images/Smooth_Shaded_refine1.png",
+        "samples": {
+          "background": {
+            "x": 6,
+            "y": 6,
+            "rgba": [
+              75,
+              75,
+              75,
+              255
+            ]
+          },
+          "cloudCenter": {
+            "x": 35,
+            "y": 64,
+            "rgba": [
+              144,
+              199,
+              251,
+              255
+            ]
+          },
+          "linearControlPoint": {
+            "x": 108,
+            "y": 47,
+            "rgba": [
+              7,
+              7,
+              7,
+              255
+            ]
+          },
+          "linearSegmentMiddle": {
+            "x": 120,
+            "y": 64,
+            "rgba": [
+              7,
+              7,
+              7,
+              255
+            ]
+          },
+          "linearPatchInterior": {
+            "x": 122,
+            "y": 64,
+            "rgba": [
+              7,
+              7,
+              7,
+              255
+            ]
+          },
+          "cubicControlPoint": {
+            "x": 42,
+            "y": 73,
+            "rgba": [
+              75,
+              75,
+              75,
+              255
+            ]
+          },
+          "cubicHullMiddle": {
+            "x": 51,
+            "y": 73,
+            "rgba": [
+              75,
+              75,
+              75,
+              255
+            ]
+          }
+        }
+      },
+      {
+        "name": "Wireframe refine1",
+        "renderMode": "Wireframe",
+        "refineLevel": 1,
+        "complexity": 1.1,
+        "hiddenCubic": true,
+        "drawMode": "DRAW_WIREFRAME",
+        "highlightColor": null,
+        "selectionColor": null,
+        "selection": [],
+        "image": "images/Wireframe_refine1.png",
+        "samples": {
+          "background": {
+            "x": 6,
+            "y": 6,
+            "rgba": [
+              75,
+              75,
+              75,
+              255
+            ]
+          },
+          "cloudCenter": {
+            "x": 35,
+            "y": 64,
+            "rgba": [
+              7,
+              7,
+              7,
+              255
+            ]
+          },
+          "linearControlPoint": {
+            "x": 108,
+            "y": 47,
+            "rgba": [
+              7,
+              7,
+              7,
+              255
+            ]
+          },
+          "linearSegmentMiddle": {
+            "x": 120,
+            "y": 64,
+            "rgba": [
+              7,
+              7,
+              7,
+              255
+            ]
+          },
+          "linearPatchInterior": {
+            "x": 122,
+            "y": 64,
+            "rgba": [
+              75,
+              75,
+              75,
+              255
+            ]
+          },
+          "cubicControlPoint": {
+            "x": 42,
+            "y": 73,
+            "rgba": [
+              75,
+              75,
+              75,
+              255
+            ]
+          },
+          "cubicHullMiddle": {
+            "x": 51,
+            "y": 73,
+            "rgba": [
+              75,
+              75,
+              75,
+              255
+            ]
+          }
+        }
+      },
+      {
+        "name": "Points refine1",
+        "renderMode": "Points",
+        "refineLevel": 1,
+        "complexity": 1.1,
+        "hiddenCubic": false,
+        "drawMode": "DRAW_POINTS",
+        "highlightColor": null,
+        "selectionColor": null,
+        "selection": [],
+        "image": "images/Points_refine1.png",
+        "samples": {
+          "background": {
+            "x": 6,
+            "y": 6,
+            "rgba": [
+              75,
+              75,
+              75,
+              255
+            ]
+          },
+          "cloudCenter": {
+            "x": 35,
+            "y": 64,
+            "rgba": [
+              124,
+              188,
+              243,
+              255
+            ]
+          },
+          "linearControlPoint": {
+            "x": 108,
+            "y": 47,
+            "rgba": [
+              149,
+              231,
+              149,
+              255
+            ]
+          },
+          "linearSegmentMiddle": {
+            "x": 120,
+            "y": 64,
+            "rgba": [
+              75,
+              75,
+              75,
+              255
+            ]
+          },
+          "linearPatchInterior": {
+            "x": 122,
+            "y": 64,
+            "rgba": [
+              75,
+              75,
+              75,
+              255
+            ]
+          },
+          "cubicControlPoint": {
+            "x": 42,
+            "y": 73,
+            "rgba": [
+              231,
+              149,
+              124,
+              255
+            ]
+          },
+          "cubicHullMiddle": {
+            "x": 51,
+            "y": 73,
+            "rgba": [
+              75,
+              75,
+              75,
+              255
+            ]
+          }
+        }
+      },
+      {
+        "name": "Geom Only refine1",
+        "renderMode": "Geom Only",
+        "refineLevel": 1,
+        "complexity": 1.1,
+        "hiddenCubic": true,
+        "drawMode": "DRAW_GEOM_ONLY",
+        "highlightColor": null,
+        "selectionColor": null,
+        "selection": [],
+        "image": "images/Geom_Only_refine1.png",
+        "samples": {
+          "background": {
+            "x": 6,
+            "y": 6,
+            "rgba": [
+              75,
+              75,
+              75,
+              255
+            ]
+          },
+          "cloudCenter": {
+            "x": 35,
+            "y": 64,
+            "rgba": [
+              124,
+              188,
+              243,
+              255
+            ]
+          },
+          "linearControlPoint": {
+            "x": 108,
+            "y": 47,
+            "rgba": [
+              149,
+              231,
+              149,
+              255
+            ]
+          },
+          "linearSegmentMiddle": {
+            "x": 120,
+            "y": 64,
+            "rgba": [
+              149,
+              231,
+              149,
+              255
+            ]
+          },
+          "linearPatchInterior": {
+            "x": 122,
+            "y": 64,
+            "rgba": [
+              149,
+              231,
+              149,
+              255
+            ]
+          },
+          "cubicControlPoint": {
+            "x": 42,
+            "y": 73,
+            "rgba": [
+              75,
+              75,
+              75,
+              255
+            ]
+          },
+          "cubicHullMiddle": {
+            "x": 51,
+            "y": 73,
+            "rgba": [
+              75,
+              75,
+              75,
+              255
+            ]
+          }
+        }
+      },
+      {
+        "name": "Hidden Surface Wireframe refine1",
+        "renderMode": "Hidden Surface Wireframe",
+        "refineLevel": 1,
+        "complexity": 1.1,
+        "hiddenCubic": true,
+        "drawMode": "DRAW_WIREFRAME",
+        "highlightColor": null,
+        "selectionColor": null,
+        "selection": [],
+        "image": "images/Hidden_Surface_Wireframe_refine1.png",
+        "samples": {
+          "background": {
+            "x": 6,
+            "y": 6,
+            "rgba": [
+              75,
+              75,
+              75,
+              255
+            ]
+          },
+          "cloudCenter": {
+            "x": 35,
+            "y": 64,
+            "rgba": [
+              7,
+              7,
+              7,
+              255
+            ]
+          },
+          "linearControlPoint": {
+            "x": 108,
+            "y": 47,
+            "rgba": [
+              7,
+              7,
+              7,
+              255
+            ]
+          },
+          "linearSegmentMiddle": {
+            "x": 120,
+            "y": 64,
+            "rgba": [
+              7,
+              7,
+              7,
+              255
+            ]
+          },
+          "linearPatchInterior": {
+            "x": 122,
+            "y": 64,
+            "rgba": [
+              76,
+              76,
+              76,
+              255
+            ]
+          },
+          "cubicControlPoint": {
+            "x": 42,
+            "y": 73,
+            "rgba": [
+              75,
+              75,
+              75,
+              255
+            ]
+          },
+          "cubicHullMiddle": {
+            "x": 51,
+            "y": 73,
+            "rgba": [
+              75,
+              75,
+              75,
+              255
+            ]
+          }
+        }
+      }
+    ]
+  }
+}

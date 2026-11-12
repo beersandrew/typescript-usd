@@ -1,0 +1,26 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/usdImaging/usdImagingGL/tests/fixtures/testenvImages/capture.py",
+  "upstream": [
+    "pxr/usdImaging/usdImagingGL/CMakeLists.txt",
+    "pxr/usdImaging/usdImagingGL/testenv/testUsdImagingGLBasicDrawing.cpp"
+  ],
+  "payload": {
+    "test": "testUsdImagingGLSimpleVolumes",
+    "cmake": "pxr/usdImaging/usdImagingGL/CMakeLists.txt:3984",
+    "command": "<install>/tests/testUsdImagingGLBasicDrawing -offscreen -stage simpleVolumes.usda -write testUsdImagingGLSimpleVolumes.png -clear 0 0 0 1 -lighting -camera /main_cam -renderSetting volumeRaymarchingStepSize float 0.04 -renderSetting volumeRaymarchingStepSizeLighting float 0.05",
+    "cwd": "copy of <source>/pxr/usdImaging/usdImagingGL/testenv/testUsdImagingGLSimpleVolumes",
+    "env": {
+      "TF_DEBUG": "HD_SAFE_MODE"
+    },
+    "expectedReturnCode": "0",
+    "returnCode": 0,
+    "images": [
+      {
+        "name": "testUsdImagingGLSimpleVolumes.png",
+        "written": true
+      }
+    ]
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/usdImaging/usdImagingGL/tests/fixtures/nurbsTetMeshImages/capture.py",
+  "upstream": [
+    "pxr/usdImaging/usdImagingGL/CMakeLists.txt",
+    "pxr/usdImaging/usdImagingGL/testenv/testUsdImagingGLBasicDrawing.cpp"
+  ],
+  "payload": {
+    "test": "testUsdImagingGLNurbsPatch",
+    "cmake": "pxr/usdImaging/usdImagingGL/CMakeLists.txt:1253",
+    "command": "<install>/tests/testUsdImagingGLBasicDrawing -frameAll -offscreen -lighting -stage bendyNurbs.usda -camera /main_cam -times 1 5 10 -write testUsdImagingGLNurbsPatch.png",
+    "cwd": "copy of <source>/pxr/usdImaging/usdImagingGL/testenv/testUsdImagingGLNurbsPatch",
+    "env": {
+      "TF_DEBUG": "HD_SAFE_MODE"
+    },
+    "expectedReturnCode": "0",
+    "returnCode": 0,
+    "images": [
+      {
+        "name": "testUsdImagingGLNurbsPatch_001.png",
+        "written": true
+      },
+      {
+        "name": "testUsdImagingGLNurbsPatch_005.png",
+        "written": true
+      },
+      {
+        "name": "testUsdImagingGLNurbsPatch_010.png",
+        "written": true
+      }
+    ]
+  }
+}

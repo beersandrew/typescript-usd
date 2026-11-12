@@ -1,0 +1,52 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/imaging/hdMtlx/tests/upstream/fixtures/colorSpaceAuxiliaries/capture.py",
+  "upstream": [
+    "pxr/usd/usd/colorSpaceAPI.cpp",
+    "pxr/usd/sdr/registry.cpp"
+  ],
+  "payload": {
+    "rows": [
+      {
+        "shaderPath": "/World/Material/Multiply",
+        "owner": "in1",
+        "helper": "in1:colorSpace:name",
+        "helperValue": "none",
+        "ownerColorSpace": "lin_p3d65_scene",
+        "nativeInputNames": [
+          "in1",
+          "in1:colorSpace:name",
+          "in2"
+        ],
+        "declaredInputNames": [
+          "in1",
+          "in2"
+        ]
+      },
+      {
+        "shaderPath": "/World/Material/Image",
+        "owner": "file",
+        "helper": "file:colorSpace:name",
+        "helperValue": "srgb_rec709_scene",
+        "ownerColorSpace": "lin_p3d65_scene",
+        "nativeInputNames": [
+          "file",
+          "file:colorSpace:name"
+        ],
+        "declaredInputNames": [
+          "file",
+          "layer",
+          "default",
+          "texcoord",
+          "uaddressmode",
+          "vaddressmode",
+          "filtertype",
+          "framerange",
+          "frameoffset",
+          "frameendaction"
+        ]
+      }
+    ]
+  }
+}

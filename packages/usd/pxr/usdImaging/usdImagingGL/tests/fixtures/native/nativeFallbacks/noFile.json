@@ -1,0 +1,70 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/usdImaging/usdImagingGL/tests/fixtures/native/nativeFallbacks/capture.py",
+  "upstream": [
+    "pxr/imaging/hdSt/materialXFilter.cpp:1640-1649",
+    "pxr/imaging/hdMtlx/hdMtlx.cpp:892-901",
+    "pxr/imaging/hdSt/material.cpp:218-232",
+    "pxr/imaging/hdSt/textureObject.cpp:36-80",
+    "pxr/imaging/hdSt/materialNetwork.cpp:782-791",
+    "pxr/imaging/hdSt/codeGen.cpp:4213-4234",
+    "pxr/usdImaging/usdAppUtils/frameRecorder.cpp"
+  ],
+  "payload": {
+    "recorderSuccess": true,
+    "imageWritten": true,
+    "colorCorrection": "disabled",
+    "cameraLight": false,
+    "imageWidth": 300,
+    "diagnostics": [
+      {
+        "type": "warning",
+        "code": "TF_DIAGNOSTIC_WARNING_TYPE",
+        "function": "_MakeMaterialParamsForTexture",
+        "file": "pxr/imaging/hdSt/materialNetwork.cpp",
+        "line": 784,
+        "commentary": "Could not find texture a for node Texture"
+      },
+      {
+        "type": "warning",
+        "code": "TF_DIAGNOSTIC_WARNING_TYPE",
+        "function": "_MakeMaterialParamsForTexture",
+        "file": "pxr/imaging/hdSt/materialNetwork.cpp",
+        "line": 784,
+        "commentary": "Could not find texture rgb for node Texture"
+      },
+      {
+        "type": "warning",
+        "code": "TF_DIAGNOSTIC_WARNING_TYPE",
+        "function": "_MakeMaterialParamsForTexture",
+        "file": "pxr/imaging/hdSt/materialNetwork.cpp",
+        "line": 784,
+        "commentary": "Could not find texture rgb for node Texture"
+      }
+    ],
+    "samples": [
+      {
+        "x": 115,
+        "y": 100,
+        "rgba": [
+          0,
+          0,
+          0,
+          255
+        ]
+      },
+      {
+        "x": 185,
+        "y": 100,
+        "rgba": [
+          25,
+          51,
+          76,
+          25
+        ]
+      }
+    ],
+    "source": "noFile.usda"
+  }
+}

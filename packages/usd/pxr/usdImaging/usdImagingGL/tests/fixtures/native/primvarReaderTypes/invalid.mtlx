@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<materialx version="1.39">
+  <standard_surface name="Surface" type="surfaceshader">
+    <input name="base_color" type="vector3" output="base_color_out" nodegraph="Material2" />
+    <input name="base" type="float" value="1" />
+  </standard_surface>
+  <surfacematerial name="Material" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="Surface" />
+  </surfacematerial>
+  <nodegraph name="Material2">
+    <UsdPrimvarReader name="Material_Reader" type="vector3" nodedef="ND_UsdPrimvarReader_vector3">
+      <input name="fallback" type="color3" value="0.18, 0.4, 0.8" />
+      <input name="varname" type="string" value="custom_color" />
+    </UsdPrimvarReader>
+    <output name="base_color_out" type="vector3" nodename="Material_Reader" />
+  </nodegraph>
+</materialx>

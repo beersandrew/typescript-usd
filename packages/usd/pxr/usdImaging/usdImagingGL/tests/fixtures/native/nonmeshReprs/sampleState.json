@@ -1,0 +1,36 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/usdImaging/usdImagingGL/tests/fixtures/native/nonmeshReprs/capture.py",
+  "upstream": [
+    "pxr/usdImaging/usdviewq/stageView.py:585-597",
+    "pxr/usdImaging/usdviewq/stageView.py:1146-1193",
+    "pxr/usdImaging/usdviewq/stageView.py:1388-1525",
+    "pxr/usdImaging/usdviewq/common.py:136-154",
+    "pxr/usdImaging/usdviewq/viewSettingsDataModel.py:24-40",
+    "pxr/usdImaging/usdImagingGL/engine.cpp:2589-2690",
+    "pxr/imaging/hd/renderIndex.cpp:1076-1116",
+    "pxr/imaging/hdSt/points.cpp:433-465",
+    "pxr/imaging/hdSt/renderBuffer.cpp:39-61,117-174",
+    "pxr/imaging/hdSt/basisCurves.cpp:286-390,431-480,730-750",
+    "pxr/imaging/hdSt/meshShaderKey.cpp",
+    "pxr/imaging/hdSt/shaders/meshWire.glslfx",
+    "pxr/imaging/hdSt/shaders/terminals.glslfx:57-126",
+    "pxr/imaging/hdx/shaders/selection.glslfx:441-474"
+  ],
+  "payload": {
+    "hgi": "Metal",
+    "aovs": {
+      "color": {
+        "multiSampled": true,
+        "resolvedSamples": 1,
+        "msaaSamples": 4
+      },
+      "depth": {
+        "multiSampled": true,
+        "resolvedSamples": 1,
+        "msaaSamples": 4
+      }
+    }
+  }
+}

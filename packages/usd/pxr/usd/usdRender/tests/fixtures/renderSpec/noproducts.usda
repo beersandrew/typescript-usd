@@ -1,0 +1,9 @@
+#usda 1.0
+(
+    renderSettingsPrimPath = "/Settings"
+)
+
+def RenderSettings "Settings"
+{
+    rel camera = </Cam>
+}

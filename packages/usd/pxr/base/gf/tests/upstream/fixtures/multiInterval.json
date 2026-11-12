@@ -1,0 +1,430 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/base/gf/tests/upstream/genfix_multiInterval.py",
+  "upstream": [
+    "pxr/base/gf/testenv/testGfMultiInterval.py"
+  ],
+  "payload": {
+    "arithmeticAdd": {
+      "str": "[(-13, 0), (0, 3], (97, 299]]",
+      "size": 3,
+      "bounds": {
+        "min": -13.0,
+        "max": 299.0,
+        "minClosed": false,
+        "maxClosed": true
+      },
+      "intervals": [
+        {
+          "min": -13.0,
+          "max": 0.0,
+          "minClosed": false,
+          "maxClosed": false
+        },
+        {
+          "min": 0.0,
+          "max": 3.0,
+          "minClosed": false,
+          "maxClosed": true
+        },
+        {
+          "min": 97.0,
+          "max": 299.0,
+          "minClosed": false,
+          "maxClosed": true
+        }
+      ]
+    },
+    "remove_a": {
+      "str": "[[0, 0]]",
+      "size": 1,
+      "bounds": {
+        "min": 0.0,
+        "max": 0.0,
+        "minClosed": true,
+        "maxClosed": true
+      },
+      "intervals": [
+        {
+          "min": 0.0,
+          "max": 0.0,
+          "minClosed": true,
+          "maxClosed": true
+        }
+      ]
+    },
+    "remove_b": {
+      "str": "[[0, 0], [1, 1]]",
+      "size": 2,
+      "bounds": {
+        "min": 0.0,
+        "max": 1.0,
+        "minClosed": true,
+        "maxClosed": true
+      },
+      "intervals": [
+        {
+          "min": 0.0,
+          "max": 0.0,
+          "minClosed": true,
+          "maxClosed": true
+        },
+        {
+          "min": 1.0,
+          "max": 1.0,
+          "minClosed": true,
+          "maxClosed": true
+        }
+      ]
+    },
+    "remove_c": {
+      "str": "[[0, 0], [4, 4]]",
+      "size": 2,
+      "bounds": {
+        "min": 0.0,
+        "max": 4.0,
+        "minClosed": true,
+        "maxClosed": true
+      },
+      "intervals": [
+        {
+          "min": 0.0,
+          "max": 0.0,
+          "minClosed": true,
+          "maxClosed": true
+        },
+        {
+          "min": 4.0,
+          "max": 4.0,
+          "minClosed": true,
+          "maxClosed": true
+        }
+      ]
+    },
+    "complement_empty": {
+      "str": "[(-inf, inf)]",
+      "size": 1,
+      "bounds": {
+        "min": "-inf",
+        "max": "inf",
+        "minClosed": false,
+        "maxClosed": false
+      },
+      "intervals": [
+        {
+          "min": "-inf",
+          "max": "inf",
+          "minClosed": false,
+          "maxClosed": false
+        }
+      ]
+    },
+    "merge": {
+      "2": {
+        "halfopen_lc": {
+          "str": "[[0, 2)]",
+          "size": 1,
+          "bounds": {
+            "min": 0.0,
+            "max": 2.0,
+            "minClosed": true,
+            "maxClosed": false
+          },
+          "intervals": [
+            {
+              "min": 0.0,
+              "max": 2.0,
+              "minClosed": true,
+              "maxClosed": false
+            }
+          ]
+        },
+        "open_open": {
+          "str": "[(0, 1), (1, 2)]",
+          "size": 2,
+          "bounds": {
+            "min": 0.0,
+            "max": 2.0,
+            "minClosed": false,
+            "maxClosed": false
+          },
+          "intervals": [
+            {
+              "min": 0.0,
+              "max": 1.0,
+              "minClosed": false,
+              "maxClosed": false
+            },
+            {
+              "min": 1.0,
+              "max": 2.0,
+              "minClosed": false,
+              "maxClosed": false
+            }
+          ]
+        }
+      },
+      "3": {
+        "halfopen_lc": {
+          "str": "[[0, 3)]",
+          "size": 1,
+          "bounds": {
+            "min": 0.0,
+            "max": 3.0,
+            "minClosed": true,
+            "maxClosed": false
+          },
+          "intervals": [
+            {
+              "min": 0.0,
+              "max": 3.0,
+              "minClosed": true,
+              "maxClosed": false
+            }
+          ]
+        },
+        "open_open": {
+          "str": "[(0, 1), (1, 2), (2, 3)]",
+          "size": 3,
+          "bounds": {
+            "min": 0.0,
+            "max": 3.0,
+            "minClosed": false,
+            "maxClosed": false
+          },
+          "intervals": [
+            {
+              "min": 0.0,
+              "max": 1.0,
+              "minClosed": false,
+              "maxClosed": false
+            },
+            {
+              "min": 1.0,
+              "max": 2.0,
+              "minClosed": false,
+              "maxClosed": false
+            },
+            {
+              "min": 2.0,
+              "max": 3.0,
+              "minClosed": false,
+              "maxClosed": false
+            }
+          ]
+        }
+      },
+      "4": {
+        "halfopen_lc": {
+          "str": "[[0, 4)]",
+          "size": 1,
+          "bounds": {
+            "min": 0.0,
+            "max": 4.0,
+            "minClosed": true,
+            "maxClosed": false
+          },
+          "intervals": [
+            {
+              "min": 0.0,
+              "max": 4.0,
+              "minClosed": true,
+              "maxClosed": false
+            }
+          ]
+        },
+        "open_open": {
+          "str": "[(0, 1), (1, 2), (2, 3), (3, 4)]",
+          "size": 4,
+          "bounds": {
+            "min": 0.0,
+            "max": 4.0,
+            "minClosed": false,
+            "maxClosed": false
+          },
+          "intervals": [
+            {
+              "min": 0.0,
+              "max": 1.0,
+              "minClosed": false,
+              "maxClosed": false
+            },
+            {
+              "min": 1.0,
+              "max": 2.0,
+              "minClosed": false,
+              "maxClosed": false
+            },
+            {
+              "min": 2.0,
+              "max": 3.0,
+              "minClosed": false,
+              "maxClosed": false
+            },
+            {
+              "min": 3.0,
+              "max": 4.0,
+              "minClosed": false,
+              "maxClosed": false
+            }
+          ]
+        }
+      },
+      "5": {
+        "halfopen_lc": {
+          "str": "[[0, 5)]",
+          "size": 1,
+          "bounds": {
+            "min": 0.0,
+            "max": 5.0,
+            "minClosed": true,
+            "maxClosed": false
+          },
+          "intervals": [
+            {
+              "min": 0.0,
+              "max": 5.0,
+              "minClosed": true,
+              "maxClosed": false
+            }
+          ]
+        },
+        "open_open": {
+          "str": "[(0, 1), (1, 2), (2, 3), (3, 4), (4, 5)]",
+          "size": 5,
+          "bounds": {
+            "min": 0.0,
+            "max": 5.0,
+            "minClosed": false,
+            "maxClosed": false
+          },
+          "intervals": [
+            {
+              "min": 0.0,
+              "max": 1.0,
+              "minClosed": false,
+              "maxClosed": false
+            },
+            {
+              "min": 1.0,
+              "max": 2.0,
+              "minClosed": false,
+              "maxClosed": false
+            },
+            {
+              "min": 2.0,
+              "max": 3.0,
+              "minClosed": false,
+              "maxClosed": false
+            },
+            {
+              "min": 3.0,
+              "max": 4.0,
+              "minClosed": false,
+              "maxClosed": false
+            },
+            {
+              "min": 4.0,
+              "max": 5.0,
+              "minClosed": false,
+              "maxClosed": false
+            }
+          ]
+        }
+      },
+      "6": {
+        "halfopen_lc": {
+          "str": "[[0, 6)]",
+          "size": 1,
+          "bounds": {
+            "min": 0.0,
+            "max": 6.0,
+            "minClosed": true,
+            "maxClosed": false
+          },
+          "intervals": [
+            {
+              "min": 0.0,
+              "max": 6.0,
+              "minClosed": true,
+              "maxClosed": false
+            }
+          ]
+        },
+        "open_open": {
+          "str": "[(0, 1), (1, 2), (2, 3), (3, 4), (4, 5), (5, 6)]",
+          "size": 6,
+          "bounds": {
+            "min": 0.0,
+            "max": 6.0,
+            "minClosed": false,
+            "maxClosed": false
+          },
+          "intervals": [
+            {
+              "min": 0.0,
+              "max": 1.0,
+              "minClosed": false,
+              "maxClosed": false
+            },
+            {
+              "min": 1.0,
+              "max": 2.0,
+              "minClosed": false,
+              "maxClosed": false
+            },
+            {
+              "min": 2.0,
+              "max": 3.0,
+              "minClosed": false,
+              "maxClosed": false
+            },
+            {
+              "min": 3.0,
+              "max": 4.0,
+              "minClosed": false,
+              "maxClosed": false
+            },
+            {
+              "min": 4.0,
+              "max": 5.0,
+              "minClosed": false,
+              "maxClosed": false
+            },
+            {
+              "min": 5.0,
+              "max": 6.0,
+              "minClosed": false,
+              "maxClosed": false
+            }
+          ]
+        }
+      }
+    },
+    "iter": {
+      "str": "[[-1, 4], [6, 7]]",
+      "size": 2,
+      "bounds": {
+        "min": -1.0,
+        "max": 7.0,
+        "minClosed": true,
+        "maxClosed": true
+      },
+      "intervals": [
+        {
+          "min": -1.0,
+          "max": 4.0,
+          "minClosed": true,
+          "maxClosed": true
+        },
+        {
+          "min": 6.0,
+          "max": 7.0,
+          "minClosed": true,
+          "maxClosed": true
+        }
+      ]
+    }
+  }
+}

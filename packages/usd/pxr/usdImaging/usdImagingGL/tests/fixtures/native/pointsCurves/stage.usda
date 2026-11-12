@@ -1,0 +1,77 @@
+#usda 1.0
+
+def Points "Points"
+{
+    point3f[] points = [(0, 0, 0), (2, 1, 0)]
+    point3f[] points.timeSamples = {
+        2: [(0, 2, 0), (3, 1, 0)],
+    }
+    color3f[] primvars:displayColor = [(1, 0, 0), (0, 1, 0)] (
+        interpolation = "vertex"
+    )
+    float[] widths = [0.2, 0.5] (
+        interpolation = "vertex"
+    )
+    float[] widths.timeSamples = {
+        2: [0.4, 1],
+    }
+    double3 xformOp:translate = (1, 2, 3)
+    double3 xformOp:translate.timeSamples = {
+        2: (4, 5, 6),
+    }
+    uniform token[] xformOpOrder = ["xformOp:translate"]
+}
+
+def BasisCurves "bezier"
+{
+    uniform token basis = "bezier"
+    int[] curveVertexCounts = [4]
+    point3f[] points = [(0, 0, 0), (1, 2, 0), (2, 2, 0), (3, 0, 0)]
+    color3f[] primvars:displayColor = [(0.2, 0.4, 0.6)]
+    uniform token type = "cubic"
+    float[] widths = [0.25] (
+        interpolation = "constant"
+    )
+    uniform token wrap = "nonperiodic"
+}
+
+def BasisCurves "bspline"
+{
+    uniform token basis = "bspline"
+    int[] curveVertexCounts = [4]
+    point3f[] points = [(0, 0, 0), (1, 2, 0), (2, 2, 0), (3, 0, 0)]
+    color3f[] primvars:displayColor = [(0.2, 0.4, 0.6)]
+    uniform token type = "cubic"
+    float[] widths = [0.25] (
+        interpolation = "constant"
+    )
+    uniform token wrap = "periodic"
+}
+
+def BasisCurves "catmullRom"
+{
+    uniform token basis = "catmullRom"
+    int[] curveVertexCounts = [4]
+    point3f[] points = [(0, 0, 0), (1, 2, 0), (2, 2, 0), (3, 0, 0)]
+    color3f[] primvars:displayColor = [(0.2, 0.4, 0.6)]
+    uniform token type = "cubic"
+    float[] widths = [0.25] (
+        interpolation = "constant"
+    )
+    uniform token wrap = "pinned"
+}
+
+def BasisCurves "Linear"
+{
+    int[] curveVertexCounts = [3]
+    point3f[] points = [(0, 0, 0), (1, 1, 0), (2, 0, 0)]
+    float[] primvars:widths = [0.6, 0.8] (
+        interpolation = "vertex"
+    )
+    int[] primvars:widths:indices = [0, 1, 0]
+    uniform token type = "linear"
+    float[] widths = [0.1, 0.2, 0.3] (
+        interpolation = "vertex"
+    )
+}
+

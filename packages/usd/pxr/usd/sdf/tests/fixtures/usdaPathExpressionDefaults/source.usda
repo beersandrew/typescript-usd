@@ -1,0 +1,20 @@
+#usda 1.0
+def "Prop"
+{
+    pathExpression a = "//foo ../anim//*bar"
+    pathExpression b = ""
+    pathExpression[] c = ["/A", " /B", "", "x + y", "%_", ".", "..", "c//d"]
+    pathExpression d.timeSamples = {
+        1: "../rel",
+    }
+    custom pathExpression e = "rel"
+    def "Child"
+    {
+        pathExpression f = "../sib"
+    }
+    variantSet "v" = {
+        "x" {
+            pathExpression g = "../q"
+        }
+    }
+}

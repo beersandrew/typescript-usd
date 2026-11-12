@@ -1,0 +1,34 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/usd/usdMtlx/tests/upstream/fixtures/capture-implicit-unlit.py",
+  "upstream": [
+    "pxr/usd/usdMtlx/reader.cpp"
+  ],
+  "payload": {
+    "materialxVersion": "1.39.5",
+    "input": "implicit_unlit.mtlx",
+    "inputSha256": "bf69e47e95658d4e6cbf4c564ca7a55d32252ec95a4c03eb9016c9a734a3d369",
+    "method": "Usd.Stage.Open, GetRootLayer().ExportToString; no manually derived expected layer",
+    "connections": {
+      "/MaterialX/Materials/material.outputs:mtlx:surface": [
+        "/MaterialX/Materials/material/unlit.outputs:surface"
+      ],
+      "/MaterialX/Materials/material/unlit.inputs:emission": [
+        "/MaterialX/Materials/material.inputs:emission"
+      ],
+      "/MaterialX/Materials/material/unlit.inputs:emission_color": [
+        "/MaterialX/Materials/material/NodeGraphs/color.outputs:out"
+      ],
+      "/MaterialX/Materials/material/unlit.inputs:opacity": [
+        "/MaterialX/Materials/material.inputs:opacity"
+      ],
+      "/MaterialX/Materials/material/unlit.inputs:transmission": [
+        "/MaterialX/Materials/material.inputs:transmission"
+      ],
+      "/MaterialX/Materials/material/unlit.inputs:transmission_color": [
+        "/MaterialX/Materials/material.inputs:transmission_color"
+      ]
+    }
+  }
+}

@@ -1,0 +1,1 @@
+{"release": "26.11.1", "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b", "script": "pxr/usdImaging/usdImagingGL/tests/fixtures/native/opacity/capture_tags.py", "upstream": ["pxr/imaging/hdSt/materialNetwork.cpp:65-118"], "payload": {"opaque": "defaultMaterialTag", "constant": "translucent", "texture": "translucent", "masked": "masked"}}

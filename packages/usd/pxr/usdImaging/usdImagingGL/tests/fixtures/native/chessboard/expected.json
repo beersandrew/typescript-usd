@@ -1,0 +1,28 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/usdImaging/usdImagingGL/tests/fixtures/native/chessboard/capture.py",
+  "upstream": [
+    "pxr/imaging/hdSt/subdivision.cpp",
+    "pxr/imaging/pxOsd/refinerFactory.cpp"
+  ],
+  "payload": {
+    "asset": "full_assets/OpenChessSet/assets/Chessboard/Chessboard_geom.usd",
+    "aswfCommit": "091bb5c6f8eb665ad4cf9d6c10025cecc07eda88",
+    "sha256": "5ec1e1b7aa7603cd2d12d0597d7de873c3f764841cee02f1428a6d23d66ee184",
+    "opensubdivVersion": "3.6.1",
+    "prim": "/Chessboard/Geom/Render",
+    "coarse": {
+      "vertices": 46218,
+      "faces": 46208,
+      "corners": 184832
+    },
+    "refined": {
+      "level": 2,
+      "vertices": 739338,
+      "faces": 739328,
+      "triangleIndices": 4435968,
+      "indexBytes": 17743872
+    }
+  }
+}

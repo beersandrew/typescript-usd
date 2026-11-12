@@ -1,0 +1,27 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/usdImaging/usdImagingGL/tests/fixtures/testenvImages/capture.py",
+  "upstream": [
+    "pxr/usdImaging/usdImagingGL/CMakeLists.txt",
+    "pxr/usdImaging/usdImagingGL/testenv/testUsdImagingGLBasicDrawing.cpp"
+  ],
+  "payload": {
+    "test": "testUsdImagingGLVdbVolume_DisableSceneMaterials",
+    "cmake": "pxr/usdImaging/usdImagingGL/CMakeLists.txt:5907",
+    "command": "<install>/tests/testUsdImagingGLBasicDrawing -disableSceneMaterials -offscreen -stage vdbVolume.usda -clear 0 0 0 1 -lighting -camera /main_cam -write testUsdImagingGLVdbVolumeDisableSceneMaterials.png",
+    "cwd": "copy of <source>/pxr/usdImaging/usdImagingGL/testenv/testUsdImagingGLVdbVolume",
+    "env": {
+      "TF_DEBUG": "HD_SAFE_MODE",
+      "HGIGL_ENABLE_BINDLESS_TEXTURE": "1"
+    },
+    "expectedReturnCode": "0",
+    "returnCode": 0,
+    "images": [
+      {
+        "name": "testUsdImagingGLVdbVolumeDisableSceneMaterials.png",
+        "written": true
+      }
+    ]
+  }
+}

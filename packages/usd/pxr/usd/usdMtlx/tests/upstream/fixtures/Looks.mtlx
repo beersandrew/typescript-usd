@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<!-- Self-contained looks fixture: standard-library materials only, so the
+     usdMtlx reader resolves nodedefs without a custom-nodedef include. Exercises
+     <look>/<materialassign> (direct + collection binding), <collection>
+     (includegeom/excludegeom/includecollection), and <variantassign>. -->
+<materialx version="1.38">
+  <standard_surface name="sr_plastic" type="surfaceshader">
+    <input name="base_color" type="color3" value="0.8, 0.1, 0.1" />
+  </standard_surface>
+  <surfacematerial name="Mplastic" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="sr_plastic" />
+  </surfacematerial>
+
+  <standard_surface name="sr_metal" type="surfaceshader">
+    <input name="metalness" type="float" value="1.0" />
+  </standard_surface>
+  <surfacematerial name="Mmetal" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="sr_metal" />
+  </surfacematerial>
+
+  <variantset name="vs_finish">
+    <variant name="matte">
+      <input name="specular_roughness" type="float" value="0.6" />
+    </variant>
+    <variant name="gloss">
+      <input name="specular_roughness" type="float" value="0.05" />
+    </variant>
+  </variantset>
+
+  <collection name="c_plastic" includegeom="/a/g1, /a/g2, /a/g5" excludegeom="/a/g3,/a/g5" />
+  <collection name="c_metal" includegeom="/a/g3,    /a/g4" doc="This is a collection" />
+  <collection name="c_combo" includegeom="/a/g6" includecollection="c_metal" />
+
+  <look name="lookA" doc="Look A">
+    <materialassign name="ma1" material="Mplastic" collection="c_plastic">
+      <variantassign name="ma1_va1" variantset="vs_finish" variant="matte" />
+    </materialassign>
+    <materialassign name="ma2" material="Mmetal" collection="c_metal">
+      <variantassign name="ma2_va1" variantset="vs_finish" variant="gloss" />
+    </materialassign>
+    <materialassign name="ma3" material="Mplastic" geom="/a/b/headlight" />
+  </look>
+  <look name="lookB" doc="Look B">
+    <materialassign name="ma4" material="Mmetal" />
+  </look>
+</materialx>

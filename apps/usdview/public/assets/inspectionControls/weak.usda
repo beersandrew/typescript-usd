@@ -1,0 +1,6 @@
+#usda 1.0
+over "World" {
+    over "Model" (customData = { string weak = "retained" }) {
+        custom float weight = 2
+    }
+}

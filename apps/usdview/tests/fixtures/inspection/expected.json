@@ -1,0 +1,134 @@
+{
+  "primMetadata": {
+    "kind": "component",
+    "documentation": "A composed inspection fixture",
+    "customData": {
+      "owner": "viewer",
+      "weak": "retained"
+    }
+  },
+  "weightMetadata": {
+    "custom": true,
+    "documentation": "strong opinion",
+    "typeName": "float",
+    "variability": "varying"
+  },
+  "primStack": [
+    {
+      "layer": "root.usda",
+      "specPath": "/World/Model",
+      "offset": 0.0,
+      "scale": 1.0
+    },
+    {
+      "layer": "weak.usda",
+      "specPath": "/World/Model",
+      "offset": 0.0,
+      "scale": 1.0
+    },
+    {
+      "layer": "reference.usda",
+      "specPath": "/Source",
+      "offset": 0.0,
+      "scale": 1.0
+    }
+  ],
+  "weightStack": [
+    {
+      "layer": "root.usda",
+      "specPath": "/World/Model.weight",
+      "offset": 0.0,
+      "scale": 1.0
+    },
+    {
+      "layer": "weak.usda",
+      "specPath": "/World/Model.weight",
+      "offset": 0.0,
+      "scale": 1.0
+    },
+    {
+      "layer": "reference.usda",
+      "specPath": "/Source.weight",
+      "offset": 0.0,
+      "scale": 1.0
+    }
+  ],
+  "composition": [
+    {
+      "arc": "root",
+      "targetLayer": "root.usda",
+      "targetPath": "/World/Model",
+      "introducingLayer": "",
+      "introducingPath": "",
+      "ancestral": false,
+      "hasSpecs": true
+    },
+    {
+      "arc": "reference",
+      "targetLayer": "reference.usda",
+      "targetPath": "/Source",
+      "introducingLayer": "root.usda",
+      "introducingPath": "/World/Model",
+      "ancestral": false,
+      "hasSpecs": true
+    }
+  ],
+  "targets": [
+    "/World/Target",
+    "/World/Target.output",
+    "/World/Missing"
+  ],
+  "arraySamples": [
+    {
+      "time": 0,
+      "typeName": "point3f[]",
+      "values": [
+        [
+          0.0,
+          1.0,
+          2.0
+        ],
+        [
+          3.0,
+          4.0,
+          5.0
+        ]
+      ]
+    },
+    {
+      "time": 1,
+      "typeName": "point3f[]",
+      "values": [
+        [
+          1.0,
+          2.0,
+          3.0
+        ],
+        [
+          4.0,
+          5.0,
+          6.0
+        ]
+      ]
+    },
+    {
+      "time": 2,
+      "typeName": "point3f[]",
+      "values": [
+        [
+          2.0,
+          3.0,
+          4.0
+        ],
+        [
+          5.0,
+          6.0,
+          7.0
+        ]
+      ]
+    }
+  ],
+  "connections": [
+    "/World/Target.output"
+  ]
+}

@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<materialx version="1.39">
+  <UsdPreviewSurface name="Surface" type="surfaceshader">
+    <input name="diffuseColor" type="color3" output="diffuseColor_out_color" nodegraph="test_image_nodegraph" />
+    <input name="ior" type="float" value="0.9" />
+    <input name="roughness" type="float" value="0.25" />
+    <input name="specularColor" type="color3" value="0.9, 0.9, 0.9" />
+    <input name="useSpecularWorkflow" type="integer" value="0" />
+  </UsdPreviewSurface>
+  <surfacematerial name="TexturedMaterial" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="Surface" />
+  </surfacematerial>
+  <nodegraph name="test_image_nodegraph">
+    <custom_image_node name="test_image_nodegraph_diffColor" type="color3" nodedef="custom_image_nodedef">
+      <input name="file_input" type="filename" value="images/grid.png" />
+    </custom_image_node>
+    <output name="diffuseColor_out_color" type="color3" nodename="test_image_nodegraph_diffColor" />
+  </nodegraph>
+</materialx>

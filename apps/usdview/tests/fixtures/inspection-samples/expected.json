@@ -1,0 +1,302 @@
+{
+  "nativeVersion": [
+    0,
+    26,
+    11
+  ],
+  "source": "OpenUSD v26.11.1 usdviewq common.GetValueAndDisplayString",
+  "sourceHashes": {
+    "root.usda": "2bd71409388b36e27445d7e439386a4d6b71ff21e8d625d3b41ec7befddc5a31",
+    "weak.usda": "aaf0b711d094d5bdff1d55e4761df48671456364ac3e737dc37f456a4289e236"
+  },
+  "rows": [
+    {
+      "property": "weight",
+      "time": 0,
+      "composed": 10.0,
+      "stack": [
+        {
+          "layer": "root.usda",
+          "specPath": "/World.weight",
+          "offset": 0.0,
+          "scale": 1.0,
+          "display": "2 time samples",
+          "value": [
+            [
+              0.0,
+              10.0
+            ],
+            [
+              2.0,
+              30.0
+            ]
+          ],
+          "sampleCount": 2
+        },
+        {
+          "layer": "weak.usda",
+          "specPath": "/World.weight",
+          "offset": 10.0,
+          "scale": 2.0,
+          "display": "2 time samples",
+          "value": [
+            [
+              0.0,
+              100.0
+            ],
+            [
+              2.0,
+              200.0
+            ]
+          ],
+          "sampleCount": 2
+        }
+      ]
+    },
+    {
+      "property": "weight",
+      "time": 1,
+      "composed": 20.0,
+      "stack": [
+        {
+          "layer": "root.usda",
+          "specPath": "/World.weight",
+          "offset": 0.0,
+          "scale": 1.0,
+          "display": "2 time samples",
+          "value": [
+            [
+              0.0,
+              10.0
+            ],
+            [
+              2.0,
+              30.0
+            ]
+          ],
+          "sampleCount": 2
+        },
+        {
+          "layer": "weak.usda",
+          "specPath": "/World.weight",
+          "offset": 10.0,
+          "scale": 2.0,
+          "display": "2 time samples",
+          "value": [
+            [
+              0.0,
+              100.0
+            ],
+            [
+              2.0,
+              200.0
+            ]
+          ],
+          "sampleCount": 2
+        }
+      ]
+    },
+    {
+      "property": "weight",
+      "time": 12,
+      "composed": 30.0,
+      "stack": [
+        {
+          "layer": "root.usda",
+          "specPath": "/World.weight",
+          "offset": 0.0,
+          "scale": 1.0,
+          "display": "2 time samples",
+          "value": [
+            [
+              0.0,
+              10.0
+            ],
+            [
+              2.0,
+              30.0
+            ]
+          ],
+          "sampleCount": 2
+        },
+        {
+          "layer": "weak.usda",
+          "specPath": "/World.weight",
+          "offset": 10.0,
+          "scale": 2.0,
+          "display": "2 time samples",
+          "value": [
+            [
+              0.0,
+              100.0
+            ],
+            [
+              2.0,
+              200.0
+            ]
+          ],
+          "sampleCount": 2
+        }
+      ]
+    },
+    {
+      "property": "single",
+      "time": 0,
+      "composed": 8.0,
+      "stack": [
+        {
+          "layer": "root.usda",
+          "specPath": "/World.single",
+          "offset": 0.0,
+          "scale": 1.0,
+          "display": "1 time sample",
+          "value": [
+            [
+              0.0,
+              8.0
+            ]
+          ],
+          "sampleCount": 1
+        }
+      ]
+    },
+    {
+      "property": "single",
+      "time": 1,
+      "composed": 8.0,
+      "stack": [
+        {
+          "layer": "root.usda",
+          "specPath": "/World.single",
+          "offset": 0.0,
+          "scale": 1.0,
+          "display": "1 time sample",
+          "value": [
+            [
+              0.0,
+              8.0
+            ]
+          ],
+          "sampleCount": 1
+        }
+      ]
+    },
+    {
+      "property": "single",
+      "time": 12,
+      "composed": 8.0,
+      "stack": [
+        {
+          "layer": "root.usda",
+          "specPath": "/World.single",
+          "offset": 0.0,
+          "scale": 1.0,
+          "display": "1 time sample",
+          "value": [
+            [
+              0.0,
+              8.0
+            ]
+          ],
+          "sampleCount": 1
+        }
+      ]
+    },
+    {
+      "property": "defaultOnly",
+      "time": 0,
+      "composed": 7.0,
+      "stack": [
+        {
+          "layer": "root.usda",
+          "specPath": "/World.defaultOnly",
+          "offset": 0.0,
+          "scale": 1.0,
+          "display": "7.0",
+          "value": 7.0,
+          "sampleCount": 0
+        }
+      ]
+    },
+    {
+      "property": "defaultOnly",
+      "time": 1,
+      "composed": 7.0,
+      "stack": [
+        {
+          "layer": "root.usda",
+          "specPath": "/World.defaultOnly",
+          "offset": 0.0,
+          "scale": 1.0,
+          "display": "7.0",
+          "value": 7.0,
+          "sampleCount": 0
+        }
+      ]
+    },
+    {
+      "property": "defaultOnly",
+      "time": 12,
+      "composed": 7.0,
+      "stack": [
+        {
+          "layer": "root.usda",
+          "specPath": "/World.defaultOnly",
+          "offset": 0.0,
+          "scale": 1.0,
+          "display": "7.0",
+          "value": 7.0,
+          "sampleCount": 0
+        }
+      ]
+    },
+    {
+      "property": "noOpinion",
+      "time": 0,
+      "composed": null,
+      "stack": [
+        {
+          "layer": "root.usda",
+          "specPath": "/World.noOpinion",
+          "offset": 0.0,
+          "scale": 1.0,
+          "display": "",
+          "value": null,
+          "sampleCount": 0
+        }
+      ]
+    },
+    {
+      "property": "noOpinion",
+      "time": 1,
+      "composed": null,
+      "stack": [
+        {
+          "layer": "root.usda",
+          "specPath": "/World.noOpinion",
+          "offset": 0.0,
+          "scale": 1.0,
+          "display": "",
+          "value": null,
+          "sampleCount": 0
+        }
+      ]
+    },
+    {
+      "property": "noOpinion",
+      "time": 12,
+      "composed": null,
+      "stack": [
+        {
+          "layer": "root.usda",
+          "specPath": "/World.noOpinion",
+          "offset": 0.0,
+          "scale": 1.0,
+          "display": "",
+          "value": null,
+          "sampleCount": 0
+        }
+      ]
+    }
+  ]
+}

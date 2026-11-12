@@ -1,0 +1,3071 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/usdImaging/usdImaging/tests/fixtures/sceneIndexFilters/capture.py",
+  "upstream": [
+    "pxr/usdImaging/usdImaging/extentResolvingSceneIndex.cpp",
+    "pxr/usdImaging/usdImaging/selectionSceneIndex.cpp",
+    "pxr/usdImaging/usdImaging/rootOverridesSceneIndex.cpp"
+  ],
+  "payload": {
+    "extentDefaultArgs": [
+      {
+        "path": "/",
+        "type": "",
+        "names": [],
+        "extent": null,
+        "selections": null
+      },
+      {
+        "path": "/World",
+        "type": "",
+        "names": [],
+        "extent": null,
+        "selections": null
+      },
+      {
+        "path": "/World/D",
+        "type": "",
+        "names": [
+          "extentsHint",
+          "extent"
+        ],
+        "extent": null,
+        "selections": null
+      },
+      {
+        "path": "/World/C",
+        "type": "mesh",
+        "names": [],
+        "extent": null,
+        "selections": null
+      },
+      {
+        "path": "/World/B",
+        "type": "mesh",
+        "names": [
+          "extent",
+          "extentsHint"
+        ],
+        "extent": {
+          "min": [
+            -5,
+            -5,
+            -5
+          ],
+          "max": [
+            5,
+            5,
+            5
+          ]
+        },
+        "selections": null
+      },
+      {
+        "path": "/World/A",
+        "type": "mesh",
+        "names": [
+          "extentsHint",
+          "extent"
+        ],
+        "extent": {
+          "min": [
+            -1,
+            -1,
+            -1
+          ],
+          "max": [
+            1,
+            1,
+            1
+          ]
+        },
+        "selections": null
+      }
+    ],
+    "extentRenderArgs": [
+      {
+        "path": "/",
+        "type": "",
+        "names": [],
+        "extent": null,
+        "selections": null
+      },
+      {
+        "path": "/World",
+        "type": "",
+        "names": [],
+        "extent": null,
+        "selections": null
+      },
+      {
+        "path": "/World/D",
+        "type": "",
+        "names": [
+          "extentsHint",
+          "extent"
+        ],
+        "extent": null,
+        "selections": null
+      },
+      {
+        "path": "/World/C",
+        "type": "mesh",
+        "names": [],
+        "extent": null,
+        "selections": null
+      },
+      {
+        "path": "/World/B",
+        "type": "mesh",
+        "names": [
+          "extent",
+          "extentsHint"
+        ],
+        "extent": {
+          "min": [
+            -5,
+            -5,
+            -5
+          ],
+          "max": [
+            5,
+            5,
+            5
+          ]
+        },
+        "selections": null
+      },
+      {
+        "path": "/World/A",
+        "type": "mesh",
+        "names": [
+          "extentsHint",
+          "extent"
+        ],
+        "extent": {
+          "min": [
+            -3,
+            -3,
+            -3
+          ],
+          "max": [
+            2,
+            2,
+            2
+          ]
+        },
+        "selections": null
+      }
+    ],
+    "extentUsdImagingArgs": [
+      {
+        "path": "/",
+        "type": "",
+        "names": [],
+        "extent": null,
+        "selections": null
+      },
+      {
+        "path": "/World",
+        "type": "",
+        "names": [],
+        "extent": null,
+        "selections": null
+      },
+      {
+        "path": "/World/D",
+        "type": "",
+        "names": [
+          "extentsHint",
+          "extent"
+        ],
+        "extent": {
+          "min": [
+            0,
+            0,
+            0
+          ],
+          "max": [
+            4,
+            4,
+            4
+          ]
+        },
+        "selections": null
+      },
+      {
+        "path": "/World/C",
+        "type": "mesh",
+        "names": [],
+        "extent": null,
+        "selections": null
+      },
+      {
+        "path": "/World/B",
+        "type": "mesh",
+        "names": [
+          "extent",
+          "extentsHint"
+        ],
+        "extent": {
+          "min": [
+            -5,
+            -5,
+            -5
+          ],
+          "max": [
+            5,
+            5,
+            5
+          ]
+        },
+        "selections": null
+      },
+      {
+        "path": "/World/A",
+        "type": "mesh",
+        "names": [
+          "extentsHint",
+          "extent"
+        ],
+        "extent": {
+          "min": [
+            -3,
+            -3,
+            -3
+          ],
+          "max": [
+            2,
+            2,
+            2
+          ]
+        },
+        "selections": null
+      }
+    ],
+    "extentDirtied": [
+      {
+        "dirtied": "/World/A",
+        "locators": [
+          "extent",
+          "extentsHint"
+        ]
+      },
+      {
+        "dirtied": "/World/B",
+        "locators": [
+          "extent",
+          "extentsHint"
+        ]
+      },
+      {
+        "dirtied": "/World/C",
+        "locators": [
+          "xform"
+        ]
+      },
+      {
+        "dirtied": "/World/D",
+        "locators": [
+          "extent",
+          "extentsHint/proxy"
+        ]
+      }
+    ],
+    "extentDirtiedUntouched": [
+      {
+        "dirtied": "/World/C",
+        "locators": [
+          "xform"
+        ]
+      }
+    ],
+    "selectionInitial": [
+      {
+        "path": "/",
+        "type": "",
+        "names": [],
+        "extent": null,
+        "selections": null
+      },
+      {
+        "path": "/UsdNiPropagatedPrototypes",
+        "type": "",
+        "names": [],
+        "extent": null,
+        "selections": null
+      },
+      {
+        "path": "/UsdNiPropagatedPrototypes/P",
+        "type": "",
+        "names": [],
+        "extent": null,
+        "selections": null
+      },
+      {
+        "path": "/UsdNiPropagatedPrototypes/P/__Prototype_1",
+        "type": "",
+        "names": [],
+        "extent": null,
+        "selections": null
+      },
+      {
+        "path": "/UsdNiPropagatedPrototypes/P/__Prototype_1/UsdNiInstancer",
+        "type": "instancer",
+        "names": [
+          "instancerTopology"
+        ],
+        "extent": null,
+        "selections": null
+      },
+      {
+        "path": "/UsdNiPropagatedPrototypes/P/__Prototype_1/UsdNiInstancer/UsdNiPrototype",
+        "type": "",
+        "names": [],
+        "extent": null,
+        "selections": null
+      },
+      {
+        "path": "/UsdNiPropagatedPrototypes/P/__Prototype_1/UsdNiInstancer/UsdNiPrototype/cube",
+        "type": "cube",
+        "names": [],
+        "extent": null,
+        "selections": null
+      },
+      {
+        "path": "/Group",
+        "type": "",
+        "names": [],
+        "extent": null,
+        "selections": null
+      },
+      {
+        "path": "/Group/Instance3",
+        "type": "",
+        "names": [
+          "instance"
+        ],
+        "extent": null,
+        "selections": null
+      },
+      {
+        "path": "/Instance2",
+        "type": "",
+        "names": [
+          "instance"
+        ],
+        "extent": null,
+        "selections": null
+      },
+      {
+        "path": "/Instance1",
+        "type": "",
+        "names": [
+          "instance"
+        ],
+        "extent": null,
+        "selections": null
+      },
+      {
+        "path": "/MyPrototype",
+        "type": "",
+        "names": [
+          "__usdPrimInfo"
+        ],
+        "extent": null,
+        "selections": null
+      },
+      {
+        "path": "/MyPrototype/ForInstancer",
+        "type": "",
+        "names": [
+          "instancedBy"
+        ],
+        "extent": null,
+        "selections": null
+      },
+      {
+        "path": "/MyPrototype/ForInstancer/Cube",
+        "type": "cube",
+        "names": [
+          "instancedBy"
+        ],
+        "extent": null,
+        "selections": null
+      },
+      {
+        "path": "/MyPrototype/Cube",
+        "type": "cube",
+        "names": [],
+        "extent": null,
+        "selections": null
+      },
+      {
+        "path": "/MyInstancer",
+        "type": "instancer",
+        "names": [
+          "instancerTopology"
+        ],
+        "extent": null,
+        "selections": null
+      },
+      {
+        "path": "/World",
+        "type": "",
+        "names": [],
+        "extent": null,
+        "selections": null
+      },
+      {
+        "path": "/World/Sub",
+        "type": "",
+        "names": [],
+        "extent": null,
+        "selections": null
+      },
+      {
+        "path": "/World/Sub/Points",
+        "type": "points",
+        "names": [],
+        "extent": null,
+        "selections": null
+      },
+      {
+        "path": "/World/Pre",
+        "type": "mesh",
+        "names": [
+          "selections"
+        ],
+        "extent": null,
+        "selections": [
+          {
+            "fullySelected": false
+          }
+        ]
+      },
+      {
+        "path": "/World/Proc",
+        "type": "hydraGenerativeProcedural",
+        "names": [],
+        "extent": null,
+        "selections": null
+      },
+      {
+        "path": "/World/Light",
+        "type": "sphereLight",
+        "names": [],
+        "extent": null,
+        "selections": null
+      },
+      {
+        "path": "/World/Curves",
+        "type": "basisCurves",
+        "names": [],
+        "extent": null,
+        "selections": null
+      },
+      {
+        "path": "/World/Mesh",
+        "type": "mesh",
+        "names": [],
+        "extent": null,
+        "selections": null
+      }
+    ],
+    "selectionSteps": [
+      {
+        "addSelection": "/World",
+        "notices": [
+          {
+            "dirtied": "/World/Curves",
+            "locators": [
+              "selections"
+            ]
+          },
+          {
+            "dirtied": "/World/Mesh",
+            "locators": [
+              "selections"
+            ]
+          },
+          {
+            "dirtied": "/World/Pre",
+            "locators": [
+              "selections"
+            ]
+          },
+          {
+            "dirtied": "/World/Proc",
+            "locators": [
+              "selections"
+            ]
+          },
+          {
+            "dirtied": "/World/Sub/Points",
+            "locators": [
+              "selections"
+            ]
+          }
+        ],
+        "prims": [
+          {
+            "path": "/",
+            "type": "",
+            "names": [],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/UsdNiPropagatedPrototypes",
+            "type": "",
+            "names": [],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/UsdNiPropagatedPrototypes/P",
+            "type": "",
+            "names": [],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/UsdNiPropagatedPrototypes/P/__Prototype_1",
+            "type": "",
+            "names": [],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/UsdNiPropagatedPrototypes/P/__Prototype_1/UsdNiInstancer",
+            "type": "instancer",
+            "names": [
+              "instancerTopology"
+            ],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/UsdNiPropagatedPrototypes/P/__Prototype_1/UsdNiInstancer/UsdNiPrototype",
+            "type": "",
+            "names": [],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/UsdNiPropagatedPrototypes/P/__Prototype_1/UsdNiInstancer/UsdNiPrototype/cube",
+            "type": "cube",
+            "names": [],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/Group",
+            "type": "",
+            "names": [],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/Group/Instance3",
+            "type": "",
+            "names": [
+              "instance"
+            ],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/Instance2",
+            "type": "",
+            "names": [
+              "instance"
+            ],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/Instance1",
+            "type": "",
+            "names": [
+              "instance"
+            ],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/MyPrototype",
+            "type": "",
+            "names": [
+              "__usdPrimInfo"
+            ],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/MyPrototype/ForInstancer",
+            "type": "",
+            "names": [
+              "instancedBy"
+            ],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/MyPrototype/ForInstancer/Cube",
+            "type": "cube",
+            "names": [
+              "instancedBy"
+            ],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/MyPrototype/Cube",
+            "type": "cube",
+            "names": [],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/MyInstancer",
+            "type": "instancer",
+            "names": [
+              "instancerTopology"
+            ],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/World",
+            "type": "",
+            "names": [],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/World/Sub",
+            "type": "",
+            "names": [],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/World/Sub/Points",
+            "type": "points",
+            "names": [
+              "selections"
+            ],
+            "extent": null,
+            "selections": [
+              {
+                "fullySelected": true
+              }
+            ]
+          },
+          {
+            "path": "/World/Pre",
+            "type": "mesh",
+            "names": [
+              "selections",
+              "selections"
+            ],
+            "extent": null,
+            "selections": [
+              {
+                "fullySelected": false
+              },
+              {
+                "fullySelected": true
+              }
+            ]
+          },
+          {
+            "path": "/World/Proc",
+            "type": "hydraGenerativeProcedural",
+            "names": [
+              "selections"
+            ],
+            "extent": null,
+            "selections": [
+              {
+                "fullySelected": true
+              }
+            ]
+          },
+          {
+            "path": "/World/Light",
+            "type": "sphereLight",
+            "names": [],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/World/Curves",
+            "type": "basisCurves",
+            "names": [
+              "selections"
+            ],
+            "extent": null,
+            "selections": [
+              {
+                "fullySelected": true
+              }
+            ]
+          },
+          {
+            "path": "/World/Mesh",
+            "type": "mesh",
+            "names": [
+              "selections"
+            ],
+            "extent": null,
+            "selections": [
+              {
+                "fullySelected": true
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "addSelection": "/Instance1",
+        "notices": [
+          {
+            "dirtied": "/UsdNiPropagatedPrototypes/P/__Prototype_1/UsdNiInstancer/UsdNiPrototype/cube",
+            "locators": [
+              "selections"
+            ]
+          }
+        ],
+        "prims": [
+          {
+            "path": "/",
+            "type": "",
+            "names": [],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/UsdNiPropagatedPrototypes",
+            "type": "",
+            "names": [],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/UsdNiPropagatedPrototypes/P",
+            "type": "",
+            "names": [],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/UsdNiPropagatedPrototypes/P/__Prototype_1",
+            "type": "",
+            "names": [],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/UsdNiPropagatedPrototypes/P/__Prototype_1/UsdNiInstancer",
+            "type": "instancer",
+            "names": [
+              "instancerTopology"
+            ],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/UsdNiPropagatedPrototypes/P/__Prototype_1/UsdNiInstancer/UsdNiPrototype",
+            "type": "",
+            "names": [],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/UsdNiPropagatedPrototypes/P/__Prototype_1/UsdNiInstancer/UsdNiPrototype/cube",
+            "type": "cube",
+            "names": [
+              "selections"
+            ],
+            "extent": null,
+            "selections": [
+              {
+                "fullySelected": true,
+                "nestedInstanceIndices": [
+                  {
+                    "instancer": "/UsdNiPropagatedPrototypes/P/__Prototype_1/UsdNiInstancer",
+                    "prototypeIndex": 0,
+                    "instanceIndices": [
+                      0
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "path": "/Group",
+            "type": "",
+            "names": [],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/Group/Instance3",
+            "type": "",
+            "names": [
+              "instance"
+            ],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/Instance2",
+            "type": "",
+            "names": [
+              "instance"
+            ],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/Instance1",
+            "type": "",
+            "names": [
+              "instance"
+            ],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/MyPrototype",
+            "type": "",
+            "names": [
+              "__usdPrimInfo"
+            ],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/MyPrototype/ForInstancer",
+            "type": "",
+            "names": [
+              "instancedBy"
+            ],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/MyPrototype/ForInstancer/Cube",
+            "type": "cube",
+            "names": [
+              "instancedBy"
+            ],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/MyPrototype/Cube",
+            "type": "cube",
+            "names": [],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/MyInstancer",
+            "type": "instancer",
+            "names": [
+              "instancerTopology"
+            ],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/World",
+            "type": "",
+            "names": [],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/World/Sub",
+            "type": "",
+            "names": [],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/World/Sub/Points",
+            "type": "points",
+            "names": [
+              "selections"
+            ],
+            "extent": null,
+            "selections": [
+              {
+                "fullySelected": true
+              }
+            ]
+          },
+          {
+            "path": "/World/Pre",
+            "type": "mesh",
+            "names": [
+              "selections",
+              "selections"
+            ],
+            "extent": null,
+            "selections": [
+              {
+                "fullySelected": false
+              },
+              {
+                "fullySelected": true
+              }
+            ]
+          },
+          {
+            "path": "/World/Proc",
+            "type": "hydraGenerativeProcedural",
+            "names": [
+              "selections"
+            ],
+            "extent": null,
+            "selections": [
+              {
+                "fullySelected": true
+              }
+            ]
+          },
+          {
+            "path": "/World/Light",
+            "type": "sphereLight",
+            "names": [],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/World/Curves",
+            "type": "basisCurves",
+            "names": [
+              "selections"
+            ],
+            "extent": null,
+            "selections": [
+              {
+                "fullySelected": true
+              }
+            ]
+          },
+          {
+            "path": "/World/Mesh",
+            "type": "mesh",
+            "names": [
+              "selections"
+            ],
+            "extent": null,
+            "selections": [
+              {
+                "fullySelected": true
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "addSelection": "/Instance2/cube",
+        "notices": [
+          {
+            "dirtied": "/UsdNiPropagatedPrototypes/P/__Prototype_1/UsdNiInstancer/UsdNiPrototype/cube",
+            "locators": [
+              "selections"
+            ]
+          }
+        ],
+        "prims": [
+          {
+            "path": "/",
+            "type": "",
+            "names": [],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/UsdNiPropagatedPrototypes",
+            "type": "",
+            "names": [],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/UsdNiPropagatedPrototypes/P",
+            "type": "",
+            "names": [],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/UsdNiPropagatedPrototypes/P/__Prototype_1",
+            "type": "",
+            "names": [],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/UsdNiPropagatedPrototypes/P/__Prototype_1/UsdNiInstancer",
+            "type": "instancer",
+            "names": [
+              "instancerTopology"
+            ],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/UsdNiPropagatedPrototypes/P/__Prototype_1/UsdNiInstancer/UsdNiPrototype",
+            "type": "",
+            "names": [],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/UsdNiPropagatedPrototypes/P/__Prototype_1/UsdNiInstancer/UsdNiPrototype/cube",
+            "type": "cube",
+            "names": [
+              "selections"
+            ],
+            "extent": null,
+            "selections": [
+              {
+                "fullySelected": true,
+                "nestedInstanceIndices": [
+                  {
+                    "instancer": "/UsdNiPropagatedPrototypes/P/__Prototype_1/UsdNiInstancer",
+                    "prototypeIndex": 0,
+                    "instanceIndices": [
+                      0
+                    ]
+                  }
+                ]
+              },
+              {
+                "fullySelected": true,
+                "nestedInstanceIndices": [
+                  {
+                    "instancer": "/UsdNiPropagatedPrototypes/P/__Prototype_1/UsdNiInstancer",
+                    "prototypeIndex": 0,
+                    "instanceIndices": [
+                      1
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "path": "/Group",
+            "type": "",
+            "names": [],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/Group/Instance3",
+            "type": "",
+            "names": [
+              "instance"
+            ],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/Instance2",
+            "type": "",
+            "names": [
+              "instance"
+            ],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/Instance1",
+            "type": "",
+            "names": [
+              "instance"
+            ],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/MyPrototype",
+            "type": "",
+            "names": [
+              "__usdPrimInfo"
+            ],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/MyPrototype/ForInstancer",
+            "type": "",
+            "names": [
+              "instancedBy"
+            ],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/MyPrototype/ForInstancer/Cube",
+            "type": "cube",
+            "names": [
+              "instancedBy"
+            ],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/MyPrototype/Cube",
+            "type": "cube",
+            "names": [],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/MyInstancer",
+            "type": "instancer",
+            "names": [
+              "instancerTopology"
+            ],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/World",
+            "type": "",
+            "names": [],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/World/Sub",
+            "type": "",
+            "names": [],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/World/Sub/Points",
+            "type": "points",
+            "names": [
+              "selections"
+            ],
+            "extent": null,
+            "selections": [
+              {
+                "fullySelected": true
+              }
+            ]
+          },
+          {
+            "path": "/World/Pre",
+            "type": "mesh",
+            "names": [
+              "selections",
+              "selections"
+            ],
+            "extent": null,
+            "selections": [
+              {
+                "fullySelected": false
+              },
+              {
+                "fullySelected": true
+              }
+            ]
+          },
+          {
+            "path": "/World/Proc",
+            "type": "hydraGenerativeProcedural",
+            "names": [
+              "selections"
+            ],
+            "extent": null,
+            "selections": [
+              {
+                "fullySelected": true
+              }
+            ]
+          },
+          {
+            "path": "/World/Light",
+            "type": "sphereLight",
+            "names": [],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/World/Curves",
+            "type": "basisCurves",
+            "names": [
+              "selections"
+            ],
+            "extent": null,
+            "selections": [
+              {
+                "fullySelected": true
+              }
+            ]
+          },
+          {
+            "path": "/World/Mesh",
+            "type": "mesh",
+            "names": [
+              "selections"
+            ],
+            "extent": null,
+            "selections": [
+              {
+                "fullySelected": true
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "addSelection": "/MyPrototype/Cube",
+        "notices": [
+          {
+            "dirtied": "/MyPrototype/Cube",
+            "locators": [
+              "selections"
+            ]
+          },
+          {
+            "dirtied": "/MyPrototype/ForInstancer/Cube",
+            "locators": [
+              "selections"
+            ]
+          }
+        ],
+        "prims": [
+          {
+            "path": "/",
+            "type": "",
+            "names": [],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/UsdNiPropagatedPrototypes",
+            "type": "",
+            "names": [],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/UsdNiPropagatedPrototypes/P",
+            "type": "",
+            "names": [],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/UsdNiPropagatedPrototypes/P/__Prototype_1",
+            "type": "",
+            "names": [],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/UsdNiPropagatedPrototypes/P/__Prototype_1/UsdNiInstancer",
+            "type": "instancer",
+            "names": [
+              "instancerTopology"
+            ],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/UsdNiPropagatedPrototypes/P/__Prototype_1/UsdNiInstancer/UsdNiPrototype",
+            "type": "",
+            "names": [],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/UsdNiPropagatedPrototypes/P/__Prototype_1/UsdNiInstancer/UsdNiPrototype/cube",
+            "type": "cube",
+            "names": [
+              "selections"
+            ],
+            "extent": null,
+            "selections": [
+              {
+                "fullySelected": true,
+                "nestedInstanceIndices": [
+                  {
+                    "instancer": "/UsdNiPropagatedPrototypes/P/__Prototype_1/UsdNiInstancer",
+                    "prototypeIndex": 0,
+                    "instanceIndices": [
+                      0
+                    ]
+                  }
+                ]
+              },
+              {
+                "fullySelected": true,
+                "nestedInstanceIndices": [
+                  {
+                    "instancer": "/UsdNiPropagatedPrototypes/P/__Prototype_1/UsdNiInstancer",
+                    "prototypeIndex": 0,
+                    "instanceIndices": [
+                      1
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "path": "/Group",
+            "type": "",
+            "names": [],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/Group/Instance3",
+            "type": "",
+            "names": [
+              "instance"
+            ],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/Instance2",
+            "type": "",
+            "names": [
+              "instance"
+            ],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/Instance1",
+            "type": "",
+            "names": [
+              "instance"
+            ],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/MyPrototype",
+            "type": "",
+            "names": [
+              "__usdPrimInfo"
+            ],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/MyPrototype/ForInstancer",
+            "type": "",
+            "names": [
+              "instancedBy"
+            ],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/MyPrototype/ForInstancer/Cube",
+            "type": "cube",
+            "names": [
+              "instancedBy",
+              "selections"
+            ],
+            "extent": null,
+            "selections": [
+              {
+                "fullySelected": true,
+                "nestedInstanceIndices": [
+                  {
+                    "instancer": "/MyInstancer",
+                    "prototypeIndex": 0,
+                    "instanceIndices": [
+                      0,
+                      1
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "path": "/MyPrototype/Cube",
+            "type": "cube",
+            "names": [
+              "selections"
+            ],
+            "extent": null,
+            "selections": [
+              {
+                "fullySelected": true
+              }
+            ]
+          },
+          {
+            "path": "/MyInstancer",
+            "type": "instancer",
+            "names": [
+              "instancerTopology"
+            ],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/World",
+            "type": "",
+            "names": [],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/World/Sub",
+            "type": "",
+            "names": [],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/World/Sub/Points",
+            "type": "points",
+            "names": [
+              "selections"
+            ],
+            "extent": null,
+            "selections": [
+              {
+                "fullySelected": true
+              }
+            ]
+          },
+          {
+            "path": "/World/Pre",
+            "type": "mesh",
+            "names": [
+              "selections",
+              "selections"
+            ],
+            "extent": null,
+            "selections": [
+              {
+                "fullySelected": false
+              },
+              {
+                "fullySelected": true
+              }
+            ]
+          },
+          {
+            "path": "/World/Proc",
+            "type": "hydraGenerativeProcedural",
+            "names": [
+              "selections"
+            ],
+            "extent": null,
+            "selections": [
+              {
+                "fullySelected": true
+              }
+            ]
+          },
+          {
+            "path": "/World/Light",
+            "type": "sphereLight",
+            "names": [],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/World/Curves",
+            "type": "basisCurves",
+            "names": [
+              "selections"
+            ],
+            "extent": null,
+            "selections": [
+              {
+                "fullySelected": true
+              }
+            ]
+          },
+          {
+            "path": "/World/Mesh",
+            "type": "mesh",
+            "names": [
+              "selections"
+            ],
+            "extent": null,
+            "selections": [
+              {
+                "fullySelected": true
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "addSelection": "/World/Mesh",
+        "notices": [
+          {
+            "dirtied": "/World/Mesh",
+            "locators": [
+              "selections"
+            ]
+          }
+        ],
+        "prims": [
+          {
+            "path": "/",
+            "type": "",
+            "names": [],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/UsdNiPropagatedPrototypes",
+            "type": "",
+            "names": [],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/UsdNiPropagatedPrototypes/P",
+            "type": "",
+            "names": [],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/UsdNiPropagatedPrototypes/P/__Prototype_1",
+            "type": "",
+            "names": [],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/UsdNiPropagatedPrototypes/P/__Prototype_1/UsdNiInstancer",
+            "type": "instancer",
+            "names": [
+              "instancerTopology"
+            ],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/UsdNiPropagatedPrototypes/P/__Prototype_1/UsdNiInstancer/UsdNiPrototype",
+            "type": "",
+            "names": [],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/UsdNiPropagatedPrototypes/P/__Prototype_1/UsdNiInstancer/UsdNiPrototype/cube",
+            "type": "cube",
+            "names": [
+              "selections"
+            ],
+            "extent": null,
+            "selections": [
+              {
+                "fullySelected": true,
+                "nestedInstanceIndices": [
+                  {
+                    "instancer": "/UsdNiPropagatedPrototypes/P/__Prototype_1/UsdNiInstancer",
+                    "prototypeIndex": 0,
+                    "instanceIndices": [
+                      0
+                    ]
+                  }
+                ]
+              },
+              {
+                "fullySelected": true,
+                "nestedInstanceIndices": [
+                  {
+                    "instancer": "/UsdNiPropagatedPrototypes/P/__Prototype_1/UsdNiInstancer",
+                    "prototypeIndex": 0,
+                    "instanceIndices": [
+                      1
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "path": "/Group",
+            "type": "",
+            "names": [],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/Group/Instance3",
+            "type": "",
+            "names": [
+              "instance"
+            ],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/Instance2",
+            "type": "",
+            "names": [
+              "instance"
+            ],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/Instance1",
+            "type": "",
+            "names": [
+              "instance"
+            ],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/MyPrototype",
+            "type": "",
+            "names": [
+              "__usdPrimInfo"
+            ],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/MyPrototype/ForInstancer",
+            "type": "",
+            "names": [
+              "instancedBy"
+            ],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/MyPrototype/ForInstancer/Cube",
+            "type": "cube",
+            "names": [
+              "instancedBy",
+              "selections"
+            ],
+            "extent": null,
+            "selections": [
+              {
+                "fullySelected": true,
+                "nestedInstanceIndices": [
+                  {
+                    "instancer": "/MyInstancer",
+                    "prototypeIndex": 0,
+                    "instanceIndices": [
+                      0,
+                      1
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "path": "/MyPrototype/Cube",
+            "type": "cube",
+            "names": [
+              "selections"
+            ],
+            "extent": null,
+            "selections": [
+              {
+                "fullySelected": true
+              }
+            ]
+          },
+          {
+            "path": "/MyInstancer",
+            "type": "instancer",
+            "names": [
+              "instancerTopology"
+            ],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/World",
+            "type": "",
+            "names": [],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/World/Sub",
+            "type": "",
+            "names": [],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/World/Sub/Points",
+            "type": "points",
+            "names": [
+              "selections"
+            ],
+            "extent": null,
+            "selections": [
+              {
+                "fullySelected": true
+              }
+            ]
+          },
+          {
+            "path": "/World/Pre",
+            "type": "mesh",
+            "names": [
+              "selections",
+              "selections"
+            ],
+            "extent": null,
+            "selections": [
+              {
+                "fullySelected": false
+              },
+              {
+                "fullySelected": true
+              }
+            ]
+          },
+          {
+            "path": "/World/Proc",
+            "type": "hydraGenerativeProcedural",
+            "names": [
+              "selections"
+            ],
+            "extent": null,
+            "selections": [
+              {
+                "fullySelected": true
+              }
+            ]
+          },
+          {
+            "path": "/World/Light",
+            "type": "sphereLight",
+            "names": [],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/World/Curves",
+            "type": "basisCurves",
+            "names": [
+              "selections"
+            ],
+            "extent": null,
+            "selections": [
+              {
+                "fullySelected": true
+              }
+            ]
+          },
+          {
+            "path": "/World/Mesh",
+            "type": "mesh",
+            "names": [
+              "selections"
+            ],
+            "extent": null,
+            "selections": [
+              {
+                "fullySelected": true
+              },
+              {
+                "fullySelected": true
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "addSelection": "/Group",
+        "notices": [
+          {
+            "dirtied": "/UsdNiPropagatedPrototypes/P/__Prototype_1/UsdNiInstancer/UsdNiPrototype/cube",
+            "locators": [
+              "selections"
+            ]
+          }
+        ],
+        "prims": [
+          {
+            "path": "/",
+            "type": "",
+            "names": [],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/UsdNiPropagatedPrototypes",
+            "type": "",
+            "names": [],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/UsdNiPropagatedPrototypes/P",
+            "type": "",
+            "names": [],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/UsdNiPropagatedPrototypes/P/__Prototype_1",
+            "type": "",
+            "names": [],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/UsdNiPropagatedPrototypes/P/__Prototype_1/UsdNiInstancer",
+            "type": "instancer",
+            "names": [
+              "instancerTopology"
+            ],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/UsdNiPropagatedPrototypes/P/__Prototype_1/UsdNiInstancer/UsdNiPrototype",
+            "type": "",
+            "names": [],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/UsdNiPropagatedPrototypes/P/__Prototype_1/UsdNiInstancer/UsdNiPrototype/cube",
+            "type": "cube",
+            "names": [
+              "selections"
+            ],
+            "extent": null,
+            "selections": [
+              {
+                "fullySelected": true,
+                "nestedInstanceIndices": [
+                  {
+                    "instancer": "/UsdNiPropagatedPrototypes/P/__Prototype_1/UsdNiInstancer",
+                    "prototypeIndex": 0,
+                    "instanceIndices": [
+                      0
+                    ]
+                  }
+                ]
+              },
+              {
+                "fullySelected": true,
+                "nestedInstanceIndices": [
+                  {
+                    "instancer": "/UsdNiPropagatedPrototypes/P/__Prototype_1/UsdNiInstancer",
+                    "prototypeIndex": 0,
+                    "instanceIndices": [
+                      1
+                    ]
+                  }
+                ]
+              },
+              {
+                "fullySelected": true,
+                "nestedInstanceIndices": [
+                  {
+                    "instancer": "/UsdNiPropagatedPrototypes/P/__Prototype_1/UsdNiInstancer",
+                    "prototypeIndex": 0,
+                    "instanceIndices": [
+                      2
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "path": "/Group",
+            "type": "",
+            "names": [],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/Group/Instance3",
+            "type": "",
+            "names": [
+              "instance"
+            ],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/Instance2",
+            "type": "",
+            "names": [
+              "instance"
+            ],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/Instance1",
+            "type": "",
+            "names": [
+              "instance"
+            ],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/MyPrototype",
+            "type": "",
+            "names": [
+              "__usdPrimInfo"
+            ],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/MyPrototype/ForInstancer",
+            "type": "",
+            "names": [
+              "instancedBy"
+            ],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/MyPrototype/ForInstancer/Cube",
+            "type": "cube",
+            "names": [
+              "instancedBy",
+              "selections"
+            ],
+            "extent": null,
+            "selections": [
+              {
+                "fullySelected": true,
+                "nestedInstanceIndices": [
+                  {
+                    "instancer": "/MyInstancer",
+                    "prototypeIndex": 0,
+                    "instanceIndices": [
+                      0,
+                      1
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "path": "/MyPrototype/Cube",
+            "type": "cube",
+            "names": [
+              "selections"
+            ],
+            "extent": null,
+            "selections": [
+              {
+                "fullySelected": true
+              }
+            ]
+          },
+          {
+            "path": "/MyInstancer",
+            "type": "instancer",
+            "names": [
+              "instancerTopology"
+            ],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/World",
+            "type": "",
+            "names": [],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/World/Sub",
+            "type": "",
+            "names": [],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/World/Sub/Points",
+            "type": "points",
+            "names": [
+              "selections"
+            ],
+            "extent": null,
+            "selections": [
+              {
+                "fullySelected": true
+              }
+            ]
+          },
+          {
+            "path": "/World/Pre",
+            "type": "mesh",
+            "names": [
+              "selections",
+              "selections"
+            ],
+            "extent": null,
+            "selections": [
+              {
+                "fullySelected": false
+              },
+              {
+                "fullySelected": true
+              }
+            ]
+          },
+          {
+            "path": "/World/Proc",
+            "type": "hydraGenerativeProcedural",
+            "names": [
+              "selections"
+            ],
+            "extent": null,
+            "selections": [
+              {
+                "fullySelected": true
+              }
+            ]
+          },
+          {
+            "path": "/World/Light",
+            "type": "sphereLight",
+            "names": [],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/World/Curves",
+            "type": "basisCurves",
+            "names": [
+              "selections"
+            ],
+            "extent": null,
+            "selections": [
+              {
+                "fullySelected": true
+              }
+            ]
+          },
+          {
+            "path": "/World/Mesh",
+            "type": "mesh",
+            "names": [
+              "selections"
+            ],
+            "extent": null,
+            "selections": [
+              {
+                "fullySelected": true
+              },
+              {
+                "fullySelected": true
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "addSelection": "/",
+        "notices": [
+          {
+            "dirtied": "/MyPrototype/Cube",
+            "locators": [
+              "selections"
+            ]
+          },
+          {
+            "dirtied": "/MyPrototype/ForInstancer/Cube",
+            "locators": [
+              "selections"
+            ]
+          },
+          {
+            "dirtied": "/UsdNiPropagatedPrototypes/P/__Prototype_1/UsdNiInstancer/UsdNiPrototype/cube",
+            "locators": [
+              "selections"
+            ]
+          },
+          {
+            "dirtied": "/World/Curves",
+            "locators": [
+              "selections"
+            ]
+          },
+          {
+            "dirtied": "/World/Mesh",
+            "locators": [
+              "selections"
+            ]
+          },
+          {
+            "dirtied": "/World/Pre",
+            "locators": [
+              "selections"
+            ]
+          },
+          {
+            "dirtied": "/World/Proc",
+            "locators": [
+              "selections"
+            ]
+          },
+          {
+            "dirtied": "/World/Sub/Points",
+            "locators": [
+              "selections"
+            ]
+          }
+        ],
+        "prims": [
+          {
+            "path": "/",
+            "type": "",
+            "names": [],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/UsdNiPropagatedPrototypes",
+            "type": "",
+            "names": [],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/UsdNiPropagatedPrototypes/P",
+            "type": "",
+            "names": [],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/UsdNiPropagatedPrototypes/P/__Prototype_1",
+            "type": "",
+            "names": [],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/UsdNiPropagatedPrototypes/P/__Prototype_1/UsdNiInstancer",
+            "type": "instancer",
+            "names": [
+              "instancerTopology"
+            ],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/UsdNiPropagatedPrototypes/P/__Prototype_1/UsdNiInstancer/UsdNiPrototype",
+            "type": "",
+            "names": [],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/UsdNiPropagatedPrototypes/P/__Prototype_1/UsdNiInstancer/UsdNiPrototype/cube",
+            "type": "cube",
+            "names": [
+              "selections"
+            ],
+            "extent": null,
+            "selections": [
+              {
+                "fullySelected": true,
+                "nestedInstanceIndices": [
+                  {
+                    "instancer": "/UsdNiPropagatedPrototypes/P/__Prototype_1/UsdNiInstancer",
+                    "prototypeIndex": 0,
+                    "instanceIndices": [
+                      0
+                    ]
+                  }
+                ]
+              },
+              {
+                "fullySelected": true,
+                "nestedInstanceIndices": [
+                  {
+                    "instancer": "/UsdNiPropagatedPrototypes/P/__Prototype_1/UsdNiInstancer",
+                    "prototypeIndex": 0,
+                    "instanceIndices": [
+                      1
+                    ]
+                  }
+                ]
+              },
+              {
+                "fullySelected": true,
+                "nestedInstanceIndices": [
+                  {
+                    "instancer": "/UsdNiPropagatedPrototypes/P/__Prototype_1/UsdNiInstancer",
+                    "prototypeIndex": 0,
+                    "instanceIndices": [
+                      2
+                    ]
+                  }
+                ]
+              },
+              {
+                "fullySelected": true,
+                "nestedInstanceIndices": [
+                  {
+                    "instancer": "/UsdNiPropagatedPrototypes/P/__Prototype_1/UsdNiInstancer",
+                    "prototypeIndex": 0,
+                    "instanceIndices": [
+                      2,
+                      1,
+                      0
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "path": "/Group",
+            "type": "",
+            "names": [],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/Group/Instance3",
+            "type": "",
+            "names": [
+              "instance"
+            ],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/Instance2",
+            "type": "",
+            "names": [
+              "instance"
+            ],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/Instance1",
+            "type": "",
+            "names": [
+              "instance"
+            ],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/MyPrototype",
+            "type": "",
+            "names": [
+              "__usdPrimInfo"
+            ],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/MyPrototype/ForInstancer",
+            "type": "",
+            "names": [
+              "instancedBy"
+            ],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/MyPrototype/ForInstancer/Cube",
+            "type": "cube",
+            "names": [
+              "instancedBy",
+              "selections"
+            ],
+            "extent": null,
+            "selections": [
+              {
+                "fullySelected": true,
+                "nestedInstanceIndices": [
+                  {
+                    "instancer": "/MyInstancer",
+                    "prototypeIndex": 0,
+                    "instanceIndices": [
+                      0,
+                      1
+                    ]
+                  }
+                ]
+              },
+              {
+                "fullySelected": true
+              },
+              {
+                "fullySelected": true,
+                "nestedInstanceIndices": [
+                  {
+                    "instancer": "/MyInstancer",
+                    "prototypeIndex": 0,
+                    "instanceIndices": [
+                      0,
+                      1
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "path": "/MyPrototype/Cube",
+            "type": "cube",
+            "names": [
+              "selections"
+            ],
+            "extent": null,
+            "selections": [
+              {
+                "fullySelected": true
+              },
+              {
+                "fullySelected": true
+              }
+            ]
+          },
+          {
+            "path": "/MyInstancer",
+            "type": "instancer",
+            "names": [
+              "instancerTopology"
+            ],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/World",
+            "type": "",
+            "names": [],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/World/Sub",
+            "type": "",
+            "names": [],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/World/Sub/Points",
+            "type": "points",
+            "names": [
+              "selections"
+            ],
+            "extent": null,
+            "selections": [
+              {
+                "fullySelected": true
+              },
+              {
+                "fullySelected": true
+              }
+            ]
+          },
+          {
+            "path": "/World/Pre",
+            "type": "mesh",
+            "names": [
+              "selections",
+              "selections"
+            ],
+            "extent": null,
+            "selections": [
+              {
+                "fullySelected": false
+              },
+              {
+                "fullySelected": true
+              },
+              {
+                "fullySelected": true
+              }
+            ]
+          },
+          {
+            "path": "/World/Proc",
+            "type": "hydraGenerativeProcedural",
+            "names": [
+              "selections"
+            ],
+            "extent": null,
+            "selections": [
+              {
+                "fullySelected": true
+              },
+              {
+                "fullySelected": true
+              }
+            ]
+          },
+          {
+            "path": "/World/Light",
+            "type": "sphereLight",
+            "names": [],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/World/Curves",
+            "type": "basisCurves",
+            "names": [
+              "selections"
+            ],
+            "extent": null,
+            "selections": [
+              {
+                "fullySelected": true
+              },
+              {
+                "fullySelected": true
+              }
+            ]
+          },
+          {
+            "path": "/World/Mesh",
+            "type": "mesh",
+            "names": [
+              "selections"
+            ],
+            "extent": null,
+            "selections": [
+              {
+                "fullySelected": true
+              },
+              {
+                "fullySelected": true
+              },
+              {
+                "fullySelected": true
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "clearSelection": true,
+        "notices": [
+          {
+            "dirtied": "/MyPrototype/Cube",
+            "locators": [
+              "selections"
+            ]
+          },
+          {
+            "dirtied": "/MyPrototype/ForInstancer/Cube",
+            "locators": [
+              "selections"
+            ]
+          },
+          {
+            "dirtied": "/UsdNiPropagatedPrototypes/P/__Prototype_1/UsdNiInstancer/UsdNiPrototype/cube",
+            "locators": [
+              "selections"
+            ]
+          },
+          {
+            "dirtied": "/World/Curves",
+            "locators": [
+              "selections"
+            ]
+          },
+          {
+            "dirtied": "/World/Mesh",
+            "locators": [
+              "selections"
+            ]
+          },
+          {
+            "dirtied": "/World/Pre",
+            "locators": [
+              "selections"
+            ]
+          },
+          {
+            "dirtied": "/World/Proc",
+            "locators": [
+              "selections"
+            ]
+          },
+          {
+            "dirtied": "/World/Sub/Points",
+            "locators": [
+              "selections"
+            ]
+          }
+        ],
+        "prims": [
+          {
+            "path": "/",
+            "type": "",
+            "names": [],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/UsdNiPropagatedPrototypes",
+            "type": "",
+            "names": [],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/UsdNiPropagatedPrototypes/P",
+            "type": "",
+            "names": [],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/UsdNiPropagatedPrototypes/P/__Prototype_1",
+            "type": "",
+            "names": [],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/UsdNiPropagatedPrototypes/P/__Prototype_1/UsdNiInstancer",
+            "type": "instancer",
+            "names": [
+              "instancerTopology"
+            ],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/UsdNiPropagatedPrototypes/P/__Prototype_1/UsdNiInstancer/UsdNiPrototype",
+            "type": "",
+            "names": [],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/UsdNiPropagatedPrototypes/P/__Prototype_1/UsdNiInstancer/UsdNiPrototype/cube",
+            "type": "cube",
+            "names": [],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/Group",
+            "type": "",
+            "names": [],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/Group/Instance3",
+            "type": "",
+            "names": [
+              "instance"
+            ],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/Instance2",
+            "type": "",
+            "names": [
+              "instance"
+            ],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/Instance1",
+            "type": "",
+            "names": [
+              "instance"
+            ],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/MyPrototype",
+            "type": "",
+            "names": [
+              "__usdPrimInfo"
+            ],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/MyPrototype/ForInstancer",
+            "type": "",
+            "names": [
+              "instancedBy"
+            ],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/MyPrototype/ForInstancer/Cube",
+            "type": "cube",
+            "names": [
+              "instancedBy"
+            ],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/MyPrototype/Cube",
+            "type": "cube",
+            "names": [],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/MyInstancer",
+            "type": "instancer",
+            "names": [
+              "instancerTopology"
+            ],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/World",
+            "type": "",
+            "names": [],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/World/Sub",
+            "type": "",
+            "names": [],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/World/Sub/Points",
+            "type": "points",
+            "names": [],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/World/Pre",
+            "type": "mesh",
+            "names": [
+              "selections"
+            ],
+            "extent": null,
+            "selections": [
+              {
+                "fullySelected": false
+              }
+            ]
+          },
+          {
+            "path": "/World/Proc",
+            "type": "hydraGenerativeProcedural",
+            "names": [],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/World/Light",
+            "type": "sphereLight",
+            "names": [],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/World/Curves",
+            "type": "basisCurves",
+            "names": [],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/World/Mesh",
+            "type": "mesh",
+            "names": [],
+            "extent": null,
+            "selections": null
+          }
+        ]
+      },
+      {
+        "clearSelection": true,
+        "notices": []
+      },
+      {
+        "removeAndReAdd": "/World/Sub",
+        "notices": [
+          {
+            "removed": "/World/Sub"
+          }
+        ],
+        "readded": [
+          {
+            "added": "/World/Sub",
+            "type": ""
+          },
+          {
+            "added": "/World/Sub/Points",
+            "type": "points"
+          }
+        ],
+        "prims": [
+          {
+            "path": "/",
+            "type": "",
+            "names": [],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/UsdNiPropagatedPrototypes",
+            "type": "",
+            "names": [],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/UsdNiPropagatedPrototypes/P",
+            "type": "",
+            "names": [],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/UsdNiPropagatedPrototypes/P/__Prototype_1",
+            "type": "",
+            "names": [],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/UsdNiPropagatedPrototypes/P/__Prototype_1/UsdNiInstancer",
+            "type": "instancer",
+            "names": [
+              "instancerTopology"
+            ],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/UsdNiPropagatedPrototypes/P/__Prototype_1/UsdNiInstancer/UsdNiPrototype",
+            "type": "",
+            "names": [],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/UsdNiPropagatedPrototypes/P/__Prototype_1/UsdNiInstancer/UsdNiPrototype/cube",
+            "type": "cube",
+            "names": [],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/Group",
+            "type": "",
+            "names": [],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/Group/Instance3",
+            "type": "",
+            "names": [
+              "instance"
+            ],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/Instance2",
+            "type": "",
+            "names": [
+              "instance"
+            ],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/Instance1",
+            "type": "",
+            "names": [
+              "instance"
+            ],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/MyPrototype",
+            "type": "",
+            "names": [
+              "__usdPrimInfo"
+            ],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/MyPrototype/ForInstancer",
+            "type": "",
+            "names": [
+              "instancedBy"
+            ],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/MyPrototype/ForInstancer/Cube",
+            "type": "cube",
+            "names": [
+              "instancedBy"
+            ],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/MyPrototype/Cube",
+            "type": "cube",
+            "names": [],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/MyInstancer",
+            "type": "instancer",
+            "names": [
+              "instancerTopology"
+            ],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/World",
+            "type": "",
+            "names": [],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/World/Sub",
+            "type": "",
+            "names": [],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/World/Sub/Points",
+            "type": "points",
+            "names": [],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/World/Pre",
+            "type": "mesh",
+            "names": [
+              "selections",
+              "selections"
+            ],
+            "extent": null,
+            "selections": [
+              {
+                "fullySelected": false
+              },
+              {
+                "fullySelected": true
+              }
+            ]
+          },
+          {
+            "path": "/World/Proc",
+            "type": "hydraGenerativeProcedural",
+            "names": [
+              "selections"
+            ],
+            "extent": null,
+            "selections": [
+              {
+                "fullySelected": true
+              }
+            ]
+          },
+          {
+            "path": "/World/Light",
+            "type": "sphereLight",
+            "names": [],
+            "extent": null,
+            "selections": null
+          },
+          {
+            "path": "/World/Curves",
+            "type": "basisCurves",
+            "names": [
+              "selections"
+            ],
+            "extent": null,
+            "selections": [
+              {
+                "fullySelected": true
+              }
+            ]
+          },
+          {
+            "path": "/World/Mesh",
+            "type": "mesh",
+            "names": [
+              "selections"
+            ],
+            "extent": null,
+            "selections": [
+              {
+                "fullySelected": true
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "rootInitial": {
+      "type": "",
+      "names": [
+        "xform",
+        "visibility"
+      ],
+      "matrix": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "visibility": true,
+      "worldNames": []
+    },
+    "rootSetTransform": {
+      "notices": [
+        {
+          "dirtied": "/",
+          "locators": [
+            "xform/matrix"
+          ]
+        }
+      ],
+      "root": {
+        "type": "",
+        "names": [
+          "xform",
+          "visibility"
+        ],
+        "matrix": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          1,
+          2,
+          3,
+          1
+        ],
+        "visibility": true,
+        "worldNames": []
+      }
+    },
+    "rootSetSameTransform": {
+      "notices": []
+    },
+    "rootSetVisibility": {
+      "notices": [
+        {
+          "dirtied": "/",
+          "locators": [
+            "visibility/visibility"
+          ]
+        }
+      ],
+      "root": {
+        "type": "",
+        "names": [
+          "xform",
+          "visibility"
+        ],
+        "matrix": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          1,
+          2,
+          3,
+          1
+        ],
+        "visibility": false,
+        "worldNames": []
+      }
+    },
+    "rootSetSameVisibility": {
+      "notices": []
+    }
+  }
+}

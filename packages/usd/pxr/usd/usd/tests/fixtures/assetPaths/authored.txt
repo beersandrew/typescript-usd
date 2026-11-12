@@ -1,0 +1,1 @@
+Self-authored asset used after the asynchronous authoring boundary.

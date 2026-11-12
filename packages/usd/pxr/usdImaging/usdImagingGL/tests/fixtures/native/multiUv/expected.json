@@ -1,0 +1,100 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/usdImaging/usdImagingGL/tests/fixtures/native/multiUv/capture.py",
+  "upstream": [
+    "pxr/usd/usdGeom/primvar.cpp",
+    "pxr/usd/usdMtlx/reader.cpp"
+  ],
+  "payload": {
+    "points": [
+      [
+        -1.0,
+        -1.0,
+        0.0
+      ],
+      [
+        1.0,
+        -1.0,
+        0.0
+      ],
+      [
+        1.0,
+        1.0,
+        0.0
+      ],
+      [
+        -1.0,
+        1.0,
+        0.0
+      ]
+    ],
+    "primvars": {
+      "st": {
+        "interpolation": "faceVarying",
+        "flattened": [
+          [
+            -0.25,
+            -0.25
+          ],
+          [
+            1.75,
+            -0.25
+          ],
+          [
+            1.75,
+            1.75
+          ],
+          [
+            -0.25,
+            1.75
+          ]
+        ]
+      },
+      "detailUV": {
+        "interpolation": "vertex",
+        "flattened": [
+          [
+            1.25,
+            -0.5
+          ],
+          [
+            1.25,
+            1.5
+          ],
+          [
+            -0.75,
+            1.5
+          ],
+          [
+            -0.75,
+            -0.5
+          ]
+        ]
+      }
+    },
+    "material": "/MaterialX/Materials/Surface",
+    "samplerModes": {
+      "/MaterialX/Materials/Surface/NG/a": {
+        "uaddressmode": "periodic",
+        "vaddressmode": "periodic",
+        "filtertype": null
+      },
+      "/MaterialX/Materials/Surface/NG/b": {
+        "uaddressmode": "clamp",
+        "vaddressmode": "clamp",
+        "filtertype": "closest"
+      },
+      "/MaterialX/NodeGraphs/NG/a": {
+        "uaddressmode": "periodic",
+        "vaddressmode": "periodic",
+        "filtertype": null
+      },
+      "/MaterialX/NodeGraphs/NG/b": {
+        "uaddressmode": "clamp",
+        "vaddressmode": "clamp",
+        "filtertype": "closest"
+      }
+    }
+  }
+}

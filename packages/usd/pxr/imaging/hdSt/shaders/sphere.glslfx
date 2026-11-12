@@ -1,0 +1,132 @@
+-- glslfx version 0.1
+
+//
+// Copyright 2026 Pixar
+//
+// Licensed under the terms set forth in the LICENSE.txt file available at
+// https://openusd.org/license.
+//
+
+--- This is what an import might look like.
+--- #import $TOOLS/hdSt/shaders/sphere.glslfx
+
+--- --------------------------------------------------------------------------
+-- glsl ImplicitSurface.TypeDef.Sphere
+
+struct Sphere
+{
+    vec3 center;
+    float radius;
+};
+
+--- --------------------------------------------------------------------------
+-- glsl ImplicitSurface.Common.Sphere
+
+#define MAX_HITS (2)
+
+struct Shape
+{
+    Sphere sphere;
+};
+
+Shape ConstructShape()
+{
+    Shape shape;
+    shape.sphere.center = vec3(0.0);
+    shape.sphere.radius = HdGet_sphereRadius();
+
+    return shape;
+}
+
+MAT4 GetShapeToObjMatrix(const Shape shape)
+{
+    return MAT4(1.0);
+}
+
+MAT4 GetObjToShapeMatrix(const Shape shape)
+{
+    return MAT4(1.0);
+}
+
+--- --------------------------------------------------------------------------
+-- glsl ImplicitSurface.Bounds.Sphere
+
+// Computes the min and max bounds for the given sphere in eye space.
+Bbox ComputeSphereBboxEye(const Sphere sphere, const MAT4 shapeToEye)
+{
+    const vec3 shapeCenterEye = TransformPoint(shapeToEye, sphere.center);
+
+    // Get max x, y, and z radii for the sphere's bounding box in eye space
+    const vec3 bboxSizeEye = sphere.radius *
+                             RowLengths(Mat4ToMat3(shapeToEye));
+
+    Bbox bboxEye;
+    bboxEye.minBound = shapeCenterEye - bboxSizeEye;
+    bboxEye.maxBound = shapeCenterEye + bboxSizeEye;
+
+    return bboxEye;
+}
+
+--- --------------------------------------------------------------------------
+-- glsl ImplicitSurface.Vertex.Sphere
+
+// Computes the min and max bounds for the sphere in eye space.
+Bbox ComputeBboxEye(const Shape shape, const MAT4 shapeToEye)
+{
+    return ComputeSphereBboxEye(shape.sphere, shapeToEye);
+}
+
+--- --------------------------------------------------------------------------
+-- glsl ImplicitSurface.Intersection.Sphere
+
+// Computes the near/far hit distances in shape space for a ray intersecting
+// the given sphere.
+// rayShape.dir need not be normalized.
+vec2 ComputeSphereRoots(const Sphere sphere, const Ray rayShape)
+{
+    // Coeffs for the quadratic equation for the sphere
+    const float a = dot(rayShape.dir, rayShape.dir);
+    const float halfB = dot(rayShape.origin - sphere.center, rayShape.dir);
+    const float c = dot(rayShape.origin, rayShape.origin)
+                    + dot(sphere.center, sphere.center - 2 * rayShape.origin)
+                    - sphere.radius * sphere.radius;
+
+    return ComputeRoots(a, halfB, c);
+}
+
+// Computes the (unnormalized) normal direction for the point on the
+// given sphere in shape space.
+// Pshape is assumed to lie on the surface of the sphere.
+vec3 ComputeSphereNormal(const Sphere sphere, const vec3 Pshape)
+{
+    return Pshape - sphere.center;
+}
+
+--- --------------------------------------------------------------------------
+-- glsl ImplicitSurface.Fragment.Sphere
+
+const uint SPHERE_SEG_SURFACE = 0u;
+
+// Computes the sorted hit points in shape space for a ray intersecting
+// the sphere.
+// rayShape.dir need not be normalized.
+SortedHits ComputeHitsShape(const Shape shape, const Ray rayShape)
+{
+    const vec2 roots = ComputeSphereRoots(shape.sphere, rayShape);
+
+    SortedHits result;
+
+    for (int i = 0; i < 2; i++) {
+        result.hits[i].t = roots[i];
+        result.hits[i].segment = SPHERE_SEG_SURFACE;
+    }
+
+    return result;
+}
+
+// Computes the (unnormalized) shape-space normal at the given point on the
+// sphere.
+vec3 ComputeNormalShape(const Shape shape, const Point pointShape)
+{
+    return ComputeSphereNormal(shape.sphere, pointShape.position);
+}

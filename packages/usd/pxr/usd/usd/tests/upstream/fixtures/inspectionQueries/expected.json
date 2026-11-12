@@ -1,0 +1,430 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/usd/usd/tests/upstream/fixtures/inspectionQueries/capture.py",
+  "upstream": [
+    "pxr/usd/usd/testenv/testUsdInherits.py:222-328",
+    "pxr/usd/usd/prim.h"
+  ],
+  "payload": {
+    "rows": {
+      "/World": {
+        "cached": {
+          "valid": true,
+          "path": "/World",
+          "nodes": []
+        },
+        "expanded": {
+          "valid": true,
+          "path": "/World",
+          "nodes": []
+        },
+        "variants": {},
+        "inherits": []
+      },
+      "/World/Model": {
+        "cached": {
+          "valid": true,
+          "path": "/World/Model",
+          "nodes": [
+            {
+              "arc": "inherit",
+              "path": "/MissingClass",
+              "layer": "root.usda",
+              "contributes": true,
+              "children": []
+            },
+            {
+              "arc": "reference",
+              "path": "/Asset",
+              "layer": "asset.usda",
+              "contributes": true,
+              "children": [
+                {
+                  "arc": "inherit",
+                  "path": "/MissingClass",
+                  "layer": "asset.usda",
+                  "contributes": true,
+                  "children": []
+                },
+                {
+                  "arc": "variant",
+                  "path": "/Asset{look=A}",
+                  "layer": "asset.usda",
+                  "contributes": true,
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        "expanded": {
+          "valid": true,
+          "path": "/World/Model",
+          "nodes": [
+            {
+              "arc": "inherit",
+              "path": "/MissingClass",
+              "layer": "root.usda",
+              "contributes": true,
+              "children": []
+            },
+            {
+              "arc": "reference",
+              "path": "/Asset",
+              "layer": "asset.usda",
+              "contributes": true,
+              "children": [
+                {
+                  "arc": "inherit",
+                  "path": "/MissingClass",
+                  "layer": "asset.usda",
+                  "contributes": true,
+                  "children": []
+                },
+                {
+                  "arc": "variant",
+                  "path": "/Asset{look=A}",
+                  "layer": "asset.usda",
+                  "contributes": true,
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        "variants": {
+          "blocked": "",
+          "look": "A",
+          "orphan": "strong",
+          "referenced": "setless",
+          "weakOnly": "selection"
+        },
+        "inherits": [
+          "/MissingClass"
+        ]
+      },
+      "/World/Model/Child": {
+        "cached": {
+          "valid": true,
+          "path": "/World/Model/Child",
+          "nodes": [
+            {
+              "arc": "reference",
+              "path": "/Asset/Child",
+              "layer": "asset.usda",
+              "contributes": true,
+              "children": []
+            }
+          ]
+        },
+        "expanded": {
+          "valid": true,
+          "path": "/World/Model/Child",
+          "nodes": [
+            {
+              "arc": "inherit",
+              "path": "/MissingClass/Child",
+              "layer": "root.usda",
+              "contributes": true,
+              "children": []
+            },
+            {
+              "arc": "reference",
+              "path": "/Asset/Child",
+              "layer": "asset.usda",
+              "contributes": true,
+              "children": [
+                {
+                  "arc": "inherit",
+                  "path": "/MissingClass/Child",
+                  "layer": "asset.usda",
+                  "contributes": true,
+                  "children": []
+                },
+                {
+                  "arc": "variant",
+                  "path": "/Asset{look=A}Child",
+                  "layer": "asset.usda",
+                  "contributes": true,
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        "variants": {},
+        "inherits": []
+      },
+      "/World/Instance": {
+        "cached": {
+          "valid": true,
+          "path": "/World/Instance",
+          "nodes": [
+            {
+              "arc": "inherit",
+              "path": "/MissingClass",
+              "layer": "root.usda",
+              "contributes": true,
+              "children": []
+            },
+            {
+              "arc": "reference",
+              "path": "/Asset",
+              "layer": "asset.usda",
+              "contributes": true,
+              "children": [
+                {
+                  "arc": "inherit",
+                  "path": "/MissingClass",
+                  "layer": "asset.usda",
+                  "contributes": true,
+                  "children": []
+                },
+                {
+                  "arc": "variant",
+                  "path": "/Asset{look=A}",
+                  "layer": "asset.usda",
+                  "contributes": true,
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        "expanded": {
+          "valid": true,
+          "path": "/World/Instance",
+          "nodes": [
+            {
+              "arc": "inherit",
+              "path": "/MissingClass",
+              "layer": "root.usda",
+              "contributes": true,
+              "children": []
+            },
+            {
+              "arc": "reference",
+              "path": "/Asset",
+              "layer": "asset.usda",
+              "contributes": true,
+              "children": [
+                {
+                  "arc": "inherit",
+                  "path": "/MissingClass",
+                  "layer": "asset.usda",
+                  "contributes": true,
+                  "children": []
+                },
+                {
+                  "arc": "variant",
+                  "path": "/Asset{look=A}",
+                  "layer": "asset.usda",
+                  "contributes": true,
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        "variants": {
+          "look": "A",
+          "referenced": "setless"
+        },
+        "inherits": [
+          "/MissingClass"
+        ]
+      },
+      "/World/Instance/Child": {
+        "cached": {
+          "valid": true,
+          "path": "/World/Instance/Child",
+          "nodes": [
+            {
+              "arc": "reference",
+              "path": "/Asset/Child",
+              "layer": "asset.usda",
+              "contributes": true,
+              "children": []
+            }
+          ]
+        },
+        "expanded": {
+          "valid": true,
+          "path": "/World/Instance/Child",
+          "nodes": [
+            {
+              "arc": "inherit",
+              "path": "/MissingClass/Child",
+              "layer": "root.usda",
+              "contributes": false,
+              "children": []
+            },
+            {
+              "arc": "reference",
+              "path": "/Asset/Child",
+              "layer": "asset.usda",
+              "contributes": true,
+              "children": [
+                {
+                  "arc": "inherit",
+                  "path": "/MissingClass/Child",
+                  "layer": "asset.usda",
+                  "contributes": true,
+                  "children": []
+                },
+                {
+                  "arc": "variant",
+                  "path": "/Asset{look=A}Child",
+                  "layer": "asset.usda",
+                  "contributes": true,
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        "variants": {},
+        "inherits": []
+      }
+    },
+    "prototype": {
+      "valid": false,
+      "path": "",
+      "nodes": []
+    },
+    "change": {
+      "before": {
+        "valid": true,
+        "path": "/World/Model",
+        "nodes": [
+          {
+            "arc": "inherit",
+            "path": "/MissingClass",
+            "layer": "root.usda",
+            "contributes": true,
+            "children": []
+          },
+          {
+            "arc": "reference",
+            "path": "/Asset",
+            "layer": "asset.usda",
+            "contributes": true,
+            "children": [
+              {
+                "arc": "inherit",
+                "path": "/MissingClass",
+                "layer": "asset.usda",
+                "contributes": true,
+                "children": []
+              },
+              {
+                "arc": "variant",
+                "path": "/Asset{look=A}",
+                "layer": "asset.usda",
+                "contributes": true,
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      "retainedAfter": {
+        "valid": true,
+        "path": "/World/Model",
+        "nodes": [
+          {
+            "arc": "inherit",
+            "path": "/MissingClass",
+            "layer": "root.usda",
+            "contributes": true,
+            "children": []
+          },
+          {
+            "arc": "reference",
+            "path": "/Asset",
+            "layer": "asset.usda",
+            "contributes": true,
+            "children": [
+              {
+                "arc": "inherit",
+                "path": "/MissingClass",
+                "layer": "asset.usda",
+                "contributes": true,
+                "children": []
+              },
+              {
+                "arc": "variant",
+                "path": "/Asset{look=A}",
+                "layer": "asset.usda",
+                "contributes": true,
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      "after": {
+        "valid": true,
+        "path": "/World/Model",
+        "nodes": [
+          {
+            "arc": "inherit",
+            "path": "/MissingClass",
+            "layer": "root.usda",
+            "contributes": true,
+            "children": []
+          },
+          {
+            "arc": "reference",
+            "path": "/Asset",
+            "layer": "asset.usda",
+            "contributes": true,
+            "children": [
+              {
+                "arc": "inherit",
+                "path": "/MissingClass",
+                "layer": "asset.usda",
+                "contributes": true,
+                "children": []
+              },
+              {
+                "arc": "variant",
+                "path": "/Asset{look=B}",
+                "layer": "asset.usda",
+                "contributes": true,
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      "variants": {
+        "blocked": "",
+        "look": "B",
+        "orphan": "strong",
+        "referenced": "setless",
+        "weakOnly": "selection"
+      }
+    },
+    "directInherits": {
+      "/Parent": [
+        "/PI",
+        "/PIRI",
+        "/PIRI_NOSPEC",
+        "/PISI",
+        "/PRSI",
+        "/PRSI_NOSPEC",
+        "/PSI"
+      ],
+      "/Parent/Child": [
+        "/CI",
+        "/CRI",
+        "/CRI_NOSPEC",
+        "/PRCI",
+        "/PRCI_NOSPEC",
+        "/Parent/Sibling"
+      ]
+    }
+  }
+}

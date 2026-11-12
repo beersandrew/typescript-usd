@@ -1,0 +1,1149 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/imaging/hgi/tests/fixtures/pureLogic/capture.py",
+  "upstream": [
+    "pxr/imaging/hgi/types.cpp:105-409",
+    "pxr/imaging/hgi/texture.cpp:26-101",
+    "pxr/imaging/hgi/attachmentDesc.cpp:13-61",
+    "pxr/imaging/hgi/graphicsCmdsDesc.cpp:13-64",
+    "pxr/imaging/hgi/graphicsPipeline.cpp:10-252",
+    "pxr/imaging/hgi/shaderFunctionDesc.cpp:11-459",
+    "pxr/imaging/hgi/shaderSection.cpp:12-81",
+    "pxr/imaging/hgi/shaderGenerator.cpp:23-70",
+    "pxr/imaging/hgi/cmds.h:54-61",
+    "pxr/imaging/hgi/tokens.h:17-50"
+  ],
+  "payload": {
+    "formats": [
+      {
+        "name": "HgiFormatUNorm8",
+        "value": 0,
+        "componentCount": 1,
+        "dataSize": 1,
+        "blockWidth": 1,
+        "blockHeight": 1,
+        "isCompressed": false,
+        "baseFormat": 0,
+        "isFloat": true
+      },
+      {
+        "name": "HgiFormatUNorm8Vec2",
+        "value": 1,
+        "componentCount": 2,
+        "dataSize": 2,
+        "blockWidth": 1,
+        "blockHeight": 1,
+        "isCompressed": false,
+        "baseFormat": 0,
+        "isFloat": true
+      },
+      {
+        "name": "HgiFormatUNorm8Vec4",
+        "value": 2,
+        "componentCount": 4,
+        "dataSize": 4,
+        "blockWidth": 1,
+        "blockHeight": 1,
+        "isCompressed": false,
+        "baseFormat": 0,
+        "isFloat": true
+      },
+      {
+        "name": "HgiFormatSNorm8",
+        "value": 3,
+        "componentCount": 1,
+        "dataSize": 1,
+        "blockWidth": 1,
+        "blockHeight": 1,
+        "isCompressed": false,
+        "baseFormat": 3,
+        "isFloat": true
+      },
+      {
+        "name": "HgiFormatSNorm8Vec2",
+        "value": 4,
+        "componentCount": 2,
+        "dataSize": 2,
+        "blockWidth": 1,
+        "blockHeight": 1,
+        "isCompressed": false,
+        "baseFormat": 3,
+        "isFloat": true
+      },
+      {
+        "name": "HgiFormatSNorm8Vec4",
+        "value": 5,
+        "componentCount": 4,
+        "dataSize": 4,
+        "blockWidth": 1,
+        "blockHeight": 1,
+        "isCompressed": false,
+        "baseFormat": 3,
+        "isFloat": true
+      },
+      {
+        "name": "HgiFormatFloat16",
+        "value": 6,
+        "componentCount": 1,
+        "dataSize": 2,
+        "blockWidth": 1,
+        "blockHeight": 1,
+        "isCompressed": false,
+        "baseFormat": 6,
+        "isFloat": true
+      },
+      {
+        "name": "HgiFormatFloat16Vec2",
+        "value": 7,
+        "componentCount": 2,
+        "dataSize": 4,
+        "blockWidth": 1,
+        "blockHeight": 1,
+        "isCompressed": false,
+        "baseFormat": 6,
+        "isFloat": true
+      },
+      {
+        "name": "HgiFormatFloat16Vec3",
+        "value": 8,
+        "componentCount": 3,
+        "dataSize": 6,
+        "blockWidth": 1,
+        "blockHeight": 1,
+        "isCompressed": false,
+        "baseFormat": 6,
+        "isFloat": true
+      },
+      {
+        "name": "HgiFormatFloat16Vec4",
+        "value": 9,
+        "componentCount": 4,
+        "dataSize": 8,
+        "blockWidth": 1,
+        "blockHeight": 1,
+        "isCompressed": false,
+        "baseFormat": 6,
+        "isFloat": true
+      },
+      {
+        "name": "HgiFormatFloat32",
+        "value": 10,
+        "componentCount": 1,
+        "dataSize": 4,
+        "blockWidth": 1,
+        "blockHeight": 1,
+        "isCompressed": false,
+        "baseFormat": 10,
+        "isFloat": true
+      },
+      {
+        "name": "HgiFormatFloat32Vec2",
+        "value": 11,
+        "componentCount": 2,
+        "dataSize": 8,
+        "blockWidth": 1,
+        "blockHeight": 1,
+        "isCompressed": false,
+        "baseFormat": 10,
+        "isFloat": true
+      },
+      {
+        "name": "HgiFormatFloat32Vec3",
+        "value": 12,
+        "componentCount": 3,
+        "dataSize": 12,
+        "blockWidth": 1,
+        "blockHeight": 1,
+        "isCompressed": false,
+        "baseFormat": 10,
+        "isFloat": true
+      },
+      {
+        "name": "HgiFormatFloat32Vec4",
+        "value": 13,
+        "componentCount": 4,
+        "dataSize": 16,
+        "blockWidth": 1,
+        "blockHeight": 1,
+        "isCompressed": false,
+        "baseFormat": 10,
+        "isFloat": true
+      },
+      {
+        "name": "HgiFormatInt16",
+        "value": 14,
+        "componentCount": 1,
+        "dataSize": 2,
+        "blockWidth": 1,
+        "blockHeight": 1,
+        "isCompressed": false,
+        "baseFormat": 14,
+        "isFloat": false
+      },
+      {
+        "name": "HgiFormatInt16Vec2",
+        "value": 15,
+        "componentCount": 2,
+        "dataSize": 4,
+        "blockWidth": 1,
+        "blockHeight": 1,
+        "isCompressed": false,
+        "baseFormat": 14,
+        "isFloat": false
+      },
+      {
+        "name": "HgiFormatInt16Vec3",
+        "value": 16,
+        "componentCount": 3,
+        "dataSize": 6,
+        "blockWidth": 1,
+        "blockHeight": 1,
+        "isCompressed": false,
+        "baseFormat": 14,
+        "isFloat": false
+      },
+      {
+        "name": "HgiFormatInt16Vec4",
+        "value": 17,
+        "componentCount": 4,
+        "dataSize": 8,
+        "blockWidth": 1,
+        "blockHeight": 1,
+        "isCompressed": false,
+        "baseFormat": 14,
+        "isFloat": false
+      },
+      {
+        "name": "HgiFormatUInt16",
+        "value": 18,
+        "componentCount": 1,
+        "dataSize": 2,
+        "blockWidth": 1,
+        "blockHeight": 1,
+        "isCompressed": false,
+        "baseFormat": 18,
+        "isFloat": false
+      },
+      {
+        "name": "HgiFormatUInt16Vec2",
+        "value": 19,
+        "componentCount": 2,
+        "dataSize": 4,
+        "blockWidth": 1,
+        "blockHeight": 1,
+        "isCompressed": false,
+        "baseFormat": 18,
+        "isFloat": false
+      },
+      {
+        "name": "HgiFormatUInt16Vec3",
+        "value": 20,
+        "componentCount": 3,
+        "dataSize": 6,
+        "blockWidth": 1,
+        "blockHeight": 1,
+        "isCompressed": false,
+        "baseFormat": 18,
+        "isFloat": false
+      },
+      {
+        "name": "HgiFormatUInt16Vec4",
+        "value": 21,
+        "componentCount": 4,
+        "dataSize": 8,
+        "blockWidth": 1,
+        "blockHeight": 1,
+        "isCompressed": false,
+        "baseFormat": 18,
+        "isFloat": false
+      },
+      {
+        "name": "HgiFormatInt32",
+        "value": 22,
+        "componentCount": 1,
+        "dataSize": 4,
+        "blockWidth": 1,
+        "blockHeight": 1,
+        "isCompressed": false,
+        "baseFormat": 22,
+        "isFloat": false
+      },
+      {
+        "name": "HgiFormatInt32Vec2",
+        "value": 23,
+        "componentCount": 2,
+        "dataSize": 8,
+        "blockWidth": 1,
+        "blockHeight": 1,
+        "isCompressed": false,
+        "baseFormat": 22,
+        "isFloat": false
+      },
+      {
+        "name": "HgiFormatInt32Vec3",
+        "value": 24,
+        "componentCount": 3,
+        "dataSize": 12,
+        "blockWidth": 1,
+        "blockHeight": 1,
+        "isCompressed": false,
+        "baseFormat": 22,
+        "isFloat": false
+      },
+      {
+        "name": "HgiFormatInt32Vec4",
+        "value": 25,
+        "componentCount": 4,
+        "dataSize": 16,
+        "blockWidth": 1,
+        "blockHeight": 1,
+        "isCompressed": false,
+        "baseFormat": 22,
+        "isFloat": false
+      },
+      {
+        "name": "HgiFormatUNorm8Vec4srgb",
+        "value": 26,
+        "componentCount": 4,
+        "dataSize": 4,
+        "blockWidth": 1,
+        "blockHeight": 1,
+        "isCompressed": false,
+        "baseFormat": 0,
+        "isFloat": true
+      },
+      {
+        "name": "HgiFormatBC6FloatVec3",
+        "value": 27,
+        "componentCount": 3,
+        "dataSize": 16,
+        "blockWidth": 4,
+        "blockHeight": 4,
+        "isCompressed": true,
+        "baseFormat": 27,
+        "isFloat": true
+      },
+      {
+        "name": "HgiFormatBC6UFloatVec3",
+        "value": 28,
+        "componentCount": 3,
+        "dataSize": 16,
+        "blockWidth": 4,
+        "blockHeight": 4,
+        "isCompressed": true,
+        "baseFormat": 28,
+        "isFloat": true
+      },
+      {
+        "name": "HgiFormatBC7UNorm8Vec4",
+        "value": 29,
+        "componentCount": 4,
+        "dataSize": 16,
+        "blockWidth": 4,
+        "blockHeight": 4,
+        "isCompressed": true,
+        "baseFormat": 0,
+        "isFloat": true
+      },
+      {
+        "name": "HgiFormatBC7UNorm8Vec4srgb",
+        "value": 30,
+        "componentCount": 4,
+        "dataSize": 16,
+        "blockWidth": 4,
+        "blockHeight": 4,
+        "isCompressed": true,
+        "baseFormat": 0,
+        "isFloat": true
+      },
+      {
+        "name": "HgiFormatBC1UNorm8Vec4",
+        "value": 31,
+        "componentCount": 4,
+        "dataSize": 16,
+        "blockWidth": 4,
+        "blockHeight": 4,
+        "isCompressed": true,
+        "baseFormat": 0,
+        "isFloat": true
+      },
+      {
+        "name": "HgiFormatBC3UNorm8Vec4",
+        "value": 32,
+        "componentCount": 4,
+        "dataSize": 16,
+        "blockWidth": 4,
+        "blockHeight": 4,
+        "isCompressed": true,
+        "baseFormat": 0,
+        "isFloat": true
+      },
+      {
+        "name": "HgiFormatFloat32UInt8",
+        "value": 33,
+        "componentCount": 1,
+        "dataSize": 8,
+        "blockWidth": 1,
+        "blockHeight": 1,
+        "isCompressed": false,
+        "baseFormat": 33,
+        "isFloat": true
+      },
+      {
+        "name": "HgiFormatPackedInt1010102",
+        "value": 34,
+        "componentCount": 4,
+        "dataSize": 4,
+        "blockWidth": 1,
+        "blockHeight": 1,
+        "isCompressed": false,
+        "baseFormat": 34,
+        "isFloat": true
+      }
+    ],
+    "formatCount": 35,
+    "sizes": [
+      {
+        "format": 2,
+        "dimensions": [
+          600,
+          400,
+          1
+        ],
+        "layerCount": 1,
+        "mipLevels": 1,
+        "dataSize": 960000,
+        "mips": [
+          {
+            "byteOffset": 0,
+            "dimensions": [
+              600,
+              400,
+              1
+            ],
+            "byteSizePerLayer": 960000
+          },
+          {
+            "byteOffset": 960000,
+            "dimensions": [
+              300,
+              200,
+              1
+            ],
+            "byteSizePerLayer": 240000
+          },
+          {
+            "byteOffset": 1200000,
+            "dimensions": [
+              150,
+              100,
+              1
+            ],
+            "byteSizePerLayer": 60000
+          },
+          {
+            "byteOffset": 1260000,
+            "dimensions": [
+              75,
+              50,
+              1
+            ],
+            "byteSizePerLayer": 15000
+          },
+          {
+            "byteOffset": 1275000,
+            "dimensions": [
+              37,
+              25,
+              1
+            ],
+            "byteSizePerLayer": 3700
+          },
+          {
+            "byteOffset": 1278700,
+            "dimensions": [
+              18,
+              12,
+              1
+            ],
+            "byteSizePerLayer": 864
+          },
+          {
+            "byteOffset": 1279564,
+            "dimensions": [
+              9,
+              6,
+              1
+            ],
+            "byteSizePerLayer": 216
+          },
+          {
+            "byteOffset": 1279780,
+            "dimensions": [
+              4,
+              3,
+              1
+            ],
+            "byteSizePerLayer": 48
+          },
+          {
+            "byteOffset": 1279828,
+            "dimensions": [
+              2,
+              1,
+              1
+            ],
+            "byteSizePerLayer": 8
+          },
+          {
+            "byteOffset": 1279836,
+            "dimensions": [
+              1,
+              1,
+              1
+            ],
+            "byteSizePerLayer": 4
+          }
+        ],
+        "truncatedMipCount": 1,
+        "textureByteSize": 960000
+      },
+      {
+        "format": 2,
+        "dimensions": [
+          600,
+          400,
+          0
+        ],
+        "layerCount": 1,
+        "mipLevels": 10,
+        "dataSize": 960000,
+        "mips": [
+          {
+            "byteOffset": 0,
+            "dimensions": [
+              600,
+              400,
+              0
+            ],
+            "byteSizePerLayer": 960000
+          },
+          {
+            "byteOffset": 960000,
+            "dimensions": [
+              300,
+              200,
+              1
+            ],
+            "byteSizePerLayer": 240000
+          },
+          {
+            "byteOffset": 1200000,
+            "dimensions": [
+              150,
+              100,
+              1
+            ],
+            "byteSizePerLayer": 60000
+          },
+          {
+            "byteOffset": 1260000,
+            "dimensions": [
+              75,
+              50,
+              1
+            ],
+            "byteSizePerLayer": 15000
+          },
+          {
+            "byteOffset": 1275000,
+            "dimensions": [
+              37,
+              25,
+              1
+            ],
+            "byteSizePerLayer": 3700
+          },
+          {
+            "byteOffset": 1278700,
+            "dimensions": [
+              18,
+              12,
+              1
+            ],
+            "byteSizePerLayer": 864
+          },
+          {
+            "byteOffset": 1279564,
+            "dimensions": [
+              9,
+              6,
+              1
+            ],
+            "byteSizePerLayer": 216
+          },
+          {
+            "byteOffset": 1279780,
+            "dimensions": [
+              4,
+              3,
+              1
+            ],
+            "byteSizePerLayer": 48
+          },
+          {
+            "byteOffset": 1279828,
+            "dimensions": [
+              2,
+              1,
+              1
+            ],
+            "byteSizePerLayer": 8
+          },
+          {
+            "byteOffset": 1279836,
+            "dimensions": [
+              1,
+              1,
+              1
+            ],
+            "byteSizePerLayer": 4
+          }
+        ],
+        "truncatedMipCount": 1,
+        "textureByteSize": 1279840
+      },
+      {
+        "format": 12,
+        "dimensions": [
+          7,
+          5,
+          3
+        ],
+        "layerCount": 1,
+        "mipLevels": 3,
+        "dataSize": 1260,
+        "mips": [
+          {
+            "byteOffset": 0,
+            "dimensions": [
+              7,
+              5,
+              3
+            ],
+            "byteSizePerLayer": 1260
+          },
+          {
+            "byteOffset": 1260,
+            "dimensions": [
+              3,
+              2,
+              1
+            ],
+            "byteSizePerLayer": 72
+          },
+          {
+            "byteOffset": 1332,
+            "dimensions": [
+              1,
+              1,
+              1
+            ],
+            "byteSizePerLayer": 12
+          }
+        ],
+        "truncatedMipCount": 1,
+        "textureByteSize": 1344
+      },
+      {
+        "format": 29,
+        "dimensions": [
+          10,
+          6,
+          1
+        ],
+        "layerCount": 1,
+        "mipLevels": 4,
+        "dataSize": 96,
+        "mips": [
+          {
+            "byteOffset": 0,
+            "dimensions": [
+              10,
+              6,
+              1
+            ],
+            "byteSizePerLayer": 96
+          },
+          {
+            "byteOffset": 96,
+            "dimensions": [
+              5,
+              3,
+              1
+            ],
+            "byteSizePerLayer": 32
+          },
+          {
+            "byteOffset": 128,
+            "dimensions": [
+              2,
+              1,
+              1
+            ],
+            "byteSizePerLayer": 16
+          },
+          {
+            "byteOffset": 144,
+            "dimensions": [
+              1,
+              1,
+              1
+            ],
+            "byteSizePerLayer": 16
+          }
+        ],
+        "truncatedMipCount": 1,
+        "textureByteSize": 160
+      },
+      {
+        "format": 9,
+        "dimensions": [
+          16,
+          8,
+          1
+        ],
+        "layerCount": 4,
+        "mipLevels": 5,
+        "dataSize": 1024,
+        "mips": [
+          {
+            "byteOffset": 0,
+            "dimensions": [
+              16,
+              8,
+              1
+            ],
+            "byteSizePerLayer": 1024
+          },
+          {
+            "byteOffset": 4096,
+            "dimensions": [
+              8,
+              4,
+              1
+            ],
+            "byteSizePerLayer": 256
+          },
+          {
+            "byteOffset": 5120,
+            "dimensions": [
+              4,
+              2,
+              1
+            ],
+            "byteSizePerLayer": 64
+          },
+          {
+            "byteOffset": 5376,
+            "dimensions": [
+              2,
+              1,
+              1
+            ],
+            "byteSizePerLayer": 16
+          },
+          {
+            "byteOffset": 5440,
+            "dimensions": [
+              1,
+              1,
+              1
+            ],
+            "byteSizePerLayer": 8
+          }
+        ],
+        "truncatedMipCount": 1,
+        "textureByteSize": 5472
+      },
+      {
+        "format": 0,
+        "dimensions": [
+          1,
+          1,
+          1
+        ],
+        "layerCount": 1,
+        "mipLevels": 1,
+        "dataSize": 1,
+        "mips": [
+          {
+            "byteOffset": 0,
+            "dimensions": [
+              1,
+              1,
+              1
+            ],
+            "byteSizePerLayer": 1
+          }
+        ],
+        "truncatedMipCount": 1,
+        "textureByteSize": 1
+      }
+    ],
+    "enums": {
+      "HgiShaderStageAllGraphics": 251,
+      "HgiShaderStageAll": 4294967295,
+      "HgiSampleCountEnd": 17,
+      "HgiBlendFactorCount": 19,
+      "HgiDeviceCapabilitiesForceEarlyFragmentTest": 1048576
+    },
+    "defaults": {
+      "attachment": "HgiAttachmentDesc: {format: -1, usage: 0, clearValue: (0, 0, 0, 0), colorMask: 15, loadOp: 2, storeOp: 1, blendEnabled: 0, srcColorBlendFactor: 0, dstColorBlendFactor: 0, colorBlendOp: 0, srcAlphaBlendFactor: 0, dstAlphaBlendFactor: 0, alphaBlendOp: 0, blendConstantColor: (0, 0, 0, 0)}",
+      "buffer": {
+        "usage": 1,
+        "byteSize": 0,
+        "vertexStride": 0
+      },
+      "texture": {
+        "usage": 0,
+        "format": -1,
+        "swizzle": [
+          2,
+          3,
+          4,
+          5
+        ],
+        "type": 1,
+        "dimensions": [
+          0,
+          0,
+          0
+        ],
+        "layerCount": 1,
+        "mipLevels": 1,
+        "sampleCount": 1,
+        "pixelsByteSize": 0
+      },
+      "textureView": {
+        "format": -1,
+        "layerCount": 1,
+        "mipLevels": 1,
+        "sourceFirstLayer": 0,
+        "sourceFirstMip": 0
+      },
+      "sampler": {
+        "magFilter": 0,
+        "minFilter": 0,
+        "mipFilter": 0,
+        "addressModeU": 0,
+        "addressModeV": 0,
+        "addressModeW": 0,
+        "borderColor": 0,
+        "enableCompare": false,
+        "compareFunction": 0,
+        "maxAnisotropy": 16
+      },
+      "bufferBind": {
+        "bindingIndex": 0,
+        "stageUsage": 129,
+        "writable": false
+      },
+      "textureBind": {
+        "resourceType": 2,
+        "bindingIndex": 0,
+        "stageUsage": 2,
+        "writable": false
+      },
+      "vertexAttribute": {
+        "format": 13,
+        "offset": 0,
+        "shaderBindLocation": 0
+      },
+      "vertexBuffer": {
+        "bindingIndex": 0,
+        "vertexStepFunction": 1,
+        "vertexStride": 0
+      },
+      "multiSample": {
+        "multiSampleEnable": true,
+        "alphaToCoverageEnable": false,
+        "alphaToOneEnable": false,
+        "sampleCount": 1
+      },
+      "rasterization": {
+        "polygonMode": 0,
+        "lineWidth": 1,
+        "cullMode": 2,
+        "winding": 1,
+        "rasterizerEnabled": true,
+        "depthClampEnabled": false,
+        "depthRange": "(0, 1)",
+        "conservativeRaster": false,
+        "numClipDistances": 0
+      },
+      "stencil": {
+        "compareFn": 7,
+        "referenceValue": 0,
+        "stencilFailOp": 0,
+        "depthFailOp": 0,
+        "depthStencilPassOp": 0,
+        "readMask": 4294967295,
+        "writeMask": 4294967295
+      },
+      "depthStencil": {
+        "depthTestEnabled": true,
+        "depthWriteEnabled": true,
+        "depthCompareFn": 1,
+        "depthBiasEnabled": false,
+        "depthBiasConstantFactor": 0,
+        "depthBiasSlopeFactor": 0,
+        "stencilTestEnabled": false
+      },
+      "graphicsShaderConstants": {
+        "byteSize": 0,
+        "stageUsage": 2
+      },
+      "tessellationState": {
+        "patchType": 0,
+        "primitiveIndexSize": 0,
+        "tessFactorMode": 0
+      },
+      "graphicsPipeline": {
+        "primitiveType": 3,
+        "resolveAttachments": false
+      },
+      "computeCmds": {
+        "dispatchMethod": 0
+      },
+      "shaderTexture": {
+        "dimensions": 2,
+        "format": -1,
+        "textureType": 0,
+        "bindIndex": 0,
+        "arraySize": 0,
+        "writable": false
+      },
+      "shaderBuffer": {
+        "bindIndex": 0,
+        "arraySize": 0,
+        "binding": 0,
+        "writable": false
+      },
+      "shaderParam": {
+        "location": -1,
+        "interstageSlot": -1,
+        "interpolation": 0,
+        "sampling": 0,
+        "storage": 0
+      },
+      "shaderParamBlock": {
+        "interstageSlot": -1
+      },
+      "shaderTessellation": {
+        "patchType": 0,
+        "spacing": 0,
+        "ordering": 1,
+        "numVertsPerPatchIn": "3",
+        "numVertsPerPatchOut": "3"
+      },
+      "shaderGeometry": {
+        "inPrimitiveType": 3,
+        "outPrimitiveType": 2,
+        "outMaxVertices": "3"
+      },
+      "shaderFunction": {
+        "shaderStage": 0,
+        "computeLocalSize": [
+          0,
+          0,
+          0
+        ],
+        "earlyFragmentTests": false
+      }
+    },
+    "equality": {
+      "buffer.initialData": true,
+      "buffer.vertexStride": true,
+      "buffer.byteSize": false,
+      "texture.layerCount": true,
+      "texture.mipLevels": true,
+      "texture.initialData": true,
+      "texture.componentMapping": false,
+      "sampler.borderColor": true,
+      "sampler.enableCompare": true,
+      "sampler.compareFunction": true,
+      "sampler.maxAnisotropy": false,
+      "shaderTexture.bindIndex": true,
+      "paramBlockMember.interpolation": true,
+      "shaderFunction.shaderCode": true,
+      "shaderFunction.buffers": true,
+      "shaderFunction.stageGlobalMembers": true,
+      "shaderFunction.stageInputBlocks": true,
+      "shaderFunction.stageInputs": false,
+      "graphicsPipeline.tessellationState": true,
+      "graphicsPipeline.depthRange": false,
+      "graphicsPipeline.stencilBack": false,
+      "attachment.clearValue": false,
+      "bufferBind.sizes": false
+    },
+    "streams": {
+      "attachment": "HgiAttachmentDesc: {format: 13, usage: 1, clearValue: (0.25, 0.5, 1, 0), colorMask: 9, loadOp: 1, storeOp: 1, blendEnabled: 1, srcColorBlendFactor: 6, dstColorBlendFactor: 7, colorBlendOp: 0, srcAlphaBlendFactor: 0, dstAlphaBlendFactor: 0, alphaBlendOp: 0, blendConstantColor: (0, 0, 0, 0)}",
+      "graphicsCmdsEmpty": "HgiGraphicsCmdsDesc: {}",
+      "graphicsCmdsHasAttachments": [
+        false,
+        true
+      ],
+      "graphicsCmdsOneAttachment": "HgiGraphicsCmdsDesc: {HgiAttachmentDesc: {format: 13, usage: 1, clearValue: (0.25, 0.5, 1, 0), colorMask: 9, loadOp: 1, storeOp: 1, blendEnabled: 1, srcColorBlendFactor: 6, dstColorBlendFactor: 7, colorBlendOp: 0, srcAlphaBlendFactor: 0, dstAlphaBlendFactor: 0, alphaBlendOp: 0, blendConstantColor: (0, 0, 0, 0)}}"
+    },
+    "addHelpers": {
+      "textures": [
+        [
+          "t0",
+          0,
+          2,
+          13,
+          0,
+          0,
+          false
+        ],
+        [
+          "t1",
+          2,
+          3,
+          22,
+          2,
+          4,
+          false
+        ],
+        [
+          "t2",
+          1,
+          2,
+          13,
+          0,
+          0,
+          true
+        ]
+      ],
+      "buffers": [
+        [
+          "b0",
+          "vec4",
+          3,
+          8,
+          3,
+          false
+        ],
+        [
+          "b1",
+          "int",
+          5,
+          0,
+          4,
+          true
+        ]
+      ],
+      "constantParams": [
+        [
+          "c0",
+          "mat4",
+          -1,
+          "role",
+          ""
+        ]
+      ],
+      "stageInputs": [
+        [
+          "i0",
+          "vec3",
+          -1,
+          "hdPosition",
+          ""
+        ]
+      ],
+      "stageGlobalMembers": [
+        [
+          "g0",
+          "float",
+          -1,
+          "",
+          "4"
+        ]
+      ],
+      "stageOutputs": [
+        [
+          "o0",
+          "vec4",
+          -1,
+          "color",
+          "2"
+        ],
+        [
+          "o1",
+          "vec2",
+          7,
+          "",
+          ""
+        ]
+      ]
+    },
+    "shaderSection": {
+      "declaration": "vec3 member;",
+      "arrayDeclaration": "vec3 member[N];",
+      "parameter": "vec3 member",
+      "blockInstance": "inst",
+      "emptyArraySize": "",
+      "hasBlockInstance": [
+        false,
+        true
+      ],
+      "attributes": "location=2"
+    },
+    "generator": {
+      "local": "[2]decl;|code;",
+      "boxed": "[2]|code;",
+      "boxedReturn": "[2]|code;"
+    },
+    "debugColors": [
+      "(0.855, 0.161, 0.11, 1)",
+      "(0, 0.639, 0.878, 1)",
+      "(0.99607843, 0.8745098, 0, 1)",
+      "(0, 0, 0, 0)"
+    ],
+    "tokens": [
+      "taskDriver",
+      "renderDriver",
+      "OpenGL",
+      "Metal",
+      "Vulkan"
+    ],
+    "shaderKeywordTokens": [
+      "hdPosition",
+      "hdPointCoord",
+      "hdClipDistance",
+      "hdCullDistance",
+      "hdVertexID",
+      "hdInstanceID",
+      "hdPrimitiveID",
+      "hdSampleID",
+      "hdSamplePosition",
+      "hdFragCoord",
+      "hdFrontFacing",
+      "hdLayer",
+      "hdBaseVertex",
+      "hdBaseInstance",
+      "hdViewportIndex",
+      "hdPositionInPatch",
+      "hdPatchID",
+      "hdGlobalInvocationID",
+      "hdBaryCoordNoPersp",
+      "hdSampleMaskIn",
+      "hdSampleMask",
+      "hdDepthAny",
+      "hdDepthGreater",
+      "hdDepthLess"
+    ]
+  }
+}

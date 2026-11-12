@@ -1,0 +1,73 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/usd/usdShade/tests/upstream/fixtures/foundation/capture.py",
+  "upstream": [
+    "pxr/usd/usdShade/material.cpp",
+    "pxr/usd/usdShade/connectableAPI.cpp",
+    "pxr/usd/usdShade/shader.cpp"
+  ],
+  "payload": {
+    "surfaceSources": [
+      {
+        "context": "",
+        "source": {
+          "primPath": "/Mat/Universal",
+          "name": "surface",
+          "sourceType": "Output"
+        }
+      },
+      {
+        "context": "mtlx",
+        "source": {
+          "primPath": "/Mat/Mtlx",
+          "name": "surface",
+          "sourceType": "Output"
+        }
+      },
+      {
+        "context": "missing",
+        "source": {
+          "primPath": "/Mat/Universal",
+          "name": "surface",
+          "sourceType": "Output"
+        }
+      },
+      {
+        "context": "empty",
+        "source": {
+          "primPath": "/Mat/Universal",
+          "name": "surface",
+          "sourceType": "Output"
+        }
+      },
+      {
+        "context": "glslfx",
+        "source": {
+          "primPath": "/Mat/Glsl",
+          "name": "surface",
+          "sourceType": "Output"
+        }
+      }
+    ],
+    "unencapsulatedConnection": {
+      "canConnect": false,
+      "connected": true,
+      "paths": [
+        "/Loose/B.outputs:out"
+      ]
+    },
+    "universalSources": {
+      "assetNames": [
+        "info:implementationSource",
+        "info:sourceAsset"
+      ],
+      "assetFallback": "shader.glslfx",
+      "codeNames": [
+        "info:implementationSource",
+        "info:sourceCode"
+      ],
+      "codeFallback": "shader source"
+    }
+  }
+}

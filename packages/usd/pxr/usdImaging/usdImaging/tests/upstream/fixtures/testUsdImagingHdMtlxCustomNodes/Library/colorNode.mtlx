@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<materialx version="1.39">
+  <UsdPreviewSurface name="Surface" type="surfaceshader">
+    <input name="diffuseColor" type="color3" output="diffuseColor_out" nodegraph="wrapper_nodegraph" />
+    <input name="ior" type="float" value="0.9" />
+    <input name="roughness" type="float" value="0.25" />
+    <input name="specularColor" type="color3" value="0.9, 0.9, 0.9" />
+    <input name="useSpecularWorkflow" type="integer" value="0" />
+  </UsdPreviewSurface>
+  <surfacematerial name="surface_material_node" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="Surface" />
+  </surfacematerial>
+  <nodegraph name="wrapper_nodegraph">
+    <add name="wrapper_nodegraph_add" type="color3" nodedef="ND_add_color3">
+      <input name="in1" type="color3" nodename="wrapper_nodegraph_multi" />
+      <input name="in2" type="color3" nodename="wrapper_nodegraph_green" />
+    </add>
+    <multiply name="wrapper_nodegraph_multi" type="color3" nodedef="ND_multiply_color3FA">
+      <input name="in2" type="float" value="0.75" />
+      <input name="in1" type="color3" nodename="wrapper_nodegraph_myColor" />
+    </multiply>
+    <TestNamespace:myColor name="wrapper_nodegraph_myColor" type="color3" nodedef="TestNamespace:ND_myColor" />
+    <constant name="wrapper_nodegraph_green" type="color3" nodedef="ND_constant_color3">
+      <input name="value" type="color3" value="0, 1, 0" />
+    </constant>
+    <output name="diffuseColor_out" type="color3" nodename="wrapper_nodegraph_add" />
+  </nodegraph>
+</materialx>

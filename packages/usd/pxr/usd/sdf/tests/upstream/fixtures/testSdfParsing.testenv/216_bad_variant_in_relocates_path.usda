@@ -1,0 +1,7 @@
+#usda 1.0
+(
+    relocates = {
+        </A{variantSelection=isProhibited}B> : </C>
+    }
+)
+

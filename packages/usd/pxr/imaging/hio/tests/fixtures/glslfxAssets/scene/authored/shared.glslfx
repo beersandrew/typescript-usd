@@ -1,0 +1,3 @@
+-- glslfx version 0.1
+-- glsl Shared.B
+void shared_b();

@@ -1,0 +1,7 @@
+#usda 1.0
+(
+    subLayers = [
+        @./tcps_zero_sub.usda@
+    ]
+    timeCodesPerSecond = 0
+)

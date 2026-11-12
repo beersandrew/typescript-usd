@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<materialx version="1.38" colorspace="lin_rec709">
+  <nodegraph name="NG">
+    <geompropvalue name="uv_a" type="vector2"><input name="geomprop" type="string" value="st" /></geompropvalue>
+    <geompropvalue name="uv_b" type="vector2"><input name="geomprop" type="string" value="detailUV" /></geompropvalue>
+    <image name="a" type="color3">
+      <input name="file" type="filename" value="checker.png" />
+      <input name="texcoord" type="vector2" nodename="uv_a" />
+      <input name="uaddressmode" type="string" value="periodic" />
+      <input name="vaddressmode" type="string" value="periodic" />
+    </image>
+    <image name="b" type="color3">
+      <input name="file" type="filename" value="checker.png" />
+      <input name="texcoord" type="vector2" nodename="uv_b" />
+      <input name="uaddressmode" type="string" value="clamp" />
+      <input name="vaddressmode" type="string" value="clamp" />
+      <input name="filtertype" type="string" value="closest" />
+    </image>
+    <multiply name="combined" type="color3">
+      <input name="in1" type="color3" nodename="a" /><input name="in2" type="color3" nodename="b" />
+    </multiply>
+    <output name="color" type="color3" nodename="combined" />
+  </nodegraph>
+  <standard_surface name="shader" type="surfaceshader">
+    <input name="base" type="float" value="1" />
+    <input name="base_color" type="color3" nodegraph="NG" output="color" />
+    <input name="specular" type="float" value="0" />
+  </standard_surface>
+  <surfacematerial name="Surface" type="material"><input name="surfaceshader" type="surfaceshader" nodename="shader" /></surfacematerial>
+</materialx>

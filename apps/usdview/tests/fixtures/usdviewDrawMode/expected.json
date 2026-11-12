@@ -1,0 +1,108 @@
+{
+  "nativeVersion": [
+    0,
+    26,
+    11
+  ],
+  "rows": [
+    {
+      "path": "/World",
+      "supports": true,
+      "computed": "default",
+      "inherited": false,
+      "authored": false
+    },
+    {
+      "path": "/World/Group",
+      "supports": true,
+      "computed": "bounds",
+      "inherited": false,
+      "authored": true
+    },
+    {
+      "path": "/World/Group/Model",
+      "supports": true,
+      "computed": "bounds",
+      "inherited": true,
+      "authored": false
+    },
+    {
+      "path": "/World/Group/Model/Geom",
+      "supports": false,
+      "computed": "bounds",
+      "inherited": true,
+      "authored": false
+    },
+    {
+      "path": "/World/Group/ExplicitInherited",
+      "supports": true,
+      "computed": "bounds",
+      "inherited": false,
+      "authored": true
+    },
+    {
+      "path": "/World/Group/ExplicitDefault",
+      "supports": true,
+      "computed": "default",
+      "inherited": false,
+      "authored": true
+    },
+    {
+      "path": "/World/Group/Inactive",
+      "supports": false,
+      "computed": "bounds",
+      "inherited": true,
+      "authored": false
+    },
+    {
+      "path": "/World/Plain",
+      "supports": false,
+      "computed": "default",
+      "inherited": false,
+      "authored": true
+    },
+    {
+      "path": "/World/NoOpinion",
+      "supports": true,
+      "computed": "default",
+      "inherited": false,
+      "authored": false
+    }
+  ],
+  "choices": [
+    "default",
+    "cards",
+    "bounds",
+    "origin"
+  ],
+  "sameValue": {
+    "authored": false,
+    "applied": []
+  },
+  "before": {
+    "computed": "bounds",
+    "clearHidden": true,
+    "width": 100,
+    "clearSize": [
+      16,
+      16
+    ]
+  },
+  "after": {
+    "computed": "cards",
+    "clearHidden": false,
+    "sessionValue": "cards",
+    "applied": [
+      "GeomModelAPI"
+    ]
+  },
+  "cleared": {
+    "computed": "bounds",
+    "sessionDefault": false,
+    "applied": [
+      "GeomModelAPI"
+    ]
+  },
+  "parentShortcut": "origin",
+  "root": "default"
+}

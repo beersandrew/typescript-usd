@@ -1,0 +1,18 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/imaging/hdSt/tests/fixtures/texturedCodegen/capture.py",
+  "upstream": [
+    "pxr/imaging/hdSt/testenv/testHdStDepthBias.cpp",
+    "pxr/imaging/hdSt/testenv/testHdStShaders.cpp",
+    "pxr/imaging/hdSt/testenv/testHdStPtex.cpp",
+    "pxr/imaging/hdSt/glslProgram.cpp:149-170",
+    "pxr/imaging/hdSt/testenv/testHdStTextureHandleRegistry/texture.png"
+  ],
+  "payload": [
+    "program0_COMPUTE_SHADER.glsl",
+    "program1_VERTEX_SHADER.glsl",
+    "program1_POST_TESS_VERTEX_SHADER.glsl",
+    "program1_FRAGMENT_SHADER.glsl"
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/base/gf/tests/upstream/genfix_quaternion.py",
+  "upstream": [
+    "pxr/base/gf/testenv/testGfQuaternion.py"
+  ],
+  "payload": {
+    "length_1_234": 5.477225575051661,
+    "normalized_1_234": {
+      "real": 0.18257418583505536,
+      "imaginary": [
+        0.3651483716701107,
+        0.5477225575051661,
+        0.7302967433402214
+      ]
+    },
+    "normalize_1_234": {
+      "real": 0.18257418583505536,
+      "imaginary": [
+        0.3651483716701107,
+        0.5477225575051661,
+        0.7302967433402214
+      ]
+    },
+    "normalized_1_123": {
+      "real": 0.2581988897471611,
+      "imaginary": [
+        0.2581988897471611,
+        0.5163977794943222,
+        0.7745966692414833
+      ]
+    },
+    "inverse_of_normalized_1_123": {
+      "real": 0.25819888974716115,
+      "imaginary": [
+        -0.25819888974716115,
+        -0.5163977794943223,
+        -0.7745966692414835
+      ]
+    },
+    "slerp_half": {
+      "real": 0.5,
+      "imaginary": [
+        0.5,
+        0.5,
+        0.5
+      ]
+    },
+    "slerp_opposing": {
+      "real": 0.0,
+      "imaginary": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    "slerp_equal": {
+      "real": 0.0,
+      "imaginary": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    "dot": 40.0,
+    "square": {
+      "real": -28.0,
+      "imaginary": [
+        4.0,
+        6.0,
+        8.0
+      ]
+    },
+    "transform_r1": [
+      2.220446049250313e-16,
+      1.0,
+      0.0
+    ],
+    "transform_r2": [
+      2.220446049250313e-16,
+      1.0,
+      0.0
+    ]
+  }
+}

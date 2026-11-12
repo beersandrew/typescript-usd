@@ -1,0 +1,26 @@
+#usda 1.0
+(
+    defaultPrim = "World"
+    endTimeCode = 18
+    framesPerSecond = 24
+    metersPerUnit = 1
+    startTimeCode = 3
+    subLayers = [
+        @<checkout>/tests/fixtures/export/source.usda@
+    ]
+    timeCodesPerSecond = 24
+    upAxis = "Y"
+)
+
+over "World"
+{
+    over "Mesh" (
+        variants = {
+            string look = "blue"
+        }
+    )
+    {
+        token visibility = "invisible"
+    }
+}
+

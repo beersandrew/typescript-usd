@@ -1,0 +1,34 @@
+#usda 1.0
+(subLayers = [@weak.usda@])
+class "Base" {}
+def Cube "World" (
+    prepend apiSchemas = ["MaterialBindingAPI"]
+    kind = "component"
+    assetInfo = { string name = "Review fixture" }
+    customData = { string strong = "root" }
+    prepend inherits = </Base>
+    prepend references = @reference.usda@</Source>
+    variants = { string look = "blue"; string orphan = "unavailable" }
+    prepend variantSets = "look"
+) {
+    custom float weight = 2 (
+        documentation = "Authored weight"
+        displayName = "Review Weight"
+        displayGroup = "Review"
+        customData = { string unit = "kg" }
+    )
+    custom rel target = </Base> (
+        documentation = "Review target"
+        customData = { string purpose = "inspection" }
+    )
+    variantSet "look" = {
+        "blue" {
+ custom string chosen = "blue"
+ }
+    }
+}
+
+def Cube "Authored" {
+    double size = 10
+    double size.timeSamples = { 1: 20, 2: 30 }
+}

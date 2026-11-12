@@ -1,0 +1,39 @@
+#usda 1.0
+(
+    customLayerData = {
+        string audit = "native-save-reference"
+    }
+    defaultPrim = "World"
+    doc = """Generated from Composed Stage of root layer <checkout>/tests/fixtures/usd-workflow/native-audit/fixtures/root.usda
+"""
+    endTimeCode = 24
+    framesPerSecond = 24
+    metersPerUnit = 0.01
+    startTimeCode = 0
+    timeCodesPerSecond = 24
+    upAxis = "Y"
+)
+
+def Xform "World"
+{
+    def Cube "Shape"
+    {
+        color3f[] primvars:displayColor = [(0, 0, 1)]
+        double size.timeSamples = {
+            0: 1,
+            24: 2,
+        }
+        asset user:source = @textures/checker.png@
+        token visibility = "invisible"
+    }
+
+    def Cube "Referenced"
+    {
+        double size = 2
+    }
+
+    def "Loaded"
+    {
+    }
+}
+

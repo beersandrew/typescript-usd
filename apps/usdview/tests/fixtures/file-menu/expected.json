@@ -1,0 +1,29 @@
+{
+  "nativeVersion": "26.11.1",
+  "source": "usdviewq/mainWindowUI.ui:1653-1658",
+  "items": [
+    {
+      "text": "Open",
+      "shortcut": "Ctrl+O"
+    },
+    {
+      "text": "Reopen Stage",
+      "shortcut": "Ctrl+Shift+R"
+    },
+    {
+      "text": "Reload All Layers",
+      "shortcut": "Ctrl+R"
+    },
+    {
+      "separator": true
+    },
+    {
+      "text": "Save Overrides As...",
+      "shortcut": null
+    },
+    {
+      "text": "Save Flattened As...",
+      "shortcut": null
+    }
+  ]
+}

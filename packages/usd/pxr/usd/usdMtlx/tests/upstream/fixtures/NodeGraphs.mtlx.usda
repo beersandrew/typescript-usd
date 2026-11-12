@@ -1,0 +1,8 @@
+#usda 1.0
+(
+    colorManagementSystem = "ocio"
+    customLayerData = {
+        string colorSpace = "lin_rec709"
+    }
+)
+

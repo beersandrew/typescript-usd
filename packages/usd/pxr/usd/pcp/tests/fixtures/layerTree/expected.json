@@ -1,0 +1,305 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/usd/pcp/tests/fixtures/layerTree/capture.py",
+  "upstream": [
+    "pxr/usd/sdf/layerTree.h",
+    "pxr/usd/pcp/layerStack.cpp:1555-1935"
+  ],
+  "payload": {
+    "plain": {
+      "root": {
+        "layer": "root.usda",
+        "offset": 0.0,
+        "scale": 1.0,
+        "children": [
+          {
+            "layer": "left.usda",
+            "offset": 10.0,
+            "scale": 1.0,
+            "children": [
+              {
+                "layer": "shared.usda",
+                "offset": 13.0,
+                "scale": 8.0,
+                "children": []
+              }
+            ]
+          },
+          {
+            "layer": "right.usda",
+            "offset": 20.0,
+            "scale": 1.0,
+            "children": [
+              {
+                "layer": "shared.usda",
+                "offset": 18.0,
+                "scale": 2.0,
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      "session": {
+        "layer": "~session~",
+        "offset": 0.0,
+        "scale": 1.0,
+        "children": []
+      },
+      "layers": [
+        "~session~",
+        "root.usda",
+        "left.usda",
+        "shared.usda",
+        "right.usda",
+        "shared.usda"
+      ]
+    },
+    "owned": {
+      "root": {
+        "layer": "root.usda",
+        "offset": 0.0,
+        "scale": 2.0,
+        "children": [
+          {
+            "layer": "right.usda",
+            "offset": 40.0,
+            "scale": 2.0,
+            "children": [
+              {
+                "layer": "shared.usda",
+                "offset": 36.0,
+                "scale": 4.0,
+                "children": []
+              }
+            ]
+          },
+          {
+            "layer": "left.usda",
+            "offset": 20.0,
+            "scale": 2.0,
+            "children": [
+              {
+                "layer": "shared.usda",
+                "offset": 26.0,
+                "scale": 16.0,
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      "session": {
+        "layer": "session.usda",
+        "offset": 0.0,
+        "scale": 1.0,
+        "children": [
+          {
+            "layer": "session-child.usda",
+            "offset": 0.0,
+            "scale": 2.0,
+            "children": []
+          }
+        ]
+      },
+      "layers": [
+        "session.usda",
+        "session-child.usda",
+        "root.usda",
+        "right.usda",
+        "shared.usda",
+        "left.usda",
+        "shared.usda"
+      ]
+    },
+    "muted": {
+      "root": {
+        "layer": "root.usda",
+        "offset": 0.0,
+        "scale": 2.0,
+        "children": [
+          {
+            "layer": "right.usda",
+            "offset": 40.0,
+            "scale": 2.0,
+            "children": []
+          },
+          {
+            "layer": "left.usda",
+            "offset": 20.0,
+            "scale": 2.0,
+            "children": []
+          }
+        ]
+      },
+      "session": {
+        "layer": "session.usda",
+        "offset": 0.0,
+        "scale": 1.0,
+        "children": [
+          {
+            "layer": "session-child.usda",
+            "offset": 0.0,
+            "scale": 2.0,
+            "children": []
+          }
+        ]
+      },
+      "layers": [
+        "session.usda",
+        "session-child.usda",
+        "root.usda",
+        "right.usda",
+        "left.usda"
+      ]
+    },
+    "retained": {
+      "layer": "root.usda",
+      "offset": 0.0,
+      "scale": 2.0,
+      "children": [
+        {
+          "layer": "right.usda",
+          "offset": 40.0,
+          "scale": 2.0,
+          "children": [
+            {
+              "layer": "shared.usda",
+              "offset": 36.0,
+              "scale": 4.0,
+              "children": []
+            }
+          ]
+        },
+        {
+          "layer": "left.usda",
+          "offset": 20.0,
+          "scale": 2.0,
+          "children": [
+            {
+              "layer": "shared.usda",
+              "offset": 26.0,
+              "scale": 16.0,
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    "borrowedPythonWrapperValid": false,
+    "unmuted": {
+      "root": {
+        "layer": "root.usda",
+        "offset": 0.0,
+        "scale": 2.0,
+        "children": [
+          {
+            "layer": "right.usda",
+            "offset": 40.0,
+            "scale": 2.0,
+            "children": [
+              {
+                "layer": "shared.usda",
+                "offset": 36.0,
+                "scale": 4.0,
+                "children": []
+              }
+            ]
+          },
+          {
+            "layer": "left.usda",
+            "offset": 20.0,
+            "scale": 2.0,
+            "children": [
+              {
+                "layer": "shared.usda",
+                "offset": 26.0,
+                "scale": 16.0,
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      "session": {
+        "layer": "session.usda",
+        "offset": 0.0,
+        "scale": 1.0,
+        "children": [
+          {
+            "layer": "session-child.usda",
+            "offset": 0.0,
+            "scale": 2.0,
+            "children": []
+          }
+        ]
+      },
+      "layers": [
+        "session.usda",
+        "session-child.usda",
+        "root.usda",
+        "right.usda",
+        "shared.usda",
+        "left.usda",
+        "shared.usda"
+      ]
+    },
+    "noSession": {
+      "root": {
+        "layer": "root.usda",
+        "offset": 0.0,
+        "scale": 1.0,
+        "children": [
+          {
+            "layer": "left.usda",
+            "offset": 10.0,
+            "scale": 1.0,
+            "children": [
+              {
+                "layer": "shared.usda",
+                "offset": 13.0,
+                "scale": 8.0,
+                "children": []
+              }
+            ]
+          },
+          {
+            "layer": "right.usda",
+            "offset": 20.0,
+            "scale": 1.0,
+            "children": [
+              {
+                "layer": "shared.usda",
+                "offset": 18.0,
+                "scale": 2.0,
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      "session": null,
+      "layers": [
+        "root.usda",
+        "left.usda",
+        "shared.usda",
+        "right.usda",
+        "shared.usda"
+      ]
+    },
+    "constructed": {
+      "layer": "root.usda",
+      "offset": 4.0,
+      "scale": 3.0,
+      "children": [
+        {
+          "layer": "root.usda",
+          "offset": 5.0,
+          "scale": 2.0,
+          "children": []
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,150 @@
+{
+  "nativeVersion": [
+    0,
+    26,
+    11
+  ],
+  "source": "usdviewq/appController.py:4284-4421; Usd GetAllMetadata/GetAllAuthoredMetadata",
+  "sourceHashes": {
+    "reference.usda": "0afeb02194958ba48a1dbac209fd88695ee50c055d6848da53cf1e27894acf10",
+    "weak.usda": "f03316203190d9081fa5ab3a2f7d3761e10fea6618a6b933c647b6b50587acdf",
+    "root.usda": "0d60f3779cdeeb70c71ea03a052d21e2e62ded5a60b7b6eeb890c7a188453451"
+  },
+  "rows": [
+    {
+      "property": null,
+      "metadata": {
+        "apiSchemas": [
+          "MaterialBindingAPI"
+        ],
+        "assetInfo": {
+          "name": "Review fixture"
+        },
+        "customData": {
+          "referenced": "reference",
+          "strong": "root",
+          "userDocBrief": "Base schema for all geometric primitives that \ndirectly define renderable shapes.",
+          "weak": "sublayer"
+        },
+        "documentation": "Weak authored prim documentation",
+        "kind": "component",
+        "specifier": "def",
+        "typeName": "Cube",
+        "references": [
+          {
+            "assetPath": "reference.usda",
+            "primPath": "/Source",
+            "offset": 0.0,
+            "scale": 1.0
+          }
+        ]
+      },
+      "authoredKeys": [
+        "apiSchemas",
+        "assetInfo",
+        "customData",
+        "documentation",
+        "kind",
+        "specifier",
+        "typeName"
+      ],
+      "objectType": "Prim",
+      "path": "/World",
+      "appliedSchemas": [
+        "MaterialBindingAPI"
+      ],
+      "directInherits": [
+        "/Base"
+      ],
+      "variantSelections": {
+        "look": "blue",
+        "orphan": "unavailable"
+      },
+      "variantNames": {
+        "look": [
+          "blue"
+        ]
+      }
+    },
+    {
+      "property": "weight",
+      "metadata": {
+        "custom": true,
+        "customData": {
+          "unit": "kg"
+        },
+        "displayGroup": "Review",
+        "displayName": "Review Weight",
+        "documentation": "Authored weight",
+        "typeName": "float",
+        "variability": "varying"
+      },
+      "authoredKeys": [
+        "custom",
+        "customData",
+        "displayGroup",
+        "displayName",
+        "documentation",
+        "typeName",
+        "variability"
+      ],
+      "objectType": "Attribute",
+      "path": "/World.weight"
+    },
+    {
+      "property": "target",
+      "metadata": {
+        "custom": true,
+        "customData": {
+          "purpose": "inspection"
+        },
+        "documentation": "Review target",
+        "variability": "uniform"
+      },
+      "authoredKeys": [
+        "custom",
+        "customData",
+        "documentation",
+        "variability"
+      ],
+      "objectType": "Relationship",
+      "path": "/World.target"
+    },
+    {
+      "property": "size",
+      "metadata": {
+        "custom": false,
+        "default": 2.0,
+        "typeName": "double",
+        "variability": "varying"
+      },
+      "authoredKeys": [
+        "custom",
+        "typeName",
+        "variability"
+      ],
+      "objectType": "Attribute",
+      "path": "/World.size"
+    },
+    {
+      "property": "size",
+      "metadata": {
+        "custom": false,
+        "default": 10.0,
+        "typeName": "double",
+        "variability": "varying"
+      },
+      "authoredKeys": [
+        "custom",
+        "typeName",
+        "variability"
+      ],
+      "objectType": "Attribute",
+      "path": "/Authored.size",
+      "sampleValues": {
+        "1": 20.0,
+        "2": 30.0
+      }
+    }
+  ]
+}

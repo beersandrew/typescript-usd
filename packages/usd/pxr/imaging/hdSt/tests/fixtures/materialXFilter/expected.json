@@ -1,0 +1,5526 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/imaging/hdSt/tests/fixtures/materialXFilter/capture.py",
+  "upstream": [
+    "pxr/imaging/hdSt/materialXFilter.cpp",
+    "pxr/imaging/hdSt/materialNetwork.cpp:1179-1186"
+  ],
+  "payload": [
+    {
+      "materialParams": [
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.8999999761581421
+          ],
+          "isPremultiplied": false,
+          "name": "base",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.0
+          ],
+          "isPremultiplied": false,
+          "name": "diffuse_roughness",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.25
+          ],
+          "isPremultiplied": false,
+          "name": "metalness",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            1.0
+          ],
+          "isPremultiplied": false,
+          "name": "specular",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float3",
+            [
+              1.0,
+              1.0,
+              1.0
+            ]
+          ],
+          "isPremultiplied": false,
+          "name": "specular_color",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.20000000298023224
+          ],
+          "isPremultiplied": false,
+          "name": "specular_roughness",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            1.5
+          ],
+          "isPremultiplied": false,
+          "name": "specular_IOR",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.0
+          ],
+          "isPremultiplied": false,
+          "name": "specular_anisotropy",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.0
+          ],
+          "isPremultiplied": false,
+          "name": "specular_rotation",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.0
+          ],
+          "isPremultiplied": false,
+          "name": "transmission",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float3",
+            [
+              1.0,
+              1.0,
+              1.0
+            ]
+          ],
+          "isPremultiplied": false,
+          "name": "transmission_color",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.0
+          ],
+          "isPremultiplied": false,
+          "name": "transmission_depth",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float3",
+            [
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "isPremultiplied": false,
+          "name": "transmission_scatter",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.0
+          ],
+          "isPremultiplied": false,
+          "name": "transmission_scatter_anisotropy",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.0
+          ],
+          "isPremultiplied": false,
+          "name": "transmission_dispersion",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.0
+          ],
+          "isPremultiplied": false,
+          "name": "transmission_extra_roughness",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.0
+          ],
+          "isPremultiplied": false,
+          "name": "subsurface",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float3",
+            [
+              1.0,
+              1.0,
+              1.0
+            ]
+          ],
+          "isPremultiplied": false,
+          "name": "subsurface_color",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float3",
+            [
+              1.0,
+              1.0,
+              1.0
+            ]
+          ],
+          "isPremultiplied": false,
+          "name": "subsurface_radius",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            1.0
+          ],
+          "isPremultiplied": false,
+          "name": "subsurface_scale",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.0
+          ],
+          "isPremultiplied": false,
+          "name": "subsurface_anisotropy",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.0
+          ],
+          "isPremultiplied": false,
+          "name": "sheen",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float3",
+            [
+              1.0,
+              1.0,
+              1.0
+            ]
+          ],
+          "isPremultiplied": false,
+          "name": "sheen_color",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.30000001192092896
+          ],
+          "isPremultiplied": false,
+          "name": "sheen_roughness",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.0
+          ],
+          "isPremultiplied": false,
+          "name": "coat",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float3",
+            [
+              1.0,
+              1.0,
+              1.0
+            ]
+          ],
+          "isPremultiplied": false,
+          "name": "coat_color",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.10000000149011612
+          ],
+          "isPremultiplied": false,
+          "name": "coat_roughness",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.0
+          ],
+          "isPremultiplied": false,
+          "name": "coat_anisotropy",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.0
+          ],
+          "isPremultiplied": false,
+          "name": "coat_rotation",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            1.5
+          ],
+          "isPremultiplied": false,
+          "name": "coat_IOR",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.0
+          ],
+          "isPremultiplied": false,
+          "name": "coat_affect_color",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.0
+          ],
+          "isPremultiplied": false,
+          "name": "coat_affect_roughness",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.0
+          ],
+          "isPremultiplied": false,
+          "name": "thin_film_thickness",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            1.5
+          ],
+          "isPremultiplied": false,
+          "name": "thin_film_IOR",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.0
+          ],
+          "isPremultiplied": false,
+          "name": "emission",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float3",
+            [
+              1.0,
+              1.0,
+              1.0
+            ]
+          ],
+          "isPremultiplied": false,
+          "name": "emission_color",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float3",
+            [
+              1.0,
+              1.0,
+              1.0
+            ]
+          ],
+          "isPremultiplied": false,
+          "name": "opacity",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "bool",
+            false
+          ],
+          "isPremultiplied": false,
+          "name": "thin_walled",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "int",
+            0
+          ],
+          "isPremultiplied": false,
+          "name": "NG_Anonymized_N2NDtexcoordvector2texcoord_index",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float3",
+            [
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "isPremultiplied": false,
+          "name": "NG_Anonymized_N1NDimagecolor3basecolor_default",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "int",
+            2
+          ],
+          "isPremultiplied": false,
+          "name": "NG_Anonymized_N1NDimagecolor3basecolor_uaddressmode",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "int",
+            2
+          ],
+          "isPremultiplied": false,
+          "name": "NG_Anonymized_N1NDimagecolor3basecolor_vaddressmode",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "int",
+            1
+          ],
+          "isPremultiplied": false,
+          "name": "NG_Anonymized_N1NDimagecolor3basecolor_filtertype",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "int",
+            0
+          ],
+          "isPremultiplied": false,
+          "name": "NG_Anonymized_N1NDimagecolor3basecolor_frameoffset",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "int",
+            0
+          ],
+          "isPremultiplied": false,
+          "name": "NG_Anonymized_N1NDimagecolor3basecolor_frameendaction",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float2",
+            [
+              1.0,
+              1.0
+            ]
+          ],
+          "isPremultiplied": false,
+          "name": "NG_Anonymized_N1NDimagecolor3basecolor_uv_scale",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float2",
+            [
+              0.0,
+              0.0
+            ]
+          ],
+          "isPremultiplied": false,
+          "name": "NG_Anonymized_N1NDimagecolor3basecolor_uv_offset",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        }
+      ],
+      "name": "ssTextured",
+      "nodes": {
+        "/Mat/Image": {
+          "connections": {
+            "texcoord": [
+              [
+                "/Mat/UV",
+                "out"
+              ]
+            ]
+          },
+          "nodeTypeId": "ND_image_color3",
+          "parameters": {
+            "colorSpace:file": [
+              "token",
+              "raw"
+            ],
+            "file": [
+              "asset",
+              [
+                "texture.png",
+                ""
+              ]
+            ],
+            "filtertype": [
+              "string",
+              "closest"
+            ],
+            "magFilter": [
+              "token",
+              "linear"
+            ],
+            "minFilter": [
+              "token",
+              "nearestMipmapNearest"
+            ],
+            "st": [
+              "token",
+              "st"
+            ],
+            "uaddressmode": [
+              "string",
+              "clamp"
+            ],
+            "wrapS": [
+              "token",
+              "clamp"
+            ],
+            "wrapT": [
+              "token",
+              "repeat"
+            ]
+          }
+        },
+        "/Mat/Surface": {
+          "connections": {
+            "NG_Anonymized_N1NDimagecolor3basecolor_file": [
+              [
+                "/Mat/Image",
+                "NG_Anonymized_N1NDimagecolor3basecolor_file"
+              ]
+            ],
+            "UV_primvarconn": [
+              [
+                "/Mat/UV",
+                "UV_primvarconn"
+              ]
+            ],
+            "base_color": [
+              [
+                "/Mat/Image",
+                "out"
+              ]
+            ],
+            "domeLightFallback": [
+              [
+                "/Mat/domeLightFallback",
+                "domeLightFallback"
+              ]
+            ]
+          },
+          "nodeTypeId": "<generated>",
+          "parameters": {
+            "base": [
+              "float",
+              0.8999999761581421
+            ],
+            "metalness": [
+              "float",
+              0.25
+            ]
+          }
+        },
+        "/Mat/UV": {
+          "connections": {},
+          "nodeTypeId": "ND_texcoord_vector2",
+          "parameters": {
+            "index": [
+              "int",
+              0
+            ]
+          }
+        },
+        "/Mat/domeLightFallback": {
+          "connections": {},
+          "nodeTypeId": "ND_image_color3",
+          "parameters": {
+            "file": [
+              "asset",
+              [
+                "<hdSt>/textures/fallbackBlackDomeLight.png",
+                "<hdSt>/textures/fallbackBlackDomeLight.png"
+              ]
+            ]
+          }
+        }
+      },
+      "shader": 0,
+      "terminalIsGeneratedGlslfx": true
+    },
+    {
+      "materialParams": [
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.5
+          ],
+          "isPremultiplied": false,
+          "name": "base",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.0
+          ],
+          "isPremultiplied": false,
+          "name": "diffuse_roughness",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.75
+          ],
+          "isPremultiplied": false,
+          "name": "metalness",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            1.0
+          ],
+          "isPremultiplied": false,
+          "name": "specular",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float3",
+            [
+              1.0,
+              1.0,
+              1.0
+            ]
+          ],
+          "isPremultiplied": false,
+          "name": "specular_color",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.20000000298023224
+          ],
+          "isPremultiplied": false,
+          "name": "specular_roughness",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            1.5
+          ],
+          "isPremultiplied": false,
+          "name": "specular_IOR",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.0
+          ],
+          "isPremultiplied": false,
+          "name": "specular_anisotropy",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.0
+          ],
+          "isPremultiplied": false,
+          "name": "specular_rotation",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.0
+          ],
+          "isPremultiplied": false,
+          "name": "transmission",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float3",
+            [
+              1.0,
+              1.0,
+              1.0
+            ]
+          ],
+          "isPremultiplied": false,
+          "name": "transmission_color",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.0
+          ],
+          "isPremultiplied": false,
+          "name": "transmission_depth",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float3",
+            [
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "isPremultiplied": false,
+          "name": "transmission_scatter",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.0
+          ],
+          "isPremultiplied": false,
+          "name": "transmission_scatter_anisotropy",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.0
+          ],
+          "isPremultiplied": false,
+          "name": "transmission_dispersion",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.0
+          ],
+          "isPremultiplied": false,
+          "name": "transmission_extra_roughness",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.0
+          ],
+          "isPremultiplied": false,
+          "name": "subsurface",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float3",
+            [
+              1.0,
+              1.0,
+              1.0
+            ]
+          ],
+          "isPremultiplied": false,
+          "name": "subsurface_color",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float3",
+            [
+              1.0,
+              1.0,
+              1.0
+            ]
+          ],
+          "isPremultiplied": false,
+          "name": "subsurface_radius",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            1.0
+          ],
+          "isPremultiplied": false,
+          "name": "subsurface_scale",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.0
+          ],
+          "isPremultiplied": false,
+          "name": "subsurface_anisotropy",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.0
+          ],
+          "isPremultiplied": false,
+          "name": "sheen",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float3",
+            [
+              1.0,
+              1.0,
+              1.0
+            ]
+          ],
+          "isPremultiplied": false,
+          "name": "sheen_color",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.30000001192092896
+          ],
+          "isPremultiplied": false,
+          "name": "sheen_roughness",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.0
+          ],
+          "isPremultiplied": false,
+          "name": "coat",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float3",
+            [
+              1.0,
+              1.0,
+              1.0
+            ]
+          ],
+          "isPremultiplied": false,
+          "name": "coat_color",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.10000000149011612
+          ],
+          "isPremultiplied": false,
+          "name": "coat_roughness",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.0
+          ],
+          "isPremultiplied": false,
+          "name": "coat_anisotropy",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.0
+          ],
+          "isPremultiplied": false,
+          "name": "coat_rotation",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            1.5
+          ],
+          "isPremultiplied": false,
+          "name": "coat_IOR",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.0
+          ],
+          "isPremultiplied": false,
+          "name": "coat_affect_color",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.0
+          ],
+          "isPremultiplied": false,
+          "name": "coat_affect_roughness",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.0
+          ],
+          "isPremultiplied": false,
+          "name": "thin_film_thickness",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            1.5
+          ],
+          "isPremultiplied": false,
+          "name": "thin_film_IOR",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.0
+          ],
+          "isPremultiplied": false,
+          "name": "emission",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float3",
+            [
+              1.0,
+              1.0,
+              1.0
+            ]
+          ],
+          "isPremultiplied": false,
+          "name": "emission_color",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float3",
+            [
+              1.0,
+              1.0,
+              1.0
+            ]
+          ],
+          "isPremultiplied": false,
+          "name": "opacity",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "bool",
+            false
+          ],
+          "isPremultiplied": false,
+          "name": "thin_walled",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "int",
+            0
+          ],
+          "isPremultiplied": false,
+          "name": "NG_Anonymized_N2NDtexcoordvector2texcoord_index",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float3",
+            [
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "isPremultiplied": false,
+          "name": "NG_Anonymized_N1NDimagecolor3basecolor_default",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "int",
+            2
+          ],
+          "isPremultiplied": false,
+          "name": "NG_Anonymized_N1NDimagecolor3basecolor_uaddressmode",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "int",
+            2
+          ],
+          "isPremultiplied": false,
+          "name": "NG_Anonymized_N1NDimagecolor3basecolor_vaddressmode",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "int",
+            1
+          ],
+          "isPremultiplied": false,
+          "name": "NG_Anonymized_N1NDimagecolor3basecolor_filtertype",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "int",
+            0
+          ],
+          "isPremultiplied": false,
+          "name": "NG_Anonymized_N1NDimagecolor3basecolor_frameoffset",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "int",
+            0
+          ],
+          "isPremultiplied": false,
+          "name": "NG_Anonymized_N1NDimagecolor3basecolor_frameendaction",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float2",
+            [
+              1.0,
+              1.0
+            ]
+          ],
+          "isPremultiplied": false,
+          "name": "NG_Anonymized_N1NDimagecolor3basecolor_uv_scale",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float2",
+            [
+              0.0,
+              0.0
+            ]
+          ],
+          "isPremultiplied": false,
+          "name": "NG_Anonymized_N1NDimagecolor3basecolor_uv_offset",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        }
+      ],
+      "name": "ssTexturedRenamed",
+      "nodes": {
+        "/Other/Coords": {
+          "connections": {},
+          "nodeTypeId": "ND_texcoord_vector2",
+          "parameters": {
+            "index": [
+              "int",
+              0
+            ]
+          }
+        },
+        "/Other/Shader": {
+          "connections": {
+            "Coords_primvarconn": [
+              [
+                "/Other/Coords",
+                "Coords_primvarconn"
+              ]
+            ],
+            "NG_Anonymized_N1NDimagecolor3basecolor_file": [
+              [
+                "/Other/Tex",
+                "NG_Anonymized_N1NDimagecolor3basecolor_file"
+              ]
+            ],
+            "base_color": [
+              [
+                "/Other/Tex",
+                "out"
+              ]
+            ],
+            "domeLightFallback": [
+              [
+                "/Other/domeLightFallback",
+                "domeLightFallback"
+              ]
+            ]
+          },
+          "nodeTypeId": "<generated>",
+          "parameters": {
+            "base": [
+              "float",
+              0.5
+            ],
+            "metalness": [
+              "float",
+              0.75
+            ]
+          }
+        },
+        "/Other/Tex": {
+          "connections": {
+            "texcoord": [
+              [
+                "/Other/Coords",
+                "out"
+              ]
+            ]
+          },
+          "nodeTypeId": "ND_image_color3",
+          "parameters": {
+            "colorSpace:file": [
+              "token",
+              "raw"
+            ],
+            "file": [
+              "asset",
+              [
+                "other.png",
+                ""
+              ]
+            ],
+            "st": [
+              "token",
+              "st"
+            ],
+            "vaddressmode": [
+              "string",
+              "mirror"
+            ],
+            "wrapS": [
+              "token",
+              "repeat"
+            ],
+            "wrapT": [
+              "token",
+              "mirror"
+            ]
+          }
+        },
+        "/Other/domeLightFallback": {
+          "connections": {},
+          "nodeTypeId": "ND_image_color3",
+          "parameters": {
+            "file": [
+              "asset",
+              [
+                "<hdSt>/textures/fallbackBlackDomeLight.png",
+                "<hdSt>/textures/fallbackBlackDomeLight.png"
+              ]
+            ]
+          }
+        }
+      },
+      "shader": 0,
+      "terminalIsGeneratedGlslfx": true
+    },
+    {
+      "materialParams": [
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.8999999761581421
+          ],
+          "isPremultiplied": false,
+          "name": "base",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.0
+          ],
+          "isPremultiplied": false,
+          "name": "diffuse_roughness",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.0
+          ],
+          "isPremultiplied": false,
+          "name": "metalness",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            1.0
+          ],
+          "isPremultiplied": false,
+          "name": "specular",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float3",
+            [
+              1.0,
+              1.0,
+              1.0
+            ]
+          ],
+          "isPremultiplied": false,
+          "name": "specular_color",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.20000000298023224
+          ],
+          "isPremultiplied": false,
+          "name": "specular_roughness",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            1.5
+          ],
+          "isPremultiplied": false,
+          "name": "specular_IOR",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.0
+          ],
+          "isPremultiplied": false,
+          "name": "specular_anisotropy",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.0
+          ],
+          "isPremultiplied": false,
+          "name": "specular_rotation",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.0
+          ],
+          "isPremultiplied": false,
+          "name": "transmission",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float3",
+            [
+              1.0,
+              1.0,
+              1.0
+            ]
+          ],
+          "isPremultiplied": false,
+          "name": "transmission_color",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.0
+          ],
+          "isPremultiplied": false,
+          "name": "transmission_depth",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float3",
+            [
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "isPremultiplied": false,
+          "name": "transmission_scatter",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.0
+          ],
+          "isPremultiplied": false,
+          "name": "transmission_scatter_anisotropy",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.0
+          ],
+          "isPremultiplied": false,
+          "name": "transmission_dispersion",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.0
+          ],
+          "isPremultiplied": false,
+          "name": "transmission_extra_roughness",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.0
+          ],
+          "isPremultiplied": false,
+          "name": "subsurface",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float3",
+            [
+              1.0,
+              1.0,
+              1.0
+            ]
+          ],
+          "isPremultiplied": false,
+          "name": "subsurface_color",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float3",
+            [
+              1.0,
+              1.0,
+              1.0
+            ]
+          ],
+          "isPremultiplied": false,
+          "name": "subsurface_radius",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            1.0
+          ],
+          "isPremultiplied": false,
+          "name": "subsurface_scale",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.0
+          ],
+          "isPremultiplied": false,
+          "name": "subsurface_anisotropy",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.0
+          ],
+          "isPremultiplied": false,
+          "name": "sheen",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float3",
+            [
+              1.0,
+              1.0,
+              1.0
+            ]
+          ],
+          "isPremultiplied": false,
+          "name": "sheen_color",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.30000001192092896
+          ],
+          "isPremultiplied": false,
+          "name": "sheen_roughness",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.0
+          ],
+          "isPremultiplied": false,
+          "name": "coat",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float3",
+            [
+              1.0,
+              1.0,
+              1.0
+            ]
+          ],
+          "isPremultiplied": false,
+          "name": "coat_color",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.10000000149011612
+          ],
+          "isPremultiplied": false,
+          "name": "coat_roughness",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.0
+          ],
+          "isPremultiplied": false,
+          "name": "coat_anisotropy",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.0
+          ],
+          "isPremultiplied": false,
+          "name": "coat_rotation",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            1.5
+          ],
+          "isPremultiplied": false,
+          "name": "coat_IOR",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.0
+          ],
+          "isPremultiplied": false,
+          "name": "coat_affect_color",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.0
+          ],
+          "isPremultiplied": false,
+          "name": "coat_affect_roughness",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.0
+          ],
+          "isPremultiplied": false,
+          "name": "thin_film_thickness",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            1.5
+          ],
+          "isPremultiplied": false,
+          "name": "thin_film_IOR",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.0
+          ],
+          "isPremultiplied": false,
+          "name": "emission",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float3",
+            [
+              1.0,
+              1.0,
+              1.0
+            ]
+          ],
+          "isPremultiplied": false,
+          "name": "emission_color",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float3",
+            [
+              1.0,
+              1.0,
+              1.0
+            ]
+          ],
+          "isPremultiplied": false,
+          "name": "opacity",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "bool",
+            false
+          ],
+          "isPremultiplied": false,
+          "name": "thin_walled",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "int",
+            0
+          ],
+          "isPremultiplied": false,
+          "name": "NG_Anonymized_N2NDtexcoordvector2texcoord_index",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float3",
+            [
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "isPremultiplied": false,
+          "name": "NG_Anonymized_N1NDimagecolor3basecolor_default",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "int",
+            2
+          ],
+          "isPremultiplied": false,
+          "name": "NG_Anonymized_N1NDimagecolor3basecolor_uaddressmode",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "int",
+            2
+          ],
+          "isPremultiplied": false,
+          "name": "NG_Anonymized_N1NDimagecolor3basecolor_vaddressmode",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "int",
+            1
+          ],
+          "isPremultiplied": false,
+          "name": "NG_Anonymized_N1NDimagecolor3basecolor_filtertype",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "int",
+            0
+          ],
+          "isPremultiplied": false,
+          "name": "NG_Anonymized_N1NDimagecolor3basecolor_frameoffset",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "int",
+            0
+          ],
+          "isPremultiplied": false,
+          "name": "NG_Anonymized_N1NDimagecolor3basecolor_frameendaction",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float2",
+            [
+              1.0,
+              1.0
+            ]
+          ],
+          "isPremultiplied": false,
+          "name": "NG_Anonymized_N1NDimagecolor3basecolor_uv_scale",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float2",
+            [
+              0.0,
+              0.0
+            ]
+          ],
+          "isPremultiplied": false,
+          "name": "NG_Anonymized_N1NDimagecolor3basecolor_uv_offset",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        }
+      ],
+      "name": "ssTexturedSrgb",
+      "nodes": {
+        "/Mat/Image": {
+          "connections": {
+            "texcoord": [
+              [
+                "/Mat/UV",
+                "out"
+              ]
+            ]
+          },
+          "nodeTypeId": "ND_image_color3",
+          "parameters": {
+            "colorSpace:file": [
+              "token",
+              "raw"
+            ],
+            "file": [
+              "asset",
+              [
+                "texture.png",
+                ""
+              ]
+            ],
+            "st": [
+              "token",
+              "st"
+            ],
+            "wrapS": [
+              "token",
+              "repeat"
+            ],
+            "wrapT": [
+              "token",
+              "repeat"
+            ]
+          }
+        },
+        "/Mat/Surface": {
+          "connections": {
+            "NG_Anonymized_N1NDimagecolor3basecolor_file": [
+              [
+                "/Mat/Image",
+                "NG_Anonymized_N1NDimagecolor3basecolor_file"
+              ]
+            ],
+            "UV_primvarconn": [
+              [
+                "/Mat/UV",
+                "UV_primvarconn"
+              ]
+            ],
+            "base_color": [
+              [
+                "/Mat/Image",
+                "out"
+              ]
+            ],
+            "domeLightFallback": [
+              [
+                "/Mat/domeLightFallback",
+                "domeLightFallback"
+              ]
+            ]
+          },
+          "nodeTypeId": "<generated>",
+          "parameters": {
+            "base": [
+              "float",
+              0.8999999761581421
+            ]
+          }
+        },
+        "/Mat/UV": {
+          "connections": {},
+          "nodeTypeId": "ND_texcoord_vector2",
+          "parameters": {
+            "index": [
+              "int",
+              0
+            ]
+          }
+        },
+        "/Mat/domeLightFallback": {
+          "connections": {},
+          "nodeTypeId": "ND_image_color3",
+          "parameters": {
+            "file": [
+              "asset",
+              [
+                "<hdSt>/textures/fallbackBlackDomeLight.png",
+                "<hdSt>/textures/fallbackBlackDomeLight.png"
+              ]
+            ]
+          }
+        }
+      },
+      "shader": 1,
+      "terminalIsGeneratedGlslfx": true
+    },
+    {
+      "materialParams": [],
+      "name": "usdPsTexturedGlassStringVarname",
+      "nodes": {
+        "/Glass/Preview": {
+          "connections": {
+            "diffuseColor": [
+              [
+                "/Glass/Tex",
+                "rgb"
+              ]
+            ],
+            "domeLightFallback": [
+              [
+                "/Glass/domeLightFallback",
+                "domeLightFallback"
+              ]
+            ]
+          },
+          "nodeTypeId": "ND_UsdPreviewSurface_surfaceshader",
+          "parameters": {
+            "opacity": [
+              "float",
+              0.5
+            ],
+            "roughness": [
+              "float",
+              0.30000001192092896
+            ]
+          }
+        },
+        "/Glass/Reader": {
+          "connections": {},
+          "nodeTypeId": "ND_UsdPrimvarReader_vector2",
+          "parameters": {
+            "varname": [
+              "string",
+              "st"
+            ]
+          }
+        },
+        "/Glass/Tex": {
+          "connections": {
+            "st": [
+              [
+                "/Glass/Reader",
+                "out"
+              ]
+            ]
+          },
+          "nodeTypeId": "ND_UsdUVTexture_23",
+          "parameters": {
+            "file": [
+              "asset",
+              [
+                "texture.png",
+                ""
+              ]
+            ],
+            "wrapS": [
+              "string",
+              "repeat"
+            ],
+            "wrapT": [
+              "string",
+              "clamp"
+            ]
+          }
+        },
+        "/Glass/domeLightFallback": {
+          "connections": {},
+          "nodeTypeId": "ND_image_color3",
+          "parameters": {
+            "file": [
+              "asset",
+              [
+                "<hdSt>/textures/fallbackBlackDomeLight.png",
+                "<hdSt>/textures/fallbackBlackDomeLight.png"
+              ]
+            ]
+          }
+        }
+      },
+      "shader": null
+    },
+    {
+      "materialParams": [
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float3",
+            [
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "isPremultiplied": false,
+          "name": "emissiveColor",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "int",
+            0
+          ],
+          "isPremultiplied": false,
+          "name": "useSpecularWorkflow",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float3",
+            [
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "isPremultiplied": false,
+          "name": "specularColor",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.0
+          ],
+          "isPremultiplied": false,
+          "name": "metallic",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.30000001192092896
+          ],
+          "isPremultiplied": false,
+          "name": "roughness",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.0
+          ],
+          "isPremultiplied": false,
+          "name": "clearcoat",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.009999999776482582
+          ],
+          "isPremultiplied": false,
+          "name": "clearcoatRoughness",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.5
+          ],
+          "isPremultiplied": false,
+          "name": "opacity",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "int",
+            0
+          ],
+          "isPremultiplied": false,
+          "name": "opacityMode",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.0
+          ],
+          "isPremultiplied": false,
+          "name": "opacityThreshold",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            1.5
+          ],
+          "isPremultiplied": false,
+          "name": "ior",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float3",
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "isPremultiplied": false,
+          "name": "normal",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.0
+          ],
+          "isPremultiplied": false,
+          "name": "displacement",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            1.0
+          ],
+          "isPremultiplied": false,
+          "name": "occlusion",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "int",
+            0
+          ],
+          "isPremultiplied": false,
+          "name": "geomprop_UV0_index",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "int",
+            2
+          ],
+          "isPremultiplied": false,
+          "name": "NG_Anonymized_N1NDUsdUVTexture23diffuseColor_wrapS",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "int",
+            2
+          ],
+          "isPremultiplied": false,
+          "name": "NG_Anonymized_N1NDUsdUVTexture23diffuseColor_wrapT",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float4",
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "isPremultiplied": false,
+          "name": "NG_Anonymized_N1NDUsdUVTexture23diffuseColor_fallback",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float4",
+            [
+              1.0,
+              1.0,
+              1.0,
+              1.0
+            ]
+          ],
+          "isPremultiplied": false,
+          "name": "NG_Anonymized_N1NDUsdUVTexture23diffuseColor_scale",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float4",
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "isPremultiplied": false,
+          "name": "NG_Anonymized_N1NDUsdUVTexture23diffuseColor_bias",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        }
+      ],
+      "name": "usdPsTexturedGlass",
+      "nodes": {
+        "/Glass2/Preview": {
+          "connections": {
+            "NG_Anonymized_N1NDUsdUVTexture23diffuseColor_file": [
+              [
+                "/Glass2/Tex",
+                "NG_Anonymized_N1NDUsdUVTexture23diffuseColor_file"
+              ]
+            ],
+            "diffuseColor": [
+              [
+                "/Glass2/Tex",
+                "rgb"
+              ]
+            ],
+            "domeLightFallback": [
+              [
+                "/Glass2/domeLightFallback",
+                "domeLightFallback"
+              ]
+            ]
+          },
+          "nodeTypeId": "<generated>",
+          "parameters": {
+            "opacity": [
+              "float",
+              0.5
+            ],
+            "roughness": [
+              "float",
+              0.30000001192092896
+            ]
+          }
+        },
+        "/Glass2/Tex": {
+          "connections": {},
+          "nodeTypeId": "ND_UsdUVTexture_23",
+          "parameters": {
+            "colorSpace:file": [
+              "token",
+              "raw"
+            ],
+            "file": [
+              "asset",
+              [
+                "texture.png",
+                ""
+              ]
+            ],
+            "st": [
+              "token",
+              "st"
+            ],
+            "wrapS": [
+              "token",
+              "repeat"
+            ],
+            "wrapT": [
+              "token",
+              "repeat"
+            ]
+          }
+        },
+        "/Glass2/domeLightFallback": {
+          "connections": {},
+          "nodeTypeId": "ND_image_color3",
+          "parameters": {
+            "file": [
+              "asset",
+              [
+                "<hdSt>/textures/fallbackBlackDomeLight.png",
+                "<hdSt>/textures/fallbackBlackDomeLight.png"
+              ]
+            ]
+          }
+        }
+      },
+      "shader": 2,
+      "terminalIsGeneratedGlslfx": true
+    },
+    {
+      "materialParams": [
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float3",
+            [
+              0.10000000149011612,
+              0.20000000298023224,
+              0.30000001192092896
+            ]
+          ],
+          "isPremultiplied": false,
+          "name": "diffuseColor",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float3",
+            [
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "isPremultiplied": false,
+          "name": "emissiveColor",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "int",
+            0
+          ],
+          "isPremultiplied": false,
+          "name": "useSpecularWorkflow",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float3",
+            [
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "isPremultiplied": false,
+          "name": "specularColor",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.0
+          ],
+          "isPremultiplied": false,
+          "name": "metallic",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.5
+          ],
+          "isPremultiplied": false,
+          "name": "roughness",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.0
+          ],
+          "isPremultiplied": false,
+          "name": "clearcoat",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.009999999776482582
+          ],
+          "isPremultiplied": false,
+          "name": "clearcoatRoughness",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            1.0
+          ],
+          "isPremultiplied": false,
+          "name": "opacity",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "int",
+            0
+          ],
+          "isPremultiplied": false,
+          "name": "opacityMode",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.5
+          ],
+          "isPremultiplied": false,
+          "name": "opacityThreshold",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            1.5
+          ],
+          "isPremultiplied": false,
+          "name": "ior",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float3",
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "isPremultiplied": false,
+          "name": "normal",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.0
+          ],
+          "isPremultiplied": false,
+          "name": "displacement",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            1.0
+          ],
+          "isPremultiplied": false,
+          "name": "occlusion",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        }
+      ],
+      "name": "usdPsMasked",
+      "nodes": {
+        "/Masked/Preview": {
+          "connections": {
+            "domeLightFallback": [
+              [
+                "/Masked/domeLightFallback",
+                "domeLightFallback"
+              ]
+            ]
+          },
+          "nodeTypeId": "<generated>",
+          "parameters": {
+            "diffuseColor": [
+              "float3",
+              [
+                0.10000000149011612,
+                0.20000000298023224,
+                0.30000001192092896
+              ]
+            ],
+            "opacityThreshold": [
+              "float",
+              0.5
+            ]
+          }
+        },
+        "/Masked/domeLightFallback": {
+          "connections": {},
+          "nodeTypeId": "ND_image_color3",
+          "parameters": {
+            "file": [
+              "asset",
+              [
+                "<hdSt>/textures/fallbackBlackDomeLight.png",
+                "<hdSt>/textures/fallbackBlackDomeLight.png"
+              ]
+            ]
+          }
+        }
+      },
+      "shader": 3,
+      "terminalIsGeneratedGlslfx": true
+    },
+    {
+      "materialParams": [
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.699999988079071
+          ],
+          "isPremultiplied": false,
+          "name": "base_weight",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.0
+          ],
+          "isPremultiplied": false,
+          "name": "base_diffuse_roughness",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.0
+          ],
+          "isPremultiplied": false,
+          "name": "base_metalness",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            1.0
+          ],
+          "isPremultiplied": false,
+          "name": "specular_weight",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float3",
+            [
+              1.0,
+              1.0,
+              1.0
+            ]
+          ],
+          "isPremultiplied": false,
+          "name": "specular_color",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.30000001192092896
+          ],
+          "isPremultiplied": false,
+          "name": "specular_roughness",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            1.5
+          ],
+          "isPremultiplied": false,
+          "name": "specular_ior",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.0
+          ],
+          "isPremultiplied": false,
+          "name": "specular_roughness_anisotropy",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.0
+          ],
+          "isPremultiplied": false,
+          "name": "transmission_weight",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float3",
+            [
+              1.0,
+              1.0,
+              1.0
+            ]
+          ],
+          "isPremultiplied": false,
+          "name": "transmission_color",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.0
+          ],
+          "isPremultiplied": false,
+          "name": "transmission_depth",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float3",
+            [
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "isPremultiplied": false,
+          "name": "transmission_scatter",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.0
+          ],
+          "isPremultiplied": false,
+          "name": "transmission_scatter_anisotropy",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.0
+          ],
+          "isPremultiplied": false,
+          "name": "transmission_dispersion_scale",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            20.0
+          ],
+          "isPremultiplied": false,
+          "name": "transmission_dispersion_abbe_number",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.0
+          ],
+          "isPremultiplied": false,
+          "name": "subsurface_weight",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float3",
+            [
+              0.800000011920929,
+              0.800000011920929,
+              0.800000011920929
+            ]
+          ],
+          "isPremultiplied": false,
+          "name": "subsurface_color",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            1.0
+          ],
+          "isPremultiplied": false,
+          "name": "subsurface_radius",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float3",
+            [
+              1.0,
+              0.5,
+              0.25
+            ]
+          ],
+          "isPremultiplied": false,
+          "name": "subsurface_radius_scale",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.0
+          ],
+          "isPremultiplied": false,
+          "name": "subsurface_scatter_anisotropy",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.0
+          ],
+          "isPremultiplied": false,
+          "name": "fuzz_weight",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float3",
+            [
+              1.0,
+              1.0,
+              1.0
+            ]
+          ],
+          "isPremultiplied": false,
+          "name": "fuzz_color",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.5
+          ],
+          "isPremultiplied": false,
+          "name": "fuzz_roughness",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.0
+          ],
+          "isPremultiplied": false,
+          "name": "coat_weight",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float3",
+            [
+              1.0,
+              1.0,
+              1.0
+            ]
+          ],
+          "isPremultiplied": false,
+          "name": "coat_color",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.0
+          ],
+          "isPremultiplied": false,
+          "name": "coat_roughness",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.0
+          ],
+          "isPremultiplied": false,
+          "name": "coat_roughness_anisotropy",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            1.600000023841858
+          ],
+          "isPremultiplied": false,
+          "name": "coat_ior",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            1.0
+          ],
+          "isPremultiplied": false,
+          "name": "coat_darkening",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.0
+          ],
+          "isPremultiplied": false,
+          "name": "thin_film_weight",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.5
+          ],
+          "isPremultiplied": false,
+          "name": "thin_film_thickness",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            1.399999976158142
+          ],
+          "isPremultiplied": false,
+          "name": "thin_film_ior",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.0
+          ],
+          "isPremultiplied": false,
+          "name": "emission_luminance",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float3",
+            [
+              1.0,
+              1.0,
+              1.0
+            ]
+          ],
+          "isPremultiplied": false,
+          "name": "emission_color",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.5
+          ],
+          "isPremultiplied": false,
+          "name": "geometry_opacity",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "bool",
+            false
+          ],
+          "isPremultiplied": false,
+          "name": "geometry_thin_walled",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        }
+      ],
+      "name": "openPbrPrimvar",
+      "nodes": {
+        "/Pbr/Color": {
+          "connections": {},
+          "nodeTypeId": "ND_geompropvalue_color3",
+          "parameters": {
+            "default": [
+              "float3",
+              [
+                0.25,
+                0.5,
+                0.75
+              ]
+            ],
+            "geomprop": [
+              "string",
+              "displayColor"
+            ]
+          }
+        },
+        "/Pbr/Surface": {
+          "connections": {
+            "Color_primvarconn": [
+              [
+                "/Pbr/Color",
+                "Color_primvarconn"
+              ]
+            ],
+            "base_color": [
+              [
+                "/Pbr/Color",
+                "out"
+              ]
+            ],
+            "domeLightFallback": [
+              [
+                "/Pbr/domeLightFallback",
+                "domeLightFallback"
+              ]
+            ]
+          },
+          "nodeTypeId": "<generated>",
+          "parameters": {
+            "base_weight": [
+              "float",
+              0.699999988079071
+            ],
+            "geometry_opacity": [
+              "float",
+              0.5
+            ]
+          }
+        },
+        "/Pbr/domeLightFallback": {
+          "connections": {},
+          "nodeTypeId": "ND_image_color3",
+          "parameters": {
+            "file": [
+              "asset",
+              [
+                "<hdSt>/textures/fallbackBlackDomeLight.png",
+                "<hdSt>/textures/fallbackBlackDomeLight.png"
+              ]
+            ]
+          }
+        }
+      },
+      "shader": 4,
+      "terminalIsGeneratedGlslfx": true
+    },
+    {
+      "materialParams": [
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float3",
+            [
+              1.0,
+              1.0,
+              1.0
+            ]
+          ],
+          "isPremultiplied": false,
+          "name": "base_color",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            1.0
+          ],
+          "isPremultiplied": false,
+          "name": "metallic",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.4000000059604645
+          ],
+          "isPremultiplied": false,
+          "name": "roughness",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            1.0
+          ],
+          "isPremultiplied": false,
+          "name": "occlusion",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.0
+          ],
+          "isPremultiplied": false,
+          "name": "transmission",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            1.0
+          ],
+          "isPremultiplied": false,
+          "name": "specular",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float3",
+            [
+              1.0,
+              1.0,
+              1.0
+            ]
+          ],
+          "isPremultiplied": false,
+          "name": "specular_color",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            1.5
+          ],
+          "isPremultiplied": false,
+          "name": "ior",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.5
+          ],
+          "isPremultiplied": false,
+          "name": "alpha",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "int",
+            2
+          ],
+          "isPremultiplied": false,
+          "name": "alpha_mode",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.5
+          ],
+          "isPremultiplied": false,
+          "name": "alpha_cutoff",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.0
+          ],
+          "isPremultiplied": false,
+          "name": "iridescence",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            1.2999999523162842
+          ],
+          "isPremultiplied": false,
+          "name": "iridescence_ior",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            100.0
+          ],
+          "isPremultiplied": false,
+          "name": "iridescence_thickness",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float3",
+            [
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "isPremultiplied": false,
+          "name": "sheen_color",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.0
+          ],
+          "isPremultiplied": false,
+          "name": "sheen_roughness",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.0
+          ],
+          "isPremultiplied": false,
+          "name": "clearcoat",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.0
+          ],
+          "isPremultiplied": false,
+          "name": "clearcoat_roughness",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float3",
+            [
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "isPremultiplied": false,
+          "name": "emissive",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            1.0
+          ],
+          "isPremultiplied": false,
+          "name": "emissive_strength",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.0
+          ],
+          "isPremultiplied": false,
+          "name": "thickness",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.0
+          ],
+          "isPremultiplied": false,
+          "name": "attenuation_distance",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float3",
+            [
+              1.0,
+              1.0,
+              1.0
+            ]
+          ],
+          "isPremultiplied": false,
+          "name": "attenuation_color",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.0
+          ],
+          "isPremultiplied": false,
+          "name": "anisotropy_strength",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.0
+          ],
+          "isPremultiplied": false,
+          "name": "anisotropy_rotation",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.0
+          ],
+          "isPremultiplied": false,
+          "name": "dispersion",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        }
+      ],
+      "name": "gltfBlend",
+      "nodes": {
+        "/Gltf/Surface": {
+          "connections": {
+            "domeLightFallback": [
+              [
+                "/Gltf/domeLightFallback",
+                "domeLightFallback"
+              ]
+            ]
+          },
+          "nodeTypeId": "<generated>",
+          "parameters": {
+            "alpha": [
+              "float",
+              0.5
+            ],
+            "alpha_mode": [
+              "int",
+              2
+            ],
+            "roughness": [
+              "float",
+              0.4000000059604645
+            ]
+          }
+        },
+        "/Gltf/domeLightFallback": {
+          "connections": {},
+          "nodeTypeId": "ND_image_color3",
+          "parameters": {
+            "file": [
+              "asset",
+              [
+                "<hdSt>/textures/fallbackBlackDomeLight.png",
+                "<hdSt>/textures/fallbackBlackDomeLight.png"
+              ]
+            ]
+          }
+        }
+      },
+      "shader": 5,
+      "terminalIsGeneratedGlslfx": true
+    },
+    {
+      "materialParams": [
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.5
+          ],
+          "isPremultiplied": false,
+          "name": "opacity",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "bool",
+            false
+          ],
+          "isPremultiplied": false,
+          "name": "thin_walled",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            1.0
+          ],
+          "isPremultiplied": false,
+          "name": "NG_Anonymized_N1NDorennayardiffusebsdfbsdf_weight",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float3",
+            [
+              0.800000011920929,
+              0.4000000059604645,
+              0.20000000298023224
+            ]
+          ],
+          "isPremultiplied": false,
+          "name": "NG_Anonymized_N1NDorennayardiffusebsdfbsdf_color",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.10000000149011612
+          ],
+          "isPremultiplied": false,
+          "name": "NG_Anonymized_N1NDorennayardiffusebsdfbsdf_roughness",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "bool",
+            false
+          ],
+          "isPremultiplied": false,
+          "name": "NG_Anonymized_N1NDorennayardiffusebsdfbsdf_energy_compensation",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        }
+      ],
+      "name": "surfaceOpacity",
+      "nodes": {
+        "/Surf/Diffuse": {
+          "connections": {},
+          "nodeTypeId": "ND_oren_nayar_diffuse_bsdf",
+          "parameters": {
+            "color": [
+              "float3",
+              [
+                0.800000011920929,
+                0.4000000059604645,
+                0.20000000298023224
+              ]
+            ],
+            "roughness": [
+              "float",
+              0.10000000149011612
+            ]
+          }
+        },
+        "/Surf/Surface": {
+          "connections": {
+            "bsdf": [
+              [
+                "/Surf/Diffuse",
+                "out"
+              ]
+            ],
+            "domeLightFallback": [
+              [
+                "/Surf/domeLightFallback",
+                "domeLightFallback"
+              ]
+            ]
+          },
+          "nodeTypeId": "<generated>",
+          "parameters": {
+            "opacity": [
+              "float",
+              0.5
+            ]
+          }
+        },
+        "/Surf/domeLightFallback": {
+          "connections": {},
+          "nodeTypeId": "ND_image_color3",
+          "parameters": {
+            "file": [
+              "asset",
+              [
+                "<hdSt>/textures/fallbackBlackDomeLight.png",
+                "<hdSt>/textures/fallbackBlackDomeLight.png"
+              ]
+            ]
+          }
+        }
+      },
+      "shader": 6,
+      "terminalIsGeneratedGlslfx": true
+    },
+    {
+      "materialParams": [
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            1.0
+          ],
+          "isPremultiplied": false,
+          "name": "base",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float3",
+            [
+              0.20000000298023224,
+              0.4000000059604645,
+              0.6000000238418579
+            ]
+          ],
+          "isPremultiplied": false,
+          "name": "base_color",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.0
+          ],
+          "isPremultiplied": false,
+          "name": "diffuse_roughness",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.0
+          ],
+          "isPremultiplied": false,
+          "name": "metalness",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            1.0
+          ],
+          "isPremultiplied": false,
+          "name": "specular",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float3",
+            [
+              1.0,
+              1.0,
+              1.0
+            ]
+          ],
+          "isPremultiplied": false,
+          "name": "specular_color",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.20000000298023224
+          ],
+          "isPremultiplied": false,
+          "name": "specular_roughness",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            1.5
+          ],
+          "isPremultiplied": false,
+          "name": "specular_IOR",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.0
+          ],
+          "isPremultiplied": false,
+          "name": "specular_anisotropy",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.0
+          ],
+          "isPremultiplied": false,
+          "name": "specular_rotation",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.0
+          ],
+          "isPremultiplied": false,
+          "name": "transmission",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float3",
+            [
+              1.0,
+              1.0,
+              1.0
+            ]
+          ],
+          "isPremultiplied": false,
+          "name": "transmission_color",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.0
+          ],
+          "isPremultiplied": false,
+          "name": "transmission_depth",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float3",
+            [
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "isPremultiplied": false,
+          "name": "transmission_scatter",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.0
+          ],
+          "isPremultiplied": false,
+          "name": "transmission_scatter_anisotropy",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.0
+          ],
+          "isPremultiplied": false,
+          "name": "transmission_dispersion",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.0
+          ],
+          "isPremultiplied": false,
+          "name": "transmission_extra_roughness",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.0
+          ],
+          "isPremultiplied": false,
+          "name": "subsurface",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float3",
+            [
+              1.0,
+              1.0,
+              1.0
+            ]
+          ],
+          "isPremultiplied": false,
+          "name": "subsurface_color",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float3",
+            [
+              1.0,
+              1.0,
+              1.0
+            ]
+          ],
+          "isPremultiplied": false,
+          "name": "subsurface_radius",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            1.0
+          ],
+          "isPremultiplied": false,
+          "name": "subsurface_scale",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.0
+          ],
+          "isPremultiplied": false,
+          "name": "subsurface_anisotropy",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.0
+          ],
+          "isPremultiplied": false,
+          "name": "sheen",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float3",
+            [
+              1.0,
+              1.0,
+              1.0
+            ]
+          ],
+          "isPremultiplied": false,
+          "name": "sheen_color",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.30000001192092896
+          ],
+          "isPremultiplied": false,
+          "name": "sheen_roughness",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.0
+          ],
+          "isPremultiplied": false,
+          "name": "coat",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float3",
+            [
+              1.0,
+              1.0,
+              1.0
+            ]
+          ],
+          "isPremultiplied": false,
+          "name": "coat_color",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.10000000149011612
+          ],
+          "isPremultiplied": false,
+          "name": "coat_roughness",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.0
+          ],
+          "isPremultiplied": false,
+          "name": "coat_anisotropy",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.0
+          ],
+          "isPremultiplied": false,
+          "name": "coat_rotation",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            1.5
+          ],
+          "isPremultiplied": false,
+          "name": "coat_IOR",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.0
+          ],
+          "isPremultiplied": false,
+          "name": "coat_affect_color",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.0
+          ],
+          "isPremultiplied": false,
+          "name": "coat_affect_roughness",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.0
+          ],
+          "isPremultiplied": false,
+          "name": "thin_film_thickness",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            1.5
+          ],
+          "isPremultiplied": false,
+          "name": "thin_film_IOR",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.0
+          ],
+          "isPremultiplied": false,
+          "name": "emission",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float3",
+            [
+              1.0,
+              1.0,
+              1.0
+            ]
+          ],
+          "isPremultiplied": false,
+          "name": "emission_color",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float3",
+            [
+              1.0,
+              1.0,
+              1.0
+            ]
+          ],
+          "isPremultiplied": false,
+          "name": "opacity",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "bool",
+            false
+          ],
+          "isPremultiplied": false,
+          "name": "thin_walled",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        }
+      ],
+      "name": "configTag",
+      "nodes": {
+        "/Tagged/Surface": {
+          "connections": {
+            "domeLightFallback": [
+              [
+                "/Tagged/domeLightFallback",
+                "domeLightFallback"
+              ]
+            ]
+          },
+          "nodeTypeId": "<generated>",
+          "parameters": {
+            "base_color": [
+              "float3",
+              [
+                0.20000000298023224,
+                0.4000000059604645,
+                0.6000000238418579
+              ]
+            ]
+          }
+        },
+        "/Tagged/domeLightFallback": {
+          "connections": {},
+          "nodeTypeId": "ND_image_color3",
+          "parameters": {
+            "file": [
+              "asset",
+              [
+                "<hdSt>/textures/fallbackBlackDomeLight.png",
+                "<hdSt>/textures/fallbackBlackDomeLight.png"
+              ]
+            ]
+          }
+        }
+      },
+      "shader": 7,
+      "terminalIsGeneratedGlslfx": true
+    },
+    {
+      "materialParams": [
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.8999999761581421
+          ],
+          "isPremultiplied": false,
+          "name": "base",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.0
+          ],
+          "isPremultiplied": false,
+          "name": "diffuse_roughness",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.25
+          ],
+          "isPremultiplied": false,
+          "name": "metalness",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            1.0
+          ],
+          "isPremultiplied": false,
+          "name": "specular",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float3",
+            [
+              1.0,
+              1.0,
+              1.0
+            ]
+          ],
+          "isPremultiplied": false,
+          "name": "specular_color",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.20000000298023224
+          ],
+          "isPremultiplied": false,
+          "name": "specular_roughness",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            1.5
+          ],
+          "isPremultiplied": false,
+          "name": "specular_IOR",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.0
+          ],
+          "isPremultiplied": false,
+          "name": "specular_anisotropy",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.0
+          ],
+          "isPremultiplied": false,
+          "name": "specular_rotation",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.0
+          ],
+          "isPremultiplied": false,
+          "name": "transmission",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float3",
+            [
+              1.0,
+              1.0,
+              1.0
+            ]
+          ],
+          "isPremultiplied": false,
+          "name": "transmission_color",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.0
+          ],
+          "isPremultiplied": false,
+          "name": "transmission_depth",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float3",
+            [
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "isPremultiplied": false,
+          "name": "transmission_scatter",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.0
+          ],
+          "isPremultiplied": false,
+          "name": "transmission_scatter_anisotropy",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.0
+          ],
+          "isPremultiplied": false,
+          "name": "transmission_dispersion",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.0
+          ],
+          "isPremultiplied": false,
+          "name": "transmission_extra_roughness",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.0
+          ],
+          "isPremultiplied": false,
+          "name": "subsurface",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float3",
+            [
+              1.0,
+              1.0,
+              1.0
+            ]
+          ],
+          "isPremultiplied": false,
+          "name": "subsurface_color",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float3",
+            [
+              1.0,
+              1.0,
+              1.0
+            ]
+          ],
+          "isPremultiplied": false,
+          "name": "subsurface_radius",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            1.0
+          ],
+          "isPremultiplied": false,
+          "name": "subsurface_scale",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.0
+          ],
+          "isPremultiplied": false,
+          "name": "subsurface_anisotropy",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.0
+          ],
+          "isPremultiplied": false,
+          "name": "sheen",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float3",
+            [
+              1.0,
+              1.0,
+              1.0
+            ]
+          ],
+          "isPremultiplied": false,
+          "name": "sheen_color",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.30000001192092896
+          ],
+          "isPremultiplied": false,
+          "name": "sheen_roughness",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.0
+          ],
+          "isPremultiplied": false,
+          "name": "coat",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float3",
+            [
+              1.0,
+              1.0,
+              1.0
+            ]
+          ],
+          "isPremultiplied": false,
+          "name": "coat_color",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.10000000149011612
+          ],
+          "isPremultiplied": false,
+          "name": "coat_roughness",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.0
+          ],
+          "isPremultiplied": false,
+          "name": "coat_anisotropy",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.0
+          ],
+          "isPremultiplied": false,
+          "name": "coat_rotation",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            1.5
+          ],
+          "isPremultiplied": false,
+          "name": "coat_IOR",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.0
+          ],
+          "isPremultiplied": false,
+          "name": "coat_affect_color",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.0
+          ],
+          "isPremultiplied": false,
+          "name": "coat_affect_roughness",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.0
+          ],
+          "isPremultiplied": false,
+          "name": "thin_film_thickness",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            1.5
+          ],
+          "isPremultiplied": false,
+          "name": "thin_film_IOR",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float",
+            0.0
+          ],
+          "isPremultiplied": false,
+          "name": "emission",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float3",
+            [
+              1.0,
+              1.0,
+              1.0
+            ]
+          ],
+          "isPremultiplied": false,
+          "name": "emission_color",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float3",
+            [
+              1.0,
+              1.0,
+              1.0
+            ]
+          ],
+          "isPremultiplied": false,
+          "name": "opacity",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "bool",
+            false
+          ],
+          "isPremultiplied": false,
+          "name": "thin_walled",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "int",
+            0
+          ],
+          "isPremultiplied": false,
+          "name": "NG_Anonymized_N2NDtexcoordvector2texcoord_index",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float3",
+            [
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "isPremultiplied": false,
+          "name": "NG_Anonymized_N1NDimagecolor3basecolor_default",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "int",
+            2
+          ],
+          "isPremultiplied": false,
+          "name": "NG_Anonymized_N1NDimagecolor3basecolor_uaddressmode",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "int",
+            2
+          ],
+          "isPremultiplied": false,
+          "name": "NG_Anonymized_N1NDimagecolor3basecolor_vaddressmode",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "int",
+            1
+          ],
+          "isPremultiplied": false,
+          "name": "NG_Anonymized_N1NDimagecolor3basecolor_filtertype",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "int",
+            0
+          ],
+          "isPremultiplied": false,
+          "name": "NG_Anonymized_N1NDimagecolor3basecolor_frameoffset",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "int",
+            0
+          ],
+          "isPremultiplied": false,
+          "name": "NG_Anonymized_N1NDimagecolor3basecolor_frameendaction",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float2",
+            [
+              1.0,
+              1.0
+            ]
+          ],
+          "isPremultiplied": false,
+          "name": "NG_Anonymized_N1NDimagecolor3basecolor_uv_scale",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        },
+        {
+          "arrayOfTexturesSize": 0,
+          "fallbackValue": [
+            "float2",
+            [
+              0.0,
+              0.0
+            ]
+          ],
+          "isPremultiplied": false,
+          "name": "NG_Anonymized_N1NDimagecolor3basecolor_uv_offset",
+          "paramType": 0,
+          "samplerCoords": [],
+          "swizzle": "",
+          "textureType": 0
+        }
+      ],
+      "name": "ssTexturedBindless",
+      "nodes": {
+        "/Mat/Image": {
+          "connections": {
+            "texcoord": [
+              [
+                "/Mat/UV",
+                "out"
+              ]
+            ]
+          },
+          "nodeTypeId": "ND_image_color3",
+          "parameters": {
+            "colorSpace:file": [
+              "token",
+              "raw"
+            ],
+            "file": [
+              "asset",
+              [
+                "texture.png",
+                ""
+              ]
+            ],
+            "filtertype": [
+              "string",
+              "closest"
+            ],
+            "magFilter": [
+              "token",
+              "linear"
+            ],
+            "minFilter": [
+              "token",
+              "nearestMipmapNearest"
+            ],
+            "st": [
+              "token",
+              "st"
+            ],
+            "uaddressmode": [
+              "string",
+              "clamp"
+            ],
+            "wrapS": [
+              "token",
+              "clamp"
+            ],
+            "wrapT": [
+              "token",
+              "repeat"
+            ]
+          }
+        },
+        "/Mat/Surface": {
+          "connections": {
+            "NG_Anonymized_N1NDimagecolor3basecolor_file": [
+              [
+                "/Mat/Image",
+                "NG_Anonymized_N1NDimagecolor3basecolor_file"
+              ]
+            ],
+            "UV_primvarconn": [
+              [
+                "/Mat/UV",
+                "UV_primvarconn"
+              ]
+            ],
+            "base_color": [
+              [
+                "/Mat/Image",
+                "out"
+              ]
+            ],
+            "domeLightFallback": [
+              [
+                "/Mat/domeLightFallback",
+                "domeLightFallback"
+              ]
+            ]
+          },
+          "nodeTypeId": "<generated>",
+          "parameters": {
+            "base": [
+              "float",
+              0.8999999761581421
+            ],
+            "metalness": [
+              "float",
+              0.25
+            ]
+          }
+        },
+        "/Mat/UV": {
+          "connections": {},
+          "nodeTypeId": "ND_texcoord_vector2",
+          "parameters": {
+            "index": [
+              "int",
+              0
+            ]
+          }
+        },
+        "/Mat/domeLightFallback": {
+          "connections": {},
+          "nodeTypeId": "ND_image_color3",
+          "parameters": {
+            "file": [
+              "asset",
+              [
+                "<hdSt>/textures/fallbackBlackDomeLight.png",
+                "<hdSt>/textures/fallbackBlackDomeLight.png"
+              ]
+            ]
+          }
+        }
+      },
+      "shader": 8,
+      "terminalIsGeneratedGlslfx": true
+    }
+  ]
+}

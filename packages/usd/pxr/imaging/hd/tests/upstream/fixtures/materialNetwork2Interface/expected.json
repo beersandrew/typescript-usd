@@ -1,0 +1,945 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/imaging/hd/tests/upstream/fixtures/materialNetwork2Interface/capture.py",
+  "upstream": [
+    "pxr/imaging/hd/materialNetwork2Interface.cpp"
+  ],
+  "payload": {
+    "before": {
+      "materialPrimPath": "/Mat",
+      "modelAssetName": "",
+      "configKeys": [
+        "b",
+        "mtlx:version",
+        "nest",
+        "nest:x",
+        "nest:x:inner",
+        "nest:y"
+      ],
+      "config": {
+        "b": {
+          "type": "int",
+          "value": "1"
+        },
+        "mtlx:version": {
+          "type": "string",
+          "value": "1.38"
+        },
+        "nest": {
+          "type": "VtDictionary",
+          "value": "{'x': {'inner': 2}, 'y': 1}"
+        },
+        "nest:x": {
+          "type": "void",
+          "value": ""
+        },
+        "nest:x:inner": {
+          "type": "void",
+          "value": ""
+        },
+        "nest:y": {
+          "type": "void",
+          "value": ""
+        }
+      },
+      "nodeNames": [
+        "/Mat/A",
+        "/Mat/A/child",
+        "/Mat/A_x",
+        "/Mat/Z",
+        "/Mat/a",
+        "/Mat/b"
+      ],
+      "nodes": {
+        "/Mat/A": {
+          "type": "ND_a",
+          "typeInfoKeys": [],
+          "typeInfoValue": {
+            "type": "void",
+            "value": ""
+          },
+          "parameterNames": [
+            "Alpha",
+            "alpha",
+            "colorSpace:file",
+            "file",
+            "typeName:file",
+            "zeta"
+          ],
+          "parameters": {
+            "Alpha": {
+              "value": {
+                "type": "int",
+                "value": "3"
+              },
+              "data": {
+                "value": {
+                  "type": "int",
+                  "value": "3"
+                },
+                "colorSpace": "",
+                "typeName": ""
+              }
+            },
+            "alpha": {
+              "value": {
+                "type": "string",
+                "value": "s"
+              },
+              "data": {
+                "value": {
+                  "type": "string",
+                  "value": "s"
+                },
+                "colorSpace": "",
+                "typeName": ""
+              }
+            },
+            "colorSpace:file": {
+              "value": {
+                "type": "TfToken",
+                "value": "raw"
+              },
+              "data": {
+                "value": {
+                  "type": "TfToken",
+                  "value": "raw"
+                },
+                "colorSpace": "",
+                "typeName": ""
+              }
+            },
+            "file": {
+              "value": {
+                "type": "SdfAssetPath",
+                "value": "@tex.png@"
+              },
+              "data": {
+                "value": {
+                  "type": "SdfAssetPath",
+                  "value": "@tex.png@"
+                },
+                "colorSpace": "raw",
+                "typeName": "asset"
+              }
+            },
+            "typeName:file": {
+              "value": {
+                "type": "TfToken",
+                "value": "asset"
+              },
+              "data": {
+                "value": {
+                  "type": "TfToken",
+                  "value": "asset"
+                },
+                "colorSpace": "",
+                "typeName": ""
+              }
+            },
+            "zeta": {
+              "value": {
+                "type": "float",
+                "value": "0.5"
+              },
+              "data": {
+                "value": {
+                  "type": "float",
+                  "value": "0.5"
+                },
+                "colorSpace": "",
+                "typeName": ""
+              }
+            }
+          },
+          "connectionNames": [
+            "aIn",
+            "zIn"
+          ],
+          "connections": {
+            "aIn": [
+              [
+                "/Mat/a",
+                ""
+              ]
+            ],
+            "zIn": [
+              [
+                "/Mat/b",
+                "out"
+              ],
+              [
+                "/Mat/Z",
+                "out2"
+              ]
+            ]
+          }
+        },
+        "/Mat/A/child": {
+          "type": "ND_child",
+          "typeInfoKeys": [],
+          "typeInfoValue": {
+            "type": "void",
+            "value": ""
+          },
+          "parameterNames": [],
+          "parameters": {},
+          "connectionNames": [],
+          "connections": {}
+        },
+        "/Mat/A_x": {
+          "type": "ND_a_x",
+          "typeInfoKeys": [],
+          "typeInfoValue": {
+            "type": "void",
+            "value": ""
+          },
+          "parameterNames": [],
+          "parameters": {},
+          "connectionNames": [],
+          "connections": {}
+        },
+        "/Mat/Z": {
+          "type": "ND_z",
+          "typeInfoKeys": [],
+          "typeInfoValue": {
+            "type": "void",
+            "value": ""
+          },
+          "parameterNames": [],
+          "parameters": {},
+          "connectionNames": [],
+          "connections": {}
+        },
+        "/Mat/a": {
+          "type": "ND_lower_a",
+          "typeInfoKeys": [],
+          "typeInfoValue": {
+            "type": "void",
+            "value": ""
+          },
+          "parameterNames": [
+            "colorSpace:in",
+            "in"
+          ],
+          "parameters": {
+            "colorSpace:in": {
+              "value": {
+                "type": "string",
+                "value": "raw"
+              },
+              "data": {
+                "value": {
+                  "type": "string",
+                  "value": "raw"
+                },
+                "colorSpace": "",
+                "typeName": ""
+              }
+            },
+            "in": {
+              "value": {
+                "type": "int",
+                "value": "1"
+              },
+              "data": {
+                "value": {
+                  "type": "int",
+                  "value": "1"
+                },
+                "colorSpace": "",
+                "typeName": ""
+              }
+            }
+          },
+          "connectionNames": [],
+          "connections": {}
+        },
+        "/Mat/b": {
+          "type": "ND_b",
+          "typeInfoKeys": [],
+          "typeInfoValue": {
+            "type": "void",
+            "value": ""
+          },
+          "parameterNames": [],
+          "parameters": {},
+          "connectionNames": [],
+          "connections": {}
+        }
+      },
+      "terminalNames": [
+        "displacement",
+        "surface"
+      ],
+      "terminals": {
+        "displacement": [
+          true,
+          "/Mat/Z",
+          "out"
+        ],
+        "surface": [
+          true,
+          "/Mat/A",
+          ""
+        ]
+      }
+    },
+    "missing": {
+      "nodeType": "",
+      "parameterValue": {
+        "type": "void",
+        "value": ""
+      },
+      "parameterNames": [],
+      "connection": [],
+      "configValue": {
+        "type": "void",
+        "value": ""
+      },
+      "terminal": [
+        false
+      ]
+    },
+    "afterSet": {
+      "materialPrimPath": "/Mat",
+      "modelAssetName": "",
+      "configKeys": [
+        "b",
+        "mtlx:version",
+        "nest",
+        "nest:x",
+        "nest:x:inner",
+        "nest:y"
+      ],
+      "config": {
+        "b": {
+          "type": "int",
+          "value": "1"
+        },
+        "mtlx:version": {
+          "type": "string",
+          "value": "1.38"
+        },
+        "nest": {
+          "type": "VtDictionary",
+          "value": "{'x': {'inner': 2}, 'y': 1}"
+        },
+        "nest:x": {
+          "type": "void",
+          "value": ""
+        },
+        "nest:x:inner": {
+          "type": "void",
+          "value": ""
+        },
+        "nest:y": {
+          "type": "void",
+          "value": ""
+        }
+      },
+      "nodeNames": [
+        "/Mat/A",
+        "/Mat/A/child",
+        "/Mat/A_x",
+        "/Mat/New",
+        "/Mat/New2",
+        "/Mat/Z",
+        "/Mat/a",
+        "/Mat/b"
+      ],
+      "nodes": {
+        "/Mat/A": {
+          "type": "ND_a",
+          "typeInfoKeys": [],
+          "typeInfoValue": {
+            "type": "void",
+            "value": ""
+          },
+          "parameterNames": [
+            "Alpha",
+            "alpha",
+            "colorSpace:file",
+            "file",
+            "typeName:file",
+            "zeta"
+          ],
+          "parameters": {
+            "Alpha": {
+              "value": {
+                "type": "int",
+                "value": "3"
+              },
+              "data": {
+                "value": {
+                  "type": "int",
+                  "value": "3"
+                },
+                "colorSpace": "",
+                "typeName": ""
+              }
+            },
+            "alpha": {
+              "value": {
+                "type": "string",
+                "value": "s"
+              },
+              "data": {
+                "value": {
+                  "type": "string",
+                  "value": "s"
+                },
+                "colorSpace": "",
+                "typeName": ""
+              }
+            },
+            "colorSpace:file": {
+              "value": {
+                "type": "TfToken",
+                "value": "srgb_texture"
+              },
+              "data": {
+                "value": {
+                  "type": "TfToken",
+                  "value": "srgb_texture"
+                },
+                "colorSpace": "",
+                "typeName": ""
+              }
+            },
+            "file": {
+              "value": {
+                "type": "SdfAssetPath",
+                "value": "@other.png@"
+              },
+              "data": {
+                "value": {
+                  "type": "SdfAssetPath",
+                  "value": "@other.png@"
+                },
+                "colorSpace": "srgb_texture",
+                "typeName": "asset"
+              }
+            },
+            "typeName:file": {
+              "value": {
+                "type": "TfToken",
+                "value": "asset"
+              },
+              "data": {
+                "value": {
+                  "type": "TfToken",
+                  "value": "asset"
+                },
+                "colorSpace": "",
+                "typeName": ""
+              }
+            },
+            "zeta": {
+              "value": {
+                "type": "float",
+                "value": "0.5"
+              },
+              "data": {
+                "value": {
+                  "type": "float",
+                  "value": "0.5"
+                },
+                "colorSpace": "",
+                "typeName": ""
+              }
+            }
+          },
+          "connectionNames": [
+            "aIn",
+            "zIn"
+          ],
+          "connections": {
+            "aIn": [
+              [
+                "/Mat/a",
+                ""
+              ]
+            ],
+            "zIn": [
+              [
+                "/Mat/b",
+                "out"
+              ],
+              [
+                "/Mat/Z",
+                "out2"
+              ]
+            ]
+          }
+        },
+        "/Mat/A/child": {
+          "type": "ND_child",
+          "typeInfoKeys": [],
+          "typeInfoValue": {
+            "type": "void",
+            "value": ""
+          },
+          "parameterNames": [],
+          "parameters": {},
+          "connectionNames": [],
+          "connections": {}
+        },
+        "/Mat/A_x": {
+          "type": "ND_a_x",
+          "typeInfoKeys": [],
+          "typeInfoValue": {
+            "type": "void",
+            "value": ""
+          },
+          "parameterNames": [],
+          "parameters": {},
+          "connectionNames": [],
+          "connections": {}
+        },
+        "/Mat/New": {
+          "type": "ND_new",
+          "typeInfoKeys": [],
+          "typeInfoValue": {
+            "type": "void",
+            "value": ""
+          },
+          "parameterNames": [],
+          "parameters": {},
+          "connectionNames": [],
+          "connections": {}
+        },
+        "/Mat/New2": {
+          "type": "",
+          "typeInfoKeys": [],
+          "typeInfoValue": {
+            "type": "void",
+            "value": ""
+          },
+          "parameterNames": [
+            "p"
+          ],
+          "parameters": {
+            "p": {
+              "value": {
+                "type": "float",
+                "value": "1.5"
+              },
+              "data": {
+                "value": {
+                  "type": "float",
+                  "value": "1.5"
+                },
+                "colorSpace": "",
+                "typeName": ""
+              }
+            }
+          },
+          "connectionNames": [],
+          "connections": {}
+        },
+        "/Mat/Z": {
+          "type": "ND_z",
+          "typeInfoKeys": [],
+          "typeInfoValue": {
+            "type": "void",
+            "value": ""
+          },
+          "parameterNames": [],
+          "parameters": {},
+          "connectionNames": [],
+          "connections": {}
+        },
+        "/Mat/a": {
+          "type": "ND_lower_a",
+          "typeInfoKeys": [],
+          "typeInfoValue": {
+            "type": "void",
+            "value": ""
+          },
+          "parameterNames": [
+            "colorSpace:in",
+            "in"
+          ],
+          "parameters": {
+            "colorSpace:in": {
+              "value": {
+                "type": "string",
+                "value": "raw"
+              },
+              "data": {
+                "value": {
+                  "type": "string",
+                  "value": "raw"
+                },
+                "colorSpace": "",
+                "typeName": ""
+              }
+            },
+            "in": {
+              "value": {
+                "type": "int",
+                "value": "1"
+              },
+              "data": {
+                "value": {
+                  "type": "int",
+                  "value": "1"
+                },
+                "colorSpace": "",
+                "typeName": ""
+              }
+            }
+          },
+          "connectionNames": [],
+          "connections": {}
+        },
+        "/Mat/b": {
+          "type": "ND_b",
+          "typeInfoKeys": [],
+          "typeInfoValue": {
+            "type": "void",
+            "value": ""
+          },
+          "parameterNames": [
+            "q",
+            "typeName:q"
+          ],
+          "parameters": {
+            "q": {
+              "value": {
+                "type": "int",
+                "value": "2"
+              },
+              "data": {
+                "value": {
+                  "type": "int",
+                  "value": "2"
+                },
+                "colorSpace": "",
+                "typeName": "int"
+              }
+            },
+            "typeName:q": {
+              "value": {
+                "type": "TfToken",
+                "value": "int"
+              },
+              "data": {
+                "value": {
+                  "type": "TfToken",
+                  "value": "int"
+                },
+                "colorSpace": "",
+                "typeName": ""
+              }
+            }
+          },
+          "connectionNames": [],
+          "connections": {}
+        }
+      },
+      "terminalNames": [
+        "displacement",
+        "surface"
+      ],
+      "terminals": {
+        "displacement": [
+          true,
+          "/Mat/Z",
+          "out"
+        ],
+        "surface": [
+          true,
+          "/Mat/A",
+          ""
+        ]
+      }
+    },
+    "after": {
+      "materialPrimPath": "/Mat",
+      "modelAssetName": "",
+      "configKeys": [
+        "b",
+        "mtlx:version",
+        "nest",
+        "nest:x",
+        "nest:x:inner",
+        "nest:y"
+      ],
+      "config": {
+        "b": {
+          "type": "int",
+          "value": "1"
+        },
+        "mtlx:version": {
+          "type": "string",
+          "value": "1.38"
+        },
+        "nest": {
+          "type": "VtDictionary",
+          "value": "{'x': {'inner': 2}, 'y': 1}"
+        },
+        "nest:x": {
+          "type": "void",
+          "value": ""
+        },
+        "nest:x:inner": {
+          "type": "void",
+          "value": ""
+        },
+        "nest:y": {
+          "type": "void",
+          "value": ""
+        }
+      },
+      "nodeNames": [
+        "/Mat/A",
+        "/Mat/A/child",
+        "/Mat/A_x",
+        "/Mat/New",
+        "/Mat/New2",
+        "/Mat/a",
+        "/Mat/b"
+      ],
+      "nodes": {
+        "/Mat/A": {
+          "type": "ND_a",
+          "typeInfoKeys": [],
+          "typeInfoValue": {
+            "type": "void",
+            "value": ""
+          },
+          "parameterNames": [
+            "Alpha",
+            "alpha"
+          ],
+          "parameters": {
+            "Alpha": {
+              "value": {
+                "type": "int",
+                "value": "3"
+              },
+              "data": {
+                "value": {
+                  "type": "int",
+                  "value": "3"
+                },
+                "colorSpace": "",
+                "typeName": ""
+              }
+            },
+            "alpha": {
+              "value": {
+                "type": "string",
+                "value": "s"
+              },
+              "data": {
+                "value": {
+                  "type": "string",
+                  "value": "s"
+                },
+                "colorSpace": "",
+                "typeName": ""
+              }
+            }
+          },
+          "connectionNames": [
+            "zIn"
+          ],
+          "connections": {
+            "zIn": [
+              [
+                "/Mat/b",
+                "out"
+              ],
+              [
+                "/Mat/Z",
+                "out2"
+              ]
+            ]
+          }
+        },
+        "/Mat/A/child": {
+          "type": "ND_child",
+          "typeInfoKeys": [],
+          "typeInfoValue": {
+            "type": "void",
+            "value": ""
+          },
+          "parameterNames": [],
+          "parameters": {},
+          "connectionNames": [],
+          "connections": {}
+        },
+        "/Mat/A_x": {
+          "type": "ND_a_x",
+          "typeInfoKeys": [],
+          "typeInfoValue": {
+            "type": "void",
+            "value": ""
+          },
+          "parameterNames": [],
+          "parameters": {},
+          "connectionNames": [],
+          "connections": {}
+        },
+        "/Mat/New": {
+          "type": "ND_new",
+          "typeInfoKeys": [],
+          "typeInfoValue": {
+            "type": "void",
+            "value": ""
+          },
+          "parameterNames": [],
+          "parameters": {},
+          "connectionNames": [],
+          "connections": {}
+        },
+        "/Mat/New2": {
+          "type": "",
+          "typeInfoKeys": [],
+          "typeInfoValue": {
+            "type": "void",
+            "value": ""
+          },
+          "parameterNames": [
+            "p"
+          ],
+          "parameters": {
+            "p": {
+              "value": {
+                "type": "float",
+                "value": "1.5"
+              },
+              "data": {
+                "value": {
+                  "type": "float",
+                  "value": "1.5"
+                },
+                "colorSpace": "",
+                "typeName": ""
+              }
+            }
+          },
+          "connectionNames": [],
+          "connections": {}
+        },
+        "/Mat/a": {
+          "type": "ND_lower_a",
+          "typeInfoKeys": [],
+          "typeInfoValue": {
+            "type": "void",
+            "value": ""
+          },
+          "parameterNames": [
+            "colorSpace:in",
+            "in"
+          ],
+          "parameters": {
+            "colorSpace:in": {
+              "value": {
+                "type": "string",
+                "value": "raw"
+              },
+              "data": {
+                "value": {
+                  "type": "string",
+                  "value": "raw"
+                },
+                "colorSpace": "",
+                "typeName": ""
+              }
+            },
+            "in": {
+              "value": {
+                "type": "int",
+                "value": "1"
+              },
+              "data": {
+                "value": {
+                  "type": "int",
+                  "value": "1"
+                },
+                "colorSpace": "",
+                "typeName": ""
+              }
+            }
+          },
+          "connectionNames": [],
+          "connections": {}
+        },
+        "/Mat/b": {
+          "type": "ND_b",
+          "typeInfoKeys": [],
+          "typeInfoValue": {
+            "type": "void",
+            "value": ""
+          },
+          "parameterNames": [
+            "q",
+            "typeName:q"
+          ],
+          "parameters": {
+            "q": {
+              "value": {
+                "type": "int",
+                "value": "2"
+              },
+              "data": {
+                "value": {
+                  "type": "int",
+                  "value": "2"
+                },
+                "colorSpace": "",
+                "typeName": "int"
+              }
+            },
+            "typeName:q": {
+              "value": {
+                "type": "TfToken",
+                "value": "int"
+              },
+              "data": {
+                "value": {
+                  "type": "TfToken",
+                  "value": "int"
+                },
+                "colorSpace": "",
+                "typeName": ""
+              }
+            }
+          },
+          "connectionNames": [
+            "in"
+          ],
+          "connections": {
+            "in": [
+              [
+                "/Mat/a",
+                "out"
+              ]
+            ]
+          }
+        }
+      },
+      "terminalNames": [
+        "surface",
+        "volume"
+      ],
+      "terminals": {
+        "surface": [
+          true,
+          "/Mat/A",
+          ""
+        ],
+        "volume": [
+          true,
+          "/Mat/New",
+          "out"
+        ]
+      }
+    }
+  }
+}

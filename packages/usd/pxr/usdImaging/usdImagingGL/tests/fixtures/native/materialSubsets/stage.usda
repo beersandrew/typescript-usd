@@ -1,0 +1,88 @@
+#usda 1.0
+
+def Xform "Root" (
+    prepend apiSchemas = ["MaterialBindingAPI"]
+)
+{
+    rel material:binding = </Looks/Base>
+    double3 xformOp:translate = (2, 3, 4)
+    uniform token[] xformOpOrder = ["xformOp:translate"]
+
+    def Mesh "Mesh" (
+        prepend apiSchemas = ["MaterialBindingAPI"]
+    )
+    {
+        int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+        int[] faceVertexIndices = [0, 3, 2, 1, 4, 5, 6, 7, 0, 1, 5, 4, 2, 3, 7, 6, 0, 4, 7, 3, 1, 2, 6, 5]
+        point3f[] points = [(-1, -1, -1), (1, -1, -1), (1, 1, -1), (-1, 1, -1), (-1, -1, 1), (1, -1, 1), (1, 1, 1), (-1, 1, 1)]
+        uniform token subdivisionScheme = "none"
+        uniform token subsetFamily:materialBind:familyType = "nonOverlapping"
+
+        def GeomSubset "RedFaces" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            uniform token elementType = "face"
+            uniform token familyName = "materialBind"
+            int[] indices = [0, 2]
+            rel material:binding = </Looks/Red>
+        }
+
+        def GeomSubset "GreenFaces" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            uniform token elementType = "face"
+            uniform token familyName = "materialBind"
+            int[] indices = [1]
+            rel material:binding = </Looks/Green>
+        }
+
+        def GeomSubset "InheritedFaces"
+        {
+            uniform token elementType = "face"
+            uniform token familyName = "materialBind"
+            int[] indices = [3]
+        }
+    }
+}
+
+def "Looks"
+{
+    def Material "Base"
+    {
+        token outputs:surface.connect = </Looks/Base/Surface.outputs:surface>
+
+        def Shader "Surface"
+        {
+            uniform token info:id = "UsdPreviewSurface"
+            color3f inputs:diffuseColor = (0, 0, 1)
+            token outputs:surface
+        }
+    }
+
+    def Material "Red"
+    {
+        token outputs:surface.connect = </Looks/Red/Surface.outputs:surface>
+
+        def Shader "Surface"
+        {
+            uniform token info:id = "UsdPreviewSurface"
+            color3f inputs:diffuseColor = (1, 0, 0)
+            token outputs:surface
+        }
+    }
+
+    def Material "Green"
+    {
+        token outputs:surface.connect = </Looks/Green/Surface.outputs:surface>
+
+        def Shader "Surface"
+        {
+            uniform token info:id = "UsdPreviewSurface"
+            color3f inputs:diffuseColor = (0, 1, 0)
+            token outputs:surface
+        }
+    }
+}
+

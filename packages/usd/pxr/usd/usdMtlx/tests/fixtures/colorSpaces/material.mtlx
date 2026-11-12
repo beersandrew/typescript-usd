@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<materialx version="1.38" colorspace="lin_rec709">
+ <nodegraph name="Images">
+  <image name="Color" type="color3" colorspace="srgb_texture">
+   <input name="file" type="filename" value="color.png" />
+  </image>
+  <image name="Data" type="float" colorspace="srgb_texture">
+   <input name="file" type="filename" value="data.png" />
+  </image>
+  <image name="Inherited" type="color3">
+   <input name="file" type="filename" value="inherited.png" />
+  </image>
+  <output name="color" type="color3" nodename="Color" />
+  <output name="roughness" type="float" nodename="Data" />
+ </nodegraph>
+ <standard_surface name="Surface" type="surfaceshader">
+  <input name="base_color" type="color3" nodegraph="Images" output="color" />
+  <input name="specular_roughness" type="float" nodegraph="Images" output="roughness" />
+  <input name="emission_color" type="color3" value="0.2, 0.4, 0.8" colorspace="srgb_texture" />
+ </standard_surface>
+ <surfacematerial name="Material" type="material"><input name="surfaceshader" type="surfaceshader" nodename="Surface" /></surfacematerial>
+</materialx>

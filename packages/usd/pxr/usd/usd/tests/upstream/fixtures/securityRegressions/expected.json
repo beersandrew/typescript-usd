@@ -1,0 +1,32 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/usd/usd/tests/upstream/fixtures/securityRegressions/capture.py",
+  "upstream": [
+    "pxr/usd/usd/testenv/testUsdReadOutOfBounds.py",
+    "pxr/usd/usd/testenv/testUsdUsdcBugGHSA02.cpp",
+    "pxr/usd/usd/testenv/testUsdUsdzBugGHSA01.cpp"
+  ],
+  "payload": {
+    "cases": [
+      {
+        "file": "testUsdReadOutOfBounds/corrupt.usd",
+        "size": 606,
+        "magic": "PXR-USDC",
+        "opened": false
+      },
+      {
+        "file": "testUsdUsdcBugGHSA02.testenv/root.usdc",
+        "size": 432498,
+        "magic": "PXR-USDC",
+        "opened": false
+      },
+      {
+        "file": "testUsdUsdzBugGHSA01.testenv/root.usdz",
+        "size": 3515,
+        "magic": "PK\u0003\u0004\n\u0000\u0000\u0000",
+        "opened": false
+      }
+    ]
+  }
+}

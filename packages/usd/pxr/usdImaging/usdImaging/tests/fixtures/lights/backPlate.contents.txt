@@ -1,0 +1,180 @@
+</> type = 
+	[__usdUpAxis]
+		[upAxis]
+			Y
+	[sceneGlobals]
+		[endTimeCode]
+			0
+		[startTimeCode]
+			0
+		[timeCodesPerSecond]
+			24
+	[system]
+		[assetResolution]
+			[resolverContext]
+				<'ArResolverContext' @ XXXXXXXXXXXXXXXX>
+</Cam> type = camera
+	[__usdPrimInfo]
+		[apiSchemas]
+			[BackPlateAPI:plateA, BackPlateAPI:plateB]
+		[isLoaded]
+			1
+		[specifier]
+			def
+		[typeName]
+			Camera
+	[camera]
+		[backPlate]
+			[plateA]
+				[alphaImage]
+					@@
+				[depthCameraSpaceOffset]
+					0
+				[depthImage]
+					@@
+				[depthMinOffset]
+					0
+				[depthNormalizingFactor]
+					1
+				[image]
+					@plate.png@
+				[lumaOffset]
+					(0, 0, 0)
+				[lumaPower]
+					(1, 1, 1)
+				[lumaSlope]
+					(0.5, 0.5, 0.5)
+				[plateVisibility]
+					solo
+				[rotateXYZTweak]
+					(0, 0, 0)
+				[scaleTweak]
+					(2, 3)
+				[translateTweak]
+					(0, 0, 0)
+			[plateB]
+				[alphaImage]
+					@@
+				[depthCameraSpaceOffset]
+					0
+				[depthImage]
+					@@
+				[depthMinOffset]
+					0.25
+				[depthNormalizingFactor]
+					1
+				[image]
+					@@
+				[lumaOffset]
+					(0, 0, 0)
+				[lumaPower]
+					(1, 1, 1)
+				[lumaSlope]
+					(1, 1, 1)
+				[plateVisibility]
+					always
+				[rotateXYZTweak]
+					(0, 0, 0)
+				[scaleTweak]
+					(1, 1)
+				[translateTweak]
+					(0, 0, 0)
+		[backPlate:plateA:alpha:image]
+			@@
+		[backPlate:plateA:depth:cameraSpaceOffset]
+			0
+		[backPlate:plateA:depth:image]
+			@@
+		[backPlate:plateA:depth:minOffset]
+			0
+		[backPlate:plateA:depth:normalizingFactor]
+			1
+		[backPlate:plateA:image]
+			@plate.png@
+		[backPlate:plateA:luma:offset]
+			(0, 0, 0)
+		[backPlate:plateA:luma:power]
+			(1, 1, 1)
+		[backPlate:plateA:luma:slope]
+			(0.5, 0.5, 0.5)
+		[backPlate:plateA:plateVisibility]
+			solo
+		[backPlate:plateA:rotateXYZ:tweak]
+			(0, 0, 0)
+		[backPlate:plateA:scale:tweak]
+			(2, 3)
+		[backPlate:plateA:translate:tweak]
+			(0, 0, 0)
+		[backPlate:plateB:alpha:image]
+			@@
+		[backPlate:plateB:depth:cameraSpaceOffset]
+			0
+		[backPlate:plateB:depth:image]
+			@@
+		[backPlate:plateB:depth:minOffset]
+			0.25
+		[backPlate:plateB:depth:normalizingFactor]
+			1
+		[backPlate:plateB:image]
+			@@
+		[backPlate:plateB:luma:offset]
+			(0, 0, 0)
+		[backPlate:plateB:luma:power]
+			(1, 1, 1)
+		[backPlate:plateB:luma:slope]
+			(1, 1, 1)
+		[backPlate:plateB:plateVisibility]
+			always
+		[backPlate:plateB:rotateXYZ:tweak]
+			(0, 0, 0)
+		[backPlate:plateB:scale:tweak]
+			(1, 1)
+		[backPlate:plateB:translate:tweak]
+			(0, 0, 0)
+		[clippingPlanes]
+			[]
+		[clippingRange]
+			(1, 1000000)
+		[exposure]
+			0
+		[exposureFStop]
+			1
+		[exposureIso]
+			100
+		[exposureResponsivity]
+			1
+		[exposureTime]
+			1
+		[fStop]
+			0
+		[focalLength]
+			5
+		[focusDistance]
+			0
+		[horizontalAperture]
+			2.0955
+		[horizontalApertureOffset]
+			0
+		[linearExposureScale]
+			1
+		[projection]
+			perspective
+		[purpose]
+			default
+		[shutterClose]
+			0
+		[shutterOpen]
+			0
+		[stereoRole]
+			mono
+		[verticalAperture]
+			1.52908
+		[verticalApertureOffset]
+			0
+		[visibility]
+			inherited
+		[xformOpOrder]
+			[]
+	[primOrigin]
+		[scenePath]
+			HdPrimOriginSchema::OriginPath(/Cam)

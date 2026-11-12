@@ -1,0 +1,20 @@
+#usda 1.0
+(
+    doc = """Viewer fixture over the unmodified OpenUSD v26.11.1 testUsdImagingGLVdbVolume
+scene vdbVolumeFallbackMaterial.usda (sublayered). Its glslfx checkerboard
+background is deactivated: this viewer does not draw glslfx source-asset
+shaders. The sublayer's frame range and up axis are stage metadata, which
+only the root layer supplies, so they are repeated here."""
+    endTimeCode = 3
+    startTimeCode = 1
+    subLayers = [
+        @./vdbVolumeFallbackMaterial.usda@
+    ]
+    upAxis = "Y"
+)
+
+over "Background" (
+    active = false
+)
+{
+}

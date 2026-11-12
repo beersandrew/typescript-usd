@@ -1,0 +1,2 @@
+#usda 1.0
+def "Root" { int third.timeSamples = { -10: 100, 0: 200, 15: 300 } ; }

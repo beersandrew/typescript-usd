@@ -1,0 +1,132 @@
+#usda 1.0
+(
+    upAxis = "Z"
+)
+
+# Material networks for the UsdImagingDataSourceMaterial capture: a
+# UsdPreviewSurface network (UsdUVTexture, UsdTransform2d,
+# UsdPrimvarReader_float2), material interface inputs (direct and through a
+# NodeGraph), a glslfx sourceAsset shader and a sourceCode shader under a
+# render context, an unconnected shader and config attributes.
+def Scope "Looks"
+{
+    def Material "Mat"
+    {
+        color3f inputs:tint = (0.25, 0.5, 0.75) (
+            displayGroup = "Look"
+            displayName = "Tint Color"
+        )
+        float inputs:metal = 0.125
+        string inputs:stName = "st"
+        float inputs:occ = 0.5
+        int config:sampleCount = 4
+        token config:mode = "fast"
+        token outputs:surface.connect = </Looks/Mat/Surface.outputs:surface>
+        token outputs:displacement.connect = </Looks/Mat/Surface.outputs:displacement>
+        token outputs:glslfx:surface.connect = </Looks/Mat/GlslfxSurface.outputs:surface>
+        token outputs:glslfx:displacement.connect = </Looks/Mat/CodeDisp.outputs:displacement>
+
+        def Shader "Surface"
+        {
+            uniform token info:id = "UsdPreviewSurface"
+            color3f inputs:diffuseColor = (1, 0, 0)
+            color3f inputs:diffuseColor.connect = </Looks/Mat/Tex.outputs:rgb>
+            color3f inputs:emissiveColor = (0.1, 0.2, 0.3)
+            float inputs:roughness = 0.4
+            float inputs:metallic.connect = </Looks/Mat.inputs:metal>
+            float inputs:occlusion.connect = </Looks/Mat/NG.outputs:out>
+            float inputs:opacity = 0.9
+            int inputs:useSpecularWorkflow = 0
+            normal3f inputs:normal = (0, 0, 1)
+            token outputs:surface
+            token outputs:displacement
+        }
+
+        def Shader "Tex"
+        {
+            uniform token info:id = "UsdUVTexture"
+            asset inputs:file = @texture.png@
+            token inputs:sourceColorSpace = "sRGB"
+            float2 inputs:st.connect = </Looks/Mat/Xform2d.outputs:result>
+            token inputs:wrapS = "repeat"
+            token inputs:wrapT = "mirror"
+            float4 inputs:fallback = (0.5, 0.5, 0.5, 1)
+            float4 inputs:scale = (2, 2, 2, 1)
+            float3 outputs:rgb
+            float outputs:a
+        }
+
+        def Shader "Xform2d"
+        {
+            uniform token info:id = "UsdTransform2d"
+            float2 inputs:in.connect = </Looks/Mat/Reader.outputs:result>
+            float inputs:rotation = 45
+            float2 inputs:scale = (2, 3)
+            float2 inputs:translation = (0.5, 0.25)
+            float2 outputs:result
+        }
+
+        def Shader "Reader"
+        {
+            uniform token info:id = "UsdPrimvarReader_float2"
+            string inputs:varname.connect = </Looks/Mat.inputs:stName>
+            float2 inputs:fallback = (0, 0)
+            float2 outputs:result
+        }
+
+        def NodeGraph "NG"
+        {
+            float inputs:fallbackValue.connect = </Looks/Mat.inputs:occ>
+            float outputs:out.connect = </Looks/Mat/NG/Inner.outputs:result>
+
+            def Shader "Inner"
+            {
+                uniform token info:id = "UsdPrimvarReader_float"
+                string inputs:varname = "occlusion"
+                float inputs:fallback.connect = </Looks/Mat/NG.inputs:fallbackValue>
+                float outputs:result
+            }
+        }
+
+        def Shader "GlslfxSurface" (
+            sdrMetadata = {
+                string role = "surface"
+            }
+        )
+        {
+            uniform token info:implementationSource = "sourceAsset"
+            uniform asset info:glslfx:sourceAsset = @shader1.glslfx@
+            color3f inputs:diffuseColor.connect = </Looks/Mat.inputs:tint>
+            double inputs:gain = 1.5
+            token outputs:surface
+        }
+
+        def Shader "CodeDisp"
+        {
+            uniform token info:implementationSource = "sourceCode"
+            uniform string info:glslfx:sourceCode = "-- glslfx version 0.1\n"
+            float inputs:amount = 0.25
+            token outputs:displacement
+        }
+
+        def Shader "Disconnected"
+        {
+            uniform token info:id = "UsdPrimvarReader_float3"
+            string inputs:varname = "unused"
+            float3 outputs:result
+        }
+    }
+}
+
+def Xform "Geom"
+{
+    def Mesh "Mesh" (
+        prepend apiSchemas = ["MaterialBindingAPI"]
+    )
+    {
+        rel material:binding = </Looks/Mat>
+        int[] faceVertexCounts = [3]
+        int[] faceVertexIndices = [0, 1, 2]
+        point3f[] points = [(0, 0, 0), (1, 0, 0), (0, 1, 0)]
+    }
+}

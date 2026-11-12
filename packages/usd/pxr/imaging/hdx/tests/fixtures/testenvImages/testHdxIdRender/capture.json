@@ -1,0 +1,21 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/imaging/hdx/tests/fixtures/testenvImages/capture.py",
+  "upstream": [
+    "pxr/imaging/hdx/CMakeLists.txt"
+  ],
+  "payload": {
+    "test": "testHdxIdRender",
+    "cmake": "pxr/imaging/hdx/CMakeLists.txt:275",
+    "command": "<install>/tests/testHdxIdRender --offscreen",
+    "cwd": "empty directory",
+    "env": {
+      "TF_DEBUG": "HD_SAFE_MODE"
+    },
+    "expectedReturnCode": "0",
+    "returnCode": 0,
+    "images": [],
+    "stdout": "Apple\nApple M4 Pro\n4.1 Metal - 91.7\nOK\n"
+  }
+}

@@ -1,0 +1,16 @@
+#usda 1.0
+def Xform "Asset" (
+ prepend inherits = </MissingClass>
+ variants = { string look = "A"; string referenced = "setless" }
+ prepend variantSets = "look"
+) {
+ variantSet "look" = {
+  "A" {
+ custom string marker = "A"
+ }
+  "B" {
+ custom string marker = "B"
+ }
+ }
+ def Xform "Child" {}
+}

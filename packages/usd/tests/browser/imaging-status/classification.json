@@ -1,0 +1,414 @@
+{
+ "comment": "Causes of the failing rows of the imaging status ledger (run.mjs, ledger.mjs), maintained by hand with evidence. rules: the first rule whose regular expression matches the start of a row key gives its cause (a rule with maxDiffAtMost matches only rows whose largest channel difference is at most that); keys are <section>/<test>/<image> for image tests and <section>/<asset id> for assets. causes: id -> label, FAITHFULNESS-DEBT tags (debt) or the owning gap/track (owner), and the evidence for the reading (runner output, diagnostics, difference images of the Nov 5, 2026 run at 5a5f8de7). A cause is a reading, not a computation: re-check it when the numbers move. neverRun: notes on registrations no suite runs, matched against the registration name. Failing rows no rule matches are listed as unclassified. classes: every cause names its class (\"class\"), which ledger.mjs counts in the 'Failures by class' summary of imaging-status.md and in summary.byClass of the JSON ledgers; 'real' is the default for a cause of this port.",
+ "classes": {
+  "real": {
+   "label": "real differences",
+   "description": "A difference of this port from native OpenUSD that is ours to fix: it stays counted until the row passes."
+  },
+  "platform-emulation": {
+   "label": "point/wire edge pixels from WebGPU emulation (platform)",
+   "description": "WebGPU has no wide points and no line polygon mode; Storm's points and wire reprs are emulated with triangles (PLATFORM-DIVERGENCE(hgiWebGPU-wide-points), PLATFORM-DIVERGENCE(hgiWebGPU-polygon-mode-line)), and pixels near the edges of the emulated points and lines differ from Metal's rasterizer."
+  },
+  "platform-limits": {
+   "label": "over the device's binding limits (platform)",
+   "description": "The browser's WebGPU device reports fewer bindings than a pipeline needs (PLATFORM-DIVERGENCE(webgpu-binding-limits)): the pipeline is skipped, so its prims are not drawn."
+  },
+  "rounding": {
+   "label": "rounding near-matches",
+   "description": "Within 2/255 on all but a handful of pixels, or one level off on more than 0.5% of pixels."
+  },
+  "native-reference": {
+   "label": "native can't be compared",
+   "description": "The native reference build cannot render a comparable image (no shadow maps on Metal, an Apple-excluded registration, no deterministic capture, a crash or an unexpected exit status): not a difference of this port."
+  },
+  "harness": {
+   "label": "not measured (harness or machine)",
+   "description": "The row has no comparable render because of the harness or the machine (a hung page, a stopped runner, an asset not on disk): rerun before reading anything into it."
+  }
+ },
+ "causes": {
+  "points-pointsize": {
+   "label": "Point clouds: edge pixels within 0.06 px of a wide point's square edge differ. The points are drawn (HgiWebGPU emulates gl_PointSize for every point-list program, the only ones Storm gives the point_size role; the old gl_PointSize warning came from non-point programs, where hgiMetal ignores it too). Our squares match a CPU model of Metal's pixel-center rule to 10 px of 8,338; the native captures deviate from that model by about +/-0.03 px per point, unexplained by size rounding, subpixel snapping, a one-pixel minimum or quantized edges (release/wide-points analysis).",
+   "owner": "I-4 points (imaging-i2.md 2.2, 2.2.1)",
+   "class": "platform-emulation",
+   "evidence": "testHdStBasicDrawing: every failing image has the same 105 over-tolerance pixels after release/wide-points (160 before: sub-pixel points were raised to one pixel, and the point-cloud angles were accumulated in double where unitTestDelegate.cpp:1779 uses float), all inside the three point clouds at the right of the image (x 538-627, y 155-329 at 640x480); the meshes match. testUsdImagingGLPoints (MSAA disks): native disk centers sit 0.02-0.04 px off ours, where ours are exactly on the projected center. Nov 11, 2026 (macOS 27.3): the lighting_lv1 images differ on 105 px where they differed on 107 (the 105 over tolerance unchanged); d48515c31a rerun the same day gives 105 too, so the 2 one-level pixels went with the OS update, not the library.",
+   "debt": [
+    "hgiWebGPU-wide-points"
+   ]
+  },
+  "wire-and-points": {
+   "label": "Wire reprs: the triangle fill-mode-line emulation interpolates along the line, so edge pixels near the half-pixel threshold differ and refined grids on pixel boundaries draw solid; plus the point clouds of points-pointsize.",
+   "debt": [
+    "hgiWebGPU-polygon-mode-line",
+    "hgiWebGPU-wide-points"
+   ],
+   "owner": "I-4 (imaging-i2.md 2.2, triangle fill mode lines)",
+   "class": "platform-emulation",
+   "evidence": "testHdStBasicDrawing wire/wireOnSurf images: about 100 px over the 160 px of the point clouds; refinedWire/refinedWireOnSurf: about 2,700-3,300 px, the solid refined grid edges imaging-i2.md 2.2 describes."
+  },
+  "runner-stopped": {
+   "label": "The runner page stopped posting and the suite was killed or timed out with no results.json; the rows it printed before the stop are taken from runner.log.",
+   "owner": "the suite's runner; rerun the suite (run.mjs --suites <id>) before reading anything into it",
+   "class": "harness",
+   "evidence": "Nov 5, 2026 at 5a5f8de7: basic-drawing stopped once after 83 of 94 tests (testHdStBasicDrawing_MDI_lighting_lv1_refinedWire never posted for 6 minutes) while Safari was contended; the rerun under the lock completed all 94 tests in 17 s. Nov 11, 2026 at d2703b55 (macOS 27.3, Safari 27.3): the first full run's hdst-programs page stopped posting after testHdStInstancing_Div5_Level2 (14 rows recorded as 'the page did not post this test'), and the same run's curves pair drew 68,883 and 82,070 px off; the rerun under the lock posted every hdst-programs row and both curves rows pass, with the Nov 9 numbers."
+  },
+  "gpu-normals-double": {
+   "label": "Resolved (no longer registered, b54af06c): Not ours: the three 'cube double' GPU cases of testHdStMeshTopology need shader double precision. HgiWebGPU reports no HgiDeviceCapabilitiesBitsShaderDoublePrecision (WGSL has no f64), as hgiMetal does, and upstream does not register testHdStMeshTopology on Apple at all; native Storm never runs the double-to-double normals programs on such a device (HdStMesh uploads double points as float when the capability is unset).",
+   "owner": "out of scope (upstream excludes the test on Apple; no native reference on this platform)",
+   "class": "native-reference",
+   "evidence": "Nov 8, 2026 (work/hdst-geom, a7809d9eaf): still 0 where 1 or 0.57735 is expected; every float and CPU case passes. hdSt/CMakeLists.txt:2821-2828 registers testHdStMeshTopology inside 'if (NOT APPLE)'; hgiMetal/capabilities.mm:73 sets ShaderDoublePrecision false and hgiMetal/shaderGenerator.mm:463 '#define double float' (Metal would read the 64-bit points as floats too); hgiWebGPU/src/capabilities.ts:38 sets it false. The test builds its double points with HdVtBufferSource's default allowDoubles (testHdStMeshTopology.cpp:285-286), where Storm's own meshes pass doublesSupported (mesh.cpp:1270-1277, 1476-1478) and so never reach the double programs here."
+  },
+  "volume-fields": {
+   "label": "Volume fields are not resolved: OpenVDB/field prims are reported as non-field prims and the field reader nodes are unrecognized, so volumes draw without their fields or with the fallback.",
+   "owner": "volumes (imaging-i2.md 2.4)",
+   "class": "real",
+   "evidence": "usdimaging-gl diagnostics: \"Invalid Hydra prim '/VdbVolume': Volume has field relationship to non-field prim /VdbVolume/Density\", \"Unrecognized connected node: HwFieldReader_float\"; 14-92% of pixels differ. The volumes suite runs the same registrations with its documented stand-ins (tests/browser/storm-image/volumes/main.ts) and differs less (0.02-88%)."
+  },
+  "simple-volumes": {
+   "label": "Procedural (simple) volumes: the volume shading differs from native over large areas.",
+   "owner": "volumes (imaging-i2.md 2.4)",
+   "class": "real",
+   "evidence": "testUsdImagingGLSimpleVolumes and _Glow: 19-34% of pixels differ in usdimaging-gl, 7-13% in the volumes suite, max 143-255."
+  },
+  "udim": {
+   "label": "UDIM textures: the tiles are bound, laid out and decoded as upstream's (the JPEG tiles go through the stb_image port); what remains is about 520 px (0.17%) up to 60 levels along the mesh edges at v = 0 and 2 and the u = 6 edge next to the missing tile 1007, where the clamp-to-border emulation's weight at mip levels above 0 differs from Metal's.",
+   "debt": [
+    "hgiwebgpu-border-mip"
+   ],
+   "owner": "HgiWebGPU clamp-to-border emulation (hgiWebGPU/src/samplerState.ts)",
+   "class": "real",
+   "evidence": "Resolved on work/card-edges (Nov 7, 2026, f64b0fe089): not the border emulation (the UDIM texels sampler clamps to the edge, hdSt/samplerObject.cpp:254-264). The UDIM accessor fetches the layout texture at the tile index (hdSt/codeGen.cpp:454-458, 4400-4406); below v = 0 and past the last tile row that index is outside the layout, where hgiMetal's read(ushort(coord)) (hgiMetal/shaderSection.mm:536-569) reads 0 ('no tile') and WebKit's textureLoad clamped to a tile, so the quads on those edges (and next to the missing tile 1007) took other derivatives. HgiTexelFetch_ now casts to ushort and reads zero outside the texture (hgiWebGPU/src/shaderGenerator.ts): every testUsdImagingGLUsdUdims* image passes (max 1, at most 0.002%; before 0.17%, max 60-63). Earlier: release/texture-formats (Nov 6, 2026): testUsdImagingGLUsdUdims variants 4.05% -> 0.17% differing (max 60; ScaleAndBias 4.24% -> 0.17%, max 63) once the JPEG tiles are decoded by the stb_image port instead of the browser: the 11,919 px of 1-3 levels across the tiles' texels are gone, the 515 edge pixels remain (see texture-file-formats for the edge reading). Before: 10.9% with the <UDIM> pattern unresolved and then every mip below the first resized from the wrong width (hio/src/stbImage.ts)."
+  },
+  "skinning": {
+   "label": "UsdSkel: skinned and blend-shape points differ (posed meshes in the wrong pose or partly posed); skeleton guides differ.",
+   "owner": "I-4 skinning (usdSkelImaging)",
+   "class": "real",
+   "evidence": "Resolved on release/skin-udim: the usdimaging-gl runner did not load usdSkelImaging (no skel resolving scene indices: meshes drew their rest points), and the SkelRoot extent plugin returned no extent without skinned prims (testUsdImagingGLSkeleton framed an empty bound). Every testUsdImagingGLUsdSkel*, SkelBlendShapes and Skeleton image passes (max 1 level)."
+  },
+  "dome-light-small": {
+   "label": "Dome light: a few dozen pixels over 2/255 (max 14, 63 on the grid scenes) and 1-5% of pixels one or two levels off, which fails the 0.5% differing bound.",
+   "owner": "i2-lighting (dome light computations) / hdx skydome",
+   "class": "real",
+   "evidence": "testUsdImagingGLDomeLight_*: 2-95 px over tolerance, differing 0.3-4.7% (before the hdx merge they drew without the environment texture: 'Invalid texture testImage.png', 56-98%)."
+  },
+  "oit": {
+   "label": "Order-independent transparency differs from native on the translucent prims.",
+   "owner": "hdx OIT (merged Nov 5, 2026)",
+   "class": "real",
+   "evidence": "release/depth-readback Nov 5, 2026 (translucent pass tested against the depth input, HgiWebGPU depth sampling): testUsdImagingGLOIT matches native exactly; testUsdImagingGLOITPacked 1.222% of pixels differ, max 2 (over the 0.5% share only). Before: 14,645 px over tolerance (4.8-6.0%), max 83. release/vol-oit Nov 5, 2026: resolved. The usdImagingGL runner did not apply the registration's ENV, so testUsdImagingGLOITPacked (HDX_ENABLE_OIT_PACKED_DATA=1) was rendered unpacked and compared with native's packed (RGBE, 8 bits per channel) image; with the runner applying ENV it matches native exactly."
+  },
+  "aov-visualize": {
+   "label": "AOV visualization: the primId image has no native capture: upstream registers testUsdImagingGLAovVisualization_Storm_primId only when NOT APPLE, and on the reference build its prim-id colours change from run to run, so its capture declares no image. Not a difference of ours; the depth and Neye images pass.",
+   "owner": "native reference (no deterministic capture); nothing to fix in the library",
+   "class": "native-reference",
+   "evidence": "work/hdx-translucent (Nov 8, 2026): pxr/usdImaging/usdImagingGL/CMakeLists.txt:4710-4711 (if (NOT APPLE) around the registration); tests/fixtures/testenvImages/testUsdImagingGLAovVisualization_Storm_primId/capture.json 'nondeterministic': 4 runs, 4 images; the capture's NONDETERMINISTIC list. testUsdImagingGLAovVisualization_Storm_depth passes in the committed ledger (0 px). Earlier: testUsdImagingGLAovVisualization_Storm_depth: 307,200 px (100%), max 255; _primId: the runner reports 'no native capture for this image'."
+  },
+  "near-match": {
+   "label": "Within 2/255 on all but a handful of pixels, or on every pixel but with more than 0.5% of pixels one level off: fails the I-1 bound narrowly.",
+   "owner": "no owner (rounding); re-check if it grows",
+   "class": "rounding",
+   "evidence": "Rows with max difference 1-7 and at most a few hundred pixels over tolerance (MaterialX Basic/Textured variants: 0 px over tolerance, 0.6-3.5% at 1 level; instancedCubes 1 px; PreviewSurface_Texture max 7 on 0.4%)."
+  },
+  "points-edges": {
+   "label": "Points drawn as MSAA disks (testUsdImagingGLPoints): 51 pixels over tolerance on the disks' edges (max 64); point sizes and positions otherwise match. The disks are the emulated wide points of points-pointsize (a gl_PointSize square per point, cut to a disk by the sample mask from gl_PointCoord, hdSt/shaders/pointDisk.glslfx), with the same 0.02-0.04 px offset of the native disk centers.",
+   "owner": "I-4 points",
+   "class": "platform-emulation",
+   "evidence": "testUsdImagingGLPoints: 51 px over tolerance, 0.017% differing.",
+   "debt": [
+    "hgiWebGPU-wide-points"
+   ]
+  },
+  "materialx-custom-nodes": {
+   "label": "MaterialX library custom node in a browser: colorNode's material XIncludes the PXR_MTLX_PLUGIN_SEARCH_PATHS file defining its namespaced node (TestNamespace:ND_myColor). Natively the XIncluded file's path equals the search path file's, so usdMtlx treats the node as a library node (reader.cpp:416-454). In the browser the search path's files are MaterialX's virtual file system (/mtlx/libraryNodes/...) while the XInclude is read through Ar over HTTP (http://.../libraryNodes/...), so the node is taken for a locally defined custom node, and the standalone file has no nodedef by the namespaced name (parser.cpp:607-615), so the surface falls back.",
+   "owner": "usdMtlx browser file identity (work/mtlx-gaps); unassigned",
+   "class": "real",
+   "evidence": "work/mtlx-gaps (Nov 9, 2026): diagnostics \"Invalid MaterialX NodeDef; unknown node name ' TestNamespace:ND_myColor '\", \"NodeDef not found for Node '<hash><TestNamespace:ND_myColor><mtlx>'\"; 10.3% of pixels, max 121. In Node (one file system) the reference build's documents and layers match (usdImaging/tests/upstream/testUsdImagingHdMtlxLibraryCustomNodes.test.ts). The other six custom-node rows draw: four within 1/255 (near-match), the two surfaceShaderNodes rows are materialx-surfaceshader-native-apple."
+  },
+  "hdx-program-images": {
+   "label": "Ported hdx program differs from native in a way not yet read (fallback for hdx rows no other rule matches).",
+   "owner": "hdx (release/hdx-tasks)",
+   "class": "real",
+   "evidence": "Nov 6, 2026 (release/harness-runners): every ported program now writes exactly its registration's images; the earlier rows (images not written, testHdxUnpickablesAsOccluders compared on testHdxPickTarget's names, testHdxPresentTask on testHdxPickAndHighlight's) were the runner taking a late post of the previous test's page. No row falls back here in that run."
+  },
+  "not-explained": {
+   "label": "Small difference not yet explained.",
+   "owner": "unassigned",
+   "class": "real",
+   "evidence": "testUsdImagingGLBasicLighting_refined: 11 px over tolerance (max 54), 36 px differing (0.012%), all on silhouette edge pixels of the magenta and orange prims (Nov 11, 2026 at d2703b55). Before: 24 px over tolerance (max 40, 0.019%) on Nov 9 at d48515c31a; the same commit d48515c31a rerun on Nov 11 gives the new numbers (36 px, 11 over, max 54), so the change is the machine's macOS 27.3 update (installed Nov 9, 01:40, after that run; Safari 27.3), not the library."
+  },
+  "normals-primvar-validation": {
+   "label": "Resolved: mesh normals or points authored with another value type than the schema's (int[], double[], double3[], a scalar) reached Storm, which warned 'Invalid Hydra prim ... Vertex primvar ... has N elements' or drew them, where native reads nothing.",
+   "owner": "hd/usdImaging primvar validation (unassigned)",
+   "class": "real",
+   "evidence": "Resolved on work/hdst-geom (Nov 8, 2026, 82140d8a): not Storm's validation (native warns the same way for a float3[] normals of the wrong count). UsdImagingDataSourceAttribute<T>::GetTypedValue reads with UsdAttributeQuery::Get<T> (dataSourceAttribute.h:46-65), T being the attribute's value type from the prim definition (stage.cpp:6699-6713), so a stored value of another type gives the empty fallback; the port returned the authored value. Now checked (usdImaging/src/dataSourceAttribute.ts; gprims fixture mismatchedTypes.usda captured from the reference build). normals_types 0 px (3 runs), schema_meshes_normals_types and schema_meshes_points_types 0 px. Before: normals_types 365 px over the band (max 244), points_types 1,862 px."
+  },
+  "volume-pipeline-validation": {
+   "label": "Volume draws hit WebGPU validation errors ('writeMask is invalid'; bind group sampleType float vs the texture view's unfilterable type), so the volume pass does not draw as native.",
+   "owner": "volumes (imaging-i2.md 2.4) / HgiWebGPU",
+   "class": "real",
+   "evidence": "Curated volumes (simpleVolumes) 24,383 px and vdb_volume 13,224 px over the band; the viewer's diagnostics list the two WebGPU validation messages on both."
+  },
+  "material-shading-small": {
+   "label": "Material shading: a few hundred pixels over the band on PBR surfaces (specular/roughness response); not yet traced.",
+   "owner": "i2-textures / i2-lighting",
+   "class": "real",
+   "evidence": "damaged_helmet 899 px (max 38 against usdrecord), chess 716 px (max 184); both within 0.35% of the image."
+  },
+  "texture-file-formats": {
+   "label": "ASWF TextureFileFormatTests: decoding now matches native exactly (stb_image's PNG/JPEG/BMP/TGA decoders ported); what remains is one-pixel lines along the textured cards' edges, where the clamp-to-border emulation's border weight at mip levels above 0 under anisotropic filtering differs from Metal's (about 480-700 px per asset, up to 70 levels on the opacity card's edges).",
+   "debt": [
+    "hgiwebgpu-border-mip"
+   ],
+   "owner": "HgiWebGPU clamp-to-border emulation (hgiWebGPU/src/samplerState.ts)",
+   "class": "real",
+   "evidence": "Resolved on work/card-edges (Nov 7, 2026, f64b0fe089): for 2D textures the border weight is now the hardware's own: the same sampler, repeat-addressed, samples a footprint texture of the texture's size and levels marking the texels taps from beyond each edge wrap to (hgiWebGPU/src/samplerState.ts, remaining approximations under PLATFORM-DIVERGENCE(hgiwebgpu-border-mip)). All nine rows match usdrecord (0 px over the band; all_files 4 px over 2/255, max 3; before 480-1,030 px). Isotropic-trilinear, anisotropic-level and anisotropic-probe models of the weight were each worse than the floor-level weight (8,451 / 7,619 / 6,966 px over the band across the nine, against 5,796). Earlier: release/texture-formats (Nov 6, 2026): every corpus PNG/JPEG/BMP/TGA (2,620 files) decodes bit-identically to the native stb_image; the PNG cards (already decoded by the stb port) and the JPEG cards now differ in the same pixels (png_rgb_8 696 px, jpeg_rgb_8 704 px), all on the card edges against the background, none inside the cards. At the opacity card's bottom edge native weights the card about 0.5 (the half-texel transparent border at pixel centres on the edge), the emulation about 0.65. With HGI_MAX_ANISOTROPY=1 on both sides the edges still differ (804 px): the emulation uses the floor level's footprint and an isotropic level. A trilinear + anisotropic-probe model of the border weight was tried and was worse (767 px), so the hardware's probe pattern is not yet known. Before the port: CMYK 40,478 px (the browser applied the file's ICC profile), all_files 4,277 px; the grey JPEG's edges also went transparent because the border colour was not swizzled (fixed: samplerState.ts)."
+  },
+  "reference-crash": {
+   "label": "The reference build itself crashes on the asset, so there is no native image to compare with.",
+   "owner": "none (OpenUSD 26.11.1 behaviour on an invalid test file)",
+   "class": "native-reference",
+   "evidence": "config_timecodespersecond_timecodespersecond_0: usdrecord exits on SIGSEGV after 951 ms; enumerate-corpus.py's stage probe crashes on the same file."
+  },
+  "vdb-volume-residual": {
+   "label": "OpenVDB volumes draw with their fields through the engine; small differences remain inside the volumes (max 4-28), the same as in the volumes suite's stand-in runs, so not from the engine path.",
+   "owner": "volumes (imaging-i2.md 2.4)",
+   "class": "real",
+   "evidence": "release/depth-readback Nov 5, 2026: usdimaging-gl testUsdImagingGLVdbVolume* 0.4-7.2% of pixels differ, max 4-28 (before: 14-92%, max 183-255, fields unresolved because the runner did not load usdVolImaging/hioOpenVDB/usdHydra, and the volume pass failed WebGPU validation); the difference images follow the volume's density over the checkerboard; the volumes suite (stand-ins) gives the same numbers (testUsdImagingGLVdbVolume 4.616%, max 14). release/vol-oit Nov 5, 2026: resolved. The cause was HgiWebGPU's clamp-to-border emulation (hgiWebGPU/src/samplerState.ts), not the field data: Storm samples the single-level field textures with HdWrapBlack (hdSt/volumeShader.cpp:411-413) inside the raymarching loops, where the derivative-estimated level ran past the texture's one level and shrank the border footprint; clamping the level to the view's levels brought every testUsdImagingGLVdbVolume* image within tolerance (max 1-2, under 0.011%) but TargetMemory (2 px over, max 3, on the edges of its few-texel texture), and weighting the border at the filter's 8-bit sub-texel precision made every usdimaging-gl testUsdImagingGLVdbVolume* image identical to native but Inside_001 (0.002%, max 1) and TwoFields (max 1). The volumes suite's Inside and Ortho rows still differ: its stand-in runner, not the engine path."
+  },
+  "native-shadow-texture-array": {
+   "label": "The native reference does not bind Storm's shadow maps: HgiMetalResourceBindings::BindResources skips every texture binding of more than one texture (hgiMetal/resourceBindings.mm:40, TF_VERIFY(texDesc.textures.size() == 1), the reason native exits 1), so the native images sample unbound shadowCompareTextures and show no shadows. The reference build cannot render this test through hgiGL either (HgiGL needs OpenGL 4.5, hgiGL/hgi.cpp:76-86; macOS has 4.1), and usdview/UsdImagingGLEngine never enable shadows (no caller of SetEnableShadows), so there is no native image with shadows to compare against.",
+   "owner": "shadows (release/shadows); native reference limitation",
+   "class": "native-reference",
+   "evidence": "release/shadows Safari run: exit 0, stdout OK, no diagnostics. Against upstream's GL baselines (pxr/imaging/hdx/testenv/testHdxLightAndShadow/baseline, not a reference per the hdx testenvImages capture (FIXTURES.md), shown for information only): color1 53 px over 2/255 (max 12, shadow-map edges), color2 and color3 0 px over 2/255 (max 1; 47% of pixels one level off on the saturated floor), color4 3 px over (max 3)."
+  },
+  "reference-exit-status": {
+   "label": "The program exits 1 as the native reference build does; the registration expects 0.",
+   "owner": "none (OpenUSD 26.11.1 behaviour of the reference build)",
+   "class": "native-reference",
+   "evidence": "testHdxPickResolveMode: exit 1, native 1 (capture.json); stdout matches native line for line (hit counts 'allHits: 42 expectedHitCount: 39' and '21705 vs 22438' as native)."
+  },
+  "hdx-translucent-not-drawn": {
+   "label": "hdx: the translucent prim of testHdxPickAndHighlight is not drawn (the translucent material-tag pass draws nothing), so the program reports FAILED.",
+   "owner": "hdx OIT / translucent render task (release/hdx-tasks)",
+   "class": "real",
+   "evidence": "Resolved on work/hdx-translucent (Nov 8, 2026): not the OIT tasks. The hdx page never registered the sdrGlslfx parser plugin, which the native build finds through PlugRegistry (sdr/registry.cpp:1093-1103), so SdrRegistry::GetShaderNodeFromSourceCode(source, glslfx) returned null (registry.cpp:596-655), the program's TF_VERIFY failed and the translucent cube was never added (testHdxPickAndHighlight.cpp:433-438). tests/browser/hdx-image/main.ts now awaits UsdShaders_RegisterShaderNodesAsync as the usdimaging-gl page does: exit 0, all 8 images within tolerance (color7 0.04%, color8 0.25%, max 1). Before: testHdxPickAndHighlight color7_translucent_unselected and color8_translucent_locate (Nov 6, 2026): the difference is exactly the blue translucent cube's square (6,724 px, max 128), which native draws over the cubes and ours omits; images 1-6 match exactly; exit 1 vs 0."
+  },
+  "refined-curves-hull": {
+   "label": "Resolved: under HD_ENABLE_REFINED_CURVES=1 the cubic curves drew nothing in the hull and smoothHull reprs.",
+   "owner": "hdSt basisCurves refined (unassigned)",
+   "class": "real",
+   "evidence": "Resolved by Nov 8, 2026 (a7809d9eaf, main with the hgiWebGPU bool-as-u32 and read-only storage commits; not bisected): testHdStTransitionRefinedCurves0_0/_1 draw every curve as native; 105 px remain in each, the three point clouds of points-pointsize (the same 105 px as testHdStTransition0_0-0_3). Before: hdst-programs (Nov 6, 2026) 1,077 px over tolerance each, the native curves missing from ours."
+  },
+  "translucent-constant-opacity": {
+   "label": "testHdStDisplayStyle: wire-edge pixels of the wireOnSurf / solidWireOnSurf cubes (refined: along the limit surface's edges); the opacity-0.5 cube itself now matches.",
+   "owner": "hdSt translucent pass (unassigned)",
+   "class": "real",
+   "evidence": "work/hdx-translucent (Nov 8, 2026): the cube10 difference was alpha only (colour identical): HgiWebGPU ignored alphaToOneEnable, which Storm sets with alpha to coverage (hdSt/renderPassState.cpp:1210-1220) and Metal applies (hgiMetal/graphicsPipeline.mm:304-315), so covered samples stored 0.5 and the resolve 0.75 where native stores 1. hgiWebGPU/src/alphaToOne.ts applies both in a fragment variant (the Apple GPU's coverage, equal to WebGPU's hardware masks for every alpha k/4096). After: 100 px over tolerance (0.03%) and _refined 512 px (0.27%), no alpha difference; what remains are wire-edge pixels. Before: hdst-programs testHdStDisplayStyle (3,445 px, max 255) and _refined (1,818 px): most of the difference is cube10 (solidWireOnSurf, colour (1,1,1), opacity 0.5), which native draws grey and ours near white; the rest are wire edges and point sprites."
+  },
+  "harness-page-hang": {
+   "label": "Harness: one harness page of the run stopped with no activity for the watchdog's 420 s and was recorded as a timeout; the asset's other runs captured normally.",
+   "owner": "asset-acceptance harness / Safari (unassigned); rerun before reading anything into it",
+   "class": "harness",
+   "evidence": "Nov 6, 2026 (release/harness-runners), curated set, 3 runs each: first run chess hung in run 2 (runs 1 and 3 settled in 9-10 s), the rerun had chess captured 3 times and subdiv_refined hung in run 3; a corpus run at 5520e345 recorded one hang as well, before the harness captured twice. Not tied to one asset."
+  },
+  "velocity-motion-coincident-edge": {
+   "label": "One pixel on an edge shared by two coincident meshes: the PointsVelocity Reference mesh (time-sampled points) and the Pointer mesh (points moved by velocities) have the same vertices at frame 1, and which of the two wins the depth tie at one wire-on-surface edge pixel differs (ours draws the Reference's blue, native the Pointer's cyan). The resolved points are the native values exactly.",
+   "owner": "rasterization of coincident surfaces (depth ties); not velocity motion",
+   "class": "real",
+   "evidence": "Nov 7, 2026 (release/velocity-motion at 26ad64fe): testUsdImagingGLVelocityMotion_001.png pixel (357,439) native (7,68,68) vs ours (7,52,90), testUsdImagingGLVelocityMotion48_001.png pixel (314,436), each the only pixel over tolerance; frames 2.5 and 4 identical to native. hdsi/tests/velocityMotionResolvingSceneIndex.test.ts compares the resolved points of both scenes at time 1 exactly with the native capture. Without the plugin (same commit, registration removed) all six images fail with max 250 over 1.4-2.3% of the pixels."
+  },
+  "materialx-surfaceshader-native-apple": {
+   "label": "MaterialX custom surface shader nodes: the native capture is the reference build's fallback (a plain blue sphere): upstream registers both surfaceShaderNodes tests only when NOT APPLE, and the macOS (Metal) reference does not draw the multiImageSurf node. Ours draws it, as upstream's own baseline image (testenv baseline/surfaceShaderNodes.png) shows. Not a difference of ours.",
+   "owner": "native reference (Apple-excluded registration); nothing to fix in the library",
+   "class": "native-reference",
+   "evidence": "pxr/usdImaging/usdImagingGL/CMakeLists.txt:5365-5377 and 5420-5433 (if (NOT APPLE)). work/mtlx-gaps (Nov 9, 2026): against the native capture 11.9-12.0% of pixels, max 252-255, all on the right sphere; against upstream's testenv baseline (Linux GL) Local 5.3% max 252, Library 6.4% max 81 (not the ledger's reference)."
+  },
+  "webgpu-binding-limits": {
+   "label": "Chrome: a pipeline needs more storage buffers than the device has (Chrome 156 on macOS: 10 per shader stage, Safari 44), so HgiWebGPU reports it and skips its draws or dispatches (PLATFORM-DIVERGENCE(webgpu-binding-limits)); the prims it would draw are missing. The packed-attribute variant (webgpu-storage-buffer-limit) brings mesh and curve vertex pulling under the limit, but not these pipelines: instanced draws with their instance primvars and per-level instance indices, GPU frustum culling, refined curves, and the ExtComputation of GPU skinning and blend shapes (13 storage buffers).",
+   "owner": "HgiWebGPU binding limits (platform); the viewer skins on the CPU on such devices (apps/usdview/src/gpu-device-settings.ts)",
+   "class": "platform-limits",
+   "debt": [
+    "webgpu-binding-limits",
+    "webgpu-storage-buffer-limit"
+   ],
+   "evidence": "Nov 11, 2026, Chrome 156.0.8078.80 (WebGPU adapter apple / metal-3: maxStorageBuffersPerShaderStage, maxStorageBuffersInVertexStage and maxStorageBuffersInFragmentStage 10, the adapter's own limits, which the device requests in full), at the Safari ledger's commit: every row below logs 'exceeds the device's binding limits' for its pipeline and passes or fails as Safari's otherwise: testHdStCurveDrawing_lv1_refined (11 vertex storage buffers), testHdStInstancingUnbalanced (11), testHdStInstancing_Refined (14), _Wire (12), _Div3_Level3 / _Div4_Level4 / _Div5_Level2 (FrustumCulling compute 11-17 and draws 11-16), testUsdImagingGLSkelBlendShapes and testUsdImagingGLUsdSkelExtCompGPU_arm / _twoBends (ExtComputation, 13 compute storage buffers; the registrations force GPU skinning with USDSKELIMAGING_FORCE_CPU_COMPUTE=0; _arm_baked, with no computation, passes)."
+  }
+ },
+ "rules": [
+  {
+   "match": "curves/testHdStCurveDrawing_lv1_refined/",
+   "cause": "webgpu-binding-limits",
+   "browser": "chrome"
+  },
+  {
+   "match": "hdst-programs/testHdStInstancing(Unbalanced|_Refined|_Wire|_Div3_Level3|_Div4_Level4|_Div5_Level2)/",
+   "cause": "webgpu-binding-limits",
+   "browser": "chrome"
+  },
+  {
+   "match": "usdimaging-gl/testUsdImagingGLSkelBlendShapes/",
+   "cause": "webgpu-binding-limits",
+   "browser": "chrome"
+  },
+  {
+   "match": "usdimaging-gl/testUsdImagingGLUsdSkelExtCompGPU_(arm|twoBends)/",
+   "cause": "webgpu-binding-limits",
+   "browser": "chrome"
+  },
+  {
+   "match": "[a-z-]+/\\(suite\\)",
+   "cause": "runner-stopped"
+  },
+  {
+   "match": "basic-drawing/testHdStBasicDrawing_[A-Za-z]+(_lighting)?_lv\\d_(wire|wireOnSurf|refinedWire|refinedWireOnSurf)",
+   "cause": "wire-and-points"
+  },
+  {
+   "match": "basic-drawing/",
+   "cause": "points-pointsize"
+  },
+  {
+   "match": "hdst-gpu/testHdStMeshTopology \\(registry\\) > ComputeNormalsTest cube double",
+   "cause": "gpu-normals-double"
+  },
+  {
+   "match": "hdst-programs/testHdStInstancing_Wire/",
+   "cause": "wire-and-points"
+  },
+  {
+   "match": "hdst-programs/testHdStDisplayStyle",
+   "cause": "translucent-constant-opacity"
+  },
+  {
+   "match": "hdst-programs/",
+   "cause": "points-pointsize"
+  },
+  {
+   "match": "usdimaging-gl/testUsdImagingGLSimpleVolumes",
+   "cause": "simple-volumes"
+  },
+  {
+   "match": "usdimaging-gl/testUsdImagingGLVdbVolume",
+   "cause": "vdb-volume-residual"
+  },
+  {
+   "match": "usdimaging-gl/testUsdImagingGL(Vdb)?Volume",
+   "cause": "volume-fields"
+  },
+  {
+   "match": "usdimaging-gl/testUsdImagingGLUsdUdims",
+   "cause": "udim"
+  },
+  {
+   "match": "usdimaging-gl/testUsdImagingGL(UsdSkel|SkelBlendShapes|Skeleton)",
+   "cause": "skinning"
+  },
+  {
+   "match": "usdimaging-gl/testUsdImagingGLDomeLight",
+   "cause": "dome-light-small"
+  },
+  {
+   "match": "usdimaging-gl/testUsdImagingGLOIT",
+   "cause": "oit"
+  },
+  {
+   "match": "usdimaging-gl/testUsdImagingGLAovVisualization",
+   "cause": "aov-visualize"
+  },
+  {
+   "match": "usdimaging-gl/testUsdImagingGLPoints/",
+   "cause": "points-edges"
+  },
+  {
+   "match": "usdimaging-gl/testUsdImagingGL(Instancing_instancedCubes|PreviewSurface_Texture)/",
+   "cause": "near-match"
+  },
+  {
+   "match": "usdimaging-gl/testUsdImagingGLBasicLighting_refined/",
+   "cause": "not-explained"
+  },
+  {
+   "match": "usdimaging-gl-materialx/testUsdImagingGLMaterialX(Library|Local)CustomNodes_surfaceShaderNodes/",
+   "cause": "materialx-surfaceshader-native-apple"
+  },
+  {
+   "match": "usdimaging-gl-materialx/testUsdImagingGLMaterialXLibraryCustomNodes_colorNode/",
+   "cause": "materialx-custom-nodes"
+  },
+  {
+   "match": "usdimaging-gl-materialx/",
+   "cause": "near-match"
+  },
+  {
+   "match": "hdx/testHdxLightAndShadow/",
+   "cause": "native-shadow-texture-array"
+  },
+  {
+   "match": "hdx/testHdxPickResolveMode/",
+   "cause": "reference-exit-status"
+  },
+  {
+   "match": "hdx/testHdx(PickTarget|PickingWithReprAndRefineChanges)/",
+   "cause": "wire-and-points"
+  },
+  {
+   "match": "hdx/testHdxPickAndHighlight/",
+   "cause": "hdx-translucent-not-drawn"
+  },
+  {
+   "match": "hdx/",
+   "cause": "hdx-program-images"
+  },
+  {
+   "match": "assets-curated/subdiv_refined$",
+   "cause": "harness-page-hang"
+  },
+  {
+   "match": "assets-curated/(volumes|vdb_volume)$",
+   "cause": "volume-pipeline-validation"
+  },
+  {
+   "match": "assets-curated/(damaged_helmet|chess)$",
+   "cause": "material-shading-small"
+  },
+  {
+   "match": "assets-corpus/(openchessset_chess_set|usdz_damagedhelmet)$",
+   "cause": "material-shading-small"
+  },
+  {
+   "match": "assets-corpus/texturefileformattests_",
+   "cause": "texture-file-formats"
+  },
+  {
+   "match": "assets-corpus/config_timecodespersecond_timecodespersecond_0$",
+   "cause": "reference-crash"
+  },
+  {
+   "match": "usdimaging-gl-velocity-motion/testUsdImagingGLVelocityMotion_(24|48)/testUsdImagingGLVelocityMotion(48)?_001\\.png",
+   "maxDiffAtMost": 23,
+   "cause": "velocity-motion-coincident-edge"
+  }
+ ],
+ "neverRun": [
+  {
+   "match": "testHgi(GL|Vulkan)",
+   "reason": "out of scope: OpenGL/Vulkan backend tests (batch 6 brief, 'Which upstream tests to port')"
+  },
+  {
+   "match": "testUsdview",
+   "reason": "out of scope: usdview (Python/Qt application) tests"
+  },
+  {
+   "match": "testUsdRecord",
+   "reason": "out of scope: usdrecord (Python tool) tests"
+  },
+  {
+   "match": "testHdStPtex",
+   "reason": "Ptex is not supported in the browser (FAITHFULNESS-DEBT(hdst-ptex))"
+  },
+  {
+   "match": "testUsdImagingGL(Highlight|PickAndHighlight|InstancePicking|Purpose|Resync|TaskController|SublayerOperations|SurfaceShader|TextureResync)",
+   "reason": "needs its own test program (not testUsdImagingGLBasicDrawing); no runner drives it yet"
+  }
+ ]
+}

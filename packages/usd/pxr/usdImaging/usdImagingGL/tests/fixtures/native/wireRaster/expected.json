@@ -1,0 +1,702 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/usdImaging/usdImagingGL/tests/fixtures/native/wireRaster/capture.py",
+  "upstream": [
+    "pxr/usdImaging/usdviewq/stageView.py:585-597",
+    "pxr/usdImaging/usdviewq/stageView.py:1146-1193",
+    "pxr/usdImaging/usdviewq/stageView.py:1388-1525",
+    "pxr/usdImaging/usdviewq/common.py:136-154",
+    "pxr/usdImaging/usdviewq/viewSettingsDataModel.py:24-40",
+    "pxr/usdImaging/usdImagingGL/engine.cpp:2589-2690",
+    "pxr/imaging/hd/renderIndex.cpp:1008-1074",
+    "pxr/imaging/hdSt/meshShaderKey.cpp",
+    "pxr/imaging/hgiMetal/graphicsCmds.mm:404-421",
+    "pxr/imaging/hgiMetal/graphicsPipeline.mm:165-175",
+    "pxr/imaging/hgiMetal/hgi.h:131-136",
+    "pxr/imaging/hdSt/shaders/meshWire.glslfx",
+    "pxr/imaging/hdSt/shaders/terminals.glslfx:57-126",
+    "pxr/imaging/hdx/shaders/selection.glslfx:441-474"
+  ],
+  "payload": {
+    "hgi": "Metal",
+    "imageWidth": 192,
+    "imageHeight": 128,
+    "camera": "/Camera",
+    "colorCorrection": "sRGB",
+    "clearColor": [
+      0.07074,
+      0.07074,
+      0.07074,
+      1.0
+    ],
+    "presentationSamples": 0,
+    "viewMatrix": [
+      [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        -11.0,
+        1.0
+      ]
+    ],
+    "projectionMatrix": [
+      [
+        2.7777777777777772,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        4.166666666666666,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        -1.000002000002,
+        -1.0
+      ],
+      [
+        0.0,
+        0.0,
+        -2.000002000002,
+        0.0
+      ]
+    ],
+    "defaultMaterial": {
+      "ambient": 0.2,
+      "specular": 0.1
+    },
+    "sceneAmbient": [
+      0.01,
+      0.01,
+      0.01,
+      1.0
+    ],
+    "cases": [
+      {
+        "name": "polygon original fan",
+        "renderMode": "Wireframe",
+        "kind": "polygon",
+        "faceOrder": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "cornerNeighbourhood": [
+          [
+            [
+              75,
+              75,
+              75,
+              255
+            ],
+            [
+              65,
+              65,
+              65,
+              255
+            ],
+            [
+              38,
+              38,
+              38,
+              255
+            ]
+          ],
+          [
+            [
+              38,
+              38,
+              38,
+              255
+            ],
+            [
+              7,
+              7,
+              7,
+              255
+            ],
+            [
+              65,
+              65,
+              65,
+              255
+            ]
+          ],
+          [
+            [
+              65,
+              65,
+              65,
+              255
+            ],
+            [
+              65,
+              65,
+              65,
+              255
+            ],
+            [
+              75,
+              75,
+              75,
+              255
+            ]
+          ]
+        ],
+        "drawMode": "DRAW_WIREFRAME",
+        "highlightColor": null,
+        "selectionColor": null,
+        "selection": [],
+        "image": "images/polygon_original_fan.png",
+        "samples": {
+          "background": {
+            "x": 6,
+            "y": 6,
+            "rgba": [
+              75,
+              75,
+              75,
+              255
+            ]
+          },
+          "quadCenter": {
+            "x": 35,
+            "y": 64,
+            "rgba": [
+              75,
+              75,
+              75,
+              255
+            ]
+          },
+          "quadInteriorDiagonal": {
+            "x": 24,
+            "y": 74,
+            "rgba": [
+              75,
+              75,
+              75,
+              255
+            ]
+          },
+          "quadLeftEdge": {
+            "x": 13,
+            "y": 59,
+            "rgba": [
+              75,
+              75,
+              75,
+              255
+            ]
+          },
+          "quadCorner": {
+            "x": 13,
+            "y": 85,
+            "rgba": [
+              75,
+              75,
+              75,
+              255
+            ]
+          },
+          "pentagonCenter": {
+            "x": 156,
+            "y": 64,
+            "rgba": [
+              75,
+              75,
+              75,
+              255
+            ]
+          },
+          "pentagonBottomEdge": {
+            "x": 156,
+            "y": 83,
+            "rgba": [
+              38,
+              38,
+              38,
+              255
+            ]
+          },
+          "pentagonCorner": {
+            "x": 170,
+            "y": 83,
+            "rgba": [
+              7,
+              7,
+              7,
+              255
+            ]
+          },
+          "boxFrontFace": {
+            "x": 106,
+            "y": 72,
+            "rgba": [
+              75,
+              75,
+              75,
+              255
+            ]
+          },
+          "boxFrontFaceNearCorner": {
+            "x": 121,
+            "y": 59,
+            "rgba": [
+              75,
+              75,
+              75,
+              255
+            ]
+          },
+          "boxTopFace": {
+            "x": 100,
+            "y": 45,
+            "rgba": [
+              75,
+              75,
+              75,
+              255
+            ]
+          },
+          "boxCorner": {
+            "x": 127,
+            "y": 54,
+            "rgba": [
+              75,
+              75,
+              75,
+              255
+            ]
+          }
+        }
+      },
+      {
+        "name": "polygon rotated fan",
+        "renderMode": "Wireframe",
+        "kind": "polygon",
+        "faceOrder": [
+          4,
+          0,
+          1,
+          2,
+          3
+        ],
+        "cornerNeighbourhood": [
+          [
+            [
+              75,
+              75,
+              75,
+              255
+            ],
+            [
+              65,
+              65,
+              65,
+              255
+            ],
+            [
+              38,
+              38,
+              38,
+              255
+            ]
+          ],
+          [
+            [
+              38,
+              38,
+              38,
+              255
+            ],
+            [
+              7,
+              7,
+              7,
+              255
+            ],
+            [
+              65,
+              65,
+              65,
+              255
+            ]
+          ],
+          [
+            [
+              65,
+              65,
+              65,
+              255
+            ],
+            [
+              65,
+              65,
+              65,
+              255
+            ],
+            [
+              75,
+              75,
+              75,
+              255
+            ]
+          ]
+        ],
+        "drawMode": "DRAW_WIREFRAME",
+        "highlightColor": null,
+        "selectionColor": null,
+        "selection": [],
+        "image": "images/polygon_rotated_fan.png",
+        "samples": {
+          "background": {
+            "x": 6,
+            "y": 6,
+            "rgba": [
+              75,
+              75,
+              75,
+              255
+            ]
+          },
+          "quadCenter": {
+            "x": 35,
+            "y": 64,
+            "rgba": [
+              75,
+              75,
+              75,
+              255
+            ]
+          },
+          "quadInteriorDiagonal": {
+            "x": 24,
+            "y": 74,
+            "rgba": [
+              75,
+              75,
+              75,
+              255
+            ]
+          },
+          "quadLeftEdge": {
+            "x": 13,
+            "y": 59,
+            "rgba": [
+              75,
+              75,
+              75,
+              255
+            ]
+          },
+          "quadCorner": {
+            "x": 13,
+            "y": 85,
+            "rgba": [
+              75,
+              75,
+              75,
+              255
+            ]
+          },
+          "pentagonCenter": {
+            "x": 156,
+            "y": 64,
+            "rgba": [
+              75,
+              75,
+              75,
+              255
+            ]
+          },
+          "pentagonBottomEdge": {
+            "x": 156,
+            "y": 83,
+            "rgba": [
+              38,
+              38,
+              38,
+              255
+            ]
+          },
+          "pentagonCorner": {
+            "x": 170,
+            "y": 83,
+            "rgba": [
+              7,
+              7,
+              7,
+              255
+            ]
+          },
+          "boxFrontFace": {
+            "x": 106,
+            "y": 72,
+            "rgba": [
+              75,
+              75,
+              75,
+              255
+            ]
+          },
+          "boxFrontFaceNearCorner": {
+            "x": 121,
+            "y": 59,
+            "rgba": [
+              75,
+              75,
+              75,
+              255
+            ]
+          },
+          "boxTopFace": {
+            "x": 100,
+            "y": 45,
+            "rgba": [
+              75,
+              75,
+              75,
+              255
+            ]
+          },
+          "boxCorner": {
+            "x": 127,
+            "y": 54,
+            "rgba": [
+              75,
+              75,
+              75,
+              255
+            ]
+          }
+        }
+      },
+      {
+        "name": "boundary line list",
+        "renderMode": "Wireframe",
+        "kind": "boundary",
+        "faceOrder": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "cornerNeighbourhood": [
+          [
+            [
+              75,
+              75,
+              75,
+              255
+            ],
+            [
+              65,
+              65,
+              65,
+              255
+            ],
+            [
+              38,
+              38,
+              38,
+              255
+            ]
+          ],
+          [
+            [
+              38,
+              38,
+              38,
+              255
+            ],
+            [
+              7,
+              7,
+              7,
+              255
+            ],
+            [
+              65,
+              65,
+              65,
+              255
+            ]
+          ],
+          [
+            [
+              65,
+              65,
+              65,
+              255
+            ],
+            [
+              65,
+              65,
+              65,
+              255
+            ],
+            [
+              75,
+              75,
+              75,
+              255
+            ]
+          ]
+        ],
+        "drawMode": "DRAW_WIREFRAME",
+        "highlightColor": null,
+        "selectionColor": null,
+        "selection": [],
+        "image": "images/boundary_line_list.png",
+        "samples": {
+          "background": {
+            "x": 6,
+            "y": 6,
+            "rgba": [
+              75,
+              75,
+              75,
+              255
+            ]
+          },
+          "quadCenter": {
+            "x": 35,
+            "y": 64,
+            "rgba": [
+              75,
+              75,
+              75,
+              255
+            ]
+          },
+          "quadInteriorDiagonal": {
+            "x": 24,
+            "y": 74,
+            "rgba": [
+              75,
+              75,
+              75,
+              255
+            ]
+          },
+          "quadLeftEdge": {
+            "x": 13,
+            "y": 59,
+            "rgba": [
+              75,
+              75,
+              75,
+              255
+            ]
+          },
+          "quadCorner": {
+            "x": 13,
+            "y": 85,
+            "rgba": [
+              75,
+              75,
+              75,
+              255
+            ]
+          },
+          "pentagonCenter": {
+            "x": 156,
+            "y": 64,
+            "rgba": [
+              75,
+              75,
+              75,
+              255
+            ]
+          },
+          "pentagonBottomEdge": {
+            "x": 156,
+            "y": 83,
+            "rgba": [
+              38,
+              38,
+              38,
+              255
+            ]
+          },
+          "pentagonCorner": {
+            "x": 170,
+            "y": 83,
+            "rgba": [
+              7,
+              7,
+              7,
+              255
+            ]
+          },
+          "boxFrontFace": {
+            "x": 106,
+            "y": 72,
+            "rgba": [
+              75,
+              75,
+              75,
+              255
+            ]
+          },
+          "boxFrontFaceNearCorner": {
+            "x": 121,
+            "y": 59,
+            "rgba": [
+              75,
+              75,
+              75,
+              255
+            ]
+          },
+          "boxTopFace": {
+            "x": 100,
+            "y": 45,
+            "rgba": [
+              75,
+              75,
+              75,
+              255
+            ]
+          },
+          "boxCorner": {
+            "x": 127,
+            "y": 54,
+            "rgba": [
+              75,
+              75,
+              75,
+              255
+            ]
+          }
+        }
+      }
+    ]
+  }
+}

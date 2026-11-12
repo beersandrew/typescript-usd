@@ -1,0 +1,59 @@
+#usda 1.0
+
+def Points "Cloud"
+{
+    point3f[] points = [(0, 0, 0), (2, 0, 0), (2, 2, 0), (0, 2, 0)]
+    color3f[] primvars:displayColor = [(1, 0, 0), (0, 1, 0)] (
+        interpolation = "vertex"
+    )
+    int[] primvars:displayColor:indices = [0, 1, 1, 0]
+    float[] primvars:displayOpacity = [1, 0, 0.5, 1] (
+        interpolation = "vertex"
+    )
+    float[] widths = [0.25, 0.5, 0.75, 1] (
+        interpolation = "vertex"
+    )
+}
+
+def BasisCurves "Periodic"
+{
+    int[] curveVertexCounts = [4]
+    normal3f[] normals = [(0, 0, 1)] (
+        interpolation = "constant"
+    )
+    point3f[] points = [(0, 0, 0), (2, 0, 0), (2, 2, 0), (0, 2, 0)]
+    color3f[] primvars:displayColor = [(1, 0, 0), (0, 1, 0)] (
+        interpolation = "vertex"
+    )
+    int[] primvars:displayColor:indices = [0, 1, 1, 0]
+    float[] primvars:displayOpacity = [1, 0, 0.5, 1] (
+        interpolation = "vertex"
+    )
+    uniform token type = "linear"
+    float[] widths = [0.25, 0.5, 0.75, 1] (
+        interpolation = "vertex"
+    )
+    uniform token wrap = "periodic"
+}
+
+def BasisCurves "Segmented"
+{
+    int[] curveVertexCounts = [4]
+    normal3f[] normals = [(0, 0, 1)] (
+        interpolation = "constant"
+    )
+    point3f[] points = [(0, 0, 0), (2, 0, 0), (2, 2, 0), (0, 2, 0)]
+    color3f[] primvars:displayColor = [(1, 0, 0), (0, 1, 0)] (
+        interpolation = "vertex"
+    )
+    int[] primvars:displayColor:indices = [0, 1, 1, 0]
+    float[] primvars:displayOpacity = [1, 0, 0.5, 1] (
+        interpolation = "vertex"
+    )
+    uniform token type = "linear"
+    float[] widths = [0.25, 0.5, 0.75, 1] (
+        interpolation = "vertex"
+    )
+    uniform token wrap = "segmented"
+}
+

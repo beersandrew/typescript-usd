@@ -1,0 +1,18 @@
+{
+  "nativeVersion": "26.11.1",
+  "source": "usdviewq/appController.py:3082-3107",
+  "rows": [
+    {
+      "cameraCount": 0,
+      "enabled": false,
+      "actions": []
+    },
+    {
+      "cameraCount": 1,
+      "enabled": true,
+      "actions": [
+        "Camera0"
+      ]
+    }
+  ]
+}

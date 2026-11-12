@@ -1,0 +1,34 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/imaging/hdSt/tests/fixtures/testenvImages/capture.py",
+  "upstream": [
+    "pxr/imaging/hdSt/CMakeLists.txt",
+    "pxr/imaging/hdSt/testenv/testHdStBasicDrawing.cpp",
+    "pxr/imaging/hdSt/testenv/testHdStDisplayStyle.cpp",
+    "pxr/imaging/hdSt/testenv/testHdStCurveDrawing.cpp",
+    "pxr/imaging/hdSt/testenv/testHdStCurvePrimvarInterpolation.cpp",
+    "pxr/imaging/hdSt/testenv/testHdStInstancing.cpp",
+    "pxr/imaging/hdSt/testenv/testHdStSubdivision.cpp",
+    "pxr/imaging/hdSt/testenv/testHdStInitRepr.cpp",
+    "pxr/imaging/hdSt/testenv/testHdStTransition.cpp"
+  ],
+  "payload": {
+    "test": "testHdStBasicDrawing_Quadrangulate_hull",
+    "cmake": "pxr/imaging/hdSt/CMakeLists.txt:2034",
+    "command": "<install>/tests/testHdStBasicDrawing --offscreen --repr hull --write testHdStBasicDrawing_quad_hull.png",
+    "cwd": "copy of <source>/pxr/imaging/hdSt/testenv/testHdStBasicDrawing_Quadrangulate",
+    "env": {
+      "TF_DEBUG": "HD_SAFE_MODE",
+      "HD_ENABLE_FORCE_QUADRANGULATE": "1"
+    },
+    "expectedReturnCode": "0",
+    "returnCode": 0,
+    "images": [
+      {
+        "name": "testHdStBasicDrawing_quad_hull.png",
+        "written": true
+      }
+    ]
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "nativeVersion": [
+    0,
+    26,
+    11
+  ],
+  "source": "OpenUSD-26.11.1 usdviewq/appController.py:4211-4263,4265-4430; mainWindowUI.ui metadataView; usdviewstyle.qss QWidget",
+  "columns": [
+    "Field Name",
+    "Value"
+  ],
+  "rows": [
+    [
+      "[object type]",
+      "Prim"
+    ],
+    [
+      "[applied API schemas]",
+      "[]"
+    ],
+    [
+      "[path]",
+      "/"
+    ],
+    [
+      "customLayerData",
+      "{Apple: {preferredIblVersion: 2}, creator: usdzconvert preview 0.67}"
+    ],
+    [
+      "defaultPrim",
+      "Bike"
+    ],
+    [
+      "endTimeCode",
+      "359.50138092041016"
+    ],
+    [
+      "metersPerUnit",
+      "1.0"
+    ],
+    [
+      "startTimeCode",
+      "0.0"
+    ],
+    [
+      "timeCodesPerSecond",
+      "30.0"
+    ],
+    [
+      "upAxis",
+      "Y"
+    ]
+  ],
+  "wordWrap": true
+}

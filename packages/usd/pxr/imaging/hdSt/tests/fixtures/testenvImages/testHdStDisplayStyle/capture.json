@@ -1,0 +1,33 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/imaging/hdSt/tests/fixtures/testenvImages/capture.py",
+  "upstream": [
+    "pxr/imaging/hdSt/CMakeLists.txt",
+    "pxr/imaging/hdSt/testenv/testHdStBasicDrawing.cpp",
+    "pxr/imaging/hdSt/testenv/testHdStDisplayStyle.cpp",
+    "pxr/imaging/hdSt/testenv/testHdStCurveDrawing.cpp",
+    "pxr/imaging/hdSt/testenv/testHdStCurvePrimvarInterpolation.cpp",
+    "pxr/imaging/hdSt/testenv/testHdStInstancing.cpp",
+    "pxr/imaging/hdSt/testenv/testHdStSubdivision.cpp",
+    "pxr/imaging/hdSt/testenv/testHdStInitRepr.cpp",
+    "pxr/imaging/hdSt/testenv/testHdStTransition.cpp"
+  ],
+  "payload": {
+    "test": "testHdStDisplayStyle",
+    "cmake": "pxr/imaging/hdSt/CMakeLists.txt:2417",
+    "command": "<install>/tests/testHdStDisplayStyle --offscreen --write testHdStDisplayStyle.png",
+    "cwd": "copy of <source>/pxr/imaging/hdSt/testenv/testHdStDisplayStyle",
+    "env": {
+      "TF_DEBUG": "HD_SAFE_MODE"
+    },
+    "expectedReturnCode": "0",
+    "returnCode": 0,
+    "images": [
+      {
+        "name": "testHdStDisplayStyle.png",
+        "written": true
+      }
+    ]
+  }
+}

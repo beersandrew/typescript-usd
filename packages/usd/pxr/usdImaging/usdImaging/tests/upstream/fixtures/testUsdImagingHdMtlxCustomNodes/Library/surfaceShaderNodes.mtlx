@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<materialx version="1.39">
+  <ssMultiImage name="Surface" type="surfaceshader">
+    <input name="_color_file" type="filename" value="images/brass_color.jpg" />
+    <input name="roughness_file" type="filename" value="images/brass_roughness.jpg" />
+  </ssMultiImage>
+  <surfacematerial name="TexturedMaterial" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="Surface" />
+  </surfacematerial>
+</materialx>

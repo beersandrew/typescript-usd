@@ -1,0 +1,66 @@
+{
+  "nativeVersion": "26.11.1",
+  "upstream": [
+    "usdviewq/viewSettingsDataModel.py:126-127,168-170,283-315",
+    "usdviewq/adjustDefaultMaterial.py:11-68"
+  ],
+  "defaults": {
+    "enableSceneMaterials": true,
+    "cullBackfaces": false,
+    "defaultMaterialAmbient": 0.2,
+    "defaultMaterialSpecular": 0.1,
+    "domeLightTexturesVisible": true
+  },
+  "ambient": {
+    "min": 0.0,
+    "max": 1.0,
+    "step": 0.1,
+    "decimals": 1
+  },
+  "specular": {
+    "min": 0.0,
+    "max": 1.0,
+    "step": 0.1,
+    "decimals": 1
+  },
+  "typed": [
+    {
+      "input": "0.25",
+      "text": "0.2",
+      "value": 0.2,
+      "ambient": 0.2
+    },
+    {
+      "input": "0.208",
+      "text": "0.2",
+      "value": 0.2,
+      "ambient": 0.2
+    },
+    {
+      "input": "0.35",
+      "text": "0.3",
+      "value": 0.3,
+      "ambient": 0.3
+    },
+    {
+      "input": "0.8",
+      "text": "0.8",
+      "value": 0.8,
+      "ambient": 0.8
+    }
+  ],
+  "changed": {
+    "enableSceneMaterials": true,
+    "cullBackfaces": false,
+    "defaultMaterialAmbient": 0.8,
+    "defaultMaterialSpecular": 0.7,
+    "domeLightTexturesVisible": true
+  },
+  "reset": {
+    "enableSceneMaterials": true,
+    "cullBackfaces": false,
+    "defaultMaterialAmbient": 0.2,
+    "defaultMaterialSpecular": 0.1,
+    "domeLightTexturesVisible": true
+  }
+}

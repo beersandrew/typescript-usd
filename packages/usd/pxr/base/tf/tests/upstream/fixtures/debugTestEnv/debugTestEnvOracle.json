@@ -1,0 +1,41 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/base/tf/tests/upstream/fixtures/debugTestEnv/debugTestEnvOracle.py",
+  "upstream": [
+    "pxr/base/tf/testenv/debug.cpp",
+    "pxr/base/tf/CMakeLists.txt",
+    "pxr/base/tf/debug.cpp"
+  ],
+  "payload": {
+    "TF_DEBUG": "FOO* FLAM_* FLAM -FOOFLIMFLAM TF_DISCOVERY_D*",
+    "afterRegister": {
+      "FOO": true,
+      "FOOFLAM": true,
+      "FOOFLIMFLAM": false,
+      "FLIMFLAM": false,
+      "FLIM": false,
+      "FLAM": true,
+      "TF_DISCOVERY_DETAILED": true,
+      "TF_DISCOVERY_TERSE": false,
+      "TF_DEBUG_REGISTRY": false
+    },
+    "flimMatches": [
+      "FLIM"
+    ],
+    "flamStarMatches": [
+      "FLAM"
+    ],
+    "afterSet": {
+      "FOO": true,
+      "FOOFLAM": true,
+      "FOOFLIMFLAM": false,
+      "FLIMFLAM": false,
+      "FLIM": false,
+      "FLAM": false,
+      "TF_DISCOVERY_DETAILED": true,
+      "TF_DISCOVERY_TERSE": false,
+      "TF_DEBUG_REGISTRY": false
+    }
+  }
+}

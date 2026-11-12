@@ -1,0 +1,1003 @@
+{
+  "description": "Direct pxr library dependencies of each OpenUSD pxr_library(), from its CMake LIBRARIES argument. optionalLibraries are added through CMake variables under build options (all options enabled). Generated from the OpenUSD CMakeLists.txt files by the tooling kept outside this repository (FIXTURES.md); do not edit.",
+  "source": {
+    "tag": "v26.11.1",
+    "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b"
+  },
+  "libraries": {
+    "{{": {
+      "cmake": "pxr/usd/usd/codegenTemplates/CMakeLists.txt",
+      "libraries": [],
+      "optionalLibraries": []
+    },
+    "ar": {
+      "cmake": "pxr/usd/ar/CMakeLists.txt",
+      "libraries": [
+        "arch",
+        "js",
+        "tf",
+        "plug",
+        "vt"
+      ],
+      "optionalLibraries": []
+    },
+    "arch": {
+      "cmake": "pxr/base/arch/CMakeLists.txt",
+      "libraries": [],
+      "optionalLibraries": []
+    },
+    "boost": {
+      "cmake": "pxr/external/boost/CMakeLists.txt",
+      "libraries": [],
+      "optionalLibraries": []
+    },
+    "cameraUtil": {
+      "cmake": "pxr/imaging/cameraUtil/CMakeLists.txt",
+      "libraries": [
+        "tf",
+        "gf"
+      ],
+      "optionalLibraries": []
+    },
+    "ef": {
+      "cmake": "pxr/exec/ef/CMakeLists.txt",
+      "libraries": [
+        "vdf",
+        "arch",
+        "tf",
+        "trace",
+        "usd",
+        "work"
+      ],
+      "optionalLibraries": []
+    },
+    "esf": {
+      "cmake": "pxr/exec/esf/CMakeLists.txt",
+      "libraries": [
+        "arch",
+        "sdf",
+        "tf",
+        "vt",
+        "usd"
+      ],
+      "optionalLibraries": []
+    },
+    "esfUsd": {
+      "cmake": "pxr/exec/esfUsd/CMakeLists.txt",
+      "libraries": [
+        "arch",
+        "esf",
+        "tf",
+        "sdf",
+        "usd"
+      ],
+      "optionalLibraries": []
+    },
+    "exec": {
+      "cmake": "pxr/exec/exec/CMakeLists.txt",
+      "libraries": [
+        "ef",
+        "esf",
+        "tf",
+        "trace",
+        "ts",
+        "sdf",
+        "usd",
+        "vdf",
+        "vt"
+      ],
+      "optionalLibraries": []
+    },
+    "execGeom": {
+      "cmake": "pxr/exec/execGeom/CMakeLists.txt",
+      "libraries": [
+        "gf",
+        "tf",
+        "execUsd",
+        "usdGeom"
+      ],
+      "optionalLibraries": []
+    },
+    "execIr": {
+      "cmake": "pxr/exec/execIr/CMakeLists.txt",
+      "libraries": [
+        "execGeom",
+        "execUsd",
+        "gf",
+        "sdf",
+        "tf",
+        "usd",
+        "vt"
+      ],
+      "optionalLibraries": []
+    },
+    "execUsd": {
+      "cmake": "pxr/exec/execUsd/CMakeLists.txt",
+      "libraries": [
+        "esf",
+        "esfUsd",
+        "exec",
+        "tf",
+        "trace",
+        "sdf",
+        "usd"
+      ],
+      "optionalLibraries": []
+    },
+    "garch": {
+      "cmake": "pxr/imaging/garch/CMakeLists.txt",
+      "libraries": [
+        "arch",
+        "tf"
+      ],
+      "optionalLibraries": []
+    },
+    "geomUtil": {
+      "cmake": "pxr/imaging/geomUtil/CMakeLists.txt",
+      "libraries": [
+        "arch",
+        "gf",
+        "tf",
+        "vt",
+        "pxOsd"
+      ],
+      "optionalLibraries": []
+    },
+    "gf": {
+      "cmake": "pxr/base/gf/CMakeLists.txt",
+      "libraries": [
+        "arch",
+        "tf"
+      ],
+      "optionalLibraries": []
+    },
+    "glf": {
+      "cmake": "pxr/imaging/glf/CMakeLists.txt",
+      "libraries": [
+        "ar",
+        "arch",
+        "garch",
+        "gf",
+        "hf",
+        "hio",
+        "plug",
+        "tf",
+        "trace",
+        "sdf"
+      ],
+      "optionalLibraries": []
+    },
+    "hd": {
+      "cmake": "pxr/imaging/hd/CMakeLists.txt",
+      "libraries": [
+        "plug",
+        "tf",
+        "trace",
+        "vt",
+        "work",
+        "sdf",
+        "cameraUtil",
+        "hf",
+        "pxOsd",
+        "sdr"
+      ],
+      "optionalLibraries": []
+    },
+    "hdar": {
+      "cmake": "pxr/imaging/hdar/CMakeLists.txt",
+      "libraries": [
+        "hd",
+        "ar"
+      ],
+      "optionalLibraries": []
+    },
+    "hdGp": {
+      "cmake": "pxr/imaging/hdGp/CMakeLists.txt",
+      "libraries": [
+        "hd",
+        "hf"
+      ],
+      "optionalLibraries": []
+    },
+    "hdMtlx": {
+      "cmake": "pxr/imaging/hdMtlx/CMakeLists.txt",
+      "libraries": [
+        "gf",
+        "hd",
+        "sdf",
+        "sdr",
+        "tf",
+        "trace",
+        "usdMtlx",
+        "vt"
+      ],
+      "optionalLibraries": []
+    },
+    "hdsi": {
+      "cmake": "pxr/imaging/hdsi/CMakeLists.txt",
+      "libraries": [
+        "plug",
+        "tf",
+        "trace",
+        "vt",
+        "work",
+        "sdf",
+        "cameraUtil",
+        "usdShade",
+        "usdVol",
+        "geomUtil",
+        "hf",
+        "hd",
+        "pxOsd"
+      ],
+      "optionalLibraries": []
+    },
+    "hdSt": {
+      "cmake": "pxr/imaging/hdSt/CMakeLists.txt",
+      "libraries": [
+        "hio",
+        "garch",
+        "glf",
+        "hd",
+        "hdsi",
+        "hgiGL",
+        "hgiInterop",
+        "sdr",
+        "tf",
+        "trace"
+      ],
+      "optionalLibraries": [
+        "hdMtlx"
+      ]
+    },
+    "hdx": {
+      "cmake": "pxr/imaging/hdx/CMakeLists.txt",
+      "libraries": [
+        "plug",
+        "tf",
+        "vt",
+        "gf",
+        "work",
+        "garch",
+        "glf",
+        "pxOsd",
+        "hd",
+        "hdSt",
+        "hgi",
+        "hgiInterop",
+        "cameraUtil",
+        "sdf"
+      ],
+      "optionalLibraries": []
+    },
+    "hf": {
+      "cmake": "pxr/imaging/hf/CMakeLists.txt",
+      "libraries": [
+        "plug",
+        "tf",
+        "trace"
+      ],
+      "optionalLibraries": []
+    },
+    "hgi": {
+      "cmake": "pxr/imaging/hgi/CMakeLists.txt",
+      "libraries": [
+        "gf",
+        "plug",
+        "tf",
+        "hio"
+      ],
+      "optionalLibraries": []
+    },
+    "hgiGL": {
+      "cmake": "pxr/imaging/hgiGL/CMakeLists.txt",
+      "libraries": [
+        "arch",
+        "garch",
+        "hf",
+        "hgi",
+        "tf",
+        "trace"
+      ],
+      "optionalLibraries": []
+    },
+    "hgiInterop": {
+      "cmake": "pxr/imaging/hgiInterop/CMakeLists.txt",
+      "libraries": [
+        "gf",
+        "tf",
+        "hgi",
+        "vt"
+      ],
+      "optionalLibraries": [
+        "garch",
+        "hgiVulkan",
+        "hgiMetal"
+      ]
+    },
+    "hgiMetal": {
+      "cmake": "pxr/imaging/hgiMetal/CMakeLists.txt",
+      "libraries": [
+        "arch",
+        "hgi",
+        "tf",
+        "trace"
+      ],
+      "optionalLibraries": []
+    },
+    "hgiVulkan": {
+      "cmake": "pxr/imaging/hgiVulkan/CMakeLists.txt",
+      "libraries": [
+        "arch",
+        "hgi",
+        "tf",
+        "trace"
+      ],
+      "optionalLibraries": []
+    },
+    "hio": {
+      "cmake": "pxr/imaging/hio/CMakeLists.txt",
+      "libraries": [
+        "arch",
+        "js",
+        "plug",
+        "tf",
+        "vt",
+        "trace",
+        "ar",
+        "hf"
+      ],
+      "optionalLibraries": []
+    },
+    "hioOpenVDB": {
+      "cmake": "pxr/imaging/hioOpenVDB/CMakeLists.txt",
+      "libraries": [
+        "ar",
+        "gf",
+        "hio",
+        "tf",
+        "usd"
+      ],
+      "optionalLibraries": []
+    },
+    "js": {
+      "cmake": "pxr/base/js/CMakeLists.txt",
+      "libraries": [
+        "tf"
+      ],
+      "optionalLibraries": []
+    },
+    "kind": {
+      "cmake": "pxr/usd/kind/CMakeLists.txt",
+      "libraries": [
+        "tf",
+        "plug"
+      ],
+      "optionalLibraries": []
+    },
+    "pcp": {
+      "cmake": "pxr/usd/pcp/CMakeLists.txt",
+      "libraries": [
+        "tf",
+        "trace",
+        "vt",
+        "sdf",
+        "work",
+        "ar"
+      ],
+      "optionalLibraries": []
+    },
+    "pegtl": {
+      "cmake": "pxr/base/pegtl/CMakeLists.txt",
+      "libraries": [
+        "arch"
+      ],
+      "optionalLibraries": []
+    },
+    "plug": {
+      "cmake": "pxr/base/plug/CMakeLists.txt",
+      "libraries": [
+        "arch",
+        "tf",
+        "js",
+        "trace",
+        "work"
+      ],
+      "optionalLibraries": []
+    },
+    "pxOsd": {
+      "cmake": "pxr/imaging/pxOsd/CMakeLists.txt",
+      "libraries": [
+        "tf",
+        "gf",
+        "vt"
+      ],
+      "optionalLibraries": []
+    },
+    "python": {
+      "cmake": "pxr/external/boost/python/CMakeLists.txt",
+      "libraries": [
+        "boost"
+      ],
+      "optionalLibraries": []
+    },
+    "sdf": {
+      "cmake": "pxr/usd/sdf/CMakeLists.txt",
+      "libraries": [
+        "arch",
+        "tf",
+        "gf",
+        "pegtl",
+        "trace",
+        "ts",
+        "vt",
+        "work",
+        "ar"
+      ],
+      "optionalLibraries": []
+    },
+    "sdr": {
+      "cmake": "pxr/usd/sdr/CMakeLists.txt",
+      "libraries": [
+        "arch",
+        "plug",
+        "trace",
+        "tf",
+        "vt",
+        "work",
+        "ar",
+        "sdf"
+      ],
+      "optionalLibraries": []
+    },
+    "tf": {
+      "cmake": "pxr/base/tf/CMakeLists.txt",
+      "libraries": [
+        "arch"
+      ],
+      "optionalLibraries": []
+    },
+    "trace": {
+      "cmake": "pxr/base/trace/CMakeLists.txt",
+      "libraries": [
+        "arch",
+        "js",
+        "tf"
+      ],
+      "optionalLibraries": []
+    },
+    "ts": {
+      "cmake": "pxr/base/ts/CMakeLists.txt",
+      "libraries": [],
+      "optionalLibraries": [
+        "vt",
+        "gf",
+        "tf"
+      ]
+    },
+    "usd": {
+      "cmake": "pxr/usd/usd/CMakeLists.txt",
+      "libraries": [
+        "arch",
+        "kind",
+        "pcp",
+        "sdf",
+        "ar",
+        "plug",
+        "tf",
+        "trace",
+        "ts",
+        "vt",
+        "work"
+      ],
+      "optionalLibraries": []
+    },
+    "usdAppUtils": {
+      "cmake": "pxr/usdImaging/usdAppUtils/CMakeLists.txt",
+      "libraries": [
+        "garch",
+        "gf",
+        "hio",
+        "sdf",
+        "tf",
+        "usd",
+        "usdGeom",
+        "usdImagingGL"
+      ],
+      "optionalLibraries": []
+    },
+    "usdBakeMtlx": {
+      "cmake": "pxr/usdImaging/bin/usdBakeMtlx/CMakeLists.txt",
+      "libraries": [
+        "tf",
+        "sdr",
+        "usdMtlx",
+        "usdShade",
+        "hd",
+        "hdMtlx",
+        "usdImaging"
+      ],
+      "optionalLibraries": []
+    },
+    "usdExecImaging": {
+      "cmake": "pxr/usdImaging/usdExecImaging/CMakeLists.txt",
+      "libraries": [
+        "execGeom",
+        "execIr",
+        "execUsd",
+        "hd",
+        "sdf",
+        "tf",
+        "trace",
+        "usd",
+        "usdGeom",
+        "usdImaging",
+        "vt"
+      ],
+      "optionalLibraries": []
+    },
+    "usdGeom": {
+      "cmake": "pxr/usd/usdGeom/CMakeLists.txt",
+      "libraries": [
+        "js",
+        "tf",
+        "plug",
+        "vt",
+        "sdf",
+        "trace",
+        "usd",
+        "work"
+      ],
+      "optionalLibraries": []
+    },
+    "usdGeomValidators": {
+      "cmake": "pxr/usdValidation/usdGeomValidators/CMakeLists.txt",
+      "libraries": [
+        "tf",
+        "plug",
+        "sdf",
+        "usd",
+        "usdGeom",
+        "usdValidation"
+      ],
+      "optionalLibraries": []
+    },
+    "usdHydra": {
+      "cmake": "pxr/usd/usdHydra/CMakeLists.txt",
+      "libraries": [
+        "tf",
+        "usd",
+        "usdShade"
+      ],
+      "optionalLibraries": []
+    },
+    "usdImaging": {
+      "cmake": "pxr/usdImaging/usdImaging/CMakeLists.txt",
+      "libraries": [
+        "gf",
+        "tf",
+        "plug",
+        "trace",
+        "vt",
+        "work",
+        "geomUtil",
+        "hd",
+        "hdar",
+        "hdsi",
+        "hio",
+        "pxOsd",
+        "sdf",
+        "usd",
+        "usdGeom",
+        "usdHydra",
+        "usdLux",
+        "usdRender",
+        "usdShade",
+        "usdSkel",
+        "usdVol",
+        "ar"
+      ],
+      "optionalLibraries": []
+    },
+    "usdImagingGL": {
+      "cmake": "pxr/usdImaging/usdImagingGL/CMakeLists.txt",
+      "libraries": [
+        "gf",
+        "tf",
+        "plug",
+        "trace",
+        "vt",
+        "work",
+        "hio",
+        "garch",
+        "glf",
+        "hd",
+        "hdsi",
+        "hdx",
+        "pxOsd",
+        "sdf",
+        "sdr",
+        "usd",
+        "usdGeom",
+        "usdHydra",
+        "usdShade",
+        "usdImaging",
+        "ar"
+      ],
+      "optionalLibraries": []
+    },
+    "usdIrImaging": {
+      "cmake": "pxr/usdImaging/usdIrImaging/CMakeLists.txt",
+      "libraries": [
+        "execIr",
+        "gf",
+        "hd",
+        "tf",
+        "usd",
+        "usdGeom",
+        "usdImaging"
+      ],
+      "optionalLibraries": []
+    },
+    "usdLod": {
+      "cmake": "pxr/usd/usdLod/CMakeLists.txt",
+      "libraries": [
+        "tf",
+        "gf",
+        "vt",
+        "sdf",
+        "usd",
+        "usdGeom"
+      ],
+      "optionalLibraries": []
+    },
+    "usdLodValidators": {
+      "cmake": "pxr/usdValidation/usdLodValidators/CMakeLists.txt",
+      "libraries": [
+        "tf",
+        "plug",
+        "vt",
+        "sdf",
+        "usd",
+        "usdLod",
+        "usdValidation"
+      ],
+      "optionalLibraries": []
+    },
+    "usdLux": {
+      "cmake": "pxr/usd/usdLux/CMakeLists.txt",
+      "libraries": [
+        "tf",
+        "vt",
+        "sdf",
+        "sdr",
+        "usd",
+        "usdGeom",
+        "usdShade"
+      ],
+      "optionalLibraries": []
+    },
+    "usdLuxValidators": {
+      "cmake": "pxr/usdValidation/usdLuxValidators/CMakeLists.txt",
+      "libraries": [
+        "tf",
+        "plug",
+        "sdf",
+        "usd",
+        "sdr",
+        "usdShade",
+        "usdLux",
+        "usdValidation"
+      ],
+      "optionalLibraries": []
+    },
+    "usdMedia": {
+      "cmake": "pxr/usd/usdMedia/CMakeLists.txt",
+      "libraries": [
+        "tf",
+        "vt",
+        "sdf",
+        "usd",
+        "usdGeom"
+      ],
+      "optionalLibraries": []
+    },
+    "usdMediaValidators": {
+      "cmake": "pxr/usdValidation/usdMediaValidators/CMakeLists.txt",
+      "libraries": [
+        "tf",
+        "sdf",
+        "usd",
+        "usdMedia",
+        "usdValidation"
+      ],
+      "optionalLibraries": []
+    },
+    "usdMtlx": {
+      "cmake": "pxr/usd/usdMtlx/CMakeLists.txt",
+      "libraries": [
+        "arch",
+        "gf",
+        "sdf",
+        "sdr",
+        "tf",
+        "vt",
+        "usd",
+        "usdGeom",
+        "usdShade",
+        "usdUI",
+        "usdUtils"
+      ],
+      "optionalLibraries": []
+    },
+    "usdPhysics": {
+      "cmake": "pxr/usd/usdPhysics/CMakeLists.txt",
+      "libraries": [
+        "tf",
+        "plug",
+        "vt",
+        "sdf",
+        "trace",
+        "usd",
+        "usdGeom",
+        "usdShade",
+        "work"
+      ],
+      "optionalLibraries": []
+    },
+    "usdPhysicsValidators": {
+      "cmake": "pxr/usdValidation/usdPhysicsValidators/CMakeLists.txt",
+      "libraries": [
+        "tf",
+        "plug",
+        "sdf",
+        "usd",
+        "usdGeom",
+        "usdPhysics",
+        "usdValidation"
+      ],
+      "optionalLibraries": []
+    },
+    "usdPmc": {
+      "cmake": "pxr/usd/usdPmc/CMakeLists.txt",
+      "libraries": [
+        "tf",
+        "sdf",
+        "usd",
+        "usdGeom",
+        "usdUtils"
+      ],
+      "optionalLibraries": []
+    },
+    "usdProc": {
+      "cmake": "pxr/usd/usdProc/CMakeLists.txt",
+      "libraries": [
+        "tf",
+        "usd",
+        "usdGeom"
+      ],
+      "optionalLibraries": []
+    },
+    "usdProcImaging": {
+      "cmake": "pxr/usdImaging/usdProcImaging/CMakeLists.txt",
+      "libraries": [
+        "usdImaging",
+        "usdProc"
+      ],
+      "optionalLibraries": []
+    },
+    "usdProfiles": {
+      "cmake": "pxr/usd/usdProfiles/CMakeLists.txt",
+      "libraries": [
+        "arch",
+        "tf",
+        "plug",
+        "vt",
+        "js",
+        "sdf",
+        "usd"
+      ],
+      "optionalLibraries": []
+    },
+    "usdRender": {
+      "cmake": "pxr/usd/usdRender/CMakeLists.txt",
+      "libraries": [
+        "gf",
+        "tf",
+        "usd",
+        "usdGeom",
+        "usdShade"
+      ],
+      "optionalLibraries": []
+    },
+    "usdRi": {
+      "cmake": "pxr/usd/usdRi/CMakeLists.txt",
+      "libraries": [
+        "tf",
+        "vt",
+        "sdf",
+        "usd",
+        "usdShade",
+        "usdGeom"
+      ],
+      "optionalLibraries": []
+    },
+    "usdSemantics": {
+      "cmake": "pxr/usd/usdSemantics/CMakeLists.txt",
+      "libraries": [
+        "tf",
+        "vt",
+        "usd"
+      ],
+      "optionalLibraries": []
+    },
+    "usdShade": {
+      "cmake": "pxr/usd/usdShade/CMakeLists.txt",
+      "libraries": [
+        "tf",
+        "vt",
+        "js",
+        "sdf",
+        "sdr",
+        "usd",
+        "usdGeom"
+      ],
+      "optionalLibraries": []
+    },
+    "usdShadeValidators": {
+      "cmake": "pxr/usdValidation/usdShadeValidators/CMakeLists.txt",
+      "libraries": [
+        "tf",
+        "plug",
+        "sdf",
+        "usd",
+        "sdr",
+        "usdShade",
+        "usdValidation"
+      ],
+      "optionalLibraries": []
+    },
+    "usdSkel": {
+      "cmake": "pxr/usd/usdSkel/CMakeLists.txt",
+      "libraries": [
+        "arch",
+        "gf",
+        "tf",
+        "trace",
+        "vt",
+        "work",
+        "sdf",
+        "usd",
+        "usdGeom"
+      ],
+      "optionalLibraries": []
+    },
+    "usdSkelImaging": {
+      "cmake": "pxr/usdImaging/usdSkelImaging/CMakeLists.txt",
+      "libraries": [
+        "hio",
+        "hd",
+        "usdImaging",
+        "usdSkel"
+      ],
+      "optionalLibraries": []
+    },
+    "usdSkelValidators": {
+      "cmake": "pxr/usdValidation/usdSkelValidators/CMakeLists.txt",
+      "libraries": [
+        "tf",
+        "plug",
+        "sdf",
+        "usd",
+        "usdSkel",
+        "usdValidation"
+      ],
+      "optionalLibraries": []
+    },
+    "usdUI": {
+      "cmake": "pxr/usd/usdUI/CMakeLists.txt",
+      "libraries": [
+        "tf",
+        "vt",
+        "sdf",
+        "usd"
+      ],
+      "optionalLibraries": []
+    },
+    "usdUtils": {
+      "cmake": "pxr/usd/usdUtils/CMakeLists.txt",
+      "libraries": [
+        "arch",
+        "tf",
+        "gf",
+        "sdf",
+        "usd",
+        "usdGeom",
+        "usdShade",
+        "usdUI"
+      ],
+      "optionalLibraries": []
+    },
+    "usdUtilsValidators": {
+      "cmake": "pxr/usdValidation/usdUtilsValidators/CMakeLists.txt",
+      "libraries": [
+        "tf",
+        "plug",
+        "sdf",
+        "usd",
+        "usdUtils",
+        "usdValidation"
+      ],
+      "optionalLibraries": []
+    },
+    "usdValidation": {
+      "cmake": "pxr/usdValidation/usdValidation/CMakeLists.txt",
+      "libraries": [
+        "sdf",
+        "plug",
+        "tf",
+        "gf",
+        "usd",
+        "work"
+      ],
+      "optionalLibraries": []
+    },
+    "usdviewq": {
+      "cmake": "pxr/usdImaging/usdviewq/CMakeLists.txt",
+      "libraries": [
+        "tf",
+        "usd",
+        "usdGeom",
+        "usdUI",
+        "hd"
+      ],
+      "optionalLibraries": []
+    },
+    "usdVol": {
+      "cmake": "pxr/usd/usdVol/CMakeLists.txt",
+      "libraries": [
+        "tf",
+        "usd",
+        "usdGeom"
+      ],
+      "optionalLibraries": []
+    },
+    "usdVolImaging": {
+      "cmake": "pxr/usdImaging/usdVolImaging/CMakeLists.txt",
+      "libraries": [
+        "usdImaging"
+      ],
+      "optionalLibraries": []
+    },
+    "vdf": {
+      "cmake": "pxr/exec/vdf/CMakeLists.txt",
+      "libraries": [
+        "arch",
+        "gf",
+        "tf",
+        "trace",
+        "vt",
+        "work"
+      ],
+      "optionalLibraries": []
+    },
+    "vt": {
+      "cmake": "pxr/base/vt/CMakeLists.txt",
+      "libraries": [
+        "arch",
+        "tf",
+        "gf",
+        "trace"
+      ],
+      "optionalLibraries": []
+    },
+    "work": {
+      "cmake": "pxr/base/work/CMakeLists.txt",
+      "libraries": [
+        "tf",
+        "trace"
+      ],
+      "optionalLibraries": []
+    }
+  }
+}

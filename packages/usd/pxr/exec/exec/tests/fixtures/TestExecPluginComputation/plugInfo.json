@@ -1,0 +1,23 @@
+{
+    "Plugins": [
+        {
+            "Info": {
+                "Exec" : {
+                    "Schemas": {
+                        "TestExecPluginComputationSchema": {
+                        },
+                        "TestExecNonComputationalSchema": {
+                            "allowsPluginComputations": false
+                        },
+                        "UnknownSchemaType": {
+                            "allowsPluginComputations": false
+                        }
+                    }
+                }
+            },
+            "LibraryPath": "TestExecPluginComputation.ts",
+            "Name": "TestExecPluginComputation",
+            "Type": "library"
+        }
+    ]
+}

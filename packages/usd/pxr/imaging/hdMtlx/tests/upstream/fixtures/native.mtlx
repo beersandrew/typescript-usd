@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<materialx version="1.39">
+  <standard_surface name="Surface" type="surfaceshader">
+    <input name="base_color" type="color3" output="base_color_out" nodegraph="Mat2" />
+    <input name="specular_roughness" type="float" output="specular_roughness_outy" nodegraph="Mat2" />
+    <input name="metalness" type="float" value="0.25" />
+  </standard_surface>
+  <surfacematerial name="Mat" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="Surface" />
+  </surfacematerial>
+  <nodegraph name="Mat2">
+    <image name="Mat_Image" type="color3" nodedef="ND_image_color3">
+      <input name="file" type="filename" value="texture.png" colorspace="srgb_texture" />
+      <input name="texcoord" type="vector2" nodename="Mat_UV" />
+    </image>
+    <texcoord name="Mat_UV" type="vector2" nodedef="ND_texcoord_vector2">
+      <input name="index" type="integer" value="0" />
+    </texcoord>
+    <output name="base_color_out" type="color3" nodename="Mat_Image" />
+    <separate3 name="Mat_Split" type="multioutput" nodedef="ND_separate3_vector3">
+      <input name="in" type="vector3" value="0.2, 0.4, 0.6" />
+    </separate3>
+    <output name="specular_roughness_outy" type="float" output="outy" nodename="Mat_Split" />
+  </nodegraph>
+</materialx>

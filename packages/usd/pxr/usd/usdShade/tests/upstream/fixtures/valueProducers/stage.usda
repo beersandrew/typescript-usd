@@ -1,0 +1,59 @@
+#usda 1.0
+
+def "NoFallback"
+{
+    def Shader "A"
+    {
+        float inputs:in.connect = </NoFallback/B.inputs:in>
+    }
+
+    def Shader "B"
+    {
+        float inputs:in = 0.7
+    }
+}
+
+def "WithFallback"
+{
+    def Shader "A"
+    {
+        float inputs:in = 0.2
+        float inputs:in.connect = </WithFallback/B.inputs:in>
+    }
+
+    def Shader "B"
+    {
+        float inputs:in = 0.7
+    }
+}
+
+def NodeGraph "Graph"
+{
+    float inputs:cycleA.connect = </Graph.inputs:cycleB>
+    float inputs:cycleB.connect = </Graph.inputs:cycleA>
+    float inputs:dead
+    float inputs:value = 0.3
+
+    def Shader "A"
+    {
+        float inputs:fallback = 0.4
+        float inputs:fallback.connect = </Graph.inputs:dead>
+        float inputs:in.connect = </Graph.inputs:value>
+        float inputs:multi.connect = [
+            </Graph/B.outputs:out>,
+            </Graph/C.outputs:out>,
+        ]
+        float inputs:terminal.connect = </Graph/B.outputs:out>
+    }
+
+    def Shader "B"
+    {
+        float outputs:out.connect = </Graph/C.outputs:out>
+    }
+
+    def Shader "C"
+    {
+        float outputs:out
+    }
+}
+

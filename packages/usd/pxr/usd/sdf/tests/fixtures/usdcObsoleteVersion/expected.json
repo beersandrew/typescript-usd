@@ -1,0 +1,24 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/usd/sdf/tests/fixtures/usdcObsoleteVersion/capture.py",
+  "upstream": [
+    "pxr/usd/sdf/testenv/testSdfUsdcMalformed.cpp:68-92",
+    "pxr/usd/sdf/crateFile.cpp:3454-3461",
+    "pxr/usd/sdf/crateFile.cpp:3562-3578"
+  ],
+  "payload": {
+    "bad_obsolete_version.usdc": {
+      "raised": true,
+      "errors": [
+        "Cannot read asset @<asset>@ with obsolete version 0.0.0. The oldest version this software supports is 0.4.0. See the OpenUSD FAQ for information about handling obsolete assets. https://openusd.org/release/usdfaq.html"
+      ]
+    },
+    "sphere-0.0.1.usd": {
+      "raised": true,
+      "errors": [
+        "Cannot read asset @<asset>@ with obsolete version 0.0.1. The oldest version this software supports is 0.4.0. See the OpenUSD FAQ for information about handling obsolete assets. https://openusd.org/release/usdfaq.html"
+      ]
+    }
+  }
+}

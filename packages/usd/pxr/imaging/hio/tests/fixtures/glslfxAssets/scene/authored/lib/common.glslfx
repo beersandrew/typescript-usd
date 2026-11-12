@@ -1,0 +1,5 @@
+-- glslfx version 0.1
+#import ../shared.glslfx
+#import sibling.glslfx
+-- glsl Common.A
+void common_a();

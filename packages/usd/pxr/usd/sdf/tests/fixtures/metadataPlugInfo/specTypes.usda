@@ -1,0 +1,18 @@
+#usda 1.0
+(
+    int_single = 42
+    string_single = "rootmeta"
+)
+
+def "Foo" (
+    double_single = 2.25
+)
+{
+    double attr (
+        double3_single = (7.5, 8.5, 9.5)
+        token_single = "attrtok"
+    )
+    custom rel rel (
+        bool_single = false
+    )
+}

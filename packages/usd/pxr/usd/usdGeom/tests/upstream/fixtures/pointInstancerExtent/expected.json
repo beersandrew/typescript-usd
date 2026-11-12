@@ -1,0 +1,364 @@
+{
+  "version": "26.11.1",
+  "upstream": [
+    "pxr/usd/usdGeom/pointInstancer.cpp:1128-1312,1425-1461"
+  ],
+  "cases": [
+    {
+      "name": "basic",
+      "source": "def Xform \"World\" {\n def PointInstancer \"PI\" {\n  int[] protoIndices = [0,0]\n  point3f[] positions = [(0,0,0),(10,0,0)]\n  rel prototypes = </World/PI/Proto>\n  def Cube \"Proto\" {\n   double size = 2\n  }\n }\n}",
+      "extent": [
+        [
+          -1.0,
+          -1.0,
+          -1.0
+        ],
+        [
+          11.0,
+          1.0,
+          1.0
+        ]
+      ],
+      "world": [
+        [
+          -1.0,
+          -1.0,
+          -1.0
+        ],
+        [
+          11.0,
+          1.0,
+          1.0
+        ]
+      ],
+      "instancer": [
+        [
+          -1.0,
+          -1.0,
+          -1.0
+        ],
+        [
+          11.0,
+          1.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "name": "masked",
+      "source": "def Xform \"World\" {\n def PointInstancer \"PI\" {\n  int[] protoIndices = [0,0]\n  point3f[] positions = [(0,0,0),(10,0,0)]\n  int64[] invisibleIds = [1]\n  rel prototypes = </World/PI/Proto>\n  def Cube \"Proto\" {\n   double size = 2\n  }\n }\n}",
+      "extent": [
+        [
+          -1.0,
+          -1.0,
+          -1.0
+        ],
+        [
+          1.0,
+          1.0,
+          1.0
+        ]
+      ],
+      "world": [
+        [
+          -1.0,
+          -1.0,
+          -1.0
+        ],
+        [
+          1.0,
+          1.0,
+          1.0
+        ]
+      ],
+      "instancer": [
+        [
+          -1.0,
+          -1.0,
+          -1.0
+        ],
+        [
+          1.0,
+          1.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "name": "idMasked",
+      "source": "def Xform \"World\" {\n def PointInstancer \"PI\" {\n  int[] protoIndices = [0,0]\n  point3f[] positions = [(0,0,0),(10,0,0)]\n  int64[] ids = [20,30]\n  int64[] invisibleIds = [30]\n  rel prototypes = </World/PI/Proto>\n  def Cube \"Proto\" {\n   double size = 2\n  }\n }\n}",
+      "extent": [
+        [
+          -1.0,
+          -1.0,
+          -1.0
+        ],
+        [
+          1.0,
+          1.0,
+          1.0
+        ]
+      ],
+      "world": [
+        [
+          -1.0,
+          -1.0,
+          -1.0
+        ],
+        [
+          1.0,
+          1.0,
+          1.0
+        ]
+      ],
+      "instancer": [
+        [
+          -1.0,
+          -1.0,
+          -1.0
+        ],
+        [
+          1.0,
+          1.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "name": "allMasked",
+      "source": "def Xform \"World\" {\n def PointInstancer \"PI\" {\n  int[] protoIndices = [0,0]\n  point3f[] positions = [(0,0,0),(10,0,0)]\n  int64[] invisibleIds = [0,1]\n  rel prototypes = </World/PI/Proto>\n  def Cube \"Proto\" {\n   double size = 2\n  }\n }\n}",
+      "extent": [
+        [
+          3.4028234663852886e+38,
+          3.4028234663852886e+38,
+          3.4028234663852886e+38
+        ],
+        [
+          -3.4028234663852886e+38,
+          -3.4028234663852886e+38,
+          -3.4028234663852886e+38
+        ]
+      ],
+      "world": null,
+      "instancer": null
+    },
+    {
+      "name": "prototypeTransform",
+      "source": "def Xform \"World\" {\n def PointInstancer \"PI\" {\n  int[] protoIndices = [0,0]\n  point3f[] positions = [(0,0,0),(10,0,0)]\n  rel prototypes = </World/PI/Proto>\n  def Cube \"Proto\" {\n   double size = 2\n double3 xformOp:translate=(3,4,5)\n uniform token[] xformOpOrder=[\"xformOp:translate\"]\n  }\n }\n}",
+      "extent": [
+        [
+          2.0,
+          3.0,
+          4.0
+        ],
+        [
+          14.0,
+          5.0,
+          6.0
+        ]
+      ],
+      "world": [
+        [
+          2.0,
+          3.0,
+          4.0
+        ],
+        [
+          14.0,
+          5.0,
+          6.0
+        ]
+      ],
+      "instancer": [
+        [
+          2.0,
+          3.0,
+          4.0
+        ],
+        [
+          14.0,
+          5.0,
+          6.0
+        ]
+      ]
+    },
+    {
+      "name": "instanceTransform",
+      "source": "def Xform \"World\" {\n def PointInstancer \"PI\" {\n  int[] protoIndices = [0,0]\n  point3f[] positions = [(0,0,0),(10,0,0)]\n  float3[] scales=[(2,3,4),(1,1,1)]\n  quath[] orientations=[(0.70710678,0,0,0.70710678),(1,0,0,0)]\n  rel prototypes = </World/PI/Proto>\n  def Cube \"Proto\" {\n   double size = 2\n  }\n }\n}",
+      "extent": [
+        [
+          -2.999786376953125,
+          -2.000213623046875,
+          -4.0
+        ],
+        [
+          11.0,
+          2.000213623046875,
+          4.0
+        ]
+      ],
+      "world": [
+        [
+          -2.999786376953125,
+          -2.000213623046875,
+          -4.0
+        ],
+        [
+          11.0,
+          2.000213623046875,
+          4.0
+        ]
+      ],
+      "instancer": [
+        [
+          -2.999786376953125,
+          -2.000213623046875,
+          -4.0
+        ],
+        [
+          11.0,
+          2.000213623046875,
+          4.0
+        ]
+      ]
+    },
+    {
+      "name": "renderPurposePrototype",
+      "source": "def Xform \"World\" {\n def PointInstancer \"PI\" {\n  int[] protoIndices = [0,0]\n  point3f[] positions = [(0,0,0),(10,0,0)]\n  rel prototypes = </World/PI/Proto>\n  def Cube \"Proto\" {\n   double size = 2\n uniform token purpose=\"render\"\n  }\n }\n}",
+      "extent": [
+        [
+          -1.0,
+          -1.0,
+          -1.0
+        ],
+        [
+          11.0,
+          1.0,
+          1.0
+        ]
+      ],
+      "world": [
+        [
+          -1.0,
+          -1.0,
+          -1.0
+        ],
+        [
+          11.0,
+          1.0,
+          1.0
+        ]
+      ],
+      "instancer": [
+        [
+          -1.0,
+          -1.0,
+          -1.0
+        ],
+        [
+          11.0,
+          1.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "name": "guidePurposePrototype",
+      "source": "def Xform \"World\" {\n def PointInstancer \"PI\" {\n  int[] protoIndices = [0,0]\n  point3f[] positions = [(0,0,0),(10,0,0)]\n  rel prototypes = </World/PI/Proto>\n  def Cube \"Proto\" {\n   double size = 2\n uniform token purpose=\"guide\"\n  }\n }\n}",
+      "extent": [
+        [
+          3.4028234663852886e+38,
+          3.4028234663852886e+38,
+          3.4028234663852886e+38
+        ],
+        [
+          -3.4028234663852886e+38,
+          -3.4028234663852886e+38,
+          -3.4028234663852886e+38
+        ]
+      ],
+      "world": null,
+      "instancer": null
+    },
+    {
+      "name": "authoredExtent",
+      "source": "def Xform \"World\" {\n def PointInstancer \"PI\" {\n  int[] protoIndices = [0,0]\n  point3f[] positions = [(0,0,0),(10,0,0)]\n  float3[] extent=[(-2,-3,-4),(2,3,4)]\n  rel prototypes = </World/PI/Proto>\n  def Cube \"Proto\" {\n   double size = 2\n  }\n }\n}",
+      "extent": [
+        [
+          -2.0,
+          -3.0,
+          -4.0
+        ],
+        [
+          2.0,
+          3.0,
+          4.0
+        ]
+      ],
+      "world": [
+        [
+          -2.0,
+          -3.0,
+          -4.0
+        ],
+        [
+          2.0,
+          3.0,
+          4.0
+        ]
+      ],
+      "instancer": [
+        [
+          -2.0,
+          -3.0,
+          -4.0
+        ],
+        [
+          2.0,
+          3.0,
+          4.0
+        ]
+      ]
+    },
+    {
+      "name": "instancerTransform",
+      "source": "def Xform \"World\" {\n def PointInstancer \"PI\" {\n  double3 xformOp:translate=(100,200,300)\n uniform token[] xformOpOrder=[\"xformOp:translate\"]\n int[] protoIndices = [0,0]\n  point3f[] positions = [(0,0,0),(10,0,0)]\n  rel prototypes = </World/PI/Proto>\n  def Cube \"Proto\" {\n   double size = 2\n  }\n }\n}",
+      "extent": [
+        [
+          -1.0,
+          -1.0,
+          -1.0
+        ],
+        [
+          11.0,
+          1.0,
+          1.0
+        ]
+      ],
+      "world": [
+        [
+          99.0,
+          199.0,
+          299.0
+        ],
+        [
+          111.0,
+          201.0,
+          301.0
+        ]
+      ],
+      "instancer": [
+        [
+          99.0,
+          199.0,
+          299.0
+        ],
+        [
+          111.0,
+          201.0,
+          301.0
+        ]
+      ]
+    }
+  ]
+}

@@ -1,0 +1,736 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/usdImaging/usdImagingGL/tests/fixtures/native/textureInputs/capture.py",
+  "upstream": [
+    "pxr/imaging/hdSt/materialNetwork.cpp:689-714",
+    "pxr/imaging/hdSt/materialNetwork.cpp:795-912",
+    "pxr/imaging/hdSt/codeGen.cpp:4251-4299",
+    "pxr/imaging/hdSt/hgiConversions.cpp:144-151",
+    "pxr/usd/plugin/usdShaders/shaders/previewSurface.glslfx:76-109",
+    "pxr/usd/plugin/usdShaders/shaders/previewSurface.glslfx:483-491",
+    "pxr/usdImaging/usdAppUtils/frameRecorder.cpp:398-467",
+    "pxr/usdImaging/usdImagingGL/renderParams.h:108-130"
+  ],
+  "payload": {
+    "render": {
+      "renderer": "HdStormRendererPlugin",
+      "gpuEnabled": true,
+      "time": 0,
+      "width": 256,
+      "height": 256,
+      "viewport": [
+        0,
+        0,
+        256,
+        256
+      ],
+      "colorCorrection": "sRGB",
+      "complexity": 1,
+      "purposes": [
+        "default",
+        "proxy"
+      ],
+      "drawMode": "smoothShaded",
+      "cullStyle": "nothing",
+      "sceneMaterials": true,
+      "sceneLights": true,
+      "clearColor": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "pngAlpha": "native color AOV alpha; preserve it separately from an opaque canvas",
+      "cameraPath": "/Camera",
+      "viewMatrix": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          -6.0,
+          1.0
+        ]
+      ],
+      "projectionMatrix": [
+        [
+          2.7777777777777772,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          2.7777777777777772,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          -1.000002000002,
+          -1.0
+        ],
+        [
+          0.0,
+          0.0,
+          -2.000002000002,
+          0.0
+        ]
+      ],
+      "cameraLight": {
+        "enabled": true,
+        "position": [
+          0,
+          0,
+          6,
+          1
+        ],
+        "diffuse": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "specular": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "ambient": [
+          0.01,
+          0.01,
+          0.01,
+          1
+        ],
+        "attenuation": [
+          1,
+          0,
+          0
+        ]
+      },
+      "sceneAmbient": [
+        0.01,
+        0.01,
+        0.01,
+        1
+      ],
+      "defaultMaterial": {
+        "ambient": [
+          0.2,
+          0.2,
+          0.2,
+          1
+        ],
+        "specular": [
+          0.1,
+          0.1,
+          0.1,
+          1
+        ],
+        "shininess": 32
+      }
+    },
+    "defaultSt": [
+      0.0,
+      0.0
+    ],
+    "defaultWrapIsBlack": true,
+    "cases": [
+      {
+        "name": "noSt",
+        "stType": "",
+        "scale": [
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "bias": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "samples": [
+          {
+            "x": 128,
+            "y": 128,
+            "rgba": [
+              170,
+              170,
+              170,
+              255
+            ]
+          },
+          {
+            "x": 96,
+            "y": 128,
+            "rgba": [
+              164,
+              164,
+              164,
+              255
+            ]
+          },
+          {
+            "x": 160,
+            "y": 128,
+            "rgba": [
+              163,
+              163,
+              163,
+              255
+            ]
+          }
+        ]
+      },
+      {
+        "name": "literalSt",
+        "stType": "float2",
+        "scale": [
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "bias": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "samples": [
+          {
+            "x": 128,
+            "y": 128,
+            "rgba": [
+              170,
+              170,
+              170,
+              255
+            ]
+          },
+          {
+            "x": 96,
+            "y": 128,
+            "rgba": [
+              164,
+              164,
+              164,
+              255
+            ]
+          },
+          {
+            "x": 160,
+            "y": 128,
+            "rgba": [
+              163,
+              163,
+              163,
+              255
+            ]
+          }
+        ]
+      },
+      {
+        "name": "tokenSt",
+        "stType": "token",
+        "scale": [
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "bias": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "samples": [
+          {
+            "x": 128,
+            "y": 128,
+            "rgba": [
+              255,
+              255,
+              255,
+              255
+            ]
+          },
+          {
+            "x": 96,
+            "y": 128,
+            "rgba": [
+              255,
+              255,
+              255,
+              255
+            ]
+          },
+          {
+            "x": 160,
+            "y": 128,
+            "rgba": [
+              255,
+              255,
+              255,
+              255
+            ]
+          }
+        ]
+      },
+      {
+        "name": "connectedSt",
+        "stType": "float2",
+        "scale": [
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "bias": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "samples": [
+          {
+            "x": 128,
+            "y": 128,
+            "rgba": [
+              255,
+              255,
+              255,
+              255
+            ]
+          },
+          {
+            "x": 96,
+            "y": 128,
+            "rgba": [
+              255,
+              255,
+              255,
+              255
+            ]
+          },
+          {
+            "x": 160,
+            "y": 128,
+            "rgba": [
+              255,
+              255,
+              255,
+              255
+            ]
+          }
+        ]
+      },
+      {
+        "name": "scaleBias",
+        "stType": "float2",
+        "scale": [
+          0.25,
+          0.5,
+          0.75,
+          0.5
+        ],
+        "bias": [
+          0.10000000149011612,
+          0.20000000298023224,
+          0.30000001192092896,
+          0.10000000149011612
+        ],
+        "samples": [
+          {
+            "x": 128,
+            "y": 128,
+            "rgba": [
+              187,
+              235,
+              255,
+              255
+            ]
+          },
+          {
+            "x": 96,
+            "y": 128,
+            "rgba": [
+              180,
+              229,
+              255,
+              255
+            ]
+          },
+          {
+            "x": 160,
+            "y": 128,
+            "rgba": [
+              179,
+              228,
+              255,
+              255
+            ]
+          }
+        ]
+      },
+      {
+        "name": "roughnessSrgb",
+        "stType": "float2",
+        "scale": [
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "bias": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "samples": [
+          {
+            "x": 128,
+            "y": 128,
+            "rgba": [
+              255,
+              255,
+              255,
+              255
+            ]
+          },
+          {
+            "x": 96,
+            "y": 128,
+            "rgba": [
+              230,
+              230,
+              230,
+              255
+            ]
+          },
+          {
+            "x": 160,
+            "y": 128,
+            "rgba": [
+              225,
+              225,
+              225,
+              255
+            ]
+          }
+        ]
+      },
+      {
+        "name": "roughnessRaw",
+        "stType": "float2",
+        "scale": [
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "bias": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "samples": [
+          {
+            "x": 128,
+            "y": 128,
+            "rgba": [
+              209,
+              209,
+              209,
+              255
+            ]
+          },
+          {
+            "x": 96,
+            "y": 128,
+            "rgba": [
+              206,
+              206,
+              206,
+              255
+            ]
+          },
+          {
+            "x": 160,
+            "y": 128,
+            "rgba": [
+              207,
+              207,
+              207,
+              255
+            ]
+          }
+        ]
+      },
+      {
+        "name": "textureAlpha",
+        "stType": "float2",
+        "scale": [
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "bias": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "samples": [
+          {
+            "x": 128,
+            "y": 128,
+            "rgba": [
+              141,
+              173,
+              120,
+              128
+            ]
+          },
+          {
+            "x": 96,
+            "y": 128,
+            "rgba": [
+              132,
+              165,
+              110,
+              124
+            ]
+          },
+          {
+            "x": 160,
+            "y": 128,
+            "rgba": [
+              131,
+              164,
+              109,
+              122
+            ]
+          }
+        ]
+      },
+      {
+        "name": "alphaScaleBias",
+        "stType": "float2",
+        "scale": [
+          0.25,
+          0.5,
+          0.75,
+          0.5
+        ],
+        "bias": [
+          0.10000000149011612,
+          0.20000000298023224,
+          0.30000001192092896,
+          0.10000000149011612
+        ],
+        "samples": [
+          {
+            "x": 128,
+            "y": 128,
+            "rgba": [
+              128,
+              153,
+              143,
+              89
+            ]
+          },
+          {
+            "x": 96,
+            "y": 128,
+            "rgba": [
+              118,
+              145,
+              135,
+              87
+            ]
+          },
+          {
+            "x": 160,
+            "y": 128,
+            "rgba": [
+              117,
+              144,
+              134,
+              86
+            ]
+          }
+        ]
+      },
+      {
+        "name": "gradientAlpha",
+        "stType": "float2",
+        "scale": [
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "bias": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "samples": [
+          {
+            "x": 128,
+            "y": 128,
+            "rgba": [
+              112,
+              112,
+              211,
+              129
+            ]
+          },
+          {
+            "x": 96,
+            "y": 128,
+            "rgba": [
+              101,
+              101,
+              101,
+              0
+            ]
+          },
+          {
+            "x": 160,
+            "y": 128,
+            "rgba": [
+              101,
+              101,
+              255,
+              243
+            ]
+          }
+        ]
+      },
+      {
+        "name": "normalUnscaled",
+        "stType": "float2",
+        "scale": [
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "bias": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "samples": [
+          {
+            "x": 128,
+            "y": 128,
+            "rgba": [
+              169,
+              169,
+              169,
+              255
+            ]
+          },
+          {
+            "x": 96,
+            "y": 128,
+            "rgba": [
+              172,
+              172,
+              172,
+              255
+            ]
+          },
+          {
+            "x": 160,
+            "y": 128,
+            "rgba": [
+              165,
+              165,
+              165,
+              255
+            ]
+          }
+        ]
+      },
+      {
+        "name": "normalScaled",
+        "stType": "float2",
+        "scale": [
+          2.0,
+          2.0,
+          2.0,
+          1.0
+        ],
+        "bias": [
+          -1.0,
+          -1.0,
+          -1.0,
+          0.0
+        ],
+        "samples": [
+          {
+            "x": 128,
+            "y": 128,
+            "rgba": [
+              210,
+              210,
+              210,
+              255
+            ]
+          },
+          {
+            "x": 96,
+            "y": 128,
+            "rgba": [
+              201,
+              201,
+              201,
+              255
+            ]
+          },
+          {
+            "x": 160,
+            "y": 128,
+            "rgba": [
+              207,
+              207,
+              207,
+              255
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

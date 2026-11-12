@@ -1,0 +1,7 @@
+-- glslfx version 0.1
+#import ./lib/common.glslfx
+#import $TOOLS/hdSt/shaders/instancing.glslfx
+-- configuration
+{"techniques": {"default": {"surfaceShader": {"source": ["Main.Surface", "Common.A", "Shared.B", "Sibling.C"]}}}}
+-- glsl Main.Surface
+void main_surface();

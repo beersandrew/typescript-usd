@@ -1,0 +1,33 @@
+#usda 1.0
+
+def "A"
+{
+    double x = 1
+    variantSet "v" = {
+        "a" {
+            variantSet "inner" = {
+                "b" {
+
+                }
+            }
+
+        }
+    }
+}
+
+def "B" (
+    prepend variantSets = "w"
+)
+{
+    variantSet "v" = {
+        "a" {
+
+        }
+    }
+    variantSet "w" = {
+        "b" {
+
+        }
+    }
+}
+

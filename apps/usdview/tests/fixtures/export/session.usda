@@ -1,0 +1,14 @@
+#usda 1.0
+
+over "World"
+{
+    over "Mesh" (
+        variants = {
+            string look = "blue"
+        }
+    )
+    {
+        token visibility = "invisible"
+    }
+}
+

@@ -1,0 +1,8 @@
+#usda 1.2
+
+over "foo"
+{
+    string[] sattr = edit [
+        minsize 2
+    ]
+}

@@ -1,0 +1,1618 @@
+{
+  "nativeVersion": "26.11.1",
+  "source": "usdviewq/mainWindowUI.ui and appController.py dynamic setup",
+  "menus": {
+    "menuFile": {
+      "fontSize": 10,
+      "title": "File",
+      "items": [
+        {
+          "id": "actionOpen",
+          "text": "Open",
+          "separator": false,
+          "enabled": true,
+          "height": 13,
+          "shortcuts": [
+            "Ctrl+O"
+          ]
+        },
+        {
+          "id": "actionReopen_Stage",
+          "text": "Reopen Stage",
+          "separator": false,
+          "enabled": true,
+          "height": 13,
+          "shortcuts": [
+            "Ctrl+Shift+R"
+          ]
+        },
+        {
+          "id": "actionReload_All_Layers",
+          "text": "Reload All Layers",
+          "separator": false,
+          "enabled": true,
+          "height": 13,
+          "shortcuts": [
+            "Ctrl+R"
+          ]
+        },
+        {
+          "id": "",
+          "text": "",
+          "separator": true,
+          "enabled": true,
+          "height": 1
+        },
+        {
+          "id": "actionSave_Overrides_As",
+          "text": "Save Overrides As...",
+          "separator": false,
+          "enabled": true,
+          "height": 13
+        },
+        {
+          "id": "actionSave_Flattened_As",
+          "text": "Save Flattened As...",
+          "separator": false,
+          "enabled": true,
+          "height": 13
+        },
+        {
+          "id": "",
+          "text": "",
+          "separator": true,
+          "enabled": true,
+          "height": 1
+        },
+        {
+          "id": "actionQuit",
+          "text": "Quit",
+          "separator": false,
+          "enabled": true,
+          "height": 13,
+          "shortcuts": [
+            "Ctrl+Q"
+          ]
+        }
+      ]
+    },
+    "menuEdit": {
+      "fontSize": 10,
+      "title": "Edit",
+      "items": [
+        {
+          "id": "",
+          "text": "Stage Interpolation",
+          "separator": false,
+          "enabled": true,
+          "height": 13,
+          "children": [
+            {
+              "id": "",
+              "text": "Held",
+              "separator": false,
+              "enabled": true,
+              "height": 13,
+              "checkable": true,
+              "checked": false
+            },
+            {
+              "id": "",
+              "text": "Linear",
+              "separator": false,
+              "enabled": true,
+              "height": 13,
+              "checkable": true,
+              "checked": true
+            }
+          ]
+        },
+        {
+          "id": "",
+          "text": "",
+          "separator": true,
+          "enabled": true,
+          "height": 1
+        },
+        {
+          "id": "actionLoad",
+          "text": "Load",
+          "separator": false,
+          "enabled": true,
+          "height": 13
+        },
+        {
+          "id": "actionUnload",
+          "text": "Unload",
+          "separator": false,
+          "enabled": true,
+          "height": 13
+        },
+        {
+          "id": "",
+          "text": "",
+          "separator": true,
+          "enabled": true,
+          "height": 1
+        },
+        {
+          "id": "actionActivate",
+          "text": "Activate",
+          "separator": false,
+          "enabled": true,
+          "height": 13
+        },
+        {
+          "id": "actionDeactivate",
+          "text": "Deactivate",
+          "separator": false,
+          "enabled": true,
+          "height": 13
+        },
+        {
+          "id": "",
+          "text": "",
+          "separator": true,
+          "enabled": true,
+          "height": 1
+        },
+        {
+          "id": "actionMake_Visible",
+          "text": "Make Visible",
+          "separator": false,
+          "enabled": true,
+          "height": 13,
+          "shortcuts": [
+            "Shift+H",
+            "Ctrl+Shift+H"
+          ]
+        },
+        {
+          "id": "actionVis_Only",
+          "text": "Vis Only",
+          "separator": false,
+          "enabled": true,
+          "height": 13,
+          "shortcuts": [
+            "Alt+H"
+          ]
+        },
+        {
+          "id": "actionMake_Invisible",
+          "text": "Make Invisible",
+          "separator": false,
+          "enabled": true,
+          "height": 13,
+          "shortcuts": [
+            "Ctrl+H"
+          ]
+        },
+        {
+          "id": "actionRemove_Session_Visibility",
+          "text": "Remove Session Visibility",
+          "separator": false,
+          "enabled": true,
+          "height": 13,
+          "shortcuts": [
+            "Ctrl+U"
+          ]
+        },
+        {
+          "id": "actionReset_All_Session_Visibility",
+          "text": "Reset All Session Visibility",
+          "separator": false,
+          "enabled": true,
+          "height": 13,
+          "shortcuts": [
+            "Shift+U"
+          ]
+        }
+      ]
+    },
+    "menuWindow": {
+      "fontSize": 10,
+      "title": "Window",
+      "items": [
+        {
+          "id": "actionToggle_Viewer_Mode",
+          "text": "Toggle Viewer-Only Mode",
+          "separator": false,
+          "enabled": true,
+          "height": 13,
+          "shortcuts": [
+            "F11"
+          ]
+        },
+        {
+          "id": "",
+          "text": "",
+          "separator": true,
+          "enabled": true,
+          "height": 1
+        },
+        {
+          "id": "showInterpreter",
+          "text": "Interpreter",
+          "separator": false,
+          "enabled": true,
+          "height": 13,
+          "shortcuts": [
+            "I"
+          ]
+        },
+        {
+          "id": "actionPreferences",
+          "text": "Preferences",
+          "separator": false,
+          "enabled": true,
+          "height": 13,
+          "checkable": true,
+          "checked": false
+        },
+        {
+          "id": "showUsdValidation",
+          "text": "USD Validation",
+          "separator": false,
+          "enabled": true,
+          "height": 13,
+          "shortcuts": [
+            "V"
+          ]
+        },
+        {
+          "id": "showDebugFlags",
+          "text": "Debug Flags",
+          "separator": false,
+          "enabled": true,
+          "height": 13
+        },
+        {
+          "id": "showHydraSceneDebugger",
+          "text": "Hydra Scene Debugger",
+          "separator": false,
+          "enabled": true,
+          "height": 13
+        }
+      ]
+    },
+    "menuNavigation": {
+      "fontSize": 10,
+      "title": "Navigation",
+      "items": [
+        {
+          "id": "actionFind_Prims",
+          "text": "Find Prims",
+          "separator": false,
+          "enabled": true,
+          "height": 13,
+          "shortcuts": [
+            "Ctrl+F"
+          ]
+        },
+        {
+          "id": "actionSelect_Stage_Root",
+          "text": "Select Stage Root",
+          "separator": false,
+          "enabled": true,
+          "height": 13,
+          "shortcuts": [
+            "|"
+          ]
+        },
+        {
+          "id": "actionSelect_Model_Root",
+          "text": "Select Enclosing Model",
+          "separator": false,
+          "enabled": true,
+          "height": 13,
+          "shortcuts": [
+            "\\"
+          ]
+        },
+        {
+          "id": "",
+          "text": "",
+          "separator": true,
+          "enabled": true,
+          "height": 1
+        },
+        {
+          "id": "actionSelect_Bound_Preview_Material",
+          "text": "Select Bound Preview Material",
+          "separator": false,
+          "enabled": true,
+          "height": 13,
+          "shortcuts": [
+            "Shift+L"
+          ]
+        },
+        {
+          "id": "actionSelect_Bound_Full_Material",
+          "text": "Select Bound Full Material",
+          "separator": false,
+          "enabled": true,
+          "height": 13
+        },
+        {
+          "id": "actionSelect_Preview_Binding_Relationship",
+          "text": "Select Preview Binding Relationship",
+          "separator": false,
+          "enabled": true,
+          "height": 13
+        },
+        {
+          "id": "actionSelect_Full_Binding_Relationship",
+          "text": "Select Full Binding Relationship",
+          "separator": false,
+          "enabled": true,
+          "height": 13
+        }
+      ]
+    },
+    "menuShow": {
+      "fontSize": 10,
+      "title": "Show",
+      "items": [
+        {
+          "id": "",
+          "text": "Prim View Depth",
+          "separator": false,
+          "enabled": true,
+          "height": 13,
+          "children": [
+            {
+              "id": "actionLevel_1",
+              "text": "Level 1",
+              "separator": false,
+              "enabled": true,
+              "height": 13,
+              "shortcuts": [
+                "Alt+1"
+              ]
+            },
+            {
+              "id": "actionLevel_2",
+              "text": "Level 2",
+              "separator": false,
+              "enabled": true,
+              "height": 13,
+              "shortcuts": [
+                "Alt+2"
+              ]
+            },
+            {
+              "id": "actionLevel_3",
+              "text": "Level 3",
+              "separator": false,
+              "enabled": true,
+              "height": 13,
+              "shortcuts": [
+                "Alt+3"
+              ]
+            },
+            {
+              "id": "actionLevel_4",
+              "text": "Level 4",
+              "separator": false,
+              "enabled": true,
+              "height": 13,
+              "shortcuts": [
+                "Alt+4"
+              ]
+            },
+            {
+              "id": "actionLevel_5",
+              "text": "Level 5",
+              "separator": false,
+              "enabled": true,
+              "height": 13,
+              "shortcuts": [
+                "Alt+5"
+              ]
+            },
+            {
+              "id": "actionLevel_6",
+              "text": "Level 6",
+              "separator": false,
+              "enabled": true,
+              "height": 13,
+              "shortcuts": [
+                "Alt+6"
+              ]
+            },
+            {
+              "id": "actionLevel_7",
+              "text": "Level 7",
+              "separator": false,
+              "enabled": true,
+              "height": 13,
+              "shortcuts": [
+                "Alt+7"
+              ]
+            },
+            {
+              "id": "actionLevel_8",
+              "text": "Level 8",
+              "separator": false,
+              "enabled": true,
+              "height": 13,
+              "shortcuts": [
+                "Alt+8"
+              ]
+            },
+            {
+              "id": "",
+              "text": "",
+              "separator": true,
+              "enabled": true,
+              "height": 1
+            },
+            {
+              "id": "actionExpand_All",
+              "text": "Expand All",
+              "separator": false,
+              "enabled": true,
+              "height": 13,
+              "shortcuts": [
+                "Alt+9"
+              ]
+            },
+            {
+              "id": "actionCollapse_All",
+              "text": "Collapse All",
+              "separator": false,
+              "enabled": true,
+              "height": 13,
+              "shortcuts": [
+                "Alt+0"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "",
+          "text": "",
+          "separator": true,
+          "enabled": true,
+          "height": 1
+        },
+        {
+          "id": "actionShow_Inactive_Prims",
+          "text": "Inactive Prims",
+          "separator": false,
+          "enabled": true,
+          "height": 13,
+          "checkable": true,
+          "checked": true
+        },
+        {
+          "id": "actionShow_All_Prototype_Prims",
+          "text": "Prototype Prims",
+          "separator": false,
+          "enabled": true,
+          "height": 13,
+          "checkable": true,
+          "checked": false
+        },
+        {
+          "id": "actionShow_Undefined_Prims",
+          "text": "Undefined Prims (Overs)",
+          "separator": false,
+          "enabled": true,
+          "height": 13,
+          "checkable": true,
+          "checked": false
+        },
+        {
+          "id": "actionShow_Abstract_Prims",
+          "text": "Abstract Prims (Classes)",
+          "separator": false,
+          "enabled": true,
+          "height": 13,
+          "checkable": true,
+          "checked": false
+        },
+        {
+          "id": "actionShow_Prim_DisplayName",
+          "text": "Use Display Name (Prims)",
+          "separator": false,
+          "enabled": true,
+          "height": 13,
+          "checkable": true,
+          "checked": true
+        },
+        {
+          "id": "",
+          "text": "",
+          "separator": true,
+          "enabled": true,
+          "height": 1
+        },
+        {
+          "id": "",
+          "text": "Columns",
+          "separator": false,
+          "enabled": true,
+          "height": 13,
+          "children": [
+            {
+              "id": "",
+              "text": "Prim Name",
+              "separator": false,
+              "enabled": true,
+              "height": 13,
+              "checkable": true,
+              "checked": false
+            },
+            {
+              "id": "",
+              "text": "Type",
+              "separator": false,
+              "enabled": true,
+              "height": 13,
+              "checkable": true,
+              "checked": false
+            },
+            {
+              "id": "",
+              "text": "Vis",
+              "separator": false,
+              "enabled": true,
+              "height": 13,
+              "checkable": true,
+              "checked": false
+            },
+            {
+              "id": "",
+              "text": "Guides",
+              "separator": false,
+              "enabled": true,
+              "height": 13,
+              "checkable": true,
+              "checked": false
+            },
+            {
+              "id": "",
+              "text": "Draw Mode",
+              "separator": false,
+              "enabled": true,
+              "height": 13,
+              "checkable": true,
+              "checked": false
+            }
+          ]
+        }
+      ]
+    },
+    "menuRender": {
+      "fontSize": 10,
+      "title": "Renderer",
+      "items": [
+        {
+          "id": "",
+          "text": "Storm",
+          "separator": false,
+          "enabled": true,
+          "height": 13,
+          "checkable": true,
+          "checked": true
+        },
+        {
+          "id": "",
+          "text": "",
+          "separator": true,
+          "enabled": true,
+          "height": 1
+        },
+        {
+          "id": "",
+          "text": "Hydra Settings",
+          "separator": false,
+          "enabled": true,
+          "height": 13,
+          "children": [
+            {
+              "id": "",
+              "text": "Enable Tiny Prim Culling",
+              "separator": false,
+              "enabled": true,
+              "height": 13,
+              "checkable": true,
+              "checked": false
+            },
+            {
+              "id": "",
+              "text": "Dome light camera visibility",
+              "separator": false,
+              "enabled": true,
+              "height": 13,
+              "checkable": true,
+              "checked": true
+            },
+            {
+              "id": "",
+              "text": "Enable exposure compensation",
+              "separator": false,
+              "enabled": true,
+              "height": 13,
+              "checkable": true,
+              "checked": true
+            },
+            {
+              "id": "",
+              "text": "",
+              "separator": true,
+              "enabled": true,
+              "height": 1
+            },
+            {
+              "id": "",
+              "text": "More...",
+              "separator": false,
+              "enabled": true,
+              "height": 13
+            }
+          ]
+        },
+        {
+          "id": "",
+          "text": "Hydra AOVs",
+          "separator": false,
+          "enabled": true,
+          "height": 13,
+          "children": [
+            {
+              "id": "",
+              "text": "color",
+              "separator": false,
+              "enabled": true,
+              "height": 13,
+              "checkable": true,
+              "checked": true
+            },
+            {
+              "id": "",
+              "text": "primId",
+              "separator": false,
+              "enabled": true,
+              "height": 13,
+              "checkable": true,
+              "checked": false
+            },
+            {
+              "id": "",
+              "text": "depth",
+              "separator": false,
+              "enabled": true,
+              "height": 13,
+              "checkable": true,
+              "checked": false
+            },
+            {
+              "id": "",
+              "text": "Neye",
+              "separator": false,
+              "enabled": true,
+              "height": 13,
+              "checkable": true,
+              "checked": false
+            },
+            {
+              "id": "",
+              "text": "",
+              "separator": true,
+              "enabled": true,
+              "height": 1
+            },
+            {
+              "id": "",
+              "text": "Other...",
+              "separator": false,
+              "enabled": true,
+              "height": 13,
+              "checkable": true,
+              "checked": false
+            }
+          ]
+        },
+        {
+          "id": "",
+          "text": "Hydra Commands",
+          "separator": false,
+          "enabled": false,
+          "height": 13,
+          "children": []
+        },
+        {
+          "id": "",
+          "text": "",
+          "separator": true,
+          "enabled": true,
+          "height": 1
+        },
+        {
+          "id": "actionPause",
+          "text": "Pause Render",
+          "separator": false,
+          "enabled": false,
+          "height": 13,
+          "checkable": true,
+          "checked": false,
+          "shortcuts": [
+            "Ctrl+P"
+          ]
+        },
+        {
+          "id": "actionStop",
+          "text": "Stop Render",
+          "separator": false,
+          "enabled": false,
+          "height": 13,
+          "checkable": true,
+          "checked": false,
+          "shortcuts": [
+            "Ctrl+\\"
+          ]
+        }
+      ]
+    },
+    "menuViewer": {
+      "fontSize": 10,
+      "title": "Display",
+      "items": [
+        {
+          "id": "",
+          "text": "Shading Mode",
+          "separator": false,
+          "enabled": true,
+          "height": 13,
+          "children": [
+            {
+              "id": "actionWireframe",
+              "text": "Wireframe",
+              "separator": false,
+              "enabled": true,
+              "height": 13,
+              "checkable": true,
+              "checked": false,
+              "shortcuts": [
+                "Ctrl+0"
+              ]
+            },
+            {
+              "id": "actionWireframeOnSurface",
+              "text": "WireframeOnSurface",
+              "separator": false,
+              "enabled": true,
+              "height": 13,
+              "checkable": true,
+              "checked": false,
+              "shortcuts": [
+                "Ctrl+1"
+              ]
+            },
+            {
+              "id": "actionSmooth_Shaded",
+              "text": "Smooth Shaded",
+              "separator": false,
+              "enabled": true,
+              "height": 13,
+              "checkable": true,
+              "checked": true,
+              "shortcuts": [
+                "Ctrl+2"
+              ]
+            },
+            {
+              "id": "actionFlat_Shaded",
+              "text": "Flat Shaded",
+              "separator": false,
+              "enabled": true,
+              "height": 13,
+              "checkable": true,
+              "checked": false,
+              "shortcuts": [
+                "Ctrl+3"
+              ]
+            },
+            {
+              "id": "actionPoints",
+              "text": "Points",
+              "separator": false,
+              "enabled": true,
+              "height": 13,
+              "checkable": true,
+              "checked": false,
+              "shortcuts": [
+                "Ctrl+4"
+              ]
+            },
+            {
+              "id": "actionGeom_Only",
+              "text": "Geom Only",
+              "separator": false,
+              "enabled": true,
+              "height": 13,
+              "checkable": true,
+              "checked": false,
+              "shortcuts": [
+                "Ctrl+6"
+              ]
+            },
+            {
+              "id": "actionGeom_Smooth",
+              "text": "Geom Smooth",
+              "separator": false,
+              "enabled": true,
+              "height": 13,
+              "checkable": true,
+              "checked": false,
+              "shortcuts": [
+                "Ctrl+7"
+              ]
+            },
+            {
+              "id": "actionGeom_Flat",
+              "text": "Geom Flat",
+              "separator": false,
+              "enabled": true,
+              "height": 13,
+              "checkable": true,
+              "checked": false,
+              "shortcuts": [
+                "Ctrl+8"
+              ]
+            },
+            {
+              "id": "actionHidden_Surface_Wireframe",
+              "text": "Hidden Surface Wireframe",
+              "separator": false,
+              "enabled": true,
+              "height": 13,
+              "checkable": true,
+              "checked": false,
+              "shortcuts": [
+                "Ctrl+9"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "",
+          "text": "Complexity",
+          "separator": false,
+          "enabled": true,
+          "height": 13,
+          "children": [
+            {
+              "id": "actionLow",
+              "text": "Low",
+              "separator": false,
+              "enabled": true,
+              "height": 13,
+              "checkable": true,
+              "checked": true
+            },
+            {
+              "id": "actionMedium",
+              "text": "Medium",
+              "separator": false,
+              "enabled": true,
+              "height": 13,
+              "checkable": true,
+              "checked": false
+            },
+            {
+              "id": "actionHigh",
+              "text": "High",
+              "separator": false,
+              "enabled": true,
+              "height": 13,
+              "checkable": true,
+              "checked": false
+            },
+            {
+              "id": "actionVery_High",
+              "text": "Very High",
+              "separator": false,
+              "enabled": true,
+              "height": 13,
+              "checkable": true,
+              "checked": false
+            }
+          ]
+        },
+        {
+          "id": "",
+          "text": "Bounding Box",
+          "separator": false,
+          "enabled": true,
+          "height": 13,
+          "children": [
+            {
+              "id": "showBBoxes",
+              "text": "Show Bounding Boxes",
+              "separator": false,
+              "enabled": true,
+              "height": 13,
+              "checkable": true,
+              "checked": true,
+              "shortcuts": [
+                "Ctrl+B"
+              ]
+            },
+            {
+              "id": "",
+              "text": "",
+              "separator": true,
+              "enabled": true,
+              "height": 1
+            },
+            {
+              "id": "showAABBox",
+              "text": "Show Axis-Aligned",
+              "separator": false,
+              "enabled": true,
+              "height": 13,
+              "checkable": true,
+              "checked": true
+            },
+            {
+              "id": "showOBBox",
+              "text": "Show Oriented",
+              "separator": false,
+              "enabled": true,
+              "height": 13,
+              "checkable": true,
+              "checked": true
+            },
+            {
+              "id": "showBBoxPlayback",
+              "text": "Show During Playback/Scrub",
+              "separator": false,
+              "enabled": true,
+              "height": 13,
+              "checkable": true,
+              "checked": false
+            },
+            {
+              "id": "",
+              "text": "",
+              "separator": true,
+              "enabled": true,
+              "height": 1
+            },
+            {
+              "id": "useExtentsHint",
+              "text": "Use Extents Hints",
+              "separator": false,
+              "enabled": true,
+              "height": 13,
+              "checkable": true,
+              "checked": true
+            }
+          ]
+        },
+        {
+          "id": "",
+          "text": "Display Purposes",
+          "separator": false,
+          "enabled": true,
+          "height": 13,
+          "children": [
+            {
+              "id": "actionDisplay_Guide",
+              "text": "Guide",
+              "separator": false,
+              "enabled": true,
+              "height": 13,
+              "checkable": true,
+              "checked": false
+            },
+            {
+              "id": "actionDisplay_Proxy",
+              "text": "Proxy",
+              "separator": false,
+              "enabled": true,
+              "height": 13,
+              "checkable": true,
+              "checked": true
+            },
+            {
+              "id": "actionDisplay_Render",
+              "text": "Render",
+              "separator": false,
+              "enabled": true,
+              "height": 13,
+              "checkable": true,
+              "checked": false
+            }
+          ]
+        },
+        {
+          "id": "",
+          "text": "",
+          "separator": true,
+          "enabled": true,
+          "height": 1
+        },
+        {
+          "id": "",
+          "text": "Heads-Up Display",
+          "separator": false,
+          "enabled": true,
+          "height": 13,
+          "children": [
+            {
+              "id": "actionHUD",
+              "text": "Show HUD",
+              "separator": false,
+              "enabled": true,
+              "height": 13,
+              "checkable": true,
+              "checked": true,
+              "shortcuts": [
+                "Ctrl+D"
+              ]
+            },
+            {
+              "id": "",
+              "text": "",
+              "separator": true,
+              "enabled": true,
+              "height": 1
+            },
+            {
+              "id": "actionHUD_Info",
+              "text": "Subtree Info (Slow)",
+              "separator": false,
+              "enabled": true,
+              "height": 13,
+              "checkable": true,
+              "checked": false
+            },
+            {
+              "id": "actionHUD_Complexity",
+              "text": "Camera/Complexity",
+              "separator": false,
+              "enabled": true,
+              "height": 13,
+              "checkable": true,
+              "checked": true
+            },
+            {
+              "id": "actionHUD_Performance",
+              "text": "Performance",
+              "separator": false,
+              "enabled": true,
+              "height": 13,
+              "checkable": true,
+              "checked": true
+            },
+            {
+              "id": "actionHUD_GPUstats",
+              "text": "GPU stats",
+              "separator": false,
+              "enabled": true,
+              "height": 13,
+              "checkable": true,
+              "checked": false
+            }
+          ]
+        },
+        {
+          "id": "",
+          "text": "Selection Highlighting",
+          "separator": false,
+          "enabled": true,
+          "height": 13,
+          "children": [
+            {
+              "id": "actionNever",
+              "text": "Never",
+              "separator": false,
+              "enabled": true,
+              "height": 13,
+              "checkable": true,
+              "checked": false
+            },
+            {
+              "id": "actionOnly_when_paused",
+              "text": "Only when paused",
+              "separator": false,
+              "enabled": true,
+              "height": 13,
+              "checkable": true,
+              "checked": true
+            },
+            {
+              "id": "actionAlways",
+              "text": "Always",
+              "separator": false,
+              "enabled": true,
+              "height": 13,
+              "checkable": true,
+              "checked": false
+            },
+            {
+              "id": "",
+              "text": "Highlight Color",
+              "separator": false,
+              "enabled": true,
+              "height": 13,
+              "children": [
+                {
+                  "id": "actionSelYellow",
+                  "text": "Yellow",
+                  "separator": false,
+                  "enabled": true,
+                  "height": 13,
+                  "checkable": true,
+                  "checked": true
+                },
+                {
+                  "id": "actionSelWhite",
+                  "text": "White",
+                  "separator": false,
+                  "enabled": true,
+                  "height": 13,
+                  "checkable": true,
+                  "checked": false
+                },
+                {
+                  "id": "actionSelCyan",
+                  "text": "Cyan",
+                  "separator": false,
+                  "enabled": true,
+                  "height": 13,
+                  "checkable": true,
+                  "checked": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "actionRollover_Prim_Info",
+          "text": "Show Rollover Prim Info",
+          "separator": false,
+          "enabled": true,
+          "height": 13,
+          "checkable": true,
+          "checked": false,
+          "shortcuts": [
+            "Shift+I"
+          ]
+        },
+        {
+          "id": "",
+          "text": "",
+          "separator": true,
+          "enabled": true,
+          "height": 1
+        },
+        {
+          "id": "actionEnable_Scene_Materials",
+          "text": "Enable Scene Materials",
+          "separator": false,
+          "enabled": true,
+          "height": 13,
+          "checkable": true,
+          "checked": true
+        },
+        {
+          "id": "actionAdjust_Default_Material",
+          "text": "Default Material Settings...",
+          "separator": false,
+          "enabled": true,
+          "height": 13,
+          "checkable": true,
+          "checked": false
+        },
+        {
+          "id": "",
+          "text": "",
+          "separator": true,
+          "enabled": true,
+          "height": 1
+        },
+        {
+          "id": "",
+          "text": "Color Management",
+          "separator": false,
+          "enabled": true,
+          "height": 13,
+          "children": [
+            {
+              "id": "actionNoColorCorrection",
+              "text": "disabled",
+              "separator": false,
+              "enabled": true,
+              "height": 13,
+              "checkable": true,
+              "checked": false
+            },
+            {
+              "id": "actionSRGBColorCorrection",
+              "text": "sRGB",
+              "separator": false,
+              "enabled": true,
+              "height": 13,
+              "checkable": true,
+              "checked": true
+            },
+            {
+              "id": "actionOpenColorIO",
+              "text": "openColorIO",
+              "separator": false,
+              "enabled": false,
+              "height": 13,
+              "checkable": true,
+              "checked": false
+            }
+          ]
+        },
+        {
+          "id": "",
+          "text": "",
+          "separator": true,
+          "enabled": true,
+          "height": 1
+        },
+        {
+          "id": "",
+          "text": "Background Color",
+          "separator": false,
+          "enabled": true,
+          "height": 13,
+          "children": [
+            {
+              "id": "actionBlack",
+              "text": "Black",
+              "separator": false,
+              "enabled": true,
+              "height": 13,
+              "checkable": true,
+              "checked": false
+            },
+            {
+              "id": "actionGrey_Dark",
+              "text": "Grey (Dark)",
+              "separator": false,
+              "enabled": true,
+              "height": 13,
+              "checkable": true,
+              "checked": true
+            },
+            {
+              "id": "actionGrey_Light",
+              "text": "Grey (Light)",
+              "separator": false,
+              "enabled": true,
+              "height": 13,
+              "checkable": true,
+              "checked": false
+            },
+            {
+              "id": "actionWhite",
+              "text": "White",
+              "separator": false,
+              "enabled": true,
+              "height": 13,
+              "checkable": true,
+              "checked": false
+            }
+          ]
+        },
+        {
+          "id": "actionCull_Backfaces",
+          "text": "Cull Backfaces (GL)",
+          "separator": false,
+          "enabled": true,
+          "height": 13,
+          "checkable": true,
+          "checked": false
+        },
+        {
+          "id": "actionDomeLightTexturesVisible",
+          "text": "Show Dome Light Textures",
+          "separator": false,
+          "enabled": true,
+          "height": 13,
+          "checkable": true,
+          "checked": true
+        }
+      ]
+    },
+    "menuPick": {
+      "fontSize": 10,
+      "title": "Select",
+      "items": [
+        {
+          "id": "actionPick_Prims",
+          "text": "Select Prims",
+          "separator": false,
+          "enabled": true,
+          "height": 13,
+          "checkable": true,
+          "checked": true
+        },
+        {
+          "id": "actionPick_Models",
+          "text": "Select Models",
+          "separator": false,
+          "enabled": true,
+          "height": 13,
+          "checkable": true,
+          "checked": false
+        },
+        {
+          "id": "actionPick_Instances",
+          "text": "Select Instances",
+          "separator": false,
+          "enabled": true,
+          "height": 13,
+          "checkable": true,
+          "checked": false
+        },
+        {
+          "id": "actionPick_Prototypes",
+          "text": "Select Prototypes",
+          "separator": false,
+          "enabled": true,
+          "height": 13,
+          "checkable": true,
+          "checked": false
+        }
+      ]
+    },
+    "menuCamera": {
+      "fontSize": 10,
+      "title": "Camera",
+      "items": [
+        {
+          "id": "",
+          "text": "Camera Guides",
+          "separator": false,
+          "enabled": true,
+          "height": 13,
+          "children": [
+            {
+              "id": "actionCameraMask_Outline",
+              "text": "Camera Frame",
+              "separator": false,
+              "enabled": true,
+              "height": 13,
+              "checkable": true,
+              "checked": false
+            },
+            {
+              "id": "actionDisplay_Camera_Oracles",
+              "text": "Camera Oracles",
+              "separator": false,
+              "enabled": true,
+              "height": 13,
+              "checkable": true,
+              "checked": false
+            }
+          ]
+        },
+        {
+          "id": "",
+          "text": "Camera Masking",
+          "separator": false,
+          "enabled": true,
+          "height": 13,
+          "children": [
+            {
+              "id": "actionCameraMask_Full",
+              "text": "Full Mask",
+              "separator": false,
+              "enabled": true,
+              "height": 13,
+              "checkable": true,
+              "checked": false
+            },
+            {
+              "id": "actionCameraMask_Partial",
+              "text": "Partial Mask",
+              "separator": false,
+              "enabled": true,
+              "height": 13,
+              "checkable": true,
+              "checked": false
+            },
+            {
+              "id": "actionCameraMask_None",
+              "text": "No Mask",
+              "separator": false,
+              "enabled": true,
+              "height": 13,
+              "checkable": true,
+              "checked": true
+            },
+            {
+              "id": "",
+              "text": "",
+              "separator": true,
+              "enabled": true,
+              "height": 1
+            },
+            {
+              "id": "actionCameraMask_Color",
+              "text": "Select Color...",
+              "separator": false,
+              "enabled": true,
+              "height": 13
+            }
+          ]
+        },
+        {
+          "id": "",
+          "text": "Camera Reticles",
+          "separator": false,
+          "enabled": true,
+          "height": 13,
+          "children": [
+            {
+              "id": "actionCameraReticles_Inside",
+              "text": "Camera Reticles Inside",
+              "separator": false,
+              "enabled": true,
+              "height": 13,
+              "checkable": true,
+              "checked": false
+            },
+            {
+              "id": "actionCameraReticles_Outside",
+              "text": "Camera Reticles Outside",
+              "separator": false,
+              "enabled": true,
+              "height": 13,
+              "checkable": true,
+              "checked": false
+            },
+            {
+              "id": "",
+              "text": "",
+              "separator": true,
+              "enabled": true,
+              "height": 1
+            },
+            {
+              "id": "actionCameraReticles_Color",
+              "text": "Select Color...",
+              "separator": false,
+              "enabled": true,
+              "height": 13
+            }
+          ]
+        },
+        {
+          "id": "",
+          "text": "Select Camera",
+          "separator": false,
+          "enabled": false,
+          "height": 13,
+          "children": []
+        },
+        {
+          "id": "",
+          "text": "",
+          "separator": true,
+          "enabled": true,
+          "height": 1
+        },
+        {
+          "id": "actionFrame_Selected",
+          "text": "Frame Selected",
+          "separator": false,
+          "enabled": true,
+          "height": 13,
+          "shortcuts": [
+            "F"
+          ]
+        },
+        {
+          "id": "actionToggle_Framed_View",
+          "text": "Toggle Framed View",
+          "separator": false,
+          "enabled": true,
+          "height": 13,
+          "shortcuts": [
+            "J"
+          ]
+        },
+        {
+          "id": "actionReset_View",
+          "text": "Reset View",
+          "separator": false,
+          "enabled": true,
+          "height": 13
+        },
+        {
+          "id": "",
+          "text": "",
+          "separator": true,
+          "enabled": true,
+          "height": 1
+        },
+        {
+          "id": "actionCopy_Viewer_Image",
+          "text": "Copy Viewer Image",
+          "separator": false,
+          "enabled": true,
+          "height": 13
+        },
+        {
+          "id": "actionSave_Viewer_Image",
+          "text": "Save Viewer Image...",
+          "separator": false,
+          "enabled": true,
+          "height": 13
+        },
+        {
+          "id": "",
+          "text": "",
+          "separator": true,
+          "enabled": true,
+          "height": 1
+        },
+        {
+          "id": "actionAuto_Compute_Clipping_Planes",
+          "text": "Auto Compute Clipping Planes",
+          "separator": false,
+          "enabled": true,
+          "height": 13,
+          "checkable": true,
+          "checked": false,
+          "shortcuts": [
+            "C"
+          ]
+        },
+        {
+          "id": "actionAdjust_Free_Camera",
+          "text": "Free Camera Settings...",
+          "separator": false,
+          "enabled": true,
+          "height": 13,
+          "checkable": true,
+          "checked": false
+        }
+      ]
+    },
+    "menuLights": {
+      "fontSize": 10,
+      "title": "Lights",
+      "items": [
+        {
+          "id": "actionEnable_Scene_Lights",
+          "text": "Enable Scene Lights",
+          "separator": false,
+          "enabled": true,
+          "height": 13,
+          "checkable": true,
+          "checked": true
+        },
+        {
+          "id": "actionAmbient_Only",
+          "text": "Enable Default Camera Light",
+          "separator": false,
+          "enabled": true,
+          "height": 13,
+          "checkable": true,
+          "checked": true
+        },
+        {
+          "id": "actionDomeLight",
+          "text": "Enable Default Dome Light",
+          "separator": false,
+          "enabled": true,
+          "height": 13,
+          "checkable": true,
+          "checked": false
+        }
+      ]
+    }
+  }
+}

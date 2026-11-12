@@ -1,0 +1,7 @@
+/Vol type=volume
+	[volumeFieldBinding]
+		[density]
+			SdfPath /Vol/density
+		[temperature]
+			SdfPath /Vol/temperature
+OK

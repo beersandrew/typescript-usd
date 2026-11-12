@@ -1,0 +1,34 @@
+#usda 1.4
+
+def "A" (
+    customData = {
+        duration[] array = [2, 4]
+        dictionary nested = {
+            duration relative = 5
+        }
+        duration relative = 2
+    }
+)
+{
+    custom duration[] arraySample
+    duration[] arraySample.timeSamples = {
+        1: [2, 4],
+        3: [6, 8],
+    }
+    custom duration curve
+    duration curve.spline = {
+        bezier,
+        pre: sloped(0.75),
+        post: loop repeat(7),
+        1: 2; pre (0, 0); post curve (0.5, 2),
+        3: 6; pre (0.25, 1.5); post curve (0, 0),
+    }
+    custom duration relative = 2
+    custom duration[] relativeArray = [2, 4]
+    custom duration sample
+    duration sample.timeSamples = {
+        1: 2,
+        3: 6,
+    }
+}
+

@@ -1,0 +1,20 @@
+#usda 1.0
+
+def "Sarah" (
+    variants = {
+        string displayColor = "red"
+    }
+    append variantSets = "displayColor"
+)
+{
+    def Scope "EmptyPrim"
+    {
+    }
+    variantSet "displayColor" = {
+        "green" {
+        }
+        "red" {
+        }
+    }
+}
+

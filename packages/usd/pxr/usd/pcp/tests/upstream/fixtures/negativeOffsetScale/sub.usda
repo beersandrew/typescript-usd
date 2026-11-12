@@ -1,0 +1,6 @@
+#usda 1.0
+(
+    subLayers = [
+        @ref.usda@ (scale = -1)
+    ]
+)

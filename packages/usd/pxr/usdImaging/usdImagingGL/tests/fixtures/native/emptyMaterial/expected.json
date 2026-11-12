@@ -1,0 +1,31 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/usdImaging/usdImagingGL/tests/fixtures/native/emptyMaterial/capture.py",
+  "upstream": [
+    "pxr/usd/usdShade/materialBindingAPI.cpp",
+    "pxr/usd/usdShade/material.cpp"
+  ],
+  "payload": {
+    "meshes": {
+      "Bound": {
+        "binding": "/World/Physics",
+        "hasSurface": false,
+        "displayColor": [
+          0.20000000298023224,
+          0.699999988079071,
+          0.30000001192092896
+        ]
+      },
+      "Unbound": {
+        "binding": "",
+        "hasSurface": false,
+        "displayColor": [
+          0.20000000298023224,
+          0.699999988079071,
+          0.30000001192092896
+        ]
+      }
+    }
+  }
+}

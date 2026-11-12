@@ -1,0 +1,829 @@
+{
+  "nativeVersion": "26.11.1",
+  "source": [
+    "usdviewq/appController.py:4497-4650",
+    "usdviewq/common.py:244-319,378-511",
+    "usdviewq/mainWindowUI.ui:1013-1101"
+  ],
+  "headers": [
+    "Layer",
+    "Offset , Scale",
+    "Path",
+    "Value"
+  ],
+  "paletteText": [
+    227,
+    227,
+    227
+  ],
+  "rows": [
+    {
+      "fixture": "composition-inspection",
+      "path": "/",
+      "property": null,
+      "time": 12,
+      "muted": false,
+      "sessionSamples": 0,
+      "targetEdits": false,
+      "columnWidths": [
+        113,
+        736,
+        0,
+        0
+      ],
+      "headers": [
+        "Layer",
+        "Offset , Scale",
+        "Path",
+        "Value"
+      ],
+      "hidden": [
+        false,
+        false,
+        true,
+        true
+      ],
+      "rows": [
+        {
+          "text": [
+            "root.usda",
+            "",
+            null,
+            null
+          ],
+          "colors": [
+            null,
+            null,
+            null,
+            null
+          ],
+          "layer": "root.usda",
+          "rowHeight": 30
+        },
+        {
+          "text": [
+            "    weak.usda",
+            "",
+            null,
+            null
+          ],
+          "colors": [
+            null,
+            null,
+            null,
+            null
+          ],
+          "layer": "weak.usda",
+          "rowHeight": 30
+        },
+        {
+          "text": [
+            "        nested.usda",
+            "2.0 , 3.0",
+            null,
+            null
+          ],
+          "colors": [
+            null,
+            null,
+            null,
+            null
+          ],
+          "layer": "nested.usda",
+          "rowHeight": 30
+        }
+      ]
+    },
+    {
+      "fixture": "composition-inspection",
+      "path": "/",
+      "property": null,
+      "time": 12,
+      "muted": true,
+      "sessionSamples": 0,
+      "targetEdits": false,
+      "columnWidths": [
+        88,
+        761,
+        0,
+        0
+      ],
+      "headers": [
+        "Layer",
+        "Offset , Scale",
+        "Path",
+        "Value"
+      ],
+      "hidden": [
+        false,
+        false,
+        true,
+        true
+      ],
+      "rows": [
+        {
+          "text": [
+            "root.usda",
+            "",
+            null,
+            null
+          ],
+          "colors": [
+            null,
+            null,
+            null,
+            null
+          ],
+          "layer": "root.usda",
+          "rowHeight": 30
+        },
+        {
+          "text": [
+            "    weak.usda",
+            "",
+            null,
+            null
+          ],
+          "colors": [
+            [
+              151,
+              151,
+              151
+            ],
+            [
+              151,
+              151,
+              151
+            ],
+            null,
+            null
+          ],
+          "layer": "weak.usda",
+          "rowHeight": 30
+        }
+      ]
+    },
+    {
+      "fixture": "composition-inspection",
+      "path": "/World/Model",
+      "property": null,
+      "time": 12,
+      "muted": false,
+      "sessionSamples": 0,
+      "targetEdits": false,
+      "columnWidths": [
+        83,
+        100,
+        333,
+        333
+      ],
+      "headers": [
+        "Layer",
+        "Offset , Scale",
+        "Path",
+        "Metadata"
+      ],
+      "hidden": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "rows": [
+        {
+          "text": [
+            "root.usda",
+            "",
+            "/World/Model",
+            "{typeName: Xform}"
+          ],
+          "colors": [
+            null,
+            null,
+            null,
+            null
+          ],
+          "layer": "root.usda",
+          "rowHeight": 30
+        },
+        {
+          "text": [
+            "weak.usda",
+            "",
+            "/World/Model",
+            "{}"
+          ],
+          "colors": [
+            null,
+            null,
+            null,
+            null
+          ],
+          "layer": "weak.usda",
+          "rowHeight": 30
+        },
+        {
+          "text": [
+            "nested.usda",
+            "2.0 , 3.0",
+            "/World/Model",
+            "{}"
+          ],
+          "colors": [
+            null,
+            null,
+            null,
+            null
+          ],
+          "layer": "nested.usda",
+          "rowHeight": 30
+        },
+        {
+          "text": [
+            "asset.usda",
+            "",
+            "/Asset",
+            "{typeName: Xform}"
+          ],
+          "colors": [
+            null,
+            null,
+            null,
+            null
+          ],
+          "layer": "asset.usda",
+          "rowHeight": 30
+        },
+        {
+          "text": [
+            "asset.usda",
+            "",
+            "/Asset{look=blue}",
+            "{}"
+          ],
+          "colors": [
+            null,
+            null,
+            null,
+            null
+          ],
+          "layer": "asset.usda",
+          "rowHeight": 30
+        }
+      ]
+    },
+    {
+      "fixture": "inspection-samples",
+      "path": "/World",
+      "property": null,
+      "time": 12,
+      "muted": false,
+      "sessionSamples": 0,
+      "targetEdits": false,
+      "columnWidths": [
+        73,
+        100,
+        338,
+        338
+      ],
+      "headers": [
+        "Layer",
+        "Offset , Scale",
+        "Path",
+        "Metadata"
+      ],
+      "hidden": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "rows": [
+        {
+          "text": [
+            "root.usda",
+            "",
+            "/World",
+            "{typeName: Xform}"
+          ],
+          "colors": [
+            null,
+            null,
+            null,
+            null
+          ],
+          "layer": "root.usda",
+          "rowHeight": 30
+        },
+        {
+          "text": [
+            "weak.usda",
+            "10.0 , 2.0",
+            "/World",
+            "{}"
+          ],
+          "colors": [
+            null,
+            null,
+            null,
+            null
+          ],
+          "layer": "weak.usda",
+          "rowHeight": 30
+        }
+      ]
+    },
+    {
+      "fixture": "inspection-samples",
+      "path": "/World",
+      "property": "weight",
+      "time": 12,
+      "muted": false,
+      "sessionSamples": 0,
+      "targetEdits": false,
+      "columnWidths": [
+        73,
+        100,
+        338,
+        338
+      ],
+      "headers": [
+        "Layer",
+        "Offset , Scale",
+        "Path",
+        "Value"
+      ],
+      "hidden": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "rows": [
+        {
+          "text": [
+            "root.usda",
+            "",
+            "/World.weight",
+            "2 time samples"
+          ],
+          "colors": [
+            null,
+            null,
+            null,
+            [
+              177,
+              207,
+              153
+            ]
+          ],
+          "layer": "root.usda",
+          "rowHeight": 30
+        },
+        {
+          "text": [
+            "weak.usda",
+            "10.0 , 2.0",
+            "/World.weight",
+            "2 time samples"
+          ],
+          "colors": [
+            null,
+            null,
+            null,
+            [
+              177,
+              207,
+              153
+            ]
+          ],
+          "layer": "weak.usda",
+          "rowHeight": 30
+        }
+      ]
+    },
+    {
+      "fixture": "inspection-samples",
+      "path": "/World",
+      "property": "single",
+      "time": 12,
+      "muted": false,
+      "sessionSamples": 0,
+      "targetEdits": false,
+      "columnWidths": [
+        66,
+        0,
+        392,
+        391
+      ],
+      "headers": [
+        "Layer",
+        "Offset , Scale",
+        "Path",
+        "Value"
+      ],
+      "hidden": [
+        false,
+        true,
+        false,
+        false
+      ],
+      "rows": [
+        {
+          "text": [
+            "root.usda",
+            "",
+            "/World.single",
+            "1 time sample"
+          ],
+          "colors": [
+            null,
+            null,
+            null,
+            [
+              177,
+              207,
+              153
+            ]
+          ],
+          "layer": "root.usda",
+          "rowHeight": 30
+        }
+      ]
+    },
+    {
+      "fixture": "inspection-samples",
+      "path": "/World",
+      "property": "defaultOnly",
+      "time": 12,
+      "muted": false,
+      "sessionSamples": 0,
+      "targetEdits": false,
+      "columnWidths": [
+        66,
+        0,
+        392,
+        391
+      ],
+      "headers": [
+        "Layer",
+        "Offset , Scale",
+        "Path",
+        "Value"
+      ],
+      "hidden": [
+        false,
+        true,
+        false,
+        false
+      ],
+      "rows": [
+        {
+          "text": [
+            "root.usda",
+            "",
+            "/World.defaultOnly",
+            "7.0"
+          ],
+          "colors": [
+            null,
+            null,
+            null,
+            [
+              135,
+              206,
+              250
+            ]
+          ],
+          "layer": "root.usda",
+          "rowHeight": 30
+        }
+      ]
+    },
+    {
+      "fixture": "inspection-samples",
+      "path": "/World",
+      "property": "noOpinion",
+      "time": 12,
+      "muted": false,
+      "sessionSamples": 0,
+      "targetEdits": false,
+      "columnWidths": [
+        66,
+        0,
+        392,
+        391
+      ],
+      "headers": [
+        "Layer",
+        "Offset , Scale",
+        "Path",
+        "Value"
+      ],
+      "hidden": [
+        false,
+        true,
+        false,
+        false
+      ],
+      "rows": [
+        {
+          "text": [
+            "root.usda",
+            "",
+            "/World.noOpinion",
+            ""
+          ],
+          "colors": [
+            null,
+            null,
+            null,
+            [
+              135,
+              206,
+              250
+            ]
+          ],
+          "layer": "root.usda",
+          "rowHeight": 30
+        }
+      ]
+    },
+    {
+      "fixture": "metadata-inspection",
+      "path": "/World",
+      "property": "target",
+      "time": 12,
+      "muted": false,
+      "sessionSamples": 0,
+      "targetEdits": false,
+      "columnWidths": [
+        66,
+        0,
+        392,
+        391
+      ],
+      "headers": [
+        "Layer",
+        "Offset , Scale",
+        "Path",
+        "Target Paths"
+      ],
+      "hidden": [
+        false,
+        true,
+        false,
+        false
+      ],
+      "rows": [
+        {
+          "text": [
+            "root.usda",
+            "",
+            "/World.target",
+            "[/Base]"
+          ],
+          "colors": [
+            null,
+            null,
+            null,
+            [
+              135,
+              206,
+              250
+            ]
+          ],
+          "layer": "root.usda",
+          "rowHeight": 30
+        }
+      ]
+    },
+    {
+      "fixture": "metadata-inspection",
+      "path": "/World",
+      "property": null,
+      "time": 12,
+      "muted": false,
+      "sessionSamples": 0,
+      "targetEdits": false,
+      "columnWidths": [
+        100,
+        0,
+        375,
+        1050
+      ],
+      "headers": [
+        "Layer",
+        "Offset , Scale",
+        "Path",
+        "Metadata"
+      ],
+      "hidden": [
+        false,
+        true,
+        false,
+        false
+      ],
+      "rows": [
+        {
+          "text": [
+            "root.usda",
+            "",
+            "/World",
+            "{apiSchemas: SdfTokenListOp(Prepended Items: [MaterialBindingAPI]), kind: component, customData: {strong: root}, assetInfo: {name: Review fixture}, typeName: Cube}"
+          ],
+          "colors": [
+            null,
+            null,
+            null,
+            null
+          ],
+          "layer": "root.usda",
+          "rowHeight": 30
+        },
+        {
+          "text": [
+            "weak.usda",
+            "",
+            "/World",
+            "{documentation: Weak authored prim documentation, customData: {weak: sublayer}}"
+          ],
+          "colors": [
+            null,
+            null,
+            null,
+            null
+          ],
+          "layer": "weak.usda",
+          "rowHeight": 30
+        },
+        {
+          "text": [
+            "root.usda",
+            "",
+            "/Base",
+            "{}"
+          ],
+          "colors": [
+            null,
+            null,
+            null,
+            null
+          ],
+          "layer": "root.usda",
+          "rowHeight": 30
+        },
+        {
+          "text": [
+            "root.usda",
+            "",
+            "/World{look=blue}",
+            "{}"
+          ],
+          "colors": [
+            null,
+            null,
+            null,
+            null
+          ],
+          "layer": "root.usda",
+          "rowHeight": 30
+        },
+        {
+          "text": [
+            "reference.usda",
+            "",
+            "/Source",
+            "{customData: {referenced: reference}, typeName: Cube}"
+          ],
+          "colors": [
+            null,
+            null,
+            null,
+            null
+          ],
+          "layer": "reference.usda",
+          "rowHeight": 30
+        }
+      ]
+    },
+    {
+      "fixture": "inspection-samples",
+      "path": "/World",
+      "property": "single",
+      "time": 12,
+      "muted": false,
+      "sessionSamples": 105,
+      "targetEdits": false,
+      "columnWidths": [
+        119,
+        0,
+        365,
+        365
+      ],
+      "headers": [
+        "Layer",
+        "Offset , Scale",
+        "Path",
+        "Value"
+      ],
+      "hidden": [
+        false,
+        true,
+        false,
+        false
+      ],
+      "rows": [
+        {
+          "text": [
+            "root-session.usda",
+            "",
+            "/World.single",
+            "105 time samples"
+          ],
+          "colors": [
+            null,
+            null,
+            null,
+            [
+              177,
+              207,
+              153
+            ]
+          ],
+          "layer": "<session>",
+          "rowHeight": 30
+        },
+        {
+          "text": [
+            "root.usda",
+            "",
+            "/World.single",
+            "1 time sample"
+          ],
+          "colors": [
+            null,
+            null,
+            null,
+            [
+              177,
+              207,
+              153
+            ]
+          ],
+          "layer": "root.usda",
+          "rowHeight": 30
+        }
+      ]
+    },
+    {
+      "fixture": "metadata-inspection",
+      "path": "/World",
+      "property": "target",
+      "time": 12,
+      "muted": false,
+      "sessionSamples": 0,
+      "targetEdits": true,
+      "columnWidths": [
+        66,
+        0,
+        392,
+        618
+      ],
+      "headers": [
+        "Layer",
+        "Offset , Scale",
+        "Path",
+        "Target Paths"
+      ],
+      "hidden": [
+        false,
+        true,
+        false,
+        false
+      ],
+      "rows": [
+        {
+          "text": [
+            "root.usda",
+            "",
+            "/World.target",
+            "{ 'added': []'prepended': [/Before]'appended': [/After], 'deleted': [/Old], 'ordered': [/After, /Before] }"
+          ],
+          "colors": [
+            null,
+            null,
+            null,
+            [
+              135,
+              206,
+              250
+            ]
+          ],
+          "layer": "root.usda",
+          "rowHeight": 30
+        }
+      ]
+    }
+  ]
+}

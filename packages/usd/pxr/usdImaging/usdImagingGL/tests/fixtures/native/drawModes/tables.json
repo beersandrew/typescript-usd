@@ -1,0 +1,1031 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/usdImaging/usdImagingGL/tests/fixtures/native/drawModes/capture.py",
+  "upstream": [
+    "pxr/usdImaging/usdviewq/stageView.py:585-597",
+    "pxr/usdImaging/usdviewq/stageView.py:1146-1193",
+    "pxr/usdImaging/usdviewq/stageView.py:1388-1525",
+    "pxr/usdImaging/usdviewq/common.py:136-154",
+    "pxr/usdImaging/usdviewq/viewSettingsDataModel.py:24-40",
+    "pxr/usdImaging/usdImagingGL/engine.cpp:2589-2690",
+    "pxr/imaging/hd/renderIndex.cpp:1008-1074",
+    "pxr/imaging/hdSt/meshShaderKey.cpp",
+    "pxr/imaging/hdSt/shaders/meshWire.glslfx",
+    "pxr/imaging/hdSt/shaders/terminals.glslfx:57-126",
+    "pxr/imaging/hdx/shaders/selection.glslfx:441-474"
+  ],
+  "payload": {
+    "drawModes": [
+      {
+        "drawMode": "DRAW_POINTS",
+        "collection": "geometry",
+        "repr": [
+          "points",
+          "",
+          ""
+        ],
+        "enableLighting": false,
+        "pointSize": 3,
+        "wireframeColor": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "overrideColor": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "depthBiasUseDefault": true,
+        "depthFunc": 1,
+        "cullStyle": 1
+      },
+      {
+        "drawMode": "DRAW_WIREFRAME",
+        "collection": "geometry",
+        "repr": [
+          "refinedWire",
+          "",
+          ""
+        ],
+        "enableLighting": true,
+        "pointSize": 3,
+        "wireframeColor": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "overrideColor": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "depthBiasUseDefault": true,
+        "depthFunc": 1,
+        "cullStyle": 1
+      },
+      {
+        "drawMode": "DRAW_WIREFRAME_ON_SURFACE",
+        "collection": "geometry",
+        "repr": [
+          "refinedWireOnSurf",
+          "",
+          ""
+        ],
+        "enableLighting": true,
+        "pointSize": 3,
+        "wireframeColor": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "overrideColor": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "depthBiasUseDefault": true,
+        "depthFunc": 1,
+        "cullStyle": 1
+      },
+      {
+        "drawMode": "DRAW_SHADED_FLAT",
+        "collection": "geometry",
+        "repr": [
+          "hull",
+          "",
+          ""
+        ],
+        "enableLighting": true,
+        "pointSize": 3,
+        "wireframeColor": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "overrideColor": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "depthBiasUseDefault": true,
+        "depthFunc": 1,
+        "cullStyle": 1
+      },
+      {
+        "drawMode": "DRAW_SHADED_SMOOTH",
+        "collection": "geometry",
+        "repr": [
+          "refined",
+          "",
+          ""
+        ],
+        "enableLighting": true,
+        "pointSize": 3,
+        "wireframeColor": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "overrideColor": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "depthBiasUseDefault": true,
+        "depthFunc": 1,
+        "cullStyle": 1
+      },
+      {
+        "drawMode": "DRAW_GEOM_ONLY",
+        "collection": "geometry",
+        "repr": [
+          "refined",
+          "",
+          ""
+        ],
+        "enableLighting": false,
+        "pointSize": 3,
+        "wireframeColor": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "overrideColor": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "depthBiasUseDefault": true,
+        "depthFunc": 1,
+        "cullStyle": 1
+      },
+      {
+        "drawMode": "DRAW_GEOM_FLAT",
+        "collection": "geometry",
+        "repr": [
+          "hull",
+          "",
+          ""
+        ],
+        "enableLighting": true,
+        "pointSize": 3,
+        "wireframeColor": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "overrideColor": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "depthBiasUseDefault": true,
+        "depthFunc": 1,
+        "cullStyle": 1
+      },
+      {
+        "drawMode": "DRAW_GEOM_SMOOTH",
+        "collection": "geometry",
+        "repr": [
+          "refined",
+          "",
+          ""
+        ],
+        "enableLighting": true,
+        "pointSize": 3,
+        "wireframeColor": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "overrideColor": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "depthBiasUseDefault": true,
+        "depthFunc": 1,
+        "cullStyle": 1
+      }
+    ],
+    "triangulation": [
+      {
+        "name": "triangle",
+        "orientation": "rightHanded",
+        "faceVertexCounts": [
+          3
+        ],
+        "faceVertexIndices": [
+          0,
+          1,
+          2
+        ],
+        "holeIndices": [],
+        "triangles": [
+          [
+            0,
+            1,
+            2
+          ]
+        ],
+        "faceIndex": [
+          0
+        ],
+        "edgeFlag": [
+          0
+        ]
+      },
+      {
+        "name": "quad",
+        "orientation": "rightHanded",
+        "faceVertexCounts": [
+          4
+        ],
+        "faceVertexIndices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "holeIndices": [],
+        "triangles": [
+          [
+            0,
+            1,
+            2
+          ],
+          [
+            0,
+            2,
+            3
+          ]
+        ],
+        "faceIndex": [
+          0,
+          0
+        ],
+        "edgeFlag": [
+          1,
+          2
+        ]
+      },
+      {
+        "name": "pentagon",
+        "orientation": "rightHanded",
+        "faceVertexCounts": [
+          5
+        ],
+        "faceVertexIndices": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "holeIndices": [],
+        "triangles": [
+          [
+            0,
+            1,
+            2
+          ],
+          [
+            0,
+            2,
+            3
+          ],
+          [
+            0,
+            3,
+            4
+          ]
+        ],
+        "faceIndex": [
+          0,
+          0,
+          0
+        ],
+        "edgeFlag": [
+          1,
+          3,
+          2
+        ]
+      },
+      {
+        "name": "pentagonLeftHanded",
+        "orientation": "leftHanded",
+        "faceVertexCounts": [
+          5
+        ],
+        "faceVertexIndices": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "holeIndices": [],
+        "triangles": [
+          [
+            2,
+            1,
+            0
+          ],
+          [
+            0,
+            3,
+            2
+          ],
+          [
+            3,
+            0,
+            4
+          ]
+        ],
+        "faceIndex": [
+          0,
+          0,
+          0
+        ],
+        "edgeFlag": [
+          1,
+          3,
+          2
+        ]
+      },
+      {
+        "name": "hexagon",
+        "orientation": "rightHanded",
+        "faceVertexCounts": [
+          6
+        ],
+        "faceVertexIndices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "holeIndices": [],
+        "triangles": [
+          [
+            0,
+            1,
+            2
+          ],
+          [
+            0,
+            2,
+            3
+          ],
+          [
+            0,
+            3,
+            4
+          ],
+          [
+            0,
+            4,
+            5
+          ]
+        ],
+        "faceIndex": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "edgeFlag": [
+          1,
+          3,
+          3,
+          2
+        ]
+      },
+      {
+        "name": "quadsWithHole",
+        "orientation": "rightHanded",
+        "faceVertexCounts": [
+          4,
+          4,
+          3
+        ],
+        "faceVertexIndices": [
+          0,
+          1,
+          2,
+          3,
+          1,
+          4,
+          5,
+          2,
+          4,
+          6,
+          5
+        ],
+        "holeIndices": [
+          1
+        ],
+        "triangles": [
+          [
+            0,
+            1,
+            2
+          ],
+          [
+            0,
+            2,
+            3
+          ],
+          [
+            4,
+            6,
+            5
+          ]
+        ],
+        "faceIndex": [
+          0,
+          0,
+          2
+        ],
+        "edgeFlag": [
+          1,
+          2,
+          0
+        ]
+      }
+    ],
+    "hgi": "Metal",
+    "builtinBarycentrics": true,
+    "roundPoints": false,
+    "meshReprs": [
+      {
+        "repr": "hull",
+        "descs": [
+          {
+            "geomStyle": 4,
+            "cullStyle": 0,
+            "shadingTerminal": "surfaceShader",
+            "flatShadingEnabled": true,
+            "blendWireframeColor": false,
+            "forceOpaqueEdges": true,
+            "surfaceEdgeIds": false,
+            "doubleSided": false,
+            "lineWidth": 0,
+            "useCustomDisplacement": true,
+            "enableScalarOverride": true
+          }
+        ]
+      },
+      {
+        "repr": "points",
+        "descs": [
+          {
+            "geomStyle": 7,
+            "cullStyle": 1,
+            "shadingTerminal": "pointColor",
+            "flatShadingEnabled": false,
+            "blendWireframeColor": false,
+            "forceOpaqueEdges": true,
+            "surfaceEdgeIds": false,
+            "doubleSided": false,
+            "lineWidth": 0,
+            "useCustomDisplacement": true,
+            "enableScalarOverride": true
+          }
+        ]
+      },
+      {
+        "repr": "smoothHull",
+        "descs": [
+          {
+            "geomStyle": 4,
+            "cullStyle": 0,
+            "shadingTerminal": "surfaceShader",
+            "flatShadingEnabled": false,
+            "blendWireframeColor": false,
+            "forceOpaqueEdges": true,
+            "surfaceEdgeIds": false,
+            "doubleSided": false,
+            "lineWidth": 0,
+            "useCustomDisplacement": true,
+            "enableScalarOverride": true
+          }
+        ]
+      },
+      {
+        "repr": "refined",
+        "descs": [
+          {
+            "geomStyle": 1,
+            "cullStyle": 0,
+            "shadingTerminal": "surfaceShader",
+            "flatShadingEnabled": false,
+            "blendWireframeColor": false,
+            "forceOpaqueEdges": true,
+            "surfaceEdgeIds": false,
+            "doubleSided": false,
+            "lineWidth": 0,
+            "useCustomDisplacement": true,
+            "enableScalarOverride": true
+          }
+        ]
+      },
+      {
+        "repr": "refinedWire",
+        "descs": [
+          {
+            "geomStyle": 2,
+            "cullStyle": 0,
+            "shadingTerminal": "surfaceShader",
+            "flatShadingEnabled": false,
+            "blendWireframeColor": true,
+            "forceOpaqueEdges": true,
+            "surfaceEdgeIds": false,
+            "doubleSided": false,
+            "lineWidth": 0,
+            "useCustomDisplacement": true,
+            "enableScalarOverride": true
+          }
+        ]
+      },
+      {
+        "repr": "refinedWireOnSurf",
+        "descs": [
+          {
+            "geomStyle": 3,
+            "cullStyle": 0,
+            "shadingTerminal": "surfaceShader",
+            "flatShadingEnabled": false,
+            "blendWireframeColor": true,
+            "forceOpaqueEdges": false,
+            "surfaceEdgeIds": false,
+            "doubleSided": false,
+            "lineWidth": 0,
+            "useCustomDisplacement": true,
+            "enableScalarOverride": true
+          }
+        ]
+      },
+      {
+        "repr": "refinedSolidWireOnSurf",
+        "descs": [
+          {
+            "geomStyle": 3,
+            "cullStyle": 0,
+            "shadingTerminal": "surfaceShader",
+            "flatShadingEnabled": false,
+            "blendWireframeColor": true,
+            "forceOpaqueEdges": true,
+            "surfaceEdgeIds": false,
+            "doubleSided": false,
+            "lineWidth": 0,
+            "useCustomDisplacement": true,
+            "enableScalarOverride": true
+          }
+        ]
+      },
+      {
+        "repr": "wire",
+        "descs": [
+          {
+            "geomStyle": 5,
+            "cullStyle": 0,
+            "shadingTerminal": "surfaceShader",
+            "flatShadingEnabled": false,
+            "blendWireframeColor": true,
+            "forceOpaqueEdges": true,
+            "surfaceEdgeIds": false,
+            "doubleSided": false,
+            "lineWidth": 0,
+            "useCustomDisplacement": true,
+            "enableScalarOverride": true
+          }
+        ]
+      },
+      {
+        "repr": "wireOnSurf",
+        "descs": [
+          {
+            "geomStyle": 6,
+            "cullStyle": 0,
+            "shadingTerminal": "surfaceShader",
+            "flatShadingEnabled": false,
+            "blendWireframeColor": true,
+            "forceOpaqueEdges": false,
+            "surfaceEdgeIds": false,
+            "doubleSided": false,
+            "lineWidth": 0,
+            "useCustomDisplacement": true,
+            "enableScalarOverride": true
+          }
+        ]
+      },
+      {
+        "repr": "solidWireOnSurf",
+        "descs": [
+          {
+            "geomStyle": 6,
+            "cullStyle": 0,
+            "shadingTerminal": "surfaceShader",
+            "flatShadingEnabled": false,
+            "blendWireframeColor": true,
+            "forceOpaqueEdges": true,
+            "surfaceEdgeIds": false,
+            "doubleSided": false,
+            "lineWidth": 0,
+            "useCustomDisplacement": true,
+            "enableScalarOverride": true
+          }
+        ]
+      }
+    ],
+    "shaderKeys": [
+      {
+        "name": "none/hull",
+        "polygonMode": 0,
+        "lineWidth": 0,
+        "useHardwareFaceCulling": true,
+        "VS": [
+          "Instancing.Transform",
+          "Vertex.SkinPoints",
+          "MeshNormal.Pass",
+          "PointId.Vertex.None",
+          "PointDisk.Vertex.None",
+          "Mesh.Vertex"
+        ],
+        "GS": [],
+        "FS": [
+          "Instancing.Transform",
+          "MeshNormal.Fragment.ScreenSpace",
+          "MeshNormal.Fragment.SingleSided",
+          "MeshFaceCull.Fragment.None",
+          "MeshWire.Fragment.NoEdge",
+          "MeshWire.Fragment.EdgeParam",
+          "Fragment.CommonTerminals",
+          "Fragment.Surface",
+          "Fragment.ScalarOverride",
+          "EdgeId.Fragment.None",
+          "PointId.Fragment.Fallback",
+          "PointDisk.Fragment.None",
+          "Visibility.Fragment.Fallback",
+          "Mesh.Fragment.PatchCoord.Triangle",
+          "Mesh.Fragment"
+        ]
+      },
+      {
+        "name": "none/points",
+        "polygonMode": 0,
+        "lineWidth": 0,
+        "useHardwareFaceCulling": true,
+        "VS": [
+          "Instancing.Transform",
+          "Vertex.SkinPoints",
+          "MeshNormal.Pass",
+          "PointId.Vertex.PointParam",
+          "Selection.DecodeUtils",
+          "Selection.Vertex.PointSel",
+          "PointDisk.Vertex.PointSizeBias",
+          "Mesh.Vertex"
+        ],
+        "GS": [],
+        "FS": [
+          "Instancing.Transform",
+          "MeshNormal.Pass",
+          "MeshNormal.Fragment.SingleSided",
+          "MeshFaceCull.Fragment.None",
+          "MeshWire.Fragment.NoEdge",
+          "MeshWire.Fragment.EdgeParam",
+          "Fragment.CommonTerminals",
+          "Fragment.PointColor",
+          "Fragment.ScalarOverride",
+          "PointId.Fragment.PointParam",
+          "PointDisk.Fragment.SampleMask",
+          "Visibility.Fragment.Fallback",
+          "Mesh.Fragment.PatchCoord.NoGS",
+          "Mesh.Fragment"
+        ]
+      },
+      {
+        "name": "none/refined",
+        "polygonMode": 0,
+        "lineWidth": 0,
+        "useHardwareFaceCulling": true,
+        "VS": [
+          "Instancing.Transform",
+          "Vertex.SkinPoints",
+          "MeshNormal.Pass",
+          "PointId.Vertex.None",
+          "PointDisk.Vertex.None",
+          "Mesh.Vertex"
+        ],
+        "GS": [
+          "Instancing.Transform",
+          "MeshNormal.Pass",
+          "MeshNormal.Geometry.Flat",
+          "Geometry.NoCustomDisplacement",
+          "Mesh.Geometry.Triangle"
+        ],
+        "FS": [
+          "Instancing.Transform",
+          "MeshNormal.Pass",
+          "MeshNormal.Fragment.SingleSided",
+          "MeshFaceCull.Fragment.None",
+          "MeshWire.Fragment.NoEdge",
+          "MeshWire.Fragment.EdgeParam",
+          "Fragment.CommonTerminals",
+          "Fragment.Surface",
+          "Fragment.ScalarOverride",
+          "EdgeId.Fragment.None",
+          "PointId.Fragment.Fallback",
+          "PointDisk.Fragment.None",
+          "Visibility.Fragment.Fallback",
+          "Mesh.Fragment.PatchCoord",
+          "Mesh.Fragment"
+        ]
+      },
+      {
+        "name": "none/refinedWire",
+        "polygonMode": 1,
+        "lineWidth": 0,
+        "useHardwareFaceCulling": true,
+        "VS": [
+          "Instancing.Transform",
+          "Vertex.SkinPoints",
+          "MeshNormal.Pass",
+          "PointId.Vertex.None",
+          "PointDisk.Vertex.None",
+          "Mesh.Vertex"
+        ],
+        "GS": [
+          "Instancing.Transform",
+          "MeshNormal.Pass",
+          "MeshNormal.Geometry.Flat",
+          "Geometry.NoCustomDisplacement",
+          "Mesh.Geometry.Triangle"
+        ],
+        "FS": [
+          "Instancing.Transform",
+          "MeshNormal.Pass",
+          "MeshNormal.Fragment.SingleSided",
+          "MeshFaceCull.Fragment.None",
+          "MeshWire.Fragment.EdgeCoord.Barycentric",
+          "MeshWire.Fragment.EdgeMaskTriangle",
+          "MeshWire.Fragment.EdgeCommon",
+          "MeshWire.Fragment.EdgeParam",
+          "MeshWire.Fragment.FinalEdgeOpacityForce",
+          "MeshWire.Fragment.EdgeOnlyBlendColor",
+          "Fragment.CommonTerminals",
+          "Fragment.Surface",
+          "Fragment.ScalarOverride",
+          "EdgeId.Fragment.Common",
+          "EdgeId.Fragment.TriangleLines",
+          "EdgeId.Fragment.TriangleParam",
+          "PointId.Fragment.Fallback",
+          "PointDisk.Fragment.None",
+          "Visibility.Fragment.Fallback",
+          "Mesh.Fragment.PatchCoord",
+          "Mesh.Fragment"
+        ]
+      },
+      {
+        "name": "none/refinedWireOnSurf",
+        "polygonMode": 0,
+        "lineWidth": 0,
+        "useHardwareFaceCulling": true,
+        "VS": [
+          "Instancing.Transform",
+          "Vertex.SkinPoints",
+          "MeshNormal.Pass",
+          "PointId.Vertex.None",
+          "PointDisk.Vertex.None",
+          "Mesh.Vertex"
+        ],
+        "GS": [
+          "Instancing.Transform",
+          "MeshNormal.Pass",
+          "MeshNormal.Geometry.Flat",
+          "Geometry.NoCustomDisplacement",
+          "Mesh.Geometry.Triangle"
+        ],
+        "FS": [
+          "Instancing.Transform",
+          "MeshNormal.Pass",
+          "MeshNormal.Fragment.SingleSided",
+          "MeshFaceCull.Fragment.None",
+          "MeshWire.Fragment.EdgeCoord.Barycentric",
+          "MeshWire.Fragment.EdgeMaskTriangle",
+          "MeshWire.Fragment.EdgeCommon",
+          "MeshWire.Fragment.EdgeParam",
+          "MeshWire.Fragment.FinalEdgeOpacityNoForce",
+          "MeshPatchWire.Fragment.PatchEdgeTriangle",
+          "MeshWire.Fragment.EdgeOnSurface",
+          "Fragment.CommonTerminals",
+          "Fragment.Surface",
+          "Fragment.ScalarOverride",
+          "EdgeId.Fragment.Common",
+          "EdgeId.Fragment.TriangleSurface",
+          "EdgeId.Fragment.TriangleParam",
+          "PointId.Fragment.Fallback",
+          "PointDisk.Fragment.None",
+          "Visibility.Fragment.Fallback",
+          "Mesh.Fragment.PatchCoord",
+          "Mesh.Fragment"
+        ]
+      },
+      {
+        "name": "catmullClark/hull",
+        "polygonMode": 0,
+        "lineWidth": 0,
+        "useHardwareFaceCulling": true,
+        "VS": [
+          "Instancing.Transform",
+          "Vertex.SkinPoints",
+          "MeshNormal.Pass",
+          "PointId.Vertex.None",
+          "PointDisk.Vertex.None",
+          "Mesh.Vertex"
+        ],
+        "GS": [],
+        "FS": [
+          "Instancing.Transform",
+          "MeshNormal.Flat",
+          "MeshNormal.Fragment.SingleSided",
+          "MeshFaceCull.Fragment.None",
+          "MeshWire.Fragment.NoEdge",
+          "MeshWire.Fragment.EdgeParam",
+          "Fragment.CommonTerminals",
+          "Fragment.Surface",
+          "Fragment.ScalarOverride",
+          "EdgeId.Fragment.None",
+          "PointId.Fragment.Fallback",
+          "PointDisk.Fragment.None",
+          "Visibility.Fragment.Fallback",
+          "Mesh.Fragment.PatchCoord.Triangle",
+          "Mesh.Fragment"
+        ]
+      },
+      {
+        "name": "catmullClark/points",
+        "polygonMode": 0,
+        "lineWidth": 0,
+        "useHardwareFaceCulling": true,
+        "VS": [
+          "Instancing.Transform",
+          "Vertex.SkinPoints",
+          "MeshNormal.Smooth",
+          "PointId.Vertex.PointParam",
+          "Selection.DecodeUtils",
+          "Selection.Vertex.PointSel",
+          "PointDisk.Vertex.PointSizeBias",
+          "Mesh.Vertex"
+        ],
+        "GS": [],
+        "FS": [
+          "Instancing.Transform",
+          "MeshNormal.Pass",
+          "MeshNormal.Fragment.SingleSided",
+          "MeshFaceCull.Fragment.None",
+          "MeshWire.Fragment.NoEdge",
+          "MeshWire.Fragment.EdgeParam",
+          "Fragment.CommonTerminals",
+          "Fragment.PointColor",
+          "Fragment.ScalarOverride",
+          "PointId.Fragment.PointParam",
+          "PointDisk.Fragment.SampleMask",
+          "Visibility.Fragment.Fallback",
+          "Mesh.Fragment.PatchCoord.NoGS",
+          "Mesh.Fragment"
+        ]
+      },
+      {
+        "name": "catmullClark/refined",
+        "polygonMode": 0,
+        "lineWidth": 0,
+        "useHardwareFaceCulling": true,
+        "VS": [
+          "Instancing.Transform",
+          "Vertex.SkinPoints",
+          "MeshNormal.Smooth",
+          "PointId.Vertex.None",
+          "PointDisk.Vertex.None",
+          "Mesh.Vertex"
+        ],
+        "GS": [],
+        "FS": [
+          "Instancing.Transform",
+          "MeshNormal.Pass",
+          "MeshNormal.Fragment.SingleSided",
+          "MeshFaceCull.Fragment.None",
+          "MeshWire.Fragment.NoEdge",
+          "MeshWire.Fragment.EdgeParam",
+          "Fragment.CommonTerminals",
+          "Fragment.Surface",
+          "Fragment.ScalarOverride",
+          "EdgeId.Fragment.None",
+          "PointId.Fragment.Fallback",
+          "PointDisk.Fragment.None",
+          "Visibility.Fragment.Fallback",
+          "Mesh.Fragment.PatchCoord.Triangle",
+          "Mesh.Fragment"
+        ]
+      },
+      {
+        "name": "catmullClark/refinedWire",
+        "polygonMode": 1,
+        "lineWidth": 0,
+        "useHardwareFaceCulling": true,
+        "VS": [
+          "Instancing.Transform",
+          "Vertex.SkinPoints",
+          "MeshNormal.Smooth",
+          "PointId.Vertex.None",
+          "PointDisk.Vertex.None",
+          "Mesh.Vertex"
+        ],
+        "GS": [],
+        "FS": [
+          "Instancing.Transform",
+          "MeshNormal.Pass",
+          "MeshNormal.Fragment.SingleSided",
+          "MeshFaceCull.Fragment.None",
+          "MeshWire.Fragment.EdgeCoord.Barycentric",
+          "MeshWire.Fragment.EdgeMaskTriangle",
+          "MeshWire.Fragment.EdgeCommon",
+          "MeshWire.Fragment.EdgeParam",
+          "MeshWire.Fragment.FinalEdgeOpacityForce",
+          "MeshWire.Fragment.EdgeOnlyBlendColor",
+          "Fragment.CommonTerminals",
+          "Fragment.Surface",
+          "Fragment.ScalarOverride",
+          "EdgeId.Fragment.Common",
+          "EdgeId.Fragment.TriangleLines",
+          "EdgeId.Fragment.TriangleParam",
+          "PointId.Fragment.Fallback",
+          "PointDisk.Fragment.None",
+          "Visibility.Fragment.Fallback",
+          "Mesh.Fragment.PatchCoord.Triangle",
+          "Mesh.Fragment"
+        ]
+      },
+      {
+        "name": "catmullClark/refinedWireOnSurf",
+        "polygonMode": 0,
+        "lineWidth": 0,
+        "useHardwareFaceCulling": true,
+        "VS": [
+          "Instancing.Transform",
+          "Vertex.SkinPoints",
+          "MeshNormal.Smooth",
+          "PointId.Vertex.None",
+          "PointDisk.Vertex.None",
+          "Mesh.Vertex"
+        ],
+        "GS": [],
+        "FS": [
+          "Instancing.Transform",
+          "MeshNormal.Pass",
+          "MeshNormal.Fragment.SingleSided",
+          "MeshFaceCull.Fragment.None",
+          "MeshWire.Fragment.EdgeCoord.Barycentric",
+          "MeshWire.Fragment.EdgeMaskTriangle",
+          "MeshWire.Fragment.EdgeCommon",
+          "MeshWire.Fragment.EdgeParam",
+          "MeshWire.Fragment.FinalEdgeOpacityNoForce",
+          "MeshPatchWire.Fragment.PatchEdgeTriangle",
+          "MeshWire.Fragment.EdgeOnSurface",
+          "Fragment.CommonTerminals",
+          "Fragment.Surface",
+          "Fragment.ScalarOverride",
+          "EdgeId.Fragment.Common",
+          "EdgeId.Fragment.TriangleSurface",
+          "EdgeId.Fragment.TriangleParam",
+          "PointId.Fragment.Fallback",
+          "PointDisk.Fragment.None",
+          "Visibility.Fragment.Fallback",
+          "Mesh.Fragment.PatchCoord.Triangle",
+          "Mesh.Fragment"
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,561 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/usd/sdf/tests/fixtures/parserCorrectness/capture.py",
+  "upstream": [
+    "pxr/usd/sdf/textFileFormatParser.h:786-1029",
+    "pxr/usd/sdf/textFileFormatParser.cpp",
+    "pxr/usd/sdf/textParserHelpers.cpp"
+  ],
+  "payload": {
+    "cases": [
+      {
+        "name": "spline-held",
+        "text": "#usda 1.0\ndef Xform \"World\" {\ndouble value.spline = { 1: 5; post held, 2: 18; post held,\n}\n}\n",
+        "accepted": true,
+        "observations": [],
+        "spline": {
+          "path": "/World.value",
+          "authored": true,
+          "valueType": "double",
+          "curveType": 0,
+          "preExtrapolation": {
+            "mode": 1,
+            "slope": 0.0,
+            "loopBoundaryTime": null
+          },
+          "postExtrapolation": {
+            "mode": 1,
+            "slope": 0.0,
+            "loopBoundaryTime": null
+          },
+          "knots": [
+            {
+              "time": 1.0,
+              "value": 5.0,
+              "interpolation": 1,
+              "preWidth": 0.0,
+              "postWidth": 0.0,
+              "preSlope": 0.0,
+              "postSlope": 0.0
+            },
+            {
+              "time": 2.0,
+              "value": 18.0,
+              "interpolation": 1,
+              "preWidth": 0.0,
+              "postWidth": 0.0,
+              "preSlope": 0.0,
+              "postSlope": 0.0
+            }
+          ]
+        },
+        "exported": "#usda 1.0\n\ndef Xform \"World\"\n{\n    double value.spline = {\n        1: 5; pre (0, 0); post held,\n        2: 18; post held,\n    }\n}\n\n"
+      },
+      {
+        "name": "spline-extrapolation",
+        "text": "#usda 1.0\ndef Xform \"World\" {\ndouble value.spline = { pre: sloped(2), post: loop repeat(5), 1: 5; post linear, 2: 18; post held,\n}\n}\n",
+        "accepted": true,
+        "observations": [],
+        "spline": {
+          "path": "/World.value",
+          "authored": true,
+          "valueType": "double",
+          "curveType": 0,
+          "preExtrapolation": {
+            "mode": 3,
+            "slope": 2.0,
+            "loopBoundaryTime": null
+          },
+          "postExtrapolation": {
+            "mode": 4,
+            "slope": 2.0,
+            "loopBoundaryTime": 5.0
+          },
+          "knots": [
+            {
+              "time": 1.0,
+              "value": 5.0,
+              "interpolation": 2,
+              "preWidth": 0.0,
+              "postWidth": 0.0,
+              "preSlope": 0.0,
+              "postSlope": 0.0
+            },
+            {
+              "time": 2.0,
+              "value": 18.0,
+              "interpolation": 1,
+              "preWidth": 0.0,
+              "postWidth": 0.0,
+              "preSlope": 0.0,
+              "postSlope": 0.0
+            }
+          ]
+        },
+        "exported": "#usda 1.3\n\ndef Xform \"World\"\n{\n    double value.spline = {\n        pre: sloped(2),\n        post: loop repeat(5),\n        1: 5; pre (0, 0); post linear,\n        2: 18; post held,\n    }\n}\n\n"
+      },
+      {
+        "name": "spline-bezier-tangents",
+        "text": "#usda 1.0\ndef Xform \"World\" {\ndouble value.spline = { bezier, 1: 5; pre (0.1, 2); post curve (0.2, 3), 2: 18; post held,\n}\n}\n",
+        "accepted": true,
+        "observations": [],
+        "spline": {
+          "path": "/World.value",
+          "authored": true,
+          "valueType": "double",
+          "curveType": 0,
+          "preExtrapolation": {
+            "mode": 1,
+            "slope": 0.0,
+            "loopBoundaryTime": null
+          },
+          "postExtrapolation": {
+            "mode": 1,
+            "slope": 0.0,
+            "loopBoundaryTime": null
+          },
+          "knots": [
+            {
+              "time": 1.0,
+              "value": 5.0,
+              "interpolation": 3,
+              "preWidth": 0.1,
+              "postWidth": 0.2,
+              "preSlope": 2.0,
+              "postSlope": 3.0
+            },
+            {
+              "time": 2.0,
+              "value": 18.0,
+              "interpolation": 1,
+              "preWidth": 0.0,
+              "postWidth": 0.0,
+              "preSlope": 0.0,
+              "postSlope": 0.0
+            }
+          ]
+        },
+        "exported": "#usda 1.0\n\ndef Xform \"World\"\n{\n    double value.spline = {\n        bezier,\n        1: 5; pre (0.1, 2); post curve (0.2, 3),\n        2: 18; pre (0, 0); post held,\n    }\n}\n\n"
+      },
+      {
+        "name": "spline-hermite-tangents",
+        "text": "#usda 1.0\ndef Xform \"World\" {\ndouble value.spline = { hermite, 1: 5; pre (2); post curve (3), 2: 18; post held,\n}\n}\n",
+        "accepted": true,
+        "observations": [],
+        "spline": {
+          "path": "/World.value",
+          "authored": true,
+          "valueType": "double",
+          "curveType": 1,
+          "preExtrapolation": {
+            "mode": 1,
+            "slope": 0.0,
+            "loopBoundaryTime": null
+          },
+          "postExtrapolation": {
+            "mode": 1,
+            "slope": 0.0,
+            "loopBoundaryTime": null
+          },
+          "knots": [
+            {
+              "time": 1.0,
+              "value": 5.0,
+              "interpolation": 3,
+              "preWidth": 0.0,
+              "postWidth": 0.3333333333333333,
+              "preSlope": 2.0,
+              "postSlope": 3.0
+            },
+            {
+              "time": 2.0,
+              "value": 18.0,
+              "interpolation": 1,
+              "preWidth": 0.3333333333333333,
+              "postWidth": 0.0,
+              "preSlope": 0.0,
+              "postSlope": 0.0
+            }
+          ]
+        },
+        "exported": "#usda 1.0\n\ndef Xform \"World\"\n{\n    double value.spline = {\n        hermite,\n        1: 5; pre (2); post curve (3),\n        2: 18; pre (0); post held,\n    }\n}\n\n"
+      },
+      {
+        "name": "spline-empty",
+        "text": "#usda 1.0\ndef Xform \"World\" {\ndouble value.spline = {}\n}\n",
+        "accepted": true,
+        "observations": [],
+        "spline": {
+          "path": "/World.value",
+          "authored": true,
+          "valueType": "double",
+          "curveType": 0,
+          "preExtrapolation": {
+            "mode": 1,
+            "slope": 0.0,
+            "loopBoundaryTime": null
+          },
+          "postExtrapolation": {
+            "mode": 1,
+            "slope": 0.0,
+            "loopBoundaryTime": null
+          },
+          "knots": []
+        },
+        "exported": "#usda 1.0\n\ndef Xform \"World\"\n{\n    double value.spline = {\n    }\n}\n\n"
+      },
+      {
+        "name": "spline-bogus",
+        "text": "#usda 1.0\ndef Xform \"World\" {\ndouble value.spline = { bogus\n}\n}\n",
+        "accepted": false,
+        "error": "\n\tError in 'pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::_RaiseErrorPEGTL' at line 48 in file <source>/pxr/usd/sdf/textParserHelpers.h : ':3:25: Expected } at 'bogus' in </World.value>\n'"
+      },
+      {
+        "name": "spline-inherited-key-extrapolation",
+        "text": "#usda 1.0\ndef Xform \"World\" {\ndouble value.spline = { pre: constructor\n}\n}\n",
+        "accepted": false,
+        "error": "\n\tError in 'pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::_RaiseErrorPEGTL' at line 48 in file <source>/pxr/usd/sdf/textParserHelpers.h : ':3:25: Expected } at 'pre: constructor' in </World.value>\n'"
+      },
+      {
+        "name": "spline-invalid-extrapolation",
+        "text": "#usda 1.0\ndef Xform \"World\" {\ndouble value.spline = { pre: bogus\n}\n}\n",
+        "accepted": false,
+        "error": "\n\tError in 'pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::_RaiseErrorPEGTL' at line 48 in file <source>/pxr/usd/sdf/textParserHelpers.h : ':3:25: Expected } at 'pre: bogus' in </World.value>\n'"
+      },
+      {
+        "name": "spline-invalid-interpolation",
+        "text": "#usda 1.0\ndef Xform \"World\" {\ndouble value.spline = { 1: 5; post bogus\n}\n}\n",
+        "accepted": false,
+        "error": "\n\tError in 'pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::_RaiseErrorPEGTL' at line 48 in file <source>/pxr/usd/sdf/textParserHelpers.h : ':3:31: parse error matching pxrInternal_v0_26_11__pxrReserved___pegtl::seq<pxrInternal_v0_26_11__pxrReserved___pegtl::pad<pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::StatementSequenceOf<pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::SplineKnotParam>, pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::InlinePadding>, pxrInternal_v0_26_11__pxrReserved___pegtl::not_at<pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::SplineKnotParamSeparator>> at 'post bogus' in </World.value>\n'"
+      },
+      {
+        "name": "spline-invalid-tangent-algorithm",
+        "text": "#usda 1.0\ndef Xform \"World\" {\ndouble value.spline = { 1: 5; post curve (0.2, 3, bogus)\n}\n}\n",
+        "accepted": false,
+        "error": "\n\tError in 'pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::_RaiseErrorPEGTL' at line 48 in file <source>/pxr/usd/sdf/textParserHelpers.h : ':3:42: Expected } at '(0.2, 3, bogus)' in </World.value>\n'"
+      },
+      {
+        "name": "spline-invalid-knot-side",
+        "text": "#usda 1.0\ndef Xform \"World\" {\ndouble value.spline = { 1: 5; bogus (2)\n}\n}\n",
+        "accepted": false,
+        "error": "\n\tError in 'pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::_RaiseErrorPEGTL' at line 48 in file <source>/pxr/usd/sdf/textParserHelpers.h : ':3:31: parse error matching pxrInternal_v0_26_11__pxrReserved___pegtl::seq<pxrInternal_v0_26_11__pxrReserved___pegtl::pad<pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::StatementSequenceOf<pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::SplineKnotParam>, pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::InlinePadding>, pxrInternal_v0_26_11__pxrReserved___pegtl::not_at<pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::SplineKnotParamSeparator>> at 'bogus (2)' in </World.value>\n'"
+      },
+      {
+        "name": "spline-missing-value",
+        "text": "#usda 1.0\ndef Xform \"World\" {\ndouble value.spline = { 1:\n}\n}\n",
+        "accepted": false,
+        "error": "\n\tError in 'pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::_RaiseErrorPEGTL' at line 48 in file <source>/pxr/usd/sdf/textParserHelpers.h : ':3:25: Expected } at '1:' in </World.value>\n'"
+      },
+      {
+        "name": "unknown-attribute-kind-block",
+        "text": "#usda 1.0\ndef Xform \"World\" {\ndouble value.bogus = { 1: 2\n}\n}\n",
+        "accepted": false,
+        "error": "\n\tError in 'pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::_RaiseErrorPEGTL' at line 48 in file <source>/pxr/usd/sdf/textParserHelpers.h : ':3:14: parse error matching pxrInternal_v0_26_11__pxrReserved___pegtl::sor<pxrInternal_v0_26_11__pxrReserved___pegtl::if_must<pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::KeywordTimeSamples, pxrInternal_v0_26_11__pxrReserved___pegtl::seq<pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::Assignment, pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::TimeSampleMap>>, pxrInternal_v0_26_11__pxrReserved___pegtl::if_must<pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::KeywordConnect, pxrInternal_v0_26_11__pxrReserved___pegtl::seq<pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::Assignment, pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::ConnectValue>>, pxrInternal_v0_26_11__pxrReserved___pegtl::if_must<pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::KeywordSpline, pxrInternal_v0_26_11__pxrReserved___pegtl::seq<pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::Assignment, pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::SplineValue>>> at 'bogus = { 1: 2' in </World.value>\n'"
+      },
+      {
+        "name": "unknown-attribute-kind-scalar",
+        "text": "#usda 1.0\ndef Xform \"World\" {\ndouble value.bogus = 2\n}\n",
+        "accepted": false,
+        "error": "\n\tError in 'pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::_RaiseErrorPEGTL' at line 48 in file <source>/pxr/usd/sdf/textParserHelpers.h : ':3:14: parse error matching pxrInternal_v0_26_11__pxrReserved___pegtl::sor<pxrInternal_v0_26_11__pxrReserved___pegtl::if_must<pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::KeywordTimeSamples, pxrInternal_v0_26_11__pxrReserved___pegtl::seq<pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::Assignment, pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::TimeSampleMap>>, pxrInternal_v0_26_11__pxrReserved___pegtl::if_must<pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::KeywordConnect, pxrInternal_v0_26_11__pxrReserved___pegtl::seq<pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::Assignment, pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::ConnectValue>>, pxrInternal_v0_26_11__pxrReserved___pegtl::if_must<pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::KeywordSpline, pxrInternal_v0_26_11__pxrReserved___pegtl::seq<pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::Assignment, pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::SplineValue>>> at 'bogus = 2' in </World.value>\n'"
+      },
+      {
+        "name": "typed-values",
+        "text": "#usda 1.0\ndef Xform \"World\" {\nint count = 7\ndouble weight = 2.5\nstring label = \"hello\"\ntoken purpose = \"render\"\nint[] indices = [1, 2, 3]\n}\n",
+        "accepted": true,
+        "observations": [
+          {
+            "path": "/World.count",
+            "field": "default",
+            "value": 7
+          },
+          {
+            "path": "/World.weight",
+            "field": "default",
+            "value": 2.5
+          },
+          {
+            "path": "/World.label",
+            "field": "default",
+            "value": "hello"
+          },
+          {
+            "path": "/World.purpose",
+            "field": "default",
+            "value": "render"
+          },
+          {
+            "path": "/World.indices",
+            "field": "default",
+            "value": [
+              1,
+              2,
+              3
+            ]
+          }
+        ],
+        "exported": "#usda 1.0\n\ndef Xform \"World\"\n{\n    int count = 7\n    int[] indices = [1, 2, 3]\n    string label = \"hello\"\n    token purpose = \"render\"\n    double weight = 2.5\n}\n\n"
+      },
+      {
+        "name": "typed-invalid-int",
+        "text": "#usda 1.0\ndef Xform \"World\" {\nint count = \"no\"\n}\n",
+        "accepted": false,
+        "error": "\n\tError in 'pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::_RaiseErrorPEGTL' at line 48 in file <source>/pxr/usd/sdf/textParserHelpers.h : 'Error parsing simple value: Failed to parse value (at sub-part 0 if there are multiple parts) at '\"no\"' in </World.count>\n'\n\tError in 'pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::_RaiseErrorPEGTL' at line 48 in file <source>/pxr/usd/sdf/textParserHelpers.h : ':3:13: Error parsing simple value: Failed to parse value (at sub-part 0 if there are multiple parts) at '\"no\"' in </World.count>\n'"
+      },
+      {
+        "name": "typed-invalid-tuple",
+        "text": "#usda 1.0\ndef Xform \"World\" {\nfloat3 point = (1, 2)\n}\n",
+        "accepted": false,
+        "error": "\n\tError in 'pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::_RaiseErrorPEGTL' at line 48 in file <source>/pxr/usd/sdf/textParserHelpers.h : 'Tuple dimensions error for attribute of type float3. at '' in </World.point>\n'\n\tError in 'pxrInternal_v0_26_11__pxrReserved__::Sdf_ParserHelpers::MakeScalarValueImpl' at line 151 in file <source>/pxr/usd/sdf/parserHelpers.cpp : 'Not enough values to parse value of type Vec3f'\n\tError in 'pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::_RaiseErrorPEGTL' at line 48 in file <source>/pxr/usd/sdf/textParserHelpers.h : 'Error parsing tuple value: Failed to parse value (at sub-part -1 if there are multiple parts) at '(1, 2)' in </World.point>\n'\n\tError in 'pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::_RaiseErrorPEGTL' at line 48 in file <source>/pxr/usd/sdf/textParserHelpers.h : ':3:16: Error parsing tuple value: Failed to parse value (at sub-part -1 if there are multiple parts) at '(1, 2)' in </World.point>\n'"
+      },
+      {
+        "name": "metadata-nested-dictionary",
+        "text": "#usda 1.0\n( customLayerData = { dictionary nested = { string label = \"inside\"\n int count = 3\n}\n} )\ndef Xform \"World\" {}\n",
+        "accepted": true,
+        "observations": [
+          {
+            "path": "/",
+            "field": "customLayerData",
+            "value": {
+              "nested": {
+                "count": 3,
+                "label": "inside"
+              }
+            }
+          }
+        ],
+        "exported": "#usda 1.0\n(\n    customLayerData = {\n        dictionary nested = {\n            int count = 3\n            string label = \"inside\"\n        }\n    }\n)\n\ndef Xform \"World\"\n{\n}\n\n"
+      },
+      {
+        "name": "metadata-malformed-dictionary",
+        "text": "#usda 1.0\n( customLayerData = { dictionary nested = { string label =\n}\n} )\n",
+        "accepted": false,
+        "error": "\n\tError in 'pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::_RaiseErrorPEGTL' at line 48 in file <source>/pxr/usd/sdf/textParserHelpers.h : ':2:45: Expected } at 'string label =' in </>\n'"
+      },
+      {
+        "name": "metadata-malformed-array",
+        "text": "#usda 1.0\n( customLayerData = { int[] indices = [1,\n} )\n",
+        "accepted": false,
+        "error": "\n\tError in 'pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::_RaiseErrorPEGTL' at line 48 in file <source>/pxr/usd/sdf/textParserHelpers.h : ':3:1: parse error matching pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::ListValueClose at '} )' in </>\n'"
+      },
+      {
+        "name": "metadata-missing-value",
+        "text": "#usda 1.0\n( documentation = )\n",
+        "accepted": false,
+        "error": "\n\tError in 'pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::_RaiseErrorPEGTL' at line 48 in file <source>/pxr/usd/sdf/textParserHelpers.h : ':2:3: Expected ) at 'documentation = )' in </>\n'"
+      },
+      {
+        "name": "metadata-valid-string",
+        "text": "#usda 1.0\n( documentation = \"kept\" )\ndef Xform \"World\" {}\n",
+        "accepted": true,
+        "observations": [
+          {
+            "path": "/",
+            "field": "documentation",
+            "value": "kept"
+          }
+        ],
+        "exported": "#usda 1.0\n(\n    doc = \"kept\"\n)\n\ndef Xform \"World\"\n{\n}\n\n"
+      },
+      {
+        "name": "nested-prims",
+        "text": "#usda 1.0\ndef Xform \"World\" {\ndef Scope \"Child\" {\nstring label = \"inside\"\n}\n}\n",
+        "accepted": true,
+        "observations": [
+          {
+            "path": "/World",
+            "field": "primChildren",
+            "value": [
+              "Child"
+            ]
+          },
+          {
+            "path": "/World/Child.label",
+            "field": "default",
+            "value": "inside"
+          }
+        ],
+        "exported": "#usda 1.0\n\ndef Xform \"World\"\n{\n    def Scope \"Child\"\n    {\n        string label = \"inside\"\n    }\n}\n\n"
+      },
+      {
+        "name": "nested-missing-close",
+        "text": "#usda 1.0\ndef Xform \"World\" {\ndef Scope \"Child\" {\nstring label = \"inside\"\n}\n",
+        "accepted": false,
+        "error": "\n\tError in 'pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::_RaiseErrorPEGTL' at line 48 in file <source>/pxr/usd/sdf/textParserHelpers.h : ':6:1: Expected } at '' in </World>\n'"
+      },
+      {
+        "name": "timesamples-valid",
+        "text": "#usda 1.0\ndef Xform \"World\" {\ndouble value.timeSamples = { 1: 2, 2: 3\n}\n}\n",
+        "accepted": true,
+        "observations": [
+          {
+            "path": "/World.value",
+            "field": "timeSamples",
+            "value": [
+              [
+                1.0,
+                2.0
+              ],
+              [
+                2.0,
+                3.0
+              ]
+            ]
+          }
+        ],
+        "exported": "#usda 1.0\n\ndef Xform \"World\"\n{\n    double value.timeSamples = {\n        1: 2,\n        2: 3,\n    }\n}\n\n"
+      },
+      {
+        "name": "timesamples-malformed",
+        "text": "#usda 1.0\ndef Xform \"World\" {\ndouble value.timeSamples = { 1:\n}\n}\n",
+        "accepted": false,
+        "error": "\n\tError in 'pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::_RaiseErrorPEGTL' at line 48 in file <source>/pxr/usd/sdf/textParserHelpers.h : ':3:28: parse error matching pxrInternal_v0_26_11__pxrReserved___pegtl::seq<pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::Assignment, pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::TimeSampleMap> at '{ 1:' in </World.value>\n'"
+      },
+      {
+        "name": "top_variant",
+        "text": "#usda 1.0\nvariantSet \"v\" = { \"a\" {}\n}\n",
+        "accepted": false,
+        "error": "\n\tError in 'pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::_RaiseErrorPEGTL' at line 48 in file <source>/pxr/usd/sdf/textParserHelpers.h : ':2:1: parse error matching pxrInternal_v0_26_11__pxrReserved___pegtl::internal::eof at 'variantSet \"v\" = { \"a\" {}' in </>\n'"
+      },
+      {
+        "name": "layer_junk",
+        "text": "#usda 1.0\n( @ )\n",
+        "accepted": false,
+        "error": "\n\tError in 'pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::_RaiseErrorPEGTL' at line 48 in file <source>/pxr/usd/sdf/textParserHelpers.h : ':2:3: Expected ) at '@ )' in </>\n'"
+      },
+      {
+        "name": "sublayer_junk",
+        "text": "#usda 1.0\n( subLayers = [ bogus ] )\n",
+        "accepted": false,
+        "error": "\n\tError in 'pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::_RaiseErrorPEGTL' at line 48 in file <source>/pxr/usd/sdf/textParserHelpers.h : ':2:17: Expected ] at 'bogus ] )' in </>\n'"
+      },
+      {
+        "name": "variant_junk",
+        "text": "#usda 1.0\ndef Xform \"P\" { variantSet \"v\" = { bogus\n}\n}\n",
+        "accepted": false,
+        "error": "\n\tError in 'pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::_RaiseErrorPEGTL' at line 48 in file <source>/pxr/usd/sdf/textParserHelpers.h : ':2:35: Expected } at ' bogus' in </P{v=}>\n'"
+      },
+      {
+        "name": "attr_junk",
+        "text": "#usda 1.0\ndef Xform \"P\" { double x ( @ )\n}\n",
+        "accepted": false,
+        "error": "\n\tError in 'pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::_RaiseErrorPEGTL' at line 48 in file <source>/pxr/usd/sdf/textParserHelpers.h : ':2:28: Expected ) at '@ )' in </P.x>\n'"
+      },
+      {
+        "name": "value_junk",
+        "text": "#usda 1.0\ndef Xform \"P\" { double x = ?\n}\n",
+        "accepted": false,
+        "error": "\n\tError in 'pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::_RaiseErrorPEGTL' at line 48 in file <source>/pxr/usd/sdf/textParserHelpers.h : ':2:17: Expected } at 'double x = ?' in </P>\n'"
+      },
+      {
+        "name": "root_junk",
+        "text": "#usda 1.0\n?\n",
+        "accepted": false,
+        "error": "\n\tError in 'pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::_RaiseErrorPEGTL' at line 48 in file <source>/pxr/usd/sdf/textParserHelpers.h : ':2:1: parse error matching pxrInternal_v0_26_11__pxrReserved___pegtl::internal::eof at '?' in </>\n'"
+      },
+      {
+        "name": "missing_comma",
+        "text": "#usda 1.0\ndef Xform \"P\" { double[] x = [1 2]\n}\n",
+        "accepted": false,
+        "error": "\n\tError in 'pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::_RaiseErrorPEGTL' at line 48 in file <source>/pxr/usd/sdf/textParserHelpers.h : ':2:33: parse error matching pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::ListValueClose at '2]' in </P.x>\n'"
+      },
+      {
+        "name": "layer_bad_value",
+        "text": "#usda 1.0\n( metersPerUnit = [1] )\n",
+        "accepted": false,
+        "error": "\n\tError in 'pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::_RaiseErrorPEGTL' at line 48 in file <source>/pxr/usd/sdf/textParserHelpers.h : 'Type name missing [] for shaped value. at '[1] )' in </>\n'\n\tError in 'pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::_RaiseErrorPEGTL' at line 48 in file <source>/pxr/usd/sdf/textParserHelpers.h : ':2:19: Type name missing [] for shaped value. at '[1] )' in </>\n'"
+      },
+      {
+        "name": "core_layer_bad_value",
+        "text": "#usda 1.0\n( timeCodesPerSecond = [1] )\n",
+        "accepted": false,
+        "error": "\n\tError in 'pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::_RaiseErrorPEGTL' at line 48 in file <source>/pxr/usd/sdf/textParserHelpers.h : 'Type name missing [] for shaped value. at '[1] )' in </>\n'\n\tError in 'pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::_RaiseErrorPEGTL' at line 48 in file <source>/pxr/usd/sdf/textParserHelpers.h : ':2:24: Type name missing [] for shaped value. at '[1] )' in </>\n'"
+      },
+      {
+        "name": "dict_junk",
+        "text": "#usda 1.0\n( customLayerData = { bogus\n} )\n",
+        "accepted": false,
+        "error": "\n\tError in 'pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::_RaiseErrorPEGTL' at line 48 in file <source>/pxr/usd/sdf/textParserHelpers.h : 'Unrecognized value typename 'bogus' for dictionary at 'bogus' in </>\n'\n\tError in 'pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::_RaiseErrorPEGTL' at line 48 in file <source>/pxr/usd/sdf/textParserHelpers.h : ':2:23: Unrecognized value typename 'bogus' for dictionary at 'bogus' in </>\n'"
+      },
+      {
+        "name": "dict_missing_equals",
+        "text": "#usda 1.0\n( customLayerData = { int x\n} )\n",
+        "accepted": false,
+        "error": "\n\tError in 'pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::_RaiseErrorPEGTL' at line 48 in file <source>/pxr/usd/sdf/textParserHelpers.h : ':2:23: Expected } at 'int x' in </>\n'"
+      },
+      {
+        "name": "prim_metadata_junk",
+        "text": "#usda 1.0\ndef Xform \"P\" ( @ ) {}\n",
+        "accepted": false,
+        "error": "\n\tError in 'pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::_RaiseErrorPEGTL' at line 48 in file <source>/pxr/usd/sdf/textParserHelpers.h : ':2:17: Expected ) at '@ ) {}' in </P>\n'"
+      },
+      {
+        "name": "relocate_missing_target",
+        "text": "#usda 1.0\n( relocates = { </A>:\n} )\n",
+        "accepted": false,
+        "error": "\n\tError in 'pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::_RaiseErrorPEGTL' at line 48 in file <source>/pxr/usd/sdf/textParserHelpers.h : ':2:17: Expected } at '</A>:' in </>\n'"
+      },
+      {
+        "name": "timesample_missing_colon",
+        "text": "#usda 1.0\ndef Xform \"P\" { double x.timeSamples = { 1 2\n}\n}\n",
+        "accepted": false,
+        "error": "\n\tError in 'pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::_RaiseErrorPEGTL' at line 48 in file <source>/pxr/usd/sdf/textParserHelpers.h : ':2:40: parse error matching pxrInternal_v0_26_11__pxrReserved___pegtl::seq<pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::Assignment, pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::TimeSampleMap> at '{ 1 2' in </P.x>\n'"
+      },
+      {
+        "name": "shape-tuple-for-int-array",
+        "text": "#usda 1.0\ndef Xform \"World\" {\nint[] a = (3,4)\n}\n",
+        "accepted": false,
+        "error": "\n\tError in 'pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::_RaiseErrorPEGTL' at line 48 in file <source>/pxr/usd/sdf/textParserHelpers.h : 'Tuple nesting too deep! Should not be deeper than 0 for attribute of type int[]. at '3,4)' in </World.a>\n'\n\tError in 'pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::_RaiseErrorPEGTL' at line 48 in file <source>/pxr/usd/sdf/textParserHelpers.h : 'Mismatched ( ) for attribute of type int[]. at '' in </World.a>\n'\n\tError in 'pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::_RaiseErrorPEGTL' at line 48 in file <source>/pxr/usd/sdf/textParserHelpers.h : 'Type name has [] for non-shaped value.\n at '(3,4)' in </World.a>\n'\n\tError in 'pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::_RaiseErrorPEGTL' at line 48 in file <source>/pxr/usd/sdf/textParserHelpers.h : ':3:11: Type name has [] for non-shaped value.\n at '(3,4)' in </World.a>\n'"
+      },
+      {
+        "name": "shape-tuple-for-int",
+        "text": "#usda 1.0\ndef Xform \"World\" {\nint a = (3,4)\n}\n",
+        "accepted": false,
+        "error": "\n\tError in 'pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::_RaiseErrorPEGTL' at line 48 in file <source>/pxr/usd/sdf/textParserHelpers.h : 'Tuple nesting too deep! Should not be deeper than 0 for attribute of type int. at '3,4)' in </World.a>\n'\n\tError in 'pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::_RaiseErrorPEGTL' at line 48 in file <source>/pxr/usd/sdf/textParserHelpers.h : 'Mismatched ( ) for attribute of type int. at '' in </World.a>\n'"
+      },
+      {
+        "name": "shape-tuple-for-int2-array",
+        "text": "#usda 1.0\ndef Xform \"World\" {\nint2[] a = (1,2)\n}\n",
+        "accepted": false,
+        "error": "\n\tError in 'pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::_RaiseErrorPEGTL' at line 48 in file <source>/pxr/usd/sdf/textParserHelpers.h : 'Type name has [] for non-shaped value.\n at '(1,2)' in </World.a>\n'\n\tError in 'pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::_RaiseErrorPEGTL' at line 48 in file <source>/pxr/usd/sdf/textParserHelpers.h : ':3:12: Type name has [] for non-shaped value.\n at '(1,2)' in </World.a>\n'"
+      },
+      {
+        "name": "shape-nested-tuple-in-int-array",
+        "text": "#usda 1.0\ndef Xform \"World\" {\nint[] a = [(1,2)]\n}\n",
+        "accepted": false,
+        "error": "\n\tError in 'pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::_RaiseErrorPEGTL' at line 48 in file <source>/pxr/usd/sdf/textParserHelpers.h : 'Tuple nesting too deep! Should not be deeper than 0 for attribute of type int[]. at '1,2)]' in </World.a>\n'\n\tError in 'pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::_RaiseErrorPEGTL' at line 48 in file <source>/pxr/usd/sdf/textParserHelpers.h : 'Mismatched ( ) for attribute of type int[]. at ']' in </World.a>\n'"
+      },
+      {
+        "name": "shape-array-for-int2",
+        "text": "#usda 1.0\ndef Xform \"World\" {\nint2 a = [1,2]\n}\n",
+        "accepted": false,
+        "error": "\n\tError in 'pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::_RaiseErrorPEGTL' at line 48 in file <source>/pxr/usd/sdf/textParserHelpers.h : 'Type name missing [] for shaped value. at '[1,2]' in </World.a>\n'\n\tError in 'pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::_RaiseErrorPEGTL' at line 48 in file <source>/pxr/usd/sdf/textParserHelpers.h : ':3:10: Type name missing [] for shaped value. at '[1,2]' in </World.a>\n'"
+      },
+      {
+        "name": "shape-scalar-for-int-array",
+        "text": "#usda 1.0\ndef Xform \"World\" {\nint[] a = 5\n}\n",
+        "accepted": false,
+        "error": "\n\tError in 'pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::_RaiseErrorPEGTL' at line 48 in file <source>/pxr/usd/sdf/textParserHelpers.h : 'Type name has [] for non-shaped value!\n at '5' in </World.a>\n'\n\tError in 'pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::_RaiseErrorPEGTL' at line 48 in file <source>/pxr/usd/sdf/textParserHelpers.h : ':3:11: Type name has [] for non-shaped value!\n at '5' in </World.a>\n'"
+      },
+      {
+        "name": "shape-tuple-timesample-for-int-array",
+        "text": "#usda 1.0\ndef Xform \"World\" {\nint[] a.timeSamples = { 0: (3,4)\n}\n}\n",
+        "accepted": false,
+        "error": "\n\tError in 'pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::_RaiseErrorPEGTL' at line 48 in file <source>/pxr/usd/sdf/textParserHelpers.h : 'Tuple nesting too deep! Should not be deeper than 0 for attribute of type int[]. at '3,4)' in </World.a>\n'\n\tError in 'pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::_RaiseErrorPEGTL' at line 48 in file <source>/pxr/usd/sdf/textParserHelpers.h : 'Mismatched ( ) for attribute of type int[]. at '' in </World.a>\n'\n\tError in 'pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::_RaiseErrorPEGTL' at line 48 in file <source>/pxr/usd/sdf/textParserHelpers.h : 'Type name has [] for non-shaped value.\n at '(3,4)' in </World.a>\n'\n\tError in 'pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::_RaiseErrorPEGTL' at line 48 in file <source>/pxr/usd/sdf/textParserHelpers.h : ':3:28: Type name has [] for non-shaped value.\n at '(3,4)' in </World.a>\n'"
+      },
+      {
+        "name": "shape-tuple-for-int-array-in-dictionary",
+        "text": "#usda 1.0\ndef Xform \"World\" ( customData = { int[] a = (3,4)\n} ) {}\n",
+        "accepted": false,
+        "error": "\n\tError in 'pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::_RaiseErrorPEGTL' at line 48 in file <source>/pxr/usd/sdf/textParserHelpers.h : 'Tuple nesting too deep! Should not be deeper than 0 for attribute of type int[]. at '3,4)' in </World>\n'\n\tError in 'pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::_RaiseErrorPEGTL' at line 48 in file <source>/pxr/usd/sdf/textParserHelpers.h : 'Mismatched ( ) for attribute of type int[]. at '' in </World>\n'\n\tError in 'pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::_RaiseErrorPEGTL' at line 48 in file <source>/pxr/usd/sdf/textParserHelpers.h : 'Type name has [] for non-shaped value.\n at '(3,4)' in </World>\n'\n\tError in 'pxrInternal_v0_26_11__pxrReserved__::Sdf_TextFileFormatParser::_RaiseErrorPEGTL' at line 48 in file <source>/pxr/usd/sdf/textParserHelpers.h : ':2:46: Type name has [] for non-shaped value.\n at '(3,4)' in </World>\n'"
+      },
+      {
+        "name": "shape-int2-array",
+        "text": "#usda 1.0\ndef Xform \"World\" {\nint2[] a = [(1,2)]\n}\n",
+        "accepted": true,
+        "observations": [],
+        "exported": "#usda 1.0\n\ndef Xform \"World\"\n{\n    int2[] a = [(1, 2)]\n}\n\n"
+      }
+    ]
+  }
+}

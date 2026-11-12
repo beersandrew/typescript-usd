@@ -1,0 +1,31 @@
+#usda 1.0
+(
+    upAxis = "Y"
+)
+
+def Camera "Camera"
+{
+    token projection = "orthographic"
+    float horizontalAperture = 36
+    float verticalAperture = 24
+    float horizontalApertureOffset = 1.5
+    float verticalApertureOffset = -2
+    float focalLength = 50
+    float2 clippingRange = (0.1, 500)
+    float4[] clippingPlanes = [(0, 0, 1, -5), (1, 0, 0, 2.5)]
+    float fStop = 2.8
+    float focusDistance = 12
+    uniform token stereoRole = "left"
+    double shutter:open = -0.25
+    double shutter:close = 0.5
+    float exposure = 1
+    float exposure:time = 0.02
+    float exposure:iso = 400
+    float exposure:fStop = 2
+    float exposure:responsivity = 1.5
+    float custom:extra = 7
+}
+
+def Camera "DefaultCamera"
+{
+}

@@ -1,0 +1,119 @@
+#usda 1.0
+(
+    startTimeCode = 1
+    endTimeCode = 96
+)
+
+def Xform "Bench"
+{
+    def Capsule_1 "Capsule_1"
+    {
+        uniform token axis = "Y"
+        double height = 0.4
+        double radiusBottom = 0.24
+        double radiusTop = 0.1
+        double3 xformOp:translate = (-0.6, 2.238275420665741, -0.3)
+        uniform token[] xformOpOrder = ["xformOp:translate"]
+    }
+}
+
+def Capsule_1 "TopWiderZ"
+{
+    double radiusTop = 2
+}
+
+def Capsule_1 "TaperX"
+{
+    uniform token axis = "X"
+    double height = 3
+    double radiusBottom = 0.25
+    double radiusTop = 1.5
+}
+
+def Capsule_1 "EqualY"
+{
+    uniform token axis = "Y"
+    double height = 2
+    double radiusBottom = 0.5
+    double radiusTop = 0.5
+}
+
+def Capsule_1 "ZeroHeight"
+{
+    double height = 0
+    double radiusBottom = 0.3
+    double radiusTop = 0.8
+}
+
+def Capsule_1 "NegativeRadius"
+{
+    double radiusTop = -0.1
+}
+
+def Capsule_1 "Rotated"
+{
+    uniform token axis = "Y"
+    double height = 0.4
+    double radiusBottom = 0.24
+    double radiusTop = 0.1
+    float xformOp:rotateZ = 30
+    uniform token[] xformOpOrder = ["xformOp:rotateZ"]
+}
+
+def Xform "Balloon"
+{
+    double3 xformOp:translate = (0, 0, 0.1)
+    uniform token[] xformOpOrder = ["xformOp:translate"]
+
+    def Sphere "Geom"
+    {
+        double radius.timeSamples = {
+            1: 0.2,
+            47: 0.45,
+            48: None,
+            60: 0.5,
+            96: 0.6,
+        }
+        double3 xformOp:translate = (0, 1.05, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate"]
+    }
+
+    def Cylinder "String"
+    {
+        uniform token axis = "Y"
+        double height = 0.85
+        double radius = 0.006
+        double3 xformOp:translate = (0, 0.43, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate"]
+    }
+}
+
+def Cube "BlockedCube"
+{
+    double size.timeSamples = { 1: 2, 5: None, 9: 4 }
+}
+
+def Cylinder "BlockedCylinder"
+{
+    double height.timeSamples = { 1: 2, 5: None, 9: 4 }
+}
+
+def Cone "BlockedCone"
+{
+    double radius.timeSamples = { 1: 2, 5: None, 9: 4 }
+}
+
+def Capsule "BlockedCapsule"
+{
+    double radius.timeSamples = { 1: 2, 5: None, 9: 4 }
+}
+
+def Cylinder_1 "BlockedCylinder_1"
+{
+    double radiusTop.timeSamples = { 1: 2, 5: None, 9: 4 }
+}
+
+def Capsule_1 "BlockedCapsule_1"
+{
+    double radiusBottom.timeSamples = { 1: 2, 5: None, 9: 4 }
+}

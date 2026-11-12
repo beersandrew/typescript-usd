@@ -1,0 +1,14 @@
+    # An included document.
+{
+    "Plugins": [
+        {
+            "Type": "resource",
+            "Name": "testPlugPathIncluded",
+            "Info": {
+                "UsdVariantFallbacks": {
+                    "wrap": ["checks"]
+                }
+            }
+        }
+    ]
+}

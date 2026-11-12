@@ -1,0 +1,44 @@
+OpenSubdiv (partial TypeScript port), part of typescript-usd
+
+OpenSubdiv — Copyright 2013 Pixar, and the other holders named in each
+upstream file (among them DreamWorks Animation LLC)
+https://github.com/PixarAnimationStudios/OpenSubdiv
+OpenSubdiv 3.7.0 is licensed under the Tomorrow Open Source Technology
+License 1.0 (see LICENSE). OpenSubdiv 3.6.1 is licensed under its Modified
+Apache 2.0 License (see LICENSE-OpenSubdiv-3.6.1.txt).
+
+TypeScript port: Copyright (c) 2026 Andy Beers
+The files ported from OpenSubdiv 3.7.0 are licensed under the Tomorrow Open
+Source Technology License 1.0; the files ported from OpenSubdiv 3.6.1 (the
+Far stencil and patch tables, the Osd GLSL patch shader source, the bilinear
+scheme, the test utilities ported from its regression suite, and the
+OpenSubdiv 3.6.1 shader files embedded in src/osd/shaderSources.generated.ts)
+are licensed under the Modified Apache 2.0 License. Each file's header says
+which applies. Both are the Apache License 2.0 with a different Section 6.
+
+This package is a partial TypeScript port of OpenSubdiv, included only to
+support OpenUSD's use of OpenSubdiv (see README.md). It is not affiliated
+with, endorsed by, or sponsored by Pixar Animation Studios or the OpenSubdiv
+project. The sdc/vtr/far/osd module layout and the class and method names
+mirror the upstream source tree; they imply no affiliation, and no trademark
+rights are claimed or granted (see LICENSE, Section 6).
+
+tests/far/hdStIntegration.test.ts ports parts of OpenUSD 26.11.1
+(pxr/imaging/pxOsd/refinerFactory.cpp, pxr/imaging/hdSt/subdivision.cpp),
+Copyright 2016 Pixar, Tomorrow Open Source Technology License 1.0. The
+regression shapes in the test fixtures are from OpenSubdiv 3.6.1's
+regression/shapes (Modified Apache 2.0 License).
+
+OpenSubdiv's NOTICE.txt (identical in 3.6.1 and 3.7.0;
+NOTICE-OpenSubdiv-3.6.1.txt):
+
+    OpenSubdiv
+    Copyright 2013 Pixar
+    All rights reserved.
+
+    This product includes software developed at:
+        Pixar (http://www.pixar.com/).
+        Dreamworks Animation (http://www.dreamworksanimation.com/)
+        Autodesk, Inc. (http://www.autodesk.com/).
+        Google, Inc. (http://www.google.com/).
+        DigitalFish (http://digitalfish.com/).

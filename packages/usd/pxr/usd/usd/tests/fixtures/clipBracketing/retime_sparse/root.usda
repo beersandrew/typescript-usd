@@ -1,0 +1,15 @@
+#usda 1.0
+def "Model" (
+  clips = {
+    dictionary default = {
+      double2[] active = [(0, 0), (16, 1)]
+      asset[] assetPaths = [@./c0.usda@, @./c1.usda@]
+      string primPath = "/Clip"
+      double2[] times = [(0, 0), (32, 16)]
+      
+      bool interpolateMissingClipValues = false
+    }
+  }
+) {
+  double value
+}

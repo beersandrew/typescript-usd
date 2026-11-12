@@ -1,0 +1,34 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/usdImaging/usdImagingGL/tests/fixtures/testenvImages/capture.py",
+  "upstream": [
+    "pxr/usdImaging/usdImagingGL/CMakeLists.txt",
+    "pxr/usdImaging/usdImagingGL/testenv/testUsdImagingGLBasicDrawing.cpp"
+  ],
+  "payload": {
+    "test": "testUsdImagingGLComplexityOsd3",
+    "cmake": "pxr/usdImaging/usdImagingGL/CMakeLists.txt:1006",
+    "command": "<install>/tests/testUsdImagingGLBasicDrawing -complexities 1.0 1.1 1.2 -offscreen -lighting -stage subdivMesh.usda -write testUsdImagingGLComplexity.png",
+    "cwd": "copy of <source>/pxr/usdImaging/usdImagingGL/testenv/testUsdImagingGLComplexityOsd3",
+    "env": {
+      "TF_DEBUG": "HD_SAFE_MODE"
+    },
+    "expectedReturnCode": "0",
+    "returnCode": 0,
+    "images": [
+      {
+        "name": "testUsdImagingGLComplexity_1.png",
+        "written": true
+      },
+      {
+        "name": "testUsdImagingGLComplexity_1.1.png",
+        "written": true
+      },
+      {
+        "name": "testUsdImagingGLComplexity_1.2.png",
+        "written": true
+      }
+    ]
+  }
+}

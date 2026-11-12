@@ -1,0 +1,8 @@
+{
+  "selected": "/Model/Triangle",
+  "model": "/Model",
+  "preview": "/Looks/Mat",
+  "previewRel": "/Model/Triangle.material:binding",
+  "full": "/Looks/Mat",
+  "fullRel": "/Model/Triangle.material:binding"
+}

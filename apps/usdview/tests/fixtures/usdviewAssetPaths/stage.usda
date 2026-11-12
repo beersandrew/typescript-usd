@@ -1,0 +1,11 @@
+#usda 1.0
+def Scope "Asset" {
+ asset found = @./existing.txt@
+ asset missing = @./missing.txt@
+ asset empty = @@
+ asset[] paths = [@./existing.txt@, @./missing.txt@, @@]
+ asset sampled.timeSamples = {
+  1: @./existing.txt@,
+  2: @./missing.txt@,
+ }
+}

@@ -1,0 +1,15 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/usd/sdf/tests/fixtures/usdaWriterLayout/capture.py",
+  "upstream": [
+    "pxr/usd/sdf/fileIO_Common.h:574-675",
+    "pxr/usd/sdf/fileIO_Common.h:486-496",
+    "pxr/usd/sdf/textFileFormatParser.cpp:1594-1608"
+  ],
+  "payload": {
+    "/A": false,
+    "/A{v=a}": false,
+    "/B": true
+  }
+}

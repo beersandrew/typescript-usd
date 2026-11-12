@@ -1,0 +1,410 @@
+{
+  "release": "26.11.1",
+  "commit": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+  "script": "pxr/usd/usd/tests/upstream/metadataInspection/capture.py",
+  "upstream": [
+    "pxr/usd/usd/stage.cpp:2222-2264,6365-6411,7112-7170",
+    "pxr/usd/usd/primDefinition.h:473-486"
+  ],
+  "payload": {
+    "editTargetAuthoredness": [
+      true,
+      true,
+      true,
+      true
+    ],
+    "schemaSource": {
+      "path": "pxr/usd/usdGeom/generatedSchema.usda",
+      "revision": "96c1989167d2aaab5bd34627f32a321a6b79866b",
+      "sha256": "6450868bea4d5feaaab021bc4db40f8785be472c4a2ee7a533b4ce4fb8f728f0"
+    },
+    "sourceHashes": {
+      "reference.usda": "0afeb02194958ba48a1dbac209fd88695ee50c055d6848da53cf1e27894acf10",
+      "weak.usda": "f03316203190d9081fa5ab3a2f7d3761e10fea6618a6b933c647b6b50587acdf",
+      "root.usda": "0d60f3779cdeeb70c71ea03a052d21e2e62ded5a60b7b6eeb890c7a188453451"
+    },
+    "rows": [
+      {
+        "path": "/World",
+        "property": null,
+        "all": {
+          "apiSchemas": {
+            "explicit": true,
+            "items": [
+              "MaterialBindingAPI"
+            ]
+          },
+          "assetInfo": {
+            "name": "Review fixture"
+          },
+          "customData": {
+            "referenced": "reference",
+            "strong": "root",
+            "userDocBrief": "Base schema for all geometric primitives that \ndirectly define renderable shapes.",
+            "weak": "sublayer"
+          },
+          "documentation": "Weak authored prim documentation",
+          "kind": "component",
+          "specifier": "def",
+          "typeName": "Cube"
+        },
+        "authored": {
+          "apiSchemas": {
+            "explicit": true,
+            "items": [
+              "MaterialBindingAPI"
+            ]
+          },
+          "assetInfo": {
+            "name": "Review fixture"
+          },
+          "customData": {
+            "referenced": "reference",
+            "strong": "root",
+            "weak": "sublayer"
+          },
+          "documentation": "Weak authored prim documentation",
+          "kind": "component",
+          "specifier": "def",
+          "typeName": "Cube"
+        },
+        "fields": {
+          "apiSchemas": {
+            "value": {
+              "explicit": true,
+              "items": [
+                "MaterialBindingAPI"
+              ]
+            },
+            "hasAuthored": true
+          },
+          "assetInfo": {
+            "value": {
+              "name": "Review fixture"
+            },
+            "hasAuthored": true
+          },
+          "customData": {
+            "value": {
+              "referenced": "reference",
+              "strong": "root",
+              "userDocBrief": "Base schema for all geometric primitives that \ndirectly define renderable shapes.",
+              "weak": "sublayer"
+            },
+            "hasAuthored": true
+          },
+          "default": {
+            "value": null,
+            "hasAuthored": false
+          },
+          "documentation": {
+            "value": "Weak authored prim documentation",
+            "hasAuthored": true
+          },
+          "inheritPaths": {
+            "value": {
+              "explicit": false,
+              "items": [
+                "/Base"
+              ]
+            },
+            "hasAuthored": true
+          },
+          "kind": {
+            "value": "component",
+            "hasAuthored": true
+          },
+          "references": {
+            "value": {
+              "explicit": false,
+              "items": [
+                {
+                  "assetPath": "reference.usda",
+                  "primPath": "/Source",
+                  "offset": 0.0,
+                  "scale": 1.0
+                }
+              ]
+            },
+            "hasAuthored": true
+          },
+          "specifier": {
+            "value": "def",
+            "hasAuthored": true
+          },
+          "timeSamples": {
+            "value": null,
+            "hasAuthored": false
+          },
+          "typeName": {
+            "value": "Cube",
+            "hasAuthored": true
+          },
+          "variantSelection": {
+            "value": {
+              "look": "blue",
+              "orphan": "unavailable"
+            },
+            "hasAuthored": true
+          }
+        }
+      },
+      {
+        "path": "/World",
+        "property": "size",
+        "all": {
+          "custom": false,
+          "default": 2.0,
+          "typeName": "double",
+          "variability": "varying"
+        },
+        "authored": {
+          "custom": false,
+          "typeName": "double",
+          "variability": "varying"
+        },
+        "fields": {
+          "custom": {
+            "value": false,
+            "hasAuthored": true
+          },
+          "customData": {
+            "value": {
+              "userDocBrief": "Indicates the length of each edge of the cube."
+            },
+            "hasAuthored": false
+          },
+          "default": {
+            "value": 2.0,
+            "hasAuthored": false
+          },
+          "inheritPaths": {
+            "value": null,
+            "hasAuthored": false
+          },
+          "references": {
+            "value": null,
+            "hasAuthored": false
+          },
+          "timeSamples": {
+            "value": {},
+            "hasAuthored": false
+          },
+          "typeName": {
+            "value": "double",
+            "hasAuthored": true
+          },
+          "variability": {
+            "value": "varying",
+            "hasAuthored": true
+          },
+          "variantSelection": {
+            "value": null,
+            "hasAuthored": false
+          }
+        }
+      },
+      {
+        "path": "/World",
+        "property": "weight",
+        "all": {
+          "custom": true,
+          "customData": {
+            "unit": "kg"
+          },
+          "displayGroup": "Review",
+          "displayName": "Review Weight",
+          "documentation": "Authored weight",
+          "typeName": "float",
+          "variability": "varying"
+        },
+        "authored": {
+          "custom": true,
+          "customData": {
+            "unit": "kg"
+          },
+          "displayGroup": "Review",
+          "displayName": "Review Weight",
+          "documentation": "Authored weight",
+          "typeName": "float",
+          "variability": "varying"
+        },
+        "fields": {
+          "custom": {
+            "value": true,
+            "hasAuthored": true
+          },
+          "customData": {
+            "value": {
+              "unit": "kg"
+            },
+            "hasAuthored": true
+          },
+          "default": {
+            "value": 2.0,
+            "hasAuthored": true
+          },
+          "displayGroup": {
+            "value": "Review",
+            "hasAuthored": true
+          },
+          "displayName": {
+            "value": "Review Weight",
+            "hasAuthored": true
+          },
+          "documentation": {
+            "value": "Authored weight",
+            "hasAuthored": true
+          },
+          "inheritPaths": {
+            "value": null,
+            "hasAuthored": false
+          },
+          "references": {
+            "value": null,
+            "hasAuthored": false
+          },
+          "timeSamples": {
+            "value": {},
+            "hasAuthored": false
+          },
+          "typeName": {
+            "value": "float",
+            "hasAuthored": true
+          },
+          "variability": {
+            "value": "varying",
+            "hasAuthored": true
+          },
+          "variantSelection": {
+            "value": null,
+            "hasAuthored": false
+          }
+        }
+      },
+      {
+        "path": "/World",
+        "property": "target",
+        "all": {
+          "custom": true,
+          "customData": {
+            "purpose": "inspection"
+          },
+          "documentation": "Review target",
+          "variability": "uniform"
+        },
+        "authored": {
+          "custom": true,
+          "customData": {
+            "purpose": "inspection"
+          },
+          "documentation": "Review target",
+          "variability": "uniform"
+        },
+        "fields": {
+          "custom": {
+            "value": true,
+            "hasAuthored": true
+          },
+          "customData": {
+            "value": {
+              "purpose": "inspection"
+            },
+            "hasAuthored": true
+          },
+          "default": {
+            "value": null,
+            "hasAuthored": false
+          },
+          "documentation": {
+            "value": "Review target",
+            "hasAuthored": true
+          },
+          "inheritPaths": {
+            "value": null,
+            "hasAuthored": false
+          },
+          "references": {
+            "value": null,
+            "hasAuthored": false
+          },
+          "timeSamples": {
+            "value": null,
+            "hasAuthored": false
+          },
+          "variability": {
+            "value": "uniform",
+            "hasAuthored": true
+          },
+          "variantSelection": {
+            "value": null,
+            "hasAuthored": false
+          }
+        }
+      },
+      {
+        "path": "/Authored",
+        "property": "size",
+        "all": {
+          "custom": false,
+          "default": 10.0,
+          "typeName": "double",
+          "variability": "varying"
+        },
+        "authored": {
+          "custom": false,
+          "typeName": "double",
+          "variability": "varying"
+        },
+        "fields": {
+          "custom": {
+            "value": false,
+            "hasAuthored": true
+          },
+          "customData": {
+            "value": {
+              "userDocBrief": "Indicates the length of each edge of the cube."
+            },
+            "hasAuthored": false
+          },
+          "default": {
+            "value": 10.0,
+            "hasAuthored": true
+          },
+          "inheritPaths": {
+            "value": null,
+            "hasAuthored": false
+          },
+          "references": {
+            "value": null,
+            "hasAuthored": false
+          },
+          "timeSamples": {
+            "value": {
+              "1": 20.0,
+              "2": 30.0
+            },
+            "hasAuthored": true
+          },
+          "typeName": {
+            "value": "double",
+            "hasAuthored": true
+          },
+          "variability": {
+            "value": "varying",
+            "hasAuthored": true
+          },
+          "variantSelection": {
+            "value": null,
+            "hasAuthored": false
+          }
+        }
+      },
+      {
+        "path": "/World",
+        "property": "weight",
+        "sessionTargetHasAuthoredDocumentation": true
+      }
+    ]
+  }
+}

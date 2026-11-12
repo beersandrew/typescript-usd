@@ -1,0 +1,9 @@
+#usda 1.0
+
+def MfScope "Foo" 
+{
+    rel myRel (
+        # Bad boolean value
+        hidden = bad
+    )
+}

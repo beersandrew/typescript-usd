@@ -1,0 +1,5 @@
+#usda 1.0
+(sessionOwner = "artist")
+over "World" {
+ custom int session = 4
+}

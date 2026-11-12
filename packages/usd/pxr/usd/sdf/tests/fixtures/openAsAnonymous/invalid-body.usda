@@ -1,0 +1,5 @@
+#usda 1.0
+(
+    documentation = "valid metadata before invalid body"
+)
+this is not a prim declaration
