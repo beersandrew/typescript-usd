@@ -190,6 +190,10 @@ canvas { display:block; width:100%; height:100%; touch-action:none; }
 .welcome .welcome-dismiss { padding:2px 7px; min-width:0; background:none; border:none; color:#aaa; }
 .welcome .welcome-dismiss:hover { color:#fff; }
 .welcome button { flex:none; }
+.welcome .start-tour { background:#FF06B5; border:1px solid #fff; color:#fff; font-weight:700; padding:6px 14px; border-radius:4px; }
+.welcome .start-tour:hover:not(:disabled) { background:#e0009f; }
+.welcome[data-compact] p { display:none; }
+.welcome[data-compact] { padding:6px; }
 .property-content { min-height:0; flex:1; overflow:auto; }
 .property-table { width:100%; table-layout:fixed; border-collapse:collapse; font-size:var(--usd-base-font); }
 .property-table th { position:sticky; top:0; z-index:1; text-align:left; color:#c9c7c3; font-weight:400; background:#4e5054; border:1px solid #333; padding:3px 5px; }

@@ -47,3 +47,17 @@ describe('camera transactions',()=>{
   expect(orbit.target).toEqual(target)
  })
 })
+
+// appController.py:3034-3036 lists Utils._GetAllPrimsOfType(stage, UsdGeom.Camera):
+// utils.cpp:26-35 filters stage->Traverse() by IsA, in traversal order. The menu
+// labels each by prim name (appController.py:3094).
+it('lists scene cameras in UsdStage::Traverse order, labelled by prim name',()=>{
+ const stage=Stage.createNew(),controller=new ViewerCameraController(defaultCamera(),()=>1.5)
+ try{
+  for(const [path,type] of [['/Z/Cam','Camera'],['/A','Xform'],['/A/Cam','Camera'],['/A/Mesh','Mesh'],['/A/B/Shot','Camera'],['/M','Camera']] as const)stage.definePrim(path,type)
+  controller.stage=stage
+  const expected=[...stage.traverse()].filter(path=>stage.getPrim(path)!.isA('Camera'))
+  expect(controller.state().cameras).toEqual(expected.map(path=>({path,label:path.split('/').pop()})))
+  expect(controller.state().cameras.map(c=>c.path)).toHaveLength(4)
+ }finally{stage.dispose()}
+})

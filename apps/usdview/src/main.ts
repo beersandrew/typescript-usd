@@ -9,7 +9,7 @@ import { defineUsdViewer, UsdViewerElement, type ViewerScene } from './usd-viewe
 import { webProfilePlugInfo } from './profile-compatibility'
 import { viewerFileUrl, viewerRoot } from './app-root'
 import { startFollow } from './follow'
-import { defaultSceneUrl, opensTourByDefault, showsWelcome, tourAddress, tourPageUrl, tourSource, welcomePageUrl } from './welcome'
+import { defaultSceneUrl, showsWelcome, smallScreen, tourAddress, tourPageUrl, tourSource, welcomePageUrl } from './welcome'
 
 defineUsdViewer()
 const viewer = document.createElement('usd-viewer') as UsdViewerElement
@@ -29,27 +29,22 @@ const pluginWarnings = (await Promise.allSettled(plugins.map((url, i) =>
   .flatMap((result, i) => result.status === 'rejected' ? [`Could not register plugin ${plugins[i]}: ${String(result.reason)}`] : [])
 for (const warning of pluginWarnings) console.warn(warning)
 viewer.startupWarnings = [...startup.warnings, ...pluginWarnings]
-// With a tour configured (?tour=, else VITE_MUSEUM_TOUR_URL), the page opens the
-// tour, playing, unless the URL names a scene or is Close Stage's empty start page;
-// otherwise the default scene. Both show the drop-a-file banner (welcome.ts). The
-// tour opens as its own page, set up from what its root layer says (tour-file-info.ts).
+// With no ?scene= the page opens the default scene (the torus) with the welcome
+// banner (welcome.ts): drop a USD file onto the window, or, with a tour configured
+// (?tour=, else VITE_MUSEUM_TOUR_URL), Start Museum Tour. The tour isn't loaded
+// until asked for. It opens as its own page, set up from what its root layer says
+// (tour-file-info.ts). On a phone-sized screen the banner keeps only the button.
 const tour = tourSource(location.search, import.meta.env)
 const openTour = async () => {
   const { readTourFileInfo } = await import('./tour-file-info')
   return tourPageUrl(location.href, tour!, await readTourFileInfo(new URL(tour!.url, document.baseURI).href))
 }
-if (opensTourByDefault(location.search, tour)) {
-  openTour().then(url => location.replace(url), error => {
-    console.warn(error)
-    viewer.src = viewerFileUrl(defaultSceneUrl)
-    viewer.showWelcome({ onDefaultScene: true })
-  })
-} else {
-  viewer.src = new URLSearchParams(location.search).get('scene') ?? viewerFileUrl(defaultSceneUrl)
-  if (showsWelcome(location.search)) {
-    const onDefaultScene = !new URLSearchParams(location.search).has('scene')
-    viewer.showWelcome({ onDefaultScene, ...(tour && onDefaultScene ? { startTour: async () => location.assign(await openTour()) } : {}) })
-  }
+viewer.src = new URLSearchParams(location.search).get('scene') ?? viewerFileUrl(defaultSceneUrl)
+if (showsWelcome(location.search)) {
+  const onDefaultScene = !new URLSearchParams(location.search).has('scene')
+  const startTour = tour && onDefaultScene ? async () => location.assign(await openTour()) : undefined
+  // A phone can't drop files: its banner is only the tour button, or nothing.
+  if (!smallScreen() || startTour) viewer.showWelcome({ onDefaultScene, compact: smallScreen(), ...(startTour ? { startTour } : {}) })
 }
 document.querySelector('#viewer-host')!.append(viewer)
 // File > Close Stage returns to the welcome page (the torus and its note).
@@ -62,7 +57,11 @@ if (follow) startFollow(follow, viewer)
 // ?viewerOnly=1 (Window > Toggle Viewer-Only Mode) and ?cameraMask=full|partial|none
 // (Camera > Camera Masking), applied once the first scene is open: a side-by-side
 // comparison uses them so both viewers show the camera's own frame at the same size.
-const viewerOnly = new URLSearchParams(location.search).get('viewerOnly') === '1'
+// A phone-sized screen (narrow, or a touch screen of tablet width or less) opens in
+// viewer-only mode unless the URL says otherwise (?viewerOnly=0): a web adaptation,
+// so the viewport fills the screen. Window > Toggle Viewer-Only Mode still works.
+const viewerOnlyParam = new URLSearchParams(location.search).get('viewerOnly')
+const viewerOnly = viewerOnlyParam === '1' || (viewerOnlyParam === null && smallScreen())
 const cameraMask = new URLSearchParams(location.search).get('cameraMask')
 if (viewerOnly || cameraMask) viewer.addEventListener('scene-loaded', () => {
   if (viewerOnly) viewer.setViewerOnly(true)

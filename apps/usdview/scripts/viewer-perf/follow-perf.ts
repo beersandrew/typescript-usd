@@ -45,6 +45,7 @@ import { StageViewEngine, prepareStorm, createHgi } from '../../src/stage-view-e
 import { defaultDisplaySettings, mergeDisplaySettings, type DisplaySettings } from '../../src/display-settings'
 import { carrierLoaded, readLoadSchedule, LoadScheduler } from '../../src/load-schedule'
 import { LoadPrefetcher } from '../../src/load-prefetch'
+import { deriveWorkingSet, defaultWorkingSetOptions } from '../../src/working-set'
 // load-prefetch.ts loads it on demand; in this one-file bundle it must be
 // evaluated before the run below, which runs at the module's top level.
 import 'typescript-usd/hio/_internal'
@@ -78,9 +79,15 @@ for (const p of [path.resolve(here, option('--web-profile', '../../public/plugin
 const openStart = performance.now()
 const stage = await Stage.open(scene, { loadPayloads: false })
 if (!stage) throw new Error(`cannot open ${scene}`)
-const { schedule } = readLoadSchedule(stage)
 const from = Number(option('--from', String(stage.startTimeCode ?? 0)))
 const to = Number(option('--to', String(stage.endTimeCode ?? 0)))
+// --working-set: the viewer's working set for --camera (working-set.ts), as
+// runtime.ts derives it for a scene with no authored schedule.
+const workingSetStart = performance.now()
+const schedule = args.includes('--working-set')
+  ? deriveWorkingSet(stage, cameraPath, stage.startTimeCode ?? 0, stage.endTimeCode ?? 0, { ...defaultWorkingSetOptions, ...JSON.parse(option('--ws-options', '{}')) })
+  : readLoadSchedule(stage).schedule
+const workingSetMs = performance.now() - workingSetStart
 const carriers = [...schedule?.carriers.keys() ?? []]
 const underCarrier = (p: string) => carriers.some(c => p === c || p.startsWith(`${c}/`))
 const outside = stage.findLoadable('/').filter(p => { const prim = stage.getPrim(p); return !!prim && !prim.isInPrototype() && !prim.isLoaded && !underCarrier(p) })
@@ -229,7 +236,7 @@ const phaseTotals: Record<string, number> = {}
 for (const f of frames) for (const [k, v] of Object.entries(f.phases)) phaseTotals[k] = r1((phaseTotals[k] ?? 0) + v.ms)
 const behind = ticks.map(t => t.shown === undefined ? null : t.leader - t.shown).filter((x): x is number => x !== null)
 console.log(JSON.stringify({
-  scene, mode: follow ? 'follow' : 'every', from, to, complexity, width, height, openMs: r1(openMs), firstRenderMs: r1(firstRenderMs), wallMs: r1(wallMs),
+  scene, mode: follow ? 'follow' : 'every', from, to, complexity, width, height, openMs: r1(openMs), workingSetMs: r1(workingSetMs), firstRenderMs: r1(firstRenderMs), wallMs: r1(wallMs),
   frames: frames.length, medianMs: q(0.5), p90Ms: q(0.9), p99Ms: q(0.99), maxMs: sorted.at(-1) ?? null,
   over42: frames.filter(f => f.ms > 1000 / fps).length,
   totals: { ms: sum('ms'), loadMs: sum('loadMs'), cameraMs: sum('cameraMs'), setTimeMs: sum('setTimeMs'), renderMs: sum('renderMs'), idleMs: sum('idleMs') },

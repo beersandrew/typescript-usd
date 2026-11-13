@@ -91,6 +91,7 @@ export interface FreeCameraSettings {
 }
 export interface ViewerCameraState {
   presentation?: CameraPresentationSettings
+  /** Scene cameras in Utils._GetAllPrimsOfType order; label is the prim name. */
   cameras: { path: string, label: string }[]
   activeCameraPath: string | null
   free: FreeCameraSettings
@@ -147,6 +148,8 @@ export interface ValidationResultRow {
 export interface ViewerRuntime {
   listValidators?(): Promise<ValidatorEntry[]>
   runValidation?(request: ValidationRequest): Promise<ValidationResultRow[]>
+  /** The frame a scene camera asks to be viewed at while payloads load by a schedule (runtime.ts). */
+  cameraLoadFrame?(path: string): number | undefined
   /** Current visible drawable targets; valid stages may contain none. */
   getGeometryState?(): ViewerGeometryState
   getSubtreeHudInfo?():Record<string,number>

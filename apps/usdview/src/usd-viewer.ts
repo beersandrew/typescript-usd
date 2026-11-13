@@ -112,7 +112,14 @@ export class UsdViewerElement extends HTMLElement {
     if (command.kind === 'interpolation') this.#timeline.reset()
   }, busy => { this.#compositionBusy = busy; this.#updateBusyControls() })
   #materialControls = new MaterialControls(this.#root,()=>this.#runtime?.getDisplaySettings?.()??defaultDisplaySettings(),patch=>this.#changeDisplay(patch))
-  #cameraControls = new CameraControls(this.#root, () => this.#runtime, error => this.#statusMessage(String(error)))
+  // A chosen camera that names a frame (cameraLoadFrame) takes the timeline there,
+  // stopping playback, so the payloads its view needs load by the schedule.
+  #cameraControls = new CameraControls(this.#root, () => this.#runtime, error => this.#statusMessage(String(error)), path => {
+    const frame = this.#runtime?.cameraLoadFrame?.(path)
+    if (frame === undefined) return
+    if (this.#timeline.playing) this.#timeline.stop()
+    void this.#timeline.seek(frame)
+  })
   #windowControls = new WindowControls(this.#root, this,()=>this.#queueViewPreferences())
   #hydraSceneDebugger: HydraSceneDebuggerWindow
   #debugFlags: DebugFlagsWindow
@@ -593,8 +600,11 @@ export class UsdViewerElement extends HTMLElement {
         for (const submenu of opened.querySelectorAll<HTMLDetailsElement>('.submenu[open]')) submenu.open = false
     }, { ...options, capture: true })
     // QMenu-style hover and arrow navigation, scoped to this component's menus.
+    // Hover is a mouse behaviour: a tap on a touch screen also sends pointerenter,
+    // and opening the submenu there would let the tap's click close it again.
     for(const menu of this.#root.querySelectorAll<HTMLDetailsElement>('details.menu,details.submenu')){
-      menu.addEventListener('pointerenter',()=>{
+      menu.addEventListener('pointerenter',event=>{
+        if(event.pointerType!=='mouse')return
         if(menu.getAttribute('aria-disabled')==='true')return
         if(menu.matches('.submenu')||menu.parentElement?.querySelector(':scope>details.menu[open]')){
           for(const sibling of menu.parentElement!.querySelectorAll<HTMLDetailsElement>(':scope>details'))if(sibling!==menu)sibling.open=false
@@ -1283,8 +1293,9 @@ export class UsdViewerElement extends HTMLElement {
    * is shown in the status bar). `onDefaultScene` marks the empty start page, where
    * File > Close Stage has nothing to close. Its ✕, opening any other scene or a
    * file hides it. A web addition: usdview has no start page. */
-  showWelcome(options:{startTour?:()=>void|Promise<void>,onDefaultScene?:boolean}={}):void{
+  showWelcome(options:{startTour?:()=>void|Promise<void>,onDefaultScene?:boolean,compact?:boolean}={}):void{
     this.#welcomeSource=this.src;this.#welcomeTour=options.startTour;this.#welcomeOnDefault=!!options.onDefaultScene
+    this.#get<HTMLElement>('.welcome').toggleAttribute('data-compact',!!options.compact)
     this.#get<HTMLElement>('.start-tour').hidden=!options.startTour
     this.#get<HTMLElement>('.welcome').hidden=false
     this.#updateBusyControls()

@@ -53,7 +53,10 @@ export class ViewerCameraController {
   state(): ViewerCameraState {
     const authored = this.activeCameraPath && this.stage?.getPrim(this.activeCameraPath)
     const clip = authored ? Camera.getCamera(authored,this.time).clippingRange : this.clipping()
-    return { cameras: this.stage ? [...usd.Stage.fromCore(this.stage).traverse()].filter(prim=>prim.typeName==='Camera').map(({path})=>({path,label:path})) : [],
+    // appController.py:3034-3036 lists Utils._GetAllPrimsOfType(stage, UsdGeom.Camera):
+    // utils.cpp:26-35 keeps stage->Traverse() order and prim.IsA(schemaType), so
+    // derived camera schemas are included. Menu labels are prim names (appController.py:3094).
+    return { cameras: this.stage ? [...usd.Stage.fromCore(this.stage).traverse()].filter(prim=>prim.isA(Camera.typeName)).map(({path})=>({path,label:path.slice(path.lastIndexOf('/')+1)})) : [],
       presentation:mergeCameraPresentation(this.presentation,{}),activeCameraPath:this.activeCameraPath,free:{...this.free},effectiveNear:clip[0],effectiveFar:clip[1] }
   }
   /** Frame/reset operations may change automatic clipping. Reject an invalid

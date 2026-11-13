@@ -7,7 +7,7 @@ import { readFile } from 'node:fs/promises'
 import { afterEach, beforeAll, describe, expect, it, vi } from 'vitest'
 import type { PrimSummary, ViewerRuntime } from '../src/contracts'
 import { defineUsdViewer, type UsdViewerElement } from '../src/usd-viewer'
-import { defaultSceneUrl, showsWelcome, tourCameraCandidates, tourFileInfo, tourPageUrl, tourSource, welcomePageUrl, opensTourByDefault, tourAddress } from '../src/welcome'
+import { defaultSceneUrl, showsWelcome, tourCameraCandidates, tourFileInfo, tourPageUrl, tourSource, welcomePageUrl, tourAddress, smallScreen } from '../src/welcome'
 import { readTourFileInfo } from '../src/tour-file-info'
 
 const tick = async () => { for (let n = 0; n < 5; n++) await Promise.resolve() }
@@ -45,7 +45,7 @@ describe('tour configuration', () => {
   })
 
   it('reads the tour camera, load schedule and OpenExec from the root layer data, as the comparison tools do', () => {
-    expect(tourCameraCandidates('museum')).toEqual(['/museum/tour/tour_cam', '/Museum/Cameras/tour_cam', '/Wing/Cameras/tour_cam', '/Tour/Cameras/main_cam'])
+    expect(tourCameraCandidates('museum')).toEqual(['/museum/cameras/tour_cam', '/museum/tour/tour_cam', '/Museum/Cameras/tour_cam', '/Wing/Cameras/tour_cam', '/Tour/Cameras/main_cam'])
     expect(tourCameraCandidates('')).toEqual(['/Museum/Cameras/tour_cam', '/Wing/Cameras/tour_cam', '/Tour/Cameras/main_cam'])
     const prims = new Set(['/museum/tour/tour_cam', '/Tour/Cameras/main_cam'])
     expect(tourFileInfo({ museum: { exec: 0 }, tourLoad: { carriers: {} } }, 'museum', p => prims.has(p)))
@@ -204,18 +204,6 @@ describe('File > Close Stage', () => {
   })
 })
 
-describe('opening the tour by default', () => {
-  const tour = { url: '/museum/museum.usda', plugins: [] }
-  it('opens a configured tour unless the URL names a scene, a side-by-side mode or the empty start page', () => {
-    expect(opensTourByDefault('', tour)).toBe(true)
-    expect(opensTourByDefault('?tour=/museum/museum.usda', tour)).toBe(true)
-    expect(opensTourByDefault('', undefined)).toBe(false)
-    expect(opensTourByDefault('?scene=/x.usda', tour)).toBe(false)
-    expect(opensTourByDefault('?follow=ws://x', tour)).toBe(false)
-    expect(opensTourByDefault('?viewerOnly=1', tour)).toBe(false)
-    expect(opensTourByDefault('?empty=1', tour)).toBe(false)
-  })
-})
 
 describe('the tour page address', () => {
   it('goes back to the page the tour opened from, keeping only the tour configuration', () => {
@@ -224,5 +212,17 @@ describe('the tour page address', () => {
     const local = tourPageUrl('http://127.0.0.1:8765/viewer/?tour=/museum/museum.usda', { url: '/museum/museum.usda', plugins: [] }, { loadSchedule: true })
     expect(tourAddress(local)).toBe('http://127.0.0.1:8765/viewer/?tour=%2Fmuseum%2Fmuseum.usda')
     expect(tourAddress('https://andrew.beer/s/usdview/?scene=/x.usda')).toBeNull()
+  })
+})
+
+describe('phone-sized screens', () => {
+  it('counts a narrow screen, or a touch screen of tablet width or less', () => {
+    const screen = (width: number, touch: boolean) => (query: string) =>
+      query === '(max-width: 700px)' ? width <= 700 : query === '(pointer: coarse) and (max-width: 1024px)' ? touch && width <= 1024 : false
+    expect(smallScreen(screen(390, true))).toBe(true)
+    expect(smallScreen(screen(820, true))).toBe(true)
+    expect(smallScreen(screen(650, false))).toBe(true)
+    expect(smallScreen(screen(1280, true))).toBe(false)
+    expect(smallScreen(screen(1440, false))).toBe(false)
   })
 })

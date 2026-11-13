@@ -30,7 +30,7 @@
 import {ResolverContextBinder as ArResolverContextBinder, GetResolver as ArGetResolver} from 'typescript-usd/ar'
 import {AssetPath as SdfAssetPath, Layer as SdfLayer, sdfNormalizeListOp} from 'typescript-usd/sdf'
 import type {Stage} from 'typescript-usd/usd'
-import type {LoadSchedule} from './load-schedule'
+import {carrierWindows, type LoadSchedule} from './load-schedule'
 
 /** How many frames before a carrier's window opens its layers are read. */
 export const defaultPrefetchFrames = 48
@@ -80,7 +80,8 @@ export async function openCarrierLayers(stage: Stage, carrier: string): Promise<
   const prim = stage.getPrim(carrier)
   if (!prim) return []
   const seeds = new Set<string>()
-  for (const child of prim.getAllChildren()) {
+  // A working set's carrier is the payload prim itself (working-set.ts).
+  for (const child of [prim, ...prim.getAllChildren()]) {
     // Unloaded children too (UsdPrim::GetAllChildren).
     if (!child.hasAuthoredPayloads()) continue
     for (const entry of stage.getPrimStack(child.path)) {
@@ -189,7 +190,11 @@ export class LoadPrefetcher {
    *  its window opens. */
   update(frame: number): Promise<SdfLayer[]>[] {
     const started: Promise<SdfLayer[]>[] = []
-    for (const [carrier, [first]] of this.#schedule.carriers) {
+    for (const carrier of this.#schedule.carriers.keys()) {
+      // The window opening next (or most recently): a working set's carrier
+      // can have several (working-set.ts).
+      const firsts = carrierWindows(this.#schedule, carrier).map(([a]) => a)
+      const first = firsts.find(a => frame <= a + imageHoldFrames) ?? Infinity
       const imagesDue = first - this.#frames <= frame && frame <= first + imageHoldFrames
       if (!imagesDue) this.#releaseImages(carrier)
       const due = frame <= first && first <= frame + this.#frames

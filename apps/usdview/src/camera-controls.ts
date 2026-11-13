@@ -37,21 +37,67 @@ export const cameraDialog = `<style>
 <div class="camera-setting-row"><label><input name="overrideNear" type="checkbox"> Override near clipping</label><input name="near" aria-label="Camera near clipping" type="number" min="0.000001" step="any" required></div>
 <div class="camera-setting-row"><label><input name="overrideFar" type="checkbox"> Override far clipping</label><input name="far" aria-label="Camera far clipping" type="number" min="0.000001" step="any" required></div>
 <p class="camera-error" role="alert"></p><footer><button class="camera-close" type="button">Close</button><button class="camera-apply" type="submit">Apply</button></footer>
-</form></dialog>`
+</form></dialog>
+<style>
+.camera-more-dialog{background:#383838;color:#ddd;border:1px solid #888;padding:16px;width:min(400px,calc(100vw - 32px));height:min(500px,calc(100dvh - 32px));box-sizing:border-box;box-shadow:0 8px 30px #0008}
+.camera-more-dialog[open]{display:flex;flex-direction:column;gap:8px}.camera-more-dialog::backdrop{background:#0005}.camera-more-dialog h2{font-size:16px;margin:0}
+.camera-more-list{flex:1;min-height:0;overflow-x:hidden;overflow-y:auto;border:1px solid #555;background:#2a2a2a;overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
+.camera-more-list>button{display:block;width:100%;border:0;border-radius:0;background:transparent;color:inherit;text-align:left;padding:4px 8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;touch-action:manipulation}
+.camera-more-list>button[hidden]{display:none}.camera-more-list>button:hover:not(:disabled){background:#444}.camera-more-list>button[aria-selected=true]{background:#be9c55;color:#363636}
+.camera-more-search{width:100%;box-sizing:border-box}.camera-more-dialog footer{display:flex;justify-content:flex-end}
+@media (pointer:coarse){.camera-more-list>button{min-height:44px;padding:0 12px}.camera-more-search{font-size:16px;min-height:44px}.camera-more-ok{min-height:44px;min-width:88px}}
+</style><dialog class="camera-more-dialog" aria-label="Select Camera"><h2>Select Camera</h2>
+<div class="camera-more-list" role="listbox" aria-label="Cameras"></div>
+<input class="camera-more-search" type="search" placeholder="Search for camera by name" aria-label="Search for camera by name" autocomplete="off" autocapitalize="off" spellcheck="false" enterkeyhint="done">
+<footer><button class="camera-more-ok" type="button">Ok</button></footer></dialog>`
+/** appController.py:3092: Camera > Select Camera lists at most this many cameras. */
+export const cameraListMaxLen=20
 export class CameraControls {
   #hasSceneCameras=false
   #busy=false
-  constructor(private root: ShadowRoot,private runtime:()=>ViewerRuntime|undefined,private error:(error:unknown)=>void) {}
+  constructor(private root: ShadowRoot,private runtime:()=>ViewerRuntime|undefined,private error:(error:unknown)=>void,
+    /** Called with the scene camera the menu or the More Cameras dialog chose. */
+    private chosen:(path:string)=>void=()=>{}) {}
   private get<T extends Element>(selector:string):T{return this.root.querySelector<T>(selector)!}
   bind(signal:AbortSignal) {
     const options={signal}, dialog=this.get<HTMLDialogElement>('.camera-dialog'),form=this.get<HTMLFormElement>('.camera-form')
     const close=()=>{ if(dialog.close)dialog.close();else dialog.removeAttribute('open') }
     this.get('.camera-close').addEventListener('click',close,options)
+    const closeMenus=()=>{for(const menu of this.root.querySelectorAll<HTMLDetailsElement>('details.menu,details.submenu'))menu.open=false}
     this.get('.camera-select').addEventListener('click',event=>{
+      const more=(event.target as Element).closest<HTMLButtonElement>('.camera-more')
+      if(more){if(!more.disabled){closeMenus();this.showMoreCameras()}return}
       const button=(event.target as Element).closest<HTMLButtonElement>('[data-camera-path]')
       if(!button||button.disabled)return
-      try{this.refresh(this.runtime()?.setActiveCamera?.(button.dataset.cameraPath||null));for(const menu of this.root.querySelectorAll<HTMLDetailsElement>('details.menu,details.submenu'))menu.open=false}catch(error){this.refresh();this.error(error)}
+      try{this.refresh(this.runtime()?.setActiveCamera?.(button.dataset.cameraPath||null));closeMenus();if(button.dataset.cameraPath)this.chosen(button.dataset.cameraPath)}catch(error){this.refresh();this.error(error)}
     },options)
+    // appController.py:3132-3133: making a list item current selects its camera;
+    // the dialog stays open until Ok (3151-3155).
+    const more=this.get<HTMLDialogElement>('.camera-more-dialog'),list=this.get<HTMLElement>('.camera-more-list'),search=this.get<HTMLInputElement>('.camera-more-search')
+    list.addEventListener('click',event=>{
+      const item=(event.target as Element).closest<HTMLButtonElement>('[data-camera-path]')
+      if(item&&!item.disabled)this.setCurrentCamera(item)
+    },options)
+    list.addEventListener('keydown',event=>{
+      const items=[...list.querySelectorAll<HTMLButtonElement>('[data-camera-path]:not([hidden])')],at=items.indexOf(event.target as HTMLButtonElement)
+      const next=event.key==='ArrowDown'?items[at+1]:event.key==='ArrowUp'?items[at-1]:event.key==='Home'?items[0]:event.key==='End'?items.at(-1):undefined
+      if(!next)return
+      event.preventDefault();next.focus();if(!next.disabled)this.setCurrentCamera(next)
+    },options)
+    // appController.py:3169-3177 _onCameraSearchTextChanged: hide items whose
+    // name does not contain the text, case-insensitively.
+    search.addEventListener('input',()=>{
+      const text=search.value.toLowerCase()
+      for(const item of list.querySelectorAll<HTMLButtonElement>('[data-camera-path]'))item.hidden=!item.textContent!.toLowerCase().includes(text)
+    },options)
+    // appController.py:3161-3166 _onCameraSearchComplete (QLineEdit.editingFinished,
+    // Return or focus loss): the first shown item becomes current.
+    search.addEventListener('change',()=>{
+      const first=list.querySelector<HTMLButtonElement>('[data-camera-path]:not([hidden])')
+      if(first&&!first.disabled)this.setCurrentCamera(first)
+    },options)
+    search.addEventListener('keydown',event=>{if(event.key==='Enter'){event.preventDefault();search.dispatchEvent(new Event('change'))}},options)
+    this.get('.camera-more-ok').addEventListener('click',()=>{if(more.close)more.close();else more.removeAttribute('open')},options)
     this.get('.camera-choice>summary').addEventListener('click',event=>{if(this.#busy||!this.#hasSceneCameras)event.preventDefault()},options)
     for(const button of this.root.querySelectorAll<HTMLButtonElement>('[data-camera-color]'))button.addEventListener('click',()=>this.get<HTMLInputElement>(`[data-camera-presentation="${button.dataset.cameraColor}"]`).click(),options)
     this.get('.toggle-framed-view').addEventListener('click',()=>{try{this.refresh(this.runtime()?.toggleFramedView?.())}catch(error){this.error(error)}},options)
@@ -80,6 +126,28 @@ export class CameraControls {
       } catch(error){this.get('.camera-error').textContent=error instanceof Error?error.message:String(error)}
     },options)
   }
+  /** appController.py:3034-3036 _allSceneCameras, as last refreshed. */
+  #cameras:{path:string,label:string}[]=[]
+  /** appController.py:3110-3158 _showMoreCamerasDialog: a fresh dialog listing
+   * every scene camera by name, with no current item and an empty search. */
+  showMoreCameras(){
+    const dialog=this.get<HTMLDialogElement>('.camera-more-dialog'),list=this.get<HTMLElement>('.camera-more-list')
+    list.replaceChildren(...this.#cameras.map(camera=>{
+      const item=document.createElement('button');item.type='button';item.dataset.cameraPath=camera.path;item.textContent=camera.label;item.setAttribute('role','option');item.setAttribute('aria-selected','false');item.tabIndex=-1;return item
+    }))
+    this.get<HTMLInputElement>('.camera-more-search').value=''
+    this.cameraAvailability()
+    if(dialog.showModal)dialog.showModal();else dialog.setAttribute('open','')
+    list.querySelector<HTMLButtonElement>('[data-camera-path]')?.setAttribute('tabindex','0')
+  }
+  /** QListWidget.currentItemChanged fires only when the current item changes
+   * (appController.py:3132-3133); it then selects that item's camera. */
+  private setCurrentCamera(item:HTMLButtonElement){
+    if(item.getAttribute('aria-selected')==='true')return
+    for(const other of this.root.querySelectorAll<HTMLElement>('.camera-more-list>[aria-selected=true]')){other.setAttribute('aria-selected','false');other.tabIndex=-1}
+    item.setAttribute('aria-selected','true');item.tabIndex=0
+    try{this.refresh(this.runtime()?.setActiveCamera?.(item.dataset.cameraPath!));this.chosen(item.dataset.cameraPath!)}catch(error){this.refresh();this.error(error)}
+  }
   private input(name:string){return this.get<HTMLInputElement>(`.camera-form input[name="${name}"]`)}
   refresh(state=this.runtime()?.getCameraState?.()) {
     if(!state)return
@@ -91,10 +159,17 @@ export class CameraControls {
       else input.value='#'+(value as number[]).slice(0,3).map(v=>Math.round(v*255).toString(16).padStart(2,'0')).join('')
     }
     this.#hasSceneCameras=state.cameras.length>0
+    // appController.py:3083-3107: the menu is rebuilt from the first
+    // cameraListMaxLen scene cameras (name, path tooltip, checkable, checked for
+    // the current camera), then a separator and More Cameras... beyond that.
     const select=this.get<HTMLElement>('.camera-select');select.replaceChildren()
-    if(this.#hasSceneCameras)for(const camera of [{label:'Free Camera',path:''},...state.cameras]){
-      const button=document.createElement('button');button.type='button';button.dataset.cameraPath=camera.path;button.textContent=camera.label;button.setAttribute('role','menuitemradio');button.setAttribute('aria-checked',String(camera.path===(state.activeCameraPath??'')));button.disabled=this.#busy||!this.runtime()?.setActiveCamera;select.append(button)
+    for(const camera of state.cameras.slice(0,cameraListMaxLen)){
+      const button=document.createElement('button');button.type='button';button.dataset.cameraPath=camera.path;button.textContent=camera.label;button.title=camera.path;button.setAttribute('role','menuitemcheckbox');button.setAttribute('aria-checked',String(camera.path===state.activeCameraPath));select.append(button)
     }
+    if(state.cameras.length>cameraListMaxLen){
+      const button=document.createElement('button');button.type='button';button.className='camera-more';button.textContent='More Cameras...';button.title='View All Cameras';button.setAttribute('role','menuitem');select.append(document.createElement('hr'),button)
+    }
+    this.#cameras=state.cameras
     this.cameraAvailability()
     this.get('.camera-caption').textContent=state.activeCameraPath?.split('/').pop()??'Free'
     this.input('fov').value=String(state.free.fovDegrees)
@@ -109,7 +184,7 @@ export class CameraControls {
   private cameraAvailability(){
     const disabled=this.#busy||!this.runtime()?.setActiveCamera||!this.#hasSceneCameras
     this.get('.camera-choice').setAttribute('aria-disabled',String(disabled));this.get('.camera-choice>summary').setAttribute('aria-disabled',String(disabled));this.get('.camera-choice>summary').setAttribute('tabindex',disabled?'-1':'0');if(disabled)this.get<HTMLDetailsElement>('.camera-choice').open=false
-    for(const button of this.root.querySelectorAll<HTMLButtonElement>('[data-camera-path]'))button.disabled=disabled
+    for(const button of this.root.querySelectorAll<HTMLButtonElement>('[data-camera-path],.camera-more'))button.disabled=disabled
   }
   busy(value:boolean){
     this.#busy=value

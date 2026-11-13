@@ -19,14 +19,6 @@ export function showsWelcome(search: string | URLSearchParams): boolean {
   return !params.has('scene') || params.get('start') === 'tour'
 }
 
-/** Whether the page opens the configured tour instead of the default scene: a
- *  tour is configured, the URL names no scene and no side-by-side mode, and the
- *  page isn't File > Close Stage's empty start page (?empty=1). */
-export function opensTourByDefault(search: string | URLSearchParams, tour: TourSource | undefined): boolean {
-  const params = typeof search === 'string' ? new URLSearchParams(search) : search
-  return !!tour && !params.has('scene') && !params.has('follow') && params.get('viewerOnly') !== '1' && params.get('empty') !== '1'
-}
-
 /** A tour the welcome note can start: its root layer and the plugins
  *  (plugInfo.json URLs) it needs registered, as a caller of usdview puts them on
  *  PXR_PLUGINPATH_NAME (e.g. a repository's variant fallbacks). */
@@ -57,7 +49,7 @@ export interface TourFileInfo {
 
 /** The tour camera paths, in order of preference: the first the file defines plays the tour. */
 export function tourCameraCandidates(defaultPrim: string): string[] {
-  return [...(defaultPrim ? [`/${defaultPrim}/tour/tour_cam`] : []), '/Museum/Cameras/tour_cam', '/Wing/Cameras/tour_cam', '/Tour/Cameras/main_cam']
+  return [...(defaultPrim ? [`/${defaultPrim}/cameras/tour_cam`, `/${defaultPrim}/tour/tour_cam`] : []), '/Museum/Cameras/tour_cam', '/Wing/Cameras/tour_cam', '/Tour/Cameras/main_cam']
 }
 
 /** A tour's file info from its root layer's customLayerData, defaultPrim and prims. */
@@ -97,7 +89,7 @@ export function tourPageUrl(page: string | URL, tour: TourSource, info: TourFile
 
 /** The address a tour page shows once it has read its setup (?start=tour): the
  *  page it was opened from, with only the tour configuration (?tour=,
- *  ?tourPlugin=). Reloading it opens the tour again (opensTourByDefault); null
+ *  ?tourPlugin=). Reloading it opens the start page again, with the tour button; null
  *  when the page isn't a tour page. */
 export function tourAddress(page: string | URL): string | null {
   const url = new URL(page)
@@ -127,4 +119,11 @@ export function welcomePageUrl(page: string | URL): string {
   params.set('empty', '1')
   url.search = params.toString()
   return url.href
+}
+
+/** A phone-sized screen: narrow (at most 700 CSS pixels), or a touch screen at most
+ *  1024 wide. The page opens it in viewer-only mode with no drop-a-file banner
+ *  (main.ts): files can't be dragged onto a phone, and the panels don't fit. */
+export function smallScreen(match: (query: string) => boolean = query => typeof matchMedia === 'function' && matchMedia(query).matches): boolean {
+  return match('(max-width: 700px)') || match('(pointer: coarse) and (max-width: 1024px)')
 }

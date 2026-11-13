@@ -27,6 +27,11 @@ export interface StartupOptions {
   * runtime.ts); ?loadSchedule=0, or a scene without a schedule, loads every
   * payload as usual. */
  loadSchedule?:boolean
+ /** ?workingSet=0 loads every payload, as usdview does. Unset (or 1), a scene
+  * with no authored schedule, opened with ?camera=, whose payload prims author
+  * extentsHint, keeps loaded only the payloads near that camera's path
+  * (PLATFORM-DIVERGENCE(usdview-working-set), working-set.ts). */
+ workingSet?:boolean
 }
 /** URL equivalents of usdviewq/__init__.py:133-159,246-259,312-368.
  * Invalid browser options produce diagnostics and leave defaults usable. */
@@ -55,6 +60,8 @@ export function parseStartupOptions(search:string|URLSearchParams):{options:Star
  if(progressive!==undefined){if(progressive==='0'||progressive==='1')options.progressive=progressive==='1';else warnings.push(`Invalid startup progressive: ${progressive}. Expected 0 or 1.`)}
  const loadSchedule=last('loadSchedule')
  if(loadSchedule!==undefined){if(loadSchedule==='0'||loadSchedule==='1')options.loadSchedule=loadSchedule==='1';else warnings.push(`Invalid startup loadSchedule: ${loadSchedule}. Expected 0 or 1.`)}
+ const workingSet=last('workingSet')
+ if(workingSet!==undefined){if(workingSet==='0'||workingSet==='1')options.workingSet=workingSet==='1';else warnings.push(`Invalid startup workingSet: ${workingSet}. Expected 0 or 1.`)}
  return {options,warnings}
 }
 /** appController.py:1323-1408 and common.py:784-794. Current frame 0 is
@@ -96,5 +103,6 @@ export function normalizeStartupOptions(options:StartupOptions){
  if(options.populationMask!==undefined)params.set('mask',options.populationMask.join(' '))
  if(options.progressive!==undefined)params.set('progressive',options.progressive?'1':'0')
  if(options.loadSchedule!==undefined)params.set('loadSchedule',options.loadSchedule?'1':'0')
+ if(options.workingSet!==undefined)params.set('workingSet',options.workingSet?'1':'0')
  return parseStartupOptions(params)
 }

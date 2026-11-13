@@ -496,3 +496,19 @@ it('enables the default dome checkbox for a ready runtime and applies its persis
  expect(runtime.setDisplaySettings).toHaveBeenLastCalledWith({domeLightEnabled:true})
  expect(input.checked).toBe(true)
 })
+
+describe('menus on a touch screen', () => {
+  const enter = (element: Element, pointerType: string) => {
+    const event = new Event('pointerenter'); Object.assign(event, { pointerType }); element.dispatchEvent(event)
+  }
+  it('opens a submenu on mouse hover but not on a tap, whose click toggles it once', async () => {
+    const { root } = setup(); await tick()
+    const display = q<HTMLDetailsElement>(root, 'details.menu:has(> .display-popup)')
+    display.open = true
+    const submenu = q<HTMLDetailsElement>(root, '.display-popup > details.submenu')
+    enter(submenu, 'touch')
+    expect(submenu.open).toBe(false)
+    enter(submenu, 'mouse')
+    expect(submenu.open).toBe(true)
+  })
+})

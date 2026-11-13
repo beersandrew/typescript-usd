@@ -6,9 +6,10 @@ ported to TypeScript: Core, the schemas, imaging (Hydra and Storm on WebGPU) and
 OpenExec, with a browser port of usdview. Includes partial TypeScript ports of
 MaterialX, OpenSubdiv and OpenVDB, which the library uses.
 
-**See it running:** [andrew.beer/s/usdview](https://andrew.beer/s/usdview/) plays the
-[USD Museum](https://github.com/beersandrew/usd-museum) tour in the browser (WebGPU:
-Safari or Chrome); drop your own USD file or folder onto it.
+**See it running:** [andrew.beer/s/usdview](https://andrew.beer/s/usdview/) in the
+browser (WebGPU: Safari or Chrome): start the
+[USD Museum](https://github.com/beersandrew/usd-museum) tour, or drop your own USD
+file or folder onto it.
 
 Independent project; not affiliated with Pixar, the ASWF or AOUSD.
 
@@ -37,9 +38,9 @@ pnpm --filter typescript-usdview dev     # the viewer at http://127.0.0.1:5173/
 pnpm test                                # every package's tests
 ```
 
-With no scene named, the viewer opens a green wireframe torus (or a tour, if
-one is configured) with a banner saying a USD file can be dropped onto the
-window. Open a scene with `?scene=<url>`; the viewer's other options are in
+With no scene named, the viewer opens a green wireframe torus with a banner
+saying a USD file can be dropped onto the window (and, if a tour is configured,
+a button that starts it). Open a scene with `?scene=<url>`; the viewer's other options are in
 [apps/usdview/README.md](apps/usdview/README.md).
 
 No OpenUSD build or source checkout is needed: the expected values the tests

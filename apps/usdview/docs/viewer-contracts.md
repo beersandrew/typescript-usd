@@ -76,3 +76,40 @@ customLayerData = {
 The schedule is not part of follow mode: each viewer applies it by its own frame, so a leader and
 its followers hold the same loaded set at the same frame, and a viewer playing alone does too. A
 viewer that ignores the schedule loads every payload, as USD does by default.
+
+## Working set (on for a scene with a camera and extentsHint; `?workingSet=0` turns it off)
+
+A scene with no load schedule, opened with `?camera=` (as a tour is), whose
+payload prims author `extentsHint` (UsdGeomModelAPI), plays with a **working
+set**: the viewer keeps loaded only the payloads near that camera's path
+(`src/working-set.ts`, PLATFORM-DIVERGENCE(usdview-working-set); usdview loads
+every payload). Nothing is authored for it beyond `extentsHint`, which a payload
+prim carries beside its payload so its bounds are known while it is unloaded.
+
+When the scene opens (payloads unloaded), the viewer samples the camera every
+2 frames over the scene's frame range. A payload is **wanted** at a frame when
+its extentsHint box (the union of its purposes, in world space) is within 8 m of
+the camera, or intersects the camera's frustum out to 60 m, widened to cover any
+viewport from square to 2.4:1. From that, each payload gets frame windows:
+
+- it loads 48 frames before it is first wanted, and unloads 72 frames after it
+  was last wanted, or later while the camera stays within 40 m of it;
+- windows of one payload less than 480 frames apart merge, so a payload that
+  comes in and out of view is not loaded again and again;
+- a payload prim without extentsHint is wanted at every frame;
+- a payload never wanted is never loaded.
+
+The windows are applied as a load schedule's are (carriers are the payload
+prims): one `UsdStage::LoadAndUnload` per change, the layers and images read
+ahead. One difference: at most 2 payloads load (and 2 unload) per frame while
+they are in their 48-frame lead-in, needed soonest first, so many windows
+opening together spread their loads (each load syncs its prims in that frame's
+draw). A payload already needed on screen (the first frame, a seek) loads at
+once.
+
+Measured on the USD Museum's tour (Node, CPU only, the first two wings): with
+the working set the first frame comes in 2.2 s instead of 4.3 s and the median
+frame takes 6.8 ms instead of 25.1 ms. At 60 m, five frames of the 11,839 show
+something 70-100 m down a row of doorways appear a moment late (a render of the
+frame before every load and after every unload, with the working set and with
+everything loaded); at 120 m there are none, with a median frame of 16 ms.

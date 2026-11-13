@@ -5,7 +5,7 @@ import type { ViewerRuntime,ViewerCameraState } from '../src/contracts'
 function setup(){
  const host=document.createElement('div'),root=host.attachShadow({mode:'open'})
  root.innerHTML=cameraMenu+'<span class="camera-caption"></span>'+cameraDialog
- const state:ViewerCameraState={cameras:[{path:'/World/Camera',label:'/World/Camera'}],activeCameraPath:null,free:{fovDegrees:60,aspectRatio:null,nearOverride:null,farOverride:null},effectiveNear:.1,effectiveFar:100}
+ const state:ViewerCameraState={cameras:[{path:'/World/Camera',label:'Camera'}],activeCameraPath:null,free:{fovDegrees:60,aspectRatio:null,nearOverride:null,farOverride:null},effectiveNear:.1,effectiveFar:100}
  const runtime={getCameraState:()=>state,setCameraSettings:vi.fn(patch=>{Object.assign(state.free,patch);return state}),setActiveCamera:vi.fn(path=>{state.activeCameraPath=path;return state}),resetCamera:vi.fn(()=>state)} as unknown as ViewerRuntime
  const error=vi.fn(),controls=new CameraControls(root,()=>runtime,error),abort=new AbortController()
  controls.bind(abort.signal);controls.refresh();controls.busy(false)

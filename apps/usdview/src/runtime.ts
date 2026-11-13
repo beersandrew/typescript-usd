@@ -26,6 +26,7 @@ import { propertyRows } from './property-view'
 import { primTree } from './prim-tree'
 import { LoadScheduler, carrierLoaded, readLoadSchedule } from './load-schedule'
 import { LoadPrefetcher } from './load-prefetch'
+import { deriveWorkingSet } from './working-set'
 import { TfDiagnosticMgr, TfErrorMark, Notice as TfNotice, type NoticeKey as TfNoticeKey } from 'typescript-usd/tf'
 import { Stage, StagePopulationMask, TraverseInstanceProxies, Notice as UsdNotice } from 'typescript-usd/usd'
 import { BBoxCache, PointInstancer, getStageUpAxis } from 'typescript-usd/usdGeom'
@@ -134,7 +135,7 @@ export const createRuntime: RuntimeFactory = async (canvas, callbacks) => {
   let committedProgress: LoadProgressTracker | undefined
   let committedDeferredPayloads: string[] = []
   // ?loadSchedule=1 (load-schedule.ts): the committed stage's schedule.
-  let committedLoadSchedule: { stage: Stage, scheduler: LoadScheduler, prefetcher: LoadPrefetcher } | undefined
+  let committedLoadSchedule: { stage: Stage, scheduler: LoadScheduler, prefetcher: LoadPrefetcher, derived: boolean } | undefined
   let picking: Promise<void> = Promise.resolve()
   let displaySettings = defaultDisplaySettings()
   let currentTime = 0
@@ -629,7 +630,18 @@ export const createRuntime: RuntimeFactory = async (canvas, callbacks) => {
         const found = readLoadSchedule(stage)
         if (found.schedule) scheduled = true
       }
-      const loadSchedule = scheduled || (refresh && committedLoadSchedule) ? readLoadSchedule(stage) : {warnings: []}
+      // PLATFORM-DIVERGENCE(usdview-working-set), working-set.ts: no authored schedule, a scene
+      // camera and payloads with extentsHint: keep loaded only the payloads near
+      // the camera's path (working-set.ts). ?workingSet=0 loads every payload.
+      // A refresh keeps the committed working set.
+      const workingSet = refresh
+        ? committedLoadSchedule?.derived ? committedLoadSchedule.scheduler.schedule : undefined
+        : !scheduled && deferPayloads && startupOptions.loadSchedule === undefined && startupOptions.workingSet !== false && startupOptions.camera?.startsWith('/')
+          ? timed('working-set', () => deriveWorkingSet(stage, startupOptions.camera!, startup.start, startup.end))
+          : undefined
+      if (workingSet) scheduled = true
+      const loadSchedule = workingSet ? {schedule: workingSet, warnings: [] as string[]}
+        : scheduled || (refresh && committedLoadSchedule) ? readLoadSchedule(stage) : {warnings: []}
       const carriers = [...loadSchedule.schedule?.carriers.keys() ?? []]
       const underCarrier = (path: string) => carriers.some(carrier => path === carrier || path.startsWith(`${carrier}/`))
       let deferredPayloads = deferPayloads || scheduled ? timed('deferred-payloads', () => stage.findLoadable('/').filter(path => { const prim = stage.getPrim(path); return !!prim && !prim.isInPrototype() && !primLoadability(prim).loaded && !underCarrier(path) })) : []
@@ -760,7 +772,7 @@ export const createRuntime: RuntimeFactory = async (canvas, callbacks) => {
         committedProgress = progress
         committedDeferredPayloads = deferredPayloads
         committedLoadSchedule?.prefetcher.dispose()
-        committedLoadSchedule = scheduler && { stage, scheduler, prefetcher: new LoadPrefetcher(stage, scheduler.schedule) }
+        committedLoadSchedule = scheduler && { stage, scheduler, prefetcher: new LoadPrefetcher(stage, scheduler.schedule), derived: !!workingSet }
         committedLoadSchedule?.prefetcher.update(currentTime)
         cameraChanged()
         refit = initialFit === 'default' && deferredPayloads.length ? { camera: JSON.stringify(camera), framed: false } : undefined
@@ -1238,6 +1250,15 @@ export const createRuntime: RuntimeFactory = async (canvas, callbacks) => {
       orbit?.abort()
       const state = cameraController.settings(patch)
       ++viewRevision; cameraChanged(); schedule(); return state
+    },
+    /** The tour frame a scene camera asks to be viewed at (customData museum:frame,
+     *  the USD Museum's browsing cameras), when payloads load by a schedule: at any
+     *  other frame its room may not be loaded. A web addition; usdview loads every
+     *  payload, so its camera needs no frame. */
+    cameraLoadFrame(path) {
+      if (!pipeline || !committedLoadSchedule) return undefined
+      const frame = pipeline.stage.getPrim(path)?.getMetadataByDictKey('customData', 'museum:frame')
+      return typeof frame === 'number' && Number.isFinite(frame) ? frame : undefined
     },
     setActiveCamera(path) {
       if (disposed) throw new Error('Viewer is disposed.')

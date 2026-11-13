@@ -42,9 +42,17 @@ const _HasStrictPrefix = (path: string, prefix: string): boolean =>
  * does not include a root identity mapping.  See PcpMapFunction for more.
  * The SdfLayerOffset component of the path mapping is not applied.
  */
+/** '/' or '.': where a path continues below a prefix (SdfPath::HasPrefix). */
+const _IsPathSeparator = (c: number): boolean => c === 47 || c === 46
+
 export class UsdImagingRerootingSceneIndex extends HdSingleInputFilteringSceneIndexBase {
   private readonly _mapFn: PcpMapFunction
   private readonly _targetRootPathsTable = new Set<string>()
+  /** typescript-usd: the map's source paths, for a string test that skips
+   *  MapSourceToTarget on a path below none of them (it maps to the empty
+   *  path there, pcp/mapFunction.cpp _Map); null when the map has the root
+   *  identity, which maps every path. */
+  private readonly _sourceRoots: string[] | null
 
   /** rerootingSceneIndex.h:35-56 (both overloads). */
   static new(inputScene: HdSceneIndexBase, mapFn: PcpMapFunction): UsdImagingRerootingSceneIndex
@@ -62,10 +70,30 @@ export class UsdImagingRerootingSceneIndex extends HdSingleInputFilteringSceneIn
   protected constructor(inputScene: HdSceneIndexBase, mapFn: PcpMapFunction) {
     super(inputScene)
     this._mapFn = mapFn
+    const sourceToTarget = mapFn.getSourceToTargetMap()
     // Populate _targetRootPathsTable with all mapped paths.
-    for (const [, target] of mapFn.getSourceToTargetMap()) {
+    for (const [, target] of sourceToTarget) {
       this._targetRootPathsTable.add(target)
     }
+    const sources = [...sourceToTarget.keys()]
+    this._sourceRoots = sources.includes('/') ? null : sources
+  }
+
+  /** _mapFn.MapSourceToTarget(path), with the typescript-usd shortcut above:
+   *  a path below no source maps to '' without parsing it. */
+  private _mapSourceToTarget(path: string): string {
+    const roots = this._sourceRoots
+    if (roots !== null) {
+      let below = false
+      for (const root of roots) {
+        if (path.startsWith(root) && (path.length === root.length || _IsPathSeparator(path.charCodeAt(root.length)))) {
+          below = true
+          break
+        }
+      }
+      if (!below) return ''
+    }
+    return UsdImaging_MapSourceToTarget(this._mapFn, path)
   }
 
   /** rerootingSceneIndex.cpp:31-45 */
@@ -115,7 +143,7 @@ export class UsdImagingRerootingSceneIndex extends HdSingleInputFilteringSceneIn
   protected _primsAdded(_sender: HdSceneIndexBase, entries: AddedPrimEntry[]): void {
     const adjustedEntries: AddedPrimEntry[] = []
     for (const entry of entries) {
-      const entryPath = UsdImaging_MapSourceToTarget(this._mapFn, entry.primPath)
+      const entryPath = this._mapSourceToTarget(entry.primPath)
       if (entryPath !== '') {
         adjustedEntries.push({ primPath: entryPath, primType: entry.primType })
       }
@@ -127,7 +155,7 @@ export class UsdImagingRerootingSceneIndex extends HdSingleInputFilteringSceneIn
   protected _primsRemoved(_sender: HdSceneIndexBase, entries: RemovedPrimEntry[]): void {
     const adjustedEntries: RemovedPrimEntry[] = []
     for (const entry of entries) {
-      const entryPath = UsdImaging_MapSourceToTarget(this._mapFn, entry.primPath)
+      const entryPath = this._mapSourceToTarget(entry.primPath)
       if (entryPath !== '') {
         adjustedEntries.push({ primPath: entryPath })
       }
@@ -139,7 +167,7 @@ export class UsdImagingRerootingSceneIndex extends HdSingleInputFilteringSceneIn
   protected _primsDirtied(_sender: HdSceneIndexBase, entries: DirtiedPrimEntry[]): void {
     const adjustedEntries: DirtiedPrimEntry[] = []
     for (const entry of entries) {
-      const entryPath = UsdImaging_MapSourceToTarget(this._mapFn, entry.primPath)
+      const entryPath = this._mapSourceToTarget(entry.primPath)
       if (entryPath !== '') {
         adjustedEntries.push({ primPath: entryPath, dirtyLocators: entry.dirtyLocators })
       }

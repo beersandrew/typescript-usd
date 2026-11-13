@@ -39,6 +39,10 @@ Where it differs from usdview by default:
 
 - A scene whose root layer has a payload load schedule plays by it
   (`?loadSchedule=0` loads every payload, as usdview does).
+- A scene opened with `?camera=` whose payload prims author `extentsHint` keeps
+  loaded only the payloads near that camera's path, its **working set**
+  (`?workingSet=0` loads every payload, as usdview does;
+  [docs/viewer-contracts.md](docs/viewer-contracts.md), "Working set").
 - In Safari, Storm's alpha to coverage is off
   (`?env=TF_DEBUG=-HDX_DISABLE_ALPHA_TO_COVERAGE` turns it back on): WebKit's
   shader compiler makes it very slow (KNOWN-GAPS.md, "Performance against native").
@@ -63,20 +67,20 @@ schedule for loading its payloads as the camera reaches them. The
 of OpenUSD's features, is one; it is a separate scene, not part of this
 repository, so a build points at it with a URL (below).
 
-With no `?scene=`, the page opens the configured tour (below), playing, through its
-tour camera; with no tour configured it opens `./assets/torus.usda`, a green
-wireframe torus drawn as linear curves. Both show a banner across the top of the
-viewport saying a USD file can be dropped onto the window; the torus page also
-offers **Start Museum Tour** when a tour is configured. The banner's ✕, opening a
-file or opening another scene dismisses it, and it is not shown with `?follow=` or
-`?viewerOnly=1` (`src/welcome.ts`; usdview itself has no start page).
-**File > Close Stage**, which usdview also lacks, returns to the torus
-(`?empty=1`) and keeps the tour configuration.
+With no `?scene=`, the page opens `./assets/torus.usda`, a green wireframe torus
+drawn as linear curves, with a banner across the top of the viewport saying a USD
+file can be dropped onto the window and, when a tour is configured (below), a
+**Start Museum Tour** button; the tour isn't loaded until it's clicked. The tour
+page shows the banner too. On a phone-sized screen the banner keeps only the
+button. The banner's ✕, opening a file or opening another scene dismisses it, and
+it is not shown with `?follow=` or `?viewerOnly=1` (`src/welcome.ts`; usdview
+itself has no start page). **File > Close Stage**, which usdview also lacks,
+returns to the torus and keeps the tour configuration.
 
 A tour is a USD scene meant to be played from start to finish. The viewer opens
 it (by default, or from the tour button) in the same page, set up from what the
 tour's root layer says: through its tour camera
-(`/<defaultPrim>/tour/tour_cam`, `/Museum/Cameras/tour_cam`, `/Wing/Cameras/tour_cam`
+(`/<defaultPrim>/cameras/tour_cam`, `/<defaultPrim>/tour/tour_cam`, `/Museum/Cameras/tour_cam`, `/Wing/Cameras/tour_cam`
 or `/Tour/Cameras/main_cam`) at `complexity=high`, `loadSchedule=1` when it has a
 load schedule, OpenExec when its `customLayerData` `museum`/`museumRoute` `exec`
 asks, alpha to coverage off, its plugins registered, and `play=1`. The tour is
@@ -103,11 +107,13 @@ URL parameters:
 | `?env=NAME=VALUE` (repeatable) | Sets an environment setting (`TfGetEnvSetting`) before anything reads it, e.g. `?env=USDIMAGINGGL_ENGINE_ENABLE_EXEC_SCENE_INDEX=1` to evaluate transforms through OpenExec, as usdview does with that variable set |
 | `?follow=ws://host:port` | Follows a sync leader over a WebSocket (e.g. upstream usdview driven by a sync relay): each message sets the frame and play state, and a changed camera or file switches or reopens (`src/follow.ts`). An optional `complexity` (`low`/`medium`/`high`/`veryhigh`) sets Display > Complexity; absent, the follower keeps its own. At most one seek is in flight: frames arriving meanwhile are dropped except the newest, and when the leader pauses the follower lands on its exact frame. Play and frame stepping are disabled while following; the HUD's performance lines show `leader · shown · behind <n> frames · render <ms>` and, in Playback, the follower's own rate of frames shown. Specification: [docs/viewer-contracts.md](docs/viewer-contracts.md) |
 | `?loadSchedule=0` | The scene's payload load schedule (root layer `customLayerData["tourLoad"]`) is applied by default when it has one: the stage opens unloaded, and each frame loads the carriers scheduled at it and unloads the rest (`src/load-schedule.ts`). `0` loads every payload, as usdview does; `1` warns when the scene has no schedule. Specification: [docs/viewer-contracts.md](docs/viewer-contracts.md) |
+| `?workingSet=0` | A scene with no load schedule, opened with `?camera=`, whose payload prims author `extentsHint`, keeps loaded only the payloads near the camera's path (`src/working-set.ts`). `0` loads every payload, as usdview does. Specification: [docs/viewer-contracts.md](docs/viewer-contracts.md), "Working set" |
 | `?viewerOnly=1`, `?cameraMask=full\|partial\|none` | Set Window > Toggle Viewer-Only Mode and Camera > Camera Masking once the first scene opens (saved like the menu settings) |
 | `?camera=`, `?select=`, `?complexity=`, `?ff=`, `?lf=`, `?cf=`, `?mask=` | usdview's `--camera`, `--select`, `--complexity`, `--ff`, `--lf`, `--cf` and `--mask` startup options |
 | `?progressive=0` | Load every payload before the first frame, as usdview does |
 | `?play=1` | Plays once the scene is open (a web addition; the tour page uses it) |
-| `?start=tour` | Marks the tour page: once it has read its setup, the address bar goes back to the page it was opened from |
+| `?viewerOnly=0` | Keeps the panels on a phone-sized screen, which otherwise opens in viewer-only mode with only the tour button in the banner (a web adaptation) |
+| `?start=tour` | Marks the tour page: once it has read its setup, the address bar goes back to the page it was opened from (reloading it returns to the start page) |
 
 `npx vite build` (or `pnpm build`, which typechecks first) writes a static build
 with a relative base, so it works from any path.

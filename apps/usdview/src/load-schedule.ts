@@ -15,6 +15,41 @@ export const loadScheduleKey = 'tourLoad'
 export interface LoadSchedule {
   /** Carrier prim path -> inclusive frame window [first, last]. */
   readonly carriers: ReadonlyMap<string, readonly [number, number]>
+  /** A derived working set (working-set.ts): per carrier, its windows, when it
+   *  has more than one (or none); `carriers` then holds their span. */
+  readonly windows?: ReadonlyMap<string, readonly (readonly [number, number])[]>
+  /** A derived working set's budget: at most this many carriers load (and
+   *  unload) per change, those needed soonest first, so a frame where many
+   *  windows open together spreads its loads over the next frames (each load
+   *  syncs its prims in that frame's draw). Unset: the whole change at once. */
+  readonly perChange?: number
+  /** With perChange: how many frames a window opens before its carrier is
+   *  needed on screen (working-set.ts `ahead`). A carrier further into its
+   *  window than this (the first frame, a seek) loads at once, outside the
+   *  budget. */
+  readonly lead?: number
+}
+
+/** The next frame at or after `frame` that one of the carrier's windows holds. */
+function nextNeeded(schedule: LoadSchedule, path: string, frame: number): number {
+  let best = Infinity
+  for (const [a, b] of carrierWindows(schedule, path)) if (b >= frame) best = Math.min(best, Math.max(a, frame))
+  return best
+}
+
+/** Whether the carrier is needed on screen at `frame`: a window holding it
+ *  opened at least `lead` frames ago. */
+function neededNow(schedule: LoadSchedule, path: string, frame: number): boolean {
+  const lead = schedule.lead ?? 0
+  return carrierWindows(schedule, path).some(([a, b]) => a <= frame && frame <= b && frame - a >= lead)
+}
+
+/** A carrier's windows: its `windows` entry, else its one `carriers` window. */
+export function carrierWindows(schedule: LoadSchedule, path: string): readonly (readonly [number, number])[] {
+  const windows = schedule.windows?.get(path)
+  if (windows) return windows
+  const window = schedule.carriers.get(path)
+  return window ? [window] : []
 }
 
 const int = (value: unknown) => typeof value === 'number' && Number.isInteger(value) ? value : undefined
@@ -53,15 +88,21 @@ export function readLoadSchedule(stage: Stage): {schedule?: LoadSchedule, warnin
 /** The carriers whose window holds `frame` (a plugin's `apply` `want`). */
 export function scheduledCarriers(schedule: LoadSchedule, frame: number): Set<string> {
   const want = new Set<string>()
-  for (const [path, [first, last]] of schedule.carriers) if (first <= frame && frame <= last) want.add(path)
+  for (const [path, [first, last]] of schedule.carriers) {
+    if (!(first <= frame && frame <= last)) continue
+    if (carrierWindows(schedule, path).some(([a, b]) => a <= frame && frame <= b)) want.add(path)
+  }
   return want
 }
 
 /** `_loaded` in such a plugin: a carrier is loaded when any of its payload children is
- * (the carrier itself has no payload). */
+ * (an authored schedule's carrier has no payload), or, for a working set's
+ * carrier (working-set.ts), which is the payload prim itself, when it is. */
 export function carrierLoaded(stage: Stage, path: string): boolean {
   const prim = stage.getPrim(path)
-  return !!prim && prim.getChildren().some(child => child.hasAuthoredPayloads() && child.isLoaded)
+  if (!prim) return false
+  if (prim.hasAuthoredPayloads()) return prim.isLoaded
+  return prim.getChildren().some(child => child.hasAuthoredPayloads() && child.isLoaded)
 }
 
 export interface LoadScheduleChange { load: string[], unload: string[] }
@@ -92,8 +133,16 @@ export class LoadScheduler {
   constructor(schedule: LoadSchedule, loaded: (path: string) => boolean, apply: (change: LoadScheduleChange) => Promise<void>) {
     this.schedule = schedule; this.#loaded = loaded; this.#apply = apply
   }
-  /** The change `frame` would need now. */
-  change(frame: number): LoadScheduleChange | undefined { return loadScheduleChange(this.schedule, frame, this.#loaded) }
+  /** The change `frame` would need now (within the schedule's per-change budget). */
+  change(frame: number): LoadScheduleChange | undefined {
+    const change = loadScheduleChange(this.schedule, frame, this.#loaded)
+    const budget = this.schedule.perChange
+    if (!change || !budget) return change
+    const soonest = (a: string, b: string) => nextNeeded(this.schedule, a, frame) - nextNeeded(this.schedule, b, frame)
+    const urgent = change.load.filter(path => neededNow(this.schedule, path, frame))
+    const ahead = change.load.filter(path => !urgent.includes(path)).sort(soonest)
+    return {load: [...urgent, ...ahead.slice(0, budget)], unload: change.unload.slice(0, budget)}
+  }
   get busy(): boolean { return !!this.#running }
   /** Brings the stage to the latest requested frame's set. Resolves true when
    * a change was applied (by this call or the run it joined). */
@@ -119,6 +168,8 @@ export class LoadScheduler {
       this.#previous = key
       await this.#apply(change)
       applied = true
+      // With a budget, one change per frame: the next frame takes the rest.
+      if (this.schedule.perChange) { this.#previous = ''; return applied }
     }
   }
 }
