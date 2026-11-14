@@ -192,6 +192,8 @@ export class UsdImaging_PiPrototypeSceneIndex extends HdSingleInputFilteringScen
     }
   }
 
+  private _underlay: HdContainerDataSource | undefined | null = null
+
   /** piPrototypeSceneIndex.cpp:198-243 */
   getPrim(primPath: string): HdSceneIndexPrim {
     const prim = { ...this._getInputSceneIndex().getPrim(primPath) }
@@ -228,7 +230,11 @@ export class UsdImaging_PiPrototypeSceneIndex extends HdSingleInputFilteringScen
       }
     }
 
-    const ds = _ComputeUnderlaySource(this._instancer, this._prototypeRoot)
+    // The underlay depends only on this index's instancer and prototype
+    // root, and retained data sources do not change: built once (upstream
+    // builds it on every call).
+    if (this._underlay === null) this._underlay = _ComputeUnderlaySource(this._instancer, this._prototypeRoot)
+    const ds = this._underlay
     if (ds) {
       dsVec.push(ds)
     }

@@ -37,15 +37,28 @@ function TF_CODING_ERROR(message: string): void {
 
 /** SdfPath operator< (element-wise from the root; a prefix sorts first). */
 function _ComparePaths(a: string, b: string): number {
+  // Scans the non-empty elements between '/' and '.' in place (it is sorted
+  // with): the same order as comparing a.split(/[/.]/) without empty
+  // elements, element by element.
   if (a === b) return 0
-  const ea = a.split(/[/.]/).filter(e => e !== '')
-  const eb = b.split(/[/.]/).filter(e => e !== '')
-  const n = Math.min(ea.length, eb.length)
-  for (let i = 0; i < n; i++) {
-    const x = ea[i]!, y = eb[i]!
-    if (x !== y) return x < y ? -1 : 1
+  const sep = (c: number) => c === 47 /* / */ || c === 46 /* . */
+  let i = 0, j = 0
+  for (;;) {
+    while (i < a.length && sep(a.charCodeAt(i))) i++
+    while (j < b.length && sep(b.charCodeAt(j))) j++
+    const aEnd = i >= a.length, bEnd = j >= b.length
+    if (aEnd || bEnd) return aEnd === bEnd ? 0 : aEnd ? -1 : 1
+    let ei = i, ej = j
+    while (ei < a.length && !sep(a.charCodeAt(ei))) ei++
+    while (ej < b.length && !sep(b.charCodeAt(ej))) ej++
+    const n = Math.min(ei - i, ej - j)
+    for (let k = 0; k < n; k++) {
+      const d = a.charCodeAt(i + k) - b.charCodeAt(j + k)
+      if (d !== 0) return d < 0 ? -1 : 1
+    }
+    if (ei - i !== ej - j) return ei - i < ej - j ? -1 : 1
+    i = ei; j = ej
   }
-  return ea.length - eb.length
 }
 
 /** SdfPath::AppendChild for the string paths of this port. */

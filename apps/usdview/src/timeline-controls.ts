@@ -70,17 +70,22 @@ export class TimelineControls {
       this.#preview=value;this.#render(value)
       if(this.#get<HTMLInputElement>('.scrub-settings input[type="checkbox"]').checked)void this.seek(value)
     }
+    // A drag scrubs: like playback, the frames it shows skip the work done when
+    // the frame settles (panel refreshes, waiting for convergence, payload
+    // loads and unloads); releasing applies it once, at the released frame.
+    const scrubbing=(active:boolean)=>{this.runtime()?.setScrubbing?.(active);this.runtime()?.setPlaybackActive?.(active)}
     slider.addEventListener('pointerdown',event=>{
       if(this.#blocked||!this.#state||event.button!==0)return
-      this.stop();this.#dragging=true;slider.setPointerCapture(event.pointerId);position(event);event.preventDefault()
+      this.stop();this.#dragging=true;scrubbing(true);slider.setPointerCapture(event.pointerId);position(event);event.preventDefault()
     },options)
     slider.addEventListener('pointermove',event=>{if(this.#dragging)position(event)},options)
     slider.addEventListener('pointerup',event=>{
       if(!this.#dragging)return
       this.#dragging=false;if(slider.hasPointerCapture(event.pointerId))slider.releasePointerCapture(event.pointerId)
-      void this.seek(this.#preview)
+      this.runtime()?.setScrubbing?.(false)
+      void this.seek(this.#preview).finally(()=>{if(!this.#dragging&&!this.#playing)this.runtime()?.setPlaybackActive?.(false)})
     },options)
-    slider.addEventListener('pointercancel',()=>{this.#dragging=false;this.refresh()},options)
+    slider.addEventListener('pointercancel',()=>{this.#dragging=false;scrubbing(false);this.refresh()},options)
     slider.addEventListener('keydown',event=>{
       if(this.#blocked||!this.#state)return
       let target:number
@@ -93,6 +98,8 @@ export class TimelineControls {
     this.refresh()
   }
   get playing() { return this.#playing }
+  /** Whether the playhead is being dragged (a scrub; see the slider's pointerdown). */
+  get scrubbing() { return this.#dragging }
   /** ?follow= (follow.ts): a sync leader owns the clock, so this timeline's Play and
    * frame stepping are disabled; the leader's frames arrive through seek(). */
   get following() { return this.#following }

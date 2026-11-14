@@ -104,12 +104,20 @@ export class HdMergingSceneIndex extends HdFilteringSceneIndexBase {
   // those of the closest enclosing path table entry.
   private _getInputEntriesByPath(primPath: string): readonly _InputEntry[] {
     if (this._inputs.length < 5) return this._inputs
+    // The answer for a path is kept until the table is rebuilt
+    // (_rebuildInputsPathTable clears _entriesByPath).
+    const memo = this._entriesByPath.get(primPath)
+    if (memo) return memo
+    let found: readonly _InputEntry[] = _noInputEntries
     for (let p = primPath; p !== ''; p = HdSiParentPath(p)) {
       const entries = this._inputsPathTable.get(p)
-      if (entries) return entries
+      if (entries) { found = entries; break }
     }
-    return _noInputEntries
+    if (this._entriesByPath.size > 200000) this._entriesByPath.clear()
+    this._entriesByPath.set(primPath, found)
+    return found
   }
+  private readonly _entriesByPath = new Map<string, readonly _InputEntry[]>()
 
   private _hasPrim(path: string): boolean {
     if (this._inputsPathTable.has(path)) return true
@@ -122,6 +130,7 @@ export class HdMergingSceneIndex extends HdFilteringSceneIndexBase {
   // entry's ancestry (FindSubtreeRange(sceneRoot) gives an input to every
   // entry at or below its root), in input order.
   private _rebuildInputsPathTable(): void {
+    this._entriesByPath.clear()
     this._inputsPathTable.clear()
     this._inputsPathTableChildren.clear()
     const byRoot = new Map<string, number[]>()

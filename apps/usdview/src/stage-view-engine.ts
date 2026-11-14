@@ -203,7 +203,45 @@ export class StageViewEngine {
    *  scene time in PrepareBatch (engine.cpp:494-586). */
   SetTime(time: number): void {
     this._params.frame = new UsdTimeCode(time)
+    const started = performance.now()
     this._engine.PrepareBatch(this._root, this._params)
+    this._frameWorkMs += performance.now() - started
+  }
+
+  /** PLATFORM-DIVERGENCE(usdview-sliced-arrival): usdview hands a payload's
+   *  prims to Hydra in the frame it loads (UsdImagingStageSceneIndex sends
+   *  one PrimsAdded per resync), and that frame syncs them all: 150-330 ms
+   *  for one USD Museum exhibit in Node (performance-viewer.md, November
+   *  13), a visible stall during playback. While playing, the viewer hands
+   *  on a share of them per frame instead (usdimaging-sliced-prims-added)
+   *  and sizes the share from the measured frame work. Off (paused, a
+   *  still render, a test): the next frame takes all that is left, as
+   *  upstream. */
+  setSlicedArrival(on: boolean): void {
+    if (on === this._sliced) return
+    this._sliced = on
+    this._engine.setAddedPrimsPerUpdate(on ? this._addedPerFrame : undefined)
+  }
+
+  /** usdview-sliced-arrival: added prims that have not reached Hydra yet. */
+  queuedAddedPrimCount(): number { return this._engine.queuedAddedPrimCount() }
+
+  private _sliced = false
+  /** usdview-sliced-arrival: the share per frame, grown while frames stay
+   *  under the budget and shrunk when one goes over. */
+  private _addedPerFrame = 32
+  private _frameWorkMs = 0
+  private static readonly _arrivalBudgetMs = 12
+
+  private _adjustArrival(): void {
+    const work = this._frameWorkMs
+    this._frameWorkMs = 0
+    if (!this._sliced || this._engine.queuedAddedPrimCount() === 0) return
+    const budget = StageViewEngine._arrivalBudgetMs
+    const next = work > budget ? this._addedPerFrame * Math.max(0.25, budget / work)
+      : work < budget * 0.6 ? this._addedPerFrame * 1.25 : this._addedPerFrame
+    this._addedPerFrame = Math.min(4096, Math.max(4, Math.round(next)))
+    this._engine.setAddedPrimsPerUpdate(this._addedPerFrame)
   }
 
   /** The render params renderSinglePass sets from the view settings
@@ -249,6 +287,14 @@ export class StageViewEngine {
 
   /** stageView.py:1395-1525 (_renderTask) with renderSinglePass. */
   Render(camera: StormCamera, width: number, height: number): void {
+    const started = performance.now()
+    try { this._render(camera, width, height) } finally {
+      this._frameWorkMs += performance.now() - started
+      this._adjustArrival()
+    }
+  }
+
+  private _render(camera: StormCamera, width: number, height: number): void {
     if (this._destroyed) throw new Error('The engine was destroyed.')
     width = Math.max(1, width); height = Math.max(1, height)
     const engine = this._engine

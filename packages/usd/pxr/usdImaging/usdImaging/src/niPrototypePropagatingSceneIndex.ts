@@ -64,13 +64,26 @@ const _HasPrefix = (path: string, prefix: string): boolean =>
   prefix === '/' ? path.startsWith('/') : path === prefix || path.startsWith(prefix + '/')
 /** SdfPath operator< for prim paths (element-wise comparison). */
 const _ComparePaths = (a: string, b: string): number => {
-  const ea = a === '/' ? [] : a.slice(1).split('/')
-  const eb = b === '/' ? [] : b.slice(1).split('/')
-  const n = Math.min(ea.length, eb.length)
-  for (let i = 0; i < n; ++i) {
-    if (ea[i] !== eb[i]) return ea[i]! < eb[i]! ? -1 : 1
+  // Scans the elements between '/' in place (it is sorted with): the same
+  // order as comparing a.slice(1).split('/') element by element.
+  if (a === b) return 0
+  if (a === '/') return -1
+  if (b === '/') return 1
+  let i = 1, j = 1
+  for (;;) {
+    let ei = a.indexOf('/', i), ej = b.indexOf('/', j)
+    if (ei < 0) ei = a.length
+    if (ej < 0) ej = b.length
+    const n = Math.min(ei - i, ej - j)
+    for (let k = 0; k < n; k++) {
+      const d = a.charCodeAt(i + k) - b.charCodeAt(j + k)
+      if (d !== 0) return d < 0 ? -1 : 1
+    }
+    if (ei - i !== ej - j) return ei - i < ej - j ? -1 : 1
+    const aEnd = ei >= a.length, bEnd = ej >= b.length
+    if (aEnd || bEnd) return aEnd === bEnd ? 0 : aEnd ? -1 : 1
+    i = ei + 1; j = ej + 1
   }
-  return ea.length - eb.length
 }
 
 /** Port lifetime helper: destroys the filtering scene indices from `top`

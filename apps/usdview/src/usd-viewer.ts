@@ -133,7 +133,7 @@ export class UsdViewerElement extends HTMLElement {
   /** The sync leader's play state while following (followTime). */
   #leaderPlaying = false
   /** usdview's dataModel.playing: this viewer's own playback, or its leader's while following. */
-  get #playbackActive(): boolean { return this.#timeline.playing || (this.#timeline.following && this.#leaderPlaying) }
+  get #playbackActive(): boolean { return this.#timeline.playing || this.#timeline.scrubbing || (this.#timeline.following && this.#leaderPlaying) }
   #follow = new FollowSeeker({
     seek: async time => { await this.#timeline.seek(time); return this.#runtime?.getTimeState?.()?.current },
     complexity: id => this.#runtime?.getDisplaySettings?.().complexity === id ? Promise.resolve() : this.#changeDisplay({ complexity: id }),

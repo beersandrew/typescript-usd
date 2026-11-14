@@ -127,6 +127,7 @@ export class UsdInstanceCache {
         const at = instances.indexOf(path)
         if (at >= 0) instances.splice(at, 1)
         this.primIndexToPrototype.delete(path)
+        this._ancestorMemo.clear()
       }
       if (oldSource !== undefined && actual.includes(oldSource)) {
         this.prototypeToSource.delete(prototype)
@@ -170,6 +171,7 @@ export class UsdInstanceCache {
       const instances = this.prototypeToPrimIndexes.get(prototype) ?? []
       for (const path of paths) {
         this.primIndexToPrototype.set(path, prototype)
+        this._ancestorMemo.clear()
         if (!instances.includes(path)) instances.push(path)
       }
       instances.sort()
@@ -323,15 +325,24 @@ export class UsdInstanceCache {
 
   private _findStrictInstanceAncestor(path: string): [string, string] | undefined {
     // strictAncestors, unrolled: this runs for every stage lookup of a path
-    // that has no prim (stage.getPrim's instance proxy fallback).
+    // that has no prim (stage.getPrim's instance proxy fallback), many of
+    // them the same paths again (Hydra's scene indices look up the paths
+    // they make up). The answers are kept until the instances change
+    // (_ancestorMemo is cleared with every primIndexToPrototype edit).
     if (this.primIndexToPrototype.size === 0) return undefined
+    const memo = this._ancestorMemo.get(path)
+    if (memo !== undefined) return memo ?? undefined
+    let found: [string, string] | null = null
     for (let i = path.lastIndexOf('/'); i > 0; i = path.lastIndexOf('/', i - 1)) {
       const candidate = path.slice(0, i)
       const prototype = this.primIndexToPrototype.get(candidate)
-      if (prototype !== undefined) return [candidate, prototype]
+      if (prototype !== undefined) { found = [candidate, prototype]; break }
     }
-    return undefined
+    if (this._ancestorMemo.size > 200000) this._ancestorMemo.clear()
+    this._ancestorMemo.set(path, found)
+    return found ?? undefined
   }
+  private readonly _ancestorMemo = new Map<string, [string, string] | null>()
 }
 
 // The '/'-separated prefixes of `path`, nearest first, excluding the path

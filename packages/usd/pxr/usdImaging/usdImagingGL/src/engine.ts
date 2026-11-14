@@ -648,6 +648,19 @@ export class UsdImagingGLEngine {
     this.RenderBatch(paths, params)
   }
 
+  /** PLATFORM-DIVERGENCE(usdimaging-sliced-prims-added): at most `count`
+   *  of a resync's added prims reach Hydra per PrepareBatch (or Render),
+   *  the rest in later ones (UsdImagingStageSceneIndex.setAddedPrimsPerUpdate);
+   *  undefined: all at once, as upstream. */
+  setAddedPrimsPerUpdate(count: number | undefined): void {
+    this._usdImagingSceneIndex?.setAddedPrimsPerUpdate(count)
+  }
+
+  /** usdimaging-sliced-prims-added: added prims that have not reached Hydra yet. */
+  queuedAddedPrimCount(): number {
+    return this._usdImagingSceneIndex?.queuedAddedPrimCount() ?? 0
+  }
+
   /** engine.cpp:786-806 */
   isConverged(): boolean {
     const renderControl = this._getLegacyRenderControl()

@@ -183,6 +183,17 @@ export class UsdImagingSceneIndex extends HdSceneIndexBase {
     this._stageSceneIndex.SetTime(time, forceDirtyingTimeDeps)
   }
 
+  /** PLATFORM-DIVERGENCE(usdimaging-sliced-prims-added)
+   *  (UsdImagingStageSceneIndex.setAddedPrimsPerUpdate). */
+  setAddedPrimsPerUpdate(count: number | undefined): void {
+    this._stageSceneIndex.setAddedPrimsPerUpdate(count)
+  }
+
+  /** usdimaging-sliced-prims-added: the added prims not sent yet. */
+  queuedAddedPrimCount(): number {
+    return this._stageSceneIndex.queuedAddedPrimCount()
+  }
+
   /** Return the current time. (sceneIndex.cpp:93-97) */
   getTime(): UsdTimeCode {
     return this._stageSceneIndex.getTime()

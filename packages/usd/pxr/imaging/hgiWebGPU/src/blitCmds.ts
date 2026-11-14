@@ -490,13 +490,21 @@ export class HgiWebGPUBlitCmds extends HgiBlitCmds {
   override _submit(_hgi: Hgi, wait: HgiSubmitWaitType): boolean | Promise<boolean> {
     if (!this._commandEncoder) return false
     const queue = this._device.queue
-    queue.submit([this._commandEncoder.finish()])
+    const transient = this._transient.splice(0)
+    const readbacks = this._readbacks.splice(0)
+    const buffer = this._commandEncoder.finish()
     this._commandEncoder = null
     for (const b of this._written) b._noteWrite()
     this._written.clear()
+    if (wait !== HgiSubmitWaitType.HgiSubmitWaitTypeWaitUntilCompleted && readbacks.length === 0) {
+      // hgiwebgpu-coalesced-submits (hgi.ts): held for the next submit.
+      this._hgi._holdSubmit(buffer, () => {
+        if (transient.length) void queue.onSubmittedWorkDone().then(() => { for (const t of transient) t.destroy() })
+      })
+      return true
+    }
+    this._hgi._submitNow([buffer])
 
-    const transient = this._transient.splice(0)
-    const readbacks = this._readbacks.splice(0)
     const done = Promise.all(readbacks.map(async r => {
       await r.staging.mapAsync(GPUMapModeFlags.READ)
       r.unpack(new Uint8Array(r.staging.getMappedRange()))

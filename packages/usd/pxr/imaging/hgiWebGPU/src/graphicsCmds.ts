@@ -893,7 +893,7 @@ export class HgiWebGPUGraphicsCmds extends HgiGraphicsCmds {
     const queue = this._hgi.getPrimaryDevice().queue
     if (this._depthReadEncoder) {
       // The depth copies the pass samples precede it (depthSampling.ts).
-      queue.submit([this._depthReadEncoder.finish()])
+      this._hgi._submitNow([this._depthReadEncoder.finish()])
       this._depthReadEncoder = null
       this._depthReads.clear()
     }
@@ -907,7 +907,7 @@ export class HgiWebGPUGraphicsCmds extends HgiGraphicsCmds {
         refresh ??= this._hgi.getPrimaryDevice().createCommandEncoder({ label: 'HgiWebGPUGraphicsCmds packed attributes' }))
       this._packed.clear()
     }
-    if (refresh) queue.submit([(refresh as GPUCommandEncoder).finish()])
+    if (refresh) this._hgi._submitNow([(refresh as GPUCommandEncoder).finish()])
     if (this._preEncoder) {
       // The control stages and the tessellator run before the render pass
       // (hgiMetal's InsertMemoryBarrier after the control stage,
@@ -918,13 +918,13 @@ export class HgiWebGPUGraphicsCmds extends HgiGraphicsCmds {
         afterSubmit = this._hgi._getTessellation().endFrame(this._tessFrame, this._preEncoder)
       }
       this._constants.flush()
-      queue.submit([this._preEncoder.finish(), this._commandEncoder.finish()])
+      this._hgi._submitNow([this._preEncoder.finish(), this._commandEncoder.finish()])
       this._preEncoder = null
       this._tessFrame = null
       this._tessDraws.clear()
     } else {
       this._constants.flush()
-      queue.submit([this._commandEncoder.finish()])
+      this._hgi._submitNow([this._commandEncoder.finish()])
     }
     void afterSubmit?.()
     for (const b of this._written) b._noteWrite()

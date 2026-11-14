@@ -194,12 +194,12 @@ export class HgiWebGPUComputeCmds extends HgiComputeCmds {
     this._encoder = null
     const queue = this._hgi.getPrimaryDevice().queue
     if (this._depthReadEncoder) {
-      queue.submit([this._depthReadEncoder.finish()])
+      this._hgi._submitNow([this._depthReadEncoder.finish()])
       this._depthReadEncoder = null
       this._depthReads.clear()
     }
     this._constants.flush()
-    queue.submit([this._commandEncoder.finish()])
+    this._hgi._submitNow([this._commandEncoder.finish()])
     this._commandEncoder = null
     for (const b of this._written) b._noteWrite()
     this._written.clear()

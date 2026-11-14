@@ -25,6 +25,8 @@
 //             relative to this script, so a bundle built elsewhere needs it
 //   --no-prefetch  do not read the next carriers' layers ahead (runtime.ts,
 //             src/load-prefetch.ts)
+//   --sliced  payload prims reach Hydra a share per frame (the viewer's
+//             playback behavior, usdview-sliced-arrival)
 //   --lights  each frame's record gains the lights Storm lit it with: the
 //             HdxSimpleLightTask's lighting context after its last Sync of
 //             the frame (useLighting, each light's id, dome flag, diffuse)
@@ -99,7 +101,10 @@ const scheduler = schedule && new LoadScheduler(schedule, p => carrierLoaded(sta
 })
 let currentFrame = from
 const prefetcher = schedule && !args.includes('--no-prefetch') ? new LoadPrefetcher(stage, schedule) : undefined
-await stage.loadAndUnload([...scheduler?.change(from)?.load ?? [], ...outside], [])
+// --late-load: every payload loads in the first stepped frame instead (one
+// resync of the whole scene during playback, for --sliced checks on any scene).
+const lateLoad = args.includes('--late-load')
+await stage.loadAndUnload([...scheduler?.change(from)?.load ?? [], ...(lateLoad ? [] : outside)], [])
 const openMs = performance.now() - openStart
 
 const settings = mergeDisplaySettings(defaultDisplaySettings(), { complexity })
@@ -164,6 +169,7 @@ async function step(frame: number): Promise<FrameRecord> {
   const profiling = session && profileFrames.has(frame)
   if (profiling) await session.post('Profiler.start')
   const rec = await stepFrame(frame)
+  if (dumpFrames.has(frame)) await dumpScene(frame)
   if (profiling) {
     const { profile } = await session.post('Profiler.stop')
     const { mkdirSync, writeFileSync } = await import('node:fs')
@@ -172,12 +178,38 @@ async function step(frame: number): Promise<FrameRecord> {
   }
   return rec
 }
+// --dump-scene F,F,... --dump-dir DIR: after each listed frame, every prim of
+// the render index's terminal scene index (path, type, and its data sources
+// printed at the frame) into DIR/<frame>.txt, with the next frame's draw
+// count. With --sliced the queued prims are sent first (as the viewer does
+// when playback stops), so a sliced and an unsliced run can be compared.
+const dumpFrames = new Set(option('--dump-scene', '').split(',').filter(Boolean).map(Number))
+const sceneDumpDir = option('--dump-dir', '')
+async function dumpScene(frame: number) {
+  const { mkdirSync, writeFileSync } = await import('node:fs')
+  const { DebugPrintDataSource, SceneIndexPrimView } = await import('typescript-usd/hd')
+  const sliced = args.includes('--sliced')
+  if (sliced) engine.setSlicedArrival(false)
+  const draws0 = counters.draws
+  engine.Render(stormCamera(), width, height)
+  const draws = counters.draws - draws0
+  if (sliced) engine.setSlicedArrival(true)
+  const index = (engine as unknown as { _engine: { _getRenderIndexForTesting(): { _terminalSceneIndex: Parameters<typeof DebugPrintDataSource>[0] & import("typescript-usd/hd").SceneIndexBase } } })._engine._getRenderIndexForTesting()._terminalSceneIndex
+  const lines: string[] = [`draws ${draws}`]
+  for (const p of new SceneIndexPrimView(index, '/')) {
+    const prim = index.getPrim(p)
+    lines.push(`<${p}> ${prim.primType}`, DebugPrintDataSource(prim.dataSource, 1).replace(/0x[0-9a-f]+/g, '0x'))
+  }
+  mkdirSync(sceneDumpDir || '.', { recursive: true })
+  writeFileSync(path.join(sceneDumpDir || '.', `${frame}.txt`), lines.join('\n'))
+}
 async function stepFrame(frame: number): Promise<FrameRecord> {
   currentFrame = frame
   const before = snapshot()
   const c0 = { draws: counters.draws, dispatches: counters.dispatches, submits: counters.submits, writes: counters.writes, writeBytes: counters.writeBytes, buffers: counters.buffers, textures: counters.textures }
   const start = performance.now()
   if (scheduler?.change(frame)) await scheduler.update(frame)
+  if (lateLoad && frame === from + 1) await stage.loadAndUnload(outside, [])
   prefetcher?.update(frame)
   const t1 = performance.now()
   controller.time = frame
@@ -196,6 +228,13 @@ const firstStart = performance.now()
 controller.time = from
 engine.SetTime(from)
 engine.Render(stormCamera(), width, width)
+// --sliced: added prims reach Hydra a share per frame, as while the viewer plays (usdview-sliced-arrival).
+if (args.includes('--sliced')) {
+  // --sliced-share N: the first share per frame (tooling; the engine adapts it from there).
+  const share = Number(option('--sliced-share', '0'))
+  if (share > 0) (engine as unknown as { _addedPerFrame: number })._addedPerFrame = share
+  engine.setSlicedArrival(true)
+}
 const firstRenderMs = performance.now() - firstStart
 for (let i = 0; i < 200 && !engine.isConverged(); i++) { await new Promise(resolve => setTimeout(resolve, 1)); engine.Render(stormCamera(), width, height) }
 

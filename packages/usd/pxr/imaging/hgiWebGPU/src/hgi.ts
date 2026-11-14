@@ -141,6 +141,34 @@ export class HgiWebGPU extends Hgi {
   private readonly _mipmapPipelines = new Map<GPUTextureFormat, GPURenderPipeline | null>()
   private _mipmapSampler: GPUSampler | null = null
   private _frameDepth = 0
+  /** PLATFORM-DIVERGENCE(hgiwebgpu-coalesced-submits): upstream commits each
+   *  Hgi*Cmds' Metal command buffer when it is submitted, which is cheap. In a
+   *  browser every GPUQueue.submit is a message to the GPU process (WebKit:
+   *  about half a millisecond each), and a frame that loads payloads submits
+   *  hundreds of small blit command buffers (HdStDispatchBuffer::CopyData per
+   *  draw batch, texture uploads and their mipmaps): the USD Museum's tour in
+   *  Safari spent 150-360 ms of such frames outside script. So a blit cmds
+   *  submitted without waiting (HgiWebGPUBlitCmds._submit) is finished and
+   *  held here, and submitted in the same GPUQueue.submit as the next
+   *  graphics or compute cmds, before their command buffers, or at endFrame.
+   *  The queue runs the same command buffers in the same order; only the
+   *  number of submits changes. Work that waits, or reads back, submits at
+   *  once, after what is held. */
+  private readonly _held: { buffer: GPUCommandBuffer, submitted: () => void }[] = []
+
+  /** Holds a finished command buffer for the next submit (see _held);
+   *  `submitted` runs once it is submitted. */
+  _holdSubmit(buffer: GPUCommandBuffer, submitted: () => void): void {
+    this._held.push({ buffer, submitted })
+  }
+
+  /** GPUQueue.submit of the held command buffers, then `buffers`, in one call. */
+  _submitNow(buffers: GPUCommandBuffer[]): void {
+    const held = this._held.splice(0)
+    if (held.length === 0 && buffers.length === 0) return
+    this._device.queue.submit([...held.map(h => h.buffer), ...buffers])
+    for (const h of held) h.submitted()
+  }
   private readonly _garbageCollector: HgiWebGPUGarbageCollector
   private _destroyed = false
   private _tessellation: HgiWebGPUTessellation | null = null
@@ -394,6 +422,8 @@ export class HgiWebGPU extends Hgi {
   /** hgiMetal/hgi.mm:366-374 */
   endFrame(): void {
     if (this._frameDepth > 0) this._frameDepth--
+    // hgiwebgpu-coalesced-submits: what is still held is submitted with the frame.
+    this._submitNow([])
   }
 
   /** hgiMetal/hgi.mm:376-379. Trashed objects are destroyed as soon as the

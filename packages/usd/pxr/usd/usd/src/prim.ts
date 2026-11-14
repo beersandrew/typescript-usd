@@ -244,7 +244,7 @@ export class Prim {
   // has no parent: an invalid prim (undefined).
   getParent(): Prim | undefined {
     if (this.isPseudoRoot()) return undefined
-    return this._stage.getPrim(SdfPath.fromString(this.path).getParentPath().pathString)
+    return this._stage.getPrim(_parentPrimPath(this.path))
   }
 
   // The stage this read handle was fetched from (UsdPrim::GetStage). Only
@@ -1868,4 +1868,15 @@ export class Attribute {
   get(time?: number | UsdTimeCode): unknown {
     return time === undefined ? this.getValue() : this.getValueAtTime(time)
   }
+}
+
+/** SdfPath(path).GetParentPath() for a plain prim path (the parent's string
+ *  without parsing it); anything else (variant selections, properties,
+ *  targets) goes through SdfPath. */
+function _parentPrimPath(path: string): string {
+  if (!/[{.[]/.test(path)) {
+    const slash = path.lastIndexOf('/')
+    return slash <= 0 ? '/' : path.slice(0, slash)
+  }
+  return SdfPath.fromString(path).getParentPath().pathString
 }

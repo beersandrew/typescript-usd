@@ -90,10 +90,9 @@ export class PrimAPI extends APISchemaBase {
   }
 }
 
-import { SdfPath } from 'typescript-usd/sdf/path'
 
 // UsdPrim::GetParent; the pseudo-root's parent is invalid.
-function _getParent(stage: Stage, prim: Prim): Prim | undefined {
+function _getParent(_stage: Stage, prim: Prim): Prim | undefined {
   if (prim.path === '/') return undefined
-  return stage.getPrim(SdfPath.fromString(prim.path).getParentPath().pathString)
+  return prim.getParent()
 }

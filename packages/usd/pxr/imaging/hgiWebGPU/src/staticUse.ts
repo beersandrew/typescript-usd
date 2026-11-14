@@ -63,34 +63,67 @@ export function HgiWebGPUStaticallyUsedNames(code: string, entryPoint: string): 
   return used
 }
 
+const _isWord = (c: number) => (c >= 97 && c <= 122) || (c >= 65 && c <= 90) || c === 95 || (c >= 48 && c <= 57)
+const _isWordStart = (c: number) => (c >= 97 && c <= 122) || (c >= 65 && c <= 90) || c === 95
+
+/** The identifiers of `text` (words starting with a letter or '_'), without
+ *  member names (after '.' and optional whitespace): one scan, as the regex
+ *  /(\.\s*)?\b([A-Za-z_]\w*)\b/g with the member matches dropped. */
 function _identifiers(text: string): string[] {
   const out: string[] = []
-  // Member names (after '.') are not module-scope references.
-  for (const m of text.matchAll(/(\.\s*)?\b([A-Za-z_]\w*)\b/g)) {
-    if (!m[1]) out.push(m[2]!)
+  const n = text.length
+  let i = 0
+  while (i < n) {
+    const c = text.charCodeAt(i)
+    if (!_isWord(c)) { i++; continue }
+    // A word: [i, end).
+    let end = i + 1
+    while (end < n && _isWord(text.charCodeAt(end))) end++
+    if (_isWordStart(c)) {
+      // Member access: '.' then whitespace before the word.
+      let k = i - 1
+      while (k >= 0 && /\s/.test(text[k]!)) k--
+      if (!(k >= 0 && text.charCodeAt(k) === 46)) out.push(text.slice(i, end))
+    }
+    i = end
   }
   return out
 }
 
-/** WGSL comments: `//` to end of line and nesting block comments. */
+/** WGSL comments: `//` to end of line and nesting block comments. The last
+ *  result is kept: the resource variables and the static use of one module
+ *  (each stage's entry point) strip the same code. */
+let _strippedFrom: string | undefined, _stripped = ''
 function _stripComments(code: string): string {
   if (!code.includes('/')) return code
-  let out = ''
-  let i = 0
+  if (code === _strippedFrom) return _stripped
+  const parts: string[] = []
+  let i = 0, kept = 0
   while (i < code.length) {
-    if (code[i] === '/' && code[i + 1] === '/') {
+    const slash = code.indexOf('/', i)
+    if (slash < 0) break
+    i = slash
+    const next = code[i + 1]
+    if (next === '/') {
+      parts.push(code.slice(kept, i))
       while (i < code.length && code[i] !== '\n') i++
-    } else if (code[i] === '/' && code[i + 1] === '*') {
+      kept = i
+    } else if (next === '*') {
+      parts.push(code.slice(kept, i))
       let depth = 0
       while (i < code.length) {
         if (code[i] === '/' && code[i + 1] === '*') { depth++; i += 2 }
         else if (code[i] === '*' && code[i + 1] === '/') { i += 2; if (--depth === 0) break }
         else i++
       }
-      out += ' '
+      parts.push(' ')
+      kept = i
     } else {
-      out += code[i++]
+      i++
     }
   }
-  return out
+  parts.push(code.slice(kept))
+  _strippedFrom = code
+  _stripped = parts.join('')
+  return _stripped
 }

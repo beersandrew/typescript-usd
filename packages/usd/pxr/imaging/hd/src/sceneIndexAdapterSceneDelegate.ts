@@ -1046,6 +1046,16 @@ export class HdSceneIndexAdapterSceneDelegate extends HdSceneDelegate
   private _didAddOrRemovePrimsSinceLastSync = false
   private _sceneDelegatesBuilt = false
   private _sceneDelegates: HdSceneDelegate[] = []
+  /** PLATFORM-DIVERGENCE(hd-incremental-scene-delegates): the scene
+   *  delegate each added prim names (HdSceneIndexEmulationTokens
+   *  sceneDelegate), kept as prims are added and removed. Upstream
+   *  rebuilds the set in Sync after any add or remove by reading every
+   *  cached prim (sceneIndexAdapterSceneDelegate.cpp:2981-3019, a TBB
+   *  parallel loop). Done serially here, that read costs about 5 ms per
+   *  sync of a scene of a few thousand prims, in every frame that adds
+   *  prims (usdimaging-sliced-prims-added adds some in many frames). The
+   *  set is the same. */
+  private readonly _delegateOf = new Map<string, HdSceneDelegate>()
 
   // Hint cache of all prim paths that have been populated with
   // geomSubset children. This is purely an optimization and
@@ -1243,6 +1253,10 @@ export class HdSceneIndexAdapterSceneDelegate extends HdSceneDelegate
 
     for (const entry of entries) {
       this._primAdded(entry.primPath, entry.primType as TfToken)
+      // hd-incremental-scene-delegates
+      const ds = this._inputSceneIndex.getPrim(entry.primPath).dataSource?.Get(HdSceneIndexEmulationTokens.sceneDelegate)
+      if (ds instanceof HdSampledDataSource) this._delegateOf.set(entry.primPath, _GetTypedValue<HdSceneDelegate>(ds, 0))
+      else this._delegateOf.delete(entry.primPath)
     }
     if (entries.length > 0) {
       // Clear, rather than only flagging: these are raw pointers to
@@ -1269,7 +1283,12 @@ export class HdSceneIndexAdapterSceneDelegate extends HdSceneDelegate
       if (entry.primPath === '/') {
         renderIndex._Clear()
         this._primCache.clearInParallel()
+        this._delegateOf.clear()
         continue
+      }
+      // hd-incremental-scene-delegates
+      for (const path of this._delegateOf.keys()) {
+        if (path === entry.primPath || path.startsWith(entry.primPath + '/') || path.startsWith(entry.primPath + '.')) this._delegateOf.delete(path)
       }
 
       // RenderIndex::_RemoveSubtree can be expensive, so if we're
@@ -2875,21 +2894,8 @@ export class HdSceneIndexAdapterSceneDelegate extends HdSceneDelegate
     }
 
     if (!this._sceneDelegatesBuilt) {
-      const sds = new Set<HdSceneDelegate>()
-      this._primCache.parallelForEach((k: SdfPath) => {
-        const prim = this._inputSceneIndex.getPrim(k.pathString)
-        if (!prim.dataSource) {
-          return
-        }
-
-        const ds = prim.dataSource.Get(HdSceneIndexEmulationTokens.sceneDelegate)
-        if (!(ds instanceof HdSampledDataSource)) {
-          return
-        }
-
-        sds.add(_GetTypedValue<HdSceneDelegate>(ds, 0))
-      })
-      this._sceneDelegates = [...sds]
+      // hd-incremental-scene-delegates: the delegates of the added prims.
+      this._sceneDelegates = [...new Set(this._delegateOf.values())]
       this._sceneDelegatesBuilt = true
     }
 

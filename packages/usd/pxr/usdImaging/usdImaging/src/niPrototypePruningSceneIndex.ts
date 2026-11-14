@@ -36,12 +36,14 @@ function _IsUsdPrototype(sceneIndex: HdSceneIndexBase, primPath: string): boolea
  *  Divergence: SdfPathSet::lower_bound is replaced by checking path and
  *  each of its ancestors for membership (same result). */
 function _ContainsPrefixOfPath(pathSet: Set<string>, path: string): boolean {
-  for (let p = path; p !== ''; p = _GetParentPath(p)) {
-    if (pathSet.has(p)) {
-      return true
-    }
-  }
-  return false
+  // The set holds only root prims (the constructor and _primsAdded add
+  // paths with one element), so the only prefix that can be in it is the
+  // path's root prim: one lookup instead of one per ancestor.
+  // (Ancestors split at '/' only, as _GetParentPath: the root prefix of
+  // '/A.x' is '/A.x' itself.)
+  if (pathSet.size === 0 || path === '/' || path === '') return false
+  const end = path.indexOf('/', 1)
+  return pathSet.has(end < 0 ? path : path.slice(0, end))
 }
 
 /** niPrototypePruningSceneIndex.cpp:54-100 _FilteredEntries.

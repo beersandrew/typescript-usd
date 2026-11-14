@@ -47,11 +47,23 @@ const PUNCTUATORS = [
   '%', '<', '>', '=', '!', '~', '&', '|', '^', '#', '\\', '@', '"', "'",
 ]
 
+/** PUNCTUATORS by first character, longest first (the order tokenize tries
+ *  them in): the candidates for one character without scanning the list. */
+const PUNCTUATORS_BY_FIRST = new Map<string, string[]>()
+for (const p of PUNCTUATORS) {
+  const list = PUNCTUATORS_BY_FIRST.get(p[0]!) ?? []
+  list.push(p)
+  PUNCTUATORS_BY_FIRST.set(p[0]!, list)
+}
+
 function isIdStart(c: string): boolean {
   return (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || c === '_'
 }
 function isIdChar(c: string): boolean {
   return isIdStart(c) || (c >= '0' && c <= '9')
+}
+function isIdCode(c: number): boolean {
+  return (c >= 97 && c <= 122) || (c >= 65 && c <= 90) || c === 95 || (c >= 48 && c <= 57)
 }
 function isDigit(c: string): boolean {
   return c >= '0' && c <= '9'
@@ -152,15 +164,15 @@ export function tokenize(source: string, fileName = '<input>'): Token[] {
     const start = i
     const tokLoc = loc(i)
     if (isIdStart(c)) {
-      while (i < n && isIdChar(source[i] as string)) i++
+      while (i < n && isIdCode(source.charCodeAt(i))) i++
       out.push({ kind: 'id', text: source.slice(start, i), loc: tokLoc, bol, space })
     } else if (isDigit(c) || (c === '.' && isDigit(source[i + 1] ?? ''))) {
       i = scanNumber(source, i)
       out.push({ kind: 'num', text: source.slice(start, i), loc: tokLoc, bol, space })
     } else {
       let p: string | undefined
-      for (const cand of PUNCTUATORS) {
-        if (source.startsWith(cand, i)) {
+      for (const cand of PUNCTUATORS_BY_FIRST.get(c) ?? []) {
+        if (cand.length === 1 || source.startsWith(cand, i)) {
           p = cand
           break
         }

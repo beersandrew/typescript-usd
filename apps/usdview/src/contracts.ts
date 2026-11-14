@@ -164,6 +164,9 @@ export interface ViewerRuntime {
   /** The prim tree with info at the current time (native refreshes the Vis column on frame change). */
   getPrimTree?(options?: {includePrototypes?:boolean}): PrimSummary[]
   setPlaybackActive?(active: boolean): void
+  /** The playhead is being dragged: frames skip payload loads and read-ahead
+   *  until it is released (timeline-controls.ts). */
+  setScrubbing?(active: boolean): void
   setTime?(time: number): Promise<ViewerTimeState>
 
   /** Opens a URL; local file support is explicit and may be added separately. */

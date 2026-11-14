@@ -336,6 +336,23 @@ Divergences in the code that the ledger does not show as rows:
   (`PLATFORM-DIVERGENCE(hdst-bindless-handles)`,
   `PLATFORM-DIVERGENCE(hdst-gl-binding)`). Status: by design.
 
+- **A nested native instancer's flattened xform and visibility depend on the
+  order its prims arrive.** For native instancing inside a prototype (a USD
+  prototype that itself holds instances), the `UsdNiInstancer` of the
+  propagated prototype sometimes has the flattened `xform` (identity, reset)
+  and `visibility` (true) data sources and sometimes has neither, depending on
+  whether the nested instance reaches the prototype propagating scene indices
+  in the same PrimsAdded notice as the instance that brings its prototype in.
+  It shows without slicing, in upstream's order: the USD Museum's
+  `__Prototype_35` lacks them when its payload's prims come in one notice and
+  has them when they come a share at a time (`usdimaging-sliced-prims-added`);
+  pxr/usdImaging/usdImagingGL/testenv/testUsdImagingGLResync/world.usda is the
+  other way round. Impact: none seen in images or draws (both values are the
+  defaults); scene index contents differ. Evidence: the scene dumps of
+  `apps/usdview/scripts/viewer-perf/follow-perf.ts --dump-scene`,
+  `packages/usd/pxr/usdImaging/usdImaging/tests/slicedPrimsAdded.test.ts`.
+  Status: known bug, cause not found (OpenUSD not yet compared).
+
 ## MaterialX
 
 - **Supported through a partial port** (`packages/materialx`: core,

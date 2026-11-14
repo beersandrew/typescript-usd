@@ -49,7 +49,7 @@ export interface WorkingSetOptions {
   perChange: number
 }
 
-export const defaultWorkingSetOptions: WorkingSetOptions = { near: 8, far: 60, ahead: 48, keep: 72, step: 2, keepDistance: 40, mergeGap: 480, perChange: 2 }
+export const defaultWorkingSetOptions: WorkingSetOptions = { near: 8, far: 60, ahead: 48, keep: 72, step: 2, keepDistance: 40, mergeGap: 480, perChange: 1 }
 
 /** The widest and narrowest viewports the frustum covers (width / height). */
 const widestAspect = 2.4, narrowestAspect = 1

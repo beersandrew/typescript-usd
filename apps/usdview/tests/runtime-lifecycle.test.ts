@@ -71,7 +71,7 @@ function fakeEngine() {
   return {
     Render: vi.fn<(camera: Camera, width: number, height: number) => void>(), applySettings: vi.fn(), SetTime: vi.fn(),
     GetAovTextures: () => ({ color: texture('rgba16float'), colorMSAA: texture('rgba16float'), depthMSAA: texture('depth32float-stencil8') }),
-    isConverged: vi.fn(() => true), setSelection: vi.fn(),
+    isConverged: vi.fn(() => true), setSelection: vi.fn(), setSlicedArrival: vi.fn(), queuedAddedPrimCount: vi.fn(() => 0),
     pick: vi.fn<(frustum: unknown, x: number, y: number, width: number, height: number) => Promise<Hit | null>>().mockResolvedValue(null),
     getDrawableCount: vi.fn(() => 1), destroy: vi.fn(),
   }

@@ -1,6 +1,9 @@
 // ?env=NAME=VALUE (repeatable) sets environment settings (TfEnvSetting) before
 // anything reads them, as usdview's and usdrecord's environment does.
 import './apply-env-parameters'
+// ?perfLog=<url> (tooling): wraps GPUDevice before the runtime opens one.
+import './perf-log'
+import './pipeline-cache'
 import {parseStartupOptions} from './startup-options'
 import {preferenceStorageKey} from './view-preferences'
 import { createRuntime } from './runtime'

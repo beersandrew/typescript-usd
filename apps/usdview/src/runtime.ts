@@ -103,6 +103,8 @@ export const createRuntime: RuntimeFactory = async (canvas, callbacks) => {
   let orbit: AbortController | undefined
   let deviceFailure: string | undefined
   let playing = false
+  // The playhead is being dragged (setScrubbing): no load schedule changes until released.
+  let scrubbing = false
   const primSelection=new PrimSelectionModel()
   const hudInfo=new SubtreeHudInfoCache()
   let pickMode:PickMode='prims'
@@ -319,6 +321,14 @@ export const createRuntime: RuntimeFactory = async (canvas, callbacks) => {
     // hdSt/src/renderPass.ts) and not playing: draw again shortly.
     if (!playing && !updatingTime && !convergence && !pipeline.engine.isConverged()) convergence = setTimeout(() => { convergence = undefined; schedule() }, 5)
   }
+  /** usdview-sliced-arrival (stage-view-engine.ts): on while the timeline
+   *  plays (not while the playhead is dragged); turning it off draws once
+   *  more, which takes the prims still queued. */
+  function slicedArrival() {
+    const on = playing && !scrubbing
+    pipeline?.engine.setSlicedArrival(on)
+    if (!on && pipeline?.engine.queuedAddedPrimCount()) schedule()
+  }
   function schedule() {
     if (!disposed && !frame) frame = requestAnimationFrame(() => {
       frame = 0
@@ -335,6 +345,7 @@ export const createRuntime: RuntimeFactory = async (canvas, callbacks) => {
     const engine = current.engine = new StageViewEngine(hgi, stage, time, settings, width, height)
     engine.lightingSource = lightingSource
     engine.applySettings(settings, getStageUpAxis(stage) === 'Z')
+    engine.setSlicedArrival(playing && !scrubbing)
     const changed = () => {
       if (disposed || released.has(current)) return
       current.metadataDirty = true
@@ -1062,20 +1073,30 @@ export const createRuntime: RuntimeFactory = async (canvas, callbacks) => {
       // sync of this frame's draw.
       const committed = committedLoadSchedule?.stage === current.stage ? committedLoadSchedule : undefined
       const scheduled = committed?.scheduler
-      if (scheduled?.change(time)) {
+      // A jump (a released scrub, a seek, a step back) is not playback:
+      // what the new frame needs loads before it draws, said in the status
+      // bar, and reaches Hydra all at once (usdview-sliced-arrival off for
+      // this frame), so the frame shows the scene as it is, not filling in.
+      const jump = Math.abs(time - previousTime) > 2
+      if (!scrubbing && scheduled?.change(time)) {
         // The stage listener (prepareImaging) invalidates the HUD and bounds.
+        const loads = jump && (scheduled.change(time)?.load.length ?? 0) > 0
+        if (loads) status(`Loading the scene at frame ${time}…`)
         try { await scheduled.update(time) }
         catch (error) { status(`Load schedule: ${error instanceof Error ? error.message : String(error)}`) }
+        if (loads) status('')
         active()
       }
+      if (jump) current.engine.setSlicedArrival(false)
       // The layers of the carriers due next are read ahead, in the
       // background (load-prefetch.ts).
-      committed?.prefetcher.update(time)
+      if (!scrubbing) committed?.prefetcher.update(time)
       cameraController.time = time
       // engine.cpp:509-519: UsdImagingStageSceneIndex::SetTime, then one
       // draw that syncs the render index and presents the frame.
       current.engine.SetTime(time)
       await timeStepDraw(current)
+      if (jump) current.engine.setSlicedArrival(playing && !scrubbing)
       // stageView.py:1547: playback does not wait for convergence.
       if (!playback) await settleImaging(current, () => timeStepDraw(current), active)
       currentTime = time
@@ -1209,9 +1230,11 @@ export const createRuntime: RuntimeFactory = async (canvas, callbacks) => {
     getPickMode:()=>pickMode,
     setPickMode(mode){if(!pickModes.includes(mode))throw new Error('Unknown pick mode');pickMode=mode},
     inspect: (path, propertyName, options) => pipeline ? inspectObject(pipeline.stage, path, propertyName, currentTime, options) : null,
+    setScrubbing(active: boolean) { scrubbing = active; slicedArrival() },
     setPlaybackActive(active: boolean) {
       if (playing !== active) {
         playing = active
+        slicedArrival()
         // appController.py:2121,3868-3880 _updateGUIForFrameChange once playback
         // stops: the property view, HUD geometry counts and camera state.
         if (!active && pipeline && !disposed) { callbacks.selectionChanged(refreshSelection()); cameraChanged(); geometryChanged() }
