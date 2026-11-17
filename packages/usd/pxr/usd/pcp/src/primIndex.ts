@@ -179,7 +179,7 @@ export class PcpPrimIndex {
 
   // HasSpecs (primIndex.cpp:87-102).
   hasSpecs(): boolean {
-    for (const node of this.getNodeRange()) if (node.hasSpecs) return true
+    for (const node of this._getNodeRefs()) if (node.hasSpecs) return true
     return false
   }
 
@@ -259,7 +259,7 @@ export class PcpPrimIndex {
   // GetNodeProvidingSpec (primIndex.cpp:278-293).
   getNodeProvidingSpec(layer: PcpLayer, path: SdfPath | string): PcpNodeRef | null {
     const key = typeof path === 'string' ? path : path.pathString
-    for (const node of this.getNodeRange()) {
+    for (const node of this._getNodeRefs()) {
       if (node.canContributeSpecs() && node.getPath().pathString === key &&
           node.getLayerStack().hasLayer(layer)) return node
     }
@@ -309,7 +309,7 @@ export class PcpPrimIndex {
 
   // GetSelectionAppliedForVariantSet (primIndex.cpp:340-353).
   getSelectionAppliedForVariantSet(variantSet: string): string {
-    for (const node of this.getNodeRange()) {
+    for (const node of this._getNodeRefs()) {
       if (node.getPath().isPrimVariantSelectionPath()) {
         const [set, sel] = node.getPath().getVariantSelection()
         if (set === variantSet) return sel
@@ -2003,7 +2003,7 @@ function enforcePermissions(primIndex: PcpPrimIndex, allErrors: PcpError[]): voi
 // Pcp_RescanForSpecs (primIndex.cpp:4617-4658), USD mode.
 export function pcpRescanForSpecs(index: PcpPrimIndex, usd: boolean, updateHasSpecs: boolean): void {
   if (usd && updateHasSpecs) {
-    for (const node of index.getNodeRange()) {
+    for (const node of index._getNodeRefs()) {
       node.setHasSpecs(pcpComposeSiteHasSpecs(node.getLayerStack(), node.getPath()))
     }
   }
@@ -2062,7 +2062,7 @@ function needToRecomputeArcsDueToAssetPathChange(
 export function pcpNeedToRecomputeDueToAssetPathChange(
   index: PcpPrimIndex, layerSource: PcpLayerSource,
 ): boolean {
-  for (const node of index.getNodeRange()) {
+  for (const node of index._getNodeRefs()) {
     if (!node.canContributeSpecs()) continue
     if (needToRecomputeArcsDueToAssetPathChange(node, PcpArcType.Reference, layerSource) ||
         needToRecomputeArcsDueToAssetPathChange(node, PcpArcType.Payload, layerSource)) {
@@ -2480,7 +2480,7 @@ export function pcpComputePrimStackForPrimIndex(
   primIndex: PcpPrimIndex,
 ): Array<{ layer: PcpLayer; path: SdfPath }> {
   const out: Array<{ layer: PcpLayer; path: SdfPath }> = []
-  for (const node of primIndex.getNodeRange()) {
+  for (const node of primIndex._getNodeRefs()) {
     if (!node.canContributeSpecs()) continue
     const key = node.getPath().pathString
     for (const { layer } of node.getLayerStack().layers) {

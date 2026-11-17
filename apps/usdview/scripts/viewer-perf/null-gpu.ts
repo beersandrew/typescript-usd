@@ -46,6 +46,9 @@ const limits = {
   maxStorageBuffersInVertexStage: 31, maxStorageBuffersInFragmentStage: 31,
   maxStorageTexturesInVertexStage: 8, maxStorageTexturesInFragmentStage: 8,
 }
+// NULL_GPU_LIMITS='{"maxStorageBuffersPerShaderStage":10}' (tooling): another
+// browser's limits over these, e.g. Chrome on macOS's 10 storage buffers per stage.
+if (typeof process !== 'undefined' && process.env.NULL_GPU_LIMITS) Object.assign(limits, JSON.parse(process.env.NULL_GPU_LIMITS))
 const features = new Set(['float32-filterable', 'depth-clip-control', 'texture-compression-bc', 'rg11b10ufloat-renderable', 'depth32float-stencil8', 'clip-distances'])
 
 // Bytes per texel of the formats Storm creates; others count 4.

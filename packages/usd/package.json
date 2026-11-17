@@ -1,6 +1,6 @@
 {
   "name": "typescript-usd",
-  "version": "0.1.0",
+  "version": "26.11.1+3",
   "description": "A TypeScript implementation of the core of OpenUSD: USD file formats, composition, and value resolution.",
   "license": "SEE LICENSE IN LICENSE",
   "repository": {

@@ -1053,8 +1053,7 @@ export class HdSceneIndexAdapterSceneDelegate extends HdSceneDelegate
    *  cached prim (sceneIndexAdapterSceneDelegate.cpp:2981-3019, a TBB
    *  parallel loop). Done serially here, that read costs about 5 ms per
    *  sync of a scene of a few thousand prims, in every frame that adds
-   *  prims (usdimaging-sliced-prims-added adds some in many frames). The
-   *  set is the same. */
+   *  prims. The set is the same. */
   private readonly _delegateOf = new Map<string, HdSceneDelegate>()
 
   // Hint cache of all prim paths that have been populated with

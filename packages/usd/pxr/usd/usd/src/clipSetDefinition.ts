@@ -370,7 +370,7 @@ function clipSetDefinitionsAtLevel(
   const composed = new Map<string, Composed>()
 
   let nodeIdx = -1
-  for (const node of index.getNodeRange() as Iterable<PcpNode>) {
+  for (const node of index._getNodeRefs() as Iterable<PcpNode>) {
     nodeIdx++
     if (!node.canContributeSpecs()) continue
     if (level > 0 && !node.isRootNode() && node.getDepthBelowIntroduction() < level) continue

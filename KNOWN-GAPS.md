@@ -337,21 +337,21 @@ Divergences in the code that the ledger does not show as rows:
   `PLATFORM-DIVERGENCE(hdst-gl-binding)`). Status: by design.
 
 - **A nested native instancer's flattened xform and visibility depend on the
-  order its prims arrive.** For native instancing inside a prototype (a USD
-  prototype that itself holds instances), the `UsdNiInstancer` of the
-  propagated prototype sometimes has the flattened `xform` (identity, reset)
-  and `visibility` (true) data sources and sometimes has neither, depending on
-  whether the nested instance reaches the prototype propagating scene indices
-  in the same PrimsAdded notice as the instance that brings its prototype in.
-  It shows without slicing, in upstream's order: the USD Museum's
-  `__Prototype_35` lacks them when its payload's prims come in one notice and
-  has them when they come a share at a time (`usdimaging-sliced-prims-added`);
-  pxr/usdImaging/usdImagingGL/testenv/testUsdImagingGLResync/world.usda is the
-  other way round. Impact: none seen in images or draws (both values are the
-  defaults); scene index contents differ. Evidence: the scene dumps of
-  `apps/usdview/scripts/viewer-perf/follow-perf.ts --dump-scene`,
-  `packages/usd/pxr/usdImaging/usdImaging/tests/slicedPrimsAdded.test.ts`.
-  Status: known bug, cause not found (OpenUSD not yet compared).
+  notices it has seen, as in OpenUSD.** For native instancing inside a
+  prototype, the propagated prototype's `UsdNiInstancer` has the flattened
+  `xform` (identity, reset) and `visibility` (true) only if a notice reached
+  that prototype's flattening scene index after a prim below it was queried:
+  the prim has no input data source, and `HdFlatteningSceneIndex::GetPrim`
+  (flatteningSceneIndex.cpp:363-370) wraps such a prim only once
+  `_ConsolidateRecentPrims` has entered its descendants in `_prims`. A C++
+  program against the 26.11.1 build prints the same values as the port for
+  testUsdImagingGLResync's world.usda (has them, loaded at once or in steps)
+  and for an instance inside a prototype (lacks them after one notice, has
+  them after an unrelated edit inside the prototype). The USD Museum's
+  `__Prototype_35` lacks them (loaded at once). Impact: none
+  in images or draws (both values are the defaults). Evidence:
+  `packages/usd/pxr/usdImaging/usdImaging/tests/nestedInstancerFlattening.test.ts`.
+  Status: same as upstream (an upstream bug, kept).
 
 ## MaterialX
 
@@ -546,8 +546,8 @@ these assets and conditions only; ratios within about 1.5x are noise.
 
 ## Failing library tests
 
-`cd packages/usd && npx vitest run` on November 12, 2026: 882 test files,
-**9,279 pass, 4 fail**; 26 checks the platform rules out are skipped in Node
+`cd packages/usd && npx vitest run` on November 16, 2026: 886 test files,
+**9,298 pass, 4 fail**; 26 checks the platform rules out are skipped in Node
 at a `PLATFORM-DIVERGENCE` id and not counted. Each failure is a ported
 upstream test or a native-capture check kept failing on purpose to expose a
 real gap in the port. None is in Core. See also

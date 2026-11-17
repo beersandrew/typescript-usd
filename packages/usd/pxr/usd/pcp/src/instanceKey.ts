@@ -56,7 +56,7 @@ export class PcpInstanceKey {
       },
     })
     const variantSelection: Record<string, string> = {}
-    for (const node of primIndex.getNodeRange()) {
+    for (const node of primIndex._getNodeRefs()) {
       if (!node.canContributeSpecs()) continue
       const composed = pcpComposeSiteVariantSelections(node.getLayerStack(), node.getPath())
       for (const [set, sel] of Object.entries(composed)) {

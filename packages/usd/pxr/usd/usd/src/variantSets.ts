@@ -159,7 +159,7 @@ export class UsdVariantSets {
     if (!prim) return []
     const names: string[] = []
     const seen = new Set<string>()
-    for (const node of prim.getPrimIndex().getNodeRange()) {
+    for (const node of prim.getPrimIndex()._getNodeRefs()) {
       for (const name of pcpComposeSiteVariantSets(node.getLayerStack(), node.getPath())) {
         if (!seen.has(name)) { seen.add(name); names.push(name) }
       }
@@ -199,7 +199,7 @@ export class UsdVariantSets {
     // selections, rather than enumerating only named variant sets.
     const prim = this._stage.getPrim(this._primPath)
     if (!prim) return out
-    for (const node of prim.getPrimIndex().getNodeRange()) {
+    for (const node of prim.getPrimIndex()._getNodeRefs()) {
       const selections = pcpComposeSiteVariantSelections(node.getLayerStack(), node.getPath())
       for (const [name, selection] of Object.entries(selections)) {
         if (!(name in out)) out[name] = selection

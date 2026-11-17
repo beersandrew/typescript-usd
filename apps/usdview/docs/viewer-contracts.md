@@ -101,11 +101,25 @@ viewport from square to 2.4:1. From that, each payload gets frame windows:
 
 The windows are applied as a load schedule's are (carriers are the payload
 prims): one `UsdStage::LoadAndUnload` per change, the layers and images read
-ahead. One difference: at most 2 payloads load (and 2 unload) per frame while
+ahead. One difference: at most 1 payload loads (and 1 unloads) per frame while
 they are in their 48-frame lead-in, needed soonest first, so many windows
 opening together spread their loads (each load syncs its prims in that frame's
-draw). A payload already needed on screen (the first frame, a seek) loads at
-once.
+draw). A payload already needed on screen (the first frame, a seek, a released
+scrub) loads at once.
+
+**Paused** (`src/load-ahead.ts`, PLATFORM-DIVERGENCE(usdview-paused-load-ahead)):
+a jump loads only what its frame shows, so the payloads in their lead-in there
+would otherwise load in the first frames after Play, and their textures, not
+read ahead, would hold the image still. While the viewer is paused and idle (no
+playback or scrub, no frame, display, composition or scene update in flight, no
+camera drag, the last draw converged, nothing touched for 300 ms), it loads the
+rest of the paused frame's set, one payload per step, needed soonest first, each
+one's layers and images read first. It loads nothing playback at that frame
+would not hold, and stops once that set is loaded; stepping, seeking or pausing
+again starts it from the new frame. An authored schedule loads its whole set on
+the frame change, so there is nothing left to load while paused. With a budget,
+a payload whose window is open but which is not loaded yet also has its layers
+and images read ahead, and held until a little after it loads.
 
 Measured on the USD Museum's tour (Node, CPU only, the first two wings): with
 the working set the first frame comes in 2.2 s instead of 4.3 s and the median

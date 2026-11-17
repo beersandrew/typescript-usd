@@ -193,7 +193,7 @@ function forEachDependentNodeImpl(
     if (indexPath.isAbsoluteRootPath()) break
   }
   if (primIndex) {
-    for (const node of primIndex.getNodeRange()) {
+    for (const node of primIndex._getNodeRefs()) {
       if (pcpNodeIntroducesDependency(node) && nodeUsesLayerOrLayerStack(node, layerOrLayerStack) &&
           sitePath.hasPrefix(node.getPath())) {
         foundDep = true
@@ -653,17 +653,23 @@ export class PcpCache implements PcpPrimIndexCache {
     roots: PathLike | readonly PathLike[],
     childrenPredicate: (index: PcpPrimIndex, childNames: string[]) => boolean,
     payloadPredicate: (path: string) => boolean,
+    aheadChildren?: (index: PcpPrimIndex, childNames: string[]) => readonly string[],
   ): Promise<readonly PcpError[]> {
     const result = pcpRunMaybeAsync(
-      this._computePrimIndexesInParallel(roots, childrenPredicate, payloadPredicate))
+      this._computePrimIndexesInParallel(roots, childrenPredicate, payloadPredicate, aheadChildren))
     return result instanceof Promise ? await result : result
   }
 
-  /** @internal ComputePrimIndexesInParallel, continuing asynchronously only if a layer must load. */
+  /** @internal ComputePrimIndexesInParallel, continuing asynchronously only if a layer must load.
+   *  `aheadChildren` (pure, no side effects): the children of a prim computed
+   *  ahead that may be computed ahead too; by default all of them, except
+   *  under an instanceable prim. */
   *_computePrimIndexesInParallel(
     roots: PathLike | readonly PathLike[],
     childrenPredicate: (index: PcpPrimIndex, childNames: string[]) => boolean,
     payloadPredicate: (path: string) => boolean,
+    aheadChildren: (index: PcpPrimIndex, childNames: string[]) => readonly string[] =
+      (index, childNames) => index.isInstanceable() ? [] : childNames,
   ): PcpMaybeAsync<readonly PcpError[]> {
     const errors: PcpError[] = []
     const inputs = this._primIndexInputs.clone()
@@ -683,21 +689,42 @@ export class PcpCache implements PcpPrimIndexCache {
         return this._source.load(e.identifier)
       }
     }
+    // PLATFORM-DIVERGENCE(pcp-compute-ahead-descends): upstream's parallel
+    // indexing (Pcp_ParallelIndexer, cache.cpp) starts a prim's children as
+    // soon as the prim is indexed, on other threads, so the layers of a deep
+    // namespace open level after level concurrently. Here a layer is a
+    // network fetch and one thread computes: while a prim waits, the prims
+    // queued behind it are computed ahead, and so (breadth-first) are the
+    // children of every prim computed ahead (aheadChildren), so the fetches
+    // of the levels below go out together instead of one level per round
+    // trip (the USD Museum's tour: 55 sequential fetch rounds to open, 4 with
+    // this). Results are used only when the prim is visited, in upstream's
+    // order; a prim the visit never reaches only cost its computation.
+    const expanded = new Set<string>()
     const computeAhead = () => {
       let loads = this._source.pendingLoadCount()
-      for (let i = 0; i < pending.length && i < COMPUTE_AHEAD_PRIMS && loads < COMPUTE_AHEAD_LOADS; i++) {
-        const path = pending[i]!, key = path.pathString
-        if (computed.has(key) || waiting.has(key)) continue
-        let result: ReturnType<typeof attempt>
-        // A failure other than a missing layer is reported when the prim is
-        // visited, in order.
-        try { result = attempt(path) } catch { continue }
-        if (result instanceof Promise) {
-          waiting.add(key)
-          loads = this._source.pendingLoadCount()
-          void result.finally(() => waiting.delete(key))
-        } else {
+      const queue = pending.slice(0, COMPUTE_AHEAD_PRIMS)
+      for (let i = 0; i < queue.length && i < COMPUTE_AHEAD_PRIMS && loads < COMPUTE_AHEAD_LOADS; i++) {
+        const path = queue[i]!, key = path.pathString
+        if (waiting.has(key)) continue
+        let entry = computed.get(key)
+        if (!entry) {
+          let result: ReturnType<typeof attempt>
+          // A failure other than a missing layer is reported when the prim is
+          // visited, in order.
+          try { result = attempt(path) } catch { continue }
+          if (result instanceof Promise) {
+            waiting.add(key)
+            loads = this._source.pendingLoadCount()
+            void result.finally(() => waiting.delete(key))
+            continue
+          }
           computed.set(key, result)
+          entry = result
+        }
+        if (!expanded.has(key)) {
+          expanded.add(key)
+          for (const name of aheadChildren(entry.index, entry.index.computePrimChildNames())) queue.push(path.appendChild(name))
         }
       }
     }
@@ -954,7 +981,7 @@ export class PcpCache implements PcpPrimIndexCache {
     if (this._layerStack) retained.add(this._layerStack)
     for (const [, primIndex] of this._primIndexCache) {
       if (!primIndex?.isValid()) continue
-      for (const node of primIndex.getNodeRange()) retained.add(node.getLayerStack())
+      for (const node of primIndex._getNodeRefs()) retained.add(node.getLayerStack())
     }
     this._primDependencies._forEachRetainedLayerStack(layerStack => retained.add(layerStack))
     for (const layerStack of this._registry.getAllLayerStacks()) {
@@ -1000,7 +1027,7 @@ export class PcpCache implements PcpPrimIndexCache {
             e.resolvedAssetPath)
         }
       }
-      for (const node of primIndex.getNodeRange()) layerStacksAtOrUnderPrim.add(node.getLayerStack())
+      for (const node of primIndex._getNodeRefs()) layerStacksAtOrUnderPrim.add(node.getLayerStack())
     }
     for (const layerStack of layerStacksAtOrUnderPrim) {
       for (const e of layerStack.localErrors) {

@@ -65,7 +65,7 @@ function targetInClassAndTargetsInstance(
   if (connectionPathInNodeNS.hasPrefix(inheritedClassPath)) return false
   const targetPrimIndex = context.getTargetObjectPrimIndex()
   const layerStackWhereConnectionWasAuthored = nodeWhereConnectionWasAuthored.getLayerStack()
-  for (const n of targetPrimIndex.getNodeRange()) {
+  for (const n of targetPrimIndex._getNodeRefs()) {
     if (pcpIsInheritArc(n.arcType)
         && n.getLayerStack() === layerStackWhereConnectionWasAuthored
         && n.getPath().hasPrefix(inheritedClassPath)) {
@@ -126,7 +126,7 @@ function targetIsPermitted(
   const owningPrimInNodeNS = connectionPathInNodeNS.getPrimPath()
   const authoredLayerStack = nodeWhereConnectionWasAuthored.getLayerStack()
   let owningPrimNodeWhereConnectionWasAuthored: PcpNodeRef | undefined
-  for (const node of owningPrimIndex.getNodeRange()) {
+  for (const node of owningPrimIndex._getNodeRefs()) {
     if (node.getLayerStack() === authoredLayerStack
         && node.getPath().equals(owningPrimInNodeNS)) {
       owningPrimNodeWhereConnectionWasAuthored = node

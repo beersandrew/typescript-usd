@@ -143,6 +143,12 @@ export class SdrRegistry {
   private static instance: SdrRegistry | undefined
   static getInstance(): SdrRegistry { return this.instance ??= new SdrRegistry() }
   private readonly _results: SdrShaderNodeDiscoveryResult[] = []
+  // The results by identifier and by name, each in _results order, so a
+  // lookup by identifier or name visits only those results, in the order
+  // a walk of _results would. Results are only appended (addDiscoveryResult).
+  private readonly _resultsByIdentifier = new Map<string, SdrShaderNodeDiscoveryResult[]>()
+  private readonly _resultsByName = new Map<string, SdrShaderNodeDiscoveryResult[]>()
+  private readonly _resultKeys = new Set<string>()
   private readonly nodes = new Map<string, SdrShaderNode>()
   private readonly _parsers = new Map<string, SdrParserPlugin>()
   private readonly _searchUris = new Set<string>()
@@ -292,7 +298,19 @@ export class SdrRegistry {
     const entries = Array.isArray(plugins) ? plugins as Array<[string, SdrParserPlugin]> : Object.entries(plugins)
     for (const [type, plugin] of entries) this._parsers.set(type, plugin)
   }
-  addDiscoveryResult(result: SdrShaderNodeDiscoveryResult): void { if (!this.results.some(item => item.identifier === result.identifier && item.sourceType === result.sourceType)) this.results.push(result) }
+  addDiscoveryResult(result: SdrShaderNodeDiscoveryResult): void {
+    const results = this.results
+    const key = `${result.identifier}\0${result.sourceType}`
+    if (this._resultKeys.has(key)) return
+    this._resultKeys.add(key)
+    results.push(result)
+    let byIdentifier = this._resultsByIdentifier.get(result.identifier)
+    if (!byIdentifier) this._resultsByIdentifier.set(result.identifier, byIdentifier = [])
+    byIdentifier.push(result)
+    let byName = this._resultsByName.get(result.name)
+    if (!byName) this._resultsByName.set(result.name, byName = [])
+    byName.push(result)
+  }
   getSearchURIs(): string[] { return [...this.searchUris] }
   getShaderNodeIdentifiers(functionName = '', filter: SdrVersionFilter = 'defaultOnly'): string[] { return this.results.filter(result => (!functionName || result.function === functionName) && (filter === 'allVersions' || result.version.isDefault)).map(result => result.identifier).filter((id, i, all) => all.indexOf(id) === i).sort() }
   getShaderNodeNames(functionName = ''): string[] { return [...new Set(this.results.filter(result => !functionName || result.function === functionName).map(result => result.name))].sort() }
@@ -302,22 +320,22 @@ export class SdrRegistry {
       for (const system of systemPriority) { const node = this.getShaderNodeByIdentifierAndSystem(identifier, system); if (node) return node }
       return undefined
     }
-    return this._firstNodeFor(result => result.identifier === identifier)
+    return this._firstNodeFor(result => result.identifier === identifier, this._identified(identifier))
   }
   getShaderNodeByIdentifierAndSystem(identifier: string, shadingSystem: string): SdrShaderNode | undefined { return this.getShaderNodeByIdentifierAndType(identifier, shadingSystem) }
-  getShaderNodeByIdentifierAndType(identifier: string, sourceType: string): SdrShaderNode | undefined { return this._firstNodeFor(result => result.identifier === identifier && result.sourceType === sourceType) }
+  getShaderNodeByIdentifierAndType(identifier: string, sourceType: string): SdrShaderNode | undefined { return this._firstNodeFor(result => result.sourceType === sourceType, this._identified(identifier)) }
   getShaderNodeByName(name: string, systemPriority: string[] | SdrVersionFilter = [], filter: SdrVersionFilter = 'defaultOnly'): SdrShaderNode | undefined {
     if (typeof systemPriority === 'string') { filter = systemPriority; systemPriority = [] }
     if (systemPriority.length) {
       for (const system of systemPriority) { const node = this.getShaderNodeByNameAndType(name, system, filter); if (node) return node }
       return undefined
     }
-    return this._firstNodeFor(result => result.name === name && (filter === 'allVersions' || result.version.isDefault))
+    return this._firstNodeFor(result => filter === 'allVersions' || result.version.isDefault, this._named(name))
   }
   getShaderNodeByNameAndSystem(name: string, shadingSystem: string, filter: SdrVersionFilter = 'defaultOnly'): SdrShaderNode | undefined { return this.getShaderNodeByNameAndType(name, shadingSystem, filter) }
   getAllShaderNodeShadingSystems(): string[] { return this.getAllShaderNodeSourceTypes() }
-  getShaderNodesByIdentifier(identifier: string): SdrShaderNode[] { return this._nodesFor(result => result.identifier === identifier) }
-  getShaderNodesByName(name: string, filter: SdrVersionFilter = 'defaultOnly'): SdrShaderNode[] { return this._nodesFor(result => result.name === name && (filter === 'allVersions' || result.version.isDefault)) }
+  getShaderNodesByIdentifier(identifier: string): SdrShaderNode[] { return this._nodesFor(() => true, this._identified(identifier)) }
+  getShaderNodesByName(name: string, filter: SdrVersionFilter = 'defaultOnly'): SdrShaderNode[] { return this._nodesFor(result => filter === 'allVersions' || result.version.isDefault, this._named(name)) }
   getShaderNodesByFunction(functionName = '', filter: SdrVersionFilter = 'defaultOnly'): SdrShaderNode[] { return this._nodesFor(result => (!functionName || result.function === functionName) && (filter === 'allVersions' || result.version.isDefault)) }
   // GetShaderNodesByFamily (registry.cpp:781-787), deprecated in favor of
   // GetShaderNodesByFunction.
@@ -346,7 +364,7 @@ export class SdrRegistry {
     this.nodes.set(`${dr.identifier}\0${dr.sourceType}`, node)
     return node
   }
-  getShaderNodeByNameAndType(name: string, sourceType: string, filter: SdrVersionFilter = 'defaultOnly'): SdrShaderNode | undefined { return this._firstNodeFor(result => result.name === name && result.sourceType === sourceType && (filter === 'allVersions' || result.version.isDefault)) }
+  getShaderNodeByNameAndType(name: string, sourceType: string, filter: SdrVersionFilter = 'defaultOnly'): SdrShaderNode | undefined { return this._firstNodeFor(result => result.sourceType === sourceType && (filter === 'allVersions' || result.version.isDefault), this._named(name)) }
   getAllShaderNodes(): SdrShaderNode[] { return this._nodesFor(() => true) }
   // OpenUSD v26.11.1 registry.cpp:596-655 GetShaderNodeFromSourceCode, with
   // _GetIdentifierForSourceCode (registry.cpp:166-175): the identifier is
@@ -381,22 +399,34 @@ export class SdrRegistry {
   runQuery(query: SdrShaderNodeQuery): SdrShaderNodeQueryResult { return runNodeQuery(query, this.getAllShaderNodes()) }
   // OpenUSD v26.11.1 registry.cpp:472-503 returns at the first parsed handle;
   // it must not invoke parsers for lower-priority alternatives afterwards.
-  private _firstNodeFor(predicate: (result: SdrShaderNodeDiscoveryResult) => boolean): SdrShaderNode | undefined {
-    for (const result of this.results) {
+  private _firstNodeFor(predicate: (result: SdrShaderNodeDiscoveryResult) => boolean,
+    results: readonly SdrShaderNodeDiscoveryResult[] = this.results): SdrShaderNode | undefined {
+    for (const result of results) {
       if (!predicate(result)) continue
       const node = this._findOrParseNode(result)
       if (node) return node
     }
     return undefined
   }
-  private _nodesFor(predicate: (result: SdrShaderNodeDiscoveryResult) => boolean): SdrShaderNode[] {
+  private _nodesFor(predicate: (result: SdrShaderNodeDiscoveryResult) => boolean,
+    results: readonly SdrShaderNodeDiscoveryResult[] = this.results): SdrShaderNode[] {
     const nodes: SdrShaderNode[] = []
-    for (const result of this.results) {
+    for (const result of results) {
       if (!predicate(result)) continue
       const node = this._findOrParseNode(result)
       if (node) nodes.push(node)
     }
     return nodes
+  }
+  /** The results with this identifier (plugins found first), in order. */
+  private _identified(identifier: string): readonly SdrShaderNodeDiscoveryResult[] {
+    this._FindAndInstantiatePlugins()
+    return this._resultsByIdentifier.get(identifier) ?? []
+  }
+  /** The results with this name (plugins found first), in order. */
+  private _named(name: string): readonly SdrShaderNodeDiscoveryResult[] {
+    this._FindAndInstantiatePlugins()
+    return this._resultsByName.get(name) ?? []
   }
   private _findOrParseNode(result: SdrShaderNodeDiscoveryResult): SdrShaderNode | undefined {
     // OpenUSD v26.11.1 registry.cpp:1305-1331: parser selection is by

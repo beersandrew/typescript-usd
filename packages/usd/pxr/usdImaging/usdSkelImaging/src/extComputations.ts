@@ -125,6 +125,31 @@ function _Elements<T>(value: unknown): T[] {
   return value as T[]
 }
 
+/** The scalars of an array of `width`-component Gf vectors (or scalars),
+ *  row after row: VtArray's typed storage itself where it has one (cdata(),
+ *  read only), else the elements' components copied. */
+function _Scalars(value: unknown, width: number): ArrayLike<number> {
+  if (value instanceof VtArray) {
+    const storage = (value as VtArray<unknown>).cdata()
+    if (ArrayBuffer.isView(storage)) return storage as unknown as ArrayLike<number>
+  }
+  if (ArrayBuffer.isView(value)) return value as unknown as ArrayLike<number>
+  const elements = _Elements<{ data: readonly number[] } | number>(value)
+  const out = new Float64Array(elements.length * width)
+  for (let i = 0; i < elements.length; ++i) {
+    const e = elements[i]!
+    if (typeof e === 'number') out[i] = e
+    else for (let k = 0; k < width; ++k) out[i * width + k] = e.data[k]!
+  }
+  return out
+}
+
+/** The points as a VtArray<GfVec3f> over `points` itself (no per-element
+ *  GfVec3f): the same values _ToVec3fArray's elements hold. */
+function _AdoptVec3fArray(points: Float32Array): VtArray<GfVec3f> {
+  return VtArray._adopt<GfVec3f>(VtValueTypes.GfVec3f, points)
+}
+
 function _ToVec3fArray(points: Float32Array): VtArray<GfVec3f> {
   const result: GfVec3f[] = new Array(points.length / 3)
   for (let i = 0; i < result.length; ++i) {
@@ -147,22 +172,31 @@ function _Matrix4Array(m: GfMatrix4f | GfMatrix4d): GfMatrix4Array {
 }
 
 /** Splits interleaved (index, weight) influences (see the header). */
-function _SplitInfluences(influences: readonly GfVec2f[]): { indices: Int32Array, weights: Float32Array } {
-  const indices = new Int32Array(influences.length)
-  const weights = new Float32Array(influences.length)
-  for (let i = 0; i < influences.length; ++i) {
-    const d = influences[i]!.data
-    indices[i] = Math.trunc(d[0]!)
-    weights[i] = d[1]!
+function _SplitInfluences(influences: ArrayLike<number>): { indices: Int32Array, weights: Float32Array } {
+  const n = influences.length / 2
+  const indices = new Int32Array(n)
+  const weights = new Float32Array(n)
+  for (let i = 0; i < n; ++i) {
+    indices[i] = Math.trunc(influences[2 * i]!)
+    weights[i] = influences[2 * i + 1]!
   }
   return { indices, weights }
 }
 
-/** extComputations.cpp:44-56 */
+/** extComputations.cpp:44-56: GfMatrix4d::Transform of each GfVec3f point
+ *  (double arithmetic, GfProject), rounded back to float. */
 function _TransformPoints(points: Float32Array, xform: GfMatrix4d): void {
-  for (let i = 0; i < points.length / 3; ++i) {
-    const p = xform.Transform(new GfVec3f(points[3 * i]!, points[3 * i + 1]!, points[3 * i + 2]!)).data
-    points[3 * i] = p[0]!; points[3 * i + 1] = p[1]!; points[3 * i + 2] = p[2]!
+  const m = xform.GetArray()
+  const m0 = m[0]!, m1 = m[1]!, m2 = m[2]!, m3 = m[3]!, m4 = m[4]!, m5 = m[5]!, m6 = m[6]!, m7 = m[7]!
+  const m8 = m[8]!, m9 = m[9]!, m10 = m[10]!, m11 = m[11]!, m12 = m[12]!, m13 = m[13]!, m14 = m[14]!, m15 = m[15]!
+  for (let i = 0, n = points.length; i < n; i += 3) {
+    const x = points[i]!, y = points[i + 1]!, z = points[i + 2]!
+    const c0 = x * m0 + y * m4 + z * m8 + m12
+    const c1 = x * m1 + y * m5 + z * m9 + m13
+    const c2 = x * m2 + y * m6 + z * m10 + m14
+    const w = x * m3 + y * m7 + z * m11 + m15
+    const inv = w !== 0 ? 1 / w : 1
+    points[i] = inv * c0; points[i + 1] = inv * c1; points[i + 2] = inv * c2
   }
 }
 
@@ -180,23 +214,20 @@ function _TransformNormals(normals: Float32Array, xformInvTranspose: GfMatrix3d)
 
 /** extComputations.cpp:68-89 */
 function _ApplyPackedBlendShapes(
-  offsets: readonly GfVec4f[],
-  ranges: readonly GfVec2i[],
+  offsets: ArrayLike<number>,
+  ranges: ArrayLike<number>,
   weights: ArrayLike<number>,
   points: Float32Array,
 ): void {
-  const end = Math.min(ranges.length, points.length / 3)
+  const end = Math.min(ranges.length / 2, points.length / 3)
   for (let i = 0; i < end; ++i) {
-    const range = ranges[i]!.data
-
     let px = points[3 * i]!, py = points[3 * i + 1]!, pz = points[3 * i + 2]!
-    for (let j = range[0]!; j < range[1]!; ++j) {
-      const offset = offsets[j]!.data
-      const shapeIndex = Math.trunc(offset[3]!)
+    for (let j = ranges[2 * i]!; j < ranges[2 * i + 1]!; ++j) {
+      const shapeIndex = Math.trunc(offsets[4 * j + 3]!)
       const weight = Math.fround(weights[shapeIndex]!)
-      px = Math.fround(px + Math.fround(offset[0]! * weight))
-      py = Math.fround(py + Math.fround(offset[1]! * weight))
-      pz = Math.fround(pz + Math.fround(offset[2]! * weight))
+      px = Math.fround(px + Math.fround(offsets[4 * j]! * weight))
+      py = Math.fround(py + Math.fround(offsets[4 * j + 1]! * weight))
+      pz = Math.fround(pz + Math.fround(offsets[4 * j + 2]! * weight))
     }
     points[3 * i] = px; points[3 * i + 1] = py; points[3 * i + 2] = pz
   }
@@ -206,7 +237,7 @@ function _ApplyPackedBlendShapes(
  *  undefined where it returns false. */
 function _SkinTransform(
   skinningMethod: string, geomBindXform: GfMatrix4f,
-  skinningXforms: readonly GfMatrix4f[], influences: readonly GfVec2f[],
+  skinningXforms: readonly GfMatrix4f[], influences: ArrayLike<number>,
 ): GfMatrix4f | undefined {
   const { indices, weights } = _SplitInfluences(influences)
   const xform = UsdSkelSkinTransform(
@@ -250,12 +281,12 @@ function _InvokeSkinningComputationPoints(
     ctx.raiseComputationError()
     return
   }
-  const skinnedPoints = _ToFlat(_Elements<GfVec3f>(restPointsValue))
+  const skinnedPoints = Float32Array.from(_Scalars(restPointsValue, 3))
 
   _ApplyPackedBlendShapes(
-    _Elements<GfVec4f>(blendShapeOffsetsValue),
-    _Elements<GfVec2i>(blendShapeOffsetRangesValue),
-    _Elements<number>(blendShapeWeightsValue),
+    _Scalars(blendShapeOffsetsValue, 4),
+    _Scalars(blendShapeOffsetRangesValue, 2),
+    _Scalars(blendShapeWeightsValue, 1),
     skinnedPoints)
 
   const numInfluencesPerComponent = numInfluencesPerComponentValue
@@ -263,12 +294,12 @@ function _InvokeSkinningComputationPoints(
   if (numInfluencesPerComponent <= 0) {
     ctx.setOutputValue(
       UsdSkelImagingExtComputationOutputNameTokens.skinnedPoints,
-      VtValue.createArray(_ToVec3fArray(skinnedPoints)))
+      VtValue.createArray(_AdoptVec3fArray(skinnedPoints)))
     return
   }
 
   const skinningXforms = _Elements<GfMatrix4f>(skinningXformsValue)
-  const influences = _Elements<GfVec2f>(influencesValue)
+  const influences = _Scalars(influencesValue, 2)
 
   if (hasConstantInfluencesValue) {
     // Have constant influences. Compute a rigid deformation.
@@ -313,7 +344,7 @@ function _InvokeSkinningComputationPoints(
 
   ctx.setOutputValue(
     UsdSkelImagingExtComputationOutputNameTokens.skinnedPoints,
-    VtValue.createArray(_ToVec3fArray(skinnedPoints)))
+    VtValue.createArray(_AdoptVec3fArray(skinnedPoints)))
 }
 
 /** GfMatrix4d(m).ExtractRotationMatrix().GetInverse().GetTranspose() */
@@ -326,7 +357,7 @@ function _DeformNormalsWithSkinning(
   skinningMethod: string,
   geomBindXform: GfMatrix4f,
   skinningXforms: readonly GfMatrix4f[],
-  influences: readonly GfVec2f[],
+  influences: ArrayLike<number>,
   hasConstantInfluences: boolean,
   numInfluencesPerComponent: number,
   faceVertexIndices: ArrayLike<number>,
@@ -440,7 +471,7 @@ function _InvokeSkinningComputationNormals(
     skinningMethod,
     geomBindXformValue,
     _Elements<GfMatrix4f>(skinningXformsValue),
-    _Elements<GfVec2f>(influencesValue),
+    _Scalars(influencesValue, 2),
     hasConstantInfluencesValue,
     numInfluencesPerComponent,
     _Elements<number>(faceVertexIndicesValue),

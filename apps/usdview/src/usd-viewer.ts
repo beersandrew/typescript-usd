@@ -41,6 +41,7 @@ import { shadingModes, shadingModeMenuHtml, selectionHighlightMenuHtml } from '.
 import { initialExpansion, markPrimSelection, pseudoRoot, renderPrimTree, setPrimExpanded } from './prim-tree-view'
 import { elideValues, primLegendHtml, propertyLegendHtml, renderPropertyTable } from './property-table-view'
 import { propertyColor, rgbText } from './usdview-style'
+import { versionLinkHtml } from './version-label'
 
 export interface ViewerScene { label: string; url: string }
 type LoadResult = { ok: true } | { ok: false; error: unknown }
@@ -186,7 +187,7 @@ export class UsdViewerElement extends HTMLElement {
           </div></details>
           <div hidden>${compositionMenu}</div>${editMenuHtml()}
           ${windowMenuHtml()}
-          <a class="licenses-link" href="${new URL('licenses/', viewerRoot()).href}" target="_blank" rel="noopener">Licenses</a>
+          ${versionLinkHtml(import.meta.env.VITE_TYPESCRIPT_USD_VERSION)}<a class="licenses-link" href="${new URL('licenses/', viewerRoot()).href}" target="_blank" rel="noopener">Licenses</a>
         </div>
         <form class="path-form" aria-label="Navigate to prim or property"><input class="current-path" aria-label="Current prim or property path" value="/" spellcheck="false"></form>
         <div class="workbench">

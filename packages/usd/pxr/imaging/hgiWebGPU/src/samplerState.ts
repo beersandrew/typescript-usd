@@ -282,14 +282,25 @@ function _createFootprint(device: GPUDevice, key: string, width: number, height:
     const n = Math.max(width >> level, 1), m = Math.max(height >> level, 1)
     const qn = Math.max(1, Math.floor(n / 4)), qm = Math.max(1, Math.floor(m / 4))
     const data = new Uint8Array(n * m * 4)
+    // A row's R and G depend only on the column and its B and A only on
+    // the row: at most four distinct rows, each built once and copied.
+    const rows = new Map<number, Uint8Array>()
     for (let j = 0; j < m; j++) {
-      for (let i = 0; i < n; i++) {
-        const o = (j * n + i) * 4
-        data[o] = i >= n - qn ? 255 : 0
-        data[o + 1] = i < qn ? 255 : 0
-        data[o + 2] = j >= m - qm ? 255 : 0
-        data[o + 3] = j < qm ? 255 : 0
+      const b = j >= m - qm ? 255 : 0, a = j < qm ? 255 : 0
+      const kind = (b ? 1 : 0) | (a ? 2 : 0)
+      let row = rows.get(kind)
+      if (!row) {
+        row = new Uint8Array(n * 4)
+        for (let i = 0; i < n; i++) {
+          const o = i * 4
+          row[o] = i >= n - qn ? 255 : 0
+          row[o + 1] = i < qn ? 255 : 0
+          row[o + 2] = b
+          row[o + 3] = a
+        }
+        rows.set(kind, row)
       }
+      data.set(row, j * n * 4)
     }
     device.queue.writeTexture({ texture, mipLevel: level }, data, { bytesPerRow: n * 4 },
       { width: n, height: m })

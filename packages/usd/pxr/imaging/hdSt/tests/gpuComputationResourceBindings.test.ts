@@ -78,4 +78,27 @@ describe('Storm GPU computation resource bindings', () => {
     expect(bindings.map(desc => desc.buffers.map(b => b.buffers[0]!.getId())))
       .toEqual(dispatches)
   })
+
+  // resourceRegistry.cpp:1199-1205: GarbageCollect destroys the bindings only
+  // the registry still holds (use count 1). Each dispatch above takes them for
+  // its own use, so after it the registry is their only holder. Bindings of
+  // buffers that were reallocated or freed would otherwise pile up: playing the
+  // USD Museum tour in a loop kept ~88 MB more per pass.
+  it('GarbageCollect destroys bindings no dispatch holds', () => {
+    const { hgi, bindings } = computeTestHgi()
+    const destroyed: unknown[] = []
+    Object.assign(hgi, { destroyResourceBindings: (handle: unknown) => { destroyed.push(handle) } })
+    const registry = new HdStResourceRegistry(hgi)
+    const subdivision = new HdSt_Subdivision(false, 1)
+    const refine = () => subdivision.refineGPU(range({ points: 613 }),
+      'points', new HdSt_GpuStencilTable(4, 9, range({ sizes: 630, offsets: 631 }),
+        range({ indices: 632, weights: 633 })), registry)
+    refine()
+    refine()
+    expect(bindings).toHaveLength(1)
+    registry.garbageCollect()
+    expect(destroyed).toHaveLength(1)
+    refine()
+    expect(bindings).toHaveLength(2)
+  })
 })

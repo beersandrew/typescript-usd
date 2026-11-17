@@ -149,8 +149,8 @@ npx tsc --noEmit -p tsconfig.ui.json
 npx vitest run
 ```
 
-On November 12, 2026: both typechecks pass and vitest runs **69 test files,
-691 tests, all passing**. These are jsdom and controller
+On November 16, 2026: both typechecks pass and vitest runs **73 test files,
+726 tests, all passing**. These are jsdom and controller
 tests with fake or Node-side runtimes; they check UI behaviour and USD
 semantics against native captures from the 26.11.1 build
 ([FIXTURES.md](../../FIXTURES.md)), not GPU rendering.

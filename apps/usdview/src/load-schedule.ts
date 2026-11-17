@@ -30,10 +30,14 @@ export interface LoadSchedule {
   readonly lead?: number
 }
 
-/** The next frame at or after `frame` that one of the carrier's windows holds. */
+/** The next frame at or after `frame` at which the carrier is needed on
+ *  screen: `lead` frames into one of its windows. Carriers whose windows are
+ *  all open at `frame` (after a jump) rank by when each is needed, not all
+ *  as `frame`. */
 function nextNeeded(schedule: LoadSchedule, path: string, frame: number): number {
+  const lead = schedule.lead ?? 0
   let best = Infinity
-  for (const [a, b] of carrierWindows(schedule, path)) if (b >= frame) best = Math.min(best, Math.max(a, frame))
+  for (const [a, b] of carrierWindows(schedule, path)) if (b >= frame) best = Math.min(best, Math.max(Math.min(a + lead, b), frame))
   return best
 }
 
@@ -143,11 +147,47 @@ export class LoadScheduler {
     const ahead = change.load.filter(path => !urgent.includes(path)).sort(soonest)
     return {load: [...urgent, ...ahead.slice(0, budget)], unload: change.unload.slice(0, budget)}
   }
+  /** What `frame`'s scheduled set still needs beyond what the frame changes
+   *  load (a working set's lead-in carriers, past its per-change budget, and
+   *  the unloads past it): one budget's worth, the loads needed soonest
+   *  first, or undefined when the stage holds the set (always so, after a
+   *  frame change, for a schedule without a budget). */
+  remainder(frame: number): LoadScheduleChange | undefined {
+    const change = loadScheduleChange(this.schedule, frame, this.#loaded)
+    const budget = this.schedule.perChange
+    if (!change || !budget) return change
+    const soonest = (a: string, b: string) => nextNeeded(this.schedule, a, frame) - nextNeeded(this.schedule, b, frame)
+    return {load: [...change.load].sort(soonest).slice(0, budget), unload: change.unload.slice(0, budget)}
+  }
+  /** Applies `remainder(frame)` when no change is in flight (PausedLoadAhead,
+   *  load-ahead.ts). Resolves true when it applied one; false when there is
+   *  nothing left, a change is in flight, or the same change was just
+   *  applied without progress. A frame change requested meanwhile runs once
+   *  it settles. */
+  settle(frame: number): Promise<boolean> {
+    if (this.#running) return Promise.resolve(false)
+    const change = this.remainder(frame)
+    const key = change && JSON.stringify([frame, change])
+    if (!change || key === this.#settled) return Promise.resolve(false)
+    this.#settled = key
+    const running = this.#apply(change).then(() => true)
+    this.#running = running
+    this.#settling = running
+    const clear = () => { if (this.#running === running) { this.#running = undefined; this.#settling = undefined } }
+    running.then(clear, clear)
+    return running
+  }
+  #settled: string | undefined
+  #settling: Promise<boolean> | undefined
   get busy(): boolean { return !!this.#running }
   /** Brings the stage to the latest requested frame's set. Resolves true when
    * a change was applied (by this call or the run it joined). */
   update(frame: number): Promise<boolean> {
     this.#frame = frame
+    this.#settled = undefined
+    // A settle in flight: the frame's own change runs after it.
+    const settling = this.#settling
+    if (settling) return settling.catch(() => false).then(() => this.update(this.#frame))
     if (this.#running) return this.#running
     const running = this.#run()
     this.#running = running

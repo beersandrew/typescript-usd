@@ -23,7 +23,11 @@
 //   when the entry is replaced, erased by GarbageCollect or invalidated, and
 //   _IsUnique is `_useCount() === 1`. Other values (texture objects, shader
 //   code) count only the holders besides the registry and are unique when
-//   their `_expired` flag is set; values with neither are never collected.
+//   their `_expired` flag is set; values with neither are never collected,
+//   unless the registry is made with `heldOnlyByRegistry`: then every entry
+//   is unique, as when nothing keeps the value past the call that got it
+//   (Storm's Hgi resource bindings: each use takes the shared_ptr for one
+//   dispatch, so upstream's use count is back to 1 at GarbageCollect).
 // - The GarbageCollect callback receives the value itself (upstream passes
 //   value.get()).
 
@@ -100,6 +104,13 @@ export class HdInstance<VALUE> {
 /** instanceRegistry.h:118-169 */
 export class HdInstanceRegistry<VALUE> {
   private readonly _dictionary: _Dictionary<VALUE | null> = new Map()
+  private readonly _heldOnlyByRegistry: boolean
+
+  /** PLATFORM-DIVERGENCE(hd-instance-use-count): `heldOnlyByRegistry` for
+   *  values no caller keeps past its use (see the file header). */
+  constructor(options: { heldOnlyByRegistry?: boolean } = {}) {
+    this._heldOnlyByRegistry = options.heldOnlyByRegistry ?? false
+  }
 
   /** instanceRegistry.h:173-193 */
   GetInstance(key: HdInstanceKeyType): HdInstance<VALUE> {
@@ -141,7 +152,7 @@ export class HdInstanceRegistry<VALUE> {
     let inUseCount = 0
     for (const [key, holder] of [...this._dictionary]) {
       // erase instance which isn't referred from anyone
-      const isUnique = HdInstanceRegistry._isUnique(holder.value)
+      const isUnique = this._heldOnlyByRegistry ? _IsSet(holder.value) : HdInstanceRegistry._isUnique(holder.value)
       if (isUnique && (++holder.recycleCounter > recycleCount)) {
         callback(holder.value as VALUE)
         this._dictionary.delete(key)

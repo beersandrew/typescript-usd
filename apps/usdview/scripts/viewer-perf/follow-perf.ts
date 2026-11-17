@@ -25,18 +25,27 @@
 //             relative to this script, so a bundle built elsewhere needs it
 //   --no-prefetch  do not read the next carriers' layers ahead (runtime.ts,
 //             src/load-prefetch.ts)
-//   --sliced  payload prims reach Hydra a share per frame (the viewer's
-//             playback behavior, usdview-sliced-arrival)
 //   --lights  each frame's record gains the lights Storm lit it with: the
 //             HdxSimpleLightTask's lighting context after its last Sync of
 //             the frame (useLighting, each light's id, dome flag, diffuse)
+//   --scrubbed-from G  the stage holds frame G's set (opened there) and the
+//             playhead was dragged to --from, which loads nothing (runtime.ts
+//             scrubbing); the stepped frames load what --from needed
+//   --settle-ms N  wait up to N ms for each paused draw to converge
+//   --paused-ahead  before stepping, the paused load-ahead (src/load-ahead.ts)
+//             runs to completion at --from, each step drawn until converged;
+//             its time is reported as pausedAhead
 //   --follow  a leader advances one frame per 1000/fps ms of wall clock and
 //             the follower seeks as follow.ts's FollowSeeker does (one seek
 //             in flight, the newest leader frame waiting)
+//   --slow-ms N  every frame over N ms is listed in full under `slow` (its
+//             phases, the frame's load/unload, garbage collection time
+//             inside the frame, and how many prims the stage scene index
+//             added and removed in it, with the time those notices took)
 import { readFileSync } from 'node:fs'
 import { pathToFileURL, fileURLToPath } from 'node:url'
 import path from 'node:path'
-import { installGpuGlobals, createNullDevice } from './null-gpu'
+import { installGpuGlobals, createNullDevice, gpuCallSites } from './null-gpu'
 import { installProbe, snapshot, delta, rounded, textureReport } from './probe'
 import { Stage } from 'typescript-usd/usd'
 import { getStageUpAxis } from 'typescript-usd/usdGeom'
@@ -48,6 +57,7 @@ import { defaultDisplaySettings, mergeDisplaySettings, type DisplaySettings } fr
 import { carrierLoaded, readLoadSchedule, LoadScheduler } from '../../src/load-schedule'
 import { LoadPrefetcher } from '../../src/load-prefetch'
 import { deriveWorkingSet, defaultWorkingSetOptions } from '../../src/working-set'
+import { PausedLoadAhead } from '../../src/load-ahead'
 // load-prefetch.ts loads it on demand; in this one-file bundle it must be
 // evaluated before the run below, which runs at the module's top level.
 import 'typescript-usd/hio/_internal'
@@ -57,6 +67,7 @@ import { FollowSeeker } from '../../src/follow'
 import { HgiWebGPU } from 'typescript-usd/hgiWebGPU'
 import { SimpleLightTask as HdxSimpleLightTask } from 'typescript-usd/hdx'
 import { Session } from 'node:inspector/promises'
+import { UsdImagingStageSceneIndex } from 'typescript-usd/usdImaging'
 
 const args = process.argv.slice(2)
 const option = (name: string, fallback: string) => { const i = args.indexOf(name); return i < 0 ? fallback : args[i + 1]! }
@@ -102,9 +113,10 @@ const scheduler = schedule && new LoadScheduler(schedule, p => carrierLoaded(sta
 let currentFrame = from
 const prefetcher = schedule && !args.includes('--no-prefetch') ? new LoadPrefetcher(stage, schedule) : undefined
 // --late-load: every payload loads in the first stepped frame instead (one
-// resync of the whole scene during playback, for --sliced checks on any scene).
+// resync of the whole scene during playback).
 const lateLoad = args.includes('--late-load')
-await stage.loadAndUnload([...scheduler?.change(from)?.load ?? [], ...(lateLoad ? [] : outside)], [])
+const scrubbedFrom = args.includes('--scrubbed-from') ? Number(option('--scrubbed-from', '0')) : undefined
+await stage.loadAndUnload([...scheduler?.change(scrubbedFrom ?? from)?.load ?? [], ...(lateLoad ? [] : outside)], [])
 const openMs = performance.now() - openStart
 
 const settings = mergeDisplaySettings(defaultDisplaySettings(), { complexity })
@@ -139,6 +151,7 @@ const passes = new Map<string, number>()
     return create.call(this, desc)
   }
 }
+const gpuSiteFrames = new Set(option('--gpu-sites', '').split(',').filter(Boolean).map(Number))
 const profileFrames = new Set(option('--profile-frames', '').split(',').filter(Boolean).map(Number))
 const profileDir = option('--profile-dir', '')
 const session = profileFrames.size ? new Session() : undefined
@@ -161,9 +174,29 @@ if (args.includes('--lights')) {
     return result
   }
 }
+// --slow-ms: garbage collection (PerformanceObserver 'gc', delivered later
+// and attributed to frames by time) and the stage scene index's notices.
+const slowMs = Number(option('--slow-ms', '0'))
+const gcSpans: [number, number][] = []
+if (slowMs > 0) {
+  const { PerformanceObserver } = await import('node:perf_hooks')
+  new PerformanceObserver(list => { for (const e of list.getEntries()) gcSpans.push([e.startTime, e.startTime + e.duration]) }).observe({ entryTypes: ['gc'] })
+}
+const notices = { added: 0, removed: 0, addedMs: 0, removedMs: 0 }
+{
+  type Any = Record<string, any>
+  const proto = UsdImagingStageSceneIndex.prototype as unknown as Any
+  for (const [method, count, ms] of [['_sendPrimsAdded', 'added', 'addedMs'], ['_sendPrimsRemoved', 'removed', 'removedMs']] as const) {
+    const original = proto[method] as (this: unknown, e: unknown[]) => void
+    proto[method] = function (this: unknown, entries: unknown[]) {
+      const t = performance.now()
+      try { original.call(this, entries) } finally { notices[count] += entries.length; notices[ms] += performance.now() - t }
+    }
+  }
+}
 const macrotask = () => new Promise(resolve => setTimeout(resolve, 0))
 
-interface FrameRecord { lights?: LightRecord, frame: number, ms: number, loadMs: number, cameraMs: number, setTimeMs: number, renderMs: number, idleMs?: number, converged: boolean, gpu: Record<string, number>, phases: Record<string, { calls: number, ms: number, maxMs: number }> }
+interface FrameRecord { lights?: LightRecord, t0?: number, t1?: number, notices?: typeof notices, frame: number, ms: number, loadMs: number, cameraMs: number, setTimeMs: number, renderMs: number, idleMs?: number, converged: boolean, gpu: Record<string, number>, phases: Record<string, { calls: number, ms: number, maxMs: number }> }
 /** One frame as changeTime does it while playing (runtime.ts). */
 async function step(frame: number): Promise<FrameRecord> {
   const profiling = session && profileFrames.has(frame)
@@ -181,19 +214,15 @@ async function step(frame: number): Promise<FrameRecord> {
 // --dump-scene F,F,... --dump-dir DIR: after each listed frame, every prim of
 // the render index's terminal scene index (path, type, and its data sources
 // printed at the frame) into DIR/<frame>.txt, with the next frame's draw
-// count. With --sliced the queued prims are sent first (as the viewer does
-// when playback stops), so a sliced and an unsliced run can be compared.
+// count.
 const dumpFrames = new Set(option('--dump-scene', '').split(',').filter(Boolean).map(Number))
 const sceneDumpDir = option('--dump-dir', '')
 async function dumpScene(frame: number) {
   const { mkdirSync, writeFileSync } = await import('node:fs')
   const { DebugPrintDataSource, SceneIndexPrimView } = await import('typescript-usd/hd')
-  const sliced = args.includes('--sliced')
-  if (sliced) engine.setSlicedArrival(false)
   const draws0 = counters.draws
   engine.Render(stormCamera(), width, height)
   const draws = counters.draws - draws0
-  if (sliced) engine.setSlicedArrival(true)
   const index = (engine as unknown as { _engine: { _getRenderIndexForTesting(): { _terminalSceneIndex: Parameters<typeof DebugPrintDataSource>[0] & import("typescript-usd/hd").SceneIndexBase } } })._engine._getRenderIndexForTesting()._terminalSceneIndex
   const lines: string[] = [`draws ${draws}`]
   for (const p of new SceneIndexPrimView(index, '/')) {
@@ -206,7 +235,11 @@ async function dumpScene(frame: number) {
 async function stepFrame(frame: number): Promise<FrameRecord> {
   currentFrame = frame
   const before = snapshot()
-  const c0 = { draws: counters.draws, dispatches: counters.dispatches, submits: counters.submits, writes: counters.writes, writeBytes: counters.writeBytes, buffers: counters.buffers, textures: counters.textures }
+  const n0 = { ...notices }
+  // --gpu-sites F,F,...: the listed frames' GPU calls by kind, label and caller, to stderr.
+  const sites = gpuSiteFrames.has(frame)
+  if (sites) { counters.calls.clear(); gpuCallSites(true) }
+  const c0 = { draws: counters.draws, dispatches: counters.dispatches, submits: counters.submits, writes: counters.writes, writeBytes: counters.writeBytes, buffers: counters.buffers, textures: counters.textures, renderPasses: counters.renderPasses, computePasses: counters.computePasses, copies: counters.copies }
   const start = performance.now()
   if (scheduler?.change(frame)) await scheduler.update(frame)
   if (lateLoad && frame === from + 1) await stage.loadAndUnload(outside, [])
@@ -219,24 +252,49 @@ async function stepFrame(frame: number): Promise<FrameRecord> {
   const t3 = performance.now()
   engine.Render(camera, width, height)
   const end = performance.now()
+  if (sites) {
+    gpuCallSites(false)
+    const top = [...counters.calls].sort((x, y) => y[1] - x[1]).slice(0, 25)
+    console.error(`gpu-sites frame ${frame}:\n` + top.map(([k, n]) => `  ${n}\t${k}`).join('\n'))
+  }
   const phases = rounded(delta(before, snapshot()))
   for (const k of Object.keys(phases)) if (phases[k]!.ms < 0.5) delete phases[k]
-  return { ...(lastLights ? { lights: lastLights } : {}), frame, ms: r1(end - start), loadMs: r1(t1 - start), cameraMs: r1(t2 - t1), setTimeMs: r1(t3 - t2), renderMs: r1(end - t3), converged: engine.isConverged(), gpu: Object.fromEntries(Object.entries(c0).map(([k, v]) => [k, (counters as unknown as Record<string, number>)[k]! - v])), phases }
+  const n = { added: notices.added - n0.added, removed: notices.removed - n0.removed, addedMs: r1(notices.addedMs - n0.addedMs), removedMs: r1(notices.removedMs - n0.removedMs) }
+  return { ...(lastLights ? { lights: lastLights } : {}), t0: start, t1: end, notices: n, frame, ms: r1(end - start), loadMs: r1(t1 - start), cameraMs: r1(t2 - t1), setTimeMs: r1(t3 - t2), renderMs: r1(end - t3), converged: engine.isConverged(), gpu: Object.fromEntries(Object.entries(c0).map(([k, v]) => [k, (counters as unknown as Record<string, number>)[k]! - v])), phases }
 }
 
 const firstStart = performance.now()
 controller.time = from
 engine.SetTime(from)
 engine.Render(stormCamera(), width, width)
-// --sliced: added prims reach Hydra a share per frame, as while the viewer plays (usdview-sliced-arrival).
-if (args.includes('--sliced')) {
-  // --sliced-share N: the first share per frame (tooling; the engine adapts it from there).
-  const share = Number(option('--sliced-share', '0'))
-  if (share > 0) (engine as unknown as { _addedPerFrame: number })._addedPerFrame = share
-  engine.setSlicedArrival(true)
-}
 const firstRenderMs = performance.now() - firstStart
-for (let i = 0; i < 200 && !engine.isConverged(); i++) { await new Promise(resolve => setTimeout(resolve, 1)); engine.Render(stormCamera(), width, height) }
+// --settle-ms N: wait up to N ms (at least 200 tries) for convergence, as a
+// paused viewer waits for its textures (runtime.ts settleImaging).
+const settleMs = Number(option('--settle-ms', '0'))
+async function converge() {
+  const t = performance.now()
+  for (let i = 0; !engine.isConverged() && (i < 200 || performance.now() - t < settleMs); i++) { await new Promise(resolve => setTimeout(resolve, 1)); engine.Render(stormCamera(), width, height) }
+}
+await converge()
+// --paused-ahead: the viewer paused at --from with nothing touched.
+let pausedAhead: { ms: number, steps: { load: string[], unload: string[], ms: number }[] } | undefined
+if (args.includes('--paused-ahead') && scheduler) {
+  const loader = new PausedLoadAhead({ scheduler, ...prefetcher ? { prefetcher } : {}, frame: () => from, idle: () => true, quiet: 0 })
+  const steps: { load: string[], unload: string[], ms: number }[] = []
+  const t = performance.now()
+  for (;;) {
+    const change = scheduler.remainder(from), s0 = performance.now()
+    const result = await loader.step()
+    // Stepped here, not by its own timer.
+    loader.stop()
+    if (result !== 'loaded') break
+    engine.Render(stormCamera(), width, height)
+    await converge()
+    steps.push({ load: change!.load, unload: change!.unload, ms: r1(performance.now() - s0) })
+  }
+  pausedAhead = { ms: r1(performance.now() - t), steps }
+  changes.length = 0
+}
 
 const frames: FrameRecord[] = []
 const ticks: { t: number, leader: number, shown: number | undefined }[] = []
@@ -268,6 +326,8 @@ if (!follow) {
 }
 const wallMs = performance.now() - t0
 
+const gcIn = (f: FrameRecord) => r1(gcSpans.reduce((t, [a, b]) => t + Math.max(0, Math.min(b, f.t1!) - Math.max(a, f.t0!)), 0))
+const slow = slowMs > 0 ? frames.filter(f => f.ms > slowMs).map(({ lights, t0, t1, ...f }) => ({ ...f, gcMs: gcIn({ t0, t1 } as FrameRecord), changes: changes.filter(c => c.frame === f.frame) })) : undefined
 const sorted = frames.map(f => f.ms).sort((a, b) => a - b)
 const q = (p: number) => sorted[Math.min(sorted.length - 1, Math.floor(sorted.length * p))] ?? null
 const sum = (k: keyof FrameRecord) => r1(frames.reduce((t, f) => t + (f[k] as number ?? 0), 0))
@@ -275,12 +335,13 @@ const phaseTotals: Record<string, number> = {}
 for (const f of frames) for (const [k, v] of Object.entries(f.phases)) phaseTotals[k] = r1((phaseTotals[k] ?? 0) + v.ms)
 const behind = ticks.map(t => t.shown === undefined ? null : t.leader - t.shown).filter((x): x is number => x !== null)
 console.log(JSON.stringify({
-  scene, mode: follow ? 'follow' : 'every', from, to, complexity, width, height, openMs: r1(openMs), workingSetMs: r1(workingSetMs), firstRenderMs: r1(firstRenderMs), wallMs: r1(wallMs),
+  scene, mode: follow ? 'follow' : 'every', from, to, ...scrubbedFrom !== undefined ? { scrubbedFrom } : {}, ...pausedAhead ? { pausedAhead } : {}, complexity, width, height, openMs: r1(openMs), workingSetMs: r1(workingSetMs), firstRenderMs: r1(firstRenderMs), wallMs: r1(wallMs),
   frames: frames.length, medianMs: q(0.5), p90Ms: q(0.9), p99Ms: q(0.99), maxMs: sorted.at(-1) ?? null,
   over42: frames.filter(f => f.ms > 1000 / fps).length,
   totals: { ms: sum('ms'), loadMs: sum('loadMs'), cameraMs: sum('cameraMs'), setTimeMs: sum('setTimeMs'), renderMs: sum('renderMs'), idleMs: sum('idleMs') },
   phaseTotals: Object.fromEntries(Object.entries(phaseTotals).sort((a, b) => b[1] - a[1])),
-  worst: [...frames].sort((a, b) => b.ms - a.ms).slice(0, 15).map(({ lights, ...f }) => f),
+  worst: [...frames].sort((a, b) => b.ms - a.ms).slice(0, 15).map(({ lights, t0, t1, ...f }) => f),
+  ...(slow ? { slow, gcTotalMs: r1(gcSpans.reduce((t, [a, b]) => t + b - a, 0)) } : {}),
   changes,
   ...(follow ? { behind: { max: Math.max(0, ...behind), mean: behind.length ? r1(behind.reduce((a, b) => a + b, 0) / behind.length) : null, ticks: ticks.length }, ticks } : {}),
   textures: (({ spans, ...rest }) => rest)(textureReport()),

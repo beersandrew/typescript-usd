@@ -14,6 +14,11 @@
 //   (usdSkel/utils.cpp:652-760, 99-140). The results are converted to
 //   GfMatrix4f (rounded to float) at the boundary, so a joint's skel-space
 //   transform is rounded once instead of after every float multiply.
+//   The skinning transforms stay flat row-major number[16] through
+//   UsdSkelMakeTransforms, the anim mapper and UsdSkelConcatJointTransforms,
+//   rounded to float where a GfMatrix4f would be (the joint-local and the
+//   skel-space transforms), and become GfMatrix4f once, after the
+//   inverse-bind multiply, which sums as GfMatrix4f.getMultiply does.
 // - UsdSkelConcatJointTransforms of the usdSkel port throws where upstream
 //   warns and returns false (mis-ordered parent); the exception is turned into
 //   the warning/false result.
@@ -43,14 +48,26 @@ export function _UsdSkelImagingMatrix4fArray(matrices: readonly GfMatrix4f[]): V
   return new VtArray<GfMatrix4f>(matrices, _UsdSkelImagingMatrix4fType)
 }
 
-/** Row-major flat tuple of a Gf matrix (the usdSkel port's Matrix4). */
-function _ToTuple(m: GfMatrix4f | GfMatrix4d): GfMatrix4Tuple {
-  return [...m.GetArray()] as GfMatrix4Tuple
+/** The float row-major elements of a GfMatrix4f (read only), as the usdSkel
+ *  port's Matrix4. */
+function _AsTuple(m: GfMatrix4f): GfMatrix4Tuple {
+  return m.GetArray() as GfMatrix4Tuple
 }
 
-function _FromTuple(m: readonly number[]): GfMatrix4f {
-  return new GfMatrix4f(...m)
+/** Rounds a double row-major matrix to float in place: the elements a
+ *  GfMatrix4f made from it holds. */
+function _RoundToFloat(m: number[]): GfMatrix4Tuple {
+  for (let k = 0; k < 16; ++k) m[k] = Math.fround(m[k]!)
+  return m as GfMatrix4Tuple
 }
+
+/** A GfMatrix4f holding the float elements of `m`. */
+function _FromFloatTuple(m: GfMatrix4Tuple): GfMatrix4f {
+  return new GfMatrix4f(m[0], m[1], m[2], m[3], m[4], m[5], m[6], m[7],
+    m[8], m[9], m[10], m[11], m[12], m[13], m[14], m[15])
+}
+
+const _identity: GfMatrix4Tuple = [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1]
 
 /** skelData.h:30-48. Some of the data necessary to compute the skinning
  *  transforms of a skeleton. These data come from the skeleton and the
@@ -105,14 +122,25 @@ export function UsdSkelImagingComputeSkelData(
   return data
 }
 
-/** skelData.cpp:102-123: result[i] = matrices[i] * result[i]. */
-function _MultiplyInPlace(matrices: readonly GfMatrix4f[], result: GfMatrix4f[]): boolean {
+/** skelData.cpp:102-123: result[i] = matrices[i] * result[i], as
+ *  GfMatrix4f.getMultiply computes it (double sums over k in order, each
+ *  rounded to float). `result` holds float-rounded row-major matrices. */
+function _MultiplyInPlace(matrices: readonly GfMatrix4f[], result: GfMatrix4Tuple[]): boolean {
   const n = result.length
   if (matrices.length !== n) {
     return false
   }
   for (let i = 0; i < n; ++i) {
-    result[i] = matrices[i]!.getMultiply(result[i]!)
+    const a = matrices[i]!.GetArray(), b = result[i]!
+    const out = new Array<number>(16) as GfMatrix4Tuple
+    for (let r = 0; r < 4; ++r) {
+      for (let c = 0; c < 4; ++c) {
+        let s = 0
+        for (let k = 0; k < 4; ++k) s += a[r * 4 + k]! * b[k * 4 + c]!
+        out[r * 4 + c] = Math.fround(s)
+      }
+    }
+    result[i] = out
   }
   return true
 }
@@ -124,8 +152,8 @@ function _ComputeJointLocalTransforms(
   animationSource: string,
   restTransforms: HdMatrix4fArrayDataSource | undefined,
   shutterOffset: number,
-): GfMatrix4f[] {
-  const rest = (t: number) => _UsdSkelImagingGetArray<GfMatrix4f>(restTransforms, t)
+): GfMatrix4Tuple[] {
+  const rest = (t: number) => _UsdSkelImagingGetArray<GfMatrix4f>(restTransforms, t).map(_AsTuple)
 
   // Remapping of skelAnimation's data to skeleton's hierarchy.
   const animMapper = new UsdSkelAnimMapper(
@@ -144,15 +172,22 @@ function _ComputeJointLocalTransforms(
     animationSchema.getScales(), shutterOffset)
 
   // usdSkel port: quaternions are (w, x, y, z) number tuples.
-  const tuples = UsdSkelMakeTransforms(
-    translations.map(t => t.data),
-    rotations.map(r => [r.GetReal(), ...r.GetImaginary().data]),
-    scales.map(s => s.data))
+  const t = new Array<readonly number[]>(translations.length)
+  for (let i = 0; i < translations.length; ++i) t[i] = translations[i]!.data
+  const r = new Array<readonly number[]>(rotations.length)
+  for (let i = 0; i < rotations.length; ++i) {
+    const q = rotations[i]!, im = q.GetImaginary().data
+    r[i] = [q.GetReal(), im[0]!, im[1]!, im[2]!]
+  }
+  const s = new Array<readonly number[]>(scales.length)
+  for (let i = 0; i < scales.length; ++i) s[i] = scales[i]!.data
+  const tuples = UsdSkelMakeTransforms(t, r, s)
   if (!tuples) {
     TF_WARN(`Could not compute transforms for skelAnimation ${animationSource}.\n`)
     return rest(shutterOffset)
   }
-  const animTransforms = tuples.map(_FromTuple)
+  // The VtArray<GfMatrix4f> of upstream: rounded to float.
+  const animTransforms = tuples.map(_RoundToFloat)
 
   // If all transform components were empty, that could mean:
   // - the attributes were never authored
@@ -168,19 +203,20 @@ function _ComputeJointLocalTransforms(
     return animTransforms
   }
 
-  let result: GfMatrix4f[]
+  let result: GfMatrix4Tuple[]
 
   if (animMapper.isSparse()) {
     result = rest(shutterOffset)
   } else {
-    result = Array.from({ length: data.topology.getNumJoints() }, () => new GfMatrix4f(1))
+    result = new Array<GfMatrix4Tuple>(data.topology.getNumJoints()).fill(_identity)
   }
 
   // UsdSkelAnimMapper::RemapTransforms (usdSkel/animMapper.cpp:218-224):
-  // Remap with identity as the default value.
-  let remapped: GfMatrix4f[]
+  // Remap with identity as the default value. (The matrices are only read
+  // from here on, so the identity is shared.)
+  let remapped: GfMatrix4Tuple[]
   try {
-    remapped = animMapper.remap(animTransforms, result, 1, new GfMatrix4f(1))
+    remapped = animMapper.remap(animTransforms, result, 1, _identity)
   } catch {
     TF_WARN(`Could not remap transforms from skelAnimation ${animationSource} for ` +
       `skeleton ${data.primPath}.\n`)
@@ -192,22 +228,30 @@ function _ComputeJointLocalTransforms(
 /** skelData.cpp:197-210 */
 function _ConcatJointTransforms(
   topology: UsdSkelTopology,
-  localTransforms: readonly GfMatrix4f[],
+  localTransforms: readonly GfMatrix4Tuple[],
   primPath: string,
-): GfMatrix4f[] {
+): GfMatrix4Tuple[] {
   const n = topology.size
   const warn = () => TF_WARN(
     `Could not concat local joint transforms for skeleton ${primPath}.\n`)
   // UsdSkelConcatJointTransforms leaves `result` value-initialized on
   // failure (usdSkel/utils.cpp:106-115).
-  const empty = () => Array.from({ length: n }, () => new GfMatrix4f(0))
+  const empty = () => Array.from({ length: n }, () => new Array<number>(16).fill(0) as GfMatrix4Tuple)
   if (localTransforms.length !== n) {
     TF_WARN(`Size of jointLocalXforms [${localTransforms.length}] != number of joints [${n}]`)
     warn()
     return empty()
   }
   try {
-    return UsdSkelConcatJointTransforms(topology, localTransforms.map(_ToTuple)).map(_FromTuple)
+    // The VtArray<GfMatrix4f> of upstream: rounded to float. A root joint's
+    // entry is its local transform itself, already rounded; the others are
+    // new double products.
+    const xforms = UsdSkelConcatJointTransforms(topology, localTransforms)
+    for (let i = 0; i < n; ++i) {
+      if (xforms[i] !== localTransforms[i]) _RoundToFloat(xforms[i]!)
+      else xforms[i] = [...xforms[i]!] as GfMatrix4Tuple
+    }
+    return xforms
   } catch (e) {
     TF_WARN(String((e as Error).message ?? e))
     warn()
@@ -248,7 +292,8 @@ export function UsdSkelImagingComputeSkinningTransforms(
     // xforms.size() should equal to numJoints
     // do we need a TF_VERIFY here?
     for (let j = 0; j < numJoints; ++j) {
-      result[i * numJoints + j] = xforms[j] ?? new GfMatrix4f(0)
+      const m = xforms[j]
+      result[i * numJoints + j] = m ? _FromFloatTuple(m) : new GfMatrix4f(0)
     }
   }
 

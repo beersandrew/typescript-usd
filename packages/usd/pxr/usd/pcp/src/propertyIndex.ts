@@ -137,7 +137,7 @@ class PropertyIndexer {
   gatherPropertySpecs(primIndex: PcpPrimIndex): void {
     const name = SdfPath.fromString(this._propSite.path).name
     const propertyInfo: PcpPropertyInfo[] = []
-    for (const node of primIndex.getNodeRange()) {
+    for (const node of primIndex._getNodeRefs()) {
       if (!node.canContributeSpecs()) continue
       const nodePath = node.getPath()
       for (const { layer } of node.getLayerStack().layers) {

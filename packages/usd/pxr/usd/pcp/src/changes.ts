@@ -1013,7 +1013,7 @@ export class PcpChanges {
           const overrides = this._getCacheChanges(cache)._getLayerStacksUsingLayerOverride(
             changedLayer)
           if (overrides.length === 0) return null
-          for (const node of primIndex.getNodeRange()) {
+          for (const node of primIndex._getNodeRefs()) {
             if (!node.canContributeSpecs() ||
                 node.getPath().pathString !== changedPath.pathString) continue
             if (overrides.includes(node.getLayerStack())) return node
@@ -1472,7 +1472,7 @@ export class PcpChanges {
 
 // _NoLongerHasAnySpecs (changes.cpp:1708-1718).
 function noLongerHasAnySpecs(changes: PcpCacheChanges, primIndex: PcpPrimIndex): boolean {
-  for (const node of primIndex.getNodeRange()) {
+  for (const node of primIndex._getNodeRefs()) {
     if (pcpComposeSiteHasSpecs(node.getLayerStack(), node.getPath(),
       changes.layersAffectedByMutingOrRemoval)) return false
   }

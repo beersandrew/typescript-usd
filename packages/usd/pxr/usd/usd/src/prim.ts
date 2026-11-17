@@ -51,7 +51,7 @@ import { _makeUsdResolveInfo, UsdResolveInfo } from './resolveInfo.ts'
 import { Interval as GfInterval } from 'typescript-usd/gf'
 import { Registry as KindRegistry } from 'typescript-usd/kind'
 import {
-  usdInterpolateResolvedSamples, usdResolvedBracketingTimes, usdResolvedSampleTimes, usdResolvePropertyNames,
+  usdInterpolateResolvedSamples, usdResolvedBracketingTimes, usdResolvedSampleTimes, usdResolvePropertyNames, usdResolvePropertyNameSet,
   type UsdAttributeResolveResult,
 } from './resolver.ts'
 import { _usdTimeCodeQuery, UsdTimeCode } from './timeCode.ts'
@@ -813,7 +813,11 @@ export class Prim {
 
   #getPropertyNames(onlyAuthored: boolean, predicate?: (name: string) => boolean): string[] {
     const names = new Set<string>(onlyAuthored ? [] : this.getPrimDefinition().getPropertyNames())
-    for (const authored of this.attrNames) names.add(authored)
+    // The authored names unsorted: they are sorted and ordered once below
+    // (prim.cpp _GetPropertyNames), not also as attrNames hands them out.
+    const index = this._primData.isPseudoRoot() || this._primData.isPrototype()
+      ? null : this._primData._primIndex
+    if (index) for (const authored of usdResolvePropertyNameSet(index)) names.add(authored)
     if (predicate) for (const name of [...names]) if (!predicate(name)) names.delete(name)
     if (names.size === 0) return []
     const sorted = [...names].sort(
@@ -1297,6 +1301,10 @@ export class Attribute {
   #fallbackValue(): unknown {
     return this._fallbackSource?.def()?.getAttributeFallbackValue(this._fallbackSource.name)
   }
+  // #fallbackValue as the resolve's fallback source, made once per handle
+  // rather than on every resolve.
+  #fallbackSourceFn: (() => unknown) | undefined
+  #fallbackFn(): () => unknown { return this.#fallbackSourceFn ??= () => this.#fallbackValue() }
 
   // UsdObject::IsValid (object.h:127-137): an attribute object is valid
   // only while its prim is and its defining spec is an attribute spec, so
@@ -1313,14 +1321,14 @@ export class Attribute {
     if (!this._queryProvider || this._dataPrimPath === undefined ||
         this._propertyName === undefined) return undefined
     return this._queryProvider._resolveAttribute(
-      this._dataPrimPath, this._propertyName, time, () => this.#fallbackValue(), undefined, this._resultPrimPath)
+      this._dataPrimPath, this._propertyName, time, this.#fallbackFn(), undefined, this._resultPrimPath)
   }
 
   /** @internal AttributeQuery's stage _GetResolveInfoWithResolveTarget seam. */
   _getResolveInfoWithResolveTarget(target: UsdResolveTarget, time?: 'default' | number): UsdResolveInfo {
     const result = this._queryProvider && this._dataPrimPath !== undefined && this._propertyName !== undefined
       ? this._queryProvider._resolveAttribute(this._dataPrimPath, this._propertyName, time,
-        () => this.#fallbackValue(), target, this._resultPrimPath) : { source: 'none' as const, valueIsBlocked: false }
+        this.#fallbackFn(), target, this._resultPrimPath) : { source: 'none' as const, valueIsBlocked: false }
     return _makeUsdResolveInfo(result)
   }
 

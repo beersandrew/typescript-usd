@@ -855,7 +855,10 @@ export class HdsiBackPlateSceneIndex extends HdSingleInputFilteringSceneIndexBas
 
   /** backPlateSceneIndex.cpp:896-920 */
   getPrim(primPath: string): HdSceneIndexPrim {
-    if (primPath === '/') {
+    // typescript-usd: with no back plates in the map both checks below are
+    // false (as upstream's finds), so the paths are not parsed for them;
+    // SdfPath parent and element are not O(1) on string paths here.
+    if (primPath === '/' || this._cameraToBackPlates.size === 0) {
       return this._getInputSceneIndex().getPrim(primPath)
     }
 

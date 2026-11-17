@@ -164,13 +164,22 @@ interface BuiltClipSet {
   times: TimeMapping[]
 }
 
-const builtClipSets = new WeakMap<StageAttrClipSet, BuiltClipSet>()
+// Built once per clip set, as Usd_ClipSet's constructor does: an attribute's
+// StageAttrClipSet (attrClipSetAt, made per resolve) shares its clip set's
+// active, times and layers arrays, which key the result.
+const builtClipSets = new WeakMap<Knots, { times: Knots, layers: StageAttrClipSet['layers'], built: BuiltClipSet }>()
 
 // Usd_ClipSet::Usd_ClipSet (clipSet.cpp:396-529): the time mappings and the
 // clips ordered by start time.
 function builtClipSet(cs: StageAttrClipSet): BuiltClipSet {
-  let built = builtClipSets.get(cs)
-  if (built) return built
+  const cached = builtClipSets.get(cs.active)
+  if (cached && cached.times === cs.times && cached.layers === cs.layers) return cached.built
+  const built = _buildClipSet(cs)
+  builtClipSets.set(cs.active, { times: cs.times, layers: cs.layers, built })
+  return built
+}
+
+function _buildClipSet(cs: StageAttrClipSet): BuiltClipSet {
   const times: TimeMapping[] = cs.times.map(([externalTime, internalTime]) =>
     ({ externalTime, internalTime, isJumpDiscontinuity: false }))
   if (times.length > 0) {
@@ -208,9 +217,7 @@ function builtClipSet(cs: StageAttrClipSet): BuiltClipSet {
     startTime: i === 0 ? CLIP_TIMES_EARLIEST : start,
     endTime: i + 1 < ordered.length ? ordered[i + 1]![0] : CLIP_TIMES_LATEST,
   }))
-  built = { clips, times }
-  builtClipSets.set(cs, built)
-  return built
+  return { clips, times }
 }
 
 // The clip layer's sorted (time, value) samples for the attribute.
@@ -1105,10 +1112,26 @@ function hasTypeName(cs: ResolvedClipSet, attrPath: string, names: readonly stri
 // the clip-side path each such node's spec path translates to
 // (Usd_Clip::TranslatePathToClip, clip.cpp:606-609). Inert nodes are never
 // visited (Usd_Resolver::_SkipEmptyNodes, resolver.cpp:113-123).
+//
+// The sites depend only on the clip set and the walk's nodes, which do not
+// change while both live (recomposing a prim index makes a new node list
+// and new clip sets, Usd_ClipCache::InvalidateClipsForPrim,
+// stage.cpp:5098-5103), so they are found once per clip set and node list
+// rather than on every resolve.
+type ClipSetSite = { position: readonly [number, number]; clipPrimPath: string }
+const _clipSetSites = new WeakMap<ResolvedClipSet, { nodes: readonly PcpNode[]; sites: readonly ClipSetSite[] }>()
 export function clipSetSitesInIndex(
   cs: ResolvedClipSet, nodes: readonly PcpNode[],
-): { position: readonly [number, number]; clipPrimPath: string }[] {
-  const sites: { position: readonly [number, number]; clipPrimPath: string }[] = []
+): readonly ClipSetSite[] {
+  const cached = _clipSetSites.get(cs)
+  if (cached && cached.nodes === nodes) return cached.sites
+  const sites = _computeClipSetSites(cs, nodes)
+  _clipSetSites.set(cs, { nodes, sites })
+  return sites
+}
+
+function _computeClipSetSites(cs: ResolvedClipSet, nodes: readonly PcpNode[]): ClipSetSite[] {
+  const sites: ClipSetSite[] = []
   const clipPrimPath = SdfPath.fromString(cs.primPath)
   nodes.forEach((node, nodeIndex) => {
     if (!node.canContributeSpecs() || node.layerStack !== cs.sourceLayerStack ||

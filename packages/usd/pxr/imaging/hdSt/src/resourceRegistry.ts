@@ -295,7 +295,11 @@ export class HdStResourceRegistry extends HdResourceRegistry {
   private readonly _glslfxFileRegistry = new HdInstanceRegistry<HioGlslfxSharedPtr>()
   private readonly _materialXShaderRegistry = new HdInstanceRegistry<HdStMaterialXShaderPtr>()
 
-  private readonly _resourceBindingsRegistry = new HdInstanceRegistry<HgiResourceBindingsSharedPtr>()
+  // The resource bindings are taken for one dispatch (subdivision, normals,
+  // quadrangulate, ext computations), so the registry is their only holder
+  // between uses and GarbageCollect frees them, as upstream's use count of 1
+  // does (PLATFORM-DIVERGENCE(hd-instance-use-count)).
+  private readonly _resourceBindingsRegistry = new HdInstanceRegistry<HgiResourceBindingsSharedPtr>({ heldOnlyByRegistry: true })
   private readonly _graphicsPipelineRegistry = new HdInstanceRegistry<HgiGraphicsPipelineSharedPtr>()
   private readonly _computePipelineRegistry = new HdInstanceRegistry<HgiComputePipelineSharedPtr>()
 

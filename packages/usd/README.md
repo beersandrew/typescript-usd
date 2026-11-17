@@ -69,8 +69,8 @@ checked against their sources by the tooling kept outside this repository
 
 ## Known failing tests
 
-On November 12, 2026, `npx vitest run` loads all 882 test
-files: **9,279 pass, 4 fail**, and 26 checks the platform rules out are
+On November 16, 2026, `npx vitest run` loads all 886 test
+files: **9,298 pass, 4 fail**, and 26 checks the platform rules out are
 skipped. Every failure is a ported upstream test or a native-capture check
 kept as a plain failing `it()` to expose a real gap:
 

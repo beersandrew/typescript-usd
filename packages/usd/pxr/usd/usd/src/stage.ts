@@ -81,7 +81,8 @@ import {
 } from './clipSet.ts'
 import { _invalidateLayerAuthorsClips } from './clipSetDefinition.ts'
 import {
-  usdResolveAttributeField, usdResolveAttributeFieldWithSource, usdResolveAttributeTypeNames,
+  usdResolveAttributeField, usdResolveAttributeFieldWithSource, usdResolveAttributeTypeName,
+  usdResolvedValueTypeName, type UsdAttributeClipSource,
   usdResolvePropertyCustom, usdResolveWeakestAttributeField,
   usdPropertySites, usdResolveAttributeValue, usdResolvePrimFieldWithSource,
   usdComposePrimListOpField, usdResolveDefiningSpecifier, usdWithLiveSamples,
@@ -93,6 +94,7 @@ import { UsdStageCacheContext, type UsdStageCache } from './stageCache.ts'
 import { StageLoadRules, type LoadPolicy } from './stageLoadRules.ts'
 import { usdInstanceKey } from './instanceKey.ts'
 import { StagePopulationMask } from './stagePopulationMask.ts'
+import { Collector as TraceCollector } from 'typescript-usd/trace'
 import { _traceScopeData } from 'typescript-usd/trace/_internal'
 import {
   _withOptionalTraceScope,
@@ -1054,6 +1056,19 @@ export class Stage {
     return kept.length > 0
   }
 
+  /** pcp-compute-ahead-descends (pcp/src/cache.ts): the children
+   *  _nameChildrenPred would compose, without its side effects (it registers
+   *  instances and records events): none under an inactive prim or an
+   *  instance, and only those the population mask includes. */
+  private _aheadChildNames(index: PcpPrimIndex, childNames: string[]): readonly string[] {
+    if (!Stage._isActive(index)) return []
+    if (index.isInstanceable() && usdInstanceKey(index, this._loadRules, this._populationMask) !== null) return []
+    const mask = this._populationMask
+    if (!mask) return childNames
+    const included = mask.getIncludedChildNames(index.getRootNode().path.pathString)
+    return included.all ? childNames : childNames.filter(name => included.names.includes(name))
+  }
+
   // _ComposePrimIndexesInParallel (stage.cpp:5330-5392).
   private *_composePrimIndexesInParallel(
     primIndexPaths: readonly string[], instanceChanges: UsdInstanceChanges,
@@ -1061,7 +1076,8 @@ export class Stage {
     const cache = this._pcpCache!
     yield* cache._computePrimIndexesInParallel(primIndexPaths,
       (index, childNames) => this._nameChildrenPred(index, childNames),
-      path => this._loadRules.isIncluded(path))
+      path => this._loadRules.isIncluded(path),
+      (index, childNames) => this._aheadChildNames(index, childNames))
     const changes = this._instanceCache.processChanges()
     instanceChanges.newPrototypePrims.push(...changes.newPrototypePrims)
     instanceChanges.newPrototypePrimIndexes.push(...changes.newPrototypePrimIndexes)
@@ -2182,7 +2198,7 @@ export class Stage {
   _variantSelection(primPath: string, vsName: string): string {
     const index = this._pcpCache?.findPrimIndex(primPath)
     if (index) {
-      for (const node of index.getNodeRange()) {
+      for (const node of index._getNodeRefs()) {
         if (node.arcType === PcpArcType.Variant) {
           const [set, sel] = node.path.getVariantSelection()
           if (set === vsName) return sel
@@ -2635,6 +2651,7 @@ export class Stage {
 
   private _getPrimQuerySource(dataPrimPath: string):
     {
+      prim: UsdPrimData
       index: PcpPrimIndex
       sourcePrimPath: string
       sourceRootPath: string
@@ -2652,10 +2669,10 @@ export class Stage {
       const prototypePath = slash < 0 ? prim.path : prim.path.slice(0, slash)
       const sourceRootPath =
         this._instanceCache.getSourcePrimIndexPathForPrototype(prototypePath) ?? sourcePrimPath
-      return { index, sourcePrimPath, sourceRootPath, dataRootPath: prototypePath, inPrototype: true }
+      return { prim, index, sourcePrimPath, sourceRootPath, dataRootPath: prototypePath, inPrototype: true }
     }
     return {
-      index, sourcePrimPath, sourceRootPath: sourcePrimPath, dataRootPath: prim.path, inPrototype: false,
+      prim, index, sourcePrimPath, sourceRootPath: sourcePrimPath, dataRootPath: prim.path, inPrototype: false,
     }
   }
 
@@ -2665,10 +2682,16 @@ export class Stage {
     fallback: () => unknown, resolveTarget?: UsdResolveTarget,
     resultPrimPath = dataPrimPath,
   ): UsdAttributeResolveResult {
+    // The trace scope and its data exist only while a collector records
+    // (TRACE_FUNCTION costs nothing when tracing is off).
+    if (!TraceCollector.isEnabled()) {
+      return this._resolveAttributeImpl(
+        dataPrimPath, propertyName, time, fallback, resolveTarget, resultPrimPath)
+    }
     return _withStageTraceSync('typescript-usd:Stage.resolveAttributeValue', scopeContext => {
-      const propertyPath = `${dataPrimPath === '/' ? '' : dataPrimPath}.${propertyName}`
       if (scopeContext) {
-        _traceScopeData(scopeContext, 'propertyPath', propertyPath)
+        _traceScopeData(scopeContext, 'propertyPath',
+          `${dataPrimPath === '/' ? '' : dataPrimPath}.${propertyName}`)
         _traceScopeData(scopeContext, 'time', time ?? 'resolveInfo')
       }
       const result = this._resolveAttributeImpl(
@@ -2681,6 +2704,11 @@ export class Stage {
     })
   }
 
+  // UsdStage::_GetResolveInfo (stage.cpp:9286-9330): one Usd_Resolver walk
+  // over the attribute's sites. The values it finds are typed by the spec
+  // they come from (usdResolvedValueTypeName), so the walk needs no composed
+  // typeName; only value clips, whose values are read through the clip set,
+  // take the attribute's composed typeName.
   private _resolveAttributeImpl(
     dataPrimPath: string, propertyName: string, time: 'default' | number | undefined,
     fallback: () => unknown, resolveTarget: UsdResolveTarget | undefined, resultPrimPath: string,
@@ -2690,23 +2718,62 @@ export class Stage {
         kind: 'valueResolution', path: `${dataPrimPath === '/' ? '' : dataPrimPath}.${propertyName}`,
       })
     }
-    const withQueryContext = (
-      result: UsdAttributeResolveResult, typeName?: string,
-    ): UsdAttributeResolveResult => ({
-      ...result, ...(typeName !== undefined ? { typeName } : {}),
-      interpolation: this._interpolationType,
-    })
     const querySource = this._getPrimQuerySource(dataPrimPath)
     if (!querySource) {
       const value = fallback()
-      return withQueryContext(value === undefined
+      const result: UsdAttributeResolveResult = value === undefined
         ? { source: 'none', valueIsBlocked: false }
-        : { source: 'fallback', value, valueIsBlocked: false })
+        : { source: 'fallback', value, valueIsBlocked: false }
+      result.interpolation = this._interpolationType
+      return result
     }
     // Async/browser adaptation: clip assets are acquired during Stage.open,
     // but source selection and value lookup remain synchronous and query-time.
-    const { sourcePrimPath } = querySource
     const index = resolveTarget?.getPrimIndex() ?? querySource.index
+    const primClipSets = this._clipSetsByPrim.get(querySource.sourcePrimPath)
+    const resolved = usdResolveAttributeValue(
+      index, propertyName, time,
+      primClipSets ? this._attributeClipSources(querySource.index, index, propertyName, primClipSets) : [],
+      resolveTarget,
+      // GetPrimProtoToInstancePathMap (stage.cpp:404-406) for the
+      // attribute's (proxy) prim, computed only when a path expression
+      // value is mapped.
+      querySource.inPrototype ? (() => {
+        let pathMap: Array<[SdfPath, SdfPath]> | undefined
+        return (protoPath: SdfPath) =>
+          mapProtoToInstance(pathMap ??= this._getProtoToInstancePathMap(resultPrimPath), protoPath)
+      })() : undefined,
+    )
+    if (resolved.source !== 'none') {
+      // The value's type: the spec it was read from, or for clip values
+      // (and a spec without a typeName) the composed typeName.
+      const typeName = resolved.source !== 'valueClips'
+        ? usdResolvedValueTypeName(resolved) ?? usdResolveAttributeTypeName(index, propertyName)
+        : usdResolveAttributeTypeName(index, propertyName)
+      return this._transformAttributeValue(index, propertyName, resolved, typeName)
+    }
+    const value = fallback()
+    resolved.interpolation = this._interpolationType
+    if (value === undefined) return resolved
+    // The fallback is the prim definition's value, held as the definition's
+    // value type (UsdPrimDefinition::GetAttributeFallbackValue, stage.cpp
+    // ProcessFallback; _GetAttrTypeImpl, stage.cpp:6698-6714), so an
+    // asset-valued fallback is handed out as an SdfAssetPath.
+    const definition = querySource.prim.getPrimTypeInfo().getPrimDefinition()
+      .getAttributeDefinition(propertyName)
+    const definitionTypeName = definition.isValid() ? definition.getTypeNameToken() : ''
+    return this._transformAttributeValue(index, propertyName,
+      { source: 'fallback', value, valueIsBlocked: resolved.valueIsBlocked },
+      definitionTypeName || usdResolveAttributeTypeName(index, propertyName))
+  }
+
+  // The prim's value clip sets that hold values for the attribute, placed at
+  // their introducing sites of `index` (Usd_Resolver walk with clips,
+  // stage.cpp:9420-9500).
+  private _attributeClipSources(
+    cachedIndex: PcpPrimIndex, index: PcpPrimIndex, propertyName: string,
+    primClipSets: NonNullable<ReturnType<Stage['_clipSetsByPrim']['get']>>,
+  ): UsdAttributeClipSource[] {
     // Clips were prepared against the cached index. Expanded resolve targets
     // include culled nodes, so map the introducing node by its composition
     // ancestry rather than reusing a cached node ordinal.
@@ -2718,109 +2785,84 @@ export class Stage {
       }
       return JSON.stringify(ancestry)
     }
-    let cachedNodeList: PcpNode[] | undefined, targetNodeList: PcpNode[] | undefined
-    const cachedNodes = (): PcpNode[] => cachedNodeList ??= [...querySource.index.getNodeRange()]
-    const targetNodes = (): PcpNode[] => targetNodeList ??= index === querySource.index
-      ? cachedNodes() : [...index.getNodeRange()]
+    // The indexes' nodes in strength order (GetNodeRange()), the graph's
+    // retained node list rather than a copy per resolve.
+    const cachedNodes = (): readonly PcpNode[] => cachedIndex._getNodeRefs()
+    const targetNodes = (): readonly PcpNode[] => index._getNodeRefs()
     const clipPosition = (position: readonly [number, number]): readonly [number, number] => {
-      if (index === querySource.index) return position
+      if (index === cachedIndex) return position
       const original = cachedNodes()[position[0]]
       return [original ? targetNodes().findIndex(node => nodeKey(node) === nodeKey(original)) : -1, position[1]]
     }
-    const primClipSets = this._clipSetsByPrim.get(sourcePrimPath)
     // Each clip set applies at every node of the cached walk it covers
     // (_GetClipsThatApplyToNode, stage.cpp:7192-7209).
-    const propertyClipSets = primClipSets
-      ? attrClipSetsFor(propertyName, primClipSets, cachedNodes())
-      : undefined
-    // One walk over the sites' typeName opinions gives the composed typeName
-    // and answers the value walk's per-site type questions.
-    const typeNames = usdResolveAttributeTypeNames(index, propertyName)
-    const composedTypeName = typeNames.composed as string | undefined
-    const resolved = usdResolveAttributeValue(
-      index, propertyName, time,
-      propertyClipSets?.map(clipSet => ({
-        position: clipPosition(clipSet.position),
-        resolve: (queryTime: number | undefined): UsdAttributeResolveResult | undefined => {
-          // Clips that provide a spline (Usd_ClipSet::ContainsSplineForAttribute)
-          // resolve as a value-clips source in spline format: no time
-          // samples, values from QuerySpline and the spline from BuildSpline
-          // (stage.cpp:9204-9232, 9666-9690).
-          if (clipSetContainsSpline(clipSet)) {
-            return {
-              source: 'valueClips', valueIsBlocked: false,
-              value: queryTime === undefined ? undefined : clipSetQuerySpline(clipSet, queryTime, false),
-              clipValueMightBeTimeVarying: true,
-              clipSpline: () => clipSetBuildSpline(clipSet),
-              valueEvaluator: (valueTime, isPreTime) => clipSetQuerySpline(clipSet, valueTime, isPreTime),
-              node: targetNodes()[clipPosition(clipSet.position)[0]]!,
-              timeSamples: [],
-            }
-          }
-          // The clip set's time samples (Usd_ClipSet::ListTimeSamplesForPath)
-          // are listed only when read: upstream's resolution asks the clip
-          // set only whether it holds a value (ContainsValueForAttribute,
-          // _GetClipsThatApplyToNode, stage.cpp:7192-7210) and lists samples
-          // for the time-sample queries (e.g. _TimeSampleMapResolver::
-          // ProcessClips, stage.cpp:8820-8834), so a value read does not walk
-          // every clip's samples.
-          let keys: number[] | undefined
-          const clipKeys = (): number[] => keys ??= clipTimeSamples(clipSet)
-          const value = queryTime === undefined ? undefined : clipValueAtTime(
-            clipSet, queryTime, this._interpolationType, false, composedTypeName)
-          // (The listing is never empty: with no contributing clip it holds
-          // the first clip's start time, clipSet.cpp:848-853, so a clip set
-          // that declares the attribute always gives a value source.)
-          // Asset-path values anchor to the clip layer they come from at
-          // each time (_GetClipLayer, stage.cpp:7716-7732).
-          const layerAtTime = composedTypeName === 'asset' || composedTypeName === 'asset[]'
-            ? (layerTime: number, isPreTime: boolean): Layer | undefined =>
-              (clipLayerForValueAt(clipSet, layerTime, isPreTime) as Layer | null) ?? undefined
-            : undefined
-          const assetLayer = queryTime === undefined ? undefined : layerAtTime?.(queryTime, false)
-          const result: UsdAttributeResolveResult = {
-            source: 'valueClips', value, valueIsBlocked: false,
-            clipValuesMayCompose: clipSetValuesMayCompose(clipSet),
-            clipValueMightBeTimeVarying: clipSetValueMightBeTimeVarying(clipSet),
-            ...(assetLayer ? { layer: assetLayer } : {}),
-            ...(layerAtTime ? { layerAtTime } : {}),
-            valueEvaluator: (valueTime, isPreTime) =>
-              clipValueAtTime(
-                clipSet, valueTime, this._interpolationType, isPreTime, composedTypeName),
+    const propertyClipSets = attrClipSetsFor(propertyName, primClipSets, cachedNodes())
+    if (!propertyClipSets?.length) return []
+    // Clip values are read through the clip set as the attribute's composed
+    // value type.
+    const composedTypeName = usdResolveAttributeTypeName(index, propertyName)
+    return propertyClipSets.map(clipSet => ({
+      position: clipPosition(clipSet.position),
+      resolve: (queryTime: number | undefined): UsdAttributeResolveResult | undefined => {
+        // Clips that provide a spline (Usd_ClipSet::ContainsSplineForAttribute)
+        // resolve as a value-clips source in spline format: no time
+        // samples, values from QuerySpline and the spline from BuildSpline
+        // (stage.cpp:9204-9232, 9666-9690).
+        if (clipSetContainsSpline(clipSet)) {
+          return {
+            source: 'valueClips', valueIsBlocked: false,
+            value: queryTime === undefined ? undefined : clipSetQuerySpline(clipSet, queryTime, false),
+            clipValueMightBeTimeVarying: true,
+            clipSpline: () => clipSetBuildSpline(clipSet),
+            valueEvaluator: (valueTime, isPreTime) => clipSetQuerySpline(clipSet, valueTime, isPreTime),
             node: targetNodes()[clipPosition(clipSet.position)[0]]!,
+            timeSamples: [],
           }
-          // Enumerable, so a spread of the result copies the samples as
-          // before; assignable, as composition replaces them.
-          let timeSamples: [number, unknown][] | undefined
-          Object.defineProperty(result, 'timeSamples', {
-            get: () => timeSamples ??= clipKeys().map(sampleTime =>
-              [sampleTime, undefined] as [number, unknown]),
-            set: (samples: [number, unknown][]) => { timeSamples = samples },
-            enumerable: true, configurable: true,
-          })
-          return result
-        },
-      })) ?? [], resolveTarget,
-      // GetPrimProtoToInstancePathMap (stage.cpp:404-406) for the
-      // attribute's (proxy) prim, computed only when a path expression
-      // value is mapped.
-      querySource.inPrototype ? (() => {
-        let pathMap: Array<[SdfPath, SdfPath]> | undefined
-        return (protoPath: SdfPath) =>
-          mapProtoToInstance(pathMap ??= this._getProtoToInstancePathMap(resultPrimPath), protoPath)
-      })() : undefined,
-      typeNames,
-    )
-    if (resolved.source !== 'none') {
-      return this._transformAttributeValue(index, propertyName, resolved, composedTypeName)
-    }
-    const value = fallback()
-    // An attribute with no spec takes its value type from the prim
-    // definition (_GetAttributeValueTypeName, stage.cpp:6699-6713), so an
-    // asset-valued fallback is handed out as an SdfAssetPath.
-    return value === undefined ? withQueryContext(resolved,composedTypeName)
-      : this._transformAttributeValue(index,propertyName,{source:'fallback',value,valueIsBlocked:resolved.valueIsBlocked},
-        composedTypeName ?? this._declaredAttrType(resultPrimPath, propertyName))
+        }
+        // The clip set's time samples (Usd_ClipSet::ListTimeSamplesForPath)
+        // are listed only when read: upstream's resolution asks the clip
+        // set only whether it holds a value (ContainsValueForAttribute,
+        // _GetClipsThatApplyToNode, stage.cpp:7192-7210) and lists samples
+        // for the time-sample queries (e.g. _TimeSampleMapResolver::
+        // ProcessClips, stage.cpp:8820-8834), so a value read does not walk
+        // every clip's samples.
+        let keys: number[] | undefined
+        const clipKeys = (): number[] => keys ??= clipTimeSamples(clipSet)
+        const value = queryTime === undefined ? undefined : clipValueAtTime(
+          clipSet, queryTime, this._interpolationType, false, composedTypeName)
+        // (The listing is never empty: with no contributing clip it holds
+        // the first clip's start time, clipSet.cpp:848-853, so a clip set
+        // that declares the attribute always gives a value source.)
+        // Asset-path values anchor to the clip layer they come from at
+        // each time (_GetClipLayer, stage.cpp:7716-7732).
+        const layerAtTime = composedTypeName === 'asset' || composedTypeName === 'asset[]'
+          ? (layerTime: number, isPreTime: boolean): Layer | undefined =>
+            (clipLayerForValueAt(clipSet, layerTime, isPreTime) as Layer | null) ?? undefined
+          : undefined
+        const assetLayer = queryTime === undefined ? undefined : layerAtTime?.(queryTime, false)
+        const result: UsdAttributeResolveResult = {
+          source: 'valueClips', value, valueIsBlocked: false,
+          clipValuesMayCompose: clipSetValuesMayCompose(clipSet),
+          clipValueMightBeTimeVarying: clipSetValueMightBeTimeVarying(clipSet),
+          ...(assetLayer ? { layer: assetLayer } : {}),
+          ...(layerAtTime ? { layerAtTime } : {}),
+          valueEvaluator: (valueTime, isPreTime) =>
+            clipValueAtTime(
+              clipSet, valueTime, this._interpolationType, isPreTime, composedTypeName),
+          node: targetNodes()[clipPosition(clipSet.position)[0]]!,
+        }
+        // Enumerable, so a spread of the result copies the samples as
+        // before; assignable, as composition replaces them.
+        let timeSamples: [number, unknown][] | undefined
+        Object.defineProperty(result, 'timeSamples', {
+          get: () => timeSamples ??= clipKeys().map(sampleTime =>
+            [sampleTime, undefined] as [number, unknown]),
+          set: (samples: [number, unknown][]) => { timeSamples = samples },
+          enumerable: true, configurable: true,
+        })
+        return result
+      },
+    }))
   }
 
   // UsdStage::_MakeResolvedAssetPaths (stage.cpp:804-847) resolves assets
@@ -3319,7 +3361,7 @@ export class Stage {
     const fields = new Set<string>()
     const querySource = this._getPrimQuerySource(dataPrimPath)
     if (querySource) {
-      for (const node of querySource.index.getNodeRange()) {
+      for (const node of querySource.index._getNodeRefs()) {
         if (!node.canContributeSpecs()) continue
         const primSpecPath = pcpLayerPathKey(node.path)
         const specPath = `${primSpecPath === '/' ? '' : primSpecPath}.${propertyName}`
@@ -3363,7 +3405,7 @@ export class Stage {
     // carries no metadata (stage.cpp:5822-5835).
     const querySource = this._getPrimQuerySource(dataPrimPath)
     if (querySource) {
-      for (const node of querySource.index.getNodeRange()) {
+      for (const node of querySource.index._getNodeRefs()) {
         if (!node.canContributeSpecs()) continue
         const specPath = pcpLayerPathKey(node.path)
         for (const { layer } of node.layerStack.layers) {
@@ -3413,7 +3455,7 @@ export class Stage {
     // spec type along the way, then the spec type's required fields.
     const fields: string[] = []
     let specType: ReturnType<Layer['getSpecType']> = 'unknown'
-    for (const node of index.getNodeRange()) {
+    for (const node of index._getNodeRefs()) {
       if (!node.canContributeSpecs()) continue
       const specPath = pcpLayerPathKey(node.path)
       for (const { layer } of node.layerStack.layers) {
@@ -3470,7 +3512,7 @@ export class Stage {
     let specType: ReturnType<Layer['getSpecType']> = builtin
       ? (builtin.isRelationship() ? 'relationship' : 'attribute') : 'unknown'
     const fields: string[] = []
-    for (const node of index.getNodeRange()) {
+    for (const node of index._getNodeRefs()) {
       if (!node.canContributeSpecs()) continue
       const primSpecPath = pcpLayerPathKey(node.path)
       const specPath = `${primSpecPath === '/' ? '' : primSpecPath}.${propertyName}`
@@ -3588,7 +3630,7 @@ export class Stage {
     const index = this._pcpCache?.findPrimIndex(primPath)
     if (!index) return []
     const out: string[] = []
-    for (const node of index.getNodeRange()) {
+    for (const node of index._getNodeRefs()) {
       if (!pcpIsSpecializeArc(node.arcType)) continue
       if (node.parent !== index.rootNode) continue
       if (node.mapToParent.evaluate().mapSourceToTarget(SdfPath.absoluteRootPath).isEmpty()) continue
@@ -3624,7 +3666,7 @@ export class Stage {
     const propName = propPath.slice(dot + 1)
     const index = this._pcpCache?.findPrimIndex(primPath)
     if (!index) return false
-    for (const node of index.getNodeRange()) {
+    for (const node of index._getNodeRefs()) {
       if (!node.canContributeSpecs()) continue
       const propKey = pcpLayerPathKey(node.path.appendProperty(propName))
       for (const { layer } of node.layerStack.layers) {
@@ -3929,7 +3971,7 @@ export class Stage {
     } else {
       // Otherwise copy the required metadata of the strongest property spec.
       const index = prim?._primIndex
-      for (const node of index?.getNodeRange() ?? []) {
+      for (const node of index?._getNodeRefs() ?? []) {
         if (spec || !node.canContributeSpecs()) continue
         const specPath = `${pcpLayerPathKey(node.path)}.${propertyName}`
         for (const { layer: nodeLayer } of node.getLayerStack().layers) {

@@ -14,18 +14,26 @@ file or folder onto it.
 Independent project; not affiliated with Pixar, the ASWF or AOUSD.
 
 ### Why
-A personal project: a second, independent implementation of OpenUSD, as my own
-contribution toward AOUSD's specification work.
+A second, independent implementation of OpenUSD, as my own contribution toward
+AOUSD's specification work: where it and OpenUSD disagree, either the port has a
+bug or the behavior needs writing down.
 
-### How
-The code was written by AI agents (Claude Code and Codex), porting OpenUSD's
-source file by file and checking the results against OpenUSD's own tests and
-native captures.
+Ways to use it:
 
-The test I relied on most was watching: the
+- **Open USD in a browser.** The usdview port reads `.usda`, `.usdc` and `.usdz`
+  from a URL, a dropped file or a dropped folder, with no install.
+- **Read and write USD from TypeScript.** The library follows OpenUSD's C++ API
+  (Sdf, Pcp, Usd, the schemas, Hydra) in Node and the browser.
+- **Compare against OpenUSD.** The tests check results against values captured
+  from OpenUSD 26.11.1, and [KNOWN-GAPS.md](KNOWN-GAPS.md) lists every known
+  difference with its evidence.
+
+### How it was checked
+The code ports OpenUSD's source file by file, and its results are compared with
+OpenUSD's own tests and native captures (see [Tests](#tests)). The
 [USD Museum](https://github.com/beersandrew/usd-museum), a walk through exhibits
-of OpenUSD's features, played in this viewer side by side with Pixar's usdview
-on one clock, looking for anywhere the two differ.
+of OpenUSD's features, was played in this viewer side by side with Pixar's
+usdview on one clock to find where the two differ.
 
 ### Run it
 
@@ -52,8 +60,8 @@ compare against are committed fixtures captured from OpenUSD 26.11.1
 | What | Result |
 |---|---|
 | Upstream tests ported | 783 of OpenUSD's 1,906 registered tests have a detected port, including all of sdf, pcp, usd, ar and the schema libraries ([what is not ported](KNOWN-GAPS.md#upstream-tests-not-ported)) |
-| Library unit tests (Node) | 9,279 pass, 4 fail (real gaps: OpenExec 3, hdSt 1; none in Core); 26 checks the platform rules out, at PLATFORM-DIVERGENCE ids, not counted ([details](KNOWN-GAPS.md#failing-library-tests)) |
-| Viewer unit tests (Node, jsdom) | 691 pass, 0 fail ([apps/usdview](apps/usdview/README.md#tests)) |
+| Library unit tests (Node) | 9,298 pass, 4 fail (real gaps: OpenExec 3, hdSt 1; none in Core); 26 checks the platform rules out, at PLATFORM-DIVERGENCE ids, not counted ([details](KNOWN-GAPS.md#failing-library-tests)) |
+| Viewer unit tests (Node, jsdom) | 726 pass, 0 fail ([apps/usdview](apps/usdview/README.md#tests)) |
 | OpenVDB package tests | 3 known failures: level-set resampling is not ported ([packages/openvdb](packages/openvdb/README.md#what-is-not-ported)) |
 | Upstream image tests against native | 295 of 446 pass in Safari 27.3, 285 in Chrome 156; most of the rest are platform differences, and 14 are real ([breakdown](packages/usd/docs/imaging-status.md#failures-by-class)) |
 
@@ -101,6 +109,10 @@ with its evidence. In the code, each stand-in for an upstream mechanism is a
 `FAITHFULNESS-DEBT` comment and each difference the browser forces is a
 `PLATFORM-DIVERGENCE` comment; [the generated debt ledger](packages/usd/docs/faithfulness-debt.md)
 lists all of them (48 and 54 ids today).
+
+## Who built it
+
+The code was written by AI agents (Claude Code and Codex), directed by me.
 
 ## Licences
 

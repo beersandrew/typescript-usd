@@ -411,18 +411,20 @@ export class HdRenderIndex implements HdSceneIndexObserver {
 
   /** renderIndex.cpp:441-454 */
   _RemoveSubtree(root: string, sceneDelegate: HdSceneDelegate | null): void {
-    for (const [id, entry] of [...this._rprims]) {
-      if (entry.sceneDelegate && _HasPrefix(id, root)
-        && (sceneDelegate === null || entry.sceneDelegate === sceneDelegate)) this._RemoveRprim(id)
-    }
-    for (const [id, entry] of [...this._sprims]) {
-      if (entry.sceneDelegate && _HasPrefix(id, root)
-        && (sceneDelegate === null || entry.sceneDelegate === sceneDelegate)) this._RemoveSprim(entry.primType, id)
-    }
-    for (const [id, entry] of [...this._bprims]) {
-      if (entry.sceneDelegate && _HasPrefix(id, root)
-        && (sceneDelegate === null || entry.sceneDelegate === sceneDelegate)) this._RemoveBprim(entry.primType, id)
-    }
+    // The prims under root are found first and then removed, in map order
+    // (removing one does not change whether another matches): a scan
+    // without copying each map, which an unload does once per removed root.
+    const matches = (id: string, delegate: HdSceneDelegate | null | undefined) =>
+      !!delegate && _HasPrefix(id, root) && (sceneDelegate === null || delegate === sceneDelegate)
+    const rprims: string[] = []
+    for (const [id, entry] of this._rprims) if (matches(id, entry.sceneDelegate)) rprims.push(id)
+    for (const id of rprims) this._RemoveRprim(id)
+    const sprims: [string, string][] = []
+    for (const [id, entry] of this._sprims) if (matches(id, entry.sceneDelegate)) sprims.push([entry.primType, id])
+    for (const [type, id] of sprims) this._RemoveSprim(type, id)
+    const bprims: [string, string][] = []
+    for (const [id, entry] of this._bprims) if (matches(id, entry.sceneDelegate)) bprims.push([entry.primType, id])
+    for (const [type, id] of bprims) this._RemoveBprim(type, id)
     this._removeInstancerSubtree(root, sceneDelegate)
     this._removeTaskSubtree(root, sceneDelegate)
   }

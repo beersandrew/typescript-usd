@@ -9,13 +9,13 @@
 //
 // Divergence: the std::map<SdfPath, ...> members are Maps keyed by path
 // string; where upstream iterates them (or a std::map<SdfPath, bool>) in
-// SdfPath order, the keys are sorted with SdfPath's operator< first.
+// SdfPath order, the keys are sorted with SdfPath's operator< first, except
+// where the visiting order cannot change the result (_primsRemoved).
 
 import {
   DataSourceLocatorSet as HdDataSourceLocatorSet, OverlayContainerDataSource as HdOverlayContainerDataSource,
   PrimTypeTokens as HdPrimTypeTokens, SceneIndexPrimView as HdSceneIndexPrimView,
   SingleInputFilteringSceneIndexBase as HdSingleInputFilteringSceneIndexBase,
-  SiHasPrefix as HdSiHasPrefix,
   type AddedPrimEntry as HdAddedPrimEntry, type DirtiedPrimEntry as HdDirtiedPrimEntry,
   type RemovedPrimEntry as HdRemovedPrimEntry, type SceneIndexBase as HdSceneIndexBase,
   type SceneIndexPrim as HdSceneIndexPrim,
@@ -85,15 +85,30 @@ function _Emplace(map: Map<string, boolean>, key: string, value: boolean): void 
   if (!map.has(key)) map.set(key, value)
 }
 
-/** pointsResolvingSceneIndex.cpp:503-517 */
+/** Whether `path` is one of `roots` or under one (HdSiHasPrefix against
+ *  each), by its ancestors: removal notices can carry hundreds of roots. */
+function _HasPrefixIn(path: string, roots: ReadonlySet<string>): boolean {
+  if (roots.has('/')) return true
+  for (let p = path; p.length > 1;) {
+    if (roots.has(p)) return true
+    const slash = p.lastIndexOf('/')
+    p = slash <= 0 ? '/' : p.slice(0, slash)
+  }
+  return false
+}
+
+/** pointsResolvingSceneIndex.cpp:503-517, for every removed root at once.
+ *  Upstream walks the std::map from lower_bound(prefix) per entry; the
+ *  emplaced keys are the same in any order (their only reader sorts them,
+ *  _processPrimsNeedingRefreshAndSendNotices). */
 function _PopulateFromDependencies(
   dependencies: Map<string, Set<string>>,
-  prefix: string,
+  roots: ReadonlySet<string>,
   primsNeedingRefreshToHasAddedEntry: Map<string, boolean>,
 ): void {
-  for (const key of [...dependencies.keys()].sort(_ComparePaths)) {
-    if (!HdSiHasPrefix(key, prefix)) continue
-    for (const primPath of [...dependencies.get(key)!].sort(_ComparePaths)) {
+  for (const [key, primPaths] of dependencies) {
+    if (!_HasPrefixIn(key, roots)) continue
+    for (const primPath of primPaths) {
       _Emplace(primsNeedingRefreshToHasAddedEntry, primPath, false)
     }
   }
@@ -542,13 +557,15 @@ export class UsdSkelImagingPointsResolvingSceneIndex extends HdSingleInputFilter
   /** pointsResolvingSceneIndex.cpp:519-608 */
   protected _primsRemoved(_sender: HdSceneIndexBase, entries: HdRemovedPrimEntry[]): void {
     // First removed resolved prim data sources.
+    // Upstream erases each entry's std::map range in turn; removing a
+    // prim's dependencies only erases from sets, so the order does not
+    // change the result: one pass over the map for all entries.
+    const roots = new Set(entries.map(entry => entry.primPath))
     if (this._pathToResolvedPrim.size > 0) {
-      for (const entry of entries) {
-        for (const path of [...this._pathToResolvedPrim.keys()].sort(_ComparePaths)) {
-          if (!HdSiHasPrefix(path, entry.primPath)) continue
-          this._removeDependenciesForResolvedPrim(path, this._pathToResolvedPrim.get(path))
-          this._pathToResolvedPrim.delete(path)
-        }
+      for (const [path, resolved] of [...this._pathToResolvedPrim]) {
+        if (!_HasPrefixIn(path, roots)) continue
+        this._removeDependenciesForResolvedPrim(path, resolved)
+        this._pathToResolvedPrim.delete(path)
       }
     }
 
@@ -564,19 +581,14 @@ export class UsdSkelImagingPointsResolvingSceneIndex extends HdSingleInputFilter
     const primsNeedingRefreshToHasAddedEntry = new Map<string, boolean>()
 
     // Then check for the dependencies.
-    for (const entry of entries) {
-      if (hasSkelDependencies) {
-        _PopulateFromDependencies(
-          this._skelPathToPrimPaths, entry.primPath, primsNeedingRefreshToHasAddedEntry)
-      }
-      if (hasBlendDependencies) {
-        _PopulateFromDependencies(
-          this._blendShapePathToPrimPaths, entry.primPath, primsNeedingRefreshToHasAddedEntry)
-      }
-      if (hasInstancerDependencies) {
-        _PopulateFromDependencies(
-          this._instancerPathToPrimPaths, entry.primPath, primsNeedingRefreshToHasAddedEntry)
-      }
+    if (hasSkelDependencies) {
+      _PopulateFromDependencies(this._skelPathToPrimPaths, roots, primsNeedingRefreshToHasAddedEntry)
+    }
+    if (hasBlendDependencies) {
+      _PopulateFromDependencies(this._blendShapePathToPrimPaths, roots, primsNeedingRefreshToHasAddedEntry)
+    }
+    if (hasInstancerDependencies) {
+      _PopulateFromDependencies(this._instancerPathToPrimPaths, roots, primsNeedingRefreshToHasAddedEntry)
     }
 
     if (primsNeedingRefreshToHasAddedEntry.size === 0) {

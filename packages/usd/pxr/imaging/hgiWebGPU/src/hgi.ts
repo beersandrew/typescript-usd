@@ -158,13 +158,33 @@ export class HgiWebGPU extends Hgi {
 
   /** Holds a finished command buffer for the next submit (see _held);
    *  `submitted` runs once it is submitted. */
-  _holdSubmit(buffer: GPUCommandBuffer, submitted: () => void): void {
+  _holdSubmit(buffer: GPUCommandBuffer, submitted: () => void, touched?: ReadonlySet<GPUBuffer>): void {
     this._held.push({ buffer, submitted })
+    if (touched) for (const b of touched) this._heldTouched.add(b)
+  }
+
+  /** The buffers used by held command buffers, and the blit cmds recording
+   *  now (a command recorded, not submitted), for
+   *  HgiWebGPUBlitCmds.copyBufferCpuToGpu. */
+  private readonly _heldTouched = new Set<GPUBuffer>()
+  private readonly _openBlits = new Set<{ _getTouched(): ReadonlySet<GPUBuffer> }>()
+  _blitOpened(cmds: { _getTouched(): ReadonlySet<GPUBuffer> }): void { this._openBlits.add(cmds) }
+  _blitClosed(cmds: { _getTouched(): ReadonlySet<GPUBuffer> }): void { this._openBlits.delete(cmds) }
+  /** Whether work not yet given to GPUQueue.submit (held, or recorded by an
+   *  open blit cmds, `self` included) uses `buffer`. Graphics and compute
+   *  cmds submit the held work before their own, so a GPUQueue.writeBuffer
+   *  lands before their command buffers either way. */
+  _pendingBlitWorkUses(buffer: GPUBuffer, self: { _getTouched(): ReadonlySet<GPUBuffer> }): boolean {
+    if (this._heldTouched.has(buffer)) return true
+    if (self._getTouched().has(buffer)) return true
+    for (const cmds of this._openBlits) if (cmds._getTouched().has(buffer)) return true
+    return false
   }
 
   /** GPUQueue.submit of the held command buffers, then `buffers`, in one call. */
   _submitNow(buffers: GPUCommandBuffer[]): void {
     const held = this._held.splice(0)
+    this._heldTouched.clear()
     if (held.length === 0 && buffers.length === 0) return
     this._device.queue.submit([...held.map(h => h.buffer), ...buffers])
     for (const h of held) h.submitted()

@@ -294,12 +294,6 @@ export class UsdImagingStageSceneIndex extends UsdImagingStageSceneIndexInterfac
   private _usdPropertiesToUpdate = new Map<string, string[]>()
   private _usdPropertiesToResync = new Map<string, string[]>()
 
-  /** PLATFORM-DIVERGENCE(usdimaging-sliced-prims-added): PrimsAdded entries
-   *  not sent yet (setAddedPrimsPerUpdate), and their paths. */
-  private _addedQueue: AddedPrimEntry[] = []
-  private readonly _queuedPaths = new Set<string>()
-  private _addedPrimsPerUpdate: number | undefined
-
   private readonly _adapterManager = new UsdImaging_AdapterManager()
 
   /** stageSceneIndex.h:33-37 */
@@ -329,11 +323,6 @@ export class UsdImagingStageSceneIndex extends UsdImagingStageSceneIndexInterfac
     }
 
     const primPath = _GetPrimPath(path)
-
-    // usdimaging-sliced-prims-added: a prim not added yet is not in the scene.
-    if (this._queuedPaths.size && (this._queuedPaths.has(path) || this._queuedPaths.has(primPath))) {
-      return emptyPrim
-    }
 
     const prim = this._stage.getPrim(primPath)
     if (!prim) {
@@ -427,94 +416,7 @@ export class UsdImagingStageSceneIndex extends UsdImagingStageSceneIndexInterfac
       }
     }
 
-    // usdimaging-sliced-prims-added: prims not added yet are not in the scene.
-    return this._queuedPaths.size ? result.filter(p => !this._queuedPaths.has(p)) : result
-  }
-
-  /** PLATFORM-DIVERGENCE(usdimaging-sliced-prims-added): upstream sends the
-   *  PrimsAdded of a resync (a payload load, an edit) all at once
-   *  (stageSceneIndex.cpp:759-874), and everything downstream (the scene
-   *  index chain, the render index's sync) handles them in the same frame.
-   *  With a count set, ApplyPendingUpdates sends at most that many of the
-   *  added prims, and queues the rest for the next calls. Until then the
-   *  queued prims are not in this scene index (getPrim, getChildPrimPaths).
-   *  The queue keeps every prim behind its parent, sends native-instancing
-   *  prototypes and then materials (with their ancestors) first, so
-   *  geometry finds its material and instances their prototypes when they
-   *  arrive, and instances inside prototypes last (_queueAdded). A resync drops queued prims under its paths (they are
-   *  populated again). undefined (the default): no limit, as upstream. The
-   *  next ApplyPendingUpdates then sends the whole queue. */
-  setAddedPrimsPerUpdate(count: number | undefined): void {
-    this._addedPrimsPerUpdate = count === undefined ? undefined : Math.max(1, Math.floor(count))
-  }
-
-  /** usdimaging-sliced-prims-added: the added prims not sent yet. */
-  queuedAddedPrimCount(): number {
-    return this._addedQueue.length
-  }
-
-  /** usdimaging-sliced-prims-added: queues `added`, materials and
-   *  prototypes (and their ancestors) first when limited. */
-  private _queueAdded(added: AddedPrimEntry[]): void {
-    if (added.length === 0) return
-    if (this._addedPrimsPerUpdate === undefined && this._addedQueue.length === 0) {
-      // As upstream: sent at once, in order.
-      for (const entry of added) this._populatedPaths.add(entry.primPath)
-      this._sendPrimsAdded(added)
-      return
-    }
-    // The order: prototypes (and their ancestors), then materials (and
-    // theirs), then the rest, then instances inside prototypes (nested
-    // native instancing), each prim behind its parent. A nested instance must
-    // not reach the prototype propagating scene indices before the instance
-    // that brings its prototype in: added earlier, the nested instancer is
-    // left without its flattened xform and visibility (tests/
-    // slicedPrimsAdded.test.ts, testUsdImagingGLResync).
-    const isNestedInstance = (path: string) => path.startsWith('/__Prototype_') &&
-      !_IsPropertyPath(path) && !!this._stage?.getPrim(path)?.isInstance()
-    const nested = new Set<string>(), first = new Set<string>(), materials = new Set<string>()
-    const withAncestors = (set: Set<string>, path: string) => {
-      for (let p = path; p && p !== '/' && !set.has(p); p = _GetParentPath(p)) set.add(p)
-    }
-    for (const entry of added) {
-      const prim = _IsPropertyPath(entry.primPath) ? _GetPrimPath(entry.primPath) : entry.primPath
-      if (prim.startsWith('/__Prototype_')) {
-        if (nested.has(prim) || isNestedInstance(prim)) nested.add(entry.primPath)
-        else withAncestors(first, entry.primPath)
-      } else if (entry.primType === 'material') {
-        withAncestors(materials, entry.primPath)
-      }
-    }
-    const group = (e: AddedPrimEntry) => nested.has(e.primPath) ? 3 : first.has(e.primPath) ? 0 : materials.has(e.primPath) ? 1 : 2
-    const ordered = nested.size || first.size || materials.size
-      ? [0, 1, 2, 3].flatMap(g => added.filter(e => group(e) === g))
-      : added
-    for (const entry of ordered) {
-      this._addedQueue.push(entry)
-      this._queuedPaths.add(entry.primPath)
-    }
-  }
-
-  /** usdimaging-sliced-prims-added: sends the next part of the queue. */
-  private _sendQueuedAdded(): void {
-    if (this._addedQueue.length === 0) return
-    const n = this._addedPrimsPerUpdate ?? this._addedQueue.length
-    const batch = this._addedQueue.splice(0, n)
-    for (const entry of batch) {
-      this._queuedPaths.delete(entry.primPath)
-      this._populatedPaths.add(entry.primPath)
-    }
-    this._sendPrimsAdded(batch)
-  }
-
-  /** usdimaging-sliced-prims-added: drops queued prims under `root`. */
-  private _dropQueuedUnder(root: string): void {
-    if (this._addedQueue.length === 0) return
-    this._addedQueue = this._addedQueue.filter(entry => {
-      if (!_HasPrefix(entry.primPath, root)) return true
-      this._queuedPaths.delete(entry.primPath)
-      return false
-    })
+    return result
   }
 
   // ------------------------------------------------------------------------
@@ -545,8 +447,6 @@ export class UsdImagingStageSceneIndex extends UsdImagingStageSceneIndexInterfac
 
     if (this._stage) {
       this._populatedPaths.clear()
-      this._addedQueue = []
-      this._queuedPaths.clear()
       this._sendPrimsRemoved([{ primPath: '/' }])
       this._stageGlobals.clear()
       this._objectsChangedNoticeKey?.revoke()
@@ -860,7 +760,6 @@ export class UsdImagingStageSceneIndex extends UsdImagingStageSceneIndexInterfac
       }
 
       removedPrims.push({ primPath })
-      this._dropQueuedUnder(primPath)
       this._populateSubtree(prim, addedPrims)
 
       if (_IsAbsoluteRootPath(primPath)) {
@@ -906,10 +805,12 @@ export class UsdImagingStageSceneIndex extends UsdImagingStageSceneIndexInterfac
     for (const entry of removedPrims) {
       this._populatedPaths.delete(entry.primPath)
     }
+    for (const entry of addedPrims) {
+      this._populatedPaths.add(entry.primPath)
+    }
+
     this._sendPrimsRemoved(removedPrims)
-    // usdimaging-sliced-prims-added: _populatedPaths gains each prim as it
-    // is sent (_queueAdded, _sendQueuedAdded).
-    this._queueAdded(addedPrims)
+    this._sendPrimsAdded(addedPrims)
   }
 
   /** stageSceneIndex.cpp:876-917. Apply queued stage edits to imaging scene.
@@ -925,8 +826,6 @@ export class UsdImagingStageSceneIndex extends UsdImagingStageSceneIndexInterfac
     if (this._usdPropertiesToUpdate.size === 0 &&
         this._usdPropertiesToResync.size === 0 &&
         this._usdPrimsToResync.length === 0) {
-      // usdimaging-sliced-prims-added
-      this._sendQueuedAdded()
       return
     }
 
@@ -949,14 +848,8 @@ export class UsdImagingStageSceneIndex extends UsdImagingStageSceneIndexInterfac
       this._applyPendingResyncs()
     }
 
-    // usdimaging-sliced-prims-added: the next part of the queue; dirtying
-    // a prim not added yet is moot (it is read in full when added).
-    this._sendQueuedAdded()
-    const dirtied = this._queuedPaths.size
-      ? dirtiedPrims.filter(e => !this._queuedPaths.has(e.primPath) && !this._queuedPaths.has(_GetPrimPath(e.primPath)))
-      : dirtiedPrims
-    if (dirtied.length !== 0) {
-      this._sendPrimsDirtied(dirtied)
+    if (dirtiedPrims.length !== 0) {
+      this._sendPrimsDirtied(dirtiedPrims)
     }
   }
 

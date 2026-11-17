@@ -107,6 +107,30 @@ describe('load prefetch', () => {
     } finally { stage.dispose() }
   })
 
+  it('with a budget, reads a carrier whose window opened before a jump and holds it until a little after it loads', async () => {
+    const stage = await open()
+    const settle = async (prefetcher: LoadPrefetcher) => { for (const c of prefetcher.imagesHeld) await prefetcher.images(c); await new Promise(r => setTimeout(r, 0)) }
+    try {
+      const schedule = {...readLoadSchedule(stage).schedule!, perChange: 1, lead: 48}
+      const prefetcher = new LoadPrefetcher(stage, schedule, 48)
+      // A jump to 200: A (-47..217) and B (133..397) are open, neither loaded.
+      expect(prefetcher.update(200)).toHaveLength(2)
+      await settle(prefetcher)
+      expect(prefetcher.imagesHeld.sort()).toEqual([A, B])
+      // Held while unloaded; once loaded, until imageHoldFrames later.
+      await stage.loadAndUnload([B], [])
+      prefetcher.update(201)
+      prefetcher.update(201 + imageHoldFrames)
+      expect(prefetcher.imagesHeld).toContain(B)
+      prefetcher.update(202 + imageHoldFrames)
+      expect(prefetcher.imagesHeld).not.toContain(B)
+      // A's window closes unloaded: let go.
+      prefetcher.update(218 + imageHoldFrames)
+      expect(prefetcher.imagesHeld).not.toContain(A)
+      prefetcher.dispose()
+    } finally { stage.dispose() }
+  })
+
   it('reads ahead where Ar scopes cannot span awaits (Safari has no AsyncContext)', async () => {
     // packages/usd/pxr/usd/ar/src/asyncState.ts: without the host's
     // AsyncContext, a binder scope around an asynchronous function throws.

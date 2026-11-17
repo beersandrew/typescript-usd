@@ -69,7 +69,15 @@ function _MipExtent(desc: HgiTextureDesc, mipLevel: number): [number, number, nu
 }
 
 export class HgiWebGPUBlitCmds extends HgiBlitCmds {
-  private _commandEncoder: GPUCommandEncoder | null
+  /** Created by the first recorded command (a cmds whose copies all went to
+   *  GPUQueue.writeBuffer records none). */
+  private _commandEncoderValue: GPUCommandEncoder | null = null
+  private _finished = false
+  /** Debug groups pushed before the encoder exists, replayed when it is created. */
+  private readonly _pendingGroups: string[] = []
+  /** The GPU buffers this cmds' recorded commands read or write
+   *  (copyBufferCpuToGpu). */
+  private readonly _touched = new Set<GPUBuffer>()
   private readonly _readbacks: Readback[] = []
   private readonly _transient: GPUBuffer[] = []
   /** The buffers this cmds writes, whose write version is bumped when it is
@@ -79,7 +87,22 @@ export class HgiWebGPUBlitCmds extends HgiBlitCmds {
   /** hgiMetal/blitCmds.mm:23-30 */
   constructor(private readonly _hgi: HgiWebGPU) {
     super()
-    this._commandEncoder = _hgi.getPrimaryDevice().createCommandEncoder({ label: 'HgiWebGPUBlitCmds' })
+  }
+
+  private get _commandEncoder(): GPUCommandEncoder | null {
+    if (this._finished) return null
+    if (!this._commandEncoderValue) {
+      this._commandEncoderValue = this._hgi.getPrimaryDevice().createCommandEncoder({ label: 'HgiWebGPUBlitCmds' })
+      for (const label of this._pendingGroups.splice(0)) this._commandEncoderValue.pushDebugGroup(label)
+      this._hgi._blitOpened(this)
+    }
+    return this._commandEncoderValue
+  }
+
+  /** The buffers used by this cmds' recorded commands (copyBufferCpuToGpu). */
+  _getTouched(): ReadonlySet<GPUBuffer> { return this._touched }
+  private _touch(...buffers: (GPUBuffer | null | undefined)[]): void {
+    for (const b of buffers) if (b) this._touched.add(b)
   }
 
   private get _device(): GPUDevice { return this._hgi.getPrimaryDevice() }
@@ -101,17 +124,19 @@ export class HgiWebGPUBlitCmds extends HgiBlitCmds {
 
   /** hgiMetal/blitCmds.mm:65-80 */
   pushDebugGroup(label: string, _color: GfVec4f = HgiCmds.s_blitDebugColor): void {
-    this._commandEncoder?.pushDebugGroup(label)
+    if (this._commandEncoderValue) this._commandEncoderValue.pushDebugGroup(label)
+    else if (!this._finished) this._pendingGroups.push(label)
   }
 
   /** hgiMetal/blitCmds.mm:82-88 */
   popDebugGroup(): void {
-    this._commandEncoder?.popDebugGroup()
+    if (this._commandEncoderValue) this._commandEncoderValue.popDebugGroup()
+    else this._pendingGroups.pop()
   }
 
   /** hgiMetal/blitCmds.mm:90-102 */
   insertDebugMarker(label: string, _color: GfVec4f = HgiCmds.s_markerDebugColor): void {
-    this._commandEncoder?.insertDebugMarker(label)
+    this._commandEncoderValue?.insertDebugMarker(label)
   }
 
   /** hgiMetal/blitCmds.mm:104-189 */
@@ -232,6 +257,7 @@ export class HgiWebGPUBlitCmds extends HgiBlitCmds {
       return
     }
     this._written.add(dstBuffer!)
+    this._touch(srcBuffer!.getBufferId(), dstBuffer!.getBufferId())
     if (srcBuffer === dstBuffer) {
       // Storm copies between two ranges of one buffer (HdStCopyComputationGPU
       // migrating a range into a new range of the same buffer array,
@@ -255,10 +281,13 @@ export class HgiWebGPUBlitCmds extends HgiBlitCmds {
       copyOp.byteSize)
   }
 
-  /** hgiMetal/blitCmds.mm:340-381. Metal writes shared memory directly; the
-   *  bytes are staged and copied inside this command buffer here so they
-   *  land in command order. The staging address of HgiWebGPUBuffer
-   *  (GetCPUStagingAddress) is an ordinary source. */
+  /** hgiMetal/blitCmds.mm:340-381. Metal writes the bytes into the buffer's
+   *  memory at once (memcpy into its contents, blitCmds.mm:350-370), as
+   *  hgiVulkan does into the buffer's own staging memory, which is the
+   *  device buffer under UMA/ReBAR (hgiVulkan/blitCmds.cpp:442-466); neither
+   *  records a command. The WebGPU counterpart is GPUQueue.writeBuffer (see
+   *  below). The staging address of HgiWebGPUBuffer (GetCPUStagingAddress)
+   *  is an ordinary source. */
   copyBufferCpuToGpu(copyOp: HgiBufferCpuToGpuOp): void {
     if (copyOp.byteSize === 0 ||
         !copyOp.cpuSourceBuffer ||
@@ -294,6 +323,18 @@ export class HgiWebGPUBlitCmds extends HgiBlitCmds {
         return
       }
     }
+    // Written into the buffer at once, as upstream (see above):
+    // GPUQueue.writeBuffer, without a mapped buffer and a command per copy.
+    // It runs before every command buffer not yet given to GPUQueue.submit,
+    // so it is used only when none of those (this cmds' commands, the blits
+    // held by hgiwebgpu-coalesced-submits, other blits being recorded) uses
+    // the buffer; it then lands in the same order as a copy recorded here.
+    // Otherwise the bytes are staged and copied in command order.
+    if (!this._hgi._pendingBlitWorkUses(dstBuffer, this)) {
+      this._device.queue.writeBuffer(dstBuffer, start, bytes.buffer, bytes.byteOffset, bytes.byteLength)
+      return
+    }
+    this._touch(dstBuffer)
     this._commandEncoder!.copyBufferToBuffer(this._stagingUpload(bytes), 0, dstBuffer, start, bytes.byteLength)
   }
 
@@ -306,6 +347,7 @@ export class HgiWebGPUBlitCmds extends HgiBlitCmds {
     }
     const srcBuffer = (copyOp.gpuSourceBuffer.Get() as HgiWebGPUBuffer).getBufferId()
     if (!srcBuffer) return
+    this._touch(srcBuffer)
     const start = copyOp.sourceByteOffset & ~3
     const end = HgiWebGPUAlign(copyOp.sourceByteOffset + copyOp.byteSize)
     const staging = this._device.createBuffer({
@@ -335,6 +377,7 @@ export class HgiWebGPUBlitCmds extends HgiBlitCmds {
       return
     }
     this._written.add(hgiBuffer!)
+    this._touch(dstBuffer)
     const desc = srcTexture.getDescriptor()
     const block = _Block(desc)
     const [ox, oy, oz] = copyOp.sourceTexelOffset.data as [number, number, number]
@@ -379,6 +422,7 @@ export class HgiWebGPUBlitCmds extends HgiBlitCmds {
       TF_CODING_ERROR('HgiWebGPU: CopyBufferToTexture with an invalid texture or buffer')
       return
     }
+    this._touch(srcBuffer)
     const desc = dstTexture.getDescriptor()
     const block = _Block(desc)
     const [ox, oy, oz] = copyOp.destinationTexelOffset.data as [number, number, number]
@@ -422,6 +466,7 @@ export class HgiWebGPUBlitCmds extends HgiBlitCmds {
     const gpuBuffer = buf?.getBufferId()
     if (!buf || !gpuBuffer) return
     this._written.add(buf)
+    this._touch(gpuBuffer)
     const length = HgiWebGPUAlign(buf.getDescriptor().byteSize)
     if ((value & 0xff) === 0) {
       this._commandEncoder!.clearBuffer(gpuBuffer, 0, length)
@@ -488,19 +533,29 @@ export class HgiWebGPUBlitCmds extends HgiBlitCmds {
    *  GPU-to-CPU copies have been written to their destinations, so callers
    *  that waited until completed see the data, as upstream. */
   override _submit(_hgi: Hgi, wait: HgiSubmitWaitType): boolean | Promise<boolean> {
-    if (!this._commandEncoder) return false
+    if (this._finished) return false
+    this._finished = true
     const queue = this._device.queue
     const transient = this._transient.splice(0)
     const readbacks = this._readbacks.splice(0)
-    const buffer = this._commandEncoder.finish()
-    this._commandEncoder = null
     for (const b of this._written) b._noteWrite()
     this._written.clear()
+    const encoder = this._commandEncoderValue
+    this._commandEncoderValue = null
+    if (!encoder) {
+      // Nothing was recorded (each copy went to GPUQueue.writeBuffer);
+      // waiting waits for the queue.
+      if (wait !== HgiSubmitWaitType.HgiSubmitWaitTypeWaitUntilCompleted) return true
+      this._hgi._submitNow([])
+      return queue.onSubmittedWorkDone().then(() => true)
+    }
+    const buffer = encoder.finish()
+    this._hgi._blitClosed(this)
     if (wait !== HgiSubmitWaitType.HgiSubmitWaitTypeWaitUntilCompleted && readbacks.length === 0) {
       // hgiwebgpu-coalesced-submits (hgi.ts): held for the next submit.
       this._hgi._holdSubmit(buffer, () => {
         if (transient.length) void queue.onSubmittedWorkDone().then(() => { for (const t of transient) t.destroy() })
-      })
+      }, this._touched)
       return true
     }
     this._hgi._submitNow([buffer])

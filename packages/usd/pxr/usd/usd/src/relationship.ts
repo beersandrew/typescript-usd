@@ -77,8 +77,12 @@ export class UsdRel {
     return true
   }
 
+  // UsdRelationship::GetTargets (relationship.cpp:198-207) through
+  // UsdProperty::_GetTargets: the property's composed target paths, read
+  // through the property handle without first listing the prim's property
+  // names (an unauthored property has no target opinions, so gives none).
   getTargets(): string[] {
-    return this._stage.get(`${this._primPath}.${this.name}`)?.getTargets() ?? []
+    return _targetsOf(this._stage, this._primPath, this.name)
   }
 
   // UsdRelationship::GetForwardedTargets (relationship.cpp:262-279) through
@@ -92,12 +96,15 @@ export class UsdRel {
     const unique = new Set<string>()
     const targets: string[] = []
     const visit = (primPath: string, name: string): void => {
-      for (const target of this._stage.get(`${primPath}.${name}`)?.getTargets() ?? []) {
+      for (const target of _targetsOf(this._stage, primPath, name)) {
         const dot = target.indexOf('.')
-        // :229-247: a prim-property target naming a relationship forwards.
+        // :229-247: a prim-property target naming a relationship forwards
+        // (GetPrimAtPath(target.GetPrimPath()).GetRelationship(name): the
+        // relationship object is valid when its defining spec is one).
         if (dot > 0 && !target.includes('[')) {
           const relPrim = target.slice(0, dot), relName = target.slice(dot + 1)
-          if (this._stage.get(target)?.isRelationship) {
+          const prim = this._stage.getPrim(relPrim)
+          if (prim && this._stage._getDefiningSpecType(prim._prim.path, relName) === 'relationship') {
             if (!visited.has(target)) {
               visited.add(target)
               visit(relPrim, relName)
@@ -134,4 +141,10 @@ export class UsdRel {
     this._stage._setPropertyMetadata(this._primPath, this.name, fieldName, value)
     return true
   }
+}
+
+// The composed targets of the property `name` of the prim at `primPath`
+// (UsdProperty::_GetTargets); none when there is no such prim.
+function _targetsOf(stage: Stage, primPath: string, name: string): string[] {
+  return stage.getPrim(primPath)?.getAttr(name)?.getTargets() ?? []
 }

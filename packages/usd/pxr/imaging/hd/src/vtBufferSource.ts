@@ -42,7 +42,10 @@ const HD_ENABLE_DOUBLE_MATRIX = new TfEnvSetting<boolean>('HD_ENABLE_DOUBLE_MATR
 
 const _emptyData = new Uint8Array(0)
 
-type _Conversion = { from: string, to: TfType, make: (v: unknown) => unknown }
+/** `typed`: the element types whose VtArrays keep their components in a
+ *  Float64Array, converted to the Float32Array of `to` component by
+ *  component (Float32Array assignment rounds as Math.fround does). */
+type _Conversion = { from: string, to: TfType, make: (v: unknown) => unknown, typed?: boolean }
 
 /** vtBufferSource.cpp:89-133 conversions applied when !allowDoubles (built
  *  once: they are the same for every buffer source). */
@@ -55,10 +58,10 @@ function _MakeDoubleToFloatConversions(): _Conversion[] {
   const comps = (v: unknown) => (v as { data: readonly number[] }).data
   const mat = (v: unknown) => (v as { GetArray(): readonly number[] }).GetArray()
   return [
-    { from: 'double', to: VtValueTypes.float, make: v => flt(v as number) },
-    { from: 'GfVec2d', to: VtValueTypes.GfVec2f, make: v => new GfVec2f(...comps(v)) },
-    { from: 'GfVec3d', to: VtValueTypes.GfVec3f, make: v => new GfVec3f(...comps(v)) },
-    { from: 'GfVec4d', to: VtValueTypes.GfVec4f, make: v => new GfVec4f(...comps(v)) },
+    { from: 'double', to: VtValueTypes.float, make: v => flt(v as number), typed: true },
+    { from: 'GfVec2d', to: VtValueTypes.GfVec2f, make: v => new GfVec2f(...comps(v)), typed: true },
+    { from: 'GfVec3d', to: VtValueTypes.GfVec3f, make: v => new GfVec3f(...comps(v)), typed: true },
+    { from: 'GfVec4d', to: VtValueTypes.GfVec4f, make: v => new GfVec4f(...comps(v)), typed: true },
     { from: 'GfMatrix2d', to: TfType.declare('GfMatrix2f'), make: v => new GfMatrix2f(...mat(v)) },
     { from: 'GfMatrix3d', to: TfType.declare('GfMatrix3f'), make: v => new GfMatrix3f(...mat(v)) },
     { from: 'GfMatrix4d', to: TfType.declare('GfMatrix4f'), make: v => new GfMatrix4f(v as GfMatrix4d) },
@@ -148,7 +151,12 @@ export class HdVtBufferSource extends HdResolvedBufferSource {
         if (this._value.isArrayValued() ? elementTypeName === c.from : typeName === c.from) {
           if (this._value.isArrayValued()) {
             const dblArray = this._value.UncheckedGet<VtArray<unknown>>()
-            const fltArray = new VtArray<unknown>(dblArray.toArray().map(c.make), c.to)
+            const storage = c.typed ? dblArray.cdata() : undefined
+            // The same floats as converting each element, without making
+            // the double and float elements in between.
+            const fltArray = storage instanceof Float64Array
+              ? VtArray._adopt<unknown>(c.to, new Float32Array(storage))
+              : new VtArray<unknown>(dblArray.toArray().map(c.make), c.to)
             this._value = VtValue.createArray(fltArray)
           } else {
             this._value = VtValue.create(c.make(this._value.UncheckedGet<unknown>()), c.to)

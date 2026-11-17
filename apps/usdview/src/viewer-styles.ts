@@ -42,8 +42,10 @@ input,select { padding:2px 4px; }
 input { background:#3a3a3a; border:1px solid #252525; border-radius:2px; min-width:0; }
 button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible,.prim:focus-visible,canvas:focus-visible,.splitter:focus-visible { outline:1px solid var(--selected); outline-offset:-1px; }
 .menubar { min-height:26px; display:flex; align-items:center; gap:1px; padding:0 3px; background:#505050; border:2px solid #292929; }
+.version-link { margin-left:auto; padding:4px 7px; color:#969696; font-size:var(--usd-base-font); text-decoration:none; }
+.version-link + .licenses-link { margin-left:0; }
 .licenses-link { margin-left:auto; padding:4px 7px; color:#969696; font-size:var(--usd-base-font); text-decoration:none; }
-.licenses-link:hover { color:#ccc; }
+.licenses-link:hover,.version-link:hover { color:#ccc; }
 .app-caption { margin-left:auto; padding-right:5px; color:#969696; font-size:var(--usd-base-font); }
 .menu { position:relative; }
 .menu summary,.menu-button { display:block; list-style:none; min-height:23px; padding:4px 7px; cursor:pointer; border:0; border-radius:0; background:transparent; font-size:var(--usd-base-font); }

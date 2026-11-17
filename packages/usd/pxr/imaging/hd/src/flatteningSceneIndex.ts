@@ -323,6 +323,9 @@ export class HdFlatteningSceneIndex extends HdSingleInputFilteringSceneIndexBase
     // If the input scene does not provide a data source, and there
     // are no descendant prims either (as implied by the lack of a
     // SdfPathTable entry in _prims), do not return anything.
+    // As upstream, descendants queried since the last notice are still in
+    // _recentPrims, so whether such a prim is wrapped depends on the notices
+    // seen (usdImaging tests/nestedInstancerFlattening.test.ts).
     if (!inputPrim.dataSource && !inTable) {
       return inputPrim
     }

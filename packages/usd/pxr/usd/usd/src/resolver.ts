@@ -271,6 +271,34 @@ export function usdWithLiveSamples(
   return result
 }
 
+// A resolve result whose samples are read live from their layer, as
+// usdWithLiveSamples makes, built as an ordinary object: the source facts
+// UsdResolveInfo holds upstream (layer, spec path, offset, node) and the
+// sample source, with `timeSamples` listed on request by the prototype's
+// getter (non-enumerable, so a spread does not copy the samples).
+class UsdLiveTimeSamplesResult {
+  source: UsdResolveSource
+  valueIsBlocked: boolean
+  layer: Layer
+  specPath: string
+  layerToStageOffset: SdfLayerOffset
+  node: PcpNode
+  samples: UsdLayerTimeSamples
+  constructor(
+    layer: Layer, specPath: string, layerToStageOffset: SdfLayerOffset, node: PcpNode,
+    samples: UsdLayerTimeSamples,
+  ) {
+    this.source = 'timeSamples'
+    this.valueIsBlocked = false
+    this.layer = layer
+    this.specPath = specPath
+    this.layerToStageOffset = layerToStageOffset
+    this.node = node
+    this.samples = samples
+  }
+  get timeSamples(): [number, unknown][] { return this.samples.all() }
+}
+
 // The samples to interpolate at a stage time: a window from the live layer
 // source when there is one, otherwise the resolved sample list.
 export function usdResolvedSamplesAround(
@@ -422,31 +450,13 @@ export function usdMapPathExpressionToPrim(
   return stack.at(-1) ?? new SdfPathExpression()
 }
 
-// The typeName opinions of an attribute's property specs, read in one
-// Usd_Resolver walk (nodes without specs skipped, resolver.cpp:113-123): the
-// strongest (UsdAttribute::GetTypeName's composed typeName, as
-// usdResolveAttributeField(index, propName, 'typeName') gives it) and whether
-// every site that authors one agrees with it, so the value walk's per-site
-// type questions (is any site a pathExpression?) are answered without
-// walking the sites again.
-export interface UsdAttributeTypeNames {
-  readonly composed: unknown
-  readonly uniform: boolean
-  // The sites the walk found, in walk order (node index * 2^16 + layer
-  // index): the layers that hold a spec for the property. The value walk
-  // reads its fields (timeSamples, spline, default) only at these layers;
-  // a layer without the spec holds none of them (SdfAbstractData::Has is
-  // false without a spec), so the other layers of a deep layer stack cost
-  // one spec lookup here instead of one per field there.
-  readonly specSites: readonly number[]
-}
-
-export function usdResolveAttributeTypeNames(
+// The composed typeName of an attribute (UsdAttribute::GetTypeName's
+// authored opinion, as usdResolveAttributeField(index, propName, 'typeName')
+// gives it): the strongest site's typeName, in the Usd_Resolver walk (nodes
+// without specs skipped, resolver.cpp:113-123).
+export function usdResolveAttributeTypeName(
   index: PcpPrimIndex, propName: string,
-): UsdAttributeTypeNames {
-  let composed: unknown
-  let uniform = true
-  const specSites: number[] = []
+): string | undefined {
   const nodes = index._getNodeRefs()
   for (let nodeIndex = 0; nodeIndex < nodes.length; nodeIndex++) {
     const node = nodes[nodeIndex]!
@@ -454,16 +464,30 @@ export function usdResolveAttributeTypeNames(
     const specPath = propSpecPath(pcpLayerPathKey(node.path), propName)
     const layers = node.layerStack.layers
     for (let layerIndex = 0; layerIndex < layers.length; layerIndex++) {
-      const layer = layers[layerIndex]!.layer
-      if (!layer.hasSpec(specPath)) continue
-      specSites.push(nodeIndex * 65536 + layerIndex)
-      const value = readField(layer, specPath, 'typeName')
-      if (value === undefined || value === null) continue
-      if (composed === undefined) composed = value
-      else if (value !== composed) uniform = false
+      const value = readField(layers[layerIndex]!.layer, specPath, 'typeName')
+      if (value !== undefined && value !== null) return value as string
     }
   }
-  return { composed, uniform, specSites }
+  return undefined
+}
+
+// The Sdf value type a resolved value is held as: the typeName of the spec
+// it was read from. Upstream a VtValue carries its held type, set when the
+// layer parsed or authored it (Sdf_ParserHelpers, SdfAttributeSpec::
+// SetDefaultValue casting to the spec's value type), and the stage's value
+// transforms and interpolation dispatch on it (stage.cpp:613-717,
+// interpolators.cpp Usd_Interpolate). Sdf keeps values of the numeric,
+// string-like and time types as plain JS numbers and strings, which the
+// parser and authoring coerce to the spec's typeName (sdf parserHelpers.ts),
+// so the spec's typeName at the source site is that held type, read once
+// where the value lives rather than composed over every site.
+export function usdResolvedValueTypeName(
+  result: UsdAttributeResolveResult,
+): string | undefined {
+  const { layer, specPath } = result
+  if (!layer || specPath === undefined) return undefined
+  const typeName = readField(layer, specPath, 'typeName')
+  return typeName === undefined || typeName === null ? undefined : typeName as string
 }
 
 // Canonical authored-value/source selection.  This is the TypeScript
@@ -481,47 +505,76 @@ export function usdResolveAttributeValue(
   // The attribute prim's UsdPrim::_ProtoToInstancePathMap, for a prim in a
   // prototype (stage.cpp:404-406, 618-621).
   protoToInstance?: (protoPath: SdfPath) => SdfPath,
-  // The sites' typeName opinions on `index`, when the caller has them.
-  typeNames?: UsdAttributeTypeNames,
 ): UsdAttributeResolveResult {
-  // Whether any site's typeName is one of `names`: from the caller's scan
-  // when every site agrees, else by walking the sites.
-  const anySiteTypeName = (names: readonly string[]): boolean => typeNames?.uniform
-    ? typeof typeNames.composed === 'string' && names.includes(typeNames.composed)
-    : [...usdPropertySites(index, propName)].some(
-      site => names.includes(site.layer.getField(site.specPath, 'typeName') as string))
-  let processingAnimationBlock = false
-  const composableSources: UsdAttributeResolveResult[] = []
-  // Whether any site declares the pathExpression type. Only string values can
-  // be path expressions, so it is computed on the first string value rather
-  // than by reading typeName from every site on every resolve.
-  let pathExpressionType: boolean | undefined
-  const isPathExpressionType = (): boolean => pathExpressionType ??= anySiteTypeName(['pathExpression'])
+  return new UsdAttributeValueResolver(
+    index, propName, time, clipSources, resolveTarget, protoToInstance).resolve()
+}
+
+// The value resolver of one attribute resolution: stage.cpp's
+// _ResolveInfoResolver (with the value walk of _GetResolvedValueAtTimeImpl),
+// one object holding the walk's state rather than a set of closures made on
+// every resolve.
+class UsdAttributeValueResolver {
+  readonly composableSources: UsdAttributeResolveResult[] = []
+  // The Sdf value type of the values a site holds (usdResolvedValueTypeName):
+  // a string or array value is a path expression when the site holds
+  // SdfPathExpression values (upstream the VtValue's held type,
+  // stage.cpp:609-621). Read only for string and array values, and once per
+  // site.
+  #heldLayer: Layer | undefined = undefined
+  #heldSpecPath: string | undefined = undefined
+  #heldTypeName: unknown = undefined
+  #arrayEditsCompose: boolean | undefined = undefined
+
+  constructor(
+    readonly index: PcpPrimIndex,
+    readonly propName: string,
+    readonly time: 'default' | number | undefined,
+    readonly clipSources: readonly UsdAttributeClipSource[],
+    readonly resolveTarget: UsdResolveTarget | undefined,
+    readonly protoToInstance: ((protoPath: SdfPath) => SdfPath) | undefined,
+  ) {}
+
+  // Whether any site's typeName is one of `names`.
+  anySiteTypeName(names: readonly string[]): boolean {
+    for (const site of usdPropertySites(this.index, this.propName)) {
+      if (names.includes(site.layer.getField(site.specPath, 'typeName') as string)) return true
+    }
+    return false
+  }
+
+  siteTypeName(layer: Layer, specPath: string): unknown {
+    if (layer !== this.#heldLayer || specPath !== this.#heldSpecPath) {
+      this.#heldLayer = layer
+      this.#heldSpecPath = specPath
+      this.#heldTypeName = layer.getField(specPath, 'typeName')
+    }
+    return this.#heldTypeName
+  }
+
   // An array edit over no weaker value edits an empty array of the
   // attribute's value type.
-  const emptyArray = (): unknown => {
-    for (const site of usdPropertySites(index, propName)) {
+  emptyArray(): unknown {
+    for (const site of usdPropertySites(this.index, this.propName)) {
       const typeName = site.layer.getField(site.specPath, 'typeName')
       if (typeof typeName === 'string') return _sdfCoerceValueToType([], typeName)
     }
     return []
   }
-  let pathExpressionArrayType: boolean | undefined
-  const isPathExpressionArrayType = (): boolean =>
-    pathExpressionArrayType ??= anySiteTypeName(['pathExpression[]'])
-  const toStageValue = (value: unknown, node: PcpNode, specPath: string): unknown => {
+  toStageValue(value: unknown, node: PcpNode, layer: Layer, specPath: string): unknown {
     // The SdfPathExpression transform also maps each element of an array
     // (stage.cpp:609-617, Vt_RegisterTransformImpl).
-    if ((Array.isArray(value) || value instanceof VtArray) && isPathExpressionArrayType()) {
+    if ((Array.isArray(value) || value instanceof VtArray) &&
+        this.siteTypeName(layer, specPath) === 'pathExpression[]') {
       const items = value instanceof VtArray ? value.toArray() : value
       const mapped = items.map(item => typeof item === 'string'
-        ? (mapPathExpressionToStage(item, node, specPath) as _SdfPathExpressionValue).text : item)
+        ? (this.mapPathExpressionToStage(item, node, specPath) as _SdfPathExpressionValue).text : item)
       return value instanceof VtArray ? new VtArray(mapped, value.getElementType()) : mapped
     }
-    if (typeof value !== 'string' || !isPathExpressionType()) return value
-    return mapPathExpressionToStage(value, node, specPath)
+    if (typeof value !== 'string' || this.siteTypeName(layer, specPath) !== 'pathExpression') return value
+    return this.mapPathExpressionToStage(value, node, specPath)
   }
-  const mapPathExpressionToStage = (value: string, node: PcpNode, specPath: string): unknown => {
+  mapPathExpressionToStage(value: string, node: PcpNode, specPath: string): unknown {
     const dot = specPath.lastIndexOf('.')
     const sourcePrimPath = SdfPath.fromString(dot < 0 ? specPath : specPath.slice(0, dot))
     const expression = new _SdfPathExpressionValue(value).makeAbsolute(sourcePrimPath)
@@ -531,7 +584,7 @@ export function usdResolveAttributeValue(
     return mappedPrimPath.isEmpty()
       ? new _SdfPathExpressionValue('')
       : expression.map(pathExpr => usdMapPathExpressionToPrim(
-        pathExpr, path => mapFn.mapSourceToTarget(path), protoToInstance))
+        pathExpr, path => mapFn.mapSourceToTarget(path), this.protoToInstance))
   }
   // VtArrayEdit<T> composes over arrays and the background only for the
   // element types of VT_SCALAR_VALUE_TYPES (base/vt/arrayEdit.cpp:91-109,
@@ -539,12 +592,18 @@ export function usdResolveAttributeValue(
   // VtArrayEdit<SdfAssetPath> or VtArrayEdit<SdfPathExpression>
   // (sdf/assetPath.cpp:33, sdf/pathExpression.cpp:40-58), so an edit of
   // asset[] or pathExpression[] is a final value, kept as authored.
-  let arrayEditsCompose: boolean | undefined
-  const editsCompose = (): boolean =>
-    arrayEditsCompose ??= !anySiteTypeName(['asset[]', 'pathExpression[]'])
-  const isComposable = (value: unknown): boolean =>
-    (value instanceof VtArrayEdit && editsCompose()) || value instanceof _SdfPathExpressionValue
-  const finishComposableSources = (): UsdAttributeResolveResult => {
+  editsCompose(): boolean {
+    return this.#arrayEditsCompose ??= !this.anySiteTypeName(['asset[]', 'pathExpression[]'])
+  }
+
+  isComposable(value: unknown): boolean {
+    return (value instanceof VtArrayEdit && this.editsCompose()) || value instanceof _SdfPathExpressionValue
+  }
+
+  finishComposableSources(): UsdAttributeResolveResult {
+    const { composableSources, time } = this
+    const emptyArray = (): unknown => this.emptyArray()
+    const isComposable = (value: unknown): boolean => this.isComposable(value)
     for (let i = 0; i + 1 < composableSources.length; i++) {
       composableSources[i]!.nextWeaker = composableSources[i + 1]!
     }
@@ -648,159 +707,136 @@ export function usdResolveAttributeValue(
   }
   // The Usd_Resolver site walk of usdPropertySites, inlined: a site's
   // layer-to-stage offset is composed only for the site a result comes from.
-  const skipEmptyNodes = clipSources.length === 0
-  const nodes = index._getNodeRefs()
-  const specSites = typeNames?.specSites
-  let siteCursor = 0
-  let walkNode!: PcpNode, layerOffset!: SdfLayerOffset
-  let nodeOffset: SdfLayerOffset | undefined
-  const siteOffset = (): SdfLayerOffset => sdfLayerOffsetCompose(
-    nodeOffset ??= walkNode.mapToRoot.evaluate().getTimeOffset(), layerOffset)
-  // Without clips only the sites can give a value, so the walk visits the
-  // type-name walk's sites alone when it has them.
-  const sitesOnly = specSites !== undefined && clipSources.length === 0
-  for (let nodeIndex = 0; nodeIndex < nodes.length; nodeIndex++) {
-    const node = walkNode = nodes[nodeIndex]!
-    if ((skipEmptyNodes && !node.hasSpecs) || !node.canContributeSpecs()) continue
-    if (sitesOnly) {
-      while (siteCursor < specSites.length && specSites[siteCursor]! < nodeIndex * 65536) siteCursor++
-      if (siteCursor === specSites.length) break
-      if (Math.floor(specSites[siteCursor]! / 65536) !== nodeIndex) continue
-    }
-    nodeOffset = undefined
-    const specPath = propSpecPath(pcpLayerPathKey(node.path), propName)
-    const layers = node.layerStack.layers
-    for (let layerIndex = 0; layerIndex < layers.length; layerIndex++) {
-      // Whether the layer holds the property's spec (the type-name walk's
-      // sites when given): without it the layer has no samples, spline or
-      // default, and only a clip introduced here can apply.
-      let specHere: boolean
-      if (specSites) {
-        const key = nodeIndex * 65536 + layerIndex
-        while (siteCursor < specSites.length && specSites[siteCursor]! < key) siteCursor++
-        const site = specSites[siteCursor]
-        specHere = site === key
-        if (!specHere && sitesOnly) {
-          // On to this node's next site, if it has one.
-          if (site === undefined || Math.floor(site / 65536) !== nodeIndex) break
-          layerIndex = site % 65536
-          specHere = true
-        }
-      } else {
-        specHere = layers[layerIndex]!.layer.hasSpec(specPath)
-      }
-      if (!_usdResolveTargetIncludes(resolveTarget, nodeIndex, layerIndex)) continue
-      const layer = layers[layerIndex]!.layer as Layer
-      layerOffset = layers[layerIndex]!.offset
-      if (specHere && time !== 'default' && !processingAnimationBlock) {
-        const rawSamples = layerTimeSamples(layer, specPath)
-        if (rawSamples.length > 0) {
-          const toStage = (value: unknown): unknown => toStageValue(unwrapValue(value), node, specPath)
-          const samples = new UsdLayerTimeSamples(layer, specPath, siteOffset(), toStage)
-          const anyComposable = samplesMayCompose(layer, specPath, rawSamples, isPathExpressionType, value => isComposable(toStage(value)))
-          if (composableSources.length > 0 || anyComposable) {
-            // Composition needs every sample; hold them as a plain list.
-            composableSources.push({
-              source: 'timeSamples', valueIsBlocked: false,
-              timeSamples: samples.all(),
+  resolve(): UsdAttributeResolveResult {
+    const { index, propName, time, clipSources, resolveTarget, composableSources } = this
+    let processingAnimationBlock = false
+    const skipEmptyNodes = clipSources.length === 0
+    const nodes = index._getNodeRefs()
+    let walkNode!: PcpNode, layerOffset!: SdfLayerOffset
+    let nodeOffset: SdfLayerOffset | undefined
+    const siteOffset = (): SdfLayerOffset => sdfLayerOffsetCompose(
+      nodeOffset ??= walkNode.mapToRoot.evaluate().getTimeOffset(), layerOffset)
+    for (let nodeIndex = 0; nodeIndex < nodes.length; nodeIndex++) {
+      const node = walkNode = nodes[nodeIndex]!
+      if ((skipEmptyNodes && !node.hasSpecs) || !node.canContributeSpecs()) continue
+      nodeOffset = undefined
+      const specPath = propSpecPath(pcpLayerPathKey(node.path), propName)
+      const layers = node.layerStack.layers
+      for (let layerIndex = 0; layerIndex < layers.length; layerIndex++) {
+        // Whether the layer holds the property's spec: without it the layer
+        // has no samples, spline or default (SdfAbstractData::Has is false
+        // without a spec), and only a clip introduced here can apply.
+        const specHere = layers[layerIndex]!.layer.hasSpec(specPath)
+        if (!specHere && clipSources.length === 0) continue
+        if (!_usdResolveTargetIncludes(resolveTarget, nodeIndex, layerIndex)) continue
+        const layer = layers[layerIndex]!.layer as Layer
+        layerOffset = layers[layerIndex]!.offset
+        if (specHere && time !== 'default' && !processingAnimationBlock) {
+          const rawSamples = layerTimeSamples(layer, specPath)
+          if (rawSamples.length > 0) {
+            const toStage = (value: unknown): unknown => this.toStageValue(unwrapValue(value), node, layer, specPath)
+            const samples = new UsdLayerTimeSamples(layer, specPath, siteOffset(), toStage)
+            const anyComposable = samplesMayCompose(layer, specPath, rawSamples, () => this.siteTypeName(layer, specPath) === 'pathExpression', value => this.isComposable(toStage(value)))
+            if (composableSources.length > 0 || anyComposable) {
+              // Composition needs every sample; hold them as a plain list.
+              composableSources.push({
+                source: 'timeSamples', valueIsBlocked: false,
+                timeSamples: samples.all(),
+                layer, specPath, layerToStageOffset: siteOffset(),
+                node,
+              })
+              if (!anyComposable) return this.finishComposableSources()
+              continue
+            }
+            return new UsdLiveTimeSamplesResult(layer, specPath, siteOffset(), node, samples)
+          }
+          const spline = layer.getField(specPath, 'spline') as TsSpline | undefined
+          if (spline !== undefined && spline !== null) {
+            return {
+              source: 'spline', spline, valueIsBlocked: false,
               layer, specPath, layerToStageOffset: siteOffset(),
               node,
-            })
-            if (!anyComposable) return finishComposableSources()
+            }
+          }
+        }
+
+        // HasField, not truthiness: an authored SdfValueBlock must stop the walk
+        // instead of exposing a weaker value. Null remains accepted for legacy
+        // in-memory/crate scenes created before the first-class block type.
+        const layerDefault = specHere ? layer.getField(specPath, 'default') : undefined
+        const authoredDefault = specHere ? this.toStageValue(layerDefault, node, layer, specPath) : undefined
+        if (authoredDefault !== undefined) {
+          // stage.cpp _ResolveInfoResolver keeps walking for a non-animation
+          // default while suppressing weaker samples, splines and clips.
+          if (authoredDefault instanceof SdfAnimationBlock) {
+            processingAnimationBlock = true
             continue
           }
-          return usdWithLiveSamples({
-            source: 'timeSamples', valueIsBlocked: false,
-            layer, specPath, layerToStageOffset: siteOffset(),
-            node,
-          }, samples)
-        }
-        const spline = layer.getField(specPath, 'spline') as TsSpline | undefined
-        if (spline !== undefined && spline !== null) {
+          if (authoredDefault instanceof SdfValueBlock || authoredDefault === null) {
+            if (composableSources.length > 0) return this.finishComposableSources()
+            return {
+              source: 'none', valueIsBlocked: true,
+              layer, specPath, layerToStageOffset: siteOffset(),
+              node,
+            }
+          }
+          if (this.isComposable(authoredDefault)) {
+            const source: UsdAttributeResolveResult = {
+              source: 'default', value: authoredDefault, valueIsBlocked: false,
+              layer, specPath, layerToStageOffset: siteOffset(), node,
+            }
+            composableSources.push(source)
+            continue
+          }
+          if (composableSources.length > 0 &&
+              (Array.isArray(authoredDefault) || authoredDefault instanceof VtArray ||
+               authoredDefault instanceof _SdfPathExpressionValue)) {
+            composableSources.push({
+              source: 'default', value: authoredDefault, valueIsBlocked: false,
+              layer, specPath, layerToStageOffset: siteOffset(), node,
+            })
+            return this.finishComposableSources()
+          }
           return {
-            source: 'spline', spline, valueIsBlocked: false,
+            source: 'default', value: authoredDefault, layerDefault, valueIsBlocked: false,
             layer, specPath, layerToStageOffset: siteOffset(),
             node,
           }
         }
-      }
 
-      // HasField, not truthiness: an authored SdfValueBlock must stop the walk
-      // instead of exposing a weaker value. Null remains accepted for legacy
-      // in-memory/crate scenes created before the first-class block type.
-      const layerDefault = specHere ? layer.getField(specPath, 'default') : undefined
-      const authoredDefault = specHere ? toStageValue(layerDefault, node, specPath) : undefined
-      if (authoredDefault !== undefined) {
-        // stage.cpp _ResolveInfoResolver keeps walking for a non-animation
-        // default while suppressing weaker samples, splines and clips.
-        if (authoredDefault instanceof SdfAnimationBlock) {
-          processingAnimationBlock = true
-          continue
-        }
-        if (authoredDefault instanceof SdfValueBlock || authoredDefault === null) {
-          if (composableSources.length > 0) return finishComposableSources()
-          return {
-            source: 'none', valueIsBlocked: true,
-            layer, specPath, layerToStageOffset: siteOffset(),
-            node,
+        // OpenUSD stage.cpp _GetResolvedValueAtTimeWithClipsImpl: a clip is
+        // considered only at its exact introduction site, after direct samples,
+        // spline and default at that site have had the opportunity to stop the
+        // walk. Clips do not participate at default time.
+        if (time !== 'default' && !processingAnimationBlock) {
+          for (const clipSource of clipSources) {
+            if (clipSource.position[0] !== nodeIndex ||
+                clipSource.position[1] !== layerIndex) continue
+            const resolved = clipSource.resolve(time)
+            if (!resolved) continue
+            // Clip values compose like samples: a stronger composing opinion
+            // composes over them, and composing clip values (array edits)
+            // compose over weaker opinions (stage.cpp _GetValueFromResolveInfoImpl
+            // composes clip samples with the rest of the chain, :7900-8080;
+            // _TimeSampleMapResolver::ProcessClips, :8786-8840).
+            const mayCompose = resolved.clipValuesMayCompose === true && this.editsCompose()
+            if (composableSources.length === 0 && !mayCompose) return resolved
+            const evaluateClip = resolved.valueEvaluator
+            composableSources.push({
+              ...resolved,
+              timeSamples: (resolved.timeSamples ?? []).map(([sampleTime]) =>
+                [sampleTime, evaluateClip ? evaluateClip(sampleTime, false) : undefined]),
+            })
+            if (!mayCompose) return this.finishComposableSources()
+            break
           }
         }
-        if (isComposable(authoredDefault)) {
-          const source: UsdAttributeResolveResult = {
-            source: 'default', value: authoredDefault, valueIsBlocked: false,
-            layer, specPath, layerToStageOffset: siteOffset(), node,
-          }
-          composableSources.push(source)
-          continue
-        }
-        if (composableSources.length > 0 &&
-            (Array.isArray(authoredDefault) || authoredDefault instanceof VtArray ||
-             authoredDefault instanceof _SdfPathExpressionValue)) {
-          composableSources.push({
-            source: 'default', value: authoredDefault, valueIsBlocked: false,
-            layer, specPath, layerToStageOffset: siteOffset(), node,
-          })
-          return finishComposableSources()
-        }
-        return {
-          source: 'default', value: authoredDefault, layerDefault, valueIsBlocked: false,
-          layer, specPath, layerToStageOffset: siteOffset(),
-          node,
-        }
-      }
 
-      // OpenUSD stage.cpp _GetResolvedValueAtTimeWithClipsImpl: a clip is
-      // considered only at its exact introduction site, after direct samples,
-      // spline and default at that site have had the opportunity to stop the
-      // walk. Clips do not participate at default time.
-      if (time !== 'default' && !processingAnimationBlock) {
-        for (const clipSource of clipSources) {
-          if (clipSource.position[0] !== nodeIndex ||
-              clipSource.position[1] !== layerIndex) continue
-          const resolved = clipSource.resolve(time)
-          if (!resolved) continue
-          // Clip values compose like samples: a stronger composing opinion
-          // composes over them, and composing clip values (array edits)
-          // compose over weaker opinions (stage.cpp _GetValueFromResolveInfoImpl
-          // composes clip samples with the rest of the chain, :7900-8080;
-          // _TimeSampleMapResolver::ProcessClips, :8786-8840).
-          const mayCompose = resolved.clipValuesMayCompose === true && editsCompose()
-          if (composableSources.length === 0 && !mayCompose) return resolved
-          const evaluateClip = resolved.valueEvaluator
-          composableSources.push({
-            ...resolved,
-            timeSamples: (resolved.timeSamples ?? []).map(([sampleTime]) =>
-              [sampleTime, evaluateClip ? evaluateClip(sampleTime, false) : undefined]),
-          })
-          if (!mayCompose) return finishComposableSources()
-          break
-        }
       }
-
     }
+    if (composableSources.length > 0) return this.finishComposableSources()
+    return noResolvedValue()
   }
-  if (composableSources.length > 0) return finishComposableSources()
-  return noResolvedValue()
 }
 
 // The primitive Usd_Resolver walk: nodes strong→weak, then layers
@@ -810,7 +846,7 @@ export function usdResolveStrongest(
   specPathOf: (node: PcpNode) => string,
   fieldName: string,
 ): unknown {
-  for (const node of index.getNodeRange()) {
+  for (const node of index._getNodeRefs()) {
     if (!node.canContributeSpecs()) continue
     const specPath = specPathOf(node)
     for (const { layer } of node.layerStack.layers) {
@@ -904,7 +940,7 @@ function* weakerFieldOpinions(
   xf?: UsdFieldOpinionTransform,
 ): Generator<unknown> {
   let started = false
-  for (const node of index.getNodeRange()) {
+  for (const node of index._getNodeRefs()) {
     if (!started && node !== fromNode) continue
     if (!node.canContributeSpecs()) continue
     const specPath = specPathFor(node)
@@ -930,7 +966,7 @@ export type UsdFieldOpinionTransform =
 export function usdResolvePrimFieldWithSource(
   index: PcpPrimIndex, fieldName: string, xf?: UsdFieldOpinionTransform,
 ): UsdPrimFieldResolveResult | undefined {
-  for (const node of index.getNodeRange()) {
+  for (const node of index._getNodeRefs()) {
     if (!node.canContributeSpecs()) continue
     const specPath = pcpLayerPathKey(node.path)
     for (const { layer, offset } of node.layerStack.layers) {
@@ -962,7 +998,7 @@ export interface UsdPrimSpecSite {
 
 export function usdPrimSpecSites(index: PcpPrimIndex): UsdPrimSpecSite[] {
   const sites: UsdPrimSpecSite[] = []
-  for (const node of index.getNodeRange()) {
+  for (const node of index._getNodeRefs()) {
     if (!node.canContributeSpecs()) continue
     const specPath = pcpLayerPathKey(node.path)
     for (const { layer } of node.layerStack.layers) {
@@ -1021,9 +1057,10 @@ function orderPropertyNames(names: string[], authoredOrder: unknown): string[] {
   return [...requested, ...names.filter(name => !moved.has(name))]
 }
 
-// Authored property names are dictionary-sorted, then reordered by the
-// strongest propertyOrder opinion (UsdPrim::_GetPropertyNames).
-export function usdResolvePropertyNames(index: PcpPrimIndex): string[] {
+// The authored property names of a prim index, unordered
+// (PcpPrimIndex::ComputePrimPropertyNames), for callers that sort and order
+// them themselves (UsdPrim::_GetPropertyNames).
+export function usdResolvePropertyNameSet(index: PcpPrimIndex): Set<string> {
   const seen = new Set<string>()
   // Usd_Resolver skips nodes without specs (resolver.cpp:113-123).
   for (const node of index._getNodeRefs()) {
@@ -1035,7 +1072,13 @@ export function usdResolvePropertyNames(index: PcpPrimIndex): string[] {
       for (const p of props) seen.add(p)
     }
   }
-  const names = [...seen].sort(dictionaryStrcmp)
+  return seen
+}
+
+// Authored property names are dictionary-sorted, then reordered by the
+// strongest propertyOrder opinion (UsdPrim::_GetPropertyNames).
+export function usdResolvePropertyNames(index: PcpPrimIndex): string[] {
+  const names = [...usdResolvePropertyNameSet(index)].sort(dictionaryStrcmp)
   const authoredOrder = usdResolvePrimField(index, 'propertyOrder') as string[] | undefined
   if (!Array.isArray(authoredOrder) || authoredOrder.length === 0) return names
   const present = new Set(names)
@@ -1056,7 +1099,7 @@ export function usdResolveAttributeField(index: PcpPrimIndex, propName: string, 
 export function usdResolveWeakestAttributeField(
   index: PcpPrimIndex, propName: string, fieldName: 'custom' | 'variability',
 ): unknown {
-  const nodes = [...index.getNodeRange()]
+  const nodes = index._getNodeRefs()
   for (let nodeIndex = nodes.length - 1; nodeIndex >= 0; --nodeIndex) {
     const node = nodes[nodeIndex]!
     if (!node.canContributeSpecs()) continue
@@ -1084,7 +1127,7 @@ export function usdResolveWeakestAttributeField(
 export function usdResolvePropertyCustom(
   index: PcpPrimIndex, propName: string,
 ): boolean {
-  const nodes = [...index.getNodeRange()]
+  const nodes = index._getNodeRefs()
   for (let nodeIndex = nodes.length - 1; nodeIndex >= 0; --nodeIndex) {
     const node = nodes[nodeIndex]!
     if (!node.canContributeSpecs()) continue
@@ -1137,7 +1180,7 @@ export function usdResolveAttributeFieldWithSource(
 // overs do not erase a weaker def/class (Usd_ComputePrimFlags).
 export function usdResolveDefiningSpecifier(index: PcpPrimIndex): 'def' | 'class' | 'over' {
   let foundClass = false
-  for (const node of index.getNodeRange()) {
+  for (const node of index._getNodeRefs()) {
     if (!node.canContributeSpecs()) continue
     const specPath = pcpLayerPathKey(node.path)
     for (const { layer } of node.layerStack.layers) {
@@ -1170,7 +1213,7 @@ export function usdComposePrimListOpField(
 ): string[] {
   const operations: SdfListOpValue<string>[] = []
   outer:
-  for (const node of index.getNodeRange()) {
+  for (const node of index._getNodeRefs()) {
     if (!node.canContributeSpecs()) continue
     const specPath = pcpLayerPathKey(node.path)
     for (const { layer } of node.layerStack.layers) {

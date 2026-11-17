@@ -57,6 +57,8 @@ export enum GfFrustumProjectionType {
 /** Scratch for IntersectsViewVolume's bbox-times-view-projection matrix. */
 const _intersectsViewVolumeMatrix = new Float64Array(16)
 
+let _identity4d: GfMatrix4d | undefined
+
 export class GfFrustum {
   // Mirror the enum onto the class so `GfFrustum.Orthographic` /
   // `GfFrustum.Perspective` read like the C++/Python `Gf.Frustum.Perspective`.
@@ -844,12 +846,26 @@ export class GfFrustum {
   }
 
   private _intersectsBBox(bbox: GfBBox3d): boolean {
-    if (bbox.getBox().IsEmpty()) return false
+    // The box's range and inverse matrix as stored (upstream's const
+    // references), read only.
+    const localBBox = bbox._getRangeConstRef()
+    if (localBBox.IsEmpty()) return false
 
     this._calculateFrustumPlanes()
 
-    const localBBox = bbox.getRange()
-    const worldToLocal = bbox.getInverseMatrix()
+    const worldToLocal = bbox._getInverseMatrixConstRef()
+
+    // A box already in world space (identity matrix): its local planes are
+    // the frustum's, so they are tested as they are, without copying and
+    // transforming each one (an allocation per plane per box in this port;
+    // the result is the same up to the rounding the identity transform
+    // adds).
+    if (worldToLocal.equals(_identity4d ??= new GfMatrix4d(1))) {
+      for (const plane of this._planes!) {
+        if (!plane.intersectsPositiveHalfSpace(localBBox)) return false
+      }
+      return true
+    }
 
     for (const plane of this._planes!) {
       const localPlane = new GfPlane(

@@ -30,7 +30,7 @@
 import {ResolverContextBinder as ArResolverContextBinder, GetResolver as ArGetResolver} from 'typescript-usd/ar'
 import {AssetPath as SdfAssetPath, Layer as SdfLayer, sdfNormalizeListOp} from 'typescript-usd/sdf'
 import type {Stage} from 'typescript-usd/usd'
-import {carrierWindows, type LoadSchedule} from './load-schedule'
+import {carrierLoaded, carrierWindows, type LoadSchedule} from './load-schedule'
 
 /** How many frames before a carrier's window opens its layers are read. */
 export const defaultPrefetchFrames = 48
@@ -184,13 +184,61 @@ export class LoadPrefetcher {
   /** The images read ahead for `carrier` (empty when it is not held). */
   images(carrier: string): Promise<string[]> { return this.#images.get(carrier) ?? Promise.resolve([]) }
 
+  /** Carriers read for a load about to happen (read()), held until
+   *  `imageHoldFrames` after the frame they were first seen loaded at. */
+  readonly #pinned = new Map<string, number | undefined>()
+
+  /** Reads `carrier`'s layers and images now, for a load about to happen
+   *  outside the read-ahead span (PausedLoadAhead, load-ahead.ts: a carrier
+   *  whose window opened before a jump). Resolves once they are read. */
+  async read(carrier: string): Promise<void> {
+    if (!this.#pinned.has(carrier)) this.#pinned.set(carrier, undefined)
+    if (!this.#held.has(carrier)) this.#held.set(carrier, openCarrierLayers(this.#stage, carrier).catch(() => []))
+    if (!this.#images.has(carrier)) this.#images.set(carrier, this.#readImages(carrier, this.#held.get(carrier)!))
+    await this.#images.get(carrier)
+  }
+
+  #readImages(carrier: string, reading: Promise<SdfLayer[]>): Promise<string[]> {
+    // Counted once read; a carrier released before then releases its reads itself.
+    const images: Promise<string[]> = reading.then(layers => readCarrierImages(this.#stage, layers)).catch(() => []).then(paths => {
+      if (this.#images.get(carrier) === images) {
+        this.#counted.add(images)
+        for (const path of paths) this.#imageUses.set(path, (this.#imageUses.get(path) ?? 0) + 1)
+      } else release(paths.filter(path => !this.#imageUses.has(path)))
+      return paths
+    })
+    return images
+  }
+
   /** Starts reading the carriers due within the span after `frame` and
    *  releases the others. Returns the reads started now. A carrier's images
    *  are read once its layers are, and held until `imageHoldFrames` after
-   *  its window opens. */
+   *  its window opens. With a per-change budget, a carrier whose window holds
+   *  `frame` but which is not loaded yet (a working set's lead-in after a
+   *  jump, or one past the budget) is read too, and held until `imageHoldFrames` after it loads. */
   update(frame: number): Promise<SdfLayer[]>[] {
     const started: Promise<SdfLayer[]>[] = []
     for (const carrier of this.#schedule.carriers.keys()) {
+      const open = carrierWindows(this.#schedule, carrier).some(([a, b]) => a <= frame && frame <= b)
+      // With a budget only: an authored schedule loads a carrier on its window's frame.
+      if (this.#schedule.perChange && !this.#pinned.has(carrier) && open && !carrierLoaded(this.#stage, carrier)) {
+        this.#pinned.set(carrier, undefined)
+        if (!this.#held.has(carrier)) {
+          const reading = openCarrierLayers(this.#stage, carrier).catch(() => [])
+          this.#held.set(carrier, reading)
+          started.push(reading)
+        }
+        if (!this.#images.has(carrier)) this.#images.set(carrier, this.#readImages(carrier, this.#held.get(carrier)!))
+        continue
+      }
+      if (this.#pinned.has(carrier)) {
+        // Held until the load's first draws have opened its images; one that
+        // did not load is held while its window holds the frame.
+        const loadedAt = this.#pinned.get(carrier)
+        if (loadedAt === undefined && carrierLoaded(this.#stage, carrier)) { this.#pinned.set(carrier, frame); continue }
+        if (loadedAt === undefined ? open : Math.abs(frame - loadedAt) <= imageHoldFrames) continue
+        this.#pinned.delete(carrier)
+      }
       // The window opening next (or most recently): a working set's carrier
       // can have several (working-set.ts).
       const firsts = carrierWindows(this.#schedule, carrier).map(([a]) => a)
@@ -203,18 +251,7 @@ export class LoadPrefetcher {
       const reading = openCarrierLayers(this.#stage, carrier).catch(() => [])
       this.#held.set(carrier, reading)
       started.push(reading)
-      if (!this.#images.has(carrier)) {
-        // Counted once read; a carrier released before then releases its
-        // reads itself.
-        const images: Promise<string[]> = reading.then(layers => readCarrierImages(this.#stage, layers)).catch(() => []).then(paths => {
-          if (this.#images.get(carrier) === images) {
-            this.#counted.add(images)
-            for (const path of paths) this.#imageUses.set(path, (this.#imageUses.get(path) ?? 0) + 1)
-          } else release(paths.filter(path => !this.#imageUses.has(path)))
-          return paths
-        })
-        this.#images.set(carrier, images)
-      }
+      if (!this.#images.has(carrier)) this.#images.set(carrier, this.#readImages(carrier, reading))
     }
     return started
   }
@@ -236,6 +273,7 @@ export class LoadPrefetcher {
   }
 
   dispose(): void {
+    this.#pinned.clear()
     this.#held.clear()
     for (const carrier of [...this.#images.keys()]) this.#releaseImages(carrier)
   }

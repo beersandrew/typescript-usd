@@ -25,7 +25,8 @@ import { inspectObject } from './inspection'
 import { propertyRows } from './property-view'
 import { primTree } from './prim-tree'
 import { LoadScheduler, carrierLoaded, readLoadSchedule } from './load-schedule'
-import { LoadPrefetcher } from './load-prefetch'
+import { LoadPrefetcher, openCarrierLayers } from './load-prefetch'
+import { PausedLoadAhead } from './load-ahead'
 import { deriveWorkingSet } from './working-set'
 import { TfDiagnosticMgr, TfErrorMark, Notice as TfNotice, type NoticeKey as TfNoticeKey } from 'typescript-usd/tf'
 import { Stage, StagePopulationMask, TraverseInstanceProxies, Notice as UsdNotice } from 'typescript-usd/usd'
@@ -105,6 +106,9 @@ export const createRuntime: RuntimeFactory = async (canvas, callbacks) => {
   let playing = false
   // The playhead is being dragged (setScrubbing): no load schedule changes until released.
   let scrubbing = false
+  // The frame on screen was reached by dragging the playhead, which loads
+  // nothing: releasing there still has its loads to do (changeTime).
+  let scrubbedFrame = false
   const primSelection=new PrimSelectionModel()
   const hudInfo=new SubtreeHudInfoCache()
   let pickMode:PickMode='prims'
@@ -137,7 +141,7 @@ export const createRuntime: RuntimeFactory = async (canvas, callbacks) => {
   let committedProgress: LoadProgressTracker | undefined
   let committedDeferredPayloads: string[] = []
   // ?loadSchedule=1 (load-schedule.ts): the committed stage's schedule.
-  let committedLoadSchedule: { stage: Stage, scheduler: LoadScheduler, prefetcher: LoadPrefetcher, derived: boolean } | undefined
+  let committedLoadSchedule: { stage: Stage, scheduler: LoadScheduler, prefetcher: LoadPrefetcher, derived: boolean, ahead: PausedLoadAhead } | undefined
   let picking: Promise<void> = Promise.resolve()
   let displaySettings = defaultDisplaySettings()
   let currentTime = 0
@@ -321,14 +325,6 @@ export const createRuntime: RuntimeFactory = async (canvas, callbacks) => {
     // hdSt/src/renderPass.ts) and not playing: draw again shortly.
     if (!playing && !updatingTime && !convergence && !pipeline.engine.isConverged()) convergence = setTimeout(() => { convergence = undefined; schedule() }, 5)
   }
-  /** usdview-sliced-arrival (stage-view-engine.ts): on while the timeline
-   *  plays (not while the playhead is dragged); turning it off draws once
-   *  more, which takes the prims still queued. */
-  function slicedArrival() {
-    const on = playing && !scrubbing
-    pipeline?.engine.setSlicedArrival(on)
-    if (!on && pipeline?.engine.queuedAddedPrimCount()) schedule()
-  }
   function schedule() {
     if (!disposed && !frame) frame = requestAnimationFrame(() => {
       frame = 0
@@ -345,7 +341,6 @@ export const createRuntime: RuntimeFactory = async (canvas, callbacks) => {
     const engine = current.engine = new StageViewEngine(hgi, stage, time, settings, width, height)
     engine.lightingSource = lightingSource
     engine.applySettings(settings, getStageUpAxis(stage) === 'Z')
-    engine.setSlicedArrival(playing && !scrubbing)
     const changed = () => {
       if (disposed || released.has(current)) return
       current.metadataDirty = true
@@ -473,6 +468,7 @@ export const createRuntime: RuntimeFactory = async (canvas, callbacks) => {
   canvas.addEventListener('pointerdown', event => {
     if (event.button > 2 || updatingComposition) return
     orbit?.abort()
+    committedLoadSchedule?.ahead.interact()
     pointer = { id: event.pointerId, x: event.clientX, y: event.clientY, distance: 0,
       mode: event.button === 1 || event.shiftKey ? 'pan' : event.button === 2 || event.ctrlKey ? 'zoom' : 'orbit' }
     canvas.setPointerCapture(event.pointerId); canvas.focus(); event.preventDefault()
@@ -495,6 +491,7 @@ export const createRuntime: RuntimeFactory = async (canvas, callbacks) => {
     if (!pointer || pointer.id !== event.pointerId || updatingComposition) return
     const click = event.button === 0 && pointer.distance < 4
     pointer = undefined
+    committedLoadSchedule?.ahead.interact()
     if (canvas.hasPointerCapture(event.pointerId)) canvas.releasePointerCapture(event.pointerId)
     // A click (left button, no drag) picks. usdview picks on press and keeps
     // Alt-drag for the camera (stageView.py:1788-1824); here a drag moves the
@@ -536,7 +533,7 @@ export const createRuntime: RuntimeFactory = async (canvas, callbacks) => {
     return current.engine.pick(snapshot.frustum, x, y, snapshot.width, snapshot.height)
   }
   canvas.addEventListener('pointercancel', () => { pointer = undefined }, { signal: events.signal })
-  canvas.addEventListener('wheel', event => { event.preventDefault(); if(updatingComposition)return; orbit?.abort(); cameraController.toFree(); cameraChanged(); ++viewRevision; applyZoom(camera,event.deltaY); schedule() }, { passive: false, signal: events.signal })
+  canvas.addEventListener('wheel', event => { event.preventDefault(); committedLoadSchedule?.ahead.interact(); if(updatingComposition)return; orbit?.abort(); cameraController.toFree(); cameraChanged(); ++viewRevision; applyZoom(camera,event.deltaY); schedule() }, { passive: false, signal: events.signal })
   canvas.addEventListener('contextmenu', event => event.preventDefault(), { signal: events.signal })
   canvas.addEventListener('keydown', event => { if (event.key.toLowerCase() === 'f') { if(updatingComposition)return; orbit?.abort(); try { lastViewContext=cameraController.copyViewState(); fit() } catch(error) { status(String(error)) }; event.preventDefault() } }, { signal: events.signal })
   async function openScene(source: string | File | LocalAssetSet, signal?: AbortSignal) {
@@ -663,7 +660,14 @@ export const createRuntime: RuntimeFactory = async (canvas, callbacks) => {
           // The start frame's carriers (and, with ?progressive=0, every
           // payload outside the schedule) in one LoadAndUnload.
           const load = [...scheduler?.change(initialTime)?.load ?? [], ...deferPayloads ? [] : loadSchedule.schedule ? deferredPayloads : ['/']]
+          // The layers those payloads bring in are read first, all at once
+          // (load-prefetch.ts openCarrierLayers, as the read-ahead does for
+          // the carriers due next): composition finds a layer only after
+          // reading the one that names it, one network round trip per level.
+          // Held until the load has used them.
+          const held = await timedAsync('read-ahead', () => Promise.all(load.filter(path => path !== '/').map(path => openCarrierLayers(stage, path))))
           if (load.length) await timedAsync('load-schedule', () => stage.loadAndUnload(load, []))
+          void held
           if (!deferPayloads) deferredPayloads = []
         } catch (error) { archiveScope.dispose(); throw error }
       }
@@ -783,8 +787,10 @@ export const createRuntime: RuntimeFactory = async (canvas, callbacks) => {
         committedProgress = progress
         committedDeferredPayloads = deferredPayloads
         committedLoadSchedule?.prefetcher.dispose()
-        committedLoadSchedule = scheduler && { stage, scheduler, prefetcher: new LoadPrefetcher(stage, scheduler.schedule), derived: !!workingSet }
+        committedLoadSchedule?.ahead.dispose()
+        committedLoadSchedule = scheduler && loadAhead(stage, scheduler, new LoadPrefetcher(stage, scheduler.schedule), !!workingSet)
         committedLoadSchedule?.prefetcher.update(currentTime)
+        committedLoadSchedule?.ahead.start()
         cameraChanged()
         refit = initialFit === 'default' && deferredPayloads.length ? { camera: JSON.stringify(camera), framed: false } : undefined
         callbacks.timeChanged?.(timeState()!)
@@ -1047,11 +1053,22 @@ export const createRuntime: RuntimeFactory = async (canvas, callbacks) => {
     const {warnings:_,...info}=startupTimeInfo(stage,startupOptions)
     return {...info,current:currentTime}
   }
+  /** The committed schedule with its paused load-ahead (load-ahead.ts),
+   *  idle while paused with nothing else in flight on its stage. */
+  function loadAhead(stage: Stage, scheduler: LoadScheduler, prefetcher: LoadPrefetcher, derived: boolean): NonNullable<typeof committedLoadSchedule> {
+    const idle = () => !disposed && !playing && !scrubbing && !scrubbedFrame && !updatingTime && !timeUpdate && !displayUpdate && !compositionUpdate
+      && !updatingComposition && !sceneLoadsInProgress && !pointer && !orbit && !frame && pipeline?.stage === stage && pipeline.engine.isConverged()
+    const ahead = new PausedLoadAhead({scheduler, prefetcher, idle, frame: () => currentTime,
+      failed: error => status(`Load schedule: ${error instanceof Error ? error.message : String(error)}`)})
+    return {stage, scheduler, prefetcher, derived, ahead}
+  }
   async function changeTime(time: number): Promise<ViewerTimeState> {
     if (!Number.isFinite(time)) throw new Error('Time must be a finite number.')
     if (disposed || !pipeline) throw new Error('Load a scene before changing time.')
     if (deviceFailure) throw new Error(deviceFailure)
-    if (time === currentTime) return timeState()!
+    // A released scrub ending where the drag drew still loads (scrubbedFrame).
+    const unsettled = scrubbedFrame && !scrubbing
+    if (time === currentTime && !unsettled) return timeState()!
     orbit?.abort()
     const current = pipeline, version = generation, previousTime = currentTime
     const active = () => {
@@ -1075,9 +1092,8 @@ export const createRuntime: RuntimeFactory = async (canvas, callbacks) => {
       const scheduled = committed?.scheduler
       // A jump (a released scrub, a seek, a step back) is not playback:
       // what the new frame needs loads before it draws, said in the status
-      // bar, and reaches Hydra all at once (usdview-sliced-arrival off for
-      // this frame), so the frame shows the scene as it is, not filling in.
-      const jump = Math.abs(time - previousTime) > 2
+      // bar, so the frame shows the scene as it is, not filling in.
+      const jump = Math.abs(time - previousTime) > 2 || unsettled
       if (!scrubbing && scheduled?.change(time)) {
         // The stage listener (prepareImaging) invalidates the HUD and bounds.
         const loads = jump && (scheduled.change(time)?.load.length ?? 0) > 0
@@ -1087,7 +1103,6 @@ export const createRuntime: RuntimeFactory = async (canvas, callbacks) => {
         if (loads) status('')
         active()
       }
-      if (jump) current.engine.setSlicedArrival(false)
       // The layers of the carriers due next are read ahead, in the
       // background (load-prefetch.ts).
       if (!scrubbing) committed?.prefetcher.update(time)
@@ -1096,11 +1111,13 @@ export const createRuntime: RuntimeFactory = async (canvas, callbacks) => {
       // draw that syncs the render index and presents the frame.
       current.engine.SetTime(time)
       await timeStepDraw(current)
-      if (jump) current.engine.setSlicedArrival(playing && !scrubbing)
       // stageView.py:1547: playback does not wait for convergence.
       if (!playback) await settleImaging(current, () => timeStepDraw(current), active)
       currentTime = time
+      scrubbedFrame = scrubbing
       presented = true
+      // Paused: the rest of what playback from here needs loads while idle.
+      if (!playing && !scrubbing) committed?.ahead.start()
       // appController.py:3885-3889 _updateOnFrameChange: the property view,
       // HUD geometry counts (appController.py:3868-3876) and camera state
       // refresh only when playback is not running; setPlaybackActive(false)
@@ -1230,11 +1247,13 @@ export const createRuntime: RuntimeFactory = async (canvas, callbacks) => {
     getPickMode:()=>pickMode,
     setPickMode(mode){if(!pickModes.includes(mode))throw new Error('Unknown pick mode');pickMode=mode},
     inspect: (path, propertyName, options) => pipeline ? inspectObject(pipeline.stage, path, propertyName, currentTime, options) : null,
-    setScrubbing(active: boolean) { scrubbing = active; slicedArrival() },
+    setScrubbing(active: boolean) { scrubbing = active; if (active) committedLoadSchedule?.ahead.stop() },
     setPlaybackActive(active: boolean) {
       if (playing !== active) {
         playing = active
-        slicedArrival()
+        // load-ahead.ts: not while playing; a pause starts it again.
+        if (active) committedLoadSchedule?.ahead.stop()
+        else if (!scrubbing) committedLoadSchedule?.ahead.start()
         // appController.py:2121,3868-3880 _updateGUIForFrameChange once playback
         // stops: the property view, HUD geometry counts and camera state.
         if (!active && pipeline && !disposed) { callbacks.selectionChanged(refreshSelection()); cameraChanged(); geometryChanged() }
@@ -1363,6 +1382,7 @@ export const createRuntime: RuntimeFactory = async (canvas, callbacks) => {
       TfDiagnosticMgr.GetInstance().removeDelegate(diagnosticDelegate)
       orbit?.abort()
       disposed = true; ++generation
+      committedLoadSchedule?.ahead.dispose()
       cameraController.stage=undefined;cameraController.activeCameraPath=null
       events.abort(); cancelAnimationFrame(frame)
       // The next runtime can reconnect to this same canvas before old readbacks

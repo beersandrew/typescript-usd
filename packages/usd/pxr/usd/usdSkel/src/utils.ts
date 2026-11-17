@@ -863,6 +863,14 @@ function _skinPointsLBS(
 }
 
 // _SkinPointsDQS (utils.cpp:1415-1526).
+//
+// The per-point GfDualQuatd arithmetic (operator* scalar, operator+=,
+// Normalize, Transform; dualQuat.template.cpp:54-70, 104-139,
+// quat.template.cpp:120-127) is written out on the joints' dual quaternion
+// coefficients, in the operation order of this port's GfQuatd / GfDualQuatd
+// (gf/src/quaternion.ts, gf/src/dualQuat.ts; GfDot as GfVec3d.dot sums from
+// 0), so the points are the same values without a quaternion object per
+// point and influence.
 function _skinPointsDQS(
   geomBindTransform: Matrix4, jointXforms: readonly Matrix4[],
   jointIndices: ArrayLike<number>, jointWeights: ArrayLike<number>,
@@ -871,50 +879,95 @@ function _skinPointsDQS(
   const transformPoint = matrixType === 'float' ? _transformPointFloat : _transformPointf
   // Convert joint transformation matrices to dual quaternions
   const { dualQuats, scales, hasJointScale } = _convertToDualQuaternions(jointXforms)
+  const numJoints = dualQuats.length
+  // (real w, x, y, z, dual w, x, y, z) per joint.
+  const dq = new Float64Array(numJoints * 8)
+  for (let ji = 0; ji < numJoints; ++ji) {
+    const real = dualQuats[ji]!.GetReal(), dual = dualQuats[ji]!.getDual()
+    const ri = real.GetImaginary().data, di = dual.GetImaginary().data
+    dq[ji * 8] = real.GetReal(); dq[ji * 8 + 1] = ri[0]!; dq[ji * 8 + 2] = ri[1]!; dq[ji * 8 + 3] = ri[2]!
+    dq[ji * 8 + 4] = dual.GetReal(); dq[ji * 8 + 5] = di[0]!; dq[ji * 8 + 6] = di[1]!; dq[ji * 8 + 7] = di[2]!
+  }
   const numPoints = points.length / 3
   for (let pi = 0; pi < numPoints; ++pi) {
     const initialP = transformPoint(
       geomBindTransform, points[pi * 3]!, points[pi * 3 + 1]!, points[pi * 3 + 2]!)
-    let scaledP: [number, number, number] = [0, 0, 0]
+    let sx = 0, sy = 0, sz = 0
 
-    let pivotQuat = new GfQuatd(0.0)
+    // GfQuatd pivotQuat(0.0)
+    let qw = 0, qx = 0, qy = 0, qz = 0
     const pivotIdx = _getPivotJointIndex(
-      pi, dualQuats.length, jointIndices, jointWeights, numInfluencesPerPoint)
-    if (pivotIdx >= 0) pivotQuat = dualQuats[pivotIdx]!.GetReal()
+      pi, numJoints, jointIndices, jointWeights, numInfluencesPerPoint)
+    if (pivotIdx >= 0) {
+      const o = pivotIdx * 8
+      qw = dq[o]!; qx = dq[o + 1]!; qy = dq[o + 2]!; qz = dq[o + 3]!
+    }
 
-    let weightedSumDQ = GfDualQuatd.getZero()
+    // GfDualQuatd::GetZero()
+    let rw = 0, rx = 0, ry = 0, rz = 0, dw = 0, dx = 0, dy = 0, dz = 0
     for (let wi = 0; wi < numInfluencesPerPoint; ++wi) {
       const influenceIdx = pi * numInfluencesPerPoint + wi
       const jointIdx = jointIndices[influenceIdx]!
-      if (jointIdx >= 0 && jointIdx < dualQuats.length) {
+      if (jointIdx >= 0 && jointIdx < numJoints) {
         let w = jointWeights[influenceIdx]!
         if (w !== 0) {
           // Apply scale using LBS, if any of jointScales is not identity
           if (hasJointScale) {
-            const s = _vecTimesMatrix3(initialP[0], initialP[1], initialP[2], scales[jointIdx]!)
-            scaledP = [
-              _f(scaledP[0] + _f(_f(s[0]) * w)),
-              _f(scaledP[1] + _f(_f(s[1]) * w)),
-              _f(scaledP[2] + _f(_f(s[2]) * w)),
-            ]
+            const m = scales[jointIdx]!
+            const x = initialP[0], y = initialP[1], z = initialP[2]
+            sx = _f(sx + _f(_f(x * m[0]! + y * m[3]! + z * m[6]!) * w))
+            sy = _f(sy + _f(_f(x * m[1]! + y * m[4]! + z * m[7]!) * w))
+            sz = _f(sz + _f(_f(x * m[2]! + y * m[5]! + z * m[8]!) * w))
           }
           // Apply rotation & translation using DQS
-          const jointDQ = dualQuats[jointIdx]!
+          const o = jointIdx * 8
+          const jw = dq[o]!, jx = dq[o + 1]!, jy = dq[o + 2]!, jz = dq[o + 3]!
           // Flip the dual quaternion, if necessary, to make it
           // on the same hemisphere as the pivotQuat.
-          if (GfQuatDot(jointDQ.GetReal(), pivotQuat) < 0.0) w = -w
-          weightedSumDQ = weightedSumDQ.add(jointDQ.getScaled(w))
+          if ((0 + jx * qx + jy * qy + jz * qz) + jw * qw < 0.0) w = -w
+          // weightedSumDQ += jointDQ * w
+          rw += jw * w; rx += jx * w; ry += jy * w; rz += jz * w
+          dw += dq[o + 4]! * w; dx += dq[o + 5]! * w; dy += dq[o + 6]! * w; dz += dq[o + 7]! * w
         }
       } else {
-        _warnOutOfRange(jointIdx, influenceIdx, dualQuats.length)
+        _warnOutOfRange(jointIdx, influenceIdx, numJoints)
         return false
       }
     }
-    if (!hasJointScale) scaledP = initialP
+    let px: number, py: number, pz: number
+    if (hasJointScale) {
+      px = sx; py = sy; pz = sz
+    } else {
+      px = initialP[0]; py = initialP[1]; pz = initialP[2]
+    }
 
-    weightedSumDQ.Normalize()
-    const p = weightedSumDQ.Transform(scaledP).data
-    points[pi * 3] = p[0]!; points[pi * 3 + 1] = p[1]!; points[pi * 3 + 2] = p[2]!
+    // weightedSumDQ.Normalize()
+    const realLength = Math.sqrt(rw * rw + (0 + rx * rx + ry * ry + rz * rz))
+    if (realLength < _GF_MIN_VECTOR_LENGTH) {
+      rw = 1; rx = 0; ry = 0; rz = 0
+      dw = 0; dx = 0; dy = 0; dz = 0
+    } else {
+      const invRealLength = 1.0 / realLength
+      rw *= invRealLength; rx *= invRealLength; ry *= invRealLength; rz *= invRealLength
+      dw *= invRealLength; dx *= invRealLength; dy *= invRealLength; dz *= invRealLength
+      const d = (0 + rx * dx + ry * dy + rz * dz) + rw * dw
+      dw -= rw * d; dx -= rx * d; dy -= ry * d; dz -= rz * d
+    }
+
+    // weightedSumDQ.Transform(scaledP): GetReal().Transform(p) + GetTranslation()
+    const tmpDot = 0 + rx * rx + ry * ry + rz * rz
+    const tmpSqr = rw * rw
+    const qiDotP = 0 + rx * px + ry * py + rz * pz
+    const cx = ry * pz - rz * py
+    const cy = rz * px - rx * pz
+    const cz = rx * py - ry * px
+    const denom = tmpSqr + tmpDot
+    const tx = -2.0 * (dw * rx - rw * dx + (dy * rz - dz * ry))
+    const ty = -2.0 * (dw * ry - rw * dy + (dz * rx - dx * rz))
+    const tz = -2.0 * (dw * rz - rw * dz + (dx * ry - dy * rx))
+    points[pi * 3] = (2 * qiDotP * rx + (tmpSqr - tmpDot) * px + 2 * rw * cx) / denom + tx
+    points[pi * 3 + 1] = (2 * qiDotP * ry + (tmpSqr - tmpDot) * py + 2 * rw * cy) / denom + ty
+    points[pi * 3 + 2] = (2 * qiDotP * rz + (tmpSqr - tmpDot) * pz + 2 * rw * cz) / denom + tz
   }
   return true
 }

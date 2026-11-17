@@ -71,7 +71,7 @@ function fakeEngine() {
   return {
     Render: vi.fn<(camera: Camera, width: number, height: number) => void>(), applySettings: vi.fn(), SetTime: vi.fn(),
     GetAovTextures: () => ({ color: texture('rgba16float'), colorMSAA: texture('rgba16float'), depthMSAA: texture('depth32float-stencil8') }),
-    isConverged: vi.fn(() => true), setSelection: vi.fn(), setSlicedArrival: vi.fn(), queuedAddedPrimCount: vi.fn(() => 0),
+    isConverged: vi.fn(() => true), setSelection: vi.fn(),
     pick: vi.fn<(frustum: unknown, x: number, y: number, width: number, height: number) => Promise<Hit | null>>().mockResolvedValue(null),
     getDrawableCount: vi.fn(() => 1), destroy: vi.fn(),
   }
@@ -1414,6 +1414,24 @@ describe('load schedule (mock runtime, not a browser test)', () => {
     expect(loads).toEqual([])
     await runtime.setTime!(400)
     expect(loads).toEqual([])
+    runtime.dispose()
+  })
+  it('a released scrub loads the frame the drag ended on, as a jump', async () => {
+    // A drag draws its frames without loads; the release seeks the frame the
+    // drag already shows, which still has its loads to do (it used to return
+    // early, and Play then loaded them in its first frame).
+    const {s, runtime, loads, scene} = await openScheduled()
+    runtime.setScrubbing!(true); runtime.setPlaybackActive!(true)
+    await runtime.setTime!(133)
+    expect(loads).toHaveLength(1)
+    runtime.setScrubbing!(false)
+    await runtime.setTime!(133)
+    expect(loads.at(-1)).toEqual([[scene.B], []])
+    expect(s.callbacks.statusChanged).toHaveBeenCalledWith('Loading the scene at frame 133…')
+    runtime.setPlaybackActive!(false)
+    // Settled: the same frame again is a no-op.
+    await runtime.setTime!(133)
+    expect(loads).toHaveLength(2)
     runtime.dispose()
   })
   it('loads and unloads on frame change before the frame draws', async () => {

@@ -176,6 +176,12 @@ export class TimelineControls {
   async play() {
     if(this.#blocked||this.#following||!this.#state||this.#end<=this.#start)return
     this.#playing=true;this.#playbackIndex=0;this.#playbackTiming='...';this.runtime()?.setPlaybackActive?.(true);this.playingChanged();const epoch=++this.#epoch;this.#render(this.#state.current)
+    // appController.py:2126-2128 starts each frame one period after the previous
+    // start, or at once when a frame overran, with no catch-up. Python's sleep
+    // wakes on time; setTimeout usually wakes late, so waiting a period from each
+    // start would add every late wake to the next frame. Frames are scheduled
+    // against a deadline instead, restarted from now when a frame misses it.
+    let deadline=performance.now()
     while(this.#playing&&epoch===this.#epoch){
       const started=performance.now()
       // appController.py:2126-2140: measure four actual frame intervals in
@@ -188,7 +194,8 @@ export class TimelineControls {
       this.#playbackIndex=(this.#playbackIndex+1)%5
       await this.seek(nextPlaybackTime(this.#state!.current,this.#start,this.#end,this.#step))
       if(!this.#playing||epoch!==this.#epoch)break
-      await new Promise<void>(resolve=>{this.#wake=resolve;this.#timer=setTimeout(resolve,Math.max(0,1000/this.#state!.framesPerSecond-(performance.now()-started)))})
+      deadline=Math.max(deadline+1000/this.#state!.framesPerSecond,performance.now())
+      await new Promise<void>(resolve=>{this.#wake=resolve;this.#timer=setTimeout(resolve,deadline-performance.now())})
       this.#wake=undefined
     }
   }

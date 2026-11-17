@@ -118,6 +118,13 @@ export class GfBBox3d {
     return this._matrix
   }
 
+  /** The stored inverse matrix itself, not a copy (upstream
+   *  GetInverseMatrix returns a const reference); read-only, see
+   *  _getRangeConstRef. */
+  _getInverseMatrixConstRef(): GfMatrix4d {
+    return this._inverse
+  }
+
   /** Synonym of GetRange (compatibility). */
   getBox(): GfRange3d {
     return this.getRange()
