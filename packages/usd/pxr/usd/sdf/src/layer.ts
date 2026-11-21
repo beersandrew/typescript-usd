@@ -19,7 +19,7 @@ import {
   SdfSimpleLayerStateDelegate,
   type SdfLayerStateDelegateBase,
 } from './layerStateDelegate.ts'
-import { SdfFileFormat, SdfUsdaFileFormat, SdfUsdcFileFormat, SdfUsdzFileFormat, sdfUsdaReadFromStringText, _loadFileFormatPluginForPath, _packageHasEntry, _recordPackageEntries, type SdfFileFormatArguments } from './fileFormat.ts'
+import { SdfFileFormat, SdfUsdaFileFormat, SdfUsdcFileFormat, SdfUsdFileFormat, SdfUsdzFileFormat, sdfUsdaReadFromStringText, _loadFileFormatPluginForPath, _packageHasEntry, _recordPackageEntries, type SdfFileFormatArguments } from './fileFormat.ts'
 import { Sdf_CrateData } from './crateData.ts'
 import {
   GetResolver as ArGetResolver, ResolvedPath as ArResolvedPath, ResolverWriteMode as ArResolverWriteMode, Resolver as ArResolver, ResolverContext as ArResolverContext,
@@ -1432,7 +1432,14 @@ export class Layer {
         this._notifyDidChange({ kind: 'replaceContent', path: '/' })
         return
       }
-      const replacement = new SdfData()
+      // SdfLayer::_SetData edits this layer's own data object to match the
+      // source (layer.cpp:4151), so the kind of data, which a .usd layer's
+      // underlying format follows (SdfUsdFileFormat::
+      // _GetUnderlyingFileFormatForLayer, usdFileFormat.cpp:269-276), is
+      // kept: the replacement is data of the same kind.
+      const replacement = this._data instanceof Sdf_CrateData
+        ? new Sdf_CrateData(false, false, this._data._getFileVersion())
+        : new SdfData()
       replacement.copyFrom(source._data)
       this._replaceData(replacement)
     })
@@ -2409,9 +2416,13 @@ export class Layer {
       throw new TfError('Writing usdz layers is not allowed via this API.', TfDiagnosticType.CodingError)
     }
     const mapArgs = formatArgs as ReadonlyMap<string, string> | undefined
-    const format = typeof mapArgs?.get === 'function'
+    // SdfUsdFileFormat::SaveToFile (usdFileFormat.cpp:311-329): saving a
+    // .usd layer in place keeps its underlying format, so a text .usd file
+    // stays text; exporting takes the 'format' argument or the default.
+    const format = (typeof mapArgs?.get === 'function'
       ? mapArgs.get('format')
-      : (formatArgs as Readonly<Record<string, string>> | undefined)?.['format']
+      : (formatArgs as Readonly<Record<string, string>> | undefined)?.['format']) ??
+      (inPlace && extension === 'usd' ? SdfUsdFileFormat.getUnderlyingFormatForLayer(this) || undefined : undefined)
     const bytes = extension === 'usda' || (extension === 'usd' && format === 'usda')
       ? new TextEncoder().encode(this.toUsda())
       : extension === 'usd' || extension === 'usdc'

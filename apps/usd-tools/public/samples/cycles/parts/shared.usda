@@ -1,0 +1,37 @@
+#usda 1.0
+(
+    "composition.errors.cycles: the diamond's shared layer, reached through both arms: the vase, in the reference color, at the identity transform."
+    defaultPrim = "Shared"
+    framesPerSecond = 24
+    metersPerUnit = 1
+    timeCodesPerSecond = 24
+    upAxis = "Y"
+)
+
+def Xform "Shared" (
+    kind = "component"
+)
+{
+    def Scope "Looks"
+    {
+    }
+
+    def Xform "Vase"
+    {
+        color3f[] primvars:displayColor = [(0.024157632, 0.462077, 0.58407843)] (
+            interpolation = "constant"
+        )
+        matrix4d xformOp:transform = ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 0, 1) )
+        uniform token[] xformOpOrder = ["xformOp:transform"]
+
+        def Xform "Body" (
+            instanceable = true
+            prepend references = @./vase.usda@
+        )
+        {
+            matrix4d xformOp:transform = ( (1.2, 0, 0, 0), (0, 1.2, 0, 0), (0, 0, 1.2, 0), (0, 0.003, 0, 1) )
+            uniform token[] xformOpOrder = ["xformOp:transform"]
+        }
+    }
+}
+

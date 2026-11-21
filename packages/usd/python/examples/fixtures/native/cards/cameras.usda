@@ -1,0 +1,110 @@
+#usda 1.0
+(
+    metersPerUnit = 0.01
+    subLayers = [
+        @cube_rainbow.usd@
+    ]
+)
+
+def "CardGenerator"
+{
+    def Camera "XPos"
+    {
+        float2 clippingRange = (4.1666665, 8.733334)
+        float focalLength = 50
+        float focusDistance = 168.60936
+        float fStop = 0
+        float horizontalAperture = 24
+        float horizontalApertureOffset = 0
+        token projection = "perspective"
+        float verticalAperture = 24
+        float verticalApertureOffset = 0
+        float xformOp:rotateX = 90
+        float xformOp:rotateY = 90
+        double3 xformOp:translate = (5.166666666666667, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateX", "xformOp:rotateY"]
+    }
+
+    def Camera "XNeg"
+    {
+        float2 clippingRange = (4.1666665, 8.733334)
+        float focalLength = 50
+        float focusDistance = 168.60936
+        float fStop = 0
+        float horizontalAperture = 24
+        float horizontalApertureOffset = 0
+        token projection = "perspective"
+        float verticalAperture = 24
+        float verticalApertureOffset = 0
+        float xformOp:rotateX = 90
+        float xformOp:rotateY = 270
+        double3 xformOp:translate = (-5.166666666666667, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateX", "xformOp:rotateY"]
+    }
+
+    def Camera "YPos"
+    {
+        float2 clippingRange = (4.1666665, 8.733334)
+        float focalLength = 50
+        float focusDistance = 168.60936
+        float fStop = 0
+        float horizontalAperture = 24
+        float horizontalApertureOffset = 0
+        token projection = "perspective"
+        float verticalAperture = 24
+        float verticalApertureOffset = 0
+        float xformOp:rotateX = 270
+        float xformOp:rotateY = 180
+        double3 xformOp:translate = (0, 5.166666666666667, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateY", "xformOp:rotateX"]
+    }
+
+    def Camera "YNeg"
+    {
+        float2 clippingRange = (4.1666665, 8.733334)
+        float focalLength = 50
+        float focusDistance = 168.60936
+        float fStop = 0
+        float horizontalAperture = 24
+        float horizontalApertureOffset = 0
+        token projection = "perspective"
+        float verticalAperture = 24
+        float verticalApertureOffset = 0
+        float xformOp:rotateX = 90
+        double3 xformOp:translate = (0, -5.166666666666667, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateX"]
+    }
+
+    def Camera "ZPos"
+    {
+        float2 clippingRange = (4.1666665, 8.733334)
+        float focalLength = 50
+        float focusDistance = 168.60936
+        float fStop = 0
+        float horizontalAperture = 24
+        float horizontalApertureOffset = 0
+        token projection = "perspective"
+        float verticalAperture = 24
+        float verticalApertureOffset = 0
+        double3 xformOp:translate = (0, 0, 5.166666666666667)
+        uniform token[] xformOpOrder = ["xformOp:translate"]
+    }
+
+    def Camera "ZNeg"
+    {
+        float2 clippingRange = (4.1666665, 8.733334)
+        float focalLength = 50
+        float focusDistance = 168.60936
+        float fStop = 0
+        float horizontalAperture = 24
+        float horizontalApertureOffset = 0
+        token projection = "perspective"
+        float verticalAperture = 24
+        float verticalApertureOffset = 0
+        float xformOp:rotateY = 180
+        float xformOp:rotateZ = 180
+        double3 xformOp:translate = (0, 0, -5.166666666666667)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateZ", "xformOp:rotateY"]
+    }
+}
+

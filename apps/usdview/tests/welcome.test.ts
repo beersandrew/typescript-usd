@@ -168,6 +168,35 @@ describe('welcome note', () => {
     viewer.remove()
   })
 
+  it('offers the scenes marked welcome and opens one when clicked', async () => {
+    const { viewer, runtime, note, root } = setup()
+    viewer.showWelcome()
+    await tick()
+    const group = root.querySelector<HTMLElement>('.welcome-examples')!
+    expect(group.hidden).toBe(true)
+    viewer.scenes = [{ label: 'Cube', url: './assets/cube.usda' }, { label: 'Bike', url: './assets/examples/bike.usdz', welcome: true }]
+    const buttons = [...root.querySelectorAll<HTMLButtonElement>('.welcome-example')]
+    expect(buttons.map(b => b.textContent)).toEqual(['Bike'])
+    expect(group.hidden).toBe(false)
+    buttons[0]!.click()
+    await tick()
+    expect(viewer.src).toBe('./assets/examples/bike.usdz')
+    expect(runtime.open).toHaveBeenLastCalledWith('./assets/examples/bike.usdz', expect.any(AbortSignal))
+    expect(note.hidden).toBe(true)
+  })
+
+  it('on a phone (compact) shows only its buttons, and nothing when it has none', async () => {
+    const { viewer, note } = setup()
+    viewer.showWelcome({ compact: true })
+    await tick()
+    expect(note.hasAttribute('data-empty')).toBe(true)
+    viewer.scenes = [{ label: 'Bike', url: './assets/examples/bike.usdz', welcome: true }]
+    expect(note.hasAttribute('data-empty')).toBe(false)
+    viewer.showWelcome({ compact: false })
+    viewer.scenes = []
+    expect(note.hasAttribute('data-empty')).toBe(false)
+  })
+
   it('stays over the default scene and is dismissed once a file or another scene is opened', async () => {
     const { viewer, runtime, note, root } = setup()
     viewer.showWelcome({ startTour: () => {} })

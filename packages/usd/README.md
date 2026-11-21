@@ -71,8 +71,9 @@ checked against their sources by the tooling kept outside this repository
 
 On November 16, 2026, `npx vitest run` loads all 886 test
 files: **9,298 pass, 4 fail**, and 26 checks the platform rules out are
-skipped. Every failure is a ported upstream test or a native-capture check
-kept as a plain failing `it()` to expose a real gap:
+skipped. The port of `testUsdUtilsUsdzUtils` on November 19 added 26 passing
+tests. Every failure is a ported upstream test or a
+native-capture check kept as a plain failing `it()` to expose a real gap:
 
 - **OpenExec, 3** (`pxr/exec`): TraceReporter serialization in
   `testExecUsdBasicCompilation`, `TfSpan` and `execTest` (docs/openexec-x1.md

@@ -1,0 +1,99 @@
+#usda 1.0
+(
+    defaultPrim = "Heath"
+    doc = """Macbeth 1.1, the heath: the witches' robes and the cauldron are
+    stored only as recipes (StagehandRevolveAPI). OpenExec computes their
+    shapes; the Stagehand imaging adapter hands them to Hydra. Transforms are
+    xformOp:transform, the one op OpenExec's execGeom reads today. The First
+    Witch's robe and the cauldron are animated recipes."""
+    endTimeCode = 96
+    metersPerUnit = 1
+    startTimeCode = 0
+    timeCodesPerSecond = 24
+    upAxis = "Y"
+)
+
+def Xform "Heath" (
+    kind = "component"
+)
+{
+    float3[] extentsHint = [(-4, 0, -4), (4, 1.9, 4)]
+
+    def Mesh "Ground"
+    {
+        float3[] extent = [(-4, 0, -4), (4, 0, 4)]
+        int[] faceVertexCounts = [4]
+        int[] faceVertexIndices = [0, 3, 2, 1]
+        point3f[] points = [(-4, 0, -4), (4, 0, -4), (4, 0, 4), (-4, 0, 4)]
+        color3f[] primvars:displayColor = [(0.2, 0.24, 0.13)]
+    }
+
+    def Mesh "Cauldron" (
+        prepend apiSchemas = ["StagehandRevolveAPI"]
+    )
+    {
+        float3[] extent = [(-0.8, 0.05, -0.8), (0.8, 0.62, 0.8)]
+        color3f[] primvars:displayColor = [(0.08, 0.08, 0.09)]
+        float2[] stagehand:revolve:profile.timeSamples = {
+            0: [(0, 0.05), (0.28, 0.12), (0.4, 0.35), (0.36, 0.6), (0.3, 0.62)],
+            48: [(0, 0.05), (0.56, 0.12), (0.8, 0.35), (0.72, 0.6), (0.6, 0.62)],
+            96: [(0, 0.05), (0.28, 0.12), (0.4, 0.35), (0.36, 0.6), (0.3, 0.62)],
+        }
+        int stagehand:revolve:segments = 32
+    }
+
+    def Xform "Witches"
+    {
+        def Mesh "FirstRobe" (
+            prepend apiSchemas = ["StagehandRevolveAPI"]
+        )
+        {
+            float3[] extent = [(-0.7, 0, -0.7), (0.7, 1.9, 0.7)]
+            color3f[] primvars:displayColor = [(0.42, 0.38, 0.45)]
+            float2[] stagehand:revolve:profile.timeSamples = {
+                0: [(0, 0), (0.5, 0), (0.44, 0.3), (0.28, 0.95), (0.17, 1.3), (0, 1.38)],
+                48: [(0, 0), (0.7, 0), (0.3, 0.4), (0.35, 0.9), (0.1, 1.6), (0, 1.9)],
+                96: [(0, 0), (0.5, 0), (0.44, 0.3), (0.28, 0.95), (0.17, 1.3), (0, 1.38)],
+            }
+            int stagehand:revolve:segments = 32
+            matrix4d xformOp:transform = ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (1.4, 0, 0, 1) )
+            uniform token[] xformOpOrder = ["xformOp:transform"]
+        }
+
+        def Mesh "SecondRobe" (
+            prepend apiSchemas = ["StagehandRevolveAPI"]
+        )
+        {
+            float3[] extent = [(-0.6, 0, -0.6), (0.6, 1.38, 0.6)]
+            color3f[] primvars:displayColor = [(0.28, 0.42, 0.26)]
+            float2[] stagehand:revolve:profile = [(0, 0), (0.6, 0), (0.58, 0.35), (0.4, 0.95), (0.2, 1.3), (0, 1.38)]
+            int stagehand:revolve:segments = 32
+            matrix4d xformOp:transform = ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (-0.7, 0, 1.212, 1) )
+            uniform token[] xformOpOrder = ["xformOp:transform"]
+        }
+
+        def Mesh "ThirdRobe" (
+            prepend apiSchemas = ["StagehandRevolveAPI"]
+        )
+        {
+            float3[] extent = [(-0.5, 0, -0.5), (0.5, 1.38, 0.5)]
+            color3f[] primvars:displayColor = [(0.55, 0.25, 0.18)]
+            float2[] stagehand:revolve:profile = [(0, 0), (0.5, 0), (0.44, 0.3), (0.28, 0.95), (0.17, 1.3), (0, 1.38)]
+            int stagehand:revolve:segments = 32
+            matrix4d xformOp:transform = ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (-0.7, 0, -1.212, 1) )
+            uniform token[] xformOpOrder = ["xformOp:transform"]
+        }
+    }
+
+    def Camera "ShotCam"
+    {
+        float2 clippingRange = (0.1, 100)
+        float focalLength = 18
+        float focusDistance = 11.3
+        float horizontalAperture = 36
+        float verticalAperture = 24
+        matrix4d xformOp:transform = ( (1, -0, 0, -0), (0, 0.9612616959383189, -0.27563735581699916, 0), (0, 0.27563735581699916, 0.9612616959383189, -0), (0.3999999821186066, 4.064702108811169, 10.912257176023958, 1) )
+        uniform token[] xformOpOrder = ["xformOp:transform"]
+    }
+}
+

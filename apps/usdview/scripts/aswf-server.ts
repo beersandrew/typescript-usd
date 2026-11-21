@@ -13,9 +13,12 @@ export function workspaceRoot(from: string): string {
 }
 const localAssets = path.resolve(process.env.USDVIEW_LOCAL_ASSETS ?? path.dirname(workspaceRoot(process.cwd())))
 
+/** The pinned ASWF corpus checkout (ASWF_ASSET_ROOT, else beside the workspace). */
+export const aswfRoot = (): string => path.resolve(process.env.ASWF_ASSET_ROOT ?? path.join(localAssets, 'aswf-assets-091bb5c'))
+
 /** Local-only corpus mount. Assets remain in their pinned independent checkout. */
 export function aswfServer(): Plugin {
-  const root = path.resolve(process.env.ASWF_ASSET_ROOT ?? path.join(localAssets, 'aswf-assets-091bb5c'))
+  const root = aswfRoot()
   return {
     name: 'local-aswf-corpus',
     configureServer(server) {

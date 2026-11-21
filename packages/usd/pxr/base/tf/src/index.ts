@@ -41,3 +41,5 @@ export { Tf_DiagnosticContainer } from "./diagnosticContainer.ts";
 export { TfDiagnosticTransport } from "./diagnosticTransport.ts";
 export { TfRegTest } from "./regTest.ts";
 export { TfBits } from "./bits.ts";
+export { _TfSetHostFilesystem } from "./hostFilesystem.ts";
+export type { Tf_HostFilesystem, Tf_HostFileHandle } from "./hostFilesystem.ts";

@@ -135,8 +135,12 @@ export class MaterialBindingAPI extends APISchemaBase {
   ): void {
     const materialPath = typeof material === 'string' ? material : material.path
     const relName = directBindingRelName(purpose)
-    this._rel(relName).setTargets([materialPath])
+    // materialBindingAPI.cpp:398-403 _CreateDirectBindingRel and :416-427
+    // Bind: a non-custom relationship (the API schema defines it); the
+    // strength is authored before the targets.
+    const rel = this._prim.createRelationship(relName, /*custom*/ false)
     this._setBindingStrength(relName, strength)
+    rel.setTargets([materialPath])
   }
 
   // Authors a collection-based binding (UsdShadeMaterialBindingAPI::Bind for a
@@ -151,10 +155,12 @@ export class MaterialBindingAPI extends APISchemaBase {
   ): void {
     const materialPath = typeof material === 'string' ? material : material.path
     const relName = `${collectionBindingPrefix(purpose)}:${bindingName}`
+    // materialBindingAPI.cpp:405-413 _CreateCollectionBindingRel: non-custom.
+    const rel = this._prim.createRelationship(relName, /*custom*/ false)
+    this._setBindingStrength(relName, strength)
     // Two targets: collection path first, then the material path
     // (CollectionBinding accepts either order; upstream authors coll, mat).
-    this._rel(relName).setTargets([collectionPath, materialPath])
-    this._setBindingStrength(relName, strength)
+    rel.setTargets([collectionPath, materialPath])
   }
 
   // OpenUSD v26.11.1 materialBindingAPI.cpp:376-397. Fallback resets an

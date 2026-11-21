@@ -99,3 +99,4 @@ export { SdfLayerTree as LayerTree } from "./layerTree.ts";
 export { SdfPredicateLibrary as PredicateLibrary, SdfPredicateProgram as PredicateProgram, SdfPredicateParamNamesAndDefaults as PredicateParamNamesAndDefaults, SdfLinkPredicateExpression as LinkPredicateExpression } from "./predicateLibrary.ts";
 export type { SdfPredicateFunction as PredicateFunction, SdfPredicateParamType as PredicateParamType, SdfPredicateDefaultValue as PredicateDefaultValue } from "./predicateLibrary.ts";
 export { SdfPathExpressionEval as PathExpressionEval, SdfMakePathExpressionEval as MakePathExpressionEval } from "./pathExpressionEval.ts";
+export { SdfCrateInfo as CrateInfo, SdfCrateInfoSection as CrateInfoSection, type SdfCrateInfoSummaryStats as CrateInfoSummaryStats } from "./crateInfo.ts";

@@ -8,6 +8,67 @@ back to 0 when the port moves to a new OpenUSD version. Package versions carry t
 
 Measurements are of the USD Museum tour (11,839 frames at 24 fps) on one Mac, unless stated.
 
+## 26.11.1.4 — 2026-11-21
+
+From typescript-usd-dev `229bfefe`, plus package versions and this entry. Library tests: 9444 pass, 4 fail (exec, vdf and hdSt cases that fail without this release's changes too); usdview: 767 pass; upstream Python tests under Pyodide: 85 pass, 10 fail (testUsdStage 7, testUsdGeomXformable 3).
+
+### usdview
+- Window > TypeScript Interpreter: usdview's interpreter console with TypeScript as its
+  language (pythonInterpreter.py's console; types stripped by Sucrase 3.35.1, parsed by Acorn
+  8.19.0). `usdviewApi` (a port of usdviewApi.py: stage, selection, frame, camera, viewer mode,
+  status, viewport capture) and the library modules under their OpenUSD names, with variables
+  kept across entries, top-level `await`, history and Tab completion. Loads on first use.
+- Window > Python Interpreter (shortcut `I`): usdview's Python console under Pyodide over the
+  library's `pxr` forwarding layer, with `usdviewApi` and the `pxr` modules seeded. Loads on
+  first use; needs a browser with JSPI. A build ships Pyodide and the `pxr` files, so a static
+  file server is enough.
+- Both consoles hold the viewer's own stage: what one authors the other reads at once, the
+  stage view redraws, and an entry that adds or removes prims refreshes the prim tree and
+  property view, as usdview does after a stage change. The consoles share variables (the
+  TypeScript console's `py`, the Python console's `ts`; a web addition).
+- Safari 27.3 miscompiles Pyodide's JavaScript-to-Python number conversion after a few thousand
+  conversions; the Pyodide the viewer ships is patched to avoid it.
+- OpenExec runtime plugins load from a plugInfo library path, and the Stagehand example's
+  scene plays live in the viewer.
+- `?open=handoff`: the page that opened the viewer's tab can send it one file, which opens as a
+  dropped file does (the USD tool pages use it).
+
+### Command-line tools
+- Ported: usdcat, usdchecker, usddiff, usdresolve, usdstitch, usdstitchclips, usdtree, usdzip,
+  usdfixbrokenpixarschemas, usdedit, usdauthors and usddumpcrate, with the library pieces they
+  need: usdUtils' usdz iterators and ExtractUsdzPackage, UsdUtils FixBrokenPixarSchemas, and
+  SdfCrateInfo.
+
+### USD tool pages (apps/usd-tools)
+- New app: usdcat, usdzip, usdchecker, usddiff, usdresolve, usdstitch, usdstitchclips and
+  usdfixbrokenpixarschemas as small web pages that run the ported tools in the browser on
+  dropped files. Checked against OpenUSD 26.11.1's tools on the shipped samples: usdcat's
+  usdc → usda output is byte-identical and usda → usdc reads back identical; usdzip packages
+  hold identical files in the same order (zip timestamps differ); usddiff, usdresolve,
+  usdstitch and usdstitchclips output is identical; usdchecker's findings match apart from
+  anonymous layer ids; usdfixbrokenpixarschemas' fixed layers are byte-identical.
+- The usdcat page converts by drag and drop, with a low-poly cat drawn by Storm, and opens a
+  result in TypeScript usdview.
+
+### Python
+- `pxr` forwarding layer: schema classes for every domain library, XformCommonAPI, typed Get,
+  Gf.Matrix and Gf.Quat, UsdGeom.XformOp and XformCache, materials (ComputeBoundMaterial,
+  Bind), time ranges and samples, tokens. Upstream Python tests run over it unchanged under
+  Pyodide (`pnpm test:python`), as do two API-only example scripts.
+
+### Fixes
+- usd: a schema object on an instance proxy is valid, as in schemaBase.h; usdchecker reported
+  every material binding inside an instance as invalid.
+- sdf: saving a `.usd` layer keeps its underlying format.
+- gf: time code differences are GfDurations (26.11.1 arithmetic).
+
+### Platform
+- tf, ar: a host can install the filesystem that TfSafeOutputFile, TfAtomicOfstreamWrapper and
+  the default resolver write through (PLATFORM-DIVERGENCE tf-host-filesystem); Node is
+  unchanged. The tool pages install one in memory.
+- usdExecImaging: an interim adapter hook for API schemas, so OpenExec-computed points reach
+  Hydra.
+
 ## 26.11.1.3 — 2026-11-16
 
 From typescript-usd-dev `95f86572`, plus the version label and package versions.

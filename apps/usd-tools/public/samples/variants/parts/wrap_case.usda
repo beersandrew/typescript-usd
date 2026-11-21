@@ -1,0 +1,657 @@
+#usda 1.0
+(
+    "composition.arcs.variants: the wrap asset. /Case: variant set wrap (stripes, dots, checks, redx), no selection; the stripes variant nests the set trim (plain, gold). /CaseDefault: /Case with the asset's own selection, wrap = stripes."
+    defaultPrim = "Case"
+    framesPerSecond = 24
+    metersPerUnit = 1
+    timeCodesPerSecond = 24
+    upAxis = "Y"
+)
+
+def Xform "Case" (
+    kind = "component"
+    prepend variantSets = "wrap"
+)
+{
+    def Scope "Looks"
+    {
+        def Material "band_stripes"
+        {
+            token outputs:surface.connect = </Case/Looks/band_stripes/Surface.outputs:surface>
+
+            def Shader "Surface"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0, 0, 0)
+                color3f inputs:emissiveColor.connect = </Case/Looks/band_stripes/Tex.outputs:rgb>
+                float inputs:opacity.connect = </Case/Looks/band_stripes/Tex.outputs:a>
+                float inputs:opacityThreshold = 0.5
+                float inputs:roughness = 1
+                color3f inputs:specularColor = (0, 0, 0)
+                int inputs:useSpecularWorkflow = 1
+                token outputs:surface
+            }
+
+            def Shader "St"
+            {
+                uniform token info:id = "UsdPrimvarReader_float2"
+                string inputs:varname = "st"
+                float2 outputs:result
+            }
+
+            def Shader "Tex"
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @./textures/band_stripes.png@
+                float4 inputs:scale = (1, 1, 1, 1)
+                token inputs:sourceColorSpace = "sRGB"
+                float2 inputs:st.connect = </Case/Looks/band_stripes/St.outputs:result>
+                token inputs:wrapS = "repeat"
+                token inputs:wrapT = "repeat"
+                float outputs:a
+                float3 outputs:rgb
+            }
+        }
+
+        def Material "band_dots"
+        {
+            token outputs:surface.connect = </Case/Looks/band_dots/Surface.outputs:surface>
+
+            def Shader "Surface"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0, 0, 0)
+                color3f inputs:emissiveColor.connect = </Case/Looks/band_dots/Tex.outputs:rgb>
+                float inputs:opacity.connect = </Case/Looks/band_dots/Tex.outputs:a>
+                float inputs:opacityThreshold = 0.5
+                float inputs:roughness = 1
+                color3f inputs:specularColor = (0, 0, 0)
+                int inputs:useSpecularWorkflow = 1
+                token outputs:surface
+            }
+
+            def Shader "St"
+            {
+                uniform token info:id = "UsdPrimvarReader_float2"
+                string inputs:varname = "st"
+                float2 outputs:result
+            }
+
+            def Shader "Tex"
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @./textures/band_dots.png@
+                float4 inputs:scale = (1, 1, 1, 1)
+                token inputs:sourceColorSpace = "sRGB"
+                float2 inputs:st.connect = </Case/Looks/band_dots/St.outputs:result>
+                token inputs:wrapS = "repeat"
+                token inputs:wrapT = "repeat"
+                float outputs:a
+                float3 outputs:rgb
+            }
+        }
+
+        def Material "band_checks"
+        {
+            token outputs:surface.connect = </Case/Looks/band_checks/Surface.outputs:surface>
+
+            def Shader "Surface"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0, 0, 0)
+                color3f inputs:emissiveColor.connect = </Case/Looks/band_checks/Tex.outputs:rgb>
+                float inputs:opacity.connect = </Case/Looks/band_checks/Tex.outputs:a>
+                float inputs:opacityThreshold = 0.5
+                float inputs:roughness = 1
+                color3f inputs:specularColor = (0, 0, 0)
+                int inputs:useSpecularWorkflow = 1
+                token outputs:surface
+            }
+
+            def Shader "St"
+            {
+                uniform token info:id = "UsdPrimvarReader_float2"
+                string inputs:varname = "st"
+                float2 outputs:result
+            }
+
+            def Shader "Tex"
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @./textures/band_checks.png@
+                float4 inputs:scale = (1, 1, 1, 1)
+                token inputs:sourceColorSpace = "sRGB"
+                float2 inputs:st.connect = </Case/Looks/band_checks/St.outputs:result>
+                token inputs:wrapS = "repeat"
+                token inputs:wrapT = "repeat"
+                float outputs:a
+                float3 outputs:rgb
+            }
+        }
+
+        def Material "band_redx"
+        {
+            token outputs:surface.connect = </Case/Looks/band_redx/Surface.outputs:surface>
+
+            def Shader "Surface"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0, 0, 0)
+                color3f inputs:emissiveColor.connect = </Case/Looks/band_redx/Tex.outputs:rgb>
+                float inputs:opacity.connect = </Case/Looks/band_redx/Tex.outputs:a>
+                float inputs:opacityThreshold = 0.5
+                float inputs:roughness = 1
+                color3f inputs:specularColor = (0, 0, 0)
+                int inputs:useSpecularWorkflow = 1
+                token outputs:surface
+            }
+
+            def Shader "St"
+            {
+                uniform token info:id = "UsdPrimvarReader_float2"
+                string inputs:varname = "st"
+                float2 outputs:result
+            }
+
+            def Shader "Tex"
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @./textures/band_redx.png@
+                float4 inputs:scale = (1, 1, 1, 1)
+                token inputs:sourceColorSpace = "sRGB"
+                float2 inputs:st.connect = </Case/Looks/band_redx/St.outputs:result>
+                token inputs:wrapS = "repeat"
+                token inputs:wrapT = "repeat"
+                float outputs:a
+                float3 outputs:rgb
+            }
+        }
+
+        def Material "gold"
+        {
+            token outputs:surface.connect = </Case/Looks/gold/Surface.outputs:surface>
+
+            def Shader "Surface"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0.67385954, 0.39312312, 0.021980947)
+                float inputs:roughness = 0.4
+                color3f inputs:specularColor = (0.04, 0.04, 0.04)
+                int inputs:useSpecularWorkflow = 1
+                token outputs:surface
+            }
+        }
+    }
+    variantSet "wrap" = {
+        "checks" {
+            def Xform "Band"
+            {
+                def Xform "Front"
+                {
+                    def Mesh "Q" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        uniform bool doubleSided = 1
+                        float3[] extent = [(-0.213, 0.235, 0.128), (0.213, 0.305, 0.128)]
+                        int[] faceVertexCounts = [4]
+                        int[] faceVertexIndices = [0, 1, 2, 3]
+                        rel material:binding = </Case/Looks/band_checks>
+                        normal3f[] normals = [(0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1)] (
+                            interpolation = "vertex"
+                        )
+                        point3f[] points = [(-0.213, 0.235, 0.128), (0.213, 0.235, 0.128), (0.213, 0.305, 0.128), (-0.213, 0.305, 0.128)]
+                        color3f[] primvars:displayColor = [(0.9, 0.75, 0.1)]
+                        texCoord2f[] primvars:st = [(0, 0), (1.5214286, 0), (1.5214286, 1), (0, 1)] (
+                            interpolation = "vertex"
+                        )
+                        uniform token subdivisionScheme = "none"
+                    }
+                }
+
+                def Xform "Back"
+                {
+                    float xformOp:rotateY = 180
+                    uniform token[] xformOpOrder = ["xformOp:rotateY"]
+
+                    def Mesh "Q" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        uniform bool doubleSided = 1
+                        float3[] extent = [(-0.213, 0.235, 0.128), (0.213, 0.305, 0.128)]
+                        int[] faceVertexCounts = [4]
+                        int[] faceVertexIndices = [0, 1, 2, 3]
+                        rel material:binding = </Case/Looks/band_checks>
+                        normal3f[] normals = [(0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1)] (
+                            interpolation = "vertex"
+                        )
+                        point3f[] points = [(-0.213, 0.235, 0.128), (0.213, 0.235, 0.128), (0.213, 0.305, 0.128), (-0.213, 0.305, 0.128)]
+                        color3f[] primvars:displayColor = [(0.9, 0.75, 0.1)]
+                        texCoord2f[] primvars:st = [(0, 0), (1.5214286, 0), (1.5214286, 1), (0, 1)] (
+                            interpolation = "vertex"
+                        )
+                        uniform token subdivisionScheme = "none"
+                    }
+                }
+
+                def Xform "Left"
+                {
+                    float xformOp:rotateY = -90
+                    uniform token[] xformOpOrder = ["xformOp:rotateY"]
+
+                    def Mesh "Q" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        uniform bool doubleSided = 1
+                        float3[] extent = [(-0.128, 0.235, 0.213), (0.128, 0.305, 0.213)]
+                        int[] faceVertexCounts = [4]
+                        int[] faceVertexIndices = [0, 1, 2, 3]
+                        rel material:binding = </Case/Looks/band_checks>
+                        normal3f[] normals = [(0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1)] (
+                            interpolation = "vertex"
+                        )
+                        point3f[] points = [(-0.128, 0.235, 0.213), (0.128, 0.235, 0.213), (0.128, 0.305, 0.213), (-0.128, 0.305, 0.213)]
+                        color3f[] primvars:displayColor = [(0.9, 0.75, 0.1)]
+                        texCoord2f[] primvars:st = [(0, 0), (0.9142857, 0), (0.9142857, 1), (0, 1)] (
+                            interpolation = "vertex"
+                        )
+                        uniform token subdivisionScheme = "none"
+                    }
+                }
+
+                def Xform "Right"
+                {
+                    float xformOp:rotateY = 90
+                    uniform token[] xformOpOrder = ["xformOp:rotateY"]
+
+                    def Mesh "Q" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        uniform bool doubleSided = 1
+                        float3[] extent = [(-0.128, 0.235, 0.213), (0.128, 0.305, 0.213)]
+                        int[] faceVertexCounts = [4]
+                        int[] faceVertexIndices = [0, 1, 2, 3]
+                        rel material:binding = </Case/Looks/band_checks>
+                        normal3f[] normals = [(0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1)] (
+                            interpolation = "vertex"
+                        )
+                        point3f[] points = [(-0.128, 0.235, 0.213), (0.128, 0.235, 0.213), (0.128, 0.305, 0.213), (-0.128, 0.305, 0.213)]
+                        color3f[] primvars:displayColor = [(0.9, 0.75, 0.1)]
+                        texCoord2f[] primvars:st = [(0, 0), (0.9142857, 0), (0.9142857, 1), (0, 1)] (
+                            interpolation = "vertex"
+                        )
+                        uniform token subdivisionScheme = "none"
+                    }
+                }
+            }
+
+        }
+        "dots" {
+            def Xform "Band"
+            {
+                def Xform "Front"
+                {
+                    def Mesh "Q" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        uniform bool doubleSided = 1
+                        float3[] extent = [(-0.213, 0.235, 0.128), (0.213, 0.305, 0.128)]
+                        int[] faceVertexCounts = [4]
+                        int[] faceVertexIndices = [0, 1, 2, 3]
+                        rel material:binding = </Case/Looks/band_dots>
+                        normal3f[] normals = [(0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1)] (
+                            interpolation = "vertex"
+                        )
+                        point3f[] points = [(-0.213, 0.235, 0.128), (0.213, 0.235, 0.128), (0.213, 0.305, 0.128), (-0.213, 0.305, 0.128)]
+                        color3f[] primvars:displayColor = [(0.9, 0.75, 0.1)]
+                        texCoord2f[] primvars:st = [(0, 0), (1.5214286, 0), (1.5214286, 1), (0, 1)] (
+                            interpolation = "vertex"
+                        )
+                        uniform token subdivisionScheme = "none"
+                    }
+                }
+
+                def Xform "Back"
+                {
+                    float xformOp:rotateY = 180
+                    uniform token[] xformOpOrder = ["xformOp:rotateY"]
+
+                    def Mesh "Q" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        uniform bool doubleSided = 1
+                        float3[] extent = [(-0.213, 0.235, 0.128), (0.213, 0.305, 0.128)]
+                        int[] faceVertexCounts = [4]
+                        int[] faceVertexIndices = [0, 1, 2, 3]
+                        rel material:binding = </Case/Looks/band_dots>
+                        normal3f[] normals = [(0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1)] (
+                            interpolation = "vertex"
+                        )
+                        point3f[] points = [(-0.213, 0.235, 0.128), (0.213, 0.235, 0.128), (0.213, 0.305, 0.128), (-0.213, 0.305, 0.128)]
+                        color3f[] primvars:displayColor = [(0.9, 0.75, 0.1)]
+                        texCoord2f[] primvars:st = [(0, 0), (1.5214286, 0), (1.5214286, 1), (0, 1)] (
+                            interpolation = "vertex"
+                        )
+                        uniform token subdivisionScheme = "none"
+                    }
+                }
+
+                def Xform "Left"
+                {
+                    float xformOp:rotateY = -90
+                    uniform token[] xformOpOrder = ["xformOp:rotateY"]
+
+                    def Mesh "Q" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        uniform bool doubleSided = 1
+                        float3[] extent = [(-0.128, 0.235, 0.213), (0.128, 0.305, 0.213)]
+                        int[] faceVertexCounts = [4]
+                        int[] faceVertexIndices = [0, 1, 2, 3]
+                        rel material:binding = </Case/Looks/band_dots>
+                        normal3f[] normals = [(0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1)] (
+                            interpolation = "vertex"
+                        )
+                        point3f[] points = [(-0.128, 0.235, 0.213), (0.128, 0.235, 0.213), (0.128, 0.305, 0.213), (-0.128, 0.305, 0.213)]
+                        color3f[] primvars:displayColor = [(0.9, 0.75, 0.1)]
+                        texCoord2f[] primvars:st = [(0, 0), (0.9142857, 0), (0.9142857, 1), (0, 1)] (
+                            interpolation = "vertex"
+                        )
+                        uniform token subdivisionScheme = "none"
+                    }
+                }
+
+                def Xform "Right"
+                {
+                    float xformOp:rotateY = 90
+                    uniform token[] xformOpOrder = ["xformOp:rotateY"]
+
+                    def Mesh "Q" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        uniform bool doubleSided = 1
+                        float3[] extent = [(-0.128, 0.235, 0.213), (0.128, 0.305, 0.213)]
+                        int[] faceVertexCounts = [4]
+                        int[] faceVertexIndices = [0, 1, 2, 3]
+                        rel material:binding = </Case/Looks/band_dots>
+                        normal3f[] normals = [(0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1)] (
+                            interpolation = "vertex"
+                        )
+                        point3f[] points = [(-0.128, 0.235, 0.213), (0.128, 0.235, 0.213), (0.128, 0.305, 0.213), (-0.128, 0.305, 0.213)]
+                        color3f[] primvars:displayColor = [(0.9, 0.75, 0.1)]
+                        texCoord2f[] primvars:st = [(0, 0), (0.9142857, 0), (0.9142857, 1), (0, 1)] (
+                            interpolation = "vertex"
+                        )
+                        uniform token subdivisionScheme = "none"
+                    }
+                }
+            }
+
+        }
+        "redx" {
+            def Xform "Band"
+            {
+                def Xform "Front"
+                {
+                    def Mesh "Q" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        uniform bool doubleSided = 1
+                        float3[] extent = [(-0.213, 0.235, 0.128), (0.213, 0.305, 0.128)]
+                        int[] faceVertexCounts = [4]
+                        int[] faceVertexIndices = [0, 1, 2, 3]
+                        rel material:binding = </Case/Looks/band_redx>
+                        normal3f[] normals = [(0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1)] (
+                            interpolation = "vertex"
+                        )
+                        point3f[] points = [(-0.213, 0.235, 0.128), (0.213, 0.235, 0.128), (0.213, 0.305, 0.128), (-0.213, 0.305, 0.128)]
+                        color3f[] primvars:displayColor = [(0.9, 0.75, 0.1)]
+                        texCoord2f[] primvars:st = [(0, 0), (1.5214286, 0), (1.5214286, 1), (0, 1)] (
+                            interpolation = "vertex"
+                        )
+                        uniform token subdivisionScheme = "none"
+                    }
+                }
+
+                def Xform "Back"
+                {
+                    float xformOp:rotateY = 180
+                    uniform token[] xformOpOrder = ["xformOp:rotateY"]
+
+                    def Mesh "Q" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        uniform bool doubleSided = 1
+                        float3[] extent = [(-0.213, 0.235, 0.128), (0.213, 0.305, 0.128)]
+                        int[] faceVertexCounts = [4]
+                        int[] faceVertexIndices = [0, 1, 2, 3]
+                        rel material:binding = </Case/Looks/band_redx>
+                        normal3f[] normals = [(0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1)] (
+                            interpolation = "vertex"
+                        )
+                        point3f[] points = [(-0.213, 0.235, 0.128), (0.213, 0.235, 0.128), (0.213, 0.305, 0.128), (-0.213, 0.305, 0.128)]
+                        color3f[] primvars:displayColor = [(0.9, 0.75, 0.1)]
+                        texCoord2f[] primvars:st = [(0, 0), (1.5214286, 0), (1.5214286, 1), (0, 1)] (
+                            interpolation = "vertex"
+                        )
+                        uniform token subdivisionScheme = "none"
+                    }
+                }
+
+                def Xform "Left"
+                {
+                    float xformOp:rotateY = -90
+                    uniform token[] xformOpOrder = ["xformOp:rotateY"]
+
+                    def Mesh "Q" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        uniform bool doubleSided = 1
+                        float3[] extent = [(-0.128, 0.235, 0.213), (0.128, 0.305, 0.213)]
+                        int[] faceVertexCounts = [4]
+                        int[] faceVertexIndices = [0, 1, 2, 3]
+                        rel material:binding = </Case/Looks/band_redx>
+                        normal3f[] normals = [(0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1)] (
+                            interpolation = "vertex"
+                        )
+                        point3f[] points = [(-0.128, 0.235, 0.213), (0.128, 0.235, 0.213), (0.128, 0.305, 0.213), (-0.128, 0.305, 0.213)]
+                        color3f[] primvars:displayColor = [(0.9, 0.75, 0.1)]
+                        texCoord2f[] primvars:st = [(0, 0), (0.9142857, 0), (0.9142857, 1), (0, 1)] (
+                            interpolation = "vertex"
+                        )
+                        uniform token subdivisionScheme = "none"
+                    }
+                }
+
+                def Xform "Right"
+                {
+                    float xformOp:rotateY = 90
+                    uniform token[] xformOpOrder = ["xformOp:rotateY"]
+
+                    def Mesh "Q" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        uniform bool doubleSided = 1
+                        float3[] extent = [(-0.128, 0.235, 0.213), (0.128, 0.305, 0.213)]
+                        int[] faceVertexCounts = [4]
+                        int[] faceVertexIndices = [0, 1, 2, 3]
+                        rel material:binding = </Case/Looks/band_redx>
+                        normal3f[] normals = [(0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1)] (
+                            interpolation = "vertex"
+                        )
+                        point3f[] points = [(-0.128, 0.235, 0.213), (0.128, 0.235, 0.213), (0.128, 0.305, 0.213), (-0.128, 0.305, 0.213)]
+                        color3f[] primvars:displayColor = [(0.9, 0.75, 0.1)]
+                        texCoord2f[] primvars:st = [(0, 0), (0.9142857, 0), (0.9142857, 1), (0, 1)] (
+                            interpolation = "vertex"
+                        )
+                        uniform token subdivisionScheme = "none"
+                    }
+                }
+            }
+
+        }
+        "stripes" (
+            prepend variantSets = "trim"
+        ) {
+            def Xform "Band"
+            {
+                def Xform "Front"
+                {
+                    def Mesh "Q" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        uniform bool doubleSided = 1
+                        float3[] extent = [(-0.213, 0.235, 0.128), (0.213, 0.305, 0.128)]
+                        int[] faceVertexCounts = [4]
+                        int[] faceVertexIndices = [0, 1, 2, 3]
+                        rel material:binding = </Case/Looks/band_stripes>
+                        normal3f[] normals = [(0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1)] (
+                            interpolation = "vertex"
+                        )
+                        point3f[] points = [(-0.213, 0.235, 0.128), (0.213, 0.235, 0.128), (0.213, 0.305, 0.128), (-0.213, 0.305, 0.128)]
+                        color3f[] primvars:displayColor = [(0.9, 0.75, 0.1)]
+                        texCoord2f[] primvars:st = [(0, 0), (1.5214286, 0), (1.5214286, 1), (0, 1)] (
+                            interpolation = "vertex"
+                        )
+                        uniform token subdivisionScheme = "none"
+                    }
+                }
+
+                def Xform "Back"
+                {
+                    float xformOp:rotateY = 180
+                    uniform token[] xformOpOrder = ["xformOp:rotateY"]
+
+                    def Mesh "Q" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        uniform bool doubleSided = 1
+                        float3[] extent = [(-0.213, 0.235, 0.128), (0.213, 0.305, 0.128)]
+                        int[] faceVertexCounts = [4]
+                        int[] faceVertexIndices = [0, 1, 2, 3]
+                        rel material:binding = </Case/Looks/band_stripes>
+                        normal3f[] normals = [(0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1)] (
+                            interpolation = "vertex"
+                        )
+                        point3f[] points = [(-0.213, 0.235, 0.128), (0.213, 0.235, 0.128), (0.213, 0.305, 0.128), (-0.213, 0.305, 0.128)]
+                        color3f[] primvars:displayColor = [(0.9, 0.75, 0.1)]
+                        texCoord2f[] primvars:st = [(0, 0), (1.5214286, 0), (1.5214286, 1), (0, 1)] (
+                            interpolation = "vertex"
+                        )
+                        uniform token subdivisionScheme = "none"
+                    }
+                }
+
+                def Xform "Left"
+                {
+                    float xformOp:rotateY = -90
+                    uniform token[] xformOpOrder = ["xformOp:rotateY"]
+
+                    def Mesh "Q" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        uniform bool doubleSided = 1
+                        float3[] extent = [(-0.128, 0.235, 0.213), (0.128, 0.305, 0.213)]
+                        int[] faceVertexCounts = [4]
+                        int[] faceVertexIndices = [0, 1, 2, 3]
+                        rel material:binding = </Case/Looks/band_stripes>
+                        normal3f[] normals = [(0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1)] (
+                            interpolation = "vertex"
+                        )
+                        point3f[] points = [(-0.128, 0.235, 0.213), (0.128, 0.235, 0.213), (0.128, 0.305, 0.213), (-0.128, 0.305, 0.213)]
+                        color3f[] primvars:displayColor = [(0.9, 0.75, 0.1)]
+                        texCoord2f[] primvars:st = [(0, 0), (0.9142857, 0), (0.9142857, 1), (0, 1)] (
+                            interpolation = "vertex"
+                        )
+                        uniform token subdivisionScheme = "none"
+                    }
+                }
+
+                def Xform "Right"
+                {
+                    float xformOp:rotateY = 90
+                    uniform token[] xformOpOrder = ["xformOp:rotateY"]
+
+                    def Mesh "Q" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        uniform bool doubleSided = 1
+                        float3[] extent = [(-0.128, 0.235, 0.213), (0.128, 0.305, 0.213)]
+                        int[] faceVertexCounts = [4]
+                        int[] faceVertexIndices = [0, 1, 2, 3]
+                        rel material:binding = </Case/Looks/band_stripes>
+                        normal3f[] normals = [(0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1)] (
+                            interpolation = "vertex"
+                        )
+                        point3f[] points = [(-0.128, 0.235, 0.213), (0.128, 0.235, 0.213), (0.128, 0.305, 0.213), (-0.128, 0.305, 0.213)]
+                        color3f[] primvars:displayColor = [(0.9, 0.75, 0.1)]
+                        texCoord2f[] primvars:st = [(0, 0), (0.9142857, 0), (0.9142857, 1), (0, 1)] (
+                            interpolation = "vertex"
+                        )
+                        uniform token subdivisionScheme = "none"
+                    }
+                }
+            }
+            variantSet "trim" = {
+                "gold" {
+                    def "Edges"
+                    {
+                        def Mesh "Top" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            float3[] extent = [(-0.217, 0.2938, -0.132), (0.217, 0.309, 0.132)]
+                            int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+                            int[] faceVertexIndices = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23]
+                            rel material:binding = </Case/Looks/gold>
+                            point3f[] points = [(-0.217, 0.2938, 0.132), (0.217, 0.2938, 0.132), (0.217, 0.309, 0.132), (-0.217, 0.309, 0.132), (0.217, 0.2938, -0.132), (-0.217, 0.2938, -0.132), (-0.217, 0.309, -0.132), (0.217, 0.309, -0.132), (-0.217, 0.309, 0.132), (0.217, 0.309, 0.132), (0.217, 0.309, -0.132), (-0.217, 0.309, -0.132), (-0.217, 0.2938, -0.132), (0.217, 0.2938, -0.132), (0.217, 0.2938, 0.132), (-0.217, 0.2938, 0.132), (0.217, 0.2938, 0.132), (0.217, 0.2938, -0.132), (0.217, 0.309, -0.132), (0.217, 0.309, 0.132), (-0.217, 0.2938, -0.132), (-0.217, 0.2938, 0.132), (-0.217, 0.309, 0.132), (-0.217, 0.309, -0.132)]
+                            uniform token subdivisionScheme = "none"
+                        }
+
+                        def Mesh "Bottom" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            float3[] extent = [(-0.217, 0.231, -0.132), (0.217, 0.2462, 0.132)]
+                            int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+                            int[] faceVertexIndices = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23]
+                            rel material:binding = </Case/Looks/gold>
+                            point3f[] points = [(-0.217, 0.231, 0.132), (0.217, 0.231, 0.132), (0.217, 0.2462, 0.132), (-0.217, 0.2462, 0.132), (0.217, 0.231, -0.132), (-0.217, 0.231, -0.132), (-0.217, 0.2462, -0.132), (0.217, 0.2462, -0.132), (-0.217, 0.2462, 0.132), (0.217, 0.2462, 0.132), (0.217, 0.2462, -0.132), (-0.217, 0.2462, -0.132), (-0.217, 0.231, -0.132), (0.217, 0.231, -0.132), (0.217, 0.231, 0.132), (-0.217, 0.231, 0.132), (0.217, 0.231, 0.132), (0.217, 0.231, -0.132), (0.217, 0.2462, -0.132), (0.217, 0.2462, 0.132), (-0.217, 0.231, -0.132), (-0.217, 0.231, 0.132), (-0.217, 0.2462, 0.132), (-0.217, 0.2462, -0.132)]
+                            uniform token subdivisionScheme = "none"
+                        }
+                    }
+
+                }
+                "plain" {
+
+                }
+            }
+
+        }
+    }
+}
+
+def Xform "CaseDefault" (
+    prepend references = </Case>
+    variants = {
+        string wrap = "stripes"
+    }
+)
+{
+}
+

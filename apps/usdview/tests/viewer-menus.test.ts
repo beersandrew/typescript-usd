@@ -12,6 +12,7 @@ import { afterEach, beforeAll, describe, expect, it, vi } from 'vitest'
 import type { PrimSummary, RuntimeCallbacks, ViewerRuntime } from '../src/contracts'
 import type { EditMenuState } from '../src/composition-types'
 import { defineUsdViewer, type UsdViewerElement } from '../src/usd-viewer'
+import { pythonInterpreterAvailable, windowMenuHtml } from '../src/window-menu'
 
 const tree: PrimSummary[] = [{ path: '/World', name: 'World', typeName: 'Xform', children: [
   { path: '/World/Mesh', name: 'Mesh', typeName: 'Mesh', children: [] },
@@ -132,9 +133,23 @@ describe('Window menu', () => {
   it('matches native order, disabling what the browser viewer cannot provide with a reason', async () => {
     const { root } = setup(); await tick()
     const items = [...root.querySelectorAll<HTMLElement>('.window-popup > button, .window-popup > hr')]
-    expect(items.map(e => e.tagName === 'HR' ? '---' : e.firstChild!.textContent)).toEqual(['Toggle Viewer-Only Mode', '---', 'Interpreter', 'Preferences', 'USD Validation', 'Debug Flags', 'Hydra Scene Debugger'])
+    expect(items.map(e => e.tagName === 'HR' ? '---' : e.firstChild!.textContent)).toEqual(['Toggle Viewer-Only Mode', '---', 'Python Interpreter', 'TypeScript Interpreter', 'Preferences', 'USD Validation', 'Debug Flags', 'Hydra Scene Debugger'])
     const disabled = items.filter((e): e is HTMLButtonElement => e instanceof HTMLButtonElement && e.disabled)
-    expect(disabled.map(e => e.firstChild!.textContent)).toEqual(['Interpreter'])
+    expect(disabled.map(e => e.firstChild!.textContent)).toEqual(['Python Interpreter'])
+    // mainWindowUI.ui's Interpreter shortcut I stays on the Python Interpreter; TypeScript has none.
+    expect(q(root, '[data-window="pythonInterpreter"] kbd').textContent).toBe('I')
+    // Where Pyodide is served (the dev server) Python Interpreter is enabled;
+    // the jsdom tests, like a static build, have none.
+    expect(pythonInterpreterAvailable).toBe(false)
+    const item = (python: boolean) => {
+      const host = document.createElement('div'); host.innerHTML = windowMenuHtml(true, python)
+      return host.querySelector<HTMLButtonElement>('[data-window="pythonInterpreter"]')!
+    }
+    expect(item(true).disabled).toBe(false)
+    expect(item(true).querySelector('kbd')!.textContent).toBe('I')
+    expect(item(false).disabled).toBe(true)
+    expect(item(false).title).toMatch(/not available here/)
+    expect(q(root, '[data-window="typescriptInterpreter"]').querySelector('kbd')).toBeNull()
     for (const item of disabled) expect(item.title.length).toBeGreaterThan(20)
   })
 

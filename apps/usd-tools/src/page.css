@@ -1,0 +1,35 @@
+:root {
+  color-scheme: light dark;
+  --bg: #f7f7f5; --fg: #1d1d1f; --muted: #6b6b70; --line: #d8d8d4; --panel: #ffffff;
+  --term: #1e1f22; --term-fg: #e6e6e6; --err: #ff7b72; --ok: #2e8b57; --fail: #c0392b; --accent: #2f6fd0;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --bg: #18181a; --fg: #ececec; --muted: #9a9aa0; --line: #333336; --panel: #222225; --term: #101012; --accent: #7aa7ff; --ok: #5fc98d; --fail: #ff7b72; }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--fg); font: 15px/1.45 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+main { max-width: 1100px; margin: 0 auto; padding: 16px; }
+a { color: var(--accent); }
+header .home { font-size: 13px; text-decoration: none; }
+h1 { margin: 4px 0 2px; font: 600 26px/1.2 ui-monospace, SFMono-Regular, Menlo, monospace; }
+.about { margin: 0 0 12px; color: var(--muted); }
+.controls { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; display: grid; gap: 8px; }
+.row { display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: center; }
+select, input[type=text] { font: inherit; padding: 6px 8px; border-radius: 6px; border: 1px solid var(--line); background: var(--bg); color: var(--fg); }
+select { min-width: 0; max-width: 100%; flex: 1 1 260px; }
+#extra { flex: 1 1 200px; font-family: ui-monospace, Menlo, monospace; font-size: 13px; }
+input[type=file] { display: none; }
+.button { padding: 6px 12px; border-radius: 6px; border: 1px solid var(--line); cursor: pointer; background: var(--bg); }
+.flag { font-size: 13px; white-space: nowrap; }
+.flag code { font-size: 12px; }
+.command { font: 13px ui-monospace, Menlo, monospace; color: var(--muted); }
+.command code { color: var(--fg); overflow-wrap: anywhere; flex: 1 1 auto; }
+#status { font-size: 12px; }
+#status.ok { color: var(--ok); } #status.fail { color: var(--fail); }
+pre#output { margin: 12px 0; padding: 12px 14px; background: var(--term); color: var(--term-fg); border-radius: 10px; font: 12.5px/1.45 ui-monospace, SFMono-Regular, Menlo, monospace; white-space: pre; overflow: auto; max-height: 75vh; min-height: 120px; }
+pre#output .err { color: var(--err); }
+.credit { font-size: 12px; color: var(--muted); }
+ul.tools { list-style: none; padding: 0; display: grid; gap: 10px; }
+ul.tools li { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 10px 14px; }
+ul.tools a { font: 600 17px ui-monospace, Menlo, monospace; text-decoration: none; }
+ul.tools p { margin: 2px 0 0; color: var(--muted); font-size: 14px; }

@@ -21,7 +21,7 @@
    "definitions": [
     {
      "file": "packages/usd/pxr/usd/ar/src/internal.ts",
-     "line": 63,
+     "line": 68,
      "tag": "FAITHFULNESS-DEBT",
      "text": "upstream has no per-context resolver instance; its tests register resolver plugins and read files (testenv), and usdGenSchema.py reads schema files through ArGetResolver(). Move those callers to registered resolvers or files, then remove this carrier, _ArResolverImplementationContext and ArDefaultResolver's forwarding to it."
     }
@@ -189,12 +189,12 @@
     },
     {
      "file": "packages/usd/pxr/imaging/hdSt/src/resourceRegistry.ts",
-     "line": 780,
+     "line": 784,
      "tag": "PLATFORM-DIVERGENCE"
     },
     {
      "file": "packages/usd/pxr/imaging/hdSt/src/resourceRegistry.ts",
-     "line": 792,
+     "line": 796,
      "tag": "PLATFORM-DIVERGENCE"
     }
    ],
@@ -226,6 +226,19 @@
    "references": [],
    "docs": []
   },
+  "hd-incremental-scene-delegates": {
+   "tag": "PLATFORM-DIVERGENCE",
+   "definitions": [
+    {
+     "file": "packages/usd/pxr/imaging/hd/src/sceneIndexAdapterSceneDelegate.ts",
+     "line": 1049,
+     "tag": "PLATFORM-DIVERGENCE",
+     "text": "the scene delegate each added prim names (HdSceneIndexEmulationTokens sceneDelegate), kept as prims are added and removed. Upstream rebuilds the set in Sync after any add or remove by reading every cached prim (sceneIndexAdapterSceneDelegate.cpp:2981-3019, a TBB parallel loop). Done serially here, that read costs about 5 ms per sync of a scene of a few thousand prims, in every frame that adds prims. The set is the same."
+    }
+   ],
+   "references": [],
+   "docs": []
+  },
   "hd-instance-use-count": {
    "tag": "PLATFORM-DIVERGENCE",
    "definitions": [
@@ -233,18 +246,24 @@
      "file": "packages/usd/pxr/imaging/hd/src/instanceRegistry.ts",
      "line": 16,
      "tag": "PLATFORM-DIVERGENCE",
-     "text": "_IsUnique tests `shared_ptr::use_count() == 1`, which JS cannot observe. Values with an explicit reference count (`_retain()`, `release()`, `_useCount()`: the HdBufferArrayRange scheme, hd/src/bufferArrayRange.ts, and the Storm topologies and vertex adjacency builders that follow it) count the registry as one holder: an entry's holder retains its value (the ValueHolder's shared_ptr copy, instanceRegistry.h:91-94) and releases it when the entry is replaced, erased by GarbageCollect or invalidated, and _IsUnique is `_useCount() === 1`. Other values (texture objects, shader code) count only the holders besides the registry and are unique when their `_expired` flag is set; values with neither are never collected."
+     "text": "_IsUnique tests `shared_ptr::use_count() == 1`, which JS cannot observe. Values with an explicit reference count (`_retain()`, `release()`, `_useCount()`: the HdBufferArrayRange scheme, hd/src/bufferArrayRange.ts, and the Storm topologies and vertex adjacency builders that follow it) count the registry as one holder: an entry's holder retains its value (the ValueHolder's shared_ptr copy, instanceRegistry.h:91-94) and releases it when the entry is replaced, erased by GarbageCollect or invalidated, and _IsUnique is `_useCount() === 1`. Other values (texture objects, shader code) count only the holders besides the registry and are unique when their `_expired` flag is set; values with neither are never collected, unless the registry is made with `heldOnlyByRegistry`: then every entry is unique, as when nothing keeps the value past the call that got it (Storm's Hgi resource bindings: each use takes the shared_ptr for one dispatch, so upstream's use count is back to 1 at GarbageCollect)."
+    },
+    {
+     "file": "packages/usd/pxr/imaging/hd/src/instanceRegistry.ts",
+     "line": 109,
+     "tag": "PLATFORM-DIVERGENCE",
+     "text": "`heldOnlyByRegistry` for values no caller keeps past its use (see the file header)."
     }
    ],
    "references": [
     {
      "file": "packages/usd/pxr/imaging/hd/src/instanceRegistry.ts",
-     "line": 85,
+     "line": 89,
      "tag": "PLATFORM-DIVERGENCE"
     },
     {
      "file": "packages/usd/pxr/imaging/hd/src/instanceRegistry.ts",
-     "line": 171,
+     "line": 182,
      "tag": "PLATFORM-DIVERGENCE"
     },
     {
@@ -260,6 +279,11 @@
     {
      "file": "packages/usd/pxr/imaging/hdSt/src/resourceRegistry.ts",
      "line": 20,
+     "tag": "PLATFORM-DIVERGENCE"
+    },
+    {
+     "file": "packages/usd/pxr/imaging/hdSt/src/resourceRegistry.ts",
+     "line": 301,
      "tag": "PLATFORM-DIVERGENCE"
     },
     {
@@ -323,7 +347,7 @@
    "definitions": [
     {
      "file": "packages/usd/pxr/imaging/hd/src/renderIndex.ts",
-     "line": 632,
+     "line": 634,
      "tag": "FAITHFULNESS-DEBT",
      "text": "upstream leaves dirty rprims unsynced when no render pass enqueued a collection (renderIndex.cpp:1790-1987); this scene-index-only SyncAll reuses the previous reprs so callers that sync outside a render pass keep the repr their last render selected. renderIndex.cpp:1691-1990 SyncAll(tasks, taskContext), as HdEngine calls it; SyncAll(reprToken, commitResources) syncs prims without tasks (see the header)."
     }
@@ -451,7 +475,7 @@
    "definitions": [
     {
      "file": "packages/usd/pxr/usdImaging/usdImaging/src/niInstanceAggregationSceneIndex.ts",
-     "line": 1173,
+     "line": 1186,
      "tag": "PLATFORM-DIVERGENCE",
      "text": "upstream casts to HdTypedSampledDataSource<SdfPath> / <VtArray<SdfPath>>. Element types do not exist at run time here: subclasses of HdPathDataSource / HdPathArrayDataSource are recognized, a VtValue by its type name, and otherwise a value is taken to be a path if it is a string that starts with '/' (tokens and identifiers never do)."
     }
@@ -967,6 +991,19 @@
     "packages/usd/tests/browser/imaging-status/classification.json"
    ]
   },
+  "hgiwebgpu-coalesced-submits": {
+   "tag": "PLATFORM-DIVERGENCE",
+   "definitions": [
+    {
+     "file": "packages/usd/pxr/imaging/hgiWebGPU/src/hgi.ts",
+     "line": 144,
+     "tag": "PLATFORM-DIVERGENCE",
+     "text": "upstream commits each Hgi*Cmds' Metal command buffer when it is submitted, which is cheap. In a browser every GPUQueue.submit is a message to the GPU process (WebKit: about half a millisecond each), and a frame that loads payloads submits hundreds of small blit command buffers (HdStDispatchBuffer::CopyData per draw batch, texture uploads and their mipmaps): the USD Museum's tour in Safari spent 150-360 ms of such frames outside script. So a blit cmds submitted without waiting (HgiWebGPUBlitCmds._submit) is finished and held here, and submitted in the same GPUQueue.submit as the next graphics or compute cmds, before their command buffers, or at endFrame. The queue runs the same command buffers in the same order; only the number of submits changes. Work that waits, or reads back, submits at once, after what is held."
+    }
+   ],
+   "references": [],
+   "docs": []
+  },
   "hgiWebGPU-patch-indirect": {
    "tag": "PLATFORM-DIVERGENCE",
    "definitions": [
@@ -999,7 +1036,7 @@
     },
     {
      "file": "packages/usd/pxr/imaging/hgiWebGPU/src/hgi.ts",
-     "line": 346,
+     "line": 394,
      "tag": "PLATFORM-DIVERGENCE",
      "text": "CreateGraphicsPipeline for a pipeline that will be used later, compiled in the background (HgiWebGPUGraphicsPipeline's constructor)."
     }
@@ -1136,7 +1173,7 @@
    "definitions": [
     {
      "file": "packages/usd/pxr/usdImaging/usdImaging/src/niInstanceAggregationSceneIndex.ts",
-     "line": 339,
+     "line": 352,
      "tag": "PLATFORM-DIVERGENCE",
      "text": "a primvar value data source that returns a plain JS value (not a VtValue or VtArray) carries no type; no data source is made for it."
     }
@@ -1388,6 +1425,19 @@
    "references": [],
    "docs": []
   },
+  "pcp-compute-ahead-descends": {
+   "tag": "PLATFORM-DIVERGENCE",
+   "definitions": [
+    {
+     "file": "packages/usd/pxr/usd/pcp/src/cache.ts",
+     "line": 692,
+     "tag": "PLATFORM-DIVERGENCE",
+     "text": "upstream's parallel indexing (Pcp_ParallelIndexer, cache.cpp) starts a prim's children as soon as the prim is indexed, on other threads, so the layers of a deep namespace open level after level concurrently. Here a layer is a network fetch and one thread computes: while a prim waits, the prims queued behind it are computed ahead, and so (breadth-first) are the children of every prim computed ahead (aheadChildren), so the fetches of the levels below go out together instead of one level per round trip (the USD Museum's tour: 55 sequential fetch rounds to open, 4 with this). Results are used only when the prim is visited, in upstream's order; a prim the visit never reaches only cost its computation."
+    }
+   ],
+   "references": [],
+   "docs": []
+  },
   "pcp-layer-stack-lifetime": {
    "tag": "FAITHFULNESS-DEBT",
    "definitions": [
@@ -1402,6 +1452,19 @@
    "docs": [
     "KNOWN-GAPS.md"
    ]
+  },
+  "pxr-py-browser-fs": {
+   "tag": "PLATFORM-DIVERGENCE",
+   "definitions": [
+    {
+     "file": "packages/usd/python/browser.ts",
+     "line": 11,
+     "tag": "PLATFORM-DIVERGENCE",
+     "text": "a page has no host file system, so typescript-usd's layer IO and Python's os/open do not share files here. Python sees Pyodide's in-memory file system; typescript-usd reads assets through the page's Ar resolver (URLs). Scripts run here open their inputs by URL and keep their results in memory."
+    }
+   ],
+   "references": [],
+   "docs": []
   },
   "sdf-file-format-schemas": {
    "tag": "FAITHFULNESS-DEBT",
@@ -1598,7 +1661,7 @@
    "definitions": [
     {
      "file": "packages/usd/pxr/usd/usd/src/stage.ts",
-     "line": 1814,
+     "line": 1830,
      "tag": "PLATFORM-DIVERGENCE",
      "text": "upstream processes layer changes synchronously inside the edit (UsdStage::_HandleLayersDidChange -> PcpChanges::DidChange, stage.cpp, pcp/changes.cpp:732-1393), opening any sublayer, reference or payload layer it needs with the synchronous SdfLayer::FindOrOpen. Opening a layer here goes through an asynchronous ArResolver (fetch in the browser), so a pass that needs an unopened layer throws PcpNeedsLayer, waits for the load (pcp/src/maybeAsync.ts) and finishes after the edit returns; callers read the recomposed stage after `await stage.flushChanges()`. An edit whose layers are already open recomposes synchronously, as upstream."
     }
@@ -1619,13 +1682,13 @@
    "definitions": [
     {
      "file": "packages/usd/pxr/usd/usd/src/stage.ts",
-     "line": 2251,
+     "line": 2267,
      "tag": "FAITHFULNESS-DEBT",
      "text": "value clip layers are listened to as well; upstream does not process their changes."
     },
     {
      "file": "packages/usd/pxr/usd/usd/src/stage.ts",
-     "line": 2297,
+     "line": 2313,
      "tag": "FAITHFULNESS-DEBT",
      "text": "changes to Usd-owned dependencies that no Pcp layer stack uses (value clip layers) recompose the stage; upstream does not process them."
     }
@@ -1830,6 +1893,38 @@
    "references": [],
    "docs": []
   },
+  "usdutils-usdz-scan-detached-view": {
+   "tag": "PLATFORM-DIVERGENCE",
+   "definitions": [
+    {
+     "file": "packages/usd/pxr/usd/usdUtils/src/usdzUtils.ts",
+     "line": 19,
+     "tag": "PLATFORM-DIVERGENCE",
+     "text": "upstream's scan yields memoryviews over an mmap that raise ValueError once the iterator exits (usdzUtils.py:127-145). JavaScript typed arrays do not raise: exit() detaches the buffer the views share, so a view held past it reads as an empty array (length 0, every index undefined)."
+    },
+    {
+     "file": "packages/usd/pxr/usd/usdUtils/tests/upstream/usdzUtils.test.ts",
+     "line": 27,
+     "tag": "PLATFORM-DIVERGENCE",
+     "text": "a view held past the scope reads as empty instead of raising ValueError."
+    }
+   ],
+   "references": [
+    {
+     "file": "packages/usd/pxr/usd/usdUtils/src/usdzUtils.ts",
+     "line": 177,
+     "tag": "PLATFORM-DIVERGENCE"
+    },
+    {
+     "file": "packages/usd/pxr/usd/usdUtils/tests/upstream/usdzUtils.test.ts",
+     "line": 268,
+     "tag": "PLATFORM-DIVERGENCE"
+    }
+   ],
+   "docs": [
+    "KNOWN-GAPS.md"
+   ]
+  },
   "usdValidation-async-validate": {
    "tag": "PLATFORM-DIVERGENCE",
    "definitions": [
@@ -1922,12 +2017,27 @@
    "references": [],
    "docs": []
   },
+  "usdview-api-async-capture": {
+   "tag": "PLATFORM-DIVERGENCE",
+   "definitions": [
+    {
+     "file": "apps/usdview/src/usdview-api.ts",
+     "line": 296,
+     "tag": "PLATFORM-DIVERGENCE",
+     "text": "usdview returns a QImage at once; a WebGPU readback is asynchronous, so this resolves to a PNG Blob."
+    }
+   ],
+   "references": [],
+   "docs": [
+    "KNOWN-GAPS.md"
+   ]
+  },
   "usdview-load-schedule-default": {
    "tag": "PLATFORM-DIVERGENCE",
    "definitions": [
     {
      "file": "apps/usdview/src/runtime.ts",
-     "line": 587,
+     "line": 596,
      "tag": "PLATFORM-DIVERGENCE",
      "text": "unset, a scene that has a schedule plays by it too (usdview applies one only with a load-schedule plugin and --unloaded), because composing and drawing every payload of a large scene stalls the browser's frames. The progressive open already leaves every payload unloaded, so the schedule is read after the open and applied when the root layer has one. ?loadSchedule=0 or ?progressive=0 loads every payload, as usdview does."
     }
@@ -1948,6 +2058,55 @@
     "apps/usdview/docs/viewer-contracts.md"
    ]
   },
+  "usdview-paused-load-ahead": {
+   "tag": "PLATFORM-DIVERGENCE",
+   "definitions": [
+    {
+     "file": "apps/usdview/src/load-ahead.ts",
+     "line": 5,
+     "tag": "PLATFORM-DIVERGENCE",
+     "text": "usdview has no load schedule of its own; a load-schedule plugin calls UsdStage::LoadAndUnload on each frame change (appController.py:3885 _updateOnFrameChange) and nothing runs while the timeline is paused. Here a working set (working-set.ts) loads a payload in its lead-in a few per frame while playing (load-schedule.ts perChange), and a jump (a released scrub, a seek) loads only what the frame shows. Pressing Play there would load the lead-in carriers, and the ones becoming needed, in the first playing frames. So while the viewer is idle (paused, not scrubbing, no frame, display, composition or scene update in flight, no camera drag, the last draw converged, nothing touched for `quiet` ms) it applies the rest of the paused frame's scheduled set, one per-change budget per step, needed soonest first, each step's layers and images read first (load-prefetch.ts read). It loads nothing playback at this frame would not hold: memory stays the schedule's. It stops when the set is reached, and while playing or scrubbing; the next paused frame starts it again. A schedule without a budget (an authored one) loads its whole set on the frame change, so there is nothing left to do."
+    }
+   ],
+   "references": [
+    {
+     "file": "apps/usdview/tests/load-ahead.test.ts",
+     "line": 1,
+     "tag": "PLATFORM-DIVERGENCE"
+    }
+   ],
+   "docs": [
+    "apps/usdview/docs/viewer-contracts.md"
+   ]
+  },
+  "usdview-pipeline-cache": {
+   "tag": "PLATFORM-DIVERGENCE",
+   "definitions": [
+    {
+     "file": "apps/usdview/src/pipeline-cache.ts",
+     "line": 5,
+     "tag": "PLATFORM-DIVERGENCE",
+     "text": "usdview creates each Storm pipeline when its first draw needs it (hgiMetal/graphicsPipeline.mm, through HgiMetal::CreateGraphicsPipeline), and native drivers keep compiled pipelines in their own caches. WebGPU has no pipeline cache, and WebKit compiles each new pipeline's Metal shaders on the GPU process's timeline, about 15-20 ms each (performance-viewer.md, November 13)."
+    }
+   ],
+   "references": [],
+   "docs": []
+  },
+  "usdview-python-readline": {
+   "tag": "PLATFORM-DIVERGENCE",
+   "definitions": [
+    {
+     "file": "packages/usd/python/interactive.ts",
+     "line": 25,
+     "tag": "PLATFORM-DIVERGENCE",
+     "text": "the Controller's readline (pythonInterpreter.py:340-384) blocks input() in a nested Qt event loop until the user enters a line; a page cannot block its thread for input, so input() in the console raises RuntimeError."
+    }
+   ],
+   "references": [],
+   "docs": [
+    "KNOWN-GAPS.md"
+   ]
+  },
   "usdview-tool-windows": {
    "tag": "PLATFORM-DIVERGENCE",
    "definitions": [
@@ -1956,6 +2115,12 @@
      "line": 16,
      "tag": "PLATFORM-DIVERGENCE",
      "text": "usdview opens these as separate top-level Qt windows. A web component cannot open native windows, so each is a movable, resizable, non-modal panel inside the viewer."
+    },
+    {
+     "file": "apps/usdview/src/interpreter-console.ts",
+     "line": 8,
+     "tag": "PLATFORM-DIVERGENCE",
+     "text": "the QDialog is a panel inside the viewer (src/hydra-scene-debugger-view.ts)."
     }
    ],
    "references": [
@@ -1965,6 +2130,21 @@
      "tag": "PLATFORM-DIVERGENCE"
     }
    ],
+   "docs": [
+    "KNOWN-GAPS.md"
+   ]
+  },
+  "usdview-typescript-interpreter": {
+   "tag": "PLATFORM-DIVERGENCE",
+   "definitions": [
+    {
+     "file": "apps/usdview/src/ts-interpreter.ts",
+     "line": 6,
+     "tag": "PLATFORM-DIVERGENCE",
+     "text": "usdview's interpreter runs Python, the language of OpenUSD's bindings. The browser runs JavaScript natively and this library is written in TypeScript, so this console takes TypeScript, its types stripped before it runs, over the same objects; Python (Pyodide) is a separate panel."
+    }
+   ],
+   "references": [],
    "docs": [
     "KNOWN-GAPS.md"
    ]
@@ -1981,6 +2161,37 @@
    ],
    "references": [],
    "docs": []
+  },
+  "usdview-working-set": {
+   "tag": "PLATFORM-DIVERGENCE",
+   "definitions": [
+    {
+     "file": "apps/usdview/src/working-set.ts",
+     "line": 4,
+     "tag": "PLATFORM-DIVERGENCE",
+     "text": "usdview loads every payload (appController.py opens with Usd.Stage.LoadAll). Composing, syncing and drawing every payload of a large scene stalls the browser's frames, and its first frames wait for every texture. So when the scene has no authored load schedule (load-schedule.ts), the viewer opens with `?camera=` set and the scene's payload prims author `extentsHint` (UsdGeomModelAPI), the viewer keeps loaded only the payloads near that camera's path:"
+    }
+   ],
+   "references": [
+    {
+     "file": "apps/usdview/src/runtime.ts",
+     "line": 641,
+     "tag": "PLATFORM-DIVERGENCE"
+    },
+    {
+     "file": "apps/usdview/src/startup-options.ts",
+     "line": 33,
+     "tag": "PLATFORM-DIVERGENCE"
+    },
+    {
+     "file": "apps/usdview/tests/working-set.test.ts",
+     "line": 1,
+     "tag": "PLATFORM-DIVERGENCE"
+    }
+   ],
+   "docs": [
+    "apps/usdview/docs/viewer-contracts.md"
+   ]
   },
   "viewer-cpu-skinning-fallback": {
    "tag": "PLATFORM-DIVERGENCE",

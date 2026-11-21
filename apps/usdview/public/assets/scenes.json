@@ -46,7 +46,8 @@
       "UV texture",
       "inherited material binding"
     ],
-    "expectedSupport": "render: bounded Preview Surface subset"
+    "expectedSupport": "render: bounded Preview Surface subset",
+    "welcome": true
   },
   {
     "id": "materialx-multi-uv",
@@ -107,7 +108,8 @@
       "animated camera",
       "sampled bounds"
     ],
-    "expectedSupport": "sampled frame review acceptance"
+    "expectedSupport": "sampled frame review acceptance",
+    "welcome": true
   },
   {
     "id": "openusd-vdb-volume",

@@ -1,7 +1,11 @@
 import type { Plugin } from 'vite'
 
 /** typescript-usd modules a runtime plugin may import by bare specifier. */
-export const pluginApiModules = ['ar', 'gf', 'plug', 'sdf', 'tf', 'usd', 'vt'] as const
+export const pluginApiModules = [
+  'ar', 'gf', 'plug', 'sdf', 'tf', 'usd', 'vt',
+  // OpenExec plugins: computations (exec, vdf) and their imaging adapters (hd, usdExecImaging).
+  'exec', 'vdf', 'hd', 'usdExecImaging', 'usdExecImaging/_internal',
+] as const
 
 /**
  * Runtime plugins (plugInfo LibraryPath ES modules) import typescript-usd by

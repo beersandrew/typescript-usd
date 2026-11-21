@@ -1,0 +1,1148 @@
+#usda 1.0
+(
+    "USD Museum exhibit composition.errors.cycles: diamonds and cycles. A diamond composes its shared layer once; a cycling arc contributes nothing and the rest composes. Every ghost and slot filled; the red outlines stay empty. Built by src/build.py."
+    defaultPrim = "Exhibit"
+    endTimeCode = 1
+    framesPerSecond = 24
+    metersPerUnit = 1
+    startTimeCode = 1
+    timeCodesPerSecond = 24
+    upAxis = "Y"
+)
+
+def Xform "Exhibit" (
+    kind = "assembly"
+)
+{
+    float3[] extentsHint = [(-2.47, 0, -1.5), (2.47, 2.55, -0.194)]
+
+    def Scope "Looks"
+    {
+        def Material "pedestal"
+        {
+            token outputs:surface.connect = </Exhibit/Looks/pedestal/Surface.outputs:surface>
+
+            def Shader "Surface"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0.60382736, 0.58701634, 0.53823555)
+                float inputs:roughness = 0.85
+                color3f inputs:specularColor = (0.04, 0.04, 0.04)
+                int inputs:useSpecularWorkflow = 1
+                token outputs:surface
+            }
+        }
+
+        def Material "board"
+        {
+            token outputs:surface.connect = </Exhibit/Looks/board/Surface.outputs:surface>
+
+            def Shader "Surface"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0.073238954, 0.07828832, 0.088981524)
+                float inputs:roughness = 0.8
+                color3f inputs:specularColor = (0.04, 0.04, 0.04)
+                int inputs:useSpecularWorkflow = 1
+                token outputs:surface
+            }
+        }
+
+        def Material "outline_red"
+        {
+            token outputs:surface.connect = </Exhibit/Looks/outline_red/Surface.outputs:surface>
+
+            def Shader "Surface"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0.63075715, 0.000607054, 0.010960094)
+                float inputs:roughness = 0.6
+                color3f inputs:specularColor = (0.04, 0.04, 0.04)
+                int inputs:useSpecularWorkflow = 1
+                token outputs:surface
+            }
+        }
+
+        def Material "outline"
+        {
+            token outputs:surface.connect = </Exhibit/Looks/outline/Surface.outputs:surface>
+
+            def Shader "Surface"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0.015325204, 0.015325204, 0.017389102)
+                float inputs:roughness = 0.6
+                color3f inputs:specularColor = (0.04, 0.04, 0.04)
+                int inputs:useSpecularWorkflow = 1
+                token outputs:surface
+            }
+        }
+
+        def Material "sign_back"
+        {
+            token outputs:surface.connect = </Exhibit/Looks/sign_back/Surface.outputs:surface>
+
+            def Shader "Surface"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0.021980947, 0.021980947, 0.024515014)
+                float inputs:roughness = 0.6
+                color3f inputs:specularColor = (0.04, 0.04, 0.04)
+                int inputs:useSpecularWorkflow = 1
+                token outputs:surface
+            }
+        }
+
+        def Material "Sign_Diamond"
+        {
+            token outputs:surface.connect = </Exhibit/Looks/Sign_Diamond/Surface.outputs:surface>
+
+            def Shader "Surface"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0, 0, 0)
+                color3f inputs:emissiveColor.connect = </Exhibit/Looks/Sign_Diamond/Tex.outputs:rgb>
+                float inputs:opacity.connect = </Exhibit/Looks/Sign_Diamond/Tex.outputs:a>
+                float inputs:opacityThreshold = 0.5
+                float inputs:roughness = 1
+                color3f inputs:specularColor = (0, 0, 0)
+                int inputs:useSpecularWorkflow = 1
+                token outputs:surface
+            }
+
+            def Shader "St"
+            {
+                uniform token info:id = "UsdPrimvarReader_float2"
+                string inputs:varname = "st"
+                float2 outputs:result
+            }
+
+            def Shader "Tex"
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @./textures/labels_atlas.png@
+                float4 inputs:scale = (1, 1, 1, 1)
+                token inputs:sourceColorSpace = "sRGB"
+                float2 inputs:st.connect = </Exhibit/Looks/Sign_Diamond/Tex_Atlas.outputs:result>
+                float outputs:a
+                float3 outputs:rgb
+            }
+
+            def Shader "Tex_Atlas"
+            {
+                uniform token info:id = "UsdTransform2d"
+                float2 inputs:in.connect = </Exhibit/Looks/Sign_Diamond/St.outputs:result>
+                float2 inputs:scale = (0.7017327, 0.39979756)
+                float2 inputs:translation = (0.0033003301, 0.17611337)
+                float2 outputs:result
+            }
+        }
+
+        def Material "Sign_Cycles"
+        {
+            token outputs:surface.connect = </Exhibit/Looks/Sign_Cycles/Surface.outputs:surface>
+
+            def Shader "Surface"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0, 0, 0)
+                color3f inputs:emissiveColor.connect = </Exhibit/Looks/Sign_Cycles/Tex.outputs:rgb>
+                float inputs:opacity.connect = </Exhibit/Looks/Sign_Cycles/Tex.outputs:a>
+                float inputs:opacityThreshold = 0.5
+                float inputs:roughness = 1
+                color3f inputs:specularColor = (0, 0, 0)
+                int inputs:useSpecularWorkflow = 1
+                token outputs:surface
+            }
+
+            def Shader "St"
+            {
+                uniform token info:id = "UsdPrimvarReader_float2"
+                string inputs:varname = "st"
+                float2 outputs:result
+            }
+
+            def Shader "Tex"
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @./textures/labels_atlas.png@
+                float4 inputs:scale = (1, 1, 1, 1)
+                token inputs:sourceColorSpace = "sRGB"
+                float2 inputs:st.connect = </Exhibit/Looks/Sign_Cycles/Tex_Atlas.outputs:result>
+                float outputs:a
+                float3 outputs:rgb
+            }
+
+            def Shader "Tex_Atlas"
+            {
+                uniform token info:id = "UsdTransform2d"
+                float2 inputs:in.connect = </Exhibit/Looks/Sign_Cycles/St.outputs:result>
+                float2 inputs:scale = (0.99133664, 0.39979756)
+                float2 inputs:translation = (0.0033003301, 0.59210527)
+                float2 outputs:result
+            }
+        }
+
+        def Material "diamond_Label"
+        {
+            token outputs:surface.connect = </Exhibit/Looks/diamond_Label/Surface.outputs:surface>
+
+            def Shader "Surface"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0, 0, 0)
+                color3f inputs:emissiveColor.connect = </Exhibit/Looks/diamond_Label/Tex.outputs:rgb>
+                float inputs:opacity.connect = </Exhibit/Looks/diamond_Label/Tex.outputs:a>
+                float inputs:opacityThreshold = 0.5
+                float inputs:roughness = 1
+                color3f inputs:specularColor = (0, 0, 0)
+                int inputs:useSpecularWorkflow = 1
+                token outputs:surface
+            }
+
+            def Shader "St"
+            {
+                uniform token info:id = "UsdPrimvarReader_float2"
+                string inputs:varname = "st"
+                float2 outputs:result
+            }
+
+            def Shader "Tex"
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @./textures/labels_atlas.png@
+                float4 inputs:scale = (1, 1, 1, 1)
+                token inputs:sourceColorSpace = "sRGB"
+                float2 inputs:st.connect = </Exhibit/Looks/diamond_Label/Tex_Atlas.outputs:result>
+                float outputs:a
+                float3 outputs:rgb
+            }
+
+            def Shader "Tex_Atlas"
+            {
+                uniform token info:id = "UsdTransform2d"
+                float2 inputs:in.connect = </Exhibit/Looks/diamond_Label/St.outputs:result>
+                float2 inputs:scale = (0.16130362, 0.10425101)
+                float2 inputs:translation = (0.7116337, 0.11032388)
+                float2 outputs:result
+            }
+        }
+
+        def Material "diamond_Sub"
+        {
+            token outputs:surface.connect = </Exhibit/Looks/diamond_Sub/Surface.outputs:surface>
+
+            def Shader "Surface"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0, 0, 0)
+                color3f inputs:emissiveColor.connect = </Exhibit/Looks/diamond_Sub/Tex.outputs:rgb>
+                float inputs:opacity.connect = </Exhibit/Looks/diamond_Sub/Tex.outputs:a>
+                float inputs:opacityThreshold = 0.5
+                float inputs:roughness = 1
+                color3f inputs:specularColor = (0, 0, 0)
+                int inputs:useSpecularWorkflow = 1
+                token outputs:surface
+            }
+
+            def Shader "St"
+            {
+                uniform token info:id = "UsdPrimvarReader_float2"
+                string inputs:varname = "st"
+                float2 outputs:result
+            }
+
+            def Shader "Tex"
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @./textures/labels_atlas.png@
+                float4 inputs:scale = (1, 1, 1, 1)
+                token inputs:sourceColorSpace = "sRGB"
+                float2 inputs:st.connect = </Exhibit/Looks/diamond_Sub/Tex_Atlas.outputs:result>
+                float outputs:a
+                float3 outputs:rgb
+            }
+
+            def Shader "Tex_Atlas"
+            {
+                uniform token info:id = "UsdTransform2d"
+                float2 inputs:in.connect = </Exhibit/Looks/diamond_Sub/St.outputs:result>
+                float2 inputs:scale = (0.4529703, 0.058704454)
+                float2 inputs:translation = (0.0033003301, 0.010121457)
+                float2 outputs:result
+            }
+        }
+
+        def Material "refcycle_Label"
+        {
+            token outputs:surface.connect = </Exhibit/Looks/refcycle_Label/Surface.outputs:surface>
+
+            def Shader "Surface"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0, 0, 0)
+                color3f inputs:emissiveColor.connect = </Exhibit/Looks/refcycle_Label/Tex.outputs:rgb>
+                float inputs:opacity.connect = </Exhibit/Looks/refcycle_Label/Tex.outputs:a>
+                float inputs:opacityThreshold = 0.5
+                float inputs:roughness = 1
+                color3f inputs:specularColor = (0, 0, 0)
+                int inputs:useSpecularWorkflow = 1
+                token outputs:surface
+            }
+
+            def Shader "St"
+            {
+                uniform token info:id = "UsdPrimvarReader_float2"
+                string inputs:varname = "st"
+                float2 outputs:result
+            }
+
+            def Shader "Tex"
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @./textures/labels_atlas.png@
+                float4 inputs:scale = (1, 1, 1, 1)
+                token inputs:sourceColorSpace = "sRGB"
+                float2 inputs:st.connect = </Exhibit/Looks/refcycle_Label/Tex_Atlas.outputs:result>
+                float outputs:a
+                float3 outputs:rgb
+            }
+
+            def Shader "Tex_Atlas"
+            {
+                uniform token info:id = "UsdTransform2d"
+                float2 inputs:in.connect = </Exhibit/Looks/refcycle_Label/St.outputs:result>
+                float2 inputs:scale = (0.28382838, 0.10425101)
+                float2 inputs:translation = (0.7116337, 0.47165993)
+                float2 outputs:result
+            }
+        }
+
+        def Material "refcycle_Sub"
+        {
+            token outputs:surface.connect = </Exhibit/Looks/refcycle_Sub/Surface.outputs:surface>
+
+            def Shader "Surface"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0, 0, 0)
+                color3f inputs:emissiveColor.connect = </Exhibit/Looks/refcycle_Sub/Tex.outputs:rgb>
+                float inputs:opacity.connect = </Exhibit/Looks/refcycle_Sub/Tex.outputs:a>
+                float inputs:opacityThreshold = 0.5
+                float inputs:roughness = 1
+                color3f inputs:specularColor = (0, 0, 0)
+                int inputs:useSpecularWorkflow = 1
+                token outputs:surface
+            }
+
+            def Shader "St"
+            {
+                uniform token info:id = "UsdPrimvarReader_float2"
+                string inputs:varname = "st"
+                float2 outputs:result
+            }
+
+            def Shader "Tex"
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @./textures/labels_atlas.png@
+                float4 inputs:scale = (1, 1, 1, 1)
+                token inputs:sourceColorSpace = "sRGB"
+                float2 inputs:st.connect = </Exhibit/Looks/refcycle_Sub/Tex_Atlas.outputs:result>
+                float outputs:a
+                float3 outputs:rgb
+            }
+
+            def Shader "Tex_Atlas"
+            {
+                uniform token info:id = "UsdTransform2d"
+                float2 inputs:in.connect = </Exhibit/Looks/refcycle_Sub/St.outputs:result>
+                float2 inputs:scale = (0.35643566, 0.07489879)
+                float2 inputs:translation = (0.0033003301, 0.085020244)
+                float2 outputs:result
+            }
+        }
+
+        def Material "inhcycle_Label"
+        {
+            token outputs:surface.connect = </Exhibit/Looks/inhcycle_Label/Surface.outputs:surface>
+
+            def Shader "Surface"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0, 0, 0)
+                color3f inputs:emissiveColor.connect = </Exhibit/Looks/inhcycle_Label/Tex.outputs:rgb>
+                float inputs:opacity.connect = </Exhibit/Looks/inhcycle_Label/Tex.outputs:a>
+                float inputs:opacityThreshold = 0.5
+                float inputs:roughness = 1
+                color3f inputs:specularColor = (0, 0, 0)
+                int inputs:useSpecularWorkflow = 1
+                token outputs:surface
+            }
+
+            def Shader "St"
+            {
+                uniform token info:id = "UsdPrimvarReader_float2"
+                string inputs:varname = "st"
+                float2 outputs:result
+            }
+
+            def Shader "Tex"
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @./textures/labels_atlas.png@
+                float4 inputs:scale = (1, 1, 1, 1)
+                token inputs:sourceColorSpace = "sRGB"
+                float2 inputs:st.connect = </Exhibit/Looks/inhcycle_Label/Tex_Atlas.outputs:result>
+                float outputs:a
+                float3 outputs:rgb
+            }
+
+            def Shader "Tex_Atlas"
+            {
+                uniform token info:id = "UsdTransform2d"
+                float2 inputs:in.connect = </Exhibit/Looks/inhcycle_Label/St.outputs:result>
+                float2 inputs:scale = (0.22566007, 0.10425101)
+                float2 inputs:translation = (0.7116337, 0.23076923)
+                float2 outputs:result
+            }
+        }
+
+        def Material "inhcycle_Sub"
+        {
+            token outputs:surface.connect = </Exhibit/Looks/inhcycle_Sub/Surface.outputs:surface>
+
+            def Shader "Surface"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0, 0, 0)
+                color3f inputs:emissiveColor.connect = </Exhibit/Looks/inhcycle_Sub/Tex.outputs:rgb>
+                float inputs:opacity.connect = </Exhibit/Looks/inhcycle_Sub/Tex.outputs:a>
+                float inputs:opacityThreshold = 0.5
+                float inputs:roughness = 1
+                color3f inputs:specularColor = (0, 0, 0)
+                int inputs:useSpecularWorkflow = 1
+                token outputs:surface
+            }
+
+            def Shader "St"
+            {
+                uniform token info:id = "UsdPrimvarReader_float2"
+                string inputs:varname = "st"
+                float2 outputs:result
+            }
+
+            def Shader "Tex"
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @./textures/labels_atlas.png@
+                float4 inputs:scale = (1, 1, 1, 1)
+                token inputs:sourceColorSpace = "sRGB"
+                float2 inputs:st.connect = </Exhibit/Looks/inhcycle_Sub/Tex_Atlas.outputs:result>
+                float outputs:a
+                float3 outputs:rgb
+            }
+
+            def Shader "Tex_Atlas"
+            {
+                uniform token info:id = "UsdTransform2d"
+                float2 inputs:in.connect = </Exhibit/Looks/inhcycle_Sub/St.outputs:result>
+                float2 inputs:scale = (0.33085808, 0.07489879)
+                float2 inputs:translation = (0.36633664, 0.085020244)
+                float2 outputs:result
+            }
+        }
+
+        def Material "sublayer_Label"
+        {
+            token outputs:surface.connect = </Exhibit/Looks/sublayer_Label/Surface.outputs:surface>
+
+            def Shader "Surface"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0, 0, 0)
+                color3f inputs:emissiveColor.connect = </Exhibit/Looks/sublayer_Label/Tex.outputs:rgb>
+                float inputs:opacity.connect = </Exhibit/Looks/sublayer_Label/Tex.outputs:a>
+                float inputs:opacityThreshold = 0.5
+                float inputs:roughness = 1
+                color3f inputs:specularColor = (0, 0, 0)
+                int inputs:useSpecularWorkflow = 1
+                token outputs:surface
+            }
+
+            def Shader "St"
+            {
+                uniform token info:id = "UsdPrimvarReader_float2"
+                string inputs:varname = "st"
+                float2 outputs:result
+            }
+
+            def Shader "Tex"
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @./textures/labels_atlas.png@
+                float4 inputs:scale = (1, 1, 1, 1)
+                token inputs:sourceColorSpace = "sRGB"
+                float2 inputs:st.connect = </Exhibit/Looks/sublayer_Label/Tex_Atlas.outputs:result>
+                float outputs:a
+                float3 outputs:rgb
+            }
+
+            def Shader "Tex_Atlas"
+            {
+                uniform token info:id = "UsdTransform2d"
+                float2 inputs:in.connect = </Exhibit/Looks/sublayer_Label/St.outputs:result>
+                float2 inputs:scale = (0.26443896, 0.10425101)
+                float2 inputs:translation = (0.7116337, 0.3512146)
+                float2 outputs:result
+            }
+        }
+
+        def Material "sublayer_Sub"
+        {
+            token outputs:surface.connect = </Exhibit/Looks/sublayer_Sub/Surface.outputs:surface>
+
+            def Shader "Surface"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0, 0, 0)
+                color3f inputs:emissiveColor.connect = </Exhibit/Looks/sublayer_Sub/Tex.outputs:rgb>
+                float inputs:opacity.connect = </Exhibit/Looks/sublayer_Sub/Tex.outputs:a>
+                float inputs:opacityThreshold = 0.5
+                float inputs:roughness = 1
+                color3f inputs:specularColor = (0, 0, 0)
+                int inputs:useSpecularWorkflow = 1
+                token outputs:surface
+            }
+
+            def Shader "St"
+            {
+                uniform token info:id = "UsdPrimvarReader_float2"
+                string inputs:varname = "st"
+                float2 outputs:result
+            }
+
+            def Shader "Tex"
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @./textures/labels_atlas.png@
+                float4 inputs:scale = (1, 1, 1, 1)
+                token inputs:sourceColorSpace = "sRGB"
+                float2 inputs:st.connect = </Exhibit/Looks/sublayer_Sub/Tex_Atlas.outputs:result>
+                float outputs:a
+                float3 outputs:rgb
+            }
+
+            def Shader "Tex_Atlas"
+            {
+                uniform token info:id = "UsdTransform2d"
+                float2 inputs:in.connect = </Exhibit/Looks/sublayer_Sub/St.outputs:result>
+                float2 inputs:scale = (0.26815182, 0.07489879)
+                float2 inputs:translation = (0.7037954, 0.01923077)
+                float2 outputs:result
+            }
+        }
+    }
+
+    def Mesh "Board" (
+        prepend apiSchemas = ["MaterialBindingAPI"]
+    )
+    {
+        float3[] extent = [(-2.47, 0, -1.5), (2.47, 2.55, -1.42)]
+        int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+        int[] faceVertexIndices = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23]
+        rel material:binding = </Exhibit/Looks/board>
+        point3f[] points = [(-2.47, 0, -1.42), (2.47, 0, -1.42), (2.47, 2.55, -1.42), (-2.47, 2.55, -1.42), (2.47, 0, -1.5), (-2.47, 0, -1.5), (-2.47, 2.55, -1.5), (2.47, 2.55, -1.5), (-2.47, 2.55, -1.42), (2.47, 2.55, -1.42), (2.47, 2.55, -1.5), (-2.47, 2.55, -1.5), (-2.47, 0, -1.5), (2.47, 0, -1.5), (2.47, 0, -1.42), (-2.47, 0, -1.42), (2.47, 0, -1.42), (2.47, 0, -1.5), (2.47, 2.55, -1.5), (2.47, 2.55, -1.42), (-2.47, 0, -1.5), (-2.47, 0, -1.42), (-2.47, 2.55, -1.42), (-2.47, 2.55, -1.5)]
+        uniform token subdivisionScheme = "none"
+    }
+
+    def Xform "Placards"
+    {
+        def Mesh "Sign_Diamond" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            uniform bool doubleSided = 1
+            float3[] extent = [(-2.32, 1.95, -1.41), (-0.43, 2.39, -1.41)]
+            int[] faceVertexCounts = [4]
+            int[] faceVertexIndices = [0, 1, 2, 3]
+            rel material:binding = </Exhibit/Looks/Sign_Diamond>
+            normal3f[] normals = [(0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1)] (
+                interpolation = "vertex"
+            )
+            point3f[] points = [(-2.32, 1.95, -1.41), (-0.43, 1.95, -1.41), (-0.43, 2.39, -1.41), (-2.32, 2.39, -1.41)]
+            color3f[] primvars:displayColor = [(0.9, 0.75, 0.1)]
+            texCoord2f[] primvars:st = [(0, 0), (1, 0), (1, 1), (0, 1)] (
+                interpolation = "vertex"
+            )
+            uniform token subdivisionScheme = "none"
+        }
+
+        def Mesh "Sign_Diamond_Back" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            float3[] extent = [(-2.34, 1.93, -1.44), (-0.41, 2.41, -1.416)]
+            int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+            int[] faceVertexIndices = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23]
+            rel material:binding = </Exhibit/Looks/sign_back>
+            point3f[] points = [(-2.34, 1.93, -1.416), (-0.41, 1.93, -1.416), (-0.41, 2.41, -1.416), (-2.34, 2.41, -1.416), (-0.41, 1.93, -1.44), (-2.34, 1.93, -1.44), (-2.34, 2.41, -1.44), (-0.41, 2.41, -1.44), (-2.34, 2.41, -1.416), (-0.41, 2.41, -1.416), (-0.41, 2.41, -1.44), (-2.34, 2.41, -1.44), (-2.34, 1.93, -1.44), (-0.41, 1.93, -1.44), (-0.41, 1.93, -1.416), (-2.34, 1.93, -1.416), (-0.41, 1.93, -1.416), (-0.41, 1.93, -1.44), (-0.41, 2.41, -1.44), (-0.41, 2.41, -1.416), (-2.34, 1.93, -1.44), (-2.34, 1.93, -1.416), (-2.34, 2.41, -1.416), (-2.34, 2.41, -1.44)]
+            uniform token subdivisionScheme = "none"
+        }
+
+        def Mesh "Sign_Cycles" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            uniform bool doubleSided = 1
+            float3[] extent = [(-0.35, 1.95, -1.41), (2.32, 2.39, -1.41)]
+            int[] faceVertexCounts = [4]
+            int[] faceVertexIndices = [0, 1, 2, 3]
+            rel material:binding = </Exhibit/Looks/Sign_Cycles>
+            normal3f[] normals = [(0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1)] (
+                interpolation = "vertex"
+            )
+            point3f[] points = [(-0.35, 1.95, -1.41), (2.32, 1.95, -1.41), (2.32, 2.39, -1.41), (-0.35, 2.39, -1.41)]
+            color3f[] primvars:displayColor = [(0.9, 0.75, 0.1)]
+            texCoord2f[] primvars:st = [(0, 0), (1, 0), (1, 1), (0, 1)] (
+                interpolation = "vertex"
+            )
+            uniform token subdivisionScheme = "none"
+        }
+
+        def Mesh "Sign_Cycles_Back" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            float3[] extent = [(-0.37, 1.93, -1.44), (2.34, 2.41, -1.416)]
+            int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+            int[] faceVertexIndices = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23]
+            rel material:binding = </Exhibit/Looks/sign_back>
+            point3f[] points = [(-0.37, 1.93, -1.416), (2.34, 1.93, -1.416), (2.34, 2.41, -1.416), (-0.37, 2.41, -1.416), (2.34, 1.93, -1.44), (-0.37, 1.93, -1.44), (-0.37, 2.41, -1.44), (2.34, 2.41, -1.44), (-0.37, 2.41, -1.416), (2.34, 2.41, -1.416), (2.34, 2.41, -1.44), (-0.37, 2.41, -1.44), (-0.37, 1.93, -1.44), (2.34, 1.93, -1.44), (2.34, 1.93, -1.416), (-0.37, 1.93, -1.416), (2.34, 1.93, -1.416), (2.34, 1.93, -1.44), (2.34, 2.41, -1.44), (2.34, 2.41, -1.416), (-0.37, 1.93, -1.44), (-0.37, 1.93, -1.416), (-0.37, 2.41, -1.416), (-0.37, 2.41, -1.44)]
+            uniform token subdivisionScheme = "none"
+        }
+    }
+
+    class "_Classes"
+    {
+        class "Tagged"
+        {
+            def Cube "Tag"
+            {
+                float3[] extent = [(-0.085, -0.085, -0.085), (0.085, 0.085, 0.085)]
+                color3f[] primvars:displayColor = [(0.8879231, 0.55201143, 0.0047769533)]
+                double size = 0.17
+                matrix4d xformOp:transform = ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (-0.27, 0.08800000000000001, 0.295, 1) )
+                uniform token[] xformOpOrder = ["xformOp:transform"]
+            }
+        }
+    }
+
+    def Xform "Pieces" (
+        kind = "group"
+    )
+    {
+        def Xform "diamond" (
+            kind = "group"
+        )
+        {
+            matrix4d xformOp:transform = ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (-1.745, 0, 0, 1) )
+            uniform token[] xformOpOrder = ["xformOp:transform"]
+
+            def Mesh "Pedestal" (
+                prepend apiSchemas = ["MaterialBindingAPI"]
+            )
+            {
+                float3[] extent = [(-0.65, 0, -1), (0.65, 0.75, -0.2)]
+                int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+                int[] faceVertexIndices = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23]
+                rel material:binding = </Exhibit/Looks/pedestal>
+                point3f[] points = [(-0.65, 0, -0.2), (0.65, 0, -0.2), (0.65, 0.75, -0.2), (-0.65, 0.75, -0.2), (0.65, 0, -1), (-0.65, 0, -1), (-0.65, 0.75, -1), (0.65, 0.75, -1), (-0.65, 0.75, -0.2), (0.65, 0.75, -0.2), (0.65, 0.75, -1), (-0.65, 0.75, -1), (-0.65, 0, -1), (0.65, 0, -1), (0.65, 0, -0.2), (-0.65, 0, -0.2), (0.65, 0, -0.2), (0.65, 0, -1), (0.65, 0.75, -1), (0.65, 0.75, -0.2), (-0.65, 0, -1), (-0.65, 0, -0.2), (-0.65, 0.75, -0.2), (-0.65, 0.75, -1)]
+                uniform token subdivisionScheme = "none"
+            }
+
+            def Mesh "Label" (
+                prepend apiSchemas = ["MaterialBindingAPI"]
+            )
+            {
+                uniform bool doubleSided = 1
+                float3[] extent = [(-0.2174016, 0.4436577, -0.194), (0.2174016, 0.55904233, -0.194)]
+                int[] faceVertexCounts = [4]
+                int[] faceVertexIndices = [0, 1, 2, 3]
+                rel material:binding = </Exhibit/Looks/diamond_Label>
+                normal3f[] normals = [(0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1)] (
+                    interpolation = "vertex"
+                )
+                point3f[] points = [(-0.2174016, 0.4436577, -0.194), (0.2174016, 0.4436577, -0.194), (0.2174016, 0.55904233, -0.194), (-0.2174016, 0.55904233, -0.194)]
+                color3f[] primvars:displayColor = [(0.9, 0.75, 0.1)]
+                texCoord2f[] primvars:st = [(0, 0), (1, 0), (1, 1), (0, 1)] (
+                    interpolation = "vertex"
+                )
+                uniform token subdivisionScheme = "none"
+            }
+
+            def Mesh "Sub" (
+                prepend apiSchemas = ["MaterialBindingAPI"]
+            )
+            {
+                uniform bool doubleSided = 1
+                float3[] extent = [(-0.61, 0.35331753, -0.194), (0.61, 0.41787094, -0.194)]
+                int[] faceVertexCounts = [4]
+                int[] faceVertexIndices = [0, 1, 2, 3]
+                rel material:binding = </Exhibit/Looks/diamond_Sub>
+                normal3f[] normals = [(0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1)] (
+                    interpolation = "vertex"
+                )
+                point3f[] points = [(-0.61, 0.35331753, -0.194), (0.61, 0.35331753, -0.194), (0.61, 0.41787094, -0.194), (-0.61, 0.41787094, -0.194)]
+                color3f[] primvars:displayColor = [(0.9, 0.75, 0.1)]
+                texCoord2f[] primvars:st = [(0, 0), (1, 0), (1, 1), (0, 1)] (
+                    interpolation = "vertex"
+                )
+                uniform token subdivisionScheme = "none"
+            }
+
+            def Xform "Ghost" (
+                instanceable = true
+                prepend references = @./parts/ghost.usda@
+            )
+            {
+                matrix4d xformOp:transform = ( (1.248, 0, 0, 0), (0, 1.248, 0, 0), (0, 0, 1.248, 0), (-0.4, 0.751, -0.6, 1) )
+                uniform token[] xformOpOrder = ["xformOp:transform"]
+            }
+
+            def Xform "Slots"
+            {
+                def Mesh "TagA" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    float3[] extent = [(-0.218, 0.752, -0.408), (-0.012, 0.944, -0.202)]
+                    int[] faceVertexCounts = [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4]
+                    int[] faceVertexIndices = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183, 184, 185, 186, 187, 188, 189, 190, 191, 192, 193, 194, 195, 196, 197, 198, 199, 200, 201, 202, 203, 204, 205, 206, 207, 208, 209, 210, 211, 212, 213, 214, 215, 216, 217, 218, 219, 220, 221, 222, 223, 224, 225, 226, 227, 228, 229, 230, 231, 232, 233, 234, 235, 236, 237, 238, 239, 240, 241, 242, 243, 244, 245, 246, 247, 248, 249, 250, 251, 252, 253, 254, 255, 256, 257, 258, 259, 260, 261, 262, 263, 264, 265, 266, 267, 268, 269, 270, 271, 272, 273, 274, 275, 276, 277, 278, 279, 280, 281, 282, 283, 284, 285, 286, 287]
+                    rel material:binding = </Exhibit/Looks/outline>
+                    normal3f[] normals = [(1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 0, -1)] (
+                        interpolation = "faceVarying"
+                    )
+                    point3f[] points = [(-0.012, 0.752, -0.408), (-0.012, 0.76, -0.408), (-0.012, 0.76, -0.4), (-0.012, 0.752, -0.4), (-0.218, 0.752, -0.4), (-0.218, 0.76, -0.4), (-0.218, 0.76, -0.408), (-0.218, 0.752, -0.408), (-0.218, 0.76, -0.408), (-0.218, 0.76, -0.4), (-0.012, 0.76, -0.4), (-0.012, 0.76, -0.408), (-0.012, 0.752, -0.408), (-0.012, 0.752, -0.4), (-0.218, 0.752, -0.4), (-0.218, 0.752, -0.408), (-0.218, 0.752, -0.4), (-0.012, 0.752, -0.4), (-0.012, 0.76, -0.4), (-0.218, 0.76, -0.4), (-0.218, 0.76, -0.408), (-0.012, 0.76, -0.408), (-0.012, 0.752, -0.408), (-0.218, 0.752, -0.408), (-0.012, 0.752, -0.21), (-0.012, 0.76, -0.21), (-0.012, 0.76, -0.202), (-0.012, 0.752, -0.202), (-0.218, 0.752, -0.202), (-0.218, 0.76, -0.202), (-0.218, 0.76, -0.21), (-0.218, 0.752, -0.21), (-0.218, 0.76, -0.21), (-0.218, 0.76, -0.202), (-0.012, 0.76, -0.202), (-0.012, 0.76, -0.21), (-0.012, 0.752, -0.21), (-0.012, 0.752, -0.202), (-0.218, 0.752, -0.202), (-0.218, 0.752, -0.21), (-0.218, 0.752, -0.202), (-0.012, 0.752, -0.202), (-0.012, 0.76, -0.202), (-0.218, 0.76, -0.202), (-0.218, 0.76, -0.21), (-0.012, 0.76, -0.21), (-0.012, 0.752, -0.21), (-0.218, 0.752, -0.21), (-0.012, 0.936, -0.408), (-0.012, 0.944, -0.408), (-0.012, 0.944, -0.4), (-0.012, 0.936, -0.4), (-0.218, 0.936, -0.4), (-0.218, 0.944, -0.4), (-0.218, 0.944, -0.408), (-0.218, 0.936, -0.408), (-0.218, 0.944, -0.408), (-0.218, 0.944, -0.4), (-0.012, 0.944, -0.4), (-0.012, 0.944, -0.408), (-0.012, 0.936, -0.408), (-0.012, 0.936, -0.4), (-0.218, 0.936, -0.4), (-0.218, 0.936, -0.408), (-0.218, 0.936, -0.4), (-0.012, 0.936, -0.4), (-0.012, 0.944, -0.4), (-0.218, 0.944, -0.4), (-0.218, 0.944, -0.408), (-0.012, 0.944, -0.408), (-0.012, 0.936, -0.408), (-0.218, 0.936, -0.408), (-0.012, 0.936, -0.21), (-0.012, 0.944, -0.21), (-0.012, 0.944, -0.202), (-0.012, 0.936, -0.202), (-0.218, 0.936, -0.202), (-0.218, 0.944, -0.202), (-0.218, 0.944, -0.21), (-0.218, 0.936, -0.21), (-0.218, 0.944, -0.21), (-0.218, 0.944, -0.202), (-0.012, 0.944, -0.202), (-0.012, 0.944, -0.21), (-0.012, 0.936, -0.21), (-0.012, 0.936, -0.202), (-0.218, 0.936, -0.202), (-0.218, 0.936, -0.21), (-0.218, 0.936, -0.202), (-0.012, 0.936, -0.202), (-0.012, 0.944, -0.202), (-0.218, 0.944, -0.202), (-0.218, 0.944, -0.21), (-0.012, 0.944, -0.21), (-0.012, 0.936, -0.21), (-0.218, 0.936, -0.21), (-0.21, 0.752, -0.408), (-0.21, 0.944, -0.408), (-0.21, 0.944, -0.4), (-0.21, 0.752, -0.4), (-0.218, 0.752, -0.4), (-0.218, 0.944, -0.4), (-0.218, 0.944, -0.408), (-0.218, 0.752, -0.408), (-0.218, 0.944, -0.408), (-0.218, 0.944, -0.4), (-0.21, 0.944, -0.4), (-0.21, 0.944, -0.408), (-0.21, 0.752, -0.408), (-0.21, 0.752, -0.4), (-0.218, 0.752, -0.4), (-0.218, 0.752, -0.408), (-0.218, 0.752, -0.4), (-0.21, 0.752, -0.4), (-0.21, 0.944, -0.4), (-0.218, 0.944, -0.4), (-0.218, 0.944, -0.408), (-0.21, 0.944, -0.408), (-0.21, 0.752, -0.408), (-0.218, 0.752, -0.408), (-0.21, 0.752, -0.21), (-0.21, 0.944, -0.21), (-0.21, 0.944, -0.202), (-0.21, 0.752, -0.202), (-0.218, 0.752, -0.202), (-0.218, 0.944, -0.202), (-0.218, 0.944, -0.21), (-0.218, 0.752, -0.21), (-0.218, 0.944, -0.21), (-0.218, 0.944, -0.202), (-0.21, 0.944, -0.202), (-0.21, 0.944, -0.21), (-0.21, 0.752, -0.21), (-0.21, 0.752, -0.202), (-0.218, 0.752, -0.202), (-0.218, 0.752, -0.21), (-0.218, 0.752, -0.202), (-0.21, 0.752, -0.202), (-0.21, 0.944, -0.202), (-0.218, 0.944, -0.202), (-0.218, 0.944, -0.21), (-0.21, 0.944, -0.21), (-0.21, 0.752, -0.21), (-0.218, 0.752, -0.21), (-0.21, 0.752, -0.408), (-0.21, 0.76, -0.408), (-0.21, 0.76, -0.202), (-0.21, 0.752, -0.202), (-0.218, 0.752, -0.202), (-0.218, 0.76, -0.202), (-0.218, 0.76, -0.408), (-0.218, 0.752, -0.408), (-0.218, 0.76, -0.408), (-0.218, 0.76, -0.202), (-0.21, 0.76, -0.202), (-0.21, 0.76, -0.408), (-0.21, 0.752, -0.408), (-0.21, 0.752, -0.202), (-0.218, 0.752, -0.202), (-0.218, 0.752, -0.408), (-0.218, 0.752, -0.202), (-0.21, 0.752, -0.202), (-0.21, 0.76, -0.202), (-0.218, 0.76, -0.202), (-0.218, 0.76, -0.408), (-0.21, 0.76, -0.408), (-0.21, 0.752, -0.408), (-0.218, 0.752, -0.408), (-0.21, 0.936, -0.408), (-0.21, 0.944, -0.408), (-0.21, 0.944, -0.202), (-0.21, 0.936, -0.202), (-0.218, 0.936, -0.202), (-0.218, 0.944, -0.202), (-0.218, 0.944, -0.408), (-0.218, 0.936, -0.408), (-0.218, 0.944, -0.408), (-0.218, 0.944, -0.202), (-0.21, 0.944, -0.202), (-0.21, 0.944, -0.408), (-0.21, 0.936, -0.408), (-0.21, 0.936, -0.202), (-0.218, 0.936, -0.202), (-0.218, 0.936, -0.408), (-0.218, 0.936, -0.202), (-0.21, 0.936, -0.202), (-0.21, 0.944, -0.202), (-0.218, 0.944, -0.202), (-0.218, 0.944, -0.408), (-0.21, 0.944, -0.408), (-0.21, 0.936, -0.408), (-0.218, 0.936, -0.408), (-0.012, 0.752, -0.408), (-0.012, 0.944, -0.408), (-0.012, 0.944, -0.4), (-0.012, 0.752, -0.4), (-0.02, 0.752, -0.4), (-0.02, 0.944, -0.4), (-0.02, 0.944, -0.408), (-0.02, 0.752, -0.408), (-0.02, 0.944, -0.408), (-0.02, 0.944, -0.4), (-0.012, 0.944, -0.4), (-0.012, 0.944, -0.408), (-0.012, 0.752, -0.408), (-0.012, 0.752, -0.4), (-0.02, 0.752, -0.4), (-0.02, 0.752, -0.408), (-0.02, 0.752, -0.4), (-0.012, 0.752, -0.4), (-0.012, 0.944, -0.4), (-0.02, 0.944, -0.4), (-0.02, 0.944, -0.408), (-0.012, 0.944, -0.408), (-0.012, 0.752, -0.408), (-0.02, 0.752, -0.408), (-0.012, 0.752, -0.21), (-0.012, 0.944, -0.21), (-0.012, 0.944, -0.202), (-0.012, 0.752, -0.202), (-0.02, 0.752, -0.202), (-0.02, 0.944, -0.202), (-0.02, 0.944, -0.21), (-0.02, 0.752, -0.21), (-0.02, 0.944, -0.21), (-0.02, 0.944, -0.202), (-0.012, 0.944, -0.202), (-0.012, 0.944, -0.21), (-0.012, 0.752, -0.21), (-0.012, 0.752, -0.202), (-0.02, 0.752, -0.202), (-0.02, 0.752, -0.21), (-0.02, 0.752, -0.202), (-0.012, 0.752, -0.202), (-0.012, 0.944, -0.202), (-0.02, 0.944, -0.202), (-0.02, 0.944, -0.21), (-0.012, 0.944, -0.21), (-0.012, 0.752, -0.21), (-0.02, 0.752, -0.21), (-0.012, 0.752, -0.408), (-0.012, 0.76, -0.408), (-0.012, 0.76, -0.202), (-0.012, 0.752, -0.202), (-0.02, 0.752, -0.202), (-0.02, 0.76, -0.202), (-0.02, 0.76, -0.408), (-0.02, 0.752, -0.408), (-0.02, 0.76, -0.408), (-0.02, 0.76, -0.202), (-0.012, 0.76, -0.202), (-0.012, 0.76, -0.408), (-0.012, 0.752, -0.408), (-0.012, 0.752, -0.202), (-0.02, 0.752, -0.202), (-0.02, 0.752, -0.408), (-0.02, 0.752, -0.202), (-0.012, 0.752, -0.202), (-0.012, 0.76, -0.202), (-0.02, 0.76, -0.202), (-0.02, 0.76, -0.408), (-0.012, 0.76, -0.408), (-0.012, 0.752, -0.408), (-0.02, 0.752, -0.408), (-0.012, 0.936, -0.408), (-0.012, 0.944, -0.408), (-0.012, 0.944, -0.202), (-0.012, 0.936, -0.202), (-0.02, 0.936, -0.202), (-0.02, 0.944, -0.202), (-0.02, 0.944, -0.408), (-0.02, 0.936, -0.408), (-0.02, 0.944, -0.408), (-0.02, 0.944, -0.202), (-0.012, 0.944, -0.202), (-0.012, 0.944, -0.408), (-0.012, 0.936, -0.408), (-0.012, 0.936, -0.202), (-0.02, 0.936, -0.202), (-0.02, 0.936, -0.408), (-0.02, 0.936, -0.202), (-0.012, 0.936, -0.202), (-0.012, 0.944, -0.202), (-0.02, 0.944, -0.202), (-0.02, 0.944, -0.408), (-0.012, 0.944, -0.408), (-0.012, 0.936, -0.408), (-0.02, 0.936, -0.408)]
+                    uniform token subdivisionScheme = "none"
+                }
+
+                def Mesh "TagB" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    float3[] extent = [(0.012, 0.752, -0.408), (0.218, 0.944, -0.202)]
+                    int[] faceVertexCounts = [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4]
+                    int[] faceVertexIndices = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183, 184, 185, 186, 187, 188, 189, 190, 191, 192, 193, 194, 195, 196, 197, 198, 199, 200, 201, 202, 203, 204, 205, 206, 207, 208, 209, 210, 211, 212, 213, 214, 215, 216, 217, 218, 219, 220, 221, 222, 223, 224, 225, 226, 227, 228, 229, 230, 231, 232, 233, 234, 235, 236, 237, 238, 239, 240, 241, 242, 243, 244, 245, 246, 247, 248, 249, 250, 251, 252, 253, 254, 255, 256, 257, 258, 259, 260, 261, 262, 263, 264, 265, 266, 267, 268, 269, 270, 271, 272, 273, 274, 275, 276, 277, 278, 279, 280, 281, 282, 283, 284, 285, 286, 287]
+                    rel material:binding = </Exhibit/Looks/outline>
+                    normal3f[] normals = [(1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 0, -1)] (
+                        interpolation = "faceVarying"
+                    )
+                    point3f[] points = [(0.218, 0.752, -0.408), (0.218, 0.76, -0.408), (0.218, 0.76, -0.4), (0.218, 0.752, -0.4), (0.012, 0.752, -0.4), (0.012, 0.76, -0.4), (0.012, 0.76, -0.408), (0.012, 0.752, -0.408), (0.012, 0.76, -0.408), (0.012, 0.76, -0.4), (0.218, 0.76, -0.4), (0.218, 0.76, -0.408), (0.218, 0.752, -0.408), (0.218, 0.752, -0.4), (0.012, 0.752, -0.4), (0.012, 0.752, -0.408), (0.012, 0.752, -0.4), (0.218, 0.752, -0.4), (0.218, 0.76, -0.4), (0.012, 0.76, -0.4), (0.012, 0.76, -0.408), (0.218, 0.76, -0.408), (0.218, 0.752, -0.408), (0.012, 0.752, -0.408), (0.218, 0.752, -0.21), (0.218, 0.76, -0.21), (0.218, 0.76, -0.202), (0.218, 0.752, -0.202), (0.012, 0.752, -0.202), (0.012, 0.76, -0.202), (0.012, 0.76, -0.21), (0.012, 0.752, -0.21), (0.012, 0.76, -0.21), (0.012, 0.76, -0.202), (0.218, 0.76, -0.202), (0.218, 0.76, -0.21), (0.218, 0.752, -0.21), (0.218, 0.752, -0.202), (0.012, 0.752, -0.202), (0.012, 0.752, -0.21), (0.012, 0.752, -0.202), (0.218, 0.752, -0.202), (0.218, 0.76, -0.202), (0.012, 0.76, -0.202), (0.012, 0.76, -0.21), (0.218, 0.76, -0.21), (0.218, 0.752, -0.21), (0.012, 0.752, -0.21), (0.218, 0.936, -0.408), (0.218, 0.944, -0.408), (0.218, 0.944, -0.4), (0.218, 0.936, -0.4), (0.012, 0.936, -0.4), (0.012, 0.944, -0.4), (0.012, 0.944, -0.408), (0.012, 0.936, -0.408), (0.012, 0.944, -0.408), (0.012, 0.944, -0.4), (0.218, 0.944, -0.4), (0.218, 0.944, -0.408), (0.218, 0.936, -0.408), (0.218, 0.936, -0.4), (0.012, 0.936, -0.4), (0.012, 0.936, -0.408), (0.012, 0.936, -0.4), (0.218, 0.936, -0.4), (0.218, 0.944, -0.4), (0.012, 0.944, -0.4), (0.012, 0.944, -0.408), (0.218, 0.944, -0.408), (0.218, 0.936, -0.408), (0.012, 0.936, -0.408), (0.218, 0.936, -0.21), (0.218, 0.944, -0.21), (0.218, 0.944, -0.202), (0.218, 0.936, -0.202), (0.012, 0.936, -0.202), (0.012, 0.944, -0.202), (0.012, 0.944, -0.21), (0.012, 0.936, -0.21), (0.012, 0.944, -0.21), (0.012, 0.944, -0.202), (0.218, 0.944, -0.202), (0.218, 0.944, -0.21), (0.218, 0.936, -0.21), (0.218, 0.936, -0.202), (0.012, 0.936, -0.202), (0.012, 0.936, -0.21), (0.012, 0.936, -0.202), (0.218, 0.936, -0.202), (0.218, 0.944, -0.202), (0.012, 0.944, -0.202), (0.012, 0.944, -0.21), (0.218, 0.944, -0.21), (0.218, 0.936, -0.21), (0.012, 0.936, -0.21), (0.02, 0.752, -0.408), (0.02, 0.944, -0.408), (0.02, 0.944, -0.4), (0.02, 0.752, -0.4), (0.012, 0.752, -0.4), (0.012, 0.944, -0.4), (0.012, 0.944, -0.408), (0.012, 0.752, -0.408), (0.012, 0.944, -0.408), (0.012, 0.944, -0.4), (0.02, 0.944, -0.4), (0.02, 0.944, -0.408), (0.02, 0.752, -0.408), (0.02, 0.752, -0.4), (0.012, 0.752, -0.4), (0.012, 0.752, -0.408), (0.012, 0.752, -0.4), (0.02, 0.752, -0.4), (0.02, 0.944, -0.4), (0.012, 0.944, -0.4), (0.012, 0.944, -0.408), (0.02, 0.944, -0.408), (0.02, 0.752, -0.408), (0.012, 0.752, -0.408), (0.02, 0.752, -0.21), (0.02, 0.944, -0.21), (0.02, 0.944, -0.202), (0.02, 0.752, -0.202), (0.012, 0.752, -0.202), (0.012, 0.944, -0.202), (0.012, 0.944, -0.21), (0.012, 0.752, -0.21), (0.012, 0.944, -0.21), (0.012, 0.944, -0.202), (0.02, 0.944, -0.202), (0.02, 0.944, -0.21), (0.02, 0.752, -0.21), (0.02, 0.752, -0.202), (0.012, 0.752, -0.202), (0.012, 0.752, -0.21), (0.012, 0.752, -0.202), (0.02, 0.752, -0.202), (0.02, 0.944, -0.202), (0.012, 0.944, -0.202), (0.012, 0.944, -0.21), (0.02, 0.944, -0.21), (0.02, 0.752, -0.21), (0.012, 0.752, -0.21), (0.02, 0.752, -0.408), (0.02, 0.76, -0.408), (0.02, 0.76, -0.202), (0.02, 0.752, -0.202), (0.012, 0.752, -0.202), (0.012, 0.76, -0.202), (0.012, 0.76, -0.408), (0.012, 0.752, -0.408), (0.012, 0.76, -0.408), (0.012, 0.76, -0.202), (0.02, 0.76, -0.202), (0.02, 0.76, -0.408), (0.02, 0.752, -0.408), (0.02, 0.752, -0.202), (0.012, 0.752, -0.202), (0.012, 0.752, -0.408), (0.012, 0.752, -0.202), (0.02, 0.752, -0.202), (0.02, 0.76, -0.202), (0.012, 0.76, -0.202), (0.012, 0.76, -0.408), (0.02, 0.76, -0.408), (0.02, 0.752, -0.408), (0.012, 0.752, -0.408), (0.02, 0.936, -0.408), (0.02, 0.944, -0.408), (0.02, 0.944, -0.202), (0.02, 0.936, -0.202), (0.012, 0.936, -0.202), (0.012, 0.944, -0.202), (0.012, 0.944, -0.408), (0.012, 0.936, -0.408), (0.012, 0.944, -0.408), (0.012, 0.944, -0.202), (0.02, 0.944, -0.202), (0.02, 0.944, -0.408), (0.02, 0.936, -0.408), (0.02, 0.936, -0.202), (0.012, 0.936, -0.202), (0.012, 0.936, -0.408), (0.012, 0.936, -0.202), (0.02, 0.936, -0.202), (0.02, 0.944, -0.202), (0.012, 0.944, -0.202), (0.012, 0.944, -0.408), (0.02, 0.944, -0.408), (0.02, 0.936, -0.408), (0.012, 0.936, -0.408), (0.218, 0.752, -0.408), (0.218, 0.944, -0.408), (0.218, 0.944, -0.4), (0.218, 0.752, -0.4), (0.21, 0.752, -0.4), (0.21, 0.944, -0.4), (0.21, 0.944, -0.408), (0.21, 0.752, -0.408), (0.21, 0.944, -0.408), (0.21, 0.944, -0.4), (0.218, 0.944, -0.4), (0.218, 0.944, -0.408), (0.218, 0.752, -0.408), (0.218, 0.752, -0.4), (0.21, 0.752, -0.4), (0.21, 0.752, -0.408), (0.21, 0.752, -0.4), (0.218, 0.752, -0.4), (0.218, 0.944, -0.4), (0.21, 0.944, -0.4), (0.21, 0.944, -0.408), (0.218, 0.944, -0.408), (0.218, 0.752, -0.408), (0.21, 0.752, -0.408), (0.218, 0.752, -0.21), (0.218, 0.944, -0.21), (0.218, 0.944, -0.202), (0.218, 0.752, -0.202), (0.21, 0.752, -0.202), (0.21, 0.944, -0.202), (0.21, 0.944, -0.21), (0.21, 0.752, -0.21), (0.21, 0.944, -0.21), (0.21, 0.944, -0.202), (0.218, 0.944, -0.202), (0.218, 0.944, -0.21), (0.218, 0.752, -0.21), (0.218, 0.752, -0.202), (0.21, 0.752, -0.202), (0.21, 0.752, -0.21), (0.21, 0.752, -0.202), (0.218, 0.752, -0.202), (0.218, 0.944, -0.202), (0.21, 0.944, -0.202), (0.21, 0.944, -0.21), (0.218, 0.944, -0.21), (0.218, 0.752, -0.21), (0.21, 0.752, -0.21), (0.218, 0.752, -0.408), (0.218, 0.76, -0.408), (0.218, 0.76, -0.202), (0.218, 0.752, -0.202), (0.21, 0.752, -0.202), (0.21, 0.76, -0.202), (0.21, 0.76, -0.408), (0.21, 0.752, -0.408), (0.21, 0.76, -0.408), (0.21, 0.76, -0.202), (0.218, 0.76, -0.202), (0.218, 0.76, -0.408), (0.218, 0.752, -0.408), (0.218, 0.752, -0.202), (0.21, 0.752, -0.202), (0.21, 0.752, -0.408), (0.21, 0.752, -0.202), (0.218, 0.752, -0.202), (0.218, 0.76, -0.202), (0.21, 0.76, -0.202), (0.21, 0.76, -0.408), (0.218, 0.76, -0.408), (0.218, 0.752, -0.408), (0.21, 0.752, -0.408), (0.218, 0.936, -0.408), (0.218, 0.944, -0.408), (0.218, 0.944, -0.202), (0.218, 0.936, -0.202), (0.21, 0.936, -0.202), (0.21, 0.944, -0.202), (0.21, 0.944, -0.408), (0.21, 0.936, -0.408), (0.21, 0.944, -0.408), (0.21, 0.944, -0.202), (0.218, 0.944, -0.202), (0.218, 0.944, -0.408), (0.218, 0.936, -0.408), (0.218, 0.936, -0.202), (0.21, 0.936, -0.202), (0.21, 0.936, -0.408), (0.21, 0.936, -0.202), (0.218, 0.936, -0.202), (0.218, 0.944, -0.202), (0.21, 0.944, -0.202), (0.21, 0.944, -0.408), (0.218, 0.944, -0.408), (0.218, 0.936, -0.408), (0.21, 0.936, -0.408)]
+                    uniform token subdivisionScheme = "none"
+                }
+            }
+
+            def Xform "Red"
+            {
+                def Mesh "StaysEmpty" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    float3[] extent = [(0.2106, 0.748, -0.7894), (0.5894, 1.2972, -0.4106)]
+                    int[] faceVertexCounts = [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4]
+                    int[] faceVertexIndices = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183, 184, 185, 186, 187, 188, 189, 190, 191, 192, 193, 194, 195, 196, 197, 198, 199, 200, 201, 202, 203, 204, 205, 206, 207, 208, 209, 210, 211, 212, 213, 214, 215, 216, 217, 218, 219, 220, 221, 222, 223, 224, 225, 226, 227, 228, 229, 230, 231, 232, 233, 234, 235, 236, 237, 238, 239, 240, 241, 242, 243, 244, 245, 246, 247, 248, 249, 250, 251, 252, 253, 254, 255, 256, 257, 258, 259, 260, 261, 262, 263, 264, 265, 266, 267, 268, 269, 270, 271, 272, 273, 274, 275, 276, 277, 278, 279, 280, 281, 282, 283, 284, 285, 286, 287]
+                    rel material:binding = </Exhibit/Looks/outline_red>
+                    normal3f[] normals = [(1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 0, -1)] (
+                        interpolation = "faceVarying"
+                    )
+                    point3f[] points = [(0.5894, 0.748, -0.7894), (0.5894, 0.76, -0.7894), (0.5894, 0.76, -0.7774), (0.5894, 0.748, -0.7774), (0.2106, 0.748, -0.7774), (0.2106, 0.76, -0.7774), (0.2106, 0.76, -0.7894), (0.2106, 0.748, -0.7894), (0.2106, 0.76, -0.7894), (0.2106, 0.76, -0.7774), (0.5894, 0.76, -0.7774), (0.5894, 0.76, -0.7894), (0.5894, 0.748, -0.7894), (0.5894, 0.748, -0.7774), (0.2106, 0.748, -0.7774), (0.2106, 0.748, -0.7894), (0.2106, 0.748, -0.7774), (0.5894, 0.748, -0.7774), (0.5894, 0.76, -0.7774), (0.2106, 0.76, -0.7774), (0.2106, 0.76, -0.7894), (0.5894, 0.76, -0.7894), (0.5894, 0.748, -0.7894), (0.2106, 0.748, -0.7894), (0.5894, 0.748, -0.4226), (0.5894, 0.76, -0.4226), (0.5894, 0.76, -0.4106), (0.5894, 0.748, -0.4106), (0.2106, 0.748, -0.4106), (0.2106, 0.76, -0.4106), (0.2106, 0.76, -0.4226), (0.2106, 0.748, -0.4226), (0.2106, 0.76, -0.4226), (0.2106, 0.76, -0.4106), (0.5894, 0.76, -0.4106), (0.5894, 0.76, -0.4226), (0.5894, 0.748, -0.4226), (0.5894, 0.748, -0.4106), (0.2106, 0.748, -0.4106), (0.2106, 0.748, -0.4226), (0.2106, 0.748, -0.4106), (0.5894, 0.748, -0.4106), (0.5894, 0.76, -0.4106), (0.2106, 0.76, -0.4106), (0.2106, 0.76, -0.4226), (0.5894, 0.76, -0.4226), (0.5894, 0.748, -0.4226), (0.2106, 0.748, -0.4226), (0.5894, 1.2852, -0.7894), (0.5894, 1.2972, -0.7894), (0.5894, 1.2972, -0.7774), (0.5894, 1.2852, -0.7774), (0.2106, 1.2852, -0.7774), (0.2106, 1.2972, -0.7774), (0.2106, 1.2972, -0.7894), (0.2106, 1.2852, -0.7894), (0.2106, 1.2972, -0.7894), (0.2106, 1.2972, -0.7774), (0.5894, 1.2972, -0.7774), (0.5894, 1.2972, -0.7894), (0.5894, 1.2852, -0.7894), (0.5894, 1.2852, -0.7774), (0.2106, 1.2852, -0.7774), (0.2106, 1.2852, -0.7894), (0.2106, 1.2852, -0.7774), (0.5894, 1.2852, -0.7774), (0.5894, 1.2972, -0.7774), (0.2106, 1.2972, -0.7774), (0.2106, 1.2972, -0.7894), (0.5894, 1.2972, -0.7894), (0.5894, 1.2852, -0.7894), (0.2106, 1.2852, -0.7894), (0.5894, 1.2852, -0.4226), (0.5894, 1.2972, -0.4226), (0.5894, 1.2972, -0.4106), (0.5894, 1.2852, -0.4106), (0.2106, 1.2852, -0.4106), (0.2106, 1.2972, -0.4106), (0.2106, 1.2972, -0.4226), (0.2106, 1.2852, -0.4226), (0.2106, 1.2972, -0.4226), (0.2106, 1.2972, -0.4106), (0.5894, 1.2972, -0.4106), (0.5894, 1.2972, -0.4226), (0.5894, 1.2852, -0.4226), (0.5894, 1.2852, -0.4106), (0.2106, 1.2852, -0.4106), (0.2106, 1.2852, -0.4226), (0.2106, 1.2852, -0.4106), (0.5894, 1.2852, -0.4106), (0.5894, 1.2972, -0.4106), (0.2106, 1.2972, -0.4106), (0.2106, 1.2972, -0.4226), (0.5894, 1.2972, -0.4226), (0.5894, 1.2852, -0.4226), (0.2106, 1.2852, -0.4226), (0.2226, 0.748, -0.7894), (0.2226, 1.2972, -0.7894), (0.2226, 1.2972, -0.7774), (0.2226, 0.748, -0.7774), (0.2106, 0.748, -0.7774), (0.2106, 1.2972, -0.7774), (0.2106, 1.2972, -0.7894), (0.2106, 0.748, -0.7894), (0.2106, 1.2972, -0.7894), (0.2106, 1.2972, -0.7774), (0.2226, 1.2972, -0.7774), (0.2226, 1.2972, -0.7894), (0.2226, 0.748, -0.7894), (0.2226, 0.748, -0.7774), (0.2106, 0.748, -0.7774), (0.2106, 0.748, -0.7894), (0.2106, 0.748, -0.7774), (0.2226, 0.748, -0.7774), (0.2226, 1.2972, -0.7774), (0.2106, 1.2972, -0.7774), (0.2106, 1.2972, -0.7894), (0.2226, 1.2972, -0.7894), (0.2226, 0.748, -0.7894), (0.2106, 0.748, -0.7894), (0.2226, 0.748, -0.4226), (0.2226, 1.2972, -0.4226), (0.2226, 1.2972, -0.4106), (0.2226, 0.748, -0.4106), (0.2106, 0.748, -0.4106), (0.2106, 1.2972, -0.4106), (0.2106, 1.2972, -0.4226), (0.2106, 0.748, -0.4226), (0.2106, 1.2972, -0.4226), (0.2106, 1.2972, -0.4106), (0.2226, 1.2972, -0.4106), (0.2226, 1.2972, -0.4226), (0.2226, 0.748, -0.4226), (0.2226, 0.748, -0.4106), (0.2106, 0.748, -0.4106), (0.2106, 0.748, -0.4226), (0.2106, 0.748, -0.4106), (0.2226, 0.748, -0.4106), (0.2226, 1.2972, -0.4106), (0.2106, 1.2972, -0.4106), (0.2106, 1.2972, -0.4226), (0.2226, 1.2972, -0.4226), (0.2226, 0.748, -0.4226), (0.2106, 0.748, -0.4226), (0.2226, 0.748, -0.7894), (0.2226, 0.76, -0.7894), (0.2226, 0.76, -0.4106), (0.2226, 0.748, -0.4106), (0.2106, 0.748, -0.4106), (0.2106, 0.76, -0.4106), (0.2106, 0.76, -0.7894), (0.2106, 0.748, -0.7894), (0.2106, 0.76, -0.7894), (0.2106, 0.76, -0.4106), (0.2226, 0.76, -0.4106), (0.2226, 0.76, -0.7894), (0.2226, 0.748, -0.7894), (0.2226, 0.748, -0.4106), (0.2106, 0.748, -0.4106), (0.2106, 0.748, -0.7894), (0.2106, 0.748, -0.4106), (0.2226, 0.748, -0.4106), (0.2226, 0.76, -0.4106), (0.2106, 0.76, -0.4106), (0.2106, 0.76, -0.7894), (0.2226, 0.76, -0.7894), (0.2226, 0.748, -0.7894), (0.2106, 0.748, -0.7894), (0.2226, 1.2852, -0.7894), (0.2226, 1.2972, -0.7894), (0.2226, 1.2972, -0.4106), (0.2226, 1.2852, -0.4106), (0.2106, 1.2852, -0.4106), (0.2106, 1.2972, -0.4106), (0.2106, 1.2972, -0.7894), (0.2106, 1.2852, -0.7894), (0.2106, 1.2972, -0.7894), (0.2106, 1.2972, -0.4106), (0.2226, 1.2972, -0.4106), (0.2226, 1.2972, -0.7894), (0.2226, 1.2852, -0.7894), (0.2226, 1.2852, -0.4106), (0.2106, 1.2852, -0.4106), (0.2106, 1.2852, -0.7894), (0.2106, 1.2852, -0.4106), (0.2226, 1.2852, -0.4106), (0.2226, 1.2972, -0.4106), (0.2106, 1.2972, -0.4106), (0.2106, 1.2972, -0.7894), (0.2226, 1.2972, -0.7894), (0.2226, 1.2852, -0.7894), (0.2106, 1.2852, -0.7894), (0.5894, 0.748, -0.7894), (0.5894, 1.2972, -0.7894), (0.5894, 1.2972, -0.7774), (0.5894, 0.748, -0.7774), (0.5774, 0.748, -0.7774), (0.5774, 1.2972, -0.7774), (0.5774, 1.2972, -0.7894), (0.5774, 0.748, -0.7894), (0.5774, 1.2972, -0.7894), (0.5774, 1.2972, -0.7774), (0.5894, 1.2972, -0.7774), (0.5894, 1.2972, -0.7894), (0.5894, 0.748, -0.7894), (0.5894, 0.748, -0.7774), (0.5774, 0.748, -0.7774), (0.5774, 0.748, -0.7894), (0.5774, 0.748, -0.7774), (0.5894, 0.748, -0.7774), (0.5894, 1.2972, -0.7774), (0.5774, 1.2972, -0.7774), (0.5774, 1.2972, -0.7894), (0.5894, 1.2972, -0.7894), (0.5894, 0.748, -0.7894), (0.5774, 0.748, -0.7894), (0.5894, 0.748, -0.4226), (0.5894, 1.2972, -0.4226), (0.5894, 1.2972, -0.4106), (0.5894, 0.748, -0.4106), (0.5774, 0.748, -0.4106), (0.5774, 1.2972, -0.4106), (0.5774, 1.2972, -0.4226), (0.5774, 0.748, -0.4226), (0.5774, 1.2972, -0.4226), (0.5774, 1.2972, -0.4106), (0.5894, 1.2972, -0.4106), (0.5894, 1.2972, -0.4226), (0.5894, 0.748, -0.4226), (0.5894, 0.748, -0.4106), (0.5774, 0.748, -0.4106), (0.5774, 0.748, -0.4226), (0.5774, 0.748, -0.4106), (0.5894, 0.748, -0.4106), (0.5894, 1.2972, -0.4106), (0.5774, 1.2972, -0.4106), (0.5774, 1.2972, -0.4226), (0.5894, 1.2972, -0.4226), (0.5894, 0.748, -0.4226), (0.5774, 0.748, -0.4226), (0.5894, 0.748, -0.7894), (0.5894, 0.76, -0.7894), (0.5894, 0.76, -0.4106), (0.5894, 0.748, -0.4106), (0.5774, 0.748, -0.4106), (0.5774, 0.76, -0.4106), (0.5774, 0.76, -0.7894), (0.5774, 0.748, -0.7894), (0.5774, 0.76, -0.7894), (0.5774, 0.76, -0.4106), (0.5894, 0.76, -0.4106), (0.5894, 0.76, -0.7894), (0.5894, 0.748, -0.7894), (0.5894, 0.748, -0.4106), (0.5774, 0.748, -0.4106), (0.5774, 0.748, -0.7894), (0.5774, 0.748, -0.4106), (0.5894, 0.748, -0.4106), (0.5894, 0.76, -0.4106), (0.5774, 0.76, -0.4106), (0.5774, 0.76, -0.7894), (0.5894, 0.76, -0.7894), (0.5894, 0.748, -0.7894), (0.5774, 0.748, -0.7894), (0.5894, 1.2852, -0.7894), (0.5894, 1.2972, -0.7894), (0.5894, 1.2972, -0.4106), (0.5894, 1.2852, -0.4106), (0.5774, 1.2852, -0.4106), (0.5774, 1.2972, -0.4106), (0.5774, 1.2972, -0.7894), (0.5774, 1.2852, -0.7894), (0.5774, 1.2972, -0.7894), (0.5774, 1.2972, -0.4106), (0.5894, 1.2972, -0.4106), (0.5894, 1.2972, -0.7894), (0.5894, 1.2852, -0.7894), (0.5894, 1.2852, -0.4106), (0.5774, 1.2852, -0.4106), (0.5774, 1.2852, -0.7894), (0.5774, 1.2852, -0.4106), (0.5894, 1.2852, -0.4106), (0.5894, 1.2972, -0.4106), (0.5774, 1.2972, -0.4106), (0.5774, 1.2972, -0.7894), (0.5894, 1.2972, -0.7894), (0.5894, 1.2852, -0.7894), (0.5774, 1.2852, -0.7894)]
+                    uniform token subdivisionScheme = "none"
+                }
+            }
+
+            def Xform "Case" (
+                prepend references = [
+                    @./parts/arm_a.usda@,
+                    @./parts/arm_b.usda@
+                ]
+            )
+            {
+                matrix4d xformOp:transform = ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (-0.4, 0.75, -0.6, 1) )
+                uniform token[] xformOpOrder = ["xformOp:transform"]
+
+                over "Vase" (
+                    kind = "group"
+                )
+                {
+                }
+            }
+        }
+
+        def Xform "refcycle" (
+            kind = "group"
+        )
+        {
+            matrix4d xformOp:transform = ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (-0.39, 0, 0, 1) )
+            uniform token[] xformOpOrder = ["xformOp:transform"]
+
+            def Mesh "Pedestal" (
+                prepend apiSchemas = ["MaterialBindingAPI"]
+            )
+            {
+                float3[] extent = [(-0.525, 0, -1), (0.525, 0.75, -0.2)]
+                int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+                int[] faceVertexIndices = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23]
+                rel material:binding = </Exhibit/Looks/pedestal>
+                point3f[] points = [(-0.525, 0, -0.2), (0.525, 0, -0.2), (0.525, 0.75, -0.2), (-0.525, 0.75, -0.2), (0.525, 0, -1), (-0.525, 0, -1), (-0.525, 0.75, -1), (0.525, 0.75, -1), (-0.525, 0.75, -0.2), (0.525, 0.75, -0.2), (0.525, 0.75, -1), (-0.525, 0.75, -1), (-0.525, 0, -1), (0.525, 0, -1), (0.525, 0, -0.2), (-0.525, 0, -0.2), (0.525, 0, -0.2), (0.525, 0, -1), (0.525, 0.75, -1), (0.525, 0.75, -0.2), (-0.525, 0, -1), (-0.525, 0, -0.2), (-0.525, 0.75, -0.2), (-0.525, 0.75, -1)]
+                uniform token subdivisionScheme = "none"
+            }
+
+            def Mesh "Label" (
+                prepend apiSchemas = ["MaterialBindingAPI"]
+            )
+            {
+                uniform bool doubleSided = 1
+                float3[] extent = [(-0.382419, 0.4348827, -0.194), (0.382419, 0.5502673, -0.194)]
+                int[] faceVertexCounts = [4]
+                int[] faceVertexIndices = [0, 1, 2, 3]
+                rel material:binding = </Exhibit/Looks/refcycle_Label>
+                normal3f[] normals = [(0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1)] (
+                    interpolation = "vertex"
+                )
+                point3f[] points = [(-0.382419, 0.4348827, -0.194), (0.382419, 0.4348827, -0.194), (0.382419, 0.5502673, -0.194), (-0.382419, 0.5502673, -0.194)]
+                color3f[] primvars:displayColor = [(0.9, 0.75, 0.1)]
+                texCoord2f[] primvars:st = [(0, 0), (1, 0), (1, 1), (0, 1)] (
+                    interpolation = "vertex"
+                )
+                uniform token subdivisionScheme = "none"
+            }
+
+            def Mesh "Sub" (
+                prepend apiSchemas = ["MaterialBindingAPI"]
+            )
+            {
+                uniform bool doubleSided = 1
+                float3[] extent = [(-0.48004046, 0.34297085, -0.194), (0.48004046, 0.42630416, -0.194)]
+                int[] faceVertexCounts = [4]
+                int[] faceVertexIndices = [0, 1, 2, 3]
+                rel material:binding = </Exhibit/Looks/refcycle_Sub>
+                normal3f[] normals = [(0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1)] (
+                    interpolation = "vertex"
+                )
+                point3f[] points = [(-0.48004046, 0.34297085, -0.194), (0.48004046, 0.34297085, -0.194), (0.48004046, 0.42630416, -0.194), (-0.48004046, 0.42630416, -0.194)]
+                color3f[] primvars:displayColor = [(0.9, 0.75, 0.1)]
+                texCoord2f[] primvars:st = [(0, 0), (1, 0), (1, 1), (0, 1)] (
+                    interpolation = "vertex"
+                )
+                uniform token subdivisionScheme = "none"
+            }
+
+            def Xform "Ghost" (
+                instanceable = true
+                prepend references = @./parts/ghost.usda@
+            )
+            {
+                matrix4d xformOp:transform = ( (1.248, 0, 0, 0), (0, 1.248, 0, 0), (0, 0, 1.248, 0), (-0.27, 0.751, -0.6, 1) )
+                uniform token[] xformOpOrder = ["xformOp:transform"]
+            }
+
+            def Xform "Slots"
+            {
+                def Mesh "Tag" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    float3[] extent = [(-0.103, 0.752, -0.408), (0.103, 0.944, -0.202)]
+                    int[] faceVertexCounts = [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4]
+                    int[] faceVertexIndices = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183, 184, 185, 186, 187, 188, 189, 190, 191, 192, 193, 194, 195, 196, 197, 198, 199, 200, 201, 202, 203, 204, 205, 206, 207, 208, 209, 210, 211, 212, 213, 214, 215, 216, 217, 218, 219, 220, 221, 222, 223, 224, 225, 226, 227, 228, 229, 230, 231, 232, 233, 234, 235, 236, 237, 238, 239, 240, 241, 242, 243, 244, 245, 246, 247, 248, 249, 250, 251, 252, 253, 254, 255, 256, 257, 258, 259, 260, 261, 262, 263, 264, 265, 266, 267, 268, 269, 270, 271, 272, 273, 274, 275, 276, 277, 278, 279, 280, 281, 282, 283, 284, 285, 286, 287]
+                    rel material:binding = </Exhibit/Looks/outline>
+                    normal3f[] normals = [(1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 0, -1)] (
+                        interpolation = "faceVarying"
+                    )
+                    point3f[] points = [(0.103, 0.752, -0.408), (0.103, 0.76, -0.408), (0.103, 0.76, -0.4), (0.103, 0.752, -0.4), (-0.103, 0.752, -0.4), (-0.103, 0.76, -0.4), (-0.103, 0.76, -0.408), (-0.103, 0.752, -0.408), (-0.103, 0.76, -0.408), (-0.103, 0.76, -0.4), (0.103, 0.76, -0.4), (0.103, 0.76, -0.408), (0.103, 0.752, -0.408), (0.103, 0.752, -0.4), (-0.103, 0.752, -0.4), (-0.103, 0.752, -0.408), (-0.103, 0.752, -0.4), (0.103, 0.752, -0.4), (0.103, 0.76, -0.4), (-0.103, 0.76, -0.4), (-0.103, 0.76, -0.408), (0.103, 0.76, -0.408), (0.103, 0.752, -0.408), (-0.103, 0.752, -0.408), (0.103, 0.752, -0.21), (0.103, 0.76, -0.21), (0.103, 0.76, -0.202), (0.103, 0.752, -0.202), (-0.103, 0.752, -0.202), (-0.103, 0.76, -0.202), (-0.103, 0.76, -0.21), (-0.103, 0.752, -0.21), (-0.103, 0.76, -0.21), (-0.103, 0.76, -0.202), (0.103, 0.76, -0.202), (0.103, 0.76, -0.21), (0.103, 0.752, -0.21), (0.103, 0.752, -0.202), (-0.103, 0.752, -0.202), (-0.103, 0.752, -0.21), (-0.103, 0.752, -0.202), (0.103, 0.752, -0.202), (0.103, 0.76, -0.202), (-0.103, 0.76, -0.202), (-0.103, 0.76, -0.21), (0.103, 0.76, -0.21), (0.103, 0.752, -0.21), (-0.103, 0.752, -0.21), (0.103, 0.936, -0.408), (0.103, 0.944, -0.408), (0.103, 0.944, -0.4), (0.103, 0.936, -0.4), (-0.103, 0.936, -0.4), (-0.103, 0.944, -0.4), (-0.103, 0.944, -0.408), (-0.103, 0.936, -0.408), (-0.103, 0.944, -0.408), (-0.103, 0.944, -0.4), (0.103, 0.944, -0.4), (0.103, 0.944, -0.408), (0.103, 0.936, -0.408), (0.103, 0.936, -0.4), (-0.103, 0.936, -0.4), (-0.103, 0.936, -0.408), (-0.103, 0.936, -0.4), (0.103, 0.936, -0.4), (0.103, 0.944, -0.4), (-0.103, 0.944, -0.4), (-0.103, 0.944, -0.408), (0.103, 0.944, -0.408), (0.103, 0.936, -0.408), (-0.103, 0.936, -0.408), (0.103, 0.936, -0.21), (0.103, 0.944, -0.21), (0.103, 0.944, -0.202), (0.103, 0.936, -0.202), (-0.103, 0.936, -0.202), (-0.103, 0.944, -0.202), (-0.103, 0.944, -0.21), (-0.103, 0.936, -0.21), (-0.103, 0.944, -0.21), (-0.103, 0.944, -0.202), (0.103, 0.944, -0.202), (0.103, 0.944, -0.21), (0.103, 0.936, -0.21), (0.103, 0.936, -0.202), (-0.103, 0.936, -0.202), (-0.103, 0.936, -0.21), (-0.103, 0.936, -0.202), (0.103, 0.936, -0.202), (0.103, 0.944, -0.202), (-0.103, 0.944, -0.202), (-0.103, 0.944, -0.21), (0.103, 0.944, -0.21), (0.103, 0.936, -0.21), (-0.103, 0.936, -0.21), (-0.095, 0.752, -0.408), (-0.095, 0.944, -0.408), (-0.095, 0.944, -0.4), (-0.095, 0.752, -0.4), (-0.103, 0.752, -0.4), (-0.103, 0.944, -0.4), (-0.103, 0.944, -0.408), (-0.103, 0.752, -0.408), (-0.103, 0.944, -0.408), (-0.103, 0.944, -0.4), (-0.095, 0.944, -0.4), (-0.095, 0.944, -0.408), (-0.095, 0.752, -0.408), (-0.095, 0.752, -0.4), (-0.103, 0.752, -0.4), (-0.103, 0.752, -0.408), (-0.103, 0.752, -0.4), (-0.095, 0.752, -0.4), (-0.095, 0.944, -0.4), (-0.103, 0.944, -0.4), (-0.103, 0.944, -0.408), (-0.095, 0.944, -0.408), (-0.095, 0.752, -0.408), (-0.103, 0.752, -0.408), (-0.095, 0.752, -0.21), (-0.095, 0.944, -0.21), (-0.095, 0.944, -0.202), (-0.095, 0.752, -0.202), (-0.103, 0.752, -0.202), (-0.103, 0.944, -0.202), (-0.103, 0.944, -0.21), (-0.103, 0.752, -0.21), (-0.103, 0.944, -0.21), (-0.103, 0.944, -0.202), (-0.095, 0.944, -0.202), (-0.095, 0.944, -0.21), (-0.095, 0.752, -0.21), (-0.095, 0.752, -0.202), (-0.103, 0.752, -0.202), (-0.103, 0.752, -0.21), (-0.103, 0.752, -0.202), (-0.095, 0.752, -0.202), (-0.095, 0.944, -0.202), (-0.103, 0.944, -0.202), (-0.103, 0.944, -0.21), (-0.095, 0.944, -0.21), (-0.095, 0.752, -0.21), (-0.103, 0.752, -0.21), (-0.095, 0.752, -0.408), (-0.095, 0.76, -0.408), (-0.095, 0.76, -0.202), (-0.095, 0.752, -0.202), (-0.103, 0.752, -0.202), (-0.103, 0.76, -0.202), (-0.103, 0.76, -0.408), (-0.103, 0.752, -0.408), (-0.103, 0.76, -0.408), (-0.103, 0.76, -0.202), (-0.095, 0.76, -0.202), (-0.095, 0.76, -0.408), (-0.095, 0.752, -0.408), (-0.095, 0.752, -0.202), (-0.103, 0.752, -0.202), (-0.103, 0.752, -0.408), (-0.103, 0.752, -0.202), (-0.095, 0.752, -0.202), (-0.095, 0.76, -0.202), (-0.103, 0.76, -0.202), (-0.103, 0.76, -0.408), (-0.095, 0.76, -0.408), (-0.095, 0.752, -0.408), (-0.103, 0.752, -0.408), (-0.095, 0.936, -0.408), (-0.095, 0.944, -0.408), (-0.095, 0.944, -0.202), (-0.095, 0.936, -0.202), (-0.103, 0.936, -0.202), (-0.103, 0.944, -0.202), (-0.103, 0.944, -0.408), (-0.103, 0.936, -0.408), (-0.103, 0.944, -0.408), (-0.103, 0.944, -0.202), (-0.095, 0.944, -0.202), (-0.095, 0.944, -0.408), (-0.095, 0.936, -0.408), (-0.095, 0.936, -0.202), (-0.103, 0.936, -0.202), (-0.103, 0.936, -0.408), (-0.103, 0.936, -0.202), (-0.095, 0.936, -0.202), (-0.095, 0.944, -0.202), (-0.103, 0.944, -0.202), (-0.103, 0.944, -0.408), (-0.095, 0.944, -0.408), (-0.095, 0.936, -0.408), (-0.103, 0.936, -0.408), (0.103, 0.752, -0.408), (0.103, 0.944, -0.408), (0.103, 0.944, -0.4), (0.103, 0.752, -0.4), (0.095, 0.752, -0.4), (0.095, 0.944, -0.4), (0.095, 0.944, -0.408), (0.095, 0.752, -0.408), (0.095, 0.944, -0.408), (0.095, 0.944, -0.4), (0.103, 0.944, -0.4), (0.103, 0.944, -0.408), (0.103, 0.752, -0.408), (0.103, 0.752, -0.4), (0.095, 0.752, -0.4), (0.095, 0.752, -0.408), (0.095, 0.752, -0.4), (0.103, 0.752, -0.4), (0.103, 0.944, -0.4), (0.095, 0.944, -0.4), (0.095, 0.944, -0.408), (0.103, 0.944, -0.408), (0.103, 0.752, -0.408), (0.095, 0.752, -0.408), (0.103, 0.752, -0.21), (0.103, 0.944, -0.21), (0.103, 0.944, -0.202), (0.103, 0.752, -0.202), (0.095, 0.752, -0.202), (0.095, 0.944, -0.202), (0.095, 0.944, -0.21), (0.095, 0.752, -0.21), (0.095, 0.944, -0.21), (0.095, 0.944, -0.202), (0.103, 0.944, -0.202), (0.103, 0.944, -0.21), (0.103, 0.752, -0.21), (0.103, 0.752, -0.202), (0.095, 0.752, -0.202), (0.095, 0.752, -0.21), (0.095, 0.752, -0.202), (0.103, 0.752, -0.202), (0.103, 0.944, -0.202), (0.095, 0.944, -0.202), (0.095, 0.944, -0.21), (0.103, 0.944, -0.21), (0.103, 0.752, -0.21), (0.095, 0.752, -0.21), (0.103, 0.752, -0.408), (0.103, 0.76, -0.408), (0.103, 0.76, -0.202), (0.103, 0.752, -0.202), (0.095, 0.752, -0.202), (0.095, 0.76, -0.202), (0.095, 0.76, -0.408), (0.095, 0.752, -0.408), (0.095, 0.76, -0.408), (0.095, 0.76, -0.202), (0.103, 0.76, -0.202), (0.103, 0.76, -0.408), (0.103, 0.752, -0.408), (0.103, 0.752, -0.202), (0.095, 0.752, -0.202), (0.095, 0.752, -0.408), (0.095, 0.752, -0.202), (0.103, 0.752, -0.202), (0.103, 0.76, -0.202), (0.095, 0.76, -0.202), (0.095, 0.76, -0.408), (0.103, 0.76, -0.408), (0.103, 0.752, -0.408), (0.095, 0.752, -0.408), (0.103, 0.936, -0.408), (0.103, 0.944, -0.408), (0.103, 0.944, -0.202), (0.103, 0.936, -0.202), (0.095, 0.936, -0.202), (0.095, 0.944, -0.202), (0.095, 0.944, -0.408), (0.095, 0.936, -0.408), (0.095, 0.944, -0.408), (0.095, 0.944, -0.202), (0.103, 0.944, -0.202), (0.103, 0.944, -0.408), (0.103, 0.936, -0.408), (0.103, 0.936, -0.202), (0.095, 0.936, -0.202), (0.095, 0.936, -0.408), (0.095, 0.936, -0.202), (0.103, 0.936, -0.202), (0.103, 0.944, -0.202), (0.095, 0.944, -0.202), (0.095, 0.944, -0.408), (0.103, 0.944, -0.408), (0.103, 0.936, -0.408), (0.095, 0.936, -0.408)]
+                    uniform token subdivisionScheme = "none"
+                }
+            }
+
+            def Xform "Red"
+            {
+                def Mesh "StaysEmpty" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    float3[] extent = [(0.0806, 0.748, -0.7894), (0.4594, 1.2972, -0.4106)]
+                    int[] faceVertexCounts = [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4]
+                    int[] faceVertexIndices = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183, 184, 185, 186, 187, 188, 189, 190, 191, 192, 193, 194, 195, 196, 197, 198, 199, 200, 201, 202, 203, 204, 205, 206, 207, 208, 209, 210, 211, 212, 213, 214, 215, 216, 217, 218, 219, 220, 221, 222, 223, 224, 225, 226, 227, 228, 229, 230, 231, 232, 233, 234, 235, 236, 237, 238, 239, 240, 241, 242, 243, 244, 245, 246, 247, 248, 249, 250, 251, 252, 253, 254, 255, 256, 257, 258, 259, 260, 261, 262, 263, 264, 265, 266, 267, 268, 269, 270, 271, 272, 273, 274, 275, 276, 277, 278, 279, 280, 281, 282, 283, 284, 285, 286, 287]
+                    rel material:binding = </Exhibit/Looks/outline_red>
+                    normal3f[] normals = [(1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 0, -1)] (
+                        interpolation = "faceVarying"
+                    )
+                    point3f[] points = [(0.4594, 0.748, -0.7894), (0.4594, 0.76, -0.7894), (0.4594, 0.76, -0.7774), (0.4594, 0.748, -0.7774), (0.0806, 0.748, -0.7774), (0.0806, 0.76, -0.7774), (0.0806, 0.76, -0.7894), (0.0806, 0.748, -0.7894), (0.0806, 0.76, -0.7894), (0.0806, 0.76, -0.7774), (0.4594, 0.76, -0.7774), (0.4594, 0.76, -0.7894), (0.4594, 0.748, -0.7894), (0.4594, 0.748, -0.7774), (0.0806, 0.748, -0.7774), (0.0806, 0.748, -0.7894), (0.0806, 0.748, -0.7774), (0.4594, 0.748, -0.7774), (0.4594, 0.76, -0.7774), (0.0806, 0.76, -0.7774), (0.0806, 0.76, -0.7894), (0.4594, 0.76, -0.7894), (0.4594, 0.748, -0.7894), (0.0806, 0.748, -0.7894), (0.4594, 0.748, -0.4226), (0.4594, 0.76, -0.4226), (0.4594, 0.76, -0.4106), (0.4594, 0.748, -0.4106), (0.0806, 0.748, -0.4106), (0.0806, 0.76, -0.4106), (0.0806, 0.76, -0.4226), (0.0806, 0.748, -0.4226), (0.0806, 0.76, -0.4226), (0.0806, 0.76, -0.4106), (0.4594, 0.76, -0.4106), (0.4594, 0.76, -0.4226), (0.4594, 0.748, -0.4226), (0.4594, 0.748, -0.4106), (0.0806, 0.748, -0.4106), (0.0806, 0.748, -0.4226), (0.0806, 0.748, -0.4106), (0.4594, 0.748, -0.4106), (0.4594, 0.76, -0.4106), (0.0806, 0.76, -0.4106), (0.0806, 0.76, -0.4226), (0.4594, 0.76, -0.4226), (0.4594, 0.748, -0.4226), (0.0806, 0.748, -0.4226), (0.4594, 1.2852, -0.7894), (0.4594, 1.2972, -0.7894), (0.4594, 1.2972, -0.7774), (0.4594, 1.2852, -0.7774), (0.0806, 1.2852, -0.7774), (0.0806, 1.2972, -0.7774), (0.0806, 1.2972, -0.7894), (0.0806, 1.2852, -0.7894), (0.0806, 1.2972, -0.7894), (0.0806, 1.2972, -0.7774), (0.4594, 1.2972, -0.7774), (0.4594, 1.2972, -0.7894), (0.4594, 1.2852, -0.7894), (0.4594, 1.2852, -0.7774), (0.0806, 1.2852, -0.7774), (0.0806, 1.2852, -0.7894), (0.0806, 1.2852, -0.7774), (0.4594, 1.2852, -0.7774), (0.4594, 1.2972, -0.7774), (0.0806, 1.2972, -0.7774), (0.0806, 1.2972, -0.7894), (0.4594, 1.2972, -0.7894), (0.4594, 1.2852, -0.7894), (0.0806, 1.2852, -0.7894), (0.4594, 1.2852, -0.4226), (0.4594, 1.2972, -0.4226), (0.4594, 1.2972, -0.4106), (0.4594, 1.2852, -0.4106), (0.0806, 1.2852, -0.4106), (0.0806, 1.2972, -0.4106), (0.0806, 1.2972, -0.4226), (0.0806, 1.2852, -0.4226), (0.0806, 1.2972, -0.4226), (0.0806, 1.2972, -0.4106), (0.4594, 1.2972, -0.4106), (0.4594, 1.2972, -0.4226), (0.4594, 1.2852, -0.4226), (0.4594, 1.2852, -0.4106), (0.0806, 1.2852, -0.4106), (0.0806, 1.2852, -0.4226), (0.0806, 1.2852, -0.4106), (0.4594, 1.2852, -0.4106), (0.4594, 1.2972, -0.4106), (0.0806, 1.2972, -0.4106), (0.0806, 1.2972, -0.4226), (0.4594, 1.2972, -0.4226), (0.4594, 1.2852, -0.4226), (0.0806, 1.2852, -0.4226), (0.0926, 0.748, -0.7894), (0.0926, 1.2972, -0.7894), (0.0926, 1.2972, -0.7774), (0.0926, 0.748, -0.7774), (0.0806, 0.748, -0.7774), (0.0806, 1.2972, -0.7774), (0.0806, 1.2972, -0.7894), (0.0806, 0.748, -0.7894), (0.0806, 1.2972, -0.7894), (0.0806, 1.2972, -0.7774), (0.0926, 1.2972, -0.7774), (0.0926, 1.2972, -0.7894), (0.0926, 0.748, -0.7894), (0.0926, 0.748, -0.7774), (0.0806, 0.748, -0.7774), (0.0806, 0.748, -0.7894), (0.0806, 0.748, -0.7774), (0.0926, 0.748, -0.7774), (0.0926, 1.2972, -0.7774), (0.0806, 1.2972, -0.7774), (0.0806, 1.2972, -0.7894), (0.0926, 1.2972, -0.7894), (0.0926, 0.748, -0.7894), (0.0806, 0.748, -0.7894), (0.0926, 0.748, -0.4226), (0.0926, 1.2972, -0.4226), (0.0926, 1.2972, -0.4106), (0.0926, 0.748, -0.4106), (0.0806, 0.748, -0.4106), (0.0806, 1.2972, -0.4106), (0.0806, 1.2972, -0.4226), (0.0806, 0.748, -0.4226), (0.0806, 1.2972, -0.4226), (0.0806, 1.2972, -0.4106), (0.0926, 1.2972, -0.4106), (0.0926, 1.2972, -0.4226), (0.0926, 0.748, -0.4226), (0.0926, 0.748, -0.4106), (0.0806, 0.748, -0.4106), (0.0806, 0.748, -0.4226), (0.0806, 0.748, -0.4106), (0.0926, 0.748, -0.4106), (0.0926, 1.2972, -0.4106), (0.0806, 1.2972, -0.4106), (0.0806, 1.2972, -0.4226), (0.0926, 1.2972, -0.4226), (0.0926, 0.748, -0.4226), (0.0806, 0.748, -0.4226), (0.0926, 0.748, -0.7894), (0.0926, 0.76, -0.7894), (0.0926, 0.76, -0.4106), (0.0926, 0.748, -0.4106), (0.0806, 0.748, -0.4106), (0.0806, 0.76, -0.4106), (0.0806, 0.76, -0.7894), (0.0806, 0.748, -0.7894), (0.0806, 0.76, -0.7894), (0.0806, 0.76, -0.4106), (0.0926, 0.76, -0.4106), (0.0926, 0.76, -0.7894), (0.0926, 0.748, -0.7894), (0.0926, 0.748, -0.4106), (0.0806, 0.748, -0.4106), (0.0806, 0.748, -0.7894), (0.0806, 0.748, -0.4106), (0.0926, 0.748, -0.4106), (0.0926, 0.76, -0.4106), (0.0806, 0.76, -0.4106), (0.0806, 0.76, -0.7894), (0.0926, 0.76, -0.7894), (0.0926, 0.748, -0.7894), (0.0806, 0.748, -0.7894), (0.0926, 1.2852, -0.7894), (0.0926, 1.2972, -0.7894), (0.0926, 1.2972, -0.4106), (0.0926, 1.2852, -0.4106), (0.0806, 1.2852, -0.4106), (0.0806, 1.2972, -0.4106), (0.0806, 1.2972, -0.7894), (0.0806, 1.2852, -0.7894), (0.0806, 1.2972, -0.7894), (0.0806, 1.2972, -0.4106), (0.0926, 1.2972, -0.4106), (0.0926, 1.2972, -0.7894), (0.0926, 1.2852, -0.7894), (0.0926, 1.2852, -0.4106), (0.0806, 1.2852, -0.4106), (0.0806, 1.2852, -0.7894), (0.0806, 1.2852, -0.4106), (0.0926, 1.2852, -0.4106), (0.0926, 1.2972, -0.4106), (0.0806, 1.2972, -0.4106), (0.0806, 1.2972, -0.7894), (0.0926, 1.2972, -0.7894), (0.0926, 1.2852, -0.7894), (0.0806, 1.2852, -0.7894), (0.4594, 0.748, -0.7894), (0.4594, 1.2972, -0.7894), (0.4594, 1.2972, -0.7774), (0.4594, 0.748, -0.7774), (0.4474, 0.748, -0.7774), (0.4474, 1.2972, -0.7774), (0.4474, 1.2972, -0.7894), (0.4474, 0.748, -0.7894), (0.4474, 1.2972, -0.7894), (0.4474, 1.2972, -0.7774), (0.4594, 1.2972, -0.7774), (0.4594, 1.2972, -0.7894), (0.4594, 0.748, -0.7894), (0.4594, 0.748, -0.7774), (0.4474, 0.748, -0.7774), (0.4474, 0.748, -0.7894), (0.4474, 0.748, -0.7774), (0.4594, 0.748, -0.7774), (0.4594, 1.2972, -0.7774), (0.4474, 1.2972, -0.7774), (0.4474, 1.2972, -0.7894), (0.4594, 1.2972, -0.7894), (0.4594, 0.748, -0.7894), (0.4474, 0.748, -0.7894), (0.4594, 0.748, -0.4226), (0.4594, 1.2972, -0.4226), (0.4594, 1.2972, -0.4106), (0.4594, 0.748, -0.4106), (0.4474, 0.748, -0.4106), (0.4474, 1.2972, -0.4106), (0.4474, 1.2972, -0.4226), (0.4474, 0.748, -0.4226), (0.4474, 1.2972, -0.4226), (0.4474, 1.2972, -0.4106), (0.4594, 1.2972, -0.4106), (0.4594, 1.2972, -0.4226), (0.4594, 0.748, -0.4226), (0.4594, 0.748, -0.4106), (0.4474, 0.748, -0.4106), (0.4474, 0.748, -0.4226), (0.4474, 0.748, -0.4106), (0.4594, 0.748, -0.4106), (0.4594, 1.2972, -0.4106), (0.4474, 1.2972, -0.4106), (0.4474, 1.2972, -0.4226), (0.4594, 1.2972, -0.4226), (0.4594, 0.748, -0.4226), (0.4474, 0.748, -0.4226), (0.4594, 0.748, -0.7894), (0.4594, 0.76, -0.7894), (0.4594, 0.76, -0.4106), (0.4594, 0.748, -0.4106), (0.4474, 0.748, -0.4106), (0.4474, 0.76, -0.4106), (0.4474, 0.76, -0.7894), (0.4474, 0.748, -0.7894), (0.4474, 0.76, -0.7894), (0.4474, 0.76, -0.4106), (0.4594, 0.76, -0.4106), (0.4594, 0.76, -0.7894), (0.4594, 0.748, -0.7894), (0.4594, 0.748, -0.4106), (0.4474, 0.748, -0.4106), (0.4474, 0.748, -0.7894), (0.4474, 0.748, -0.4106), (0.4594, 0.748, -0.4106), (0.4594, 0.76, -0.4106), (0.4474, 0.76, -0.4106), (0.4474, 0.76, -0.7894), (0.4594, 0.76, -0.7894), (0.4594, 0.748, -0.7894), (0.4474, 0.748, -0.7894), (0.4594, 1.2852, -0.7894), (0.4594, 1.2972, -0.7894), (0.4594, 1.2972, -0.4106), (0.4594, 1.2852, -0.4106), (0.4474, 1.2852, -0.4106), (0.4474, 1.2972, -0.4106), (0.4474, 1.2972, -0.7894), (0.4474, 1.2852, -0.7894), (0.4474, 1.2972, -0.7894), (0.4474, 1.2972, -0.4106), (0.4594, 1.2972, -0.4106), (0.4594, 1.2972, -0.7894), (0.4594, 1.2852, -0.7894), (0.4594, 1.2852, -0.4106), (0.4474, 1.2852, -0.4106), (0.4474, 1.2852, -0.7894), (0.4474, 1.2852, -0.4106), (0.4594, 1.2852, -0.4106), (0.4594, 1.2972, -0.4106), (0.4474, 1.2972, -0.4106), (0.4474, 1.2972, -0.7894), (0.4594, 1.2972, -0.7894), (0.4594, 1.2852, -0.7894), (0.4474, 1.2852, -0.7894)]
+                    uniform token subdivisionScheme = "none"
+                }
+            }
+
+            def Xform "Case" (
+                prepend references = @./parts/cyc_a.usda@
+            )
+            {
+                matrix4d xformOp:transform = ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (-0.27, 0.75, -0.6, 1) )
+                uniform token[] xformOpOrder = ["xformOp:transform"]
+
+                over "Vase" (
+                    kind = "group"
+                )
+                {
+                }
+            }
+        }
+
+        def Xform "inhcycle" (
+            kind = "group"
+        )
+        {
+            matrix4d xformOp:transform = ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0.84, 0, 0, 1) )
+            uniform token[] xformOpOrder = ["xformOp:transform"]
+
+            def Mesh "Pedestal" (
+                prepend apiSchemas = ["MaterialBindingAPI"]
+            )
+            {
+                float3[] extent = [(-0.525, 0, -1), (0.525, 0.75, -0.2)]
+                int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+                int[] faceVertexIndices = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23]
+                rel material:binding = </Exhibit/Looks/pedestal>
+                point3f[] points = [(-0.525, 0, -0.2), (0.525, 0, -0.2), (0.525, 0.75, -0.2), (-0.525, 0.75, -0.2), (0.525, 0, -1), (-0.525, 0, -1), (-0.525, 0.75, -1), (0.525, 0.75, -1), (-0.525, 0.75, -0.2), (0.525, 0.75, -0.2), (0.525, 0.75, -1), (-0.525, 0.75, -1), (-0.525, 0, -1), (0.525, 0, -1), (0.525, 0, -0.2), (-0.525, 0, -0.2), (0.525, 0, -0.2), (0.525, 0, -1), (0.525, 0.75, -1), (0.525, 0.75, -0.2), (-0.525, 0, -1), (-0.525, 0, -0.2), (-0.525, 0.75, -0.2), (-0.525, 0.75, -1)]
+                uniform token subdivisionScheme = "none"
+            }
+
+            def Mesh "Label" (
+                prepend apiSchemas = ["MaterialBindingAPI"]
+            )
+            {
+                uniform bool doubleSided = 1
+                float3[] extent = [(-0.30431283, 0.4344327, -0.194), (0.30431283, 0.5498173, -0.194)]
+                int[] faceVertexCounts = [4]
+                int[] faceVertexIndices = [0, 1, 2, 3]
+                rel material:binding = </Exhibit/Looks/inhcycle_Label>
+                normal3f[] normals = [(0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1)] (
+                    interpolation = "vertex"
+                )
+                point3f[] points = [(-0.30431283, 0.4344327, -0.194), (0.30431283, 0.4344327, -0.194), (0.30431283, 0.5498173, -0.194), (-0.30431283, 0.5498173, -0.194)]
+                color3f[] primvars:displayColor = [(0.9, 0.75, 0.1)]
+                texCoord2f[] primvars:st = [(0, 0), (1, 0), (1, 1), (0, 1)] (
+                    interpolation = "vertex"
+                )
+                uniform token subdivisionScheme = "none"
+            }
+
+            def Mesh "Sub" (
+                prepend apiSchemas = ["MaterialBindingAPI"]
+            )
+            {
+                uniform bool doubleSided = 1
+                float3[] extent = [(-0.4456468, 0.34297085, -0.194), (0.4456468, 0.42630416, -0.194)]
+                int[] faceVertexCounts = [4]
+                int[] faceVertexIndices = [0, 1, 2, 3]
+                rel material:binding = </Exhibit/Looks/inhcycle_Sub>
+                normal3f[] normals = [(0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1)] (
+                    interpolation = "vertex"
+                )
+                point3f[] points = [(-0.4456468, 0.34297085, -0.194), (0.4456468, 0.34297085, -0.194), (0.4456468, 0.42630416, -0.194), (-0.4456468, 0.42630416, -0.194)]
+                color3f[] primvars:displayColor = [(0.9, 0.75, 0.1)]
+                texCoord2f[] primvars:st = [(0, 0), (1, 0), (1, 1), (0, 1)] (
+                    interpolation = "vertex"
+                )
+                uniform token subdivisionScheme = "none"
+            }
+
+            def Xform "Ghost" (
+                instanceable = true
+                prepend references = @./parts/ghost.usda@
+            )
+            {
+                matrix4d xformOp:transform = ( (1.248, 0, 0, 0), (0, 1.248, 0, 0), (0, 0, 1.248, 0), (-0.27, 0.751, -0.6, 1) )
+                uniform token[] xformOpOrder = ["xformOp:transform"]
+            }
+
+            def Xform "Slots"
+            {
+                def Mesh "Tag" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    float3[] extent = [(-0.103, 0.752, -0.408), (0.103, 0.944, -0.202)]
+                    int[] faceVertexCounts = [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4]
+                    int[] faceVertexIndices = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183, 184, 185, 186, 187, 188, 189, 190, 191, 192, 193, 194, 195, 196, 197, 198, 199, 200, 201, 202, 203, 204, 205, 206, 207, 208, 209, 210, 211, 212, 213, 214, 215, 216, 217, 218, 219, 220, 221, 222, 223, 224, 225, 226, 227, 228, 229, 230, 231, 232, 233, 234, 235, 236, 237, 238, 239, 240, 241, 242, 243, 244, 245, 246, 247, 248, 249, 250, 251, 252, 253, 254, 255, 256, 257, 258, 259, 260, 261, 262, 263, 264, 265, 266, 267, 268, 269, 270, 271, 272, 273, 274, 275, 276, 277, 278, 279, 280, 281, 282, 283, 284, 285, 286, 287]
+                    rel material:binding = </Exhibit/Looks/outline>
+                    normal3f[] normals = [(1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 0, -1)] (
+                        interpolation = "faceVarying"
+                    )
+                    point3f[] points = [(0.103, 0.752, -0.408), (0.103, 0.76, -0.408), (0.103, 0.76, -0.4), (0.103, 0.752, -0.4), (-0.103, 0.752, -0.4), (-0.103, 0.76, -0.4), (-0.103, 0.76, -0.408), (-0.103, 0.752, -0.408), (-0.103, 0.76, -0.408), (-0.103, 0.76, -0.4), (0.103, 0.76, -0.4), (0.103, 0.76, -0.408), (0.103, 0.752, -0.408), (0.103, 0.752, -0.4), (-0.103, 0.752, -0.4), (-0.103, 0.752, -0.408), (-0.103, 0.752, -0.4), (0.103, 0.752, -0.4), (0.103, 0.76, -0.4), (-0.103, 0.76, -0.4), (-0.103, 0.76, -0.408), (0.103, 0.76, -0.408), (0.103, 0.752, -0.408), (-0.103, 0.752, -0.408), (0.103, 0.752, -0.21), (0.103, 0.76, -0.21), (0.103, 0.76, -0.202), (0.103, 0.752, -0.202), (-0.103, 0.752, -0.202), (-0.103, 0.76, -0.202), (-0.103, 0.76, -0.21), (-0.103, 0.752, -0.21), (-0.103, 0.76, -0.21), (-0.103, 0.76, -0.202), (0.103, 0.76, -0.202), (0.103, 0.76, -0.21), (0.103, 0.752, -0.21), (0.103, 0.752, -0.202), (-0.103, 0.752, -0.202), (-0.103, 0.752, -0.21), (-0.103, 0.752, -0.202), (0.103, 0.752, -0.202), (0.103, 0.76, -0.202), (-0.103, 0.76, -0.202), (-0.103, 0.76, -0.21), (0.103, 0.76, -0.21), (0.103, 0.752, -0.21), (-0.103, 0.752, -0.21), (0.103, 0.936, -0.408), (0.103, 0.944, -0.408), (0.103, 0.944, -0.4), (0.103, 0.936, -0.4), (-0.103, 0.936, -0.4), (-0.103, 0.944, -0.4), (-0.103, 0.944, -0.408), (-0.103, 0.936, -0.408), (-0.103, 0.944, -0.408), (-0.103, 0.944, -0.4), (0.103, 0.944, -0.4), (0.103, 0.944, -0.408), (0.103, 0.936, -0.408), (0.103, 0.936, -0.4), (-0.103, 0.936, -0.4), (-0.103, 0.936, -0.408), (-0.103, 0.936, -0.4), (0.103, 0.936, -0.4), (0.103, 0.944, -0.4), (-0.103, 0.944, -0.4), (-0.103, 0.944, -0.408), (0.103, 0.944, -0.408), (0.103, 0.936, -0.408), (-0.103, 0.936, -0.408), (0.103, 0.936, -0.21), (0.103, 0.944, -0.21), (0.103, 0.944, -0.202), (0.103, 0.936, -0.202), (-0.103, 0.936, -0.202), (-0.103, 0.944, -0.202), (-0.103, 0.944, -0.21), (-0.103, 0.936, -0.21), (-0.103, 0.944, -0.21), (-0.103, 0.944, -0.202), (0.103, 0.944, -0.202), (0.103, 0.944, -0.21), (0.103, 0.936, -0.21), (0.103, 0.936, -0.202), (-0.103, 0.936, -0.202), (-0.103, 0.936, -0.21), (-0.103, 0.936, -0.202), (0.103, 0.936, -0.202), (0.103, 0.944, -0.202), (-0.103, 0.944, -0.202), (-0.103, 0.944, -0.21), (0.103, 0.944, -0.21), (0.103, 0.936, -0.21), (-0.103, 0.936, -0.21), (-0.095, 0.752, -0.408), (-0.095, 0.944, -0.408), (-0.095, 0.944, -0.4), (-0.095, 0.752, -0.4), (-0.103, 0.752, -0.4), (-0.103, 0.944, -0.4), (-0.103, 0.944, -0.408), (-0.103, 0.752, -0.408), (-0.103, 0.944, -0.408), (-0.103, 0.944, -0.4), (-0.095, 0.944, -0.4), (-0.095, 0.944, -0.408), (-0.095, 0.752, -0.408), (-0.095, 0.752, -0.4), (-0.103, 0.752, -0.4), (-0.103, 0.752, -0.408), (-0.103, 0.752, -0.4), (-0.095, 0.752, -0.4), (-0.095, 0.944, -0.4), (-0.103, 0.944, -0.4), (-0.103, 0.944, -0.408), (-0.095, 0.944, -0.408), (-0.095, 0.752, -0.408), (-0.103, 0.752, -0.408), (-0.095, 0.752, -0.21), (-0.095, 0.944, -0.21), (-0.095, 0.944, -0.202), (-0.095, 0.752, -0.202), (-0.103, 0.752, -0.202), (-0.103, 0.944, -0.202), (-0.103, 0.944, -0.21), (-0.103, 0.752, -0.21), (-0.103, 0.944, -0.21), (-0.103, 0.944, -0.202), (-0.095, 0.944, -0.202), (-0.095, 0.944, -0.21), (-0.095, 0.752, -0.21), (-0.095, 0.752, -0.202), (-0.103, 0.752, -0.202), (-0.103, 0.752, -0.21), (-0.103, 0.752, -0.202), (-0.095, 0.752, -0.202), (-0.095, 0.944, -0.202), (-0.103, 0.944, -0.202), (-0.103, 0.944, -0.21), (-0.095, 0.944, -0.21), (-0.095, 0.752, -0.21), (-0.103, 0.752, -0.21), (-0.095, 0.752, -0.408), (-0.095, 0.76, -0.408), (-0.095, 0.76, -0.202), (-0.095, 0.752, -0.202), (-0.103, 0.752, -0.202), (-0.103, 0.76, -0.202), (-0.103, 0.76, -0.408), (-0.103, 0.752, -0.408), (-0.103, 0.76, -0.408), (-0.103, 0.76, -0.202), (-0.095, 0.76, -0.202), (-0.095, 0.76, -0.408), (-0.095, 0.752, -0.408), (-0.095, 0.752, -0.202), (-0.103, 0.752, -0.202), (-0.103, 0.752, -0.408), (-0.103, 0.752, -0.202), (-0.095, 0.752, -0.202), (-0.095, 0.76, -0.202), (-0.103, 0.76, -0.202), (-0.103, 0.76, -0.408), (-0.095, 0.76, -0.408), (-0.095, 0.752, -0.408), (-0.103, 0.752, -0.408), (-0.095, 0.936, -0.408), (-0.095, 0.944, -0.408), (-0.095, 0.944, -0.202), (-0.095, 0.936, -0.202), (-0.103, 0.936, -0.202), (-0.103, 0.944, -0.202), (-0.103, 0.944, -0.408), (-0.103, 0.936, -0.408), (-0.103, 0.944, -0.408), (-0.103, 0.944, -0.202), (-0.095, 0.944, -0.202), (-0.095, 0.944, -0.408), (-0.095, 0.936, -0.408), (-0.095, 0.936, -0.202), (-0.103, 0.936, -0.202), (-0.103, 0.936, -0.408), (-0.103, 0.936, -0.202), (-0.095, 0.936, -0.202), (-0.095, 0.944, -0.202), (-0.103, 0.944, -0.202), (-0.103, 0.944, -0.408), (-0.095, 0.944, -0.408), (-0.095, 0.936, -0.408), (-0.103, 0.936, -0.408), (0.103, 0.752, -0.408), (0.103, 0.944, -0.408), (0.103, 0.944, -0.4), (0.103, 0.752, -0.4), (0.095, 0.752, -0.4), (0.095, 0.944, -0.4), (0.095, 0.944, -0.408), (0.095, 0.752, -0.408), (0.095, 0.944, -0.408), (0.095, 0.944, -0.4), (0.103, 0.944, -0.4), (0.103, 0.944, -0.408), (0.103, 0.752, -0.408), (0.103, 0.752, -0.4), (0.095, 0.752, -0.4), (0.095, 0.752, -0.408), (0.095, 0.752, -0.4), (0.103, 0.752, -0.4), (0.103, 0.944, -0.4), (0.095, 0.944, -0.4), (0.095, 0.944, -0.408), (0.103, 0.944, -0.408), (0.103, 0.752, -0.408), (0.095, 0.752, -0.408), (0.103, 0.752, -0.21), (0.103, 0.944, -0.21), (0.103, 0.944, -0.202), (0.103, 0.752, -0.202), (0.095, 0.752, -0.202), (0.095, 0.944, -0.202), (0.095, 0.944, -0.21), (0.095, 0.752, -0.21), (0.095, 0.944, -0.21), (0.095, 0.944, -0.202), (0.103, 0.944, -0.202), (0.103, 0.944, -0.21), (0.103, 0.752, -0.21), (0.103, 0.752, -0.202), (0.095, 0.752, -0.202), (0.095, 0.752, -0.21), (0.095, 0.752, -0.202), (0.103, 0.752, -0.202), (0.103, 0.944, -0.202), (0.095, 0.944, -0.202), (0.095, 0.944, -0.21), (0.103, 0.944, -0.21), (0.103, 0.752, -0.21), (0.095, 0.752, -0.21), (0.103, 0.752, -0.408), (0.103, 0.76, -0.408), (0.103, 0.76, -0.202), (0.103, 0.752, -0.202), (0.095, 0.752, -0.202), (0.095, 0.76, -0.202), (0.095, 0.76, -0.408), (0.095, 0.752, -0.408), (0.095, 0.76, -0.408), (0.095, 0.76, -0.202), (0.103, 0.76, -0.202), (0.103, 0.76, -0.408), (0.103, 0.752, -0.408), (0.103, 0.752, -0.202), (0.095, 0.752, -0.202), (0.095, 0.752, -0.408), (0.095, 0.752, -0.202), (0.103, 0.752, -0.202), (0.103, 0.76, -0.202), (0.095, 0.76, -0.202), (0.095, 0.76, -0.408), (0.103, 0.76, -0.408), (0.103, 0.752, -0.408), (0.095, 0.752, -0.408), (0.103, 0.936, -0.408), (0.103, 0.944, -0.408), (0.103, 0.944, -0.202), (0.103, 0.936, -0.202), (0.095, 0.936, -0.202), (0.095, 0.944, -0.202), (0.095, 0.944, -0.408), (0.095, 0.936, -0.408), (0.095, 0.944, -0.408), (0.095, 0.944, -0.202), (0.103, 0.944, -0.202), (0.103, 0.944, -0.408), (0.103, 0.936, -0.408), (0.103, 0.936, -0.202), (0.095, 0.936, -0.202), (0.095, 0.936, -0.408), (0.095, 0.936, -0.202), (0.103, 0.936, -0.202), (0.103, 0.944, -0.202), (0.095, 0.944, -0.202), (0.095, 0.944, -0.408), (0.103, 0.944, -0.408), (0.103, 0.936, -0.408), (0.095, 0.936, -0.408)]
+                    uniform token subdivisionScheme = "none"
+                }
+            }
+
+            def Xform "Red"
+            {
+                def Mesh "StaysEmpty" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    float3[] extent = [(0.0806, 0.748, -0.7894), (0.4594, 1.2972, -0.4106)]
+                    int[] faceVertexCounts = [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4]
+                    int[] faceVertexIndices = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183, 184, 185, 186, 187, 188, 189, 190, 191, 192, 193, 194, 195, 196, 197, 198, 199, 200, 201, 202, 203, 204, 205, 206, 207, 208, 209, 210, 211, 212, 213, 214, 215, 216, 217, 218, 219, 220, 221, 222, 223, 224, 225, 226, 227, 228, 229, 230, 231, 232, 233, 234, 235, 236, 237, 238, 239, 240, 241, 242, 243, 244, 245, 246, 247, 248, 249, 250, 251, 252, 253, 254, 255, 256, 257, 258, 259, 260, 261, 262, 263, 264, 265, 266, 267, 268, 269, 270, 271, 272, 273, 274, 275, 276, 277, 278, 279, 280, 281, 282, 283, 284, 285, 286, 287]
+                    rel material:binding = </Exhibit/Looks/outline_red>
+                    normal3f[] normals = [(1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 0, -1)] (
+                        interpolation = "faceVarying"
+                    )
+                    point3f[] points = [(0.4594, 0.748, -0.7894), (0.4594, 0.76, -0.7894), (0.4594, 0.76, -0.7774), (0.4594, 0.748, -0.7774), (0.0806, 0.748, -0.7774), (0.0806, 0.76, -0.7774), (0.0806, 0.76, -0.7894), (0.0806, 0.748, -0.7894), (0.0806, 0.76, -0.7894), (0.0806, 0.76, -0.7774), (0.4594, 0.76, -0.7774), (0.4594, 0.76, -0.7894), (0.4594, 0.748, -0.7894), (0.4594, 0.748, -0.7774), (0.0806, 0.748, -0.7774), (0.0806, 0.748, -0.7894), (0.0806, 0.748, -0.7774), (0.4594, 0.748, -0.7774), (0.4594, 0.76, -0.7774), (0.0806, 0.76, -0.7774), (0.0806, 0.76, -0.7894), (0.4594, 0.76, -0.7894), (0.4594, 0.748, -0.7894), (0.0806, 0.748, -0.7894), (0.4594, 0.748, -0.4226), (0.4594, 0.76, -0.4226), (0.4594, 0.76, -0.4106), (0.4594, 0.748, -0.4106), (0.0806, 0.748, -0.4106), (0.0806, 0.76, -0.4106), (0.0806, 0.76, -0.4226), (0.0806, 0.748, -0.4226), (0.0806, 0.76, -0.4226), (0.0806, 0.76, -0.4106), (0.4594, 0.76, -0.4106), (0.4594, 0.76, -0.4226), (0.4594, 0.748, -0.4226), (0.4594, 0.748, -0.4106), (0.0806, 0.748, -0.4106), (0.0806, 0.748, -0.4226), (0.0806, 0.748, -0.4106), (0.4594, 0.748, -0.4106), (0.4594, 0.76, -0.4106), (0.0806, 0.76, -0.4106), (0.0806, 0.76, -0.4226), (0.4594, 0.76, -0.4226), (0.4594, 0.748, -0.4226), (0.0806, 0.748, -0.4226), (0.4594, 1.2852, -0.7894), (0.4594, 1.2972, -0.7894), (0.4594, 1.2972, -0.7774), (0.4594, 1.2852, -0.7774), (0.0806, 1.2852, -0.7774), (0.0806, 1.2972, -0.7774), (0.0806, 1.2972, -0.7894), (0.0806, 1.2852, -0.7894), (0.0806, 1.2972, -0.7894), (0.0806, 1.2972, -0.7774), (0.4594, 1.2972, -0.7774), (0.4594, 1.2972, -0.7894), (0.4594, 1.2852, -0.7894), (0.4594, 1.2852, -0.7774), (0.0806, 1.2852, -0.7774), (0.0806, 1.2852, -0.7894), (0.0806, 1.2852, -0.7774), (0.4594, 1.2852, -0.7774), (0.4594, 1.2972, -0.7774), (0.0806, 1.2972, -0.7774), (0.0806, 1.2972, -0.7894), (0.4594, 1.2972, -0.7894), (0.4594, 1.2852, -0.7894), (0.0806, 1.2852, -0.7894), (0.4594, 1.2852, -0.4226), (0.4594, 1.2972, -0.4226), (0.4594, 1.2972, -0.4106), (0.4594, 1.2852, -0.4106), (0.0806, 1.2852, -0.4106), (0.0806, 1.2972, -0.4106), (0.0806, 1.2972, -0.4226), (0.0806, 1.2852, -0.4226), (0.0806, 1.2972, -0.4226), (0.0806, 1.2972, -0.4106), (0.4594, 1.2972, -0.4106), (0.4594, 1.2972, -0.4226), (0.4594, 1.2852, -0.4226), (0.4594, 1.2852, -0.4106), (0.0806, 1.2852, -0.4106), (0.0806, 1.2852, -0.4226), (0.0806, 1.2852, -0.4106), (0.4594, 1.2852, -0.4106), (0.4594, 1.2972, -0.4106), (0.0806, 1.2972, -0.4106), (0.0806, 1.2972, -0.4226), (0.4594, 1.2972, -0.4226), (0.4594, 1.2852, -0.4226), (0.0806, 1.2852, -0.4226), (0.0926, 0.748, -0.7894), (0.0926, 1.2972, -0.7894), (0.0926, 1.2972, -0.7774), (0.0926, 0.748, -0.7774), (0.0806, 0.748, -0.7774), (0.0806, 1.2972, -0.7774), (0.0806, 1.2972, -0.7894), (0.0806, 0.748, -0.7894), (0.0806, 1.2972, -0.7894), (0.0806, 1.2972, -0.7774), (0.0926, 1.2972, -0.7774), (0.0926, 1.2972, -0.7894), (0.0926, 0.748, -0.7894), (0.0926, 0.748, -0.7774), (0.0806, 0.748, -0.7774), (0.0806, 0.748, -0.7894), (0.0806, 0.748, -0.7774), (0.0926, 0.748, -0.7774), (0.0926, 1.2972, -0.7774), (0.0806, 1.2972, -0.7774), (0.0806, 1.2972, -0.7894), (0.0926, 1.2972, -0.7894), (0.0926, 0.748, -0.7894), (0.0806, 0.748, -0.7894), (0.0926, 0.748, -0.4226), (0.0926, 1.2972, -0.4226), (0.0926, 1.2972, -0.4106), (0.0926, 0.748, -0.4106), (0.0806, 0.748, -0.4106), (0.0806, 1.2972, -0.4106), (0.0806, 1.2972, -0.4226), (0.0806, 0.748, -0.4226), (0.0806, 1.2972, -0.4226), (0.0806, 1.2972, -0.4106), (0.0926, 1.2972, -0.4106), (0.0926, 1.2972, -0.4226), (0.0926, 0.748, -0.4226), (0.0926, 0.748, -0.4106), (0.0806, 0.748, -0.4106), (0.0806, 0.748, -0.4226), (0.0806, 0.748, -0.4106), (0.0926, 0.748, -0.4106), (0.0926, 1.2972, -0.4106), (0.0806, 1.2972, -0.4106), (0.0806, 1.2972, -0.4226), (0.0926, 1.2972, -0.4226), (0.0926, 0.748, -0.4226), (0.0806, 0.748, -0.4226), (0.0926, 0.748, -0.7894), (0.0926, 0.76, -0.7894), (0.0926, 0.76, -0.4106), (0.0926, 0.748, -0.4106), (0.0806, 0.748, -0.4106), (0.0806, 0.76, -0.4106), (0.0806, 0.76, -0.7894), (0.0806, 0.748, -0.7894), (0.0806, 0.76, -0.7894), (0.0806, 0.76, -0.4106), (0.0926, 0.76, -0.4106), (0.0926, 0.76, -0.7894), (0.0926, 0.748, -0.7894), (0.0926, 0.748, -0.4106), (0.0806, 0.748, -0.4106), (0.0806, 0.748, -0.7894), (0.0806, 0.748, -0.4106), (0.0926, 0.748, -0.4106), (0.0926, 0.76, -0.4106), (0.0806, 0.76, -0.4106), (0.0806, 0.76, -0.7894), (0.0926, 0.76, -0.7894), (0.0926, 0.748, -0.7894), (0.0806, 0.748, -0.7894), (0.0926, 1.2852, -0.7894), (0.0926, 1.2972, -0.7894), (0.0926, 1.2972, -0.4106), (0.0926, 1.2852, -0.4106), (0.0806, 1.2852, -0.4106), (0.0806, 1.2972, -0.4106), (0.0806, 1.2972, -0.7894), (0.0806, 1.2852, -0.7894), (0.0806, 1.2972, -0.7894), (0.0806, 1.2972, -0.4106), (0.0926, 1.2972, -0.4106), (0.0926, 1.2972, -0.7894), (0.0926, 1.2852, -0.7894), (0.0926, 1.2852, -0.4106), (0.0806, 1.2852, -0.4106), (0.0806, 1.2852, -0.7894), (0.0806, 1.2852, -0.4106), (0.0926, 1.2852, -0.4106), (0.0926, 1.2972, -0.4106), (0.0806, 1.2972, -0.4106), (0.0806, 1.2972, -0.7894), (0.0926, 1.2972, -0.7894), (0.0926, 1.2852, -0.7894), (0.0806, 1.2852, -0.7894), (0.4594, 0.748, -0.7894), (0.4594, 1.2972, -0.7894), (0.4594, 1.2972, -0.7774), (0.4594, 0.748, -0.7774), (0.4474, 0.748, -0.7774), (0.4474, 1.2972, -0.7774), (0.4474, 1.2972, -0.7894), (0.4474, 0.748, -0.7894), (0.4474, 1.2972, -0.7894), (0.4474, 1.2972, -0.7774), (0.4594, 1.2972, -0.7774), (0.4594, 1.2972, -0.7894), (0.4594, 0.748, -0.7894), (0.4594, 0.748, -0.7774), (0.4474, 0.748, -0.7774), (0.4474, 0.748, -0.7894), (0.4474, 0.748, -0.7774), (0.4594, 0.748, -0.7774), (0.4594, 1.2972, -0.7774), (0.4474, 1.2972, -0.7774), (0.4474, 1.2972, -0.7894), (0.4594, 1.2972, -0.7894), (0.4594, 0.748, -0.7894), (0.4474, 0.748, -0.7894), (0.4594, 0.748, -0.4226), (0.4594, 1.2972, -0.4226), (0.4594, 1.2972, -0.4106), (0.4594, 0.748, -0.4106), (0.4474, 0.748, -0.4106), (0.4474, 1.2972, -0.4106), (0.4474, 1.2972, -0.4226), (0.4474, 0.748, -0.4226), (0.4474, 1.2972, -0.4226), (0.4474, 1.2972, -0.4106), (0.4594, 1.2972, -0.4106), (0.4594, 1.2972, -0.4226), (0.4594, 0.748, -0.4226), (0.4594, 0.748, -0.4106), (0.4474, 0.748, -0.4106), (0.4474, 0.748, -0.4226), (0.4474, 0.748, -0.4106), (0.4594, 0.748, -0.4106), (0.4594, 1.2972, -0.4106), (0.4474, 1.2972, -0.4106), (0.4474, 1.2972, -0.4226), (0.4594, 1.2972, -0.4226), (0.4594, 0.748, -0.4226), (0.4474, 0.748, -0.4226), (0.4594, 0.748, -0.7894), (0.4594, 0.76, -0.7894), (0.4594, 0.76, -0.4106), (0.4594, 0.748, -0.4106), (0.4474, 0.748, -0.4106), (0.4474, 0.76, -0.4106), (0.4474, 0.76, -0.7894), (0.4474, 0.748, -0.7894), (0.4474, 0.76, -0.7894), (0.4474, 0.76, -0.4106), (0.4594, 0.76, -0.4106), (0.4594, 0.76, -0.7894), (0.4594, 0.748, -0.7894), (0.4594, 0.748, -0.4106), (0.4474, 0.748, -0.4106), (0.4474, 0.748, -0.7894), (0.4474, 0.748, -0.4106), (0.4594, 0.748, -0.4106), (0.4594, 0.76, -0.4106), (0.4474, 0.76, -0.4106), (0.4474, 0.76, -0.7894), (0.4594, 0.76, -0.7894), (0.4594, 0.748, -0.7894), (0.4474, 0.748, -0.7894), (0.4594, 1.2852, -0.7894), (0.4594, 1.2972, -0.7894), (0.4594, 1.2972, -0.4106), (0.4594, 1.2852, -0.4106), (0.4474, 1.2852, -0.4106), (0.4474, 1.2972, -0.4106), (0.4474, 1.2972, -0.7894), (0.4474, 1.2852, -0.7894), (0.4474, 1.2972, -0.7894), (0.4474, 1.2972, -0.4106), (0.4594, 1.2972, -0.4106), (0.4594, 1.2972, -0.7894), (0.4594, 1.2852, -0.7894), (0.4594, 1.2852, -0.4106), (0.4474, 1.2852, -0.4106), (0.4474, 1.2852, -0.7894), (0.4474, 1.2852, -0.4106), (0.4594, 1.2852, -0.4106), (0.4594, 1.2972, -0.4106), (0.4474, 1.2972, -0.4106), (0.4474, 1.2972, -0.7894), (0.4594, 1.2972, -0.7894), (0.4594, 1.2852, -0.7894), (0.4474, 1.2852, -0.7894)]
+                    uniform token subdivisionScheme = "none"
+                }
+            }
+
+            def Xform "Case" (
+                kind = "group"
+            )
+            {
+                matrix4d xformOp:transform = ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (-0.27, 0.75, -0.6, 1) )
+                uniform token[] xformOpOrder = ["xformOp:transform"]
+
+                def Xform "Vase" (
+                    kind = "group"
+                )
+                {
+                    color3f[] primvars:displayColor = [(0.91309863, 0.22322796, 0.030713445)] (
+                        interpolation = "constant"
+                    )
+                    matrix4d xformOp:transform = ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 0, 1) )
+                    uniform token[] xformOpOrder = ["xformOp:transform"]
+
+                    def Xform "Body" (
+                        instanceable = true
+                        prepend references = @./parts/vase.usda@
+                    )
+                    {
+                        matrix4d xformOp:transform = ( (1.2, 0, 0, 0), (0, 1.2, 0, 0), (0, 0, 1.2, 0), (0, 0.003, 0, 1) )
+                        uniform token[] xformOpOrder = ["xformOp:transform"]
+                    }
+                }
+
+                def Xform "Child" (
+                    prepend inherits = [
+                        </Exhibit/Pieces/inhcycle/Case>,
+                        </Exhibit/_Classes/Tagged>
+                    ]
+                )
+                {
+                    matrix4d xformOp:transform = ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0.54, 0, 0, 1) )
+                    uniform token[] xformOpOrder = ["xformOp:transform"]
+                }
+            }
+        }
+
+        def Xform "sublayer" (
+            kind = "group"
+        )
+        {
+            matrix4d xformOp:transform = ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (1.97, 0, 0, 1) )
+            uniform token[] xformOpOrder = ["xformOp:transform"]
+
+            def Mesh "Pedestal" (
+                prepend apiSchemas = ["MaterialBindingAPI"]
+            )
+            {
+                float3[] extent = [(-0.425, 0, -1), (0.425, 0.75, -0.2)]
+                int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+                int[] faceVertexIndices = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23]
+                rel material:binding = </Exhibit/Looks/pedestal>
+                point3f[] points = [(-0.425, 0, -0.2), (0.425, 0, -0.2), (0.425, 0.75, -0.2), (-0.425, 0.75, -0.2), (0.425, 0, -1), (-0.425, 0, -1), (-0.425, 0.75, -1), (0.425, 0.75, -1), (-0.425, 0.75, -0.2), (0.425, 0.75, -0.2), (0.425, 0.75, -1), (-0.425, 0.75, -1), (-0.425, 0, -1), (0.425, 0, -1), (0.425, 0, -0.2), (-0.425, 0, -0.2), (0.425, 0, -0.2), (0.425, 0, -1), (0.425, 0.75, -1), (0.425, 0.75, -0.2), (-0.425, 0, -1), (-0.425, 0, -0.2), (-0.425, 0.75, -0.2), (-0.425, 0.75, -1)]
+                uniform token subdivisionScheme = "none"
+            }
+
+            def Mesh "Label" (
+                prepend apiSchemas = ["MaterialBindingAPI"]
+            )
+            {
+                uniform bool doubleSided = 1
+                float3[] extent = [(-0.3563634, 0.4344327, -0.194), (0.3563634, 0.5498173, -0.194)]
+                int[] faceVertexCounts = [4]
+                int[] faceVertexIndices = [0, 1, 2, 3]
+                rel material:binding = </Exhibit/Looks/sublayer_Label>
+                normal3f[] normals = [(0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1)] (
+                    interpolation = "vertex"
+                )
+                point3f[] points = [(-0.3563634, 0.4344327, -0.194), (0.3563634, 0.4344327, -0.194), (0.3563634, 0.5498173, -0.194), (-0.3563634, 0.5498173, -0.194)]
+                color3f[] primvars:displayColor = [(0.9, 0.75, 0.1)]
+                texCoord2f[] primvars:st = [(0, 0), (1, 0), (1, 1), (0, 1)] (
+                    interpolation = "vertex"
+                )
+                uniform token subdivisionScheme = "none"
+            }
+
+            def Mesh "Sub" (
+                prepend apiSchemas = ["MaterialBindingAPI"]
+            )
+            {
+                uniform bool doubleSided = 1
+                float3[] extent = [(-0.36127746, 0.34297085, -0.194), (0.36127746, 0.42630416, -0.194)]
+                int[] faceVertexCounts = [4]
+                int[] faceVertexIndices = [0, 1, 2, 3]
+                rel material:binding = </Exhibit/Looks/sublayer_Sub>
+                normal3f[] normals = [(0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1)] (
+                    interpolation = "vertex"
+                )
+                point3f[] points = [(-0.36127746, 0.34297085, -0.194), (0.36127746, 0.34297085, -0.194), (0.36127746, 0.42630416, -0.194), (-0.36127746, 0.42630416, -0.194)]
+                color3f[] primvars:displayColor = [(0.9, 0.75, 0.1)]
+                texCoord2f[] primvars:st = [(0, 0), (1, 0), (1, 1), (0, 1)] (
+                    interpolation = "vertex"
+                )
+                uniform token subdivisionScheme = "none"
+            }
+
+            def Xform "Ghost" (
+                instanceable = true
+                prepend references = @./parts/ghost.usda@
+            )
+            {
+                matrix4d xformOp:transform = ( (1.248, 0, 0, 0), (0, 1.248, 0, 0), (0, 0, 1.248, 0), (-0.17, 0.751, -0.6, 1) )
+                uniform token[] xformOpOrder = ["xformOp:transform"]
+            }
+
+            def Xform "Slots"
+            {
+                def Mesh "Tag" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    float3[] extent = [(0.117, 0.752, -0.703), (0.323, 0.944, -0.497)]
+                    int[] faceVertexCounts = [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4]
+                    int[] faceVertexIndices = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183, 184, 185, 186, 187, 188, 189, 190, 191, 192, 193, 194, 195, 196, 197, 198, 199, 200, 201, 202, 203, 204, 205, 206, 207, 208, 209, 210, 211, 212, 213, 214, 215, 216, 217, 218, 219, 220, 221, 222, 223, 224, 225, 226, 227, 228, 229, 230, 231, 232, 233, 234, 235, 236, 237, 238, 239, 240, 241, 242, 243, 244, 245, 246, 247, 248, 249, 250, 251, 252, 253, 254, 255, 256, 257, 258, 259, 260, 261, 262, 263, 264, 265, 266, 267, 268, 269, 270, 271, 272, 273, 274, 275, 276, 277, 278, 279, 280, 281, 282, 283, 284, 285, 286, 287]
+                    rel material:binding = </Exhibit/Looks/outline>
+                    normal3f[] normals = [(1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 0, -1)] (
+                        interpolation = "faceVarying"
+                    )
+                    point3f[] points = [(0.323, 0.752, -0.703), (0.323, 0.76, -0.703), (0.323, 0.76, -0.695), (0.323, 0.752, -0.695), (0.117, 0.752, -0.695), (0.117, 0.76, -0.695), (0.117, 0.76, -0.703), (0.117, 0.752, -0.703), (0.117, 0.76, -0.703), (0.117, 0.76, -0.695), (0.323, 0.76, -0.695), (0.323, 0.76, -0.703), (0.323, 0.752, -0.703), (0.323, 0.752, -0.695), (0.117, 0.752, -0.695), (0.117, 0.752, -0.703), (0.117, 0.752, -0.695), (0.323, 0.752, -0.695), (0.323, 0.76, -0.695), (0.117, 0.76, -0.695), (0.117, 0.76, -0.703), (0.323, 0.76, -0.703), (0.323, 0.752, -0.703), (0.117, 0.752, -0.703), (0.323, 0.752, -0.505), (0.323, 0.76, -0.505), (0.323, 0.76, -0.497), (0.323, 0.752, -0.497), (0.117, 0.752, -0.497), (0.117, 0.76, -0.497), (0.117, 0.76, -0.505), (0.117, 0.752, -0.505), (0.117, 0.76, -0.505), (0.117, 0.76, -0.497), (0.323, 0.76, -0.497), (0.323, 0.76, -0.505), (0.323, 0.752, -0.505), (0.323, 0.752, -0.497), (0.117, 0.752, -0.497), (0.117, 0.752, -0.505), (0.117, 0.752, -0.497), (0.323, 0.752, -0.497), (0.323, 0.76, -0.497), (0.117, 0.76, -0.497), (0.117, 0.76, -0.505), (0.323, 0.76, -0.505), (0.323, 0.752, -0.505), (0.117, 0.752, -0.505), (0.323, 0.936, -0.703), (0.323, 0.944, -0.703), (0.323, 0.944, -0.695), (0.323, 0.936, -0.695), (0.117, 0.936, -0.695), (0.117, 0.944, -0.695), (0.117, 0.944, -0.703), (0.117, 0.936, -0.703), (0.117, 0.944, -0.703), (0.117, 0.944, -0.695), (0.323, 0.944, -0.695), (0.323, 0.944, -0.703), (0.323, 0.936, -0.703), (0.323, 0.936, -0.695), (0.117, 0.936, -0.695), (0.117, 0.936, -0.703), (0.117, 0.936, -0.695), (0.323, 0.936, -0.695), (0.323, 0.944, -0.695), (0.117, 0.944, -0.695), (0.117, 0.944, -0.703), (0.323, 0.944, -0.703), (0.323, 0.936, -0.703), (0.117, 0.936, -0.703), (0.323, 0.936, -0.505), (0.323, 0.944, -0.505), (0.323, 0.944, -0.497), (0.323, 0.936, -0.497), (0.117, 0.936, -0.497), (0.117, 0.944, -0.497), (0.117, 0.944, -0.505), (0.117, 0.936, -0.505), (0.117, 0.944, -0.505), (0.117, 0.944, -0.497), (0.323, 0.944, -0.497), (0.323, 0.944, -0.505), (0.323, 0.936, -0.505), (0.323, 0.936, -0.497), (0.117, 0.936, -0.497), (0.117, 0.936, -0.505), (0.117, 0.936, -0.497), (0.323, 0.936, -0.497), (0.323, 0.944, -0.497), (0.117, 0.944, -0.497), (0.117, 0.944, -0.505), (0.323, 0.944, -0.505), (0.323, 0.936, -0.505), (0.117, 0.936, -0.505), (0.125, 0.752, -0.703), (0.125, 0.944, -0.703), (0.125, 0.944, -0.695), (0.125, 0.752, -0.695), (0.117, 0.752, -0.695), (0.117, 0.944, -0.695), (0.117, 0.944, -0.703), (0.117, 0.752, -0.703), (0.117, 0.944, -0.703), (0.117, 0.944, -0.695), (0.125, 0.944, -0.695), (0.125, 0.944, -0.703), (0.125, 0.752, -0.703), (0.125, 0.752, -0.695), (0.117, 0.752, -0.695), (0.117, 0.752, -0.703), (0.117, 0.752, -0.695), (0.125, 0.752, -0.695), (0.125, 0.944, -0.695), (0.117, 0.944, -0.695), (0.117, 0.944, -0.703), (0.125, 0.944, -0.703), (0.125, 0.752, -0.703), (0.117, 0.752, -0.703), (0.125, 0.752, -0.505), (0.125, 0.944, -0.505), (0.125, 0.944, -0.497), (0.125, 0.752, -0.497), (0.117, 0.752, -0.497), (0.117, 0.944, -0.497), (0.117, 0.944, -0.505), (0.117, 0.752, -0.505), (0.117, 0.944, -0.505), (0.117, 0.944, -0.497), (0.125, 0.944, -0.497), (0.125, 0.944, -0.505), (0.125, 0.752, -0.505), (0.125, 0.752, -0.497), (0.117, 0.752, -0.497), (0.117, 0.752, -0.505), (0.117, 0.752, -0.497), (0.125, 0.752, -0.497), (0.125, 0.944, -0.497), (0.117, 0.944, -0.497), (0.117, 0.944, -0.505), (0.125, 0.944, -0.505), (0.125, 0.752, -0.505), (0.117, 0.752, -0.505), (0.125, 0.752, -0.703), (0.125, 0.76, -0.703), (0.125, 0.76, -0.497), (0.125, 0.752, -0.497), (0.117, 0.752, -0.497), (0.117, 0.76, -0.497), (0.117, 0.76, -0.703), (0.117, 0.752, -0.703), (0.117, 0.76, -0.703), (0.117, 0.76, -0.497), (0.125, 0.76, -0.497), (0.125, 0.76, -0.703), (0.125, 0.752, -0.703), (0.125, 0.752, -0.497), (0.117, 0.752, -0.497), (0.117, 0.752, -0.703), (0.117, 0.752, -0.497), (0.125, 0.752, -0.497), (0.125, 0.76, -0.497), (0.117, 0.76, -0.497), (0.117, 0.76, -0.703), (0.125, 0.76, -0.703), (0.125, 0.752, -0.703), (0.117, 0.752, -0.703), (0.125, 0.936, -0.703), (0.125, 0.944, -0.703), (0.125, 0.944, -0.497), (0.125, 0.936, -0.497), (0.117, 0.936, -0.497), (0.117, 0.944, -0.497), (0.117, 0.944, -0.703), (0.117, 0.936, -0.703), (0.117, 0.944, -0.703), (0.117, 0.944, -0.497), (0.125, 0.944, -0.497), (0.125, 0.944, -0.703), (0.125, 0.936, -0.703), (0.125, 0.936, -0.497), (0.117, 0.936, -0.497), (0.117, 0.936, -0.703), (0.117, 0.936, -0.497), (0.125, 0.936, -0.497), (0.125, 0.944, -0.497), (0.117, 0.944, -0.497), (0.117, 0.944, -0.703), (0.125, 0.944, -0.703), (0.125, 0.936, -0.703), (0.117, 0.936, -0.703), (0.323, 0.752, -0.703), (0.323, 0.944, -0.703), (0.323, 0.944, -0.695), (0.323, 0.752, -0.695), (0.315, 0.752, -0.695), (0.315, 0.944, -0.695), (0.315, 0.944, -0.703), (0.315, 0.752, -0.703), (0.315, 0.944, -0.703), (0.315, 0.944, -0.695), (0.323, 0.944, -0.695), (0.323, 0.944, -0.703), (0.323, 0.752, -0.703), (0.323, 0.752, -0.695), (0.315, 0.752, -0.695), (0.315, 0.752, -0.703), (0.315, 0.752, -0.695), (0.323, 0.752, -0.695), (0.323, 0.944, -0.695), (0.315, 0.944, -0.695), (0.315, 0.944, -0.703), (0.323, 0.944, -0.703), (0.323, 0.752, -0.703), (0.315, 0.752, -0.703), (0.323, 0.752, -0.505), (0.323, 0.944, -0.505), (0.323, 0.944, -0.497), (0.323, 0.752, -0.497), (0.315, 0.752, -0.497), (0.315, 0.944, -0.497), (0.315, 0.944, -0.505), (0.315, 0.752, -0.505), (0.315, 0.944, -0.505), (0.315, 0.944, -0.497), (0.323, 0.944, -0.497), (0.323, 0.944, -0.505), (0.323, 0.752, -0.505), (0.323, 0.752, -0.497), (0.315, 0.752, -0.497), (0.315, 0.752, -0.505), (0.315, 0.752, -0.497), (0.323, 0.752, -0.497), (0.323, 0.944, -0.497), (0.315, 0.944, -0.497), (0.315, 0.944, -0.505), (0.323, 0.944, -0.505), (0.323, 0.752, -0.505), (0.315, 0.752, -0.505), (0.323, 0.752, -0.703), (0.323, 0.76, -0.703), (0.323, 0.76, -0.497), (0.323, 0.752, -0.497), (0.315, 0.752, -0.497), (0.315, 0.76, -0.497), (0.315, 0.76, -0.703), (0.315, 0.752, -0.703), (0.315, 0.76, -0.703), (0.315, 0.76, -0.497), (0.323, 0.76, -0.497), (0.323, 0.76, -0.703), (0.323, 0.752, -0.703), (0.323, 0.752, -0.497), (0.315, 0.752, -0.497), (0.315, 0.752, -0.703), (0.315, 0.752, -0.497), (0.323, 0.752, -0.497), (0.323, 0.76, -0.497), (0.315, 0.76, -0.497), (0.315, 0.76, -0.703), (0.323, 0.76, -0.703), (0.323, 0.752, -0.703), (0.315, 0.752, -0.703), (0.323, 0.936, -0.703), (0.323, 0.944, -0.703), (0.323, 0.944, -0.497), (0.323, 0.936, -0.497), (0.315, 0.936, -0.497), (0.315, 0.944, -0.497), (0.315, 0.944, -0.703), (0.315, 0.936, -0.703), (0.315, 0.944, -0.703), (0.315, 0.944, -0.497), (0.323, 0.944, -0.497), (0.323, 0.944, -0.703), (0.323, 0.936, -0.703), (0.323, 0.936, -0.497), (0.315, 0.936, -0.497), (0.315, 0.936, -0.703), (0.315, 0.936, -0.497), (0.323, 0.936, -0.497), (0.323, 0.944, -0.497), (0.315, 0.944, -0.497), (0.315, 0.944, -0.703), (0.323, 0.944, -0.703), (0.323, 0.936, -0.703), (0.315, 0.936, -0.703)]
+                    uniform token subdivisionScheme = "none"
+                }
+            }
+
+            def Xform "Case" (
+                kind = "group"
+                prepend references = @./parts/sub_a.usda@
+            )
+            {
+                matrix4d xformOp:transform = ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (-0.17, 0.75, -0.6, 1) )
+                uniform token[] xformOpOrder = ["xformOp:transform"]
+
+                over "Vase" (
+                    kind = "group"
+                )
+                {
+                }
+            }
+        }
+    }
+}
+

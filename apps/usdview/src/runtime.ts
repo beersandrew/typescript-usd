@@ -1186,6 +1186,11 @@ export const createRuntime: RuntimeFactory = async (canvas, callbacks) => {
       const stage = pipeline.stage
       return (await import('./usd-validation')).runValidation(stage, request, timeState())
     },
+    getStage: () => pipeline?.stage ?? null,
+    getGfCamera: () => pipeline ? cameraController.gfCamera() : null,
+    redraw: () => { if (pipeline) schedule() },
+    getRendererPlugins: () => pipeline?.engine.getRendererPlugins() ?? [],
+    getCurrentRendererId: () => pipeline?.engine.getCurrentRendererId() ?? '',
     getTimeState: timeState,
     getGeometryState: geometryState,
     getDiagnostics: () => diagnostics,

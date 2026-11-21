@@ -1,6 +1,6 @@
 // Browser asset acceptance: the bar of packages/usd/docs/imaging-i2.md,
-// "Decision: one faithful implementation, no backup renderer" (Andy, November
-// 5, 2026): the viewer renders only through the faithful Storm port, and its
+// "Decision: one faithful implementation, no backup renderer" (November 5,
+// 2026): the viewer renders only through the faithful Storm port, and its
 // renders are compared with native OpenUSD only (pixels and diagnostics, like
 // for like with usdrecord/usdview), not with a second renderer.
 // Tooling only (no upstream counterpart). Pure functions over per-run records;

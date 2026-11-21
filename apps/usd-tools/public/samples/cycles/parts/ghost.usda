@@ -1,0 +1,43 @@
+#usda 1.0
+(
+    "composition.errors.cycles: the answer key, the vase's ghost: parts/vase.usda with its glaze rebound to a translucent ghost material."
+    defaultPrim = "Ghost"
+    framesPerSecond = 24
+    metersPerUnit = 1
+    timeCodesPerSecond = 24
+    upAxis = "Y"
+)
+
+def Xform "Ghost" (
+    kind = "component"
+    prepend references = @./vase.usda@
+)
+{
+    def Scope "Looks"
+    {
+        def Material "Ghost"
+        {
+            token outputs:surface.connect = </Ghost/Looks/Ghost/Surface.outputs:surface>
+
+            def Shader "Surface"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0.78, 0.82, 0.92)
+                color3f inputs:emissiveColor = (0.04, 0.045, 0.06)
+                float inputs:opacity = 0.14
+                float inputs:roughness = 0.7
+                color3f inputs:specularColor = (0.02, 0.02, 0.02)
+                int inputs:useSpecularWorkflow = 1
+                token outputs:surface
+            }
+        }
+    }
+
+    over "Glaze" (
+        prepend apiSchemas = ["MaterialBindingAPI"]
+    )
+    {
+        rel material:binding = </Ghost/Looks/Ghost>
+    }
+}
+

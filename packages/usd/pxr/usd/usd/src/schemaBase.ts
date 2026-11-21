@@ -53,8 +53,13 @@ export class SchemaBase {
     return kind === 'singleApplyAPI' || kind === 'multipleApplyAPI'
   }
 
+  // UsdSchemaBase::operator bool (schemaBase.h:146-150): a live prim
+  // (Usd_PrimDataHandle) the schema is compatible with. An instance proxy is
+  // a live prim, so a schema on one is valid (e.g. a material inside an
+  // instance, which UsdShadeMaterialBindingAPI::DirectBinding::GetMaterial
+  // returns); stage.has() sees only prims outside instances.
   isValid(): boolean {
-    return this._hasPrim && this._stage.has(this._prim.path)
+    return this._hasPrim && this._prim.isValid()
   }
 
   private _schemaKind() {

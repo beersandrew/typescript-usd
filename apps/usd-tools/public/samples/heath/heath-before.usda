@@ -1,0 +1,90 @@
+#usda 1.0
+(
+    doc = """Macbeth 1.1, the heath: the witches' robes and the cauldron are
+    stored only as recipes (StagehandRevolveAPI). OpenExec computes their
+    shapes; the Stagehand imaging adapter hands them to Hydra. Transforms are
+    xformOp:transform, the one op OpenExec's execGeom reads today. The First
+    Witch's robe and the cauldron are animated recipes."""
+    defaultPrim = "Heath"
+    upAxis = "Y"
+    metersPerUnit = 1
+    startTimeCode = 0
+    endTimeCode = 96
+    timeCodesPerSecond = 24
+)
+
+def Xform "Heath" (
+    kind = "component"
+)
+{
+    def Mesh "Ground"
+    {
+        point3f[] points = [(-4, 0, -4), (4, 0, -4), (4, 0, 4), (-4, 0, 4)]
+        int[] faceVertexCounts = [4]
+        int[] faceVertexIndices = [0, 3, 2, 1]
+        float3[] extent = [(-4, 0, -4), (4, 0, 4)]
+        color3f[] primvars:displayColor = [(0.2, 0.24, 0.13)]
+    }
+
+    def Mesh "Cauldron" (
+        prepend apiSchemas = ["StagehandRevolveAPI"]
+    )
+    {
+        float2[] stagehand:revolve:profile.timeSamples = {
+            0: [(0, 0.05), (0.28, 0.12), (0.4, 0.35), (0.36, 0.6), (0.3, 0.62)],
+            48: [(0, 0.05), (0.56, 0.12), (0.8, 0.35), (0.72, 0.6), (0.6, 0.62)],
+            96: [(0, 0.05), (0.28, 0.12), (0.4, 0.35), (0.36, 0.6), (0.3, 0.62)],
+        }
+        int stagehand:revolve:segments = 32
+        float3[] extent = [(-0.8, 0, -0.8), (0.8, 0.62, 0.8)]
+        color3f[] primvars:displayColor = [(0.08, 0.08, 0.09)]
+    }
+
+    def Xform "Witches"
+    {
+        def Mesh "FirstRobe" (
+            prepend apiSchemas = ["StagehandRevolveAPI"]
+        ) {
+            float2[] stagehand:revolve:profile.timeSamples = {
+                0: [(0, 0), (0.5, 0), (0.44, 0.3), (0.28, 0.95), (0.17, 1.3), (0, 1.38)],
+                48: [(0, 0), (0.7, 0), (0.3, 0.4), (0.35, 0.9), (0.1, 1.6), (0, 1.9)],
+                96: [(0, 0), (0.5, 0), (0.44, 0.3), (0.28, 0.95), (0.17, 1.3), (0, 1.38)],
+            }
+            int stagehand:revolve:segments = 32
+            float3[] extent = [(-0.7, 0, -0.7), (0.7, 1.9, 0.7)]
+            color3f[] primvars:displayColor = [(0.42, 0.38, 0.45)]
+            matrix4d xformOp:transform = ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (1.4, 0.0, 0.0, 1) )
+            uniform token[] xformOpOrder = ["xformOp:transform"]
+        }
+        def Mesh "SecondRobe" (
+            prepend apiSchemas = ["StagehandRevolveAPI"]
+        ) {
+            float2[] stagehand:revolve:profile = [(0, 0), (0.6, 0), (0.58, 0.35), (0.4, 0.95), (0.2, 1.3), (0, 1.38)]
+            int stagehand:revolve:segments = 32
+            float3[] extent = [(-0.7, 0, -0.7), (0.7, 1.9, 0.7)]
+            color3f[] primvars:displayColor = [(0.28, 0.42, 0.26)]
+            matrix4d xformOp:transform = ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (-0.7, 0.0, 1.212, 1) )
+            uniform token[] xformOpOrder = ["xformOp:transform"]
+        }
+        def Mesh "ThirdRobe" (
+            prepend apiSchemas = ["StagehandRevolveAPI"]
+        ) {
+            float2[] stagehand:revolve:profile = [(0, 0), (0.5, 0), (0.44, 0.3), (0.28, 0.95), (0.17, 1.3), (0, 1.38)]
+            int stagehand:revolve:segments = 32
+            float3[] extent = [(-0.7, 0, -0.7), (0.7, 1.9, 0.7)]
+            color3f[] primvars:displayColor = [(0.55, 0.25, 0.18)]
+            matrix4d xformOp:transform = ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (-0.7, 0.0, -1.212, 1) )
+            uniform token[] xformOpOrder = ["xformOp:transform"]
+        }
+    }
+
+    def Camera "ShotCam"
+    {
+        float focalLength = 28
+        float horizontalAperture = 36
+        float verticalAperture = 24
+        float2 clippingRange = (0.1, 100)
+        matrix4d xformOp:transform = ( (1, 0, 0, 0), (0, 0.951057, -0.309017, 0), (0, 0.309017, 0.951057, 0), (0, 2.6, 6.2, 1) )
+        uniform token[] xformOpOrder = ["xformOp:transform"]
+    }
+}

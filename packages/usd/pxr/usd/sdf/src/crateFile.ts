@@ -1036,6 +1036,23 @@ export interface CrateContents {
   decode(rep: CrateValueRep): { value: unknown, valueTypeName?: string }
   // The bootstrap's file version (CrateFile::_boot.version).
   readonly version?: readonly [number, number, number]
+  // The table of contents and structural table sizes SdfCrateInfo reports
+  // (crateInfo.cpp:34-66).
+  readonly structure?: CrateStructure
+}
+
+/** The crate file's sections in table-of-contents order
+ *  (CrateFile::GetSectionsNameStartSize, crateFile.cpp:2831-2839) and the
+ *  sizes of its structural tables (crateFile.h GetSpecs, GetPaths, GetTokens,
+ *  GetStrings, GetFields, GetNumUniqueFieldSets). */
+export interface CrateStructure {
+  readonly sections: readonly { readonly name: string, readonly start: number, readonly size: number }[]
+  readonly numSpecs: number
+  readonly numPaths: number
+  readonly numTokens: number
+  readonly numStrings: number
+  readonly numFields: number
+  readonly numFieldSets: number
 }
 
 // The crate's structure (tokens, strings, fields, field sets, paths, specs)
@@ -1051,6 +1068,12 @@ const USDC_MAJOR = 0
 const USDC_MINOR = 16
 const USDC_PATCH = 0
 const OLDEST_SUPPORTED_VERSION = [0, 4, 0] as const
+
+/** CrateFile::GetSoftwareVersionToken (crateFile.cpp:2478-2484): the version
+ *  of the crate format this software writes, as 'major.minor.patch'. */
+export function crateSoftwareVersionToken(): string {
+  return `${USDC_MAJOR}.${USDC_MINOR}.${USDC_PATCH}`
+}
 // crateFile.cpp:168: versions prior to this are deprecated.
 const OLDEST_CURRENT_VERSION = [0, 8, 0] as const
 // crateFile.cpp:201-204.
@@ -1109,11 +1132,13 @@ function readCrate(data: Uint8Array, eager: boolean, assetPath = ''): { scene: S
   r.seek(tocOffset)
   const numSections = r.u64()
   const toc: Record<string, { offset: number, size: number }> = {}
+  const sections: { name: string, start: number, size: number }[] = []
   for (let i = 0; i < numSections; i++) {
     const name = r.ascii(16)
     const offset = r.u64()
     const size = r.u64()
     toc[name] = { offset, size }
+    sections.push({ name, start: offset, size })
   }
 
   // --- TOKENS section (spec 16.3.8.4.1) ---
@@ -1409,7 +1434,17 @@ function readCrate(data: Uint8Array, eager: boolean, assetPath = ''): { scene: S
     if (firstDecodeError !== null) throw firstDecodeError
   }
 
-  return { scene, contents: { specs: specList, fields: crateFields, fieldSets, decode, version: r.version } }
+  const structure: CrateStructure = {
+    sections,
+    numSpecs: specList.length,
+    numPaths: paths.length,
+    numTokens: toc['TOKENS'] ? tokens.length : 0,
+    numStrings: strings.length,
+    numFields: fields.length,
+    // GetNumUniqueFieldSets counts the terminators, FieldIndex() (crateFile.h:680-683).
+    numFieldSets: fieldSets.filter(index => index < 0 || index === 0xffffffff).length,
+  }
+  return { scene, contents: { specs: specList, fields: crateFields, fieldSets, decode, version: r.version, structure } }
 }
 
 // Internal hooks exposed for unit tests only (not part of the package barrel —

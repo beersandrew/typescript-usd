@@ -232,6 +232,10 @@ export class StageViewEngine {
     this._engine.setRendererSetting('domeLightCameraVisibility', settings.domeLightTexturesVisible)
   }
 
+  /** stageView.py:683-687, 701-705 GetRendererPlugins / GetCurrentRendererId. */
+  getRendererPlugins(): string[] { return UsdImagingGLEngine.getRendererPlugins() }
+  getCurrentRendererId(): string { return this._engine.getCurrentRendererId() }
+
   /** stageView.py:1086-1114 _processSelection: the LCD prims of the
    *  selection, each with its selected instances or all of them; and
    *  renderSinglePass's highlight param (stageView.py:1168), which

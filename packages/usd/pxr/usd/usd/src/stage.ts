@@ -4611,10 +4611,19 @@ export class Stage {
     }
   }
 
-  // UsdStage::Export writes the fully composed stage as one layer
-  // (OpenUSD v26.08 pxr/usd/usd/stage.cpp:5922-5928).
-  async export(filePath: string, addSourceFileComment = true): Promise<boolean> {
-    return this.flatten(addSourceFileComment).export(filePath)
+  // UsdStage::Export writes the fully composed stage as one layer, with the
+  // file format arguments `args` (stage.cpp:5932-5938).
+  async export(
+    filePath: string, addSourceFileComment = true,
+    args?: ReadonlyMap<string, string> | Readonly<Record<string, string>>,
+  ): Promise<boolean> {
+    return this.flatten(addSourceFileComment).export(filePath, args)
+  }
+
+  // UsdStage::ExportToString (stage.cpp:5925-5930): the fully composed stage
+  // as the text of one layer.
+  exportToString(addSourceFileComment = true): string {
+    return this.flatten(addSourceFileComment).exportToString()
   }
 
   // ---- Stage metadata (mirrors UsdStage::{Set,Get,Has,Clear}Metadata and

@@ -104,3 +104,16 @@ export {
 // localizeAsset, usdzPackage (localizeAsset.h, usdzPackage.h)
 export { UsdUtilsLocalizeAsset } from './localizeAsset.ts'
 export { UsdUtilsCreateNewUsdzPackage, UsdUtilsCreateNewARKitUsdzPackage } from './usdzPackage.ts'
+
+// usdzUtils (usdzUtils.py)
+export {
+  UsdUtilsExtractUsdzPackage,
+  UsdUtilsUsdzScanIterator as UsdzScanIterator,
+  type UsdUtilsUsdzScanIteratorOptions as UsdzScanIteratorOptions,
+  UsdUtilsUsdzUpdateIterator as UsdzUpdateIterator,
+  type UsdUtilsUsdzUpdateIteratorOptions as UsdzUpdateIteratorOptions,
+  UsdUtilsUsdzAssetIterator as UsdzAssetIterator,
+} from './usdzUtils.ts'
+
+// fixBrokenPixarSchemas (fixBrokenPixarSchemas.py)
+export { UsdUtilsFixBrokenPixarSchemas as FixBrokenPixarSchemas } from './fixBrokenPixarSchemas.ts'

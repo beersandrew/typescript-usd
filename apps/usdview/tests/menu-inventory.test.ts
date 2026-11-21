@@ -13,12 +13,18 @@ function actual(popup:Element):Row[]{return [...popup.children].filter(x=>!x.has
  if(x.tagName==='DETAILS'){const children=actual(x.querySelector(':scope>.menu-popup')!);return {text:text(x.querySelector(':scope>summary')!),...(children.length?{children}:{})}}
  return {text:text(x)}
 })}
+// Window: native's one Interpreter (shortcut I) is a Python Interpreter, with
+// the shortcut, followed by a TypeScript Interpreter (src/window-menu.ts).
+function adapted(key:string,rows:Row[]):Row[]{
+ if(key!=='menuWindow')return rows
+ return rows.flatMap(row=>row.text==='Interpreter'?[{...row,text:'Python Interpreter'},{text:'TypeScript Interpreter'}]:[row])
+}
 const menus={menuEdit:'.edit-menu',menuWindow:'.window-menu',menuNavigation:'.navigation-menu',menuShow:'.hierarchy .panel-menubar>.menu:last-child',menuRender:'.renderer-menu',menuViewer:'.display-menu',menuPick:'.select-menu',menuCamera:'.camera-menu',menuLights:'.lights-menu'} as const
 if(!customElements.get('usd-viewer'))customElements.define('usd-viewer',UsdViewerElement)
 describe('complete pinned native menu inventory and hierarchy',()=>{
  for(const [key,selector] of Object.entries(menus))it(`${native.menus[key as keyof typeof native.menus].title}: exact action order, separators and nesting`,()=>{
   const viewer=document.createElement('usd-viewer'),root=viewer.shadowRoot!
-  expect(actual(root.querySelector(selector+'>.menu-popup')!)).toEqual(expected(native.menus[key as keyof typeof native.menus].items))
+  expect(actual(root.querySelector(selector+'>.menu-popup')!)).toEqual(expected(adapted(key,native.menus[key as keyof typeof native.menus].items)))
  })
  it('matches every native primary shortcut label in the non-File menus',()=>{
   const root=document.createElement('usd-viewer').shadowRoot!
@@ -30,7 +36,7 @@ describe('complete pinned native menu inventory and hierarchy',()=>{
     if(row.children?.length)check(row.children,element.querySelector(':scope>.menu-popup')!)
    }
   }
-  for(const [key,selector]of Object.entries(menus))check(native.menus[key as keyof typeof native.menus].items,root.querySelector(selector+'>.menu-popup')!)
+  for(const [key,selector]of Object.entries(menus))check(adapted(key,native.menus[key as keyof typeof native.menus].items),root.querySelector(selector+'>.menu-popup')!)
  })
  it('retains only the explicit File/web adaptation and removes the extra Show action',()=>{
   const root=document.createElement('usd-viewer').shadowRoot!

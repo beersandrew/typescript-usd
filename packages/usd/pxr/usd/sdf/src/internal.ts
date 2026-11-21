@@ -66,3 +66,4 @@ export {
 } from 'typescript-usd/ar/_internal'
 export { readAsset } from './usdzFileFormat.ts'
 export { plainValue as _sdfPlainValue } from './usdaFileFormat.ts'
+export { crc32 as _sdfCrc32 } from './zipFile.ts'

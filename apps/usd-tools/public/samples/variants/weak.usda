@@ -1,0 +1,22 @@
+#usda 1.0
+(
+    "composition.arcs.variants: the weaker sublayer: the stronger-selection case selects redx."
+)
+
+over "Exhibit"
+{
+    over "Pieces"
+    {
+        over "stronger"
+        {
+            over "Case" (
+                variants = {
+                    string wrap = "redx"
+                }
+            )
+            {
+            }
+        }
+    }
+}
+

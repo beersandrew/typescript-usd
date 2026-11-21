@@ -1,0 +1,32 @@
+#usda 1.0
+(
+    "foundations.files.formats: a depot whose defaultPrim is the sub-root /Depot/Parcel. The red decoy beside it shows only if a reader takes the whole depot."
+    defaultPrim = "/Depot/Parcel"
+    framesPerSecond = 24
+    metersPerUnit = 1
+    timeCodesPerSecond = 24
+    upAxis = "Y"
+)
+
+def Xform "Depot" (
+    kind = "assembly"
+)
+{
+    def Xform "Parcel" (
+        prepend references = @./body.usda@
+    )
+    {
+    }
+
+    def Xform "Decoy" (
+        prepend references = @./body.usda@
+    )
+    {
+        color3f[] primvars:displayColor = [(0.63075715, 0.000607054, 0.010960094)] (
+            interpolation = "constant"
+        )
+        double3 xformOp:translate = (0.47, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate"]
+    }
+}
+

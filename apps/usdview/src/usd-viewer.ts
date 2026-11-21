@@ -37,13 +37,16 @@ import { WindowControls, windowMenuHtml, preferencesDialog } from './window-menu
 import { HydraSceneDebuggerWindow, hydraSceneDebuggerHtml, hydraSceneDebuggerStyles } from './hydra-scene-debugger-view'
 import { DebugFlagsWindow, debugFlagsHtml, debugFlagsStyles } from './debug-flags'
 import { ValidationWindow, validationDialog } from './validation-window'
+import type { InterpreterConsole, InterpreterWindow } from './interpreter-console'
+import type { UsdviewApi, UsdviewAppController } from './usdview-api'
 import { shadingModes, shadingModeMenuHtml, selectionHighlightMenuHtml } from './display-menus'
 import { initialExpansion, markPrimSelection, pseudoRoot, renderPrimTree, setPrimExpanded } from './prim-tree-view'
 import { elideValues, primLegendHtml, propertyLegendHtml, renderPropertyTable } from './property-table-view'
 import { propertyColor, rgbText } from './usdview-style'
 import { versionLinkHtml } from './version-label'
 
-export interface ViewerScene { label: string; url: string }
+/** An example scene; `welcome` also offers it on the welcome note. */
+export interface ViewerScene { label: string; url: string; welcome?: boolean }
 type LoadResult = { ok: true } | { ok: false; error: unknown }
 function abortable<T>(promise: Promise<T>, signal: AbortSignal): Promise<T> {
   return new Promise((resolve, reject) => {
@@ -127,6 +130,9 @@ export class UsdViewerElement extends HTMLElement {
   #validationWindow = new ValidationWindow(this.#root, () => this.#runtime,
     () => (this.#detail.selections ?? [{ path: this.#selection ?? '/' }]).map(entry => entry.path),
     paths => this.#selectPrims(paths.map(path => ({ path }))), () => this.#playbackActive)
+  /** Window > Python Interpreter and Window > TypeScript Interpreter: one panel per language, made on first use. */
+  #interpreters = new Map<string, Promise<InterpreterWindow>>()
+  #usdviewApi: Promise<UsdviewApi> | undefined
   #primMenu = new PrimContextMenu(this.#root, item => this.#runPrimContext(item))
   #timeline = new TimelineControls(this.#root, () => this.#runtime, error => this.#statusMessage(String(error)),
     () => this.#validationWindow.updateRunButtonState())
@@ -215,7 +221,7 @@ export class UsdViewerElement extends HTMLElement {
                 <div class="hud-info" hidden></div><div class="hud-renderer">Hydra: Storm<br>  Hgi: WebGPU</div>
                 <div class="hud-performance" title="Render measures CPU draw submission only; excludes animation synchronization and GPU completion, so it is not directly comparable to native render time. Playback measures actual frame cadence including animation work and rate limiting."><span class="render-timing">     Render: N/A</span><br><span class="playback-timing">   Playback: N/A</span><span class="follow-lag" hidden title="Following a sync leader: the leader's newest frame, the frame shown, the difference, and the last frame change's time (seek plus draw)."><br><span class="follow-lag-text"></span></span></div>
                 <div class="hud-camera">Camera: <span class="camera-caption">Free</span><br>Complexity: <span class="complexity-caption">Low</span></div>
-              </div><div class="overlay" role="status"><strong>No stage loaded</strong><p>Use File to open a scene URL.</p><div class="load-progress"></div><button class="load-cancel" type="button" hidden>Cancel</button></div><div class="welcome" role="note" hidden><p><strong>Drop a USD file</strong> (.usd, .usda, .usdc, .usdz), or <strong>its folder</strong> if it references other files, anywhere on this window to open it.</p><button class="start-tour" type="button" hidden>Start Museum Tour</button><button class="welcome-dismiss" type="button" aria-label="Dismiss" title="Dismiss">✕</button></div></div>
+              </div><div class="overlay" role="status"><strong>No stage loaded</strong><p>Use File to open a scene URL.</p><div class="load-progress"></div><button class="load-cancel" type="button" hidden>Cancel</button></div><div class="welcome" role="note" hidden><p><strong>Drop a USD file</strong> (.usd, .usda, .usdc, .usdz), or <strong>its folder</strong> if it references other files, anywhere on this window to open it.</p><div class="welcome-examples" role="group" aria-label="Example scenes" hidden><span>Or open an example:</span></div><button class="start-tour" type="button" hidden>Start Museum Tour</button><button class="welcome-dismiss" type="button" aria-label="Dismiss" title="Dismiss">✕</button></div></div>
 
             </section>
           </div>
@@ -267,6 +273,14 @@ export class UsdViewerElement extends HTMLElement {
       void Promise.resolve().then(start).catch(error => { console.warn(error); this.#statusMessage(error instanceof Error ? error.message : String(error)) }).finally(() => { button.disabled = false })
     })
     this.#get('.welcome-dismiss').addEventListener('click', () => this.hideWelcome())
+    // A welcome example opens as File > Open's Examples list does.
+    this.#get('.welcome-examples').addEventListener('click', event => {
+      const url = (event.target as HTMLElement).closest<HTMLElement>('.welcome-example')?.dataset.url
+      if (!url) return
+      this.#clearPendingLocal(); this.#localFile = undefined
+      if (this.src === url) void this.#open(url)
+      else this.src = url
+    })
     this.#get('.load-cancel').addEventListener('click', () => {
       if (this.#streamAbort) this.#streamAbort.abort()
       else if (this.#loadAbort && this.#cameraLoading) { this.#loadAbort.abort(); this.#statusMessage('Load cancelled') }
@@ -325,7 +339,22 @@ export class UsdViewerElement extends HTMLElement {
     this.#sceneSelect.replaceChildren(new Option('Examples', ''))
     for (const scene of value) this.#sceneSelect.add(new Option(scene.label, scene.url))
     this.#sceneSelect.value = this.src
+    // The welcome note's example buttons (welcome.ts): the scenes marked welcome.
+    const examples = this.#get<HTMLElement>('.welcome-examples')
+    examples.replaceChildren(examples.firstElementChild!, ...value.filter(scene => scene.welcome).map(scene => {
+      const button = document.createElement('button')
+      button.type = 'button'; button.className = 'welcome-example'; button.dataset.url = scene.url
+      button.textContent = scene.label
+      return button
+    }))
+    examples.hidden = examples.childElementCount < 2
+    this.#updateWelcomeEmpty()
     this.#updateBusyControls()
+  }
+  /** A compact note (a phone) with neither a tour nor examples shows nothing. */
+  #updateWelcomeEmpty(): void {
+    const welcome = this.#get<HTMLElement>('.welcome')
+    welcome.toggleAttribute('data-empty', welcome.hasAttribute('data-compact') && this.#get<HTMLElement>('.start-tour').hidden && this.#get<HTMLElement>('.welcome-examples').hidden)
   }
 
   connectedCallback(): void {
@@ -377,6 +406,8 @@ export class UsdViewerElement extends HTMLElement {
       if (target.dataset.window === 'viewerMode') this.#windowControls.toggleViewerMode()
       else if (target.dataset.window === 'hydraSceneDebugger') void this.#hydraSceneDebugger.show()
       else if (target.dataset.window === 'debugFlags') this.#debugFlags.show()
+      else if (target.dataset.window === 'typescriptInterpreter') void this.openInterpreter('typescript')
+      else if (target.dataset.window === 'pythonInterpreter') void this.openInterpreter('python')
     }, options)
     this.#get('.edit-menu').addEventListener('toggle', () => { if (this.#get<HTMLDetailsElement>('.edit-menu').open) this.#refreshEditMenu() }, options)
     this.#get('.edit-popup').addEventListener('click', event => {
@@ -991,6 +1022,9 @@ export class UsdViewerElement extends HTMLElement {
     ['F11', () => { this.#windowControls.toggleViewerMode(); return true }],
     // mainWindowUI.ui:2302-2303 (showUsdValidation shortcut V).
     ['V', () => this.#clickEnabled('[data-window="validation"]')],
+    // mainWindowUI.ui showInterpreter shortcut I, on Python Interpreter; where
+    // that is disabled (a static build), I opens the TypeScript Interpreter.
+    ['I', () => this.#clickEnabled('[data-window="pythonInterpreter"]') || this.#clickEnabled('[data-window="typescriptInterpreter"]')],
     ['Ctrl+F', () => { this.#get<HTMLInputElement>('.prim-search').focus(); return true }],
     ...Array.from({length:8},(_,index)=>['Alt+'+(index+1),()=>this.#clickEnabled(`[data-prim-depth="${index+1}"]`)] as const),
     ['Alt+9', () => this.#clickEnabled('[data-expand="true"]')],
@@ -1187,6 +1221,106 @@ export class UsdViewerElement extends HTMLElement {
     }
   }
 
+  /** Window > Python Interpreter and Window > TypeScript Interpreter
+   *  (appController.py:2690-2707 _showInterpreter): the panel, its console
+   *  and its language load on first use. */
+  openInterpreter(language: 'typescript' | 'python' = 'typescript'): Promise<InterpreterConsole> {
+    let panel = this.#interpreters.get(language)
+    if (!panel) {
+      const signal = this.#events?.signal ?? new AbortController().signal
+      const edited = (resynced: boolean) => this.#refreshForStageEdit(resynced)
+      // One registry for both windows: each console's `py` / `ts` reads the
+      // other's variables (shared-variables.ts).
+      this.#interpreterPeers ??= import('./shared-variables').then(m => new m.InterpreterPeerRegistry())
+      panel = Promise.all([import('./interpreter-console'), this.#usdviewApiObject(), this.#interpreterPeers]).then(([module, api, peers]) =>
+        language === 'python'
+          ? new module.InterpreterWindow(this.#root, language, 'Python Interpreter', context => import('./py-interpreter').then(m => m.createPythonInterpreter(context)), api, signal, edited, peers)
+          : new module.InterpreterWindow(this.#root, language, 'TypeScript Interpreter', context => import('./ts-interpreter').then(m => m.createTypeScriptInterpreter(context)), api, signal, edited, peers))
+      panel.catch(() => this.#interpreters.delete(language))
+      this.#interpreters.set(language, panel)
+    }
+    return panel.then(window => window.show())
+  }
+  /** appController.py:1978-1983 updateGUI / _resetGUI (:1951-1976) after the
+   *  stage was edited outside the viewer's own commands (an interpreter
+   *  entry, usdviewApi.UpdateGUI): the prim tree when a prim was resynced,
+   *  then the selection's views (properties, metadata, composition), the
+   *  timeline and the camera menu. The stage view redraws on its own
+   *  (runtime.ts prepareImaging). */
+  #refreshForStageEdit(resynced: boolean): void {
+    const current = this.#runtime
+    if (resynced) {
+      if (current?.getPrimTree && this.#hasScene) this.#tree = current.getPrimTree({ includePrototypes: true })
+      this.#renderTree()
+    }
+    const state = current?.getSelectionState?.()
+    const detail = state && current?.selectPrims ? current.selectPrims(state.selections) : current?.select(this.#selection === '/' ? null : this.#selection)
+    if (detail) this.#applySelection(detail)
+    this.#timeline.refresh(); this.#cameraControls.refresh()
+  }
+  #interpreterPeers: Promise<import('./shared-variables').InterpreterPeerRegistry> | undefined
+  /** appController.py:430 UsdviewApi(self), over this element as its appController. */
+  #usdviewApiObject(): Promise<UsdviewApi> {
+    return this.#usdviewApi ??= import('./usdview-api').then(module => new module.UsdviewApi(this.#appController()))
+  }
+  #appController(): UsdviewAppController {
+    const runtime = () => this.#runtime
+    return {
+      stage: () => runtime()?.getStage?.() ?? null,
+      currentFrame: () => runtime()?.getTimeState?.()?.current ?? 0,
+      setCurrentFrame: time => this.#timeline.seek(time),
+      playing: () => this.#playbackActive,
+      selectionState: () => {
+        const state = runtime()?.getSelectionState?.()
+        if (state) return state
+        const selections = this.#detail.selections ?? [{ path: this.#selection ?? '/' }]
+        return { selections, focusPath: selections[0]?.path ?? '/', lcdPaths: selections.map(entry => entry.path) }
+      },
+      updatePrimSelection: (path, operation, instance) => {
+        const detail = runtime()?.select(path === '/' ? null : path, { operation, ...(instance === undefined ? {} : { instanceIndex: instance }) })
+        if (detail) this.#applySelection(detail)
+      },
+      replacePrimSelection: selections => {
+        const detail = runtime()?.selectPrims?.(selections.length ? selections : [{ path: '/' }])
+        if (detail) this.#applySelection(detail)
+        else this.#select(selections[0]?.path ?? '/')
+      },
+      propertyPaths: () => {
+        if (this.#propertyName === null) return []
+        const focus = `${this.#detail.path ?? '/'}.${this.#propertyName}`
+        return [...this.#propertyPaths.filter(path => path !== focus), focus]
+      },
+      setPropertyPaths: paths => {
+        // The property view lists the focus prim's properties.
+        const primPath = this.#detail.path ?? '/'
+        const focus = paths.at(-1)
+        if (focus !== undefined && focus.slice(0, focus.indexOf('.')) !== primPath) throw new Error(`The property view shows the properties of ${primPath}; select the prim of ${focus} first.`)
+        this.#propertyPaths = [...paths]
+        this.#propertyName = focus === undefined ? null : focus.slice(focus.indexOf('.') + 1)
+        this.#renderPropertyValue()
+      },
+      cameraPrimPath: () => runtime()?.getCameraState?.()?.activeCameraPath ?? null,
+      gfCamera: () => runtime()?.getGfCamera?.() ?? null,
+      viewportSize: () => { const rect = this.#canvas.getBoundingClientRect(); return [Math.round(rect.width), Math.round(rect.height)] },
+      isViewerMode: () => this.#windowControls.viewerMode,
+      setViewerMode: value => { if (value !== this.#windowControls.viewerMode) this.#windowControls.toggleViewerMode() },
+      // appController.py:1978-1983 updateGUI / _resetGUI: the prim tree, the
+      // selection's views, the timeline and the camera menu.
+      updateGUI: () => this.#refreshForStageEdit(true),
+      statusMessage: message => this.#statusMessage(message),
+      grabViewportShot: () => {
+        const current = runtime()
+        return current?.captureViewerImage ? current.captureViewerImage() : Promise.reject(new Error('The viewer cannot capture its stage view.'))
+      },
+      updateViewport: () => runtime()?.redraw?.(),
+      rendererPlugins: () => runtime()?.getRendererPlugins?.() ?? [],
+      currentRendererId: () => runtime()?.getCurrentRendererId?.() || null,
+      // The viewer draws with Storm only (Renderer menu).
+      setRendererPlugin: plugId => (runtime()?.getCurrentRendererId?.() ?? '') === plugId,
+      validationErrors: () => this.#validationWindow.validationErrors,
+    }
+  }
+
   #statusMessage(message: string): void {
     this.#status.textContent = message
     this.#status.dataset.error = 'false'
@@ -1298,6 +1432,7 @@ export class UsdViewerElement extends HTMLElement {
     this.#welcomeSource=this.src;this.#welcomeTour=options.startTour;this.#welcomeOnDefault=!!options.onDefaultScene
     this.#get<HTMLElement>('.welcome').toggleAttribute('data-compact',!!options.compact)
     this.#get<HTMLElement>('.start-tour').hidden=!options.startTour
+    this.#updateWelcomeEmpty()
     this.#get<HTMLElement>('.welcome').hidden=false
     this.#updateBusyControls()
   }
@@ -1311,6 +1446,17 @@ export class UsdViewerElement extends HTMLElement {
   /** Camera > Camera Masking (?cameraMask=full|partial|none). */
   setCameraMaskMode(mode:'none'|'partial'|'full'):void{
     try{this.#cameraControls.refresh(this.#runtime?.setCameraPresentation?.({cameraMaskMode:mode}))}catch(error){this.#statusMessage(String(error))}
+  }
+  /** The viewport image (File > Save Viewer Image's PNG). */
+  captureViewerImage():Promise<Blob>{
+    const runtime=this.#runtime
+    if(!runtime?.captureViewerImage)return Promise.reject(new Error('This renderer cannot capture the viewer image.'))
+    return runtime.captureViewerImage()
+  }
+  /** Opens a local file, as the Open dialog's file input does. */
+  openLocalFile(file:File):void{
+    this.#clearPendingLocal();this.#sceneSelect.value='';this.#localFile=undefined
+    void this.#open(file.name,file)
   }
   /** The scene camera being viewed through, or null for the free camera. */
   get activeCameraPath():string|null{return this.#runtime?.getCameraState?.().activeCameraPath??null}

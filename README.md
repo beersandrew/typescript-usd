@@ -94,8 +94,8 @@ Not ported yet:
 
 | Area | Gap | What you see |
 |---|---|---|
-| Tools | Command-line tools (usdcat, usddiff, usdtree, usdzip, usdchecker, usdrecord, ...) | The library has the APIs; the tools are not there |
-| Utilities | usdUtils Python modules (usdzUtils, updateSchemaWithSdrNode) | The usdz extract and iterator helpers and schema updates from Sdr nodes are not there; the C++ library is ported |
+| Tools | Command-line tools (usdcompress, usdcrush, usdrecord, sdfdump, ...) | The library has the APIs; the tools are not there (usdauthors, usdcat, usdchecker, usddiff, usddumpcrate, usdedit, usdfixbrokenpixarschemas, usdresolve, usdstitch, usdstitchclips, usdtree and usdzip are) |
+| Utilities | usdUtils Python modules (updateSchemaWithSdrNode, constantsGroup, ...) | Schema updates from Sdr nodes are not there; the C++ library, usdzUtils and fixBrokenPixarSchemas are ported |
 | Hydra | Procedurals (hdGp, usdProcImaging) | Generative procedural prims are not expanded |
 | Hydra | Adaptive subdivision | The 14 adaptive rows of testHdStBasicDrawing are not run |
 | Hydra | Particle fields (Gaussian splats): usdVolImaging's adapter, Hydra's particle field schema, hdsi's points conversion, the hdParticleField example delegate | The UsdVol splat schemas are ported; nothing draws them. Native Storm draws nothing for them either |

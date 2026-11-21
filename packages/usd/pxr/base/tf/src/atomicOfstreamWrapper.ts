@@ -8,23 +8,12 @@
 // over the destination only at Commit; Cancel removes it. JavaScript has no
 // destructors, so the destructor's Cancel (atomicOfstreamWrapper.cpp:43-46)
 // runs from Dispose() / [Symbol.asyncDispose] (`await using`).
-interface NodeHandle {
-  writeFile(data: Uint8Array | string): Promise<void>
-  close(): Promise<void>
-}
+// The files go through Node's fs/promises or a host's filesystem
+// (hostFilesystem.ts, PLATFORM-DIVERGENCE(tf-host-filesystem)).
+import { _TfHostFilesystem, type Tf_HostFileHandle as NodeHandle, type Tf_HostFilesystem as NodeFsPromises } from './hostFilesystem.ts'
+
 let serial = 0
-interface NodeFsPromises {
-  open(path: string, flags: string): Promise<NodeHandle>
-  rename(from: string, to: string): Promise<void>
-  unlink(path: string): Promise<void>
-  realpath(path: string): Promise<string>
-  stat(path: string): Promise<{ mode: number }>
-  chmod(path: string, mode: number): Promise<void>
-}
-async function fsPromises(): Promise<NodeFsPromises> {
-  const specifier = `${['node', 'fs'].join(':')}/promises`
-  return import(/* @vite-ignore */ specifier) as unknown as Promise<NodeFsPromises>
-}
+const fsPromises = _TfHostFilesystem
 
 // TfRealPath(fileName, allowInaccessibleSuffix = true) as
 // atomicRenameUtil.cpp:207-215 uses it: symlinks resolve so the temporary is

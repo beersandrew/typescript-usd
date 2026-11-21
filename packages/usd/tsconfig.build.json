@@ -8,6 +8,9 @@
   },
   "include": [
     "pxr/**/src",
+    "pxr/usd/bin",
+    "pxr/bin",
+    "pxr/usdValidation/bin",
     "pxr/index.ts",
     "surface"
   ],

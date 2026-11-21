@@ -13,6 +13,8 @@ import type { CompositionCommand, CompositionState, CompositionResult, EditMenuS
 import type { InspectionSnapshot, InspectionOptions } from './inspection-types'
 export type { InspectionSnapshot } from './inspection-types'
 import type { DisplaySettings } from './display-settings'
+import type { Stage } from 'typescript-usd/usd'
+import type { GfCamera } from 'typescript-usd/gf/camera'
 /** Consumer-owned presentation boundary; USD/GPU details remain in the runtime. */
 export interface PrimSummary {
   path: string
@@ -146,6 +148,15 @@ export interface ValidationResultRow {
   type: 'None' | 'Error' | 'Warn' | 'Info'
 }
 export interface ViewerRuntime {
+  /** The committed scene's stage (usdviewApi.stage, Window > Interpreter). */
+  getStage?(): Stage | null
+  /** A copy of the camera of the last frame (stageView.py:483-485 gfCamera; usdviewApi.currentGfCamera). */
+  getGfCamera?(): GfCamera | null
+  /** Schedules a redraw (usdviewApi.UpdateViewport, stageView.updateGL). */
+  redraw?(): void
+  /** stageView.py:683-705: the renderer plugin ids and the current one ('' without a scene). */
+  getRendererPlugins?(): string[]
+  getCurrentRendererId?(): string
   listValidators?(): Promise<ValidatorEntry[]>
   runValidation?(request: ValidationRequest): Promise<ValidationResultRow[]>
   /** The frame a scene camera asks to be viewed at while payloads load by a schedule (runtime.ts). */

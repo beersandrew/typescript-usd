@@ -1,0 +1,63 @@
+#usda 1.0
+(
+    "foundations.files.formats: the shells' sublayer stack, strongest: green."
+)
+
+over "Exhibit"
+{
+    over "Pieces"
+    {
+        over "usda"
+        {
+            over "Holder"
+            {
+                over "Case"
+                {
+                    color3f[] primvars:displayColor = [(0.021980947, 0.2956998, 0.073238954)] (
+                        interpolation = "constant"
+                    )
+                }
+            }
+        }
+
+        over "default"
+        {
+            over "Holder"
+            {
+                over "Case"
+                {
+                    color3f[] primvars:displayColor = [(0.021980947, 0.2956998, 0.073238954)] (
+                        interpolation = "constant"
+                    )
+                }
+            }
+        }
+
+        over "usdc"
+        {
+            over "Holder"
+            {
+                over "Case"
+                {
+                    color3f[] primvars:displayColor = [(0.021980947, 0.2956998, 0.073238954)] (
+                        interpolation = "constant"
+                    )
+                }
+            }
+        }
+
+        over "usdz"
+        {
+            over "Holder"
+            {
+                over "Case"
+                {
+                    color3f[] primvars:displayColor = [(0.021980947, 0.2956998, 0.073238954)] (
+                        interpolation = "constant"
+                    )
+                }
+            }
+        }
+    }
+}
+

@@ -1,4 +1,4 @@
 {
   "extends": "./tsconfig.json",
-  "include": ["src/contracts.ts", "src/usd-viewer.ts", "src/viewer-styles.ts", "tests"]
+  "include": ["src/contracts.ts", "src/usd-viewer.ts", "src/viewer-styles.ts", "src/pxr-python.d.ts", "tests"]
 }

@@ -1,0 +1,345 @@
+#usda 1.0
+(
+    "foundations.packages.packages: the studio original, in centimetres; its textures live in ../library/, outside the scene folder."
+    defaultPrim = "Globe"
+    metersPerUnit = 0.01
+    upAxis = "Y"
+)
+
+def Xform "Globe" (
+    prepend apiSchemas = ["GeomModelAPI"]
+    kind = "component"
+)
+{
+    def Scope "Looks"
+    {
+        def Material "PaintedWood"
+        {
+            token outputs:surface.connect = </Globe/Looks/PaintedWood/Surface.outputs:surface>
+
+            def Shader "Surface"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor.connect = </Globe/Looks/PaintedWood/Tex.outputs:rgb>
+                float inputs:metallic = 0
+                float inputs:roughness = 0.5
+                token outputs:surface
+            }
+
+            def Shader "St"
+            {
+                uniform token info:id = "UsdPrimvarReader_float2"
+                string inputs:varname = "st"
+                float2 outputs:result
+            }
+
+            def Shader "Tex"
+            {
+                uniform token info:id = "UsdUVTexture"
+                float4 inputs:fallback = (1, 0, 0, 1)
+                asset inputs:file = @0/base.png@
+                token inputs:sourceColorSpace = "sRGB"
+                float2 inputs:st.connect = </Globe/Looks/PaintedWood/St.outputs:result>
+                token inputs:wrapS = "repeat"
+                token inputs:wrapT = "repeat"
+                float3 outputs:rgb
+            }
+        }
+
+        def Material "HouseWalls"
+        {
+            token outputs:surface.connect = </Globe/Looks/HouseWalls/Surface.outputs:surface>
+
+            def Shader "Surface"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor.connect = </Globe/Looks/HouseWalls/Tex.outputs:rgb>
+                float inputs:metallic = 0
+                float inputs:roughness = 0.8
+                token outputs:surface
+            }
+
+            def Shader "St"
+            {
+                uniform token info:id = "UsdPrimvarReader_float2"
+                string inputs:varname = "st"
+                float2 outputs:result
+            }
+
+            def Shader "Tex"
+            {
+                uniform token info:id = "UsdUVTexture"
+                float4 inputs:fallback = (1, 0, 0, 1)
+                asset inputs:file = @0/house.png@
+                token inputs:sourceColorSpace = "sRGB"
+                float2 inputs:st.connect = </Globe/Looks/HouseWalls/St.outputs:result>
+                token inputs:wrapS = "repeat"
+                token inputs:wrapT = "repeat"
+                float3 outputs:rgb
+            }
+        }
+
+        def Material "Roof"
+        {
+            token outputs:surface.connect = </Globe/Looks/Roof/Surface.outputs:surface>
+
+            def Shader "Surface"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor.connect = </Globe/Looks/Roof/Tex.outputs:rgb>
+                float inputs:metallic = 0
+                float inputs:roughness = 0.7
+                token outputs:surface
+            }
+
+            def Shader "St"
+            {
+                uniform token info:id = "UsdPrimvarReader_float2"
+                string inputs:varname = "st"
+                float2 outputs:result
+            }
+
+            def Shader "Tex"
+            {
+                uniform token info:id = "UsdUVTexture"
+                float4 inputs:fallback = (1, 0, 0, 1)
+                asset inputs:file = @0/roof.png@
+                token inputs:sourceColorSpace = "sRGB"
+                float2 inputs:st.connect = </Globe/Looks/Roof/St.outputs:result>
+                token inputs:wrapS = "repeat"
+                token inputs:wrapT = "repeat"
+                float3 outputs:rgb
+            }
+        }
+
+        def Material "Snow"
+        {
+            token outputs:surface.connect = </Globe/Looks/Snow/Surface.outputs:surface>
+
+            def Shader "Surface"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0.95, 0.96, 1)
+                float inputs:metallic = 0
+                float inputs:roughness = 0.9
+                token outputs:surface
+            }
+        }
+
+        def Material "Pine"
+        {
+            token outputs:surface.connect = </Globe/Looks/Pine/Surface.outputs:surface>
+
+            def Shader "Surface"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0.1, 0.45, 0.2)
+                float inputs:metallic = 0
+                float inputs:roughness = 0.6
+                token outputs:surface
+            }
+        }
+
+        def Material "Trunk"
+        {
+            token outputs:surface.connect = </Globe/Looks/Trunk/Surface.outputs:surface>
+
+            def Shader "Surface"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0.35, 0.2, 0.1)
+                float inputs:metallic = 0
+                float inputs:roughness = 0.6
+                token outputs:surface
+            }
+        }
+
+        def Material "Glass"
+        {
+            token outputs:surface.connect = </Globe/Looks/Glass/Surface.outputs:surface>
+
+            def Shader "Surface"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0.55, 0.58, 0.62)
+                float inputs:ior = 1.5
+                float inputs:metallic = 0
+                float inputs:opacity = 0.18
+                float inputs:roughness = 0.05
+                token outputs:surface
+            }
+        }
+    }
+
+    def Xform "Geom"
+    {
+        def Mesh "Base" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            float3[] extent = [(-6, 0, -6), (6, 3, 6)]
+            int[] faceVertexCounts = [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 32, 32]
+            int[] faceVertexIndices = [0, 2, 3, 1, 2, 4, 5, 3, 4, 6, 7, 5, 6, 8, 9, 7, 8, 10, 11, 9, 10, 12, 13, 11, 12, 14, 15, 13, 14, 16, 17, 15, 16, 18, 19, 17, 18, 20, 21, 19, 20, 22, 23, 21, 22, 24, 25, 23, 24, 26, 27, 25, 26, 28, 29, 27, 28, 30, 31, 29, 30, 32, 33, 31, 32, 34, 35, 33, 34, 36, 37, 35, 36, 38, 39, 37, 38, 40, 41, 39, 40, 42, 43, 41, 42, 44, 45, 43, 44, 46, 47, 45, 46, 48, 49, 47, 48, 50, 51, 49, 50, 52, 53, 51, 52, 54, 55, 53, 54, 56, 57, 55, 56, 58, 59, 57, 58, 60, 61, 59, 60, 62, 63, 61, 62, 0, 1, 63, 1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27, 29, 31, 33, 35, 37, 39, 41, 43, 45, 47, 49, 51, 53, 55, 57, 59, 61, 63, 62, 60, 58, 56, 54, 52, 50, 48, 46, 44, 42, 40, 38, 36, 34, 32, 30, 28, 26, 24, 22, 20, 18, 16, 14, 12, 10, 8, 6, 4, 2, 0]
+            rel material:binding = </Globe/Looks/PaintedWood>
+            point3f[] points = [(0, 0, 6), (0, 3, 5.4), (1.1705419, 0, 5.8847117), (1.0534878, 3, 5.2962403), (2.2961006, 0, 5.5432773), (2.0664907, 3, 4.9889493), (3.3334215, 0, 4.9888177), (3.0000792, 3, 4.489936), (4.2426405, 0, 4.2426405), (3.8183765, 3, 3.8183765), (4.9888177, 0, 3.3334215), (4.489936, 3, 3.0000792), (5.5432773, 0, 2.2961006), (4.9889493, 3, 2.0664907), (5.8847117, 0, 1.1705419), (5.2962403, 3, 1.0534878), (6, 0, 3.6739403e-16), (5.4, 3, 3.3065464e-16), (5.8847117, 0, -1.1705419), (5.2962403, 3, -1.0534878), (5.5432773, 0, -2.2961006), (4.9889493, 3, -2.0664907), (4.9888177, 0, -3.3334215), (4.489936, 3, -3.0000792), (4.2426405, 0, -4.2426405), (3.8183765, 3, -3.8183765), (3.3334215, 0, -4.9888177), (3.0000792, 3, -4.489936), (2.2961006, 0, -5.5432773), (2.0664907, 3, -4.9889493), (1.1705419, 0, -5.8847117), (1.0534878, 3, -5.2962403), (7.3478806e-16, 0, -6), (6.613093e-16, 3, -5.4), (-1.1705419, 0, -5.8847117), (-1.0534878, 3, -5.2962403), (-2.2961006, 0, -5.5432773), (-2.0664907, 3, -4.9889493), (-3.3334215, 0, -4.9888177), (-3.0000792, 3, -4.489936), (-4.2426405, 0, -4.2426405), (-3.8183765, 3, -3.8183765), (-4.9888177, 0, -3.3334215), (-4.489936, 3, -3.0000792), (-5.5432773, 0, -2.2961006), (-4.9889493, 3, -2.0664907), (-5.8847117, 0, -1.1705419), (-5.2962403, 3, -1.0534878), (-6, 0, -1.1021821e-15), (-5.4, 3, -9.919639e-16), (-5.8847117, 0, 1.1705419), (-5.2962403, 3, 1.0534878), (-5.5432773, 0, 2.2961006), (-4.9889493, 3, 2.0664907), (-4.9888177, 0, 3.3334215), (-4.489936, 3, 3.0000792), (-4.2426405, 0, 4.2426405), (-3.8183765, 3, 3.8183765), (-3.3334215, 0, 4.9888177), (-3.0000792, 3, 4.489936), (-2.2961006, 0, 5.5432773), (-2.0664907, 3, 4.9889493), (-1.1705419, 0, 5.8847117), (-1.0534878, 3, 5.2962403)]
+            texCoord2f[] primvars:st = [(0, 0), (0, 1), (0.0625, 0), (0.0625, 1), (0.125, 0), (0.125, 1), (0.1875, 0), (0.1875, 1), (0.25, 0), (0.25, 1), (0.3125, 0), (0.3125, 1), (0.375, 0), (0.375, 1), (0.4375, 0), (0.4375, 1), (0.5, 0), (0.5, 1), (0.5625, 0), (0.5625, 1), (0.625, 0), (0.625, 1), (0.6875, 0), (0.6875, 1), (0.75, 0), (0.75, 1), (0.8125, 0), (0.8125, 1), (0.875, 0), (0.875, 1), (0.9375, 0), (0.9375, 1), (1, 0), (1, 1), (1.0625, 0), (1.0625, 1), (1.125, 0), (1.125, 1), (1.1875, 0), (1.1875, 1), (1.25, 0), (1.25, 1), (1.3125, 0), (1.3125, 1), (1.375, 0), (1.375, 1), (1.4375, 0), (1.4375, 1), (1.5, 0), (1.5, 1), (1.5625, 0), (1.5625, 1), (1.625, 0), (1.625, 1), (1.6875, 0), (1.6875, 1), (1.75, 0), (1.75, 1), (1.8125, 0), (1.8125, 1), (1.875, 0), (1.875, 1), (1.9375, 0), (1.9375, 1), (2, 0), (2, 1), (0.5, 0.5)] (
+                interpolation = "faceVarying"
+            )
+            int[] primvars:st:indices = [0, 2, 3, 1, 2, 4, 5, 3, 4, 6, 7, 5, 6, 8, 9, 7, 8, 10, 11, 9, 10, 12, 13, 11, 12, 14, 15, 13, 14, 16, 17, 15, 16, 18, 19, 17, 18, 20, 21, 19, 20, 22, 23, 21, 22, 24, 25, 23, 24, 26, 27, 25, 26, 28, 29, 27, 28, 30, 31, 29, 30, 32, 33, 31, 32, 34, 35, 33, 34, 36, 37, 35, 36, 38, 39, 37, 38, 40, 41, 39, 40, 42, 43, 41, 42, 44, 45, 43, 44, 46, 47, 45, 46, 48, 49, 47, 48, 50, 51, 49, 50, 52, 53, 51, 52, 54, 55, 53, 54, 56, 57, 55, 56, 58, 59, 57, 58, 60, 61, 59, 60, 62, 63, 61, 62, 64, 65, 63, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66]
+            uniform token subdivisionScheme = "none"
+        }
+
+        def Mesh "SnowGround" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            float3[] extent = [(-3.7918746, 3, -3.7918746), (3.7918746, 3.8, 3.7918746)]
+            int[] faceVertexCounts = [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 32, 32]
+            int[] faceVertexIndices = [0, 2, 3, 1, 2, 4, 5, 3, 4, 6, 7, 5, 6, 8, 9, 7, 8, 10, 11, 9, 10, 12, 13, 11, 12, 14, 15, 13, 14, 16, 17, 15, 16, 18, 19, 17, 18, 20, 21, 19, 20, 22, 23, 21, 22, 24, 25, 23, 24, 26, 27, 25, 26, 28, 29, 27, 28, 30, 31, 29, 30, 32, 33, 31, 32, 34, 35, 33, 34, 36, 37, 35, 36, 38, 39, 37, 38, 40, 41, 39, 40, 42, 43, 41, 42, 44, 45, 43, 44, 46, 47, 45, 46, 48, 49, 47, 48, 50, 51, 49, 50, 52, 53, 51, 52, 54, 55, 53, 54, 56, 57, 55, 56, 58, 59, 57, 58, 60, 61, 59, 60, 62, 63, 61, 62, 0, 1, 63, 1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27, 29, 31, 33, 35, 37, 39, 41, 43, 45, 47, 49, 51, 53, 55, 57, 59, 61, 63, 62, 60, 58, 56, 54, 52, 50, 48, 46, 44, 42, 40, 38, 36, 34, 32, 30, 28, 26, 24, 22, 20, 18, 16, 14, 12, 10, 8, 6, 4, 2, 0]
+            rel material:binding = </Globe/Looks/Snow>
+            point3f[] points = [(0, 3, 3), (0, 3.8, 3.7918746), (0.58527094, 3, 2.9423559), (0.739758, 3.8, 3.7190146), (1.1480503, 3, 2.7716386), (1.4510876, 3.8, 3.5032353), (1.6667107, 3, 2.4944088), (2.1066527, 3.8, 3.1528285), (2.1213202, 3, 2.1213202), (2.68126, 3.8, 2.68126), (2.4944088, 3, 1.6667107), (3.1528285, 3.8, 2.1066527), (2.7716386, 3, 1.1480503), (3.5032353, 3.8, 1.4510876), (2.9423559, 3, 0.58527094), (3.7190146, 3.8, 0.739758), (3, 3, 1.8369701e-16), (3.7918746, 3.8, 2.3218536e-16), (2.9423559, 3, -0.58527094), (3.7190146, 3.8, -0.739758), (2.7716386, 3, -1.1480503), (3.5032353, 3.8, -1.4510876), (2.4944088, 3, -1.6667107), (3.1528285, 3.8, -2.1066527), (2.1213202, 3, -2.1213202), (2.68126, 3.8, -2.68126), (1.6667107, 3, -2.4944088), (2.1066527, 3.8, -3.1528285), (1.1480503, 3, -2.7716386), (1.4510876, 3.8, -3.5032353), (0.58527094, 3, -2.9423559), (0.739758, 3.8, -3.7190146), (3.6739403e-16, 3, -3), (4.643707e-16, 3.8, -3.7918746), (-0.58527094, 3, -2.9423559), (-0.739758, 3.8, -3.7190146), (-1.1480503, 3, -2.7716386), (-1.4510876, 3.8, -3.5032353), (-1.6667107, 3, -2.4944088), (-2.1066527, 3.8, -3.1528285), (-2.1213202, 3, -2.1213202), (-2.68126, 3.8, -2.68126), (-2.4944088, 3, -1.6667107), (-3.1528285, 3.8, -2.1066527), (-2.7716386, 3, -1.1480503), (-3.5032353, 3.8, -1.4510876), (-2.9423559, 3, -0.58527094), (-3.7190146, 3.8, -0.739758), (-3, 3, -5.5109107e-16), (-3.7918746, 3.8, -6.9655606e-16), (-2.9423559, 3, 0.58527094), (-3.7190146, 3.8, 0.739758), (-2.7716386, 3, 1.1480503), (-3.5032353, 3.8, 1.4510876), (-2.4944088, 3, 1.6667107), (-3.1528285, 3.8, 2.1066527), (-2.1213202, 3, 2.1213202), (-2.68126, 3.8, 2.68126), (-1.6667107, 3, 2.4944088), (-2.1066527, 3.8, 3.1528285), (-1.1480503, 3, 2.7716386), (-1.4510876, 3.8, 3.5032353), (-0.58527094, 3, 2.9423559), (-0.739758, 3.8, 3.7190146)]
+            texCoord2f[] primvars:st = [(0, 0), (0, 1), (0.03125, 0), (0.03125, 1), (0.0625, 0), (0.0625, 1), (0.09375, 0), (0.09375, 1), (0.125, 0), (0.125, 1), (0.15625, 0), (0.15625, 1), (0.1875, 0), (0.1875, 1), (0.21875, 0), (0.21875, 1), (0.25, 0), (0.25, 1), (0.28125, 0), (0.28125, 1), (0.3125, 0), (0.3125, 1), (0.34375, 0), (0.34375, 1), (0.375, 0), (0.375, 1), (0.40625, 0), (0.40625, 1), (0.4375, 0), (0.4375, 1), (0.46875, 0), (0.46875, 1), (0.5, 0), (0.5, 1), (0.53125, 0), (0.53125, 1), (0.5625, 0), (0.5625, 1), (0.59375, 0), (0.59375, 1), (0.625, 0), (0.625, 1), (0.65625, 0), (0.65625, 1), (0.6875, 0), (0.6875, 1), (0.71875, 0), (0.71875, 1), (0.75, 0), (0.75, 1), (0.78125, 0), (0.78125, 1), (0.8125, 0), (0.8125, 1), (0.84375, 0), (0.84375, 1), (0.875, 0), (0.875, 1), (0.90625, 0), (0.90625, 1), (0.9375, 0), (0.9375, 1), (0.96875, 0), (0.96875, 1), (1, 0), (1, 1), (0.5, 0.5)] (
+                interpolation = "faceVarying"
+            )
+            int[] primvars:st:indices = [0, 2, 3, 1, 2, 4, 5, 3, 4, 6, 7, 5, 6, 8, 9, 7, 8, 10, 11, 9, 10, 12, 13, 11, 12, 14, 15, 13, 14, 16, 17, 15, 16, 18, 19, 17, 18, 20, 21, 19, 20, 22, 23, 21, 22, 24, 25, 23, 24, 26, 27, 25, 26, 28, 29, 27, 28, 30, 31, 29, 30, 32, 33, 31, 32, 34, 35, 33, 34, 36, 37, 35, 36, 38, 39, 37, 38, 40, 41, 39, 40, 42, 43, 41, 42, 44, 45, 43, 44, 46, 47, 45, 46, 48, 49, 47, 48, 50, 51, 49, 50, 52, 53, 51, 52, 54, 55, 53, 54, 56, 57, 55, 56, 58, 59, 57, 58, 60, 61, 59, 60, 62, 63, 61, 62, 64, 65, 63, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66]
+            uniform token subdivisionScheme = "none"
+        }
+
+        def Xform "House"
+        {
+            float xformOp:rotateY = -15
+            double3 xformOp:translate = (0.6, 0, -0.3)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateY"]
+
+            def Mesh "Walls" (
+                prepend apiSchemas = ["MaterialBindingAPI"]
+            )
+            {
+                float3[] extent = [(-1.3, 3.8, -1), (1.3, 5.4, 1)]
+                int[] faceVertexCounts = [4, 4, 4, 4]
+                int[] faceVertexIndices = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+                rel material:binding = </Globe/Looks/HouseWalls>
+                point3f[] points = [(-1.3, 3.8, 1), (1.3, 3.8, 1), (1.3, 5.4, 1), (-1.3, 5.4, 1), (1.3, 3.8, -1), (-1.3, 3.8, -1), (-1.3, 5.4, -1), (1.3, 5.4, -1), (1.3, 3.8, 1), (1.3, 3.8, -1), (1.3, 5.4, -1), (1.3, 5.4, 1), (-1.3, 3.8, -1), (-1.3, 3.8, 1), (-1.3, 5.4, 1), (-1.3, 5.4, -1)]
+                texCoord2f[] primvars:st = [(0, 0), (1, 0), (1, 1), (0, 1)] (
+                    interpolation = "faceVarying"
+                )
+                int[] primvars:st:indices = [0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3]
+                uniform token subdivisionScheme = "none"
+            }
+
+            def Mesh "Gables" (
+                prepend apiSchemas = ["MaterialBindingAPI"]
+            )
+            {
+                float3[] extent = [(-1.3, 5.4, -1), (1.3, 6.5, 1)]
+                int[] faceVertexCounts = [3, 3]
+                int[] faceVertexIndices = [0, 1, 2, 3, 4, 5]
+                rel material:binding = </Globe/Looks/HouseWalls>
+                point3f[] points = [(1.3, 5.4, 1), (1.3, 5.4, -1), (1.3, 6.5, 0), (-1.3, 5.4, -1), (-1.3, 5.4, 1), (-1.3, 6.5, 0)]
+                texCoord2f[] primvars:st = [(0, 0.6), (1, 0.6), (0.5, 1)] (
+                    interpolation = "faceVarying"
+                )
+                int[] primvars:st:indices = [0, 1, 2, 0, 1, 2]
+                uniform token subdivisionScheme = "none"
+            }
+
+            def Mesh "Roof" (
+                prepend apiSchemas = ["MaterialBindingAPI"]
+            )
+            {
+                float3[] extent = [(-1.55, 5.4, -1.25), (1.55, 6.5, 1.25)]
+                int[] faceVertexCounts = [4, 4]
+                int[] faceVertexIndices = [0, 1, 2, 3, 4, 5, 6, 7]
+                rel material:binding = </Globe/Looks/Roof>
+                point3f[] points = [(-1.55, 5.4, 1.25), (1.55, 5.4, 1.25), (1.55, 6.5, 0), (-1.55, 6.5, 0), (1.55, 5.4, -1.25), (-1.55, 5.4, -1.25), (-1.55, 6.5, 0), (1.55, 6.5, 0)]
+                texCoord2f[] primvars:st = [(0, 0), (1, 0), (1, 1), (0, 1)] (
+                    interpolation = "faceVarying"
+                )
+                int[] primvars:st:indices = [0, 1, 2, 3, 0, 1, 2, 3]
+                uniform token subdivisionScheme = "none"
+            }
+        }
+
+        def Xform "Tree"
+        {
+            double3 xformOp:translate = (-2.3, 3.8, 0.8)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+
+            def Cylinder "Trunk" (
+                prepend apiSchemas = ["MaterialBindingAPI"]
+            )
+            {
+                uniform token axis = "Y"
+                float3[] extent = [(-0.18, -0.3, -0.18), (0.18, 0.3, 0.18)]
+                double height = 0.6
+                rel material:binding = </Globe/Looks/Trunk>
+                double radius = 0.18
+                double3 xformOp:translate = (0, 0.3, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate"]
+            }
+
+            def Cone "Needles0" (
+                prepend apiSchemas = ["MaterialBindingAPI"]
+            )
+            {
+                uniform token axis = "Y"
+                float3[] extent = [(-0.9, -0.7, -0.9), (0.9, 0.7, 0.9)]
+                double height = 1.4
+                rel material:binding = </Globe/Looks/Pine>
+                double radius = 0.9
+                double3 xformOp:translate = (0, 1.2, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate"]
+            }
+
+            def Cone "Needles1" (
+                prepend apiSchemas = ["MaterialBindingAPI"]
+            )
+            {
+                uniform token axis = "Y"
+                float3[] extent = [(-0.7, -0.6, -0.7), (0.7, 0.6, 0.7)]
+                double height = 1.2
+                rel material:binding = </Globe/Looks/Pine>
+                double radius = 0.7
+                double3 xformOp:translate = (0, 1.9, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate"]
+            }
+
+            def Cone "Needles2" (
+                prepend apiSchemas = ["MaterialBindingAPI"]
+            )
+            {
+                uniform token axis = "Y"
+                float3[] extent = [(-0.45, -0.45, -0.45), (0.45, 0.45, 0.45)]
+                double height = 0.9
+                rel material:binding = </Globe/Looks/Pine>
+                double radius = 0.45
+                double3 xformOp:translate = (0, 2.5, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate"]
+            }
+        }
+
+        def Points "Snowflakes" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            float3[] extent = [(-3.749366, 4.225, -3.4108386), (3.6947641, 10.845, 3.5008786)]
+            rel material:binding = </Globe/Looks/Snow>
+            point3f[] points = [(0.40249223, 4.4, 0), (-1.1494409, 6.545, 1.0529889), (0.18948017, 8.69, -2.159189), (-2.9923048, 6.38, -0.5292567), (2.861533, 8.525, -1.8203379), (-0.23362704, 10.67, 0.8691481), (-0.8086611, 6.215, -1.5569416), (2.1718645, 8.36, 0.79309785), (-2.5505602, 10.505, 1.0529209), (1.3322954, 6.05, -2.8472774), (1.0433275, 8.195, 3.3258786), (-1.0447458, 10.34, -0.60539746), (1.8852452, 5.885, -0.41454884), (-1.4079785, 8.03, 2.002897), (-0.3695253, 10.175, -2.8505177), (2.4813912, 5.72, 2.0910997), (-3.574366, 7.865, 0.14800785), (1.0285983, 10.01, -1.0237117), (-0.0964771, 5.555, 2.0891845), (-1.6513684, 7.7, -1.9786315), (2.9583318, 9.845, 0.39783508), (-2.7442822, 5.39, 1.9096895), (0.15295807, 7.535, -0.68014985), (0.8251922, 9.68, 1.4398117), (-2.1350224, 5.225, -0.6809404), (2.4509408, 7.37, -1.1326467), (-1.1932983, 9.515, 2.8520236), (-1.1641946, 5.06, -3.2358387), (0.94267964, 7.205, 0.4953333), (-1.7834834, 9.35, 0.4703053), (1.2876294, 4.895, -2.0030005), (0.47749513, 7.04, 2.7766883), (-2.525999, 9.185, -1.9558449), (3.5197642, 4.73, -0.29199442), (-0.90640295, 6.875, 0.9800172), (0.009583357, 9.02, -2.0124383), (1.6890483, 4.565, 1.8614821), (-2.917717, 6.71, -0.2700522), (2.6240468, 8.855, -1.9920789)]
+            float[] widths = [0.35] (
+                interpolation = "constant"
+            )
+        }
+
+        def Sphere "Dome" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            float3[] extent = [(-5, -5, -5), (5, 5, 5)]
+            rel material:binding = </Globe/Looks/Glass>
+            double radius = 5
+            double3 xformOp:translate = (0, 7, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+    }
+}
+

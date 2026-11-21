@@ -121,11 +121,17 @@ export class ViewerCameraController {
     this.activeCameraPath=null
   }
   frame(): CameraFrame {
+    const {transform,view,conformed,eye,forward}=this.#resolve(),frustum=gfFrustum(transform,conformed)
+    return {matrix:pack(view,computeProjectionMatrix(conformed)),eye,forward,view,projection:frustum.computeProjectionMatrix(),frustum}
+  }
+  /** stageView.py:1277-1316 resolveCamera: the conformed GfCamera a frame
+   *  draws with (stageView.py:483-485 gfCamera, a new object per call). */
+  gfCamera(): GfCamera { const {transform,conformed}=this.#resolve(); return gfCameraOf(transform,conformed) }
+  #resolve() {
     const path=this.activeCameraPath
     if (path) {
       const {value,world}=this.authored(path), m=world.GetArray()
-      const conformed=conform(value,this.aspect(),cameraFitsViewport(this.presentation)),view=world.getInverse(),frustum=gfFrustum(world,conformed)
-      return {matrix: pack(view,computeProjectionMatrix(conformed)),eye:[m[12]!,m[13]!,m[14]!],forward:[-m[8]!,-m[9]!,-m[10]!],view,projection:frustum.computeProjectionMatrix(),frustum}
+      return {transform:world,view:world.getInverse(),conformed:conform(value,this.aspect(),cameraFitsViewport(this.presentation)),eye:[m[12]!,m[13]!,m[14]!] as [number,number,number],forward:[-m[8]!,-m[9]!,-m[10]!] as [number,number,number]}
     }
     const [near,far]=this.clipping()
     if (!Number.isFinite(near)||!Number.isFinite(far)||near<=0||far<=near) throw new Error('Clipping requires 0 < near < far. Reset the clipping overrides for this scene.')
@@ -134,8 +140,9 @@ export class ViewerCameraController {
       horizontalAperture:vertical*(this.free.aspectRatio ?? this.aspect()),verticalAperture:vertical,
       horizontalApertureOffset:(this.orbit.apertureOffset?.[0] ?? 0)*vertical,verticalApertureOffset:(this.orbit.apertureOffset?.[1] ?? 0)*vertical,
       focalLength:50,clippingRange:this.clipping(),fStop:0,focusDistance:this.orbit.radius}
-    const conformed=conform(value,this.aspect(),this.free.aspectRatio!==null&&cameraFitsViewport(this.presentation)),view=new GfMatrix4d(...getViewMatrix(this.orbit)),frustum=gfFrustum(view.getInverse(),conformed)
-    return {matrix:pack(view,computeProjectionMatrix(conformed)),eye:getEyePosition(this.orbit),forward:getCameraBasis(this.orbit).forward,view,projection:frustum.computeProjectionMatrix(),frustum}
+    const conformed=conform(value,this.aspect(),this.free.aspectRatio!==null&&cameraFitsViewport(this.presentation))
+    const view=new GfMatrix4d(...getViewMatrix(this.orbit))
+    return {transform:view.getInverse(),view,conformed,eye:getEyePosition(this.orbit),forward:getCameraBasis(this.orbit).forward}
   }
   private authored(path:string) {
     const value=Camera.getCamera(this.stage!.getPrim(path)!,this.time)
@@ -157,9 +164,11 @@ function conform<T extends {horizontalAperture:number;verticalAperture:number}>(
   return result
 }
 /** GfCamera::GetFrustum() of a conformed camera at a camera-to-world transform. */
-function gfFrustum(transform:GfMatrix4d,c:{projection:'perspective'|'orthographic',horizontalAperture:number,verticalAperture:number,horizontalApertureOffset:number,verticalApertureOffset:number,focalLength:number,clippingRange:readonly [number,number]}):GfFrustum{
-  return new GfCamera(transform,c.projection==='orthographic'?GfCamera.Orthographic:GfCamera.Perspective,c.horizontalAperture,c.verticalAperture,c.horizontalApertureOffset,c.verticalApertureOffset,c.focalLength,new GfRange1f(c.clippingRange[0],c.clippingRange[1])).getFrustum()
+type ConformedCamera={projection:'perspective'|'orthographic',horizontalAperture:number,verticalAperture:number,horizontalApertureOffset:number,verticalApertureOffset:number,focalLength:number,clippingRange:readonly [number,number]}
+function gfCameraOf(transform:GfMatrix4d,c:ConformedCamera):GfCamera{
+  return new GfCamera(transform,c.projection==='orthographic'?GfCamera.Orthographic:GfCamera.Perspective,c.horizontalAperture,c.verticalAperture,c.horizontalApertureOffset,c.verticalApertureOffset,c.focalLength,new GfRange1f(c.clippingRange[0],c.clippingRange[1]))
 }
+function gfFrustum(transform:GfMatrix4d,c:ConformedCamera):GfFrustum{ return gfCameraOf(transform,c).getFrustum() }
 function pack(view:GfMatrix4d,projection:readonly number[]):Float32Array<ArrayBuffer> {
   const matrix=view.getMultiply(new GfMatrix4d(...projection)).getTranspose().GetArray()
   return new Float32Array(matrix)

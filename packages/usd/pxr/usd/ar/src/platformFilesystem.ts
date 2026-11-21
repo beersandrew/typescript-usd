@@ -16,7 +16,9 @@
 // provides them as the files at <ResourcePath>/<name> here.
 import { Registry as PlugRegistry, type Plugin as PlugPlugin } from 'typescript-usd/plug'
 
-interface FilesystemRuntime {
+/** The host filesystem the default resolver reads: Node's, or one a page
+ *  installs with _ArSetHostFilesystem. */
+export interface FilesystemRuntime {
   existsSync(path: string): boolean
   isDirectorySync(path: string): boolean
   isFileSync(path: string): boolean
@@ -30,9 +32,22 @@ interface FilesystemRuntime {
   mkdir(path: string): Promise<void>
   rename(from: string, to: string): Promise<void>
   unlink(path: string): Promise<void>
+  writeFile(path: string, data: Uint8Array): Promise<void>
+  removeTree(path: string): Promise<void>
+  makeTmpDir(prefix: string): Promise<string>
+  stat(path: string): Promise<FilesystemStat | undefined>
+  chmod(path: string, mode: number): Promise<void>
+  chown(path: string, uid: number, gid: number): Promise<void>
 }
 
-interface FilesystemFileHandle {
+/** The parts of stat(2) the port reads: the mode bits and the owner. */
+export interface FilesystemStat {
+  mode: number
+  uid: number
+  gid: number
+}
+
+export interface FilesystemFileHandle {
   write(buffer: Uint8Array, offset: number, length: number, position: number): Promise<{ bytesWritten: number }>
   close(): Promise<void>
 }
@@ -62,6 +77,12 @@ if (typeof process !== 'undefined' && process.versions?.node) {
       mkdir(path: string, options: { recursive: boolean }): Promise<unknown>
       rename(from: string, to: string): Promise<void>
       unlink(path: string): Promise<void>
+      writeFile(path: string, data: Uint8Array): Promise<void>
+      rm(path: string, options: { recursive: boolean, force: boolean }): Promise<void>
+      mkdtemp(prefix: string): Promise<string>
+      stat(path: string): Promise<FilesystemStat>
+      chmod(path: string, mode: number): Promise<void>
+      chown(path: string, uid: number, gid: number): Promise<void>
     },
     { tmpdir(): string },
   ]
@@ -89,10 +110,29 @@ if (typeof process !== 'undefined' && process.versions?.node) {
     mkdir: async path => { await promises.mkdir(path, { recursive: true }) },
     rename: (from, to) => promises.rename(from, to),
     unlink: path => promises.unlink(path),
+    writeFile: (path, data) => promises.writeFile(path, data),
+    removeTree: path => promises.rm(path, { recursive: true, force: true }),
+    makeTmpDir: prefix => promises.mkdtemp(prefix),
+    stat: async path => {
+      try {
+        const { mode, uid, gid } = await promises.stat(path)
+        return { mode, uid, gid }
+      } catch { return undefined }
+    },
+    chmod: (path, mode) => promises.chmod(path, mode),
+    chown: (path, uid, gid) => promises.chown(path, uid, gid),
   }
 }
 
 export function _filesystemAvailable(): boolean { return filesystem !== undefined }
+
+/** @internal PLATFORM-DIVERGENCE(tf-host-filesystem): installs the
+ *  filesystem the default resolver and the file helpers here read and write
+ *  where there is no Node (a browser page), e.g. one kept in memory; Tf's
+ *  file writers take theirs from _TfSetHostFilesystem. */
+export function _ArSetHostFilesystem(runtime: FilesystemRuntime | undefined): void {
+  filesystem = runtime
+}
 
 /** The plugin and resource name of the plugin resource file at `path`. */
 function _findPluginResourceFile(path: string): { plugin: PlugPlugin, name: string } | undefined {
@@ -167,6 +207,62 @@ export async function _deleteFile(path: string): Promise<boolean> {
   try { await filesystem.unlink(path); return true } catch { return false }
 }
 
+/** TfMakeDirs(path, -1, existOk = true) (tf/fileUtils.cpp:354-359) over
+ *  the host file system: creates `path` and any missing parents. Rejects when
+ *  there is no host file system or a directory cannot be made. */
+export async function _makeDirs(path: string): Promise<void> {
+  if (!filesystem) throw new Error('Filesystem assets are unavailable')
+  await filesystem.mkdir(path)
+}
+
+/** Writes `data` as the whole file at `path`, replacing any file there. */
+export async function _writeFile(path: string, data: Uint8Array): Promise<void> {
+  if (!filesystem) throw new Error('Filesystem assets are unavailable')
+  await filesystem.writeFile(path, data)
+}
+
+/** TfRmTree(path, onError = {}) (tf/fileUtils.cpp:638-646) over the host
+ *  file system: removes `path` and everything under it, ignoring errors. */
+export async function _removeTree(path: string): Promise<void> {
+  if (!filesystem) return
+  try { await filesystem.removeTree(path) } catch { /* ignored, as with no onError */ }
+}
+
+/** ArchMakeTmpSubdir(tmpdir, prefix) (arch/fileSystem.cpp:799-828): a new,
+ *  empty directory in `parent` whose name is `prefix` followed by random
+ *  characters, made only by this call. Rejects when there is no host file
+ *  system or it cannot be made. */
+export async function _makeTmpSubdir(parent: string, prefix: string): Promise<string> {
+  if (!filesystem) throw new Error('Filesystem assets are unavailable')
+  return filesystem.makeTmpDir(`${parent.replace(/\/+$/, '')}/${prefix}`)
+}
+
+/** rename(2) over the host file system: moves `from` to `to`. */
+export async function _rename(from: string, to: string): Promise<void> {
+  if (!filesystem) throw new Error('Filesystem assets are unavailable')
+  await filesystem.rename(from, to)
+}
+
+/** stat(2) over the host file system (ArchStatType, arch/fileSystem.h): the
+ *  mode bits and owner of `path`, or undefined when it cannot be read. */
+export async function _stat(path: string): Promise<FilesystemStat | undefined> {
+  return filesystem?.stat(path)
+}
+
+/** chmod(2) over the host file system. Rejects on failure or when there is
+ *  no host file system. */
+export async function _chmod(path: string, mode: number): Promise<void> {
+  if (!filesystem) throw new Error('Filesystem assets are unavailable')
+  await filesystem.chmod(path, mode)
+}
+
+/** chown(2) over the host file system; -1 leaves the uid or gid unchanged.
+ *  Rejects on failure or when there is no host file system. */
+export async function _chown(path: string, uid: number, gid: number): Promise<void> {
+  if (!filesystem) throw new Error('Filesystem assets are unavailable')
+  await filesystem.chown(path, uid, gid)
+}
+
 let tmpFileCalls = 1
 
 /** ArchMakeTmpFileName (arch/fileSystem.cpp:686-705): a file name in the
@@ -215,6 +311,21 @@ export async function _openFileForWrite(path: string, replace: boolean): Promise
       }
     },
   }
+}
+
+/** Whether the module at `moduleUrl` (its import.meta.url) is the script
+ *  Node was started with, as Python's `__name__ == '__main__'` and a C++
+ *  program's main(); always false without a host process. */
+export async function _isMainScript(moduleUrl: string): Promise<boolean> {
+  if (!filesystem || typeof process === 'undefined' || process.argv[1] === undefined) return false
+  const urlSpecifier = ['node', 'url'].join(':')
+  const fsSpecifier = ['node', 'fs'].join(':')
+  const [{ pathToFileURL }, { realpathSync }] = await Promise.all([
+    import(/* @vite-ignore */ urlSpecifier), import(/* @vite-ignore */ fsSpecifier),
+  ]) as unknown as [{ pathToFileURL(path: string): URL }, { realpathSync(path: string): string }]
+  try {
+    return moduleUrl === pathToFileURL(realpathSync(process.argv[1])).href
+  } catch { return false }
 }
 
 export function _cwd(): string {

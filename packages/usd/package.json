@@ -1,6 +1,6 @@
 {
   "name": "typescript-usd",
-  "version": "26.11.1+3",
+  "version": "26.11.1+4",
   "description": "A TypeScript implementation of the core of OpenUSD: USD file formats, composition, and value resolution.",
   "license": "SEE LICENSE IN LICENSE",
   "repository": {
@@ -9,6 +9,20 @@
   },
   "homepage": "https://github.com/beersandrew/typescript-usd",
   "type": "module",
+  "bin": {
+    "usdauthors": "./dist/pxr/bin/usdauthors/usdauthors.js",
+    "usdcat": "./dist/pxr/usd/bin/usdcat/usdcat.js",
+    "usdchecker": "./dist/pxr/usdValidation/bin/usdchecker/usdchecker.js",
+    "usddiff": "./dist/pxr/usd/bin/usddiff/usddiff.js",
+    "usddumpcrate": "./dist/pxr/usd/bin/usddumpcrate/usddumpcrate.js",
+    "usdedit": "./dist/pxr/usd/bin/usdedit/usdedit.js",
+    "usdfixbrokenpixarschemas": "./dist/pxr/bin/usdfixbrokenpixarschemas/usdfixbrokenpixarschemas.js",
+    "usdresolve": "./dist/pxr/usd/bin/usdresolve/usdresolve.js",
+    "usdstitch": "./dist/pxr/usd/bin/usdstitch/usdstitch.js",
+    "usdstitchclips": "./dist/pxr/usd/bin/usdstitchclips/usdstitchclips.js",
+    "usdtree": "./dist/pxr/usd/bin/usdtree/usdtree.js",
+    "usdzip": "./dist/pxr/bin/usdzip/usdzip.js"
+  },
   "sideEffects": [
     "./pxr/imaging/hio/src/glslfxPrefetch.ts",
     "./dist/pxr/imaging/hio/src/glslfxPrefetch.js",
@@ -286,6 +300,7 @@
     "./usdImaging/cardTexturePrefetch": "./pxr/usdImaging/usdImaging/src/cardTexturePrefetch.ts",
     "./usdVolImaging": "./pxr/usdImaging/usdVolImaging/src/index.ts",
     "./usdExecImaging": "./pxr/usdImaging/usdExecImaging/src/index.ts",
+    "./usdExecImaging/_internal": "./pxr/usdImaging/usdExecImaging/src/internal.ts",
     "./hd": "./pxr/imaging/hd/src/index.ts",
     "./hdSt": "./pxr/imaging/hdSt/src/index.ts",
     "./hdSt/materialx": "./pxr/imaging/hdSt/src/materialx.ts",
@@ -358,7 +373,8 @@
     "test:watch": "vitest",
     "typecheck": "tsc --noEmit",
     "build": "tsc -p tsconfig.build.json && node scripts/copy-resources.mjs",
-    "bench": "vitest bench --run"
+    "bench": "vitest bench --run",
+    "test:python": "vitest run --config python/vitest.config.ts"
   },
   "devDependencies": {
     "@mtlx/core": "workspace:*",
@@ -373,6 +389,7 @@
     "@vdb/openvdb": "workspace:*",
     "@vitest/ui": "^3.2.6",
     "@webgpu/types": "^0.1.74",
+    "pyodide": "314.0.7",
     "typescript": "^5.8.0",
     "vite": "^6.4.3",
     "vitest": "^3.0.0"
@@ -522,6 +539,10 @@
       "./usdExecImaging": {
         "types": "./dist/pxr/usdImaging/usdExecImaging/src/index.d.ts",
         "default": "./dist/pxr/usdImaging/usdExecImaging/src/index.js"
+      },
+      "./usdExecImaging/_internal": {
+        "types": "./dist/pxr/usdImaging/usdExecImaging/src/internal.d.ts",
+        "default": "./dist/pxr/usdImaging/usdExecImaging/src/internal.js"
       },
       "./hd": {
         "types": "./dist/pxr/imaging/hd/src/index.d.ts",

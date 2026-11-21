@@ -90,6 +90,9 @@ export class ValidationWindow {
     this.#renderTree(checked)
   }
 
+  /** validationWidget.py validationErrors: the last run's results. */
+  get validationErrors(): readonly ValidationResultRow[] { return this.#results }
+
   /** The checked validators' and suites' full names (SelectedValidatorsWidget.getSelectedValidators). */
   selectedValidators(): string[] {
     return [...this.root.querySelectorAll<HTMLInputElement>('.validation-tree input[data-validator]:checked')]

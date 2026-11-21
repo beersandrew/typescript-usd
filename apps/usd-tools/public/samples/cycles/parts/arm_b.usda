@@ -1,0 +1,37 @@
+#usda 1.0
+(
+    "composition.errors.cycles: diamond arm B: references ./shared.usda and brings TagB; it also moves the shared layer's vase to the red outline and paints it red (weaker than the shared layer reached through arm A)."
+    defaultPrim = "Arm"
+    framesPerSecond = 24
+    metersPerUnit = 1
+    timeCodesPerSecond = 24
+    upAxis = "Y"
+)
+
+def Xform "Arm" (
+    kind = "component"
+    prepend references = @./shared.usda@
+)
+{
+    def Scope "Looks"
+    {
+    }
+
+    def Sphere "TagB"
+    {
+        float3[] extent = [(-0.085, -0.085, -0.085), (0.085, 0.085, 0.085)]
+        color3f[] primvars:displayColor = [(0.024157632, 0.462077, 0.58407843)]
+        double radius = 0.085
+        matrix4d xformOp:transform = ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0.515, 0.08800000000000001, 0.295, 1) )
+        uniform token[] xformOpOrder = ["xformOp:transform"]
+    }
+
+    over "Vase"
+    {
+        color3f[] primvars:displayColor = [(0.63075715, 0.000607054, 0.010960094)] (
+            interpolation = "constant"
+        )
+        matrix4d xformOp:transform = ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0.8, 0, 0, 1) )
+    }
+}
+

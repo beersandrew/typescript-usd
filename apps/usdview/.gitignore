@@ -10,4 +10,7 @@ dist/
 # Asset-acceptance renders and reports (some asset terms forbid committing renders).
 /scripts/asset-acceptance/out/
 /scripts/asset-acceptance/out-chrome/
+/scripts/python-interpreter-check/out/
+/scripts/static-build-check/out/
 /scripts/viewer-perf/out/
+/scripts/interpreter-session/out/

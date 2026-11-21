@@ -14,15 +14,22 @@ export const defaultFontSize = 10, minFontSize = 6, maxFontSize = 99
 /** appController.py:326-330: BASE_FONT_SZ = size, SMALL_FONT_SZ = int(round(size * 0.8)), in pt (= px on macOS Qt). */
 export function fontSizes(size: number) { return { base: `${size}px`, small: `${Math.round(size * 0.8)}px` } }
 
+/** Window > Python Interpreter (src/py-interpreter.ts) runs where Pyodide and
+ *  the pxr package are served: the dev server and a build, which ships them
+ *  (scripts/pxr-python.ts); not the jsdom tests, which have neither. A browser
+ *  without JSPI gets the reason when the window opens. */
+export const pythonInterpreterAvailable: boolean = import.meta.env.MODE !== 'test'
+
 export const windowUnsupported = {
-  interpreter: 'The Python interpreter (usdviewApi console) is not available in the browser viewer.',
+  pythonInterpreter: 'The Python interpreter (Pyodide with the pxr package) is not available here. Use Window > TypeScript Interpreter, which has the same usdviewApi; I opens it here.',
   appIcon: 'A web component cannot set the browser window or tab icon.',
 } as const
-export function windowMenuHtml(mac = isMac()): string {
+export function windowMenuHtml(mac = isMac(), python = pythonInterpreterAvailable): string {
   const key = (sequence: string) => `<kbd>${shortcutLabel(sequence, mac)}</kbd>`
   return `<details class="menu window-menu"><summary>Window</summary><div class="menu-popup window-popup" role="menu">
     <button type="button" role="menuitem" data-window="viewerMode">Toggle Viewer-Only Mode${key('F11')}</button><hr>
-    <button type="button" role="menuitem" disabled title="${windowUnsupported.interpreter}">Interpreter${key('I')}</button>
+    <button type="button" role="menuitem" data-window="pythonInterpreter"${python ? '' : ` disabled title="${windowUnsupported.pythonInterpreter}"`}>Python Interpreter${key('I')}</button>
+    <button type="button" role="menuitem" data-window="typescriptInterpreter">TypeScript Interpreter</button>
     <button type="button" role="menuitem" data-window="preferences">Preferences</button>
     <button type="button" role="menuitem" data-window="validation">USD Validation${key('V')}</button>
     <button type="button" role="menuitem" data-window="debugFlags">Debug Flags</button>

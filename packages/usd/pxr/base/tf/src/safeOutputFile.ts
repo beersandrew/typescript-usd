@@ -13,18 +13,16 @@
 
 import { TfAtomicOfstreamWrapper } from './atomicOfstreamWrapper.ts'
 import { TfDiagnosticMgr, TfDiagnosticType, TfError } from './diagnostic.ts'
+import { _TfHostFilesystem } from './hostFilesystem.ts'
 
 interface NodeUpdateHandle {
   write(buffer: Uint8Array, offset: number, length: number, position: number): Promise<{ bytesWritten: number }>
   close(): Promise<void>
 }
 
+// Node's fs/promises or a host's filesystem (hostFilesystem.ts).
 async function openForUpdate(path: string): Promise<NodeUpdateHandle> {
-  const specifier = `${['node', 'fs'].join(':')}/promises`
-  const fs = await import(/* @vite-ignore */ specifier) as unknown as {
-    open(path: string, flags: string): Promise<NodeUpdateHandle>
-  }
-  return fs.open(path, 'r+')
+  return (await _TfHostFilesystem()).open(path, 'r+')
 }
 
 /** The stream Get() returns: FILE * writes, buffered until close. */

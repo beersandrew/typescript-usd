@@ -18,6 +18,10 @@ const FILES: Record<string, [string, string]> = {
   'NOTICE-OpenSubdiv-3.6.1.txt': ['packages/opensubdiv/NOTICE-OpenSubdiv-3.6.1.txt', 'OpenSubdiv NOTICE'],
   'LICENSE-OpenVDB.txt': ['packages/openvdb/LICENSE', 'OpenVDB 13 and NanoVDB: Apache License 2.0'],
   'LICENSE-OpenVDB-10.1.0.txt': ['packages/openvdb/LICENSE-OpenVDB-10.1.0.txt', 'OpenVDB 10.1.0: Mozilla Public License 2.0'],
+  // Window > Python Interpreter ships Pyodide (scripts/pxr-python.ts), whose
+  // runtime includes CPython and its standard library.
+  'LICENSE-Pyodide.txt': ['packages/openvdb/LICENSE-OpenVDB-10.1.0.txt', 'Pyodide 314.0.7: Mozilla Public License 2.0 (pxr-pyodide/pyodide.asm.mjs is modified; its first line says how)'],
+  'LICENSE-Python.txt': ['packages/usd/python/LICENSE-Python.txt', 'CPython and its standard library (in Pyodide): Python Software Foundation License'],
   'LICENSE-Roboto.txt': ['apps/usdview/src/fonts/LICENSE.txt', 'Roboto font: Apache License 2.0'],
   'LICENSE-RobotoMono.txt': ['apps/usdview/src/fonts/RobotoMono-LICENSE.txt', 'Roboto Mono font: Apache License 2.0'],
 }

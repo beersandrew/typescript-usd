@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>USD tools — TypeScript USD</title>
+    <link rel="stylesheet" href="./src/page.css">
+    <style>
+      ul.tools { grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); }
+      main ul.tools li { position: relative; padding-left: 58px; }
+      main ul.tools .who { position: absolute; left: 14px; top: 12px; font-size: 30px; line-height: 1; }
+      ul.tools a { overflow-wrap: anywhere; }
+      ul.tools a::after { content: ''; position: absolute; inset: 0; }
+      ul.tools li:hover { border-color: var(--accent); }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>USD tools</h1>
+      <p class="about">OpenUSD's command-line tools, run in this page by TypeScript USD. Choose a sample or open your own files; nothing leaves the device.</p>
+      <ul class="tools">
+        <li><span class="who" aria-hidden="true">🐈</span><a href="./usdcat/">usdcat</a><p>Drop a file and the cat converts it: .usda to .usdc, .usdc to .usda. Flattening is in its settings.</p></li>
+        <li><span class="who" aria-hidden="true">✏️</span><a href="./usdzip/">usdzip</a><p>Drop a USD file or its folder: everything it uses goes into a pencil case that zips up into a .usdz.</p></li>
+        <li><span class="who" aria-hidden="true">🕵️</span><a href="./usdchecker/">usdchecker</a><p>Hand a file to the inspector: he looks it over and stamps a report, every finding grouped by the rule it breaks.</p></li>
+        <li><span class="who" aria-hidden="true">🦉</span><a href="./usddiff/">usddiff</a><p>Put two files on either side of the owl: it compares them as USD sees them and lays the changes out side by side.</p></li>
+        <li><span class="who" aria-hidden="true">🕊️</span><a href="./usdresolve/">usdresolve</a><p>A homing pigeon carries each asset path a layer names to the file it resolves to, in a little town of your files.</p></li>
+        <li><span class="who" aria-hidden="true">🐭</span><a href="./usdstitch/">usdstitch</a><p>A tailor mouse sews your USD files into one quilt, the first the strongest, time samples merged.</p></li>
+        <li><span class="who" aria-hidden="true">🎞️</span><a href="./usdstitchclips/">usdstitchclips</a><p>The same mouse sews clip files into a film strip: value clips on one prim, with their topology and manifest.</p></li>
+        <li><span class="who" aria-hidden="true">🤖</span><a href="./usdfixbrokenpixarschemas/">usdfixbrokenpixarschemas</a><p>A fix-it robot mends the schema mistakes older files make with Pixar’s schemas and shows you what it changed.</p></li>
+      </ul>
+      <p class="credit">Samples: four exhibits from the <a href="https://github.com/beersandrew/usd-museum">USD Museum</a> (CC0 1.0), the witches' heath from TypeScript USD's Stagehand example, a bouncing ball in four clips made for these pages, and the inputs of OpenUSD's own tests for usdfixbrokenpixarschemas. Pixar's Kitchen Set is not included, since its licence does not allow passing it on; open your own copy with Open folder. Tools ported from OpenUSD 26.11.1 (Pixar, Tomorrow Open Source Technology License 1.0).</p>
+    </main>
+  </body>
+</html>

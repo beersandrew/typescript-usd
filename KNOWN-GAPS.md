@@ -166,9 +166,13 @@ Compared with OpenUSD 26.11.1's `pxr/` tree. Evidence: the directories under
 - **Image plugins: hioImageIO, hioOiio, hioAvif.** Only the formats in
   "File formats and images" read. Status: not yet ported.
 - **usdUtils: the Python-only modules.** The C++ library is ported
-  (`packages/usd/pxr/usd/usdUtils`); `usdzUtils.py` (ExtractUsdzPackage and
-  the usdz scan, update and asset iterators), `updateSchemaWithSdrNode.py`,
-  `constantsGroup.py`, `fixBrokenPixarSchemas.py` and `toolPaths.py` are not,
+  (`packages/usd/pxr/usd/usdUtils`), and so is `usdzUtils.py`
+  (ExtractUsdzPackage and the usdz scan, update and asset iterators; a view
+  held past the scan reads as empty instead of raising,
+  `PLATFORM-DIVERGENCE(usdutils-usdz-scan-detached-view)`), and
+  `fixBrokenPixarSchemas.py` (its SkelBindingAPI fixup needs usdSkel's
+  schemas registered, by importing `typescript-usd/usdSkel`).
+  `updateSchemaWithSdrNode.py`, `constantsGroup.py` and `toolPaths.py` are not,
   nor the Python-only `_BooleanExpressionRenameVariables` of
   `wrapPipeline.cpp`. In a browser, asset localization and usdz packaging find
   no clip-template files or external asset files and have no temporary files
@@ -193,11 +197,27 @@ Compared with OpenUSD 26.11.1's `pxr/` tree. Evidence: the directories under
 - **usdIrImaging, usdPmc, usdAppUtils, `pxr/base/js`, `pxr/exec/execTest`.**
   `hio/src/dictionary.ts` stands in for the `js` JSON reader
   (`FAITHFULNESS-DEBT(hio-js-reader)`). Status: not yet ported.
-- **Command-line tools: usdcat, usddiff, usdtree, usdedit, usdresolve,
-  usdstitch, usdstitchclips, usdzip, usdcompress, usdchecker, usdrecord,
-  sdfdump, sdffilter, usdgenschemafromsdr and the others under `pxr/bin`,
-  `pxr/usd/bin`, `pxr/usdImaging/bin`.** The library has the APIs most of
-  them call, but not the tools. Status: not yet ported.
+- **Command-line tools: usdcompress (needs usdDraco), usdcrush (needs usdPmc),
+  usdrecord, sdfdump, sdffilter, usdupdatecrate, usdgenschemafromsdr and the
+  others under `pxr/bin`, `pxr/usd/bin`, `pxr/usdImaging/bin`.** The library
+  has the APIs most of them call, but not the tools. Ported: usdauthors,
+  usdfixbrokenpixarschemas and usdzip (`packages/usd/pxr/bin`), usdcat,
+  usddiff, usddumpcrate, usdedit, usdresolve, usdstitch, usdstitchclips and
+  usdtree (`packages/usd/pxr/usd/bin`), usdchecker
+  (`packages/usd/pxr/usdValidation/bin`). They parse a subset of CLI11's and
+  argparse's argument handling (`FAITHFULNESS-DEBT(usdauthors-cli11-subset)`,
+  `FAITHFULNESS-DEBT(usdcat-cli11-subset)`,
+  `FAITHFULNESS-DEBT(usdchecker-cli11-subset)`,
+  `FAITHFULNESS-DEBT(usddiff-argparse-subset)`,
+  `FAITHFULNESS-DEBT(usddumpcrate-argparse-subset)`,
+  `FAITHFULNESS-DEBT(usdedit-argparse-subset)`,
+  `FAITHFULNESS-DEBT(usdfixbrokenpixarschemas-argparse-subset)`,
+  `FAITHFULNESS-DEBT(usdresolve-argparse-subset)`,
+  `FAITHFULNESS-DEBT(usdstitch-argparse-subset)`,
+  `FAITHFULNESS-DEBT(usdstitchclips-argparse-subset)`,
+  `FAITHFULNESS-DEBT(usdtree-cli11-subset)`,
+  `FAITHFULNESS-DEBT(usdzip-cli11-subset)`). Status: not yet ported (the
+  rest).
 - **The legacy UsdImagingDelegate path** (`USDIMAGINGGL_ENGINE_ENABLE_SCENE_INDEX=false`).
   Only the scene index path exists. Evidence: the 4 not-run
   `testUsdImagingGLCards*` rows of the imaging ledger. Status: by design.
@@ -462,10 +482,34 @@ Compared with the menus of OpenUSD 26.11.1's Qt usdview. Evidence:
 [apps/usdview/docs/usdview-menu-gaps.md](apps/usdview/docs/usdview-menu-gaps.md)
 (dated November 2, 2026) and the disabled items in `apps/usdview/src`.
 
-- **Disabled, with the reason shown:** the Python interpreter
-  (`src/window-menu.ts`); Auto Compute Clipping Planes
+- **Disabled, with the reason shown:** Auto Compute Clipping Planes
   (`src/camera-controls.ts`); further renderer settings and AOVs other than
-  color (`src/native-menus.ts`). Status: not yet ported (Python by design).
+  color (`src/native-menus.ts`). Status: not yet ported.
+- **Python covers the forwarding layer only.** Window > Python Interpreter
+  (`src/py-interpreter.ts`, `packages/usd/python/interactive.ts`) is
+  usdview's Python console under Pyodide over the `pxr` forwarding layer, so
+  it covers what that layer forwards (`packages/usd/python/pxr`), not all of
+  OpenUSD's Python API. Pyodide and the `pxr` package are served by the dev
+  server and shipped in a static build (`scripts/pxr-python.ts`). It needs JSPI (Safari 27.3 has it). `input()` raises
+  (`PLATFORM-DIVERGENCE(usdview-python-readline)`); `$PYTHONSTARTUP` is not
+  run; `usdviewApi` members forward mechanically, so only `viewerMode` and
+  `dataModel.currentFrame` can be assigned, and a Python schema class as an argument
+  (`ComputeSelectedPrimsOfType`) is untested. `usdviewApi.currentGfCamera`
+  is an unwrapped core object (no `Gf.Camera` forwarding yet), and
+  `GrabViewportShot()` returns the browser's PNG Blob where native returns a
+  QImage. Checked in Safari 27.3 with
+  `apps/usdview/scripts/python-interpreter-check/run.mjs` (November 19, 2026). Status: not yet ported (a
+  static-build Python is a packaging decision).
+- **The other interpreter is TypeScript.** Window > TypeScript Interpreter runs
+  TypeScript over `usdviewApi` and the library modules
+  (`PLATFORM-DIVERGENCE(usdview-typescript-interpreter)`). Both consoles' `usdviewApi` leaves
+  out `selectedPoint`, `selectedValidationErrors`, `spec`, `layer`,
+  `configDir`, `qMainWindow`, `GetSettings`, `GrabWindowShot` and
+  `_ExportSession` (reasons in `apps/usdview/src/usdview-api.ts`);
+  `grabViewportShot()` resolves to a PNG Blob
+  (`PLATFORM-DIVERGENCE(usdview-api-async-capture)`); TypeScript namespaces
+  holding values are rejected (the type stripper drops them). Status: by
+  design for the language; the omissions are not yet ported.
 - **Hydra Scene Debugger and Debug Flags** open as panels inside the viewer,
   not separate windows (`PLATFORM-DIVERGENCE(usdview-tool-windows)`). Debug
   Flags lists only the debug codes the library registers (the imaging
@@ -548,7 +592,8 @@ these assets and conditions only; ratios within about 1.5x are noise.
 
 `cd packages/usd && npx vitest run` on November 16, 2026: 886 test files,
 **9,298 pass, 4 fail**; 26 checks the platform rules out are skipped in Node
-at a `PLATFORM-DIVERGENCE` id and not counted. Each failure is a ported
+at a `PLATFORM-DIVERGENCE` id and not counted. The port of
+`testUsdUtilsUsdzUtils` on November 19 added 26 passing tests. Each failure is a ported
 upstream test or a native-capture check kept failing on purpose to expose a
 real gap in the port. None is in Core. See also
 [packages/usd/README.md](packages/usd/README.md#known-failing-tests).
@@ -606,10 +651,16 @@ the imaging ledger instead.
   15) are image tests run by the Safari ledger; hdSt has 20 of 225 by the
   script for the same reason. Two exec examples are ported under
   `pxr/exec/execUsd/tests/upstream` and not counted.
-- **Not yet ported:** the command-line tools (usdcat, usddiff, usdtree,
-  usdedit, usdstitchclips, usdzip, usdcompress, usdchecker and the rest),
-  usdUtils (4: testUsdUtilsUsdzUtils, the two testUsdUtilsUpdateSchemaWithSdrNode
-  registrations and testUsdUtilsConstantsGroup, all of Python-only modules),
+- **Not yet ported:** the command-line tools (usdcompress (needs usdDraco),
+  usdcrush (needs usdPmc), usdrecord, sdfdump, sdffilter, usdupdatecrate,
+  usdgenschemafromsdr and the rest; the registrations of the ported tools are
+  ported: usdauthors 10; usdcat 10; usdchecker 25; usddiff 20 (its Alembic and
+  Draco registrations need plugins that are not ported); usddumpcrate none
+  registered; usdedit 7; usdfixbrokenpixarschemas 5 (its RenderMan-only
+  testRenderSettingsTerminalsAPI is out of scope); usdresolve 1; usdstitch
+  none registered; usdstitchclips 14; usdtree 8; usdzip 6),
+  usdUtils (3: the two testUsdUtilsUpdateSchemaWithSdrNode registrations and
+  testUsdUtilsConstantsGroup, all of Python-only modules),
   usdAbc (18), usdMtlx (5),
   arch (16), work (12), hio (1), most C++ `tf` tests (37 of 92 ported; many
   of the rest test C++ facilities such as `TfRefPtr`, `TfWeakPtr`,

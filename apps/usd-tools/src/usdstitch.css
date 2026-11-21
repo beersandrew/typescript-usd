@@ -1,0 +1,87 @@
+/* usdstitch / usdstitchclips: the sewing room (shared parts: playful.css). */
+.settings .field { display: grid; gap: 3px; margin: 8px 0; font-size: 13px; }
+.settings .field input { font: 13px ui-monospace, Menlo, monospace; padding: 5px 7px; border-radius: 6px; border: 1px solid var(--line); background: var(--bg); color: var(--fg); }
+.settings .flag-row { display: block; margin: 6px 0; font-size: 14px; }
+.row.samples .clip-path { display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--muted); }
+.row.samples .clip-path input { width: 160px; font: 12.5px ui-monospace, Menlo, monospace; padding: 5px 7px; border-radius: 6px; border: 1px solid var(--line); background: var(--bg); color: var(--fg); }
+.sew { font: 600 15px -apple-system, sans-serif; padding: 7px 18px; border-radius: 8px; border: 0; background: #c0392b; color: #fff; cursor: pointer; }
+.sew:disabled { opacity: .45; cursor: default; }
+
+.room { position: relative; margin: 14px 0 8px; padding: 18px 14px 12px; border-radius: 16px; border: 1px solid var(--line);
+  background: radial-gradient(circle at 20% 10%, color-mix(in srgb, #f3d9a4 30%, var(--bg)), color-mix(in srgb, #c9a46b 18%, var(--bg))); }
+.patches { display: flex; flex-wrap: wrap; justify-content: center; gap: 18px; min-height: 120px; transition: gap .5s; }
+.patch { position: relative; display: grid; align-content: space-between; width: 140px; height: 120px; padding: 8px; border-radius: 6px; color: #fff;
+  box-shadow: 0 2px 0 rgba(0,0,0,.15); outline: 2px dashed rgba(255,255,255,.6); outline-offset: -7px; transition: border-radius .5s, transform .5s; }
+.patch-name { font: 700 12px ui-monospace, Menlo, monospace; overflow-wrap: anywhere; text-shadow: 0 1px 2px rgba(0,0,0,.4); }
+.patch-rank { font-size: 11px; opacity: .9; text-shadow: 0 1px 2px rgba(0,0,0,.4); }
+.patch-tools { position: absolute; right: 6px; bottom: 6px; display: flex; gap: 3px; }
+.patch-tools button { width: 22px; height: 22px; padding: 0; border-radius: 5px; border: 0; background: rgba(255,255,255,.85); color: #333; cursor: pointer; font-size: 12px; }
+.patch-tools button:disabled { opacity: .35; cursor: default; }
+.patch.p0 { background: repeating-linear-gradient(45deg, #c0392b 0 10px, #d35445 10px 20px); }
+.patch.p1 { background: radial-gradient(circle, #fff6 2.5px, transparent 3px) 0 0 / 14px 14px, #3f6fb5; }
+.patch.p2 { background: repeating-linear-gradient(0deg, #3f8f6b 0 8px, #4fa07b 8px 16px), #3f8f6b; background-blend-mode: multiply; }
+.patch.p3 { background: conic-gradient(#e0a030 25%, #f0b850 0 50%, #e0a030 0 75%, #f0b850 0) 0 0 / 22px 22px; }
+.patch.p4 { background: repeating-linear-gradient(-45deg, #7b5ea7 0 6px, #8d72b8 6px 12px); }
+.patch.p5 { background: radial-gradient(circle at 50% 50%, #fff4 3px, transparent 4px) 0 0 / 18px 18px, #b0703a; }
+/* A seam between this patch and the next, drawn in red thread once sewn. */
+.patch::after { content: ''; position: absolute; top: 12%; bottom: 12%; right: -12px; width: 0; border-right: 3px dashed #d83a2e; opacity: 0; transform: scaleY(0); transform-origin: top; transition: transform .25s, opacity .25s; }
+.patch.sewn::after { opacity: 1; transform: none; }
+.room.quilted .patches { gap: 0; }
+.room.quilted .patch { border-radius: 0; }
+.room.quilted .patch:first-child { border-radius: 8px 0 0 8px; }
+.room.quilted .patch:last-child { border-radius: 0 8px 8px 0; }
+.room.quilted .patch::after { right: -2px; }
+.room.quilted .patch-tools { display: none; }
+.room.quilted .patches { animation: quilt .5s cubic-bezier(.3,1.4,.5,1); }
+@keyframes quilt { from { transform: scale(.96); } to { transform: none; } }
+
+/* Clips are film frames. */
+.room:has(.patch) .patches { align-items: center; }
+main.clips .patch { width: 120px; height: 96px; border-radius: 2px; outline: none; border-top: 12px solid #222; border-bottom: 12px solid #222;
+  background-color: #444; }
+main.clips .patch::before { content: ''; position: absolute; left: 0; right: 0; top: -9px; height: 6px; background: repeating-linear-gradient(90deg, #ddd 0 6px, transparent 6px 14px); box-shadow: 0 102px 0 0 transparent; }
+main.clips .patch .patch-rank::before { content: '🎞 '; }
+
+.floor { position: relative; height: 112px; margin-top: 6px; }
+.mouse { position: absolute; left: 0; bottom: 0; width: 140px; height: 112px; will-change: transform; }
+.mouse-svg { width: 100%; height: 100%; overflow: visible; transition: transform .2s; }
+.mouse.left .mouse-svg { transform: scaleX(-1); }
+.mouse .m-body, .mouse .m-face, .mouse .m-ear { fill: #9aa1ad; }
+.mouse .m-ear-in, .mouse .m-nose, .mouse .m-cheek { fill: #f2a0b0; }
+.mouse .m-cheek { opacity: .6; }
+.mouse .m-belly, .mouse .m-snout { fill: #d9dde4; }
+.mouse .m-foot { fill: #f2a0b0; }
+.mouse .m-eye { fill: #222; transform-box: fill-box; transform-origin: center; animation: m-blink 4s infinite; }
+.mouse .m-smile, .mouse .m-whisker { fill: none; stroke: #555; stroke-width: 1.4; stroke-linecap: round; }
+.mouse .m-tail { fill: none; stroke: #f2a0b0; stroke-width: 3.5; stroke-linecap: round; }
+.mouse .m-thread { fill: none; stroke: #d83a2e; stroke-width: 2; }
+.mouse .m-paw-arm { fill: none; stroke: #9aa1ad; stroke-width: 9; stroke-linecap: round; }
+.mouse .m-needle { stroke: #c9ccd4; stroke-width: 3; stroke-linecap: round; }
+.mouse .m-needle-eye { fill: #555; }
+.mouse .m-tape { fill: none; stroke: #f5c542; stroke-width: 3; stroke-dasharray: 2 3; }
+.mouse .m-arm { transform-box: view-box; transform-origin: 76px 80px; }
+.mouse .m-head { transform-box: view-box; transform-origin: 80px 70px; transition: transform .3s; }
+.mouse.sewing .m-arm { animation: m-stitch .26s ease-in-out infinite alternate; }
+.mouse.scurrying .m-foot { animation: m-feet .16s linear infinite alternate; }
+.mouse.scurrying .mouse-svg { animation: m-hop .16s ease-in-out infinite alternate; }
+.mouse.proud .m-head { transform: rotate(-8deg) translateY(-3px); }
+.mouse.proud .m-arm { transform: rotate(-30deg); }
+.mouse.puzzled .m-head { transform: rotate(12deg); }
+@keyframes m-stitch { from { transform: rotate(0); } to { transform: rotate(22deg) translateY(6px); } }
+@keyframes m-feet { from { transform: translateX(-3px); } to { transform: translateX(3px); } }
+@keyframes m-hop { from { translate: 0 0; } to { translate: 0 -4px; } }
+@keyframes m-blink { 0%, 94%, 100% { transform: scaleY(1); } 97% { transform: scaleY(.1); } }
+
+.results { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: 6px; }
+.note { margin: 8px 0 0; text-align: center; color: var(--muted); font-size: 13px; }
+.preview { max-height: 320px; overflow: auto; padding: 10px 12px; background: var(--term); color: var(--term-fg); border-radius: 10px; font: 12px/1.45 ui-monospace, Menlo, monospace; white-space: pre; }
+.log .run { white-space: pre-wrap; }
+@media (max-width: 520px) {
+  .patch { width: 104px; height: 96px; }
+  main.clips .patch { width: 92px; height: 80px; }
+  .mouse { width: 110px; height: 88px; }
+  .floor { height: 90px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mouse *, .mouse, .patch, .patches, .result-tag { animation: none !important; transition: none !important; }
+}

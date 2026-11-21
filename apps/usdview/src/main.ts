@@ -43,11 +43,26 @@ const openTour = async () => {
   return tourPageUrl(location.href, tour!, await readTourFileInfo(new URL(tour!.url, document.baseURI).href))
 }
 viewer.src = new URLSearchParams(location.search).get('scene') ?? viewerFileUrl(defaultSceneUrl)
-if (showsWelcome(location.search)) {
+// ?open=handoff: the page that opened this tab (e.g. a USD tool page with a
+// converted file) hands the viewer one file. The viewer says it is ready
+// once its first scene is open, then opens the file it is sent, as a
+// dropped file opens (openLocalFile). Only the opening tab is listened to.
+const handoff = new URLSearchParams(location.search).get('open') === 'handoff' && !!window.opener
+if (handoff) {
+  addEventListener('message', event => {
+    const data = event.data as { type?: unknown, name?: unknown, bytes?: unknown } | null
+    if (event.source !== window.opener || data?.type !== 'usdview.open-file') return
+    if (typeof data.name !== 'string' || !(data.bytes instanceof ArrayBuffer)) return
+    viewer.openLocalFile(new File([data.bytes], data.name))
+  })
+  viewer.addEventListener('scene-loaded', () => window.opener?.postMessage({ type: 'usdview.ready' }, '*'), { once: true })
+}
+if (showsWelcome(location.search) && !handoff) {
   const onDefaultScene = !new URLSearchParams(location.search).has('scene')
   const startTour = tour && onDefaultScene ? async () => location.assign(await openTour()) : undefined
-  // A phone can't drop files: its banner is only the tour button, or nothing.
-  if (!smallScreen() || startTour) viewer.showWelcome({ onDefaultScene, compact: smallScreen(), ...(startTour ? { startTour } : {}) })
+  // A phone can't drop files: its banner is only the tour button and the
+  // welcome examples, and is hidden when it has neither.
+  viewer.showWelcome({ onDefaultScene, compact: smallScreen(), ...(startTour ? { startTour } : {}) })
 }
 document.querySelector('#viewer-host')!.append(viewer)
 // File > Close Stage returns to the welcome page (the torus and its note).
@@ -80,10 +95,30 @@ if (address) history.replaceState(history.state, '', address)
 // which a static build does not have. A manifest failure must not prevent
 // opening a user scene.
 // Its scene URLs are viewer files, as the manifest itself.
-void fetch(new URL('./assets/scenes.json', viewerRoot()))
-  .then(response => { if (!response.ok) throw new Error('Example list unavailable'); return response.json() })
-  .then(async (bundled: ViewerScene[]) => {
+// A build may also carry examples copied from the local ASWF corpus
+// (assets/build-scenes.json, scripts/build-examples.ts), listed first; the dev
+// server has none (its dev-examples.json mounts the corpus instead). Scenes
+// marked `welcome` are also offered on the welcome note.
+const sceneList = (path: string, required: boolean): Promise<ViewerScene[]> =>
+  fetch(new URL(path, viewerRoot())).then(response => {
+    if (!response.ok) { if (required) throw new Error('Example list unavailable'); return [] }
+    return response.json() as Promise<ViewerScene[]>
+  })
+void Promise.all([sceneList('./assets/build-scenes.json', false).catch(() => []), sceneList('./assets/scenes.json', true)])
+  .then(async ([built, bundled]) => {
     const local: ViewerScene[] = import.meta.env.DEV ? (await import('../dev-examples.json')).default : []
-    viewer.scenes = [...local, ...bundled.map(({ label, url }) => ({ label, url: viewerFileUrl(url) }))]
+    viewer.scenes = [...local, ...[...built, ...bundled].map(({ label, url, welcome }) => ({ label, url: viewerFileUrl(url), ...welcome ? { welcome } : {} }))]
   })
   .catch(error => console.warn(error))
+
+// ?pythonExample=thumbnail|cards[&pythonInput=<file>] (dev server only):
+// once the first scene is open, run an API-only example script under
+// Pyodide over the pxr forwarding layer and view its cameras
+// (python-runner.ts). Pyodide loads on demand, never in the startup bundle.
+const pythonExample = new URLSearchParams(location.search).get('pythonExample')
+if (import.meta.env.DEV && (pythonExample === 'thumbnail' || pythonExample === 'cards')) {
+  viewer.addEventListener('scene-loaded', () => {
+    void import('./python-runner').then(({ runPythonExample }) =>
+      runPythonExample(viewer, pythonExample, new URLSearchParams(location.search).get('pythonInput') ?? 'cube_rainbow.usd'))
+  }, { once: true })
+}

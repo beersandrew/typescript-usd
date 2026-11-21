@@ -27,6 +27,41 @@ Contributor rules: [AGENTS.md](AGENTS.md).
   sets the TfDebug flags. Window > USD Validation runs the registered
   validators over the stage, as usdview's validation widget does; double-click
   a result to select its prim. All three open as panels inside the viewer.
+- Window > TypeScript Interpreter is usdview's interpreter console with
+  TypeScript as its language: `usdviewApi` (stage, selection, frame, camera,
+  viewer mode, status, viewport capture) and the library modules under their
+  OpenUSD names (`Usd.Stage.open`, `Sdf.Path`, `Gf.Vec3d`), with variables
+  kept across entries, top-level `await`, history and Tab completion. Types
+  are stripped by Sucrase; the console loads on first use.
+- Both interpreter windows hold the viewer's own stage (`usdviewApi.stage`),
+  so Python and TypeScript can take turns editing one scene: what one
+  authors the other reads at once, the stage view redraws, and an entry that
+  adds or removes prims refreshes the prim tree and the property view, as
+  usdview does after any stage change (`tests/shared-stage.test.ts`, and the
+  editing session of `scripts/static-build-check/`).
+- Safari 27.3 miscompiles Pyodide's JavaScript-to-Python number conversion
+  after a few thousand conversions (every number arrives as the low 32 bits
+  of its bit pattern); the Pyodide the viewer serves and ships is patched to
+  avoid it (`scripts/pyodide-number-patch.ts`). `node
+  scripts/interpreter-session/run.mjs --steps <file.json> --scene <path>`
+  runs a scripted session of both consoles in Safari on any scene of the
+  build, with stage view images (`scripts/interpreter-session/sessions/`).
+- The two interpreter windows share variables (a web addition,
+  `src/shared-variables.ts`): the TypeScript console's `py` and the Python
+  console's `ts` read, set and call the other console's variables
+  (`py.ball`, `ts.size = 2`, `py.paint(prim, 1, 0, 0)`). Library objects
+  cross as the same core objects, lists and dicts as arrays and objects;
+  the other window must have been opened once (`tests/shared-variables.test.ts`).
+- Window > Python Interpreter (shortcut `I`, as native) is usdview's Python
+  console under Pyodide over the library's `pxr` forwarding layer, with
+  `usdviewApi` and the forwarded `pxr` modules seeded, and Python's own
+  prompts, errors and completion. Pyodide loads on first use and needs a
+  browser with JSPI. The dev server serves Pyodide and the `pxr` files; a
+  build ships them (`pxr-pyodide/` and a lazily loaded chunk,
+  `scripts/pxr-python.ts`), so a plain static file server is enough. `node
+  scripts/python-interpreter-check/run.mjs` checks it in Safari: it opens the
+  menu item, enters a usdview session in the console and writes the
+  transcript to `scripts/python-interpreter-check/out/`.
 - Reports scene features it cannot draw as diagnostics (`src/storm-coverage.ts`,
   currently none) and writes scene warnings to the browser console, where
   native usdview writes to the terminal.
@@ -113,11 +148,21 @@ URL parameters:
 | `?camera=`, `?select=`, `?complexity=`, `?ff=`, `?lf=`, `?cf=`, `?mask=` | usdview's `--camera`, `--select`, `--complexity`, `--ff`, `--lf`, `--cf` and `--mask` startup options |
 | `?progressive=0` | Load every payload before the first frame, as usdview does |
 | `?play=1` | Plays once the scene is open (a web addition; the tour page uses it) |
-| `?viewerOnly=0` | Keeps the panels on a phone-sized screen, which otherwise opens in viewer-only mode with only the tour button in the banner (a web adaptation) |
+| `?viewerOnly=0` | Keeps the panels on a phone-sized screen, which otherwise opens in viewer-only mode with only the tour and example buttons in the banner (a web adaptation) |
 | `?start=tour` | Marks the tour page: once it has read its setup, the address bar goes back to the page it was opened from (reloading it returns to the start page) |
 
 `npx vite build` (or `pnpm build`, which typechecks first) writes a static build
-with a relative base, so it works from any path.
+with a relative base, so it works from any path. The build needs nothing from a
+server beyond plain files: it carries Pyodide (about 13 MB) and the `pxr`
+Python files for Window > Python Interpreter, and the committed example
+scenes (`public/assets/scenes.json`). When the local ASWF corpus is present
+(`ASWF_ASSET_ROOT`, else beside the workspace) it also copies the Carbon
+Frame Bike usdz (27 MB, Apache 2.0) into `assets/examples/`
+(`scripts/build-examples.ts`); the build is about 52 MB with it. Scenes marked
+`welcome` are offered as buttons on the welcome note, on a phone too.
+`node scripts/static-build-check/run.mjs` serves `dist/` as plain files,
+opens it in Safari and checks the welcome examples and both interpreter
+windows (report in `scripts/static-build-check/out/`).
 
 ## Embed
 

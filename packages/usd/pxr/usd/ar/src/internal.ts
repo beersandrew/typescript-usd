@@ -17,7 +17,13 @@ export {
   _resetResolverForTest,
   _setResolverForTest,
 } from './resolver.ts'
-export { _cwd, _deleteFile, _filesystemAvailable, _isDir, _isFile, _isWritable, _listDir, _makeTmpFileName, _modificationTime, _pathExists, _readFileSync } from './platformFilesystem.ts'
+export {
+  _chmod, _chown, _cwd, _deleteFile, _filesystemAvailable, _isDir, _isMainScript, _isFile, _isWritable, _listDir, _makeDirs,
+  _makeTmpFileName, _makeTmpSubdir, _modificationTime, _pathExists, _readFile, _readFileSync, _removeTree, _rename,
+  _stat, _writeFile,
+} from './platformFilesystem.ts'
+export { _ArSetHostFilesystem } from './platformFilesystem.ts'
+export type { FilesystemFileHandle, FilesystemRuntime, FilesystemStat } from './platformFilesystem.ts'
 export {
   _ArDefaultAssetReader,
   _ArHasAssetPrefetcher,

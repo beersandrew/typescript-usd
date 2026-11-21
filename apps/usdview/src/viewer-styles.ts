@@ -195,6 +195,13 @@ canvas { display:block; width:100%; height:100%; touch-action:none; }
 .welcome .start-tour { background:#FF06B5; border:1px solid #fff; color:#fff; font-weight:700; padding:6px 14px; border-radius:4px; }
 .welcome .start-tour:hover:not(:disabled) { background:#e0009f; }
 .welcome[data-compact] p { display:none; }
+.welcome[data-empty] { display:none; }
+.welcome { flex-wrap:wrap; }
+.welcome-examples { display:flex; flex-wrap:wrap; align-items:center; gap:6px; }
+.welcome-examples[hidden] { display:none; }
+.welcome-examples span { color:#d0d0d0; }
+.welcome[data-compact] .welcome-examples span { display:none; }
+.welcome .welcome-example { padding:4px 10px; border-radius:4px; }
 .welcome[data-compact] { padding:6px; }
 .property-content { min-height:0; flex:1; overflow:auto; }
 .property-table { width:100%; table-layout:fixed; border-collapse:collapse; font-size:var(--usd-base-font); }
