@@ -8,6 +8,24 @@ back to 0 when the port moves to a new OpenUSD version. Package versions carry t
 
 Measurements are of the USD Museum tour (11,839 frames at 24 fps) on one Mac, unless stated.
 
+## 26.11.1.5 — 2026-11-21
+
+From typescript-usd-dev `63ebc5f3`, plus package versions and this entry. The library and usdview
+are unchanged since 26.11.1.4, as are their test results.
+
+### USD tool pages (apps/usd-tools)
+- usdcat: the title and intro are centered; the intro links to this repository; a Licenses link
+  opens usdview's licenses page; the log of what usdcat printed sits below the sample file.
+- usdcat: the cat turns its head toward a file dragged over the yard.
+- usdcat links to the tools' index only where the index is served, so the page can be hosted on
+  its own.
+- `scripts/ship.mjs <pages> <outDir>` builds only the chosen pages (`USD_TOOLS_PAGES`) with the
+  samples they offer, for hosting them on their own.
+
+### Documentation
+- README: the interpreter windows, the command-line tools and `apps/usd-tools`; 26.11.1.4's test
+  counts (library 9,444 pass; usdview 767 pass; upstream Python tests 85 pass, 10 fail).
+
 ## 26.11.1.4 — 2026-11-21
 
 From typescript-usd-dev `229bfefe`, plus package versions and this entry. Library tests: 9444 pass, 4 fail (exec, vdf and hdSt cases that fail without this release's changes too); usdview: 767 pass; upstream Python tests under Pyodide: 85 pass, 10 fail (testUsdStage 7, testUsdGeomXformable 3).

@@ -35,3 +35,6 @@ app-dist/
 
 
 .artifacts/
+
+# scripts/ship.mjs build folder
+apps/usd-tools/dist-ship/

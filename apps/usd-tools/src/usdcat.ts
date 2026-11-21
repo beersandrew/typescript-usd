@@ -133,19 +133,32 @@ const saveAll = el('button', { className: 'save-all', type: 'button', hidden: tr
 const log = el('pre', { className: 'log' })
 const logBox = el('details', { className: 'log-box' }, el('summary', {}, 'What usdcat printed'), log)
 
+/** TypeScript usdview, next to the tool pages as on andrew.beer (/s/usdview
+ *  beside /s/usd-tools), or where ?usdview= says. */
+const usdviewUrl = new URL(new URLSearchParams(location.search).get('usdview') ?? '../../usdview/', location.href)
+
+// The link to the tools' index, only where the index is served (the usdcat
+// page can be hosted on its own).
+const homeLink = el('a', { href: '../', className: 'home', hidden: true }, 'USD tools')
+fetch(new URL('../index.html', location.href), { method: 'HEAD' }).then(r => { homeLink.hidden = !r.ok }).catch(() => {})
+
 host.append(
   el('header', { className: 'top' },
-    el('a', { href: '../', className: 'home' }, 'USD tools'),
+    homeLink,
     el('h1', {}, 'usdcat'),
     gear,
     panel),
-  el('p', { className: 'about' }, 'Text USD to binary and back, by TypeScript USD’s usdcat, in your browser. Nothing is uploaded.'),
+  el('p', { className: 'about' }, 'Text USD to binary and back, by ',
+    el('a', { href: 'https://github.com/beersandrew/typescript-usd', target: '_blank', rel: 'noopener' }, 'typescript-usd'),
+    '’s usdcat, in your browser. Nothing is uploaded.'),
   picker,
   yard,
   el('div', { className: 'row results' }, saveAll),
-  logBox,
   testCard,
-  el('p', { className: 'credit' }, 'The cat and its yard are a USD stage drawn by TypeScript USD’s Storm. shapes.usda is CC0 1.0.'))
+  logBox,
+  // The code this page runs is TypeScript USD's (ported from OpenUSD);
+  // usdview's licenses page, beside the tool pages, holds its licenses.
+  el('p', { className: 'credit' }, el('a', { href: new URL('licenses/', usdviewUrl).href, target: '_blank', rel: 'noopener' }, 'Licenses')))
 
 // The gear's panel: usdcat's options.
 function radio(name: string, value: string, label: string, checked: boolean, onPick: () => void) {
@@ -339,10 +352,6 @@ async function work(): Promise<void> {
   busy = false
 }
 
-/** TypeScript usdview, next to the tool pages as on andrew.beer (/s/usdview
- *  beside /s/usd-tools), or where ?usdview= says. */
-const usdviewUrl = new URL(new URLSearchParams(location.search).get('usdview') ?? '../../usdview/', location.href)
-
 /** Opens usdview in a new tab and hands it the file: usdview (?open=handoff)
  *  says when it is ready, then is sent the bytes (usdview's main.ts). */
 function openInUsdview(name: string, bytes: Uint8Array): void {
@@ -377,7 +386,12 @@ async function accept(entries: DroppedFile[]): Promise<void> {
 
 picker.addEventListener('change', () => { void accept(pickedFiles(picker)); picker.value = '' })
 const convertSample = (path: string) => void convert(path, path.split('/').at(-1)!)
-acceptDrops(files => void accept(files), on => cat.perk(on), convertSample, yard)
+acceptDrops(files => void accept(files), on => { cat.perk(on); if (!on && !busy) cat.watch(null) }, convertSample, yard)
+// While a file is dragged over the yard, the cat looks right at it.
+addEventListener('dragover', e => {
+  if (busy) return
+  cat.watch(yard.contains(e.target as Node) ? { x: e.clientX, y: e.clientY } : null)
+})
 
 // usdcat offers only shapes.usda: a flattened layer big enough that text
 // against binary size shows.

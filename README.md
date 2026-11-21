@@ -24,6 +24,11 @@ Ways to use it:
   from a URL, a dropped file or a dropped folder, with no install.
 - **Read and write USD from TypeScript.** The library follows OpenUSD's C++ API
   (Sdf, Pcp, Usd, the schemas, Hydra) in Node and the browser.
+- **Script the viewer.** usdview's Python Interpreter (under Pyodide, over a
+  `pxr` layer) and a TypeScript Interpreter both edit the open stage.
+- **Run OpenUSD's command-line tools.** usdcat, usdchecker, usddiff, usdzip
+  and eight more run in Node; [`apps/usd-tools`](apps/usd-tools/README.md)
+  runs them as web pages on dropped files.
 - **Compare against OpenUSD.** The tests check results against values captured
   from OpenUSD 26.11.1, and [KNOWN-GAPS.md](KNOWN-GAPS.md) lists every known
   difference with its evidence.
@@ -60,8 +65,9 @@ compare against are committed fixtures captured from OpenUSD 26.11.1
 | What | Result |
 |---|---|
 | Upstream tests ported | 783 of OpenUSD's 1,906 registered tests have a detected port, including all of sdf, pcp, usd, ar and the schema libraries ([what is not ported](KNOWN-GAPS.md#upstream-tests-not-ported)) |
-| Library unit tests (Node) | 9,298 pass, 4 fail (real gaps: OpenExec 3, hdSt 1; none in Core); 26 checks the platform rules out, at PLATFORM-DIVERGENCE ids, not counted ([details](KNOWN-GAPS.md#failing-library-tests)) |
-| Viewer unit tests (Node, jsdom) | 726 pass, 0 fail ([apps/usdview](apps/usdview/README.md#tests)) |
+| Library unit tests (Node) | 9,444 pass, 4 fail (real gaps: OpenExec 3, hdSt 1; none in Core); 26 checks the platform rules out, at PLATFORM-DIVERGENCE ids, not counted ([details](KNOWN-GAPS.md#failing-library-tests)) |
+| Viewer unit tests (Node, jsdom) | 767 pass, 0 fail ([apps/usdview](apps/usdview/README.md#tests)) |
+| Upstream Python tests (Pyodide, over the `pxr` layer) | 85 pass, 10 fail (testUsdStage 7, testUsdGeomXformable 3); `pnpm test:python` |
 | OpenVDB package tests | 3 known failures: level-set resampling is not ported ([packages/openvdb](packages/openvdb/README.md#what-is-not-ported)) |
 | Upstream image tests against native | 295 of 446 pass in Safari 27.3, 285 in Chrome 156; most of the rest are platform differences, and 14 are real ([breakdown](packages/usd/docs/imaging-status.md#failures-by-class)) |
 
@@ -71,6 +77,7 @@ compare against are committed fixtures captured from OpenUSD 26.11.1
 |---|---|---|
 | [`packages/usd/`](packages/usd/README.md) | `typescript-usd` | The library: Core (Sdf, Pcp, Usd, Ar and the base libraries), the domain schemas, imaging and OpenExec |
 | [`apps/usdview/`](apps/usdview/README.md) | `typescript-usdview` | The only viewer: a browser port of usdview over the library |
+| [`apps/usd-tools/`](apps/usd-tools/README.md) | `usd-tools` | OpenUSD's command-line tools as small web pages, run by the library in the browser |
 | [`packages/materialx/`](packages/materialx/README.md) | `@mtlx/core`, `@mtlx/format`, `@mtlx/genshader`, `@mtlx/genhw`, `@mtlx/genglsl`, `@mtlx/render`, `@mtlx/libraries` | Partial TypeScript port of MaterialX 1.39.5, only what OpenUSD's usdMtlx and Storm use (optional) |
 | [`packages/opensubdiv/`](packages/opensubdiv/README.md) | `@opensubdiv/core` | Partial TypeScript port of OpenSubdiv 3.7.0 (with 3.6.1 additions): Sdc, Vtr, uniform Far and the Osd GLSL patch source, used by hdSt |
 | [`packages/openvdb/`](packages/openvdb/README.md) | `@vdb/openvdb`, `@vdb/nanovdb` | Partial TypeScript port of OpenVDB 13.0.1/NanoVDB reading (with OpenVDB 10.1.0 dense copy and resampling), used only through `typescript-usd/hioOpenVDB` |
@@ -94,7 +101,7 @@ Not ported yet:
 
 | Area | Gap | What you see |
 |---|---|---|
-| Tools | Command-line tools (usdcompress, usdcrush, usdrecord, sdfdump, ...) | The library has the APIs; the tools are not there (usdauthors, usdcat, usdchecker, usddiff, usddumpcrate, usdedit, usdfixbrokenpixarschemas, usdresolve, usdstitch, usdstitchclips, usdtree and usdzip are) |
+| Tools | Command-line tools (usdcompress, usdcrush, usdrecord, sdfdump, ...) | Not ported; the library has most of the APIs they call. Ported: usdauthors, usdcat, usdchecker, usddiff, usddumpcrate, usdedit, usdfixbrokenpixarschemas, usdresolve, usdstitch, usdstitchclips, usdtree and usdzip |
 | Utilities | usdUtils Python modules (updateSchemaWithSdrNode, constantsGroup, ...) | Schema updates from Sdr nodes are not there; the C++ library, usdzUtils and fixBrokenPixarSchemas are ported |
 | Hydra | Procedurals (hdGp, usdProcImaging) | Generative procedural prims are not expanded |
 | Hydra | Adaptive subdivision | The 14 adaptive rows of testHdStBasicDrawing are not run |

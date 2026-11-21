@@ -16,9 +16,10 @@ export interface CatActor {
   holdPoint(): [number, number]
   /** Rainbow eyes while usdcat runs. */
   telekinesis(on: boolean): void
-  /** The page element the cat follows with its gaze (a moving file), or
-   *  null to look around calmly. */
-  watch(target: HTMLElement | null): void
+  /** What the cat follows with its gaze: a page element (a moving file), a
+   *  point in the page (a file being dragged over the yard, in client
+   *  pixels), or null to look around calmly. */
+  watch(target: HTMLElement | { x: number, y: number } | null): void
   /** Ears up while a file is dragged over the page. */
   perk(on: boolean): void
   /** A puzzled head tilt, for a file that would not convert. */
@@ -64,8 +65,9 @@ export class Cat3D implements CatActor {
   #tilt = 0
   #tilted = false
   #eyesResting = false
-  #watched: HTMLElement | null = null
+  #watched: HTMLElement | { x: number, y: number } | null = null
   #look = 0
+  #lookUp = 0
   #last = performance.now()
 
   static async create(yard: HTMLElement): Promise<Cat3D> {
@@ -101,18 +103,26 @@ export class Cat3D implements CatActor {
 
   holdPoint(): [number, number] { return this.#screenOf(HOLD) }
   telekinesis(on: boolean): void { this.#powered = on }
-  watch(target: HTMLElement | null): void { this.#watched = target }
+  watch(target: HTMLElement | { x: number, y: number } | null): void { this.#watched = target }
 
-  /** Where the cat's gaze should turn (degrees, + toward screen right):
-   *  toward the watched element, else a slow look around. */
-  #gaze(t: number): number {
+  /** Where the cat's gaze should turn, in degrees: [turn, + toward screen
+   *  right; lift, + looking up]. Toward the watched element or point, else
+   *  a slow look around. */
+  #gaze(t: number): [number, number] {
     const target = this.#watched
-    if (!target?.isConnected) return Math.sin(t * 0.35) * 22 + Math.sin(t * 0.13) * 8
-    const r = target.getBoundingClientRect(), y = this.#yard.getBoundingClientRect()
-    const [cx] = this.#screenOf([SEAT[0], 0.9, SEAT[2]])
-    const u = (r.left + r.width / 2 - y.left - cx) / Math.max(1, y.width)
-    return Math.max(-55, Math.min(55, u * 150))
+    let px: number, py: number
+    if (target instanceof HTMLElement) {
+      if (!target.isConnected) return this.#idleGaze(t)
+      const r = target.getBoundingClientRect()
+      px = r.left + r.width / 2; py = r.top + r.height / 2
+    } else if (target) { px = target.x; py = target.y } else return this.#idleGaze(t)
+    const yard = this.#yard.getBoundingClientRect()
+    const [cx, cy] = this.#screenOf([SEAT[0], 0.75, SEAT[2]])
+    const u = (px - yard.left - cx) / Math.max(1, yard.width)
+    const v = (cy - (py - yard.top)) / Math.max(1, yard.height)
+    return [Math.max(-55, Math.min(55, u * 150)), Math.max(-20, Math.min(28, v * 60))]
   }
+  #idleGaze(t: number): [number, number] { return [Math.sin(t * 0.35) * 22 + Math.sin(t * 0.13) * 8, 0] }
   perk(on: boolean): void { this.#perked = on }
 
   async puzzle(): Promise<void> {
@@ -147,7 +157,9 @@ export class Cat3D implements CatActor {
     this.#power = approach(this.#power, this.#powered ? 1 : 0, 14, dt)
     this.#perk = approach(this.#perk, this.#perked ? 1 : 0, 10, dt)
     this.#tilt = approach(this.#tilt, this.#tilted ? 1 : 0, 9, dt)
-    this.#look = approach(this.#look, this.#gaze(now / 1000), this.#watched ? 9 : 2.5, dt)
+    const [turn, lift] = this.#gaze(now / 1000)
+    this.#look = approach(this.#look, turn, this.#watched ? 9 : 2.5, dt)
+    this.#lookUp = approach(this.#lookUp, lift, this.#watched ? 9 : 2.5, dt)
     this.#pose(now / 1000)
     try {
       await (this.#stage as unknown as { flushChanges?: () => Promise<void> }).flushChanges?.()
@@ -173,7 +185,7 @@ export class Cat3D implements CatActor {
       set(`${body}/LegBackRight`, 'xformOp:rotateZ', 50)
       // The gaze: the head turns after the file it moves (or looks about),
       // lifting a little while it concentrates; ears perk, head tilts.
-      set(head, 'xformOp:rotateZ', -30 + 8 * p + 10 * this.#perk)
+      set(head, 'xformOp:rotateZ', -30 + 8 * p + 10 * this.#perk + this.#lookUp)
       set(head, 'xformOp:rotateY', this.#look)
       set(head, 'xformOp:rotateX', 18 * this.#tilt - this.#look * 0.08)
       set(`${head}/EarLeft`, 'xformOp:rotateX', 8 - 10 * Math.max(this.#perk, p) + 6 * this.#tilt)
