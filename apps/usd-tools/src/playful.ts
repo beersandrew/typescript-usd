@@ -40,4 +40,15 @@ export async function saveFile(name: string, data: Uint8Array | string, type = '
 }
 
 export const reducedMotion = (): boolean => matchMedia('(prefers-reduced-motion: reduce)').matches
+
+/** Phones and tablets: the drag-and-drop pages are for desktops, and say so
+ *  there instead of showing their scene (playful.css .desktop-only). */
+export const onDesktop = (): boolean => !matchMedia('(max-width: 700px), (pointer: coarse)').matches
+
+/** The note a phone or tablet sees in place of the scene. */
+export function desktopOnlyNote(place: string): HTMLElement {
+  return el('div', { className: 'desktop-only' },
+    el('strong', {}, 'This one’s for desktop'),
+    el('span', {}, `Open it on a computer (Chrome, Safari, Edge) to drop files on the ${place}.`))
+}
 export const pause = (ms: number): Promise<void> => new Promise(resolve => setTimeout(resolve, reducedMotion() ? 0 : ms))

@@ -111,61 +111,96 @@ ${samples.join('\n')}
 `)
   files.push(name)
 }
-// shapes.usda, made for the usdcat page: four plain meshes (a wavy terrain,
-// a sphere, a torus, a twisted column) in one flattened text layer of about
-// 5.6 MB, so text against binary size shows (CC0 1.0, like the museum).
+// The museum's suitcase package (foundations/files/formats/assets/case_c.usdz),
+// unpacked: its layer (named suitcase.usdc here, so it packs to
+// suitcase.usdz) and the label image it uses. usdzip's page packs it.
+{
+  const pkg = join(museum, 'foundations/files/formats/assets/case_c.usdz')
+  mkdirSync(join(out, 'suitcase/textures'), { recursive: true })
+  writeFileSync(join(out, 'suitcase/suitcase.usdc'), execFileSync('unzip', ['-p', pkg, 'case_c.usdc'], { maxBuffer: 1 << 26 }))
+  writeFileSync(join(out, 'suitcase/textures/label.png'), execFileSync('unzip', ['-p', pkg, 'textures/label.png'], { maxBuffer: 1 << 26 }))
+  files.push('suitcase/suitcase.usdc', 'suitcase/textures/label.png')
+}
+// wireframes.usda, made for the usdcat page: green wireframe shapes (a
+// torus in the middle, after usdview's welcome torus, with a sphere, cube,
+// cylinder, cone and torus knot), each linear BasisCurves drawn densely, in
+// one flattened text layer of a few MB, so text against binary size shows
+// (CC0 1.0, like the museum).
 {
   const f = x => { const r = Number(x.toPrecision(6)); return Object.is(r, -0) ? '0' : String(r) }
-  const mesh = (name, pts, faces, color, at) => {
+  const ring = (n, at) => Array.from({ length: n + 1 }, (_, k) => at(2 * Math.PI * (k % n) / n))
+  // Each shape: a list of polylines (closed ones repeat their first point).
+  const shapes = {
+    Torus: { at: [0, 0.2, 0], rot: [62, 0, -18], lines: [
+      ...Array.from({ length: 120 }, (_, i) => ring(240, v => { const u = 2 * Math.PI * i / 120; const r = 2 + 0.8 * Math.cos(v); return [r * Math.cos(u), 0.8 * Math.sin(v), r * Math.sin(u)] })),
+      ...Array.from({ length: 72 }, (_, j) => ring(480, u => { const v = 2 * Math.PI * j / 72; const r = 2 + 0.8 * Math.cos(v); return [r * Math.cos(u), 0.8 * Math.sin(v), r * Math.sin(u)] })),
+    ] },
+    Sphere: { at: [-5.2, 0.4, -1], rot: [20, 0, 0], lines: [
+      ...Array.from({ length: 48 }, (_, i) => ring(240, t => { const p = 2 * Math.PI * i / 48; return [1.3 * Math.sin(t / 2 * 2) * Math.cos(p), 1.3 * Math.cos(t), 1.3 * Math.sin(t) * Math.sin(p)] })),
+      ...Array.from({ length: 35 }, (_, j) => ring(240, p => { const t = Math.PI * (j + 1) / 36; return [1.3 * Math.sin(t) * Math.cos(p), 1.3 * Math.cos(t), 1.3 * Math.sin(t) * Math.sin(p)] })),
+    ] },
+    Cube: { at: [5.2, 0.4, -1], rot: [24, 32, 0], lines: (() => {
+      const n = 24, h = 1.1, lines = []
+      for (const axis of [0, 1, 2]) for (let a = 0; a <= n; a++) for (const side of [-h, h]) {
+        const t = -h + 2 * h * a / n
+        lines.push(Array.from({ length: 121 }, (_, k) => { const s = -h + 2 * h * k / 120; const p = [0, 0, 0]; p[axis] = side; p[(axis + 1) % 3] = t; p[(axis + 2) % 3] = s; return p }))
+      }
+      return lines
+    })() },
+    Cylinder: { at: [-3.2, -2.6, 0.5], rot: [-15, 0, 10], lines: [
+      ...Array.from({ length: 30 }, (_, i) => ring(200, u => [0.8 * Math.cos(u), -1.1 + 2.2 * i / 29, 0.8 * Math.sin(u)])),
+      ...Array.from({ length: 64 }, (_, j) => Array.from({ length: 81 }, (_, k) => { const u = 2 * Math.PI * j / 64; return [0.8 * Math.cos(u), -1.1 + 2.2 * k / 80, 0.8 * Math.sin(u)] })),
+    ] },
+    Cone: { at: [3.2, -2.6, 0.5], rot: [-15, 0, -10], lines: [
+      ...Array.from({ length: 30 }, (_, i) => ring(200, u => { const r = 1 - i / 30; return [r * Math.cos(u), -1.1 + 2.2 * i / 30, r * Math.sin(u)] })),
+      ...Array.from({ length: 64 }, (_, j) => Array.from({ length: 81 }, (_, k) => { const u = 2 * Math.PI * j / 64, r = 1 - k / 80; return [r * Math.cos(u), -1.1 + 2.2 * k / 80, r * Math.sin(u)] })),
+    ] },
+    TorusKnot: { at: [0, 3.4, -1.5], rot: [10, 0, 0], lines: Array.from({ length: 24 }, (_, i) => ring(1200, t => {
+      const p = 2, q = 3, tube = 0.18, a = 2 * Math.PI * i / 24
+      const r = 1.1 + 0.45 * Math.cos(q * t), c = [r * Math.cos(p * t), 0.45 * Math.sin(q * t), r * Math.sin(p * t)]
+      return [c[0] + tube * Math.cos(a) * Math.cos(p * t), c[1] + tube * Math.sin(a), c[2] + tube * Math.cos(a) * Math.sin(p * t)]
+    })) },
+  }
+  const prims = Object.entries(shapes).map(([name, { at, rot, lines }]) => {
+    const pts = lines.flat()
     const lo = [0, 1, 2].map(i => Math.min(...pts.map(p => p[i]))), hi = [0, 1, 2].map(i => Math.max(...pts.map(p => p[i])))
-    return `    def Mesh "${name}"
+    return `    def Xform "${name}"
     {
-        float3[] extent = [(${lo.map(f).join(', ')}), (${hi.map(f).join(', ')})]
-        int[] faceVertexCounts = [${faces.map(q => q.length).join(', ')}]
-        int[] faceVertexIndices = [${faces.flat().join(', ')}]
-        point3f[] points = [${pts.map(p => `(${p.map(f).join(', ')})`).join(', ')}]
-        color3f[] primvars:displayColor = [(${color.join(', ')})]
-        uniform token subdivisionScheme = "none"
         double3 xformOp:translate = (${at.join(', ')})
-        uniform token[] xformOpOrder = ["xformOp:translate"]
+        float3 xformOp:rotateXYZ = (${rot.join(', ')})
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ"]
+
+        def BasisCurves "wire"
+        {
+            uniform token type = "linear"
+            uniform token wrap = "nonperiodic"
+            int[] curveVertexCounts = [${lines.map(l => l.length).join(', ')}]
+            float3[] extent = [(${lo.map(f).join(', ')}), (${hi.map(f).join(', ')})]
+            point3f[] points = [${pts.map(p => `(${p.map(f).join(', ')})`).join(', ')}]
+            color3f[] primvars:displayColor = [(0.2, 0.9, 0.35)]
+            float[] widths = [0.012] (
+                interpolation = "constant"
+            )
+        }
     }
 `
-  }
-  const ring = (U, V, point, closeV) => {
-    const pts = [], faces = []
-    for (let j = 0; j < (closeV ? V : V + 1); j++) for (let i = 0; i < U; i++) pts.push(point(i, j))
-    for (let j = 0; j < V; j++) for (let i = 0; i < U; i++) {
-      const jn = closeV ? (j + 1) % V : j + 1
-      faces.push([j * U + i, j * U + (i + 1) % U, jn * U + (i + 1) % U, jn * U + i])
-    }
-    return [pts, faces]
-  }
-  const N = 240, terrain = [], tf = []
-  for (let j = 0; j <= N; j++) for (let i = 0; i <= N; i++) {
-    const x = (i / N - 0.5) * 20, z = (j / N - 0.5) * 20
-    terrain.push([x, 0.8 * Math.sin(x * 0.7) * Math.cos(z * 0.5) + 0.3 * Math.sin(x * 2.1 + z * 1.7), z])
-  }
-  for (let j = 0; j < N; j++) for (let i = 0; i < N; i++) { const a = j * (N + 1) + i; tf.push([a, a + 1, a + N + 2, a + N + 1]) }
-  const sphere = ring(160, 80, (i, j) => { const t = Math.PI * j / 80, p = 2 * Math.PI * i / 160; return [1.5 * Math.sin(t) * Math.cos(p), 1.5 * Math.cos(t), 1.5 * Math.sin(t) * Math.sin(p)] }, false)
-  const torus = ring(180, 72, (i, j) => { const t = 2 * Math.PI * j / 72, p = 2 * Math.PI * i / 180, r = 1.6 + 0.5 * Math.cos(t); return [r * Math.cos(p), 0.5 * Math.sin(t), r * Math.sin(p)] }, true)
-  const column = ring(96, 160, (i, j) => { const h = 4 * j / 160, p = 2 * Math.PI * i / 96, r = 0.6 + 0.12 * Math.cos(6 * p); return [r * Math.cos(p + h * 1.2), h, r * Math.sin(p + h * 1.2)] }, false)
-  mkdirSync(join(out, 'shapes'), { recursive: true })
-  writeFileSync(join(out, 'shapes/shapes.usda'), `#usda 1.0
+  })
+  mkdirSync(join(out, 'wireframes'), { recursive: true })
+  writeFileSync(join(out, 'wireframes/wireframes.usda'), `#usda 1.0
 (
-    defaultPrim = "Shapes"
-    doc = "Four plain meshes in one flattened layer, for usdcat. Generated by apps/usd-tools/scripts/samples.mjs."
+    defaultPrim = "Wireframes"
+    doc = "Green wireframe shapes (linear BasisCurves) in one flattened layer, for usdcat. Generated by apps/usd-tools/scripts/samples.mjs."
     metersPerUnit = 1
     upAxis = "Y"
 )
 
-def Xform "Shapes" (
+def Xform "Wireframes" (
     kind = "component"
 )
 {
-${[mesh('Terrain', terrain, tf, [0.35, 0.6, 0.3], [0, -1, 0]), mesh('Sphere', ...sphere, [0.8, 0.3, 0.25], [-4, 1.5, 0]),
-    mesh('Torus', ...torus, [0.25, 0.45, 0.85], [4, 1, 0]), mesh('Column', ...column, [0.85, 0.75, 0.4], [0, 0, -4])].join('\n')}}
+${prims.join('\n')}}
 `)
-  files.push('shapes/shapes.usda')
+  files.push('wireframes/wireframes.usda')
 }
 for (const { to, rev } of fromGit) {
   writeFileSync(join(out, to), execFileSync('git', ['show', rev], { cwd: repo }))
@@ -175,7 +210,8 @@ const manifest = {
   samples: [...samples.map(({ dir, base, files, ...s }) => ({
     ...s, from: relative(s.source === 'USD Museum' ? museum : join(base, '../../../..'), join(base, dir, ...(files?.length === 1 ? files : []))),
     root: `${s.name}/${s.root}`,
-  })), { name: 'shapes', title: 'Shapes (5.6 MB of meshes)', root: 'shapes/shapes.usda', source: 'Made for these pages', url: '', licence: 'CC0 1.0', from: 'apps/usd-tools/scripts/samples.mjs' }],
+  })), { name: 'suitcase', title: 'Museum: the suitcase package, unpacked', root: 'suitcase/suitcase.usdc', source: 'USD Museum', url: 'https://github.com/beersandrew/usd-museum', licence: 'CC0 1.0', from: 'foundations/files/formats/assets/case_c.usdz' },
+    { name: 'wireframes', title: 'Wireframes (green wireframe shapes)', root: 'wireframes/wireframes.usda', source: 'Made for these pages', url: '', licence: 'CC0 1.0', from: 'apps/usd-tools/scripts/samples.mjs' }],
   files: files.sort(),
 }
 writeFileSync(join(out, 'manifest.json'), JSON.stringify(manifest, null, 2) + '\n')

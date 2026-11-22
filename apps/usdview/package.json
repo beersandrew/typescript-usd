@@ -1,6 +1,6 @@
 {
   "name": "typescript-usdview",
-  "version": "26.11.1+5",
+  "version": "26.11.1+6",
   "private": true,
   "type": "module",
   "description": "A browser-native viewer for TypeScript USD and Storm",

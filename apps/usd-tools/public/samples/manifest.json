@@ -46,9 +46,18 @@
       "from": "foundations/packages/packages"
     },
     {
-      "name": "shapes",
-      "title": "Shapes (5.6 MB of meshes)",
-      "root": "shapes/shapes.usda",
+      "name": "suitcase",
+      "title": "Museum: the suitcase package, unpacked",
+      "root": "suitcase/suitcase.usdc",
+      "source": "USD Museum",
+      "url": "https://github.com/beersandrew/usd-museum",
+      "licence": "CC0 1.0",
+      "from": "foundations/files/formats/assets/case_c.usdz"
+    },
+    {
+      "name": "wireframes",
+      "title": "Wireframes (green wireframe shapes)",
+      "root": "wireframes/wireframes.usda",
       "source": "Made for these pages",
       "url": "",
       "licence": "CC0 1.0",
@@ -126,7 +135,8 @@
     "packages/textures/labels_atlas.png",
     "packages/textures/ruler.png",
     "packages/thumbnail.jpg",
-    "shapes/shapes.usda",
+    "suitcase/suitcase.usdc",
+    "suitcase/textures/label.png",
     "variants/forgeries/nodefault.usda",
     "variants/forgeries/nofallback.usda",
     "variants/forgeries/nonested.usda",
@@ -142,6 +152,7 @@
     "variants/textures/labels_atlas.png",
     "variants/thumbnail.jpg",
     "variants/variants.usda",
-    "variants/weak.usda"
+    "variants/weak.usda",
+    "wireframes/wireframes.usda"
   ]
 }

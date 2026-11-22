@@ -35,7 +35,7 @@ the resolver keeps what it writes under `/out/` in memory. The log under the
 yard shows each command, what usdcat printed and how long it took. A dropped
 folder converts its root layer (named after the folder, else the shallowest);
 the rest of its files are there for what the root references. The page's one
-sample, `shapes.usda` (four plain meshes, 5.6 MB of flattened text), is a
+sample, `wireframes.usda` (green wireframe shapes, 4.8 MB of flattened text), is a
 chip at the bottom to drag onto the yard or click to download. Motion stops
 when the system asks for reduced motion.
 

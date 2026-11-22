@@ -12,7 +12,7 @@ import { join, resolve, dirname } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
 // The samples each page offers (by manifest name).
-const SAMPLES = { usdcat: ['shapes'] }
+const SAMPLES = { usdcat: ['wireframes'], usdzip: ['suitcase'] }
 
 const app = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 const [pagesArg, outArg] = process.argv.slice(2)

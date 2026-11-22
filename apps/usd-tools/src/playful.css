@@ -38,3 +38,15 @@ body.dragging .drop { border-color: var(--accent); background: color-mix(in srgb
 .result-tag .tag-size { font-weight: 400; font-size: 11px; color: #6b6b70; }
 .result-tag:hover, .result-tag:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 @keyframes tag-pop { from { transform: scale(.5); opacity: 0; } to { transform: none; opacity: 1; } }
+
+/* On phones and tablets the drag-and-drop pages show a note instead
+   (playful.ts desktopOnlyNote). */
+.desktop-only { display: none; }
+@media (max-width: 700px), (pointer: coarse) {
+  .desktop-only { display: flex; flex-direction: column; align-items: center; gap: 6px; margin: 22px 0; padding: 28px 18px; text-align: center;
+    border-radius: 16px; border: 2px dashed var(--line); background: var(--panel); }
+  .desktop-only strong { font-size: 18px; }
+  .desktop-only span { color: var(--muted, #666); }
+  main.desktop-page .yard, main.desktop-page .reel-stage, main.desktop-page .test-card,
+  main.desktop-page .log-box, main.desktop-page .row.results, main.desktop-page .gear { display: none; }
+}

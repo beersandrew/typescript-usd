@@ -8,6 +8,25 @@ back to 0 when the port moves to a new OpenUSD version. Package versions carry t
 
 Measurements are of the USD Museum tour (11,839 frames at 24 fps) on one Mac, unless stated.
 
+## 26.11.1.6 — 2026-11-21
+
+From typescript-usd-dev `7bed18b7`, plus package versions and this entry. Only the USD tool pages
+changed; the library and usdview are as in 26.11.1.5, as are their test results.
+
+### USD tool pages (apps/usd-tools)
+- usdzip: a conveyor belt through a machine whose sign shows READY, ZIP or UNZIP and whose zipper
+  runs up to zip and down to unzip, drawn by Storm. A folder becomes a .usdz (`usdzip --asset`),
+  a .usdz becomes a folder (UsdUtils ExtractUsdzPackage). The result stays at the belt's end with
+  its name and size, to download (a folder as one .zip), open in usdview (a package) or drag back
+  in. Hovering a file shows ZIP or UNZIP before the drop. The sample is the USD Museum's suitcase
+  package, unpacked (CC0 1.0).
+- usdcat: the sample is wireframes.usda, green wireframe shapes (linear BasisCurves) around a
+  torus: 4.8 MB as text, 1.8 MB as .usdc, which reads back in OpenUSD identical to the source.
+- usdcat and usdzip show a desktop-only note on phones and tablets in place of their scene.
+- Checked: in WebKit, a packed .usdz holds the folder's files and passes OpenUSD's usdchecker,
+  an unpacked folder's .zip holds them byte for byte, two drops queue, a layer usdzip cannot
+  package reports it, and reduced motion works; in Chrome, both pages draw with WebGPU and run.
+
 ## 26.11.1.5 — 2026-11-21
 
 From typescript-usd-dev `63ebc5f3`, plus package versions and this entry. The library and usdview

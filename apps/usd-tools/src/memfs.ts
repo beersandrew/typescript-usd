@@ -33,6 +33,11 @@ export function writeMemFile(path: string, data: Uint8Array): void { put(path, d
 export function makeMemDir(path: string): void { addDirs(norm(path)) }
 /** The file at `path`, if any. */
 export function readMemFile(path: string): Uint8Array | undefined { return files.get(norm(path))?.data }
+/** Every file under the folder `path`, sorted. */
+export function memFilesUnder(path: string): string[] {
+  const p = norm(path)
+  return [...files.keys()].filter(f => f.startsWith(`${p}/`)).sort()
+}
 /** Removes `path` and everything under it. */
 export function removeMemTree(path: string): void {
   const p = norm(path)

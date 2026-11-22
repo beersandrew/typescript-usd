@@ -18,7 +18,8 @@ import { el } from './dom'
 import { Cat } from './cat'
 import type { CatActor } from './cat3d'
 import { SAMPLE_DRAG, acceptDrops, pickedFiles, rootsOf, stem, type DroppedFile } from './drop'
-import { reducedMotion, saveFile, settingsGear } from './playful'
+import { desktopOnlyNote, onDesktop, reducedMotion, saveFile, settingsGear } from './playful'
+import { licensesUrl, openInUsdview as openUsdviewTab } from './usdview-link'
 
 const { usdcat } = await import('../../../packages/usd/pxr/usd/bin/usdcat/usdcat.ts')
 
@@ -73,7 +74,7 @@ function plan(name: string, format: Format): Plan {
 
 document.title = 'usdcat — TypeScript USD'
 const host = document.querySelector('main')!
-host.classList.add('usdcat')
+host.classList.add('usdcat', 'desktop-page')
 
 const { gear, panel } = settingsGear('usdcat settings')
 
@@ -107,6 +108,7 @@ const KEEP = 3
  *  2D one, both moved by the middle of the cat in yard pixels. */
 async function makeCat(): Promise<CatActor> {
   try {
+    if (!onDesktop()) throw new Error('a phone or tablet: the page shows its desktop-only note')
     if (!navigator.gpu) throw new Error('no WebGPU')
     const { Cat3D, INBOX_AT, OUTBOX_AT } = await import('./cat3d')
     const cat = await Cat3D.create(yard)
@@ -133,10 +135,6 @@ const saveAll = el('button', { className: 'save-all', type: 'button', hidden: tr
 const log = el('pre', { className: 'log' })
 const logBox = el('details', { className: 'log-box' }, el('summary', {}, 'What usdcat printed'), log)
 
-/** TypeScript usdview, next to the tool pages as on andrew.beer (/s/usdview
- *  beside /s/usd-tools), or where ?usdview= says. */
-const usdviewUrl = new URL(new URLSearchParams(location.search).get('usdview') ?? '../../usdview/', location.href)
-
 // The link to the tools' index, only where the index is served (the usdcat
 // page can be hosted on its own).
 const homeLink = el('a', { href: '../', className: 'home', hidden: true }, 'USD tools')
@@ -152,13 +150,14 @@ host.append(
     el('a', { href: 'https://github.com/beersandrew/typescript-usd', target: '_blank', rel: 'noopener' }, 'typescript-usd'),
     '’s usdcat, in your browser. Nothing is uploaded.'),
   picker,
+  desktopOnlyNote('yard'),
   yard,
   el('div', { className: 'row results' }, saveAll),
   testCard,
   logBox,
   // The code this page runs is TypeScript USD's (ported from OpenUSD);
   // usdview's licenses page, beside the tool pages, holds its licenses.
-  el('p', { className: 'credit' }, el('a', { href: new URL('licenses/', usdviewUrl).href, target: '_blank', rel: 'noopener' }, 'Licenses')))
+  el('p', { className: 'credit' }, el('a', { href: licensesUrl, target: '_blank', rel: 'noopener' }, 'Licenses')))
 
 // The gear's panel: usdcat's options.
 function radio(name: string, value: string, label: string, checked: boolean, onPick: () => void) {
@@ -352,22 +351,10 @@ async function work(): Promise<void> {
   busy = false
 }
 
-/** Opens usdview in a new tab and hands it the file: usdview (?open=handoff)
- *  says when it is ready, then is sent the bytes (usdview's main.ts). */
 function openInUsdview(name: string, bytes: Uint8Array): void {
-  const url = new URL(usdviewUrl)
-  url.searchParams.set('open', 'handoff')
-  const tab = window.open(url, '_blank')
-  if (!tab) { log.append(el('span', { className: 'err' }, 'The browser blocked the new usdview tab.\n')); logBox.open = true; return }
-  const timer = setTimeout(() => { removeEventListener('message', ready) }, 60_000)
-  function ready(event: MessageEvent): void {
-    if (event.source !== tab || (event.data as { type?: unknown } | null)?.type !== 'usdview.ready') return
-    removeEventListener('message', ready)
-    clearTimeout(timer)
-    const copy = bytes.slice().buffer
-    tab!.postMessage({ type: 'usdview.open-file', name, bytes: copy }, usdviewUrl.origin, [copy])
-  }
-  addEventListener('message', ready)
+  if (openUsdviewTab(name, bytes)) return
+  log.append(el('span', { className: 'err' }, 'The browser blocked the new usdview tab.\n'))
+  logBox.open = true
 }
 
 const size = (n: number) => n < 1024 ? `${n} B` : n < 1048576 ? `${(n / 1024).toFixed(1)} KB` : `${(n / 1048576).toFixed(1)} MB`
@@ -393,11 +380,11 @@ addEventListener('dragover', e => {
   cat.watch(yard.contains(e.target as Node) ? { x: e.clientX, y: e.clientY } : null)
 })
 
-// usdcat offers only shapes.usda: a flattened layer big enough that text
-// against binary size shows.
-const shapes = (await loadSamples()).find(sample => sample.name === 'shapes')
-if (shapes) {
-  const path = sampleRootPath(shapes)
+// usdcat offers only wireframes.usda: green wireframe shapes in a flattened
+// layer big enough that text against binary size shows.
+const wireframes = (await loadSamples()).find(sample => sample.name === 'wireframes')
+if (wireframes) {
+  const path = sampleRootPath(wireframes)
   const bytes = (await readFile(path))?.byteLength
   const chip = el('div', { className: 'chip usda sample-chip', draggable: true, role: 'button', tabIndex: 0,
     title: 'Drag onto the yard to convert; click to download' },
